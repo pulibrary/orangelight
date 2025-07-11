@@ -1,12 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS101: Remove unnecessary use of Array.from
- * DS102: Remove unnecessary code created because of implicit returns
- * DS205: Consider reworking code to avoid use of IIFEs
- * DS206: Consider reworking classes to avoid initClass
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
- */
 import { insert_online_link } from './insert_online_link.es6';
 
 export default class AvailabilityUpdater {
@@ -150,7 +141,7 @@ export default class AvailabilityUpdater {
       if (holding_id === 'RES_SHARE$IN_RS_REQ') {
         // This holding location should always show as Request
         const badges = $(
-          `*[data-availability-record='true'][data-record-id='${record_id}'][data-temp-location-code='RES_SHARE$IN_RS_REQ'] span.availability-icon`
+          `*[data-availability-record='true'][data-record-id='${record_id}'][data-temp-location-code='RES_SHARE$IN_RS_REQ'] span.lux-text-style`
         );
         badges.addClass('bg-danger');
         badges.text('Request');
@@ -159,7 +150,7 @@ export default class AvailabilityUpdater {
       if (holding_id.match(/[a-zA-Z]\$[a-zA-Z]/)) {
         // We assume that items in temp locations are available.
         const badges = $(
-          `*[data-availability-record='true'][data-record-id='${record_id}'] span.availability-icon`
+          `*[data-availability-record='true'][data-record-id='${record_id}'] span.lux-text-style`
         );
         badges.text('Available');
         return true;
@@ -175,16 +166,16 @@ export default class AvailabilityUpdater {
         location.text(label);
       }
       const availability_element = $(
-        `*[data-availability-record='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .availability-icon`
+        `*[data-availability-record='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .lux-text-style`
       );
       this.apply_availability_label(availability_element, availability_info);
     }
 
     // Bib data does not know about bound-with records and therefore we don't get availability
-    // information for holdings coming from the host record. For those holdings we display Available
-    // in the search results page.
+    // information for holdings coming from the host record.
+    // For those holdings we display Available in the search results page.
     const boundWithBadges = $(
-      `*[data-availability-record='true'][data-record-id='${record_id}'][data-bound-with='true'] span.availability-icon`
+      `*[data-availability-record='true'][data-record-id='${record_id}'][data-bound-with='true'] span.lux-text-style`
     );
     boundWithBadges.text('Available');
 
@@ -220,11 +211,11 @@ export default class AvailabilityUpdater {
         // If we are not getting holding info select the availability element by record id only.
         if (holding_id == 'RES_SHARE$IN_RS_REQ') {
           availability_element = $(
-            `*[data-availability-record='true'][data-record-id='${id}'][data-temp-location-code='RES_SHARE$IN_RS_REQ'] .availability-icon`
+            `*[data-availability-record='true'][data-record-id='${id}'][data-temp-location-code='RES_SHARE$IN_RS_REQ'] .lux-text-style`
           );
         } else {
           availability_element = $(
-            `*[data-availability-record='true'][data-record-id='${id}'][data-holding-id='${holding_id}'] .availability-icon`
+            `*[data-availability-record='true'][data-record-id='${id}'][data-holding-id='${holding_id}'] .lux-text-style`
           );
         }
         if (label) {
@@ -243,7 +234,7 @@ export default class AvailabilityUpdater {
   // Sets the availability badge to indicate that we are retrying to fetch the information
   update_availability_retrying() {
     const avBadges = $(
-      `*[data-availability-record='true'] span.availability-icon`
+      `*[data-availability-record='true'] span.lux-text-style`
     );
     $(avBadges).text('Loading...');
     $(avBadges).addClass('badge bg-secondary');
@@ -252,7 +243,7 @@ export default class AvailabilityUpdater {
   // Sets the availability badge to indicate that we could not determine the availability
   update_availability_undetermined() {
     const avBadges = $(
-      `*[data-availability-record='true'] span.availability-icon`
+      `*[data-availability-record='true'] span.lux-text-style`
     );
     $(avBadges).text('Undetermined');
     $(avBadges).addClass('badge bg-secondary');
@@ -265,7 +256,7 @@ export default class AvailabilityUpdater {
       for (barcode in item_records) {
         availability_info = item_records[barcode];
         if (availability_info['itemAvailabilityStatus'] !== 'Available') {
-          status_message = 'Some Available';
+          status_message = 'Request';
         }
       }
     }
@@ -274,7 +265,7 @@ export default class AvailabilityUpdater {
       for (barcode in item_records) {
         availability_info = item_records[barcode];
         const availability_element = $(
-          `*[data-availability-record='true'][data-record-id='${this.id}'][data-scsb-barcode='${barcode}'] .availability-icon`
+          `*[data-availability-record='true'][data-record-id='${this.id}'][data-scsb-barcode='${barcode}'] .lux-text-style`
         );
         const aeon = $(
           `*[data-availability-record='true'][data-record-id='${this.id}'][data-scsb-barcode='${barcode}']`
