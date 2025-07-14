@@ -61,6 +61,7 @@ describe('AvailabilityUpdater', function () {
     bibdata_response = JSON.parse(bibdata_response);
 
     const u = new updater();
+
     u.process_results_list(bibdata_response);
 
     const available_result = $(
@@ -74,8 +75,8 @@ describe('AvailabilityUpdater', function () {
       `*[data-record-id="${unavail_id}"] .availability-icon`
     );
     expect(unavailable_result.hasClass('badge')).toBe(true);
-    expect(unavailable_result.hasClass('bg-danger')).toBe(true);
-    expect(unavailable_result.text()).toEqual('Unavailable');
+    expect(unavailable_result.hasClass('bg-secondary')).toBe(true);
+    expect(unavailable_result.text()).toEqual('Request');
 
     const mixed_result = $(
       `*[data-record-id="${mixed_id}"] .availability-icon`
@@ -115,7 +116,7 @@ describe('AvailabilityUpdater', function () {
     u.scsb_search_availability;
     const availabilityBadgeAfter =
       document.getElementsByClassName('availability-icon');
-    expect(availabilityBadgeAfter[0].textContent).toEqual('Unavailable');
+    expect(availabilityBadgeAfter[0].textContent).toEqual('Request');
     expect(
       document.querySelector(
         '.holding-status[data-holding-id="5459517"] > .bg-danger'
@@ -489,7 +490,7 @@ describe('AvailabilityUpdater', function () {
     u.id = '99124187703506421';
     expect(av_element[0].textContent).not.toContain('Request');
     u.apply_availability_label(av_element, holding_data, false);
-    expect(av_element[0].textContent).toContain('Request');
+    expect(av_element[0].textContent).toContain('Ask Staff');
     expect(
       document.querySelector(
         '.holding-status[data-holding-id="22642015240006421"] > .bg-secondary'
@@ -732,6 +733,6 @@ describe('AvailabilityUpdater', function () {
       document.querySelector(
         '.holding-status[data-temp-location-code="RES_SHARE$IN_RS_REQ"] span'
       ).textContent
-    ).toBe('Unavailable');
+    ).toBe('Request');
   });
 });
