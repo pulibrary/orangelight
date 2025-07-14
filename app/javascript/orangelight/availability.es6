@@ -148,12 +148,12 @@ export default class AvailabilityUpdater {
   process_result(record_id, holding_records) {
     for (const holding_id in holding_records) {
       if (holding_id === 'RES_SHARE$IN_RS_REQ') {
-        // This holding location should always show as Request
+        // This holding location should always show as unavailable
         const badges = $(
           `*[data-availability-record='true'][data-record-id='${record_id}'][data-temp-location-code='RES_SHARE$IN_RS_REQ'] span.availability-icon`
         );
         badges.addClass('bg-danger');
-        badges.text('Request');
+        badges.text('Unavailable');
         return true;
       }
       if (holding_id.match(/[a-zA-Z]\$[a-zA-Z]/)) {
@@ -385,7 +385,7 @@ export default class AvailabilityUpdater {
       'RES_SHARE$IN_RS_REQ',
     ];
     availability_element.text(status_label);
-    if (status_label.toLowerCase() === 'request') {
+    if (status_label.toLowerCase() === 'unavailable') {
       if (specialStatusLocations.includes(location)) {
         this.checkSpecialLocation(location, availability_element);
       } else {
@@ -411,7 +411,7 @@ export default class AvailabilityUpdater {
     if (location.startsWith('marquand$')) {
       availability_element.text('Request').addClass('bg-secondary');
     } else {
-      availability_element.text('Request').addClass('bg-danger');
+      availability_element.text('Unavailable').addClass('bg-danger');
     }
     return availability_element;
   }
