@@ -6,7 +6,7 @@
         height="20"
         :iconColor="iconColor"
         :iconHide="true"
-        ><LuxIconBookmark></LuxIconBookmark
+        ><LuxIconBookmark :lineColor="lineColor"></LuxIconBookmark
       ></LuxIconBase>
       <template v-if="potentialAction === 'add'">Bookmark</template>
       <template v-else>In Bookmarks</template>
@@ -29,6 +29,12 @@ const props = defineProps({
 
 const potentialAction = ref(props.inBookmarks ? 'remove' : 'add');
 const iconColor = computed(() =>
+  potentialAction.value === 'add'
+    ? 'transparent'
+    : 'var(--color-princeton-orange-on-white)'
+);
+
+const lineColor = computed(() =>
   potentialAction.value === 'add'
     ? 'black'
     : 'var(--color-princeton-orange-on-white)'
