@@ -396,8 +396,8 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
 
       markup << build_holding_notes(holding, holding_id)
 
-      markup = self.class.holding_block(markup) unless markup.empty?
-      markup
+      self.class.holding_block(markup) unless markup.empty?
+      ApplicationController.new.view_context.render Holdings::HoldingDetailComponent.new(holding, holding_id, adapter)
     end
 
     def build_holding_notes(holding, holding_id)
