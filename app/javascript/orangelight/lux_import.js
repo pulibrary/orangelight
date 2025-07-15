@@ -5,6 +5,7 @@ import OrangelightHeader from '../orangelight/vue_components/orangelight_header.
 import OnlineOptions from './vue_components/online_options.vue';
 import BookmarkLoginDialog from './vue_components/bookmark_login_dialog.vue';
 import MultiselectCombobox from './vue_components/multiselect_combobox.vue';
+import BookmarkAllButton from './vue_components/bookmark_all_button.vue';
 import BookmarkButton from './vue_components/bookmark_button.vue';
 
 export function luxImport() {
@@ -21,6 +22,7 @@ export function luxImport() {
         .component('online-options', OnlineOptions)
         .component('orangelight-header', OrangelightHeader)
         .component('bookmark-login-dialog', BookmarkLoginDialog)
+        .component('bookmark-all-button', BookmarkAllButton)
         .component('bookmark-button', BookmarkButton)
         .mount(elements[i]);
     }
