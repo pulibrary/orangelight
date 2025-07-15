@@ -53,7 +53,9 @@ function addToBookmarks() {
   });
   if (!props.loggedIn) {
     handleMissingLocalStorageKey('catalog.bookmarks.save_account_alert', () => {
-      document.getElementById('bookmark-login')?.showModal();
+      const dialog = document.getElementById('bookmark-login');
+      dialog?.showModal();
+      setTimeout(() => dialog?.querySelector('.dialog-content').focus());
       return new Date(Date.now()).toISOString();
     });
   }
@@ -96,6 +98,7 @@ function toggle() {
 }
 .bookmark-button button.lux-button.outline {
   display: flex;
+  align-items: center;
   border: 0.125rem solid var(--color-grayscale-light);
   color: var(--color-grayscale-dark);
   width: fit-content;
