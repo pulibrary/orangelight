@@ -29,7 +29,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
 
   def holding_location_repository
     children = content_tag(:span,
-                           'Available',
+                           'On-site access',
                            class: 'availability-icon badge bg-success')
     content_tag(:td, children.html_safe)
   end
@@ -73,7 +73,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # Holding record with "dspace": false
   def holding_location_unavailable
     children = content_tag(:span,
-                           'Request',
+                           'Unavailable',
                            class: 'availability-icon badge bg-danger')
     content_tag(:td, children.html_safe, class: 'holding-status')
   end

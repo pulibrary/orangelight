@@ -165,7 +165,7 @@ class HoldingRequestsAdapter
     holding['items'].map { |values| values['use_statement'] }.compact_blank
   end
 
-  # Determine whether or not the holding is explicitly marked as "Request"
+  # Determine whether or not the holding is explicitly marked as "Unavailable"
   # @return [TrueClass, FalseClass]
   def unavailable_holding?(holding)
     holding['dspace'] == false

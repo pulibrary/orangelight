@@ -81,7 +81,7 @@ module HoldingsHelper
   def onsite_access_span
     content_tag(
       :span,
-      'Available',
+      'On-site access',
       class: 'availability-icon badge bg-success'
     )
   end
@@ -121,7 +121,7 @@ module HoldingsHelper
   def under_embargo_block
     content_tag(
       :span,
-      'Request',
+      'Unavailable',
       class: 'availability-icon badge bg-danger'
     )
   end
