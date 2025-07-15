@@ -1,6 +1,11 @@
 <template>
   <div class="bookmark-button">
-    <LuxInputButton variation="outline" size="small" @buttonClicked="toggle()">
+    <LuxInputButton
+      variation="outline"
+      size="small"
+      @buttonClicked="toggle()"
+      :ol-state="state"
+    >
       <LuxIconBase
         width="20"
         height="20"
@@ -19,7 +24,7 @@ import {
   LuxIconBookmark,
   LuxInputButton,
 } from 'lux-design-system';
-import { ref, useTemplateRef, computed, watch } from 'vue';
+import { ref, computed } from 'vue';
 
 const props = defineProps({
   inBookmarks: { type: Boolean, default: false },
@@ -28,6 +33,11 @@ const props = defineProps({
 });
 
 const potentialAction = ref(props.inBookmarks ? 'remove' : 'add');
+
+const state = computed(() =>
+  potentialAction.value === 'add' ? 'not-in-bookmarks' : 'in-bookmarks'
+);
+
 const iconColor = computed(() =>
   potentialAction.value === 'add'
     ? 'transparent'
