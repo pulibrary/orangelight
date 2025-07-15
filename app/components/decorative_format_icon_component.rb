@@ -29,9 +29,7 @@ class DecorativeFormatIconComponent < ViewComponent::Base
           'Musical score',
           'Senior thesis',
           'Video/Projected medium',
-          'Visual material',
-          'Physical',
-          'Online'
+          'Visual material'
         ].include? format
       end
 end
