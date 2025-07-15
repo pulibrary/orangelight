@@ -46,7 +46,7 @@ module HoldingsHelper
     else
       if holding['dspace'] || holding['location_code'] == 'rare$num'
         check_availability = false
-        accumulator << dspace_or_numismatics_holding_block(location)
+        accumulator << dspace_or_numismatics_holding_block
       elsif /^scsb.+/.match? location[:code]
         check_availability = false
         unless holding['items'].nil?
@@ -81,13 +81,21 @@ module HoldingsHelper
   def onsite_access_span
     content_tag(
       :span,
+      'On-site access',
+      class: 'availability-icon badge bg-success'
+    )
+  end
+
+  def available_access_span
+    content_tag(
+      :span,
       'Available',
       class: 'availability-icon badge bg-success'
     )
   end
 
-  def dspace_or_numismatics_holding_block(_location)
-    onsite_access_span
+  def dspace_or_numismatics_holding_block
+    available_access_span
   end
 
   def scsb_item_block(holding)

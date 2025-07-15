@@ -146,14 +146,15 @@ export default class AvailabilityUpdater {
 
   // search results
   process_result(record_id, holding_records) {
+    let searchResults = true;
     for (const holding_id in holding_records) {
       if (holding_id === 'RES_SHARE$IN_RS_REQ') {
-        // This holding location should always show as unavailable
+        // This holding location should always show as Request in the search results.
         const badges = $(
           `*[data-availability-record='true'][data-record-id='${record_id}'][data-temp-location-code='RES_SHARE$IN_RS_REQ'] span.availability-icon`
         );
         badges.addClass('bg-danger');
-        badges.text('Unavailable');
+        badges.text('Request');
         return true;
       }
       if (holding_id.match(/[a-zA-Z]\$[a-zA-Z]/)) {
@@ -177,7 +178,11 @@ export default class AvailabilityUpdater {
       const availability_element = $(
         `*[data-availability-record='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .availability-icon`
       );
-      this.apply_availability_label(availability_element, availability_info);
+      this.apply_availability_label(
+        availability_element,
+        availability_info,
+        searchResults
+      );
     }
 
     // Bib data does not know about bound-with records and therefore we don't get availability
@@ -198,7 +203,7 @@ export default class AvailabilityUpdater {
   process_single(holding_records) {
     this.update_single(holding_records, this.id);
     // Availability response in bibdata should be refactored not to include the host holdings under the mms_id of the record page.
-    // problematic availability response behaviour for constituent record page with host records.
+    // problematic availability response behavior for constituent record page with host records.
     // It treats host records as holdings of the constituent record. see: https://github.com/pulibrary/bibdata/issues/1739
     if (this.host_id.length > 0) {
       this.host_id.forEach((mms_id) => {
@@ -210,6 +215,7 @@ export default class AvailabilityUpdater {
   update_single(holding_records, id) {
     return (() => {
       const result = [];
+      let searchResults = false;
       for (const holding_id in holding_records[id]) {
         const availability_info = holding_records[id][holding_id];
         const { label } = holding_records[id][holding_id];
@@ -233,7 +239,11 @@ export default class AvailabilityUpdater {
           );
           holding_location.text(label);
         }
-        this.apply_availability_label(availability_element, availability_info);
+        this.apply_availability_label(
+          availability_element,
+          availability_info,
+          searchResults
+        );
         result.push(this.update_request_button(holding_id, availability_info));
       }
       return result;
@@ -282,7 +292,7 @@ export default class AvailabilityUpdater {
         availability_element.addClass('badge');
         if (aeon === 'true') {
           availability_element.addClass('bg-success');
-          availability_element.text('Available');
+          availability_element.text('On-Site Access');
           result.push(availability_element);
         } else if (multi_items) {
           if (status_message) {
@@ -367,13 +377,17 @@ export default class AvailabilityUpdater {
       availability_element;
     } else {
       availability_element.addClass('bg-danger');
-      availability_element.text(item_data['itemAvailabilityStatus']);
+      availability_element.text('Request');
       availability_element;
     }
     return true;
   }
 
-  apply_availability_label(availability_element, availability_info) {
+  apply_availability_label(
+    availability_element,
+    availability_info,
+    searchResults
+  ) {
     availability_element.addClass('badge');
     const { status_label, location, id } = availability_info;
     const specialStatusLocations = [
@@ -384,19 +398,54 @@ export default class AvailabilityUpdater {
       'marquand$fesrf',
       'RES_SHARE$IN_RS_REQ',
     ];
+
     availability_element.text(status_label);
+
     if (status_label.toLowerCase() === 'unavailable') {
-      if (specialStatusLocations.includes(location)) {
-        this.checkSpecialLocation(location, availability_element);
-      } else {
-        availability_element.addClass('bg-danger');
-      }
+      this.handle_availability_status(
+        location,
+        availability_element,
+        specialStatusLocations,
+        searchResults
+      );
     } else if (status_label.toLowerCase() === 'available') {
       availability_element.addClass('bg-success');
+    } else if (status_label.toLowerCase() === 'on-site access') {
+      this.handleOnSiteAccessStatus(
+        availability_element,
+        status_label,
+        searchResults
+      );
     } else {
       availability_element.addClass('bg-secondary');
     }
     return availability_element;
+  }
+  handleOnSiteAccessStatus(availability_element, status_label, searchResults) {
+    if (searchResults === true) {
+      availability_element.text('Available').addClass('bg-success');
+    } else {
+      availability_element.text('On-site Access').addClass('bg-secondary');
+    }
+    return availability_element;
+  }
+
+  // Handles the availability status when status_label.toLowerCase() === 'unavailable'
+  handle_availability_status(
+    location,
+    availability_element,
+    specialStatusLocations,
+    searchResults
+  ) {
+    if (specialStatusLocations.includes(location)) {
+      this.checkSpecialLocation(location, availability_element, searchResults);
+    } else {
+      if (searchResults == false) {
+        availability_element.text('Unavailable').addClass('bg-danger');
+      } else {
+        availability_element.text('Request').addClass('bg-secondary');
+      }
+    }
   }
 
   title_case(str) {
@@ -407,12 +456,24 @@ export default class AvailabilityUpdater {
   }
 
   // Set status for specific Marquand locations and location RES_SHARE$IN_RS_REQ
-  checkSpecialLocation(location, availability_element) {
-    if (location.startsWith('marquand$')) {
-      availability_element.text('Request').addClass('bg-secondary');
+  checkSpecialLocation(location, availability_element, searchResults) {
+    // record page -> searchResults == false
+    if (searchResults == false) {
+      if (location.startsWith('marquand$')) {
+        availability_element.text('Ask Staff').addClass('bg-secondary');
+      } else {
+        availability_element.text('Unavailable').addClass('bg-danger');
+      }
+      // search results page -> searchResults is true.
     } else {
-      availability_element.text('Unavailable').addClass('bg-danger');
+      if (
+        location.startsWith('marquand$') ||
+        location === 'RES_SHARE$IN_RS_REQ'
+      ) {
+        availability_element.text('Request').addClass('bg-secondary');
+      }
     }
+
     return availability_element;
   }
 
