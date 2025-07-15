@@ -25,6 +25,11 @@ describe('BookmarkButton', () => {
     it('has the text Bookmark', () => {
       expect(wrapper.text().trim()).toEqual('Bookmark');
     });
+    it('includes its status in the DOM as an attribute', () => {
+      expect(wrapper.get('button').attributes('ol-state')).toEqual(
+        'not-in-bookmarks'
+      );
+    });
   });
 
   describe('when the item is not in bookmarks and user is not logged in', () => {
