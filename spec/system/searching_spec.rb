@@ -152,6 +152,8 @@ describe 'Searching', type: :system, js: false do
     it 'can handle a boolean OR search' do
       visit '/catalog?search_field=all_fields&q=plasticity+OR+afganistan'
       expect(page).to have_content('1 - 2 of 2')
+      expect(page).not_to have_content('Online')
+      expect(page).to have_content('Physical')
     end
   end
 
@@ -200,6 +202,8 @@ describe 'Searching', type: :system, js: false do
       expect(page).not_to have_content('No holdings available for this record')
       expect(page).to have_content('SAGE Research Methods Cases Part I')
       expect(page).to have_content('SAGE research methods. Cases.')
+      expect(page).to have_content('ONLINE')
+      expect(page).not_to have_content('PHYSICAL')
     end
 
     it 'shows facets on the advanced search results page', advanced_search: true do
@@ -211,6 +215,8 @@ describe 'Searching', type: :system, js: false do
       expect(page).to have_button('Format')
       expect(page).to have_button('Publication year')
       expect(page).to have_button('Language')
+      expect(page).to have_content('Online')
+      expect(page).to have_content('Physical')
     end
   end
 
