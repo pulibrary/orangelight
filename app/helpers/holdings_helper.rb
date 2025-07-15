@@ -81,7 +81,7 @@ module HoldingsHelper
   def onsite_access_span
     content_tag(
       :span,
-      'Available',
+      'On-site access',
       class: 'availability-icon badge bg-success'
     )
   end

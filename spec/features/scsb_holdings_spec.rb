@@ -12,9 +12,9 @@ describe 'SCSB Shared Collection Records' do
       visit '/catalog?search_field=all_fields&q=SCSB-2443272'
       expect(page).to have_content 'Available'
     end
-    it 'displays Available for supervised use items' do
+    it 'displays on-site access for supervised use items' do
       visit '/catalog?search_field=all_fields&q=SCSB-6593031'
-      expect(page).to have_content 'Available'
+      expect(page).to have_content 'On-site access'
       expect(page).not_to have_selector 'span.icon-request-reading-room'
     end
     it 'includes a data attribute to trigger availability check against scsb' do
