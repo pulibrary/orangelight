@@ -8,14 +8,14 @@
   <% end %>
   <% if @field.document.physical_holding?%>
     <li>
-      <lux-badge color="yellow"><%= render DecorativeFormatIconComponent.new "Physical" %>
-        PHYSICAL
+      <lux-badge color="yellow"><%= render DecorativeAccessIconComponent.new "Physical" %>
+        Physical
       </lux-badge>
   <% end %>
   <% if @field.document.electronic_access?%>
     <li>
-      <lux-badge color="blue"><%= render DecorativeFormatIconComponent.new "Online" %>
-        ONLINE
+      <lux-badge color="blue"><%= render DecorativeAccessIconComponent.new "Online" %>
+        Online
       </lux-badge>
   <% end %>
 </ul>
