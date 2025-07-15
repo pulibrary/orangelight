@@ -1,6 +1,6 @@
 <template>
   <dialog id="bookmark-login" ref="dialog">
-    <div tabindex="-1">
+    <div class="dialog-content" tabindex="-1">
       <div class="dialog-title">
         <h2>Log in to save bookmarks</h2>
         <LuxInputButton
