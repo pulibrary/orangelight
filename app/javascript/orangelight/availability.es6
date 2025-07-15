@@ -292,7 +292,7 @@ export default class AvailabilityUpdater {
         availability_element.addClass('badge');
         if (aeon === 'true') {
           availability_element.addClass('bg-success');
-          availability_element.text('Available');
+          availability_element.text('On-Site Access');
           result.push(availability_element);
         } else if (multi_items) {
           if (status_message) {
@@ -410,12 +410,27 @@ export default class AvailabilityUpdater {
       );
     } else if (status_label.toLowerCase() === 'available') {
       availability_element.addClass('bg-success');
+    } else if (status_label.toLowerCase() === 'on-site access') {
+      this.handleOnSiteAccessStatus(
+        availability_element,
+        status_label,
+        searchResults
+      );
     } else {
       availability_element.addClass('bg-secondary');
     }
     return availability_element;
   }
+  handleOnSiteAccessStatus(availability_element, status_label, searchResults) {
+    if (searchResults === true) {
+      availability_element.text('Available').addClass('bg-success');
+    } else {
+      availability_element.text('On-site Access').addClass('bg-secondary');
+    }
+    return availability_element;
+  }
 
+  // Handles the availability status when status_label.toLowerCase() === 'unavailable'
   handle_availability_status(
     location,
     availability_element,
@@ -442,14 +457,14 @@ export default class AvailabilityUpdater {
 
   // Set status for specific Marquand locations and location RES_SHARE$IN_RS_REQ
   checkSpecialLocation(location, availability_element, searchResults) {
-    // record page
+    // record page -> searchResults == false
     if (searchResults == false) {
       if (location.startsWith('marquand$')) {
         availability_element.text('Ask Staff').addClass('bg-secondary');
       } else {
         availability_element.text('Unavailable').addClass('bg-danger');
       }
-      // search results page
+      // search results page -> searchResults is true.
     } else {
       if (
         location.startsWith('marquand$') ||
