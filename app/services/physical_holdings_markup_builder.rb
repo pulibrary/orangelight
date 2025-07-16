@@ -10,24 +10,6 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     content_tag(:td, children.html_safe)
   end
 
-  def holding_location_scsb_span
-    markup = content_tag(:span, '',
-                         class: 'availability-icon badge')
-    markup
-  end
-
-  def holding_location_scsb(holding, doc_id, holding_id)
-    content_tag(:td, holding_location_scsb_span.html_safe,
-                class: 'holding-status',
-                data: {
-                  'availability_record' => true,
-                  'record_id' => doc_id,
-                  'holding_id' => holding_id,
-                  'scsb-barcode' => holding['items'].first['barcode'],
-                  'aeon' => scsb_supervised_items?(holding)
-                })
-  end
-
   def holding_location_default(doc_id, holding_id, location_rules, temp_location_code)
     children = content_tag(:span, '', class: 'availability-icon')
 
@@ -183,19 +165,6 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                   holding_id:
                 })
   end
-
-  def self.scsb_supervised_items?(holding)
-    if holding.key? 'items'
-      restricted_items = holding['items'].select do |item|
-        item['use_statement'] == 'Supervised Use'
-      end
-      restricted_items.count == holding['items'].count
-    else
-      false
-    end
-  end
-
-  delegate :scsb_supervised_items?, to: :class
 
   ##
   def self.listify_array(arr)
@@ -353,11 +322,11 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
           cn_value
         )
       end
-      markup << ApplicationController.new.view_context.render(Holdings::CallNumberLinkComponent.new(holding, cn_value))
+      markup << render_component(Holdings::CallNumberLinkComponent.new(holding, cn_value))
       markup << if @adapter.repository_holding?(holding)
                   holding_location_repository
                 elsif @adapter.scsb_holding?(holding) && !@adapter.empty_holding?(holding)
-                  holding_location_scsb(holding, doc_id, holding_id)
+                  render_component Holdings::HoldingAvailabilityScsbComponent.new(holding, doc_id, holding_id)
                 elsif @adapter.unavailable_holding?(holding)
                   holding_location_unavailable
                 else
@@ -407,5 +376,13 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
       children = physical_holdings
       markup = self.class.content_tag(:tbody, children.html_safe) unless children.empty?
       markup
+    end
+
+    def render_component(component)
+      view_context.render(component)
+    end
+
+    def view_context
+      @view_context ||= ApplicationController.new.view_context
     end
 end

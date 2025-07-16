@@ -40,7 +40,7 @@ detectors:
     exclude:
     - ApplicationController#after_sign_out_path_for
     - BookmarksController#two_values
-    - Requests::ApplicationHelper#check_box_selected
+    - Requests::ApplicationHelper#check_box_selected?
     - Requests::ApplicationHelper#hidden_service_options
     - Requests::ApplicationHelper#single_pickup
     - Requests::RequestHelper#reshare_type
@@ -125,7 +125,7 @@ detectors:
     - Requests::ApplicationHelper#pick_up_locations
     - Requests::ApplicationHelper#preferred_request_content_tag
     - Requests::ApplicationHelper#show_service_options
-    - Requests::ApplicationHelper#submit_button_disabled
+    - Requests::ApplicationHelper#submit_button_disabled?
     - Requests::ApplicationHelper#submit_message
     - Requests::ApplicationHelper#system_status_label
     - Requests::RequestHelper#login_url
@@ -224,7 +224,6 @@ detectors:
     - OnlineHoldingsMarkupBuilder#self.urlify
     - PhysicalHoldingsMarkupBuilder#build_holding_notes
     - PhysicalHoldingsMarkupBuilder#request_link_component
-    - PhysicalHoldingsMarkupBuilder#self.scsb_supervised_items?
     - Requests::BibdataService#self.delivery_locations
     - StackmapService::Url#url
   FeatureEnvy:
@@ -719,7 +718,7 @@ detectors:
     - Orangelight::RecordMailer#email_record
     - Requests::AeonUrl#ctx_with_item_info
     - Requests::ClancyItem#post_clancy
-    - Requests::ClancyItem#request
+    - Requests::ClancyItem#request?
     - Requests::Form#build_barcode_sort
     - Requests::Form#build_holding_scsb_items
     - Requests::Form#build_requestable_with_items
@@ -824,7 +823,7 @@ detectors:
     exclude:
     - Orangelight::DropdownHelpTextComponent#option_text_and_value
     - Orangelight::ProcessVocabularyComponent#accumulate_subsubjects
-    - AccountController#cancel_ill_success
+    - AccountController#cancel_ill_success?
     - AccountController#current_patron
     - ApplicationController#default_url_options
     - ApplicationController#referrer_from_url
@@ -859,7 +858,7 @@ detectors:
     - Orangelight::BrowsablesHelper#vocab_type
     - Requests::ApplicationHelper#aeon_base
     - Requests::ApplicationHelper#available_pick_ups
-    - Requests::ApplicationHelper#check_box_selected
+    - Requests::ApplicationHelper#check_box_selected?
     - Requests::ApplicationHelper#current_location_label
     - Requests::ApplicationHelper#display_label
     - Requests::ApplicationHelper#enum_copy_display
@@ -869,7 +868,7 @@ detectors:
     - Requests::ApplicationHelper#isbn_string
     - Requests::ApplicationHelper#pick_up_classlist
     - Requests::ApplicationHelper#submit_message
-    - Requests::ApplicationHelper#suppress_login
+    - Requests::ApplicationHelper#suppress_login?
     - Requests::ApplicationHelper#table_sorter_present?
     - Requests::RequestHelper#login_url
     - Requests::RequestHelper#parse_json
@@ -900,11 +899,11 @@ detectors:
     - Requests::IlliadMetadata::Loan#call_number
     - Requests::IlliadMetadata::Loan#volume_number
     - Requests::IlliadTransactionClient#disavowed_illiad_patron?
-    - Requests::IlliadTransactionClient#validate_illiad_patron
+    - Requests::IlliadTransactionClient#validate_illiad_patron?
     - Requests::Item#available_statuses
     - Requests::Item#unavailable_statuses
     - Requests::SelectedItemsValidator#validate_delivery_mode
-    - Requests::SelectedItemsValidator#validate_item_id
+    - Requests::SelectedItemsValidator#validate_item_id?
     - Requests::SelectedItemsValidator#validate_pick_up_location
     - Requests::SelectedItemsValidator#validate_recap_no_items
     - Requests::Submission#delivery_mode
