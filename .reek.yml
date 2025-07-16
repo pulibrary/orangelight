@@ -590,7 +590,6 @@ detectors:
     - HoldingRequestsAdapter#location_note?
     - HoldingRequestsAdapter#shelving_title?
     - LinkedDocumentResolver::LinkedDocuments#response
-    - PhysicalHoldingsMarkupBuilder#call_number_link
     - PhysicalHoldingsMarkupBuilder#holding_location_default
     - PhysicalHoldingsMarkupBuilder#self.aeon_location?
     - PhysicalHoldingsMarkupBuilder#self.open_location?
@@ -938,6 +937,5 @@ detectors:
     - HoldingRequestsAdapter#temp_location_code
     - HoldingRequestsAdapter#unavailable_holding?
     - LinkedDocumentResolver::LinkedDocuments#bib_id?
-    - PhysicalHoldingsMarkupBuilder#call_number_span
     - StackmapLocationFactory#call_number?
     - StackmapLocationFactory#excluded?
