@@ -499,7 +499,6 @@ detectors:
     - Requests::SelectedItemsValidator#validate_ill_on_shelf
     - PhysicalHoldingsMarkupBuilder#holding_location
     - PhysicalHoldingsMarkupBuilder#holding_location_container
-    - PhysicalHoldingsMarkupBuilder#holding_location_default
     - PhysicalHoldingsMarkupBuilder#locate_link
     - PhysicalHoldingsMarkupBuilder#request_link_component
     - PhysicalHoldingsMarkupBuilder#request_placeholder
@@ -589,7 +588,6 @@ detectors:
     - HoldingRequestsAdapter#location_note?
     - HoldingRequestsAdapter#shelving_title?
     - LinkedDocumentResolver::LinkedDocuments#response
-    - PhysicalHoldingsMarkupBuilder#holding_location_default
     - PhysicalHoldingsMarkupBuilder#self.aeon_location?
     - PhysicalHoldingsMarkupBuilder#self.open_location?
     - PhysicalHoldingsMarkupBuilder#self.requestable_location?

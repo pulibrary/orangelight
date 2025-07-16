@@ -10,24 +10,6 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     content_tag(:td, children.html_safe)
   end
 
-  def holding_location_default(doc_id, holding_id, location_rules, temp_location_code)
-    children = content_tag(:span, '', class: 'availability-icon')
-
-    data = {
-      'availability_record' => true,
-      'record_id' => doc_id,
-      'holding_id' => holding_id,
-      aeon: self.class.aeon_location?(location_rules)
-    }
-
-    data['temp_location_code'] = temp_location_code unless temp_location_code.nil?
-
-    content_tag(:td,
-                 children.html_safe,
-                 class: 'holding-status',
-                 data:)
-  end
-
   # Holding record with "dspace": false
   def holding_location_unavailable
     children = content_tag(:span,
@@ -330,10 +312,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                 elsif @adapter.unavailable_holding?(holding)
                   holding_location_unavailable
                 else
-                  holding_location_default(doc_id,
-                                           holding_id,
-                                           location_rules,
-                                           temp_location_code)
+                  render_component Holdings::HoldingAvailabilityComponent.new(doc_id, holding_id, location_rules, temp_location_code)
                 end
 
       request_placeholder_markup = request_placeholder(@adapter, holding_id, location_rules, holding)
