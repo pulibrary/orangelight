@@ -169,11 +169,12 @@ export default class AvailabilityUpdater {
       // In Alma the label from the endpoint includes both the library name and the location.
       const availability_info = holding_records[holding_id];
       const { label } = availability_info;
+
       if (label) {
         const location = $(
           `*[data-location='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .results_location`
         );
-        location.text(label);
+        location.text(this.getLibraryName(label));
       }
       const availability_element = $(
         `*[data-availability-record='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .availability-icon`
@@ -475,6 +476,11 @@ export default class AvailabilityUpdater {
     }
 
     return availability_element;
+  }
+
+  getLibraryName(label) {
+    let library_name = label.replace(/-(.*)/, '').trim();
+    return library_name;
   }
 
   /* Currently this logic is duplicated in Ruby code in application_helper.rb (ApplicationHelper::find_it_location) */
