@@ -44,11 +44,11 @@ describe 'blacklight tests' do
       get '/catalog?&search_field=all_fields&q=998574693506421'
       expect(response.body).to include 'Available'
     end
-    it 'displays the location name for an item with a single location' do
+    it 'displays only the library name for an item with a single location' do
       get '/catalog/993213506421/raw'
       r = JSON.parse(response.body)
-      expect(r['location_display'].length).to eq 1
-      location = r['location_display'][0]
+      expect(r['location'].length).to eq 1
+      location = r['location'][0]
       get '/catalog?&search_field=all_fields&q=993213506421'
       expect(response.body.include?(location.to_s)).to eq true
     end
