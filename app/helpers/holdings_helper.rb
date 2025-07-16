@@ -8,14 +8,29 @@ module HoldingsHelper
 
   def holding_block_search(document)
     block = ''.html_safe
+    block_extra = ''.html_safe
     holdings_hash = document.holdings_all_display
     @scsb_multiple = false
+    if holdings_hash.count <= 4
+      holdings_hash.each do |id, holding|
+        block << holdings_block(document, id, holding)
+      end
+    elsif holdings_hash.count > 4
+      holdings_array = holdings_hash.to_a
+      holdings_array_first_three = holdings_array.first(3)
+      holdings_array.count
+      holdings_remaining = holdings_array.count - 3
 
-    holdings_hash.first(4).each do |id, holding|
-      block << first_two_holdings_block(document, id, holding)
+      holdings_array_first_three.each do |id, holding|
+        block << holdings_block(document, id, holding)
+      end
+      block_extra << content_tag(:div, class: 'holdings-card') do
+        content_tag(:span, "See #{holdings_remaining} location", class: 'lux-text-style gray')
+      end
+
+      block << content_tag(:div, block_extra, class: 'holdings-card extra-holdings')
+
     end
-
-    block << controller.view_context.render(Holdings::OnlineHoldingsComponent.new(document:))
 
     if block.empty?
       content_tag(:div, t('blacklight.holdings.search_missing'))
@@ -24,9 +39,13 @@ module HoldingsHelper
     end
   end
 
+  def online_content_block(document)
+    controller.view_context.render(Holdings::OnlineHoldingsComponent.new(document:))
+  end
+
   # rubocop:disable Metrics/MethodLength
   # Currently having trouble breaking up this method further due to the "check_availability" variable
-  def first_two_holdings_block(document, id, holding)
+  def holdings_block(document, id, holding)
     location = holding_location(holding)
     check_availability = render_availability?
     accumulator = ''.html_safe

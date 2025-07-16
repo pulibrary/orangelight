@@ -2,6 +2,36 @@
 @import "variables/colors";
 @import "variables/typography";
 
+.holdings-card .lux-card .lux-text-style {
+  padding: 0 1rem 1rem 0;
+  flex: 1 1 0px;
+  align-content: flex-end
+}
+
+.holdings-card {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: row;
+  border-radius: 0.375rem;
+  padding: 0.5rem 0rem 0.5rem 0rem;
+}
+
+  article .lux-card {
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #EEE;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 0.5rem;
+  // height: 9.375rem;
+}
+
+.library-location {
+  flex: 1 1 0px;
+}
+
 .availability-column,
 .holding-block,
 .linked-block {
@@ -123,25 +153,6 @@
 .blacklight-holdings .availability-icon.badge:hover {
   color: white;
   text-decoration: none;
-}
-
-.holdings-card {
-  display: flex;
-  gap: 0.5rem;
-  flex-direction: row;
-  border-radius: 0.375rem;
-  padding: 0.5rem 0rem 0.5rem 0rem;
-}
-
-article .lux-card {
-  padding: 1rem;
-  border-radius: 8px;
-  border: 1px solid #EEE;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  flex-direction: column;
-  gap: 0.5rem;
 }
 
 .top-panel-heading.panel-heading {
@@ -395,17 +406,6 @@ article .lux-card {
 
       &.bg-warning {
         color: $black;
-      }
-    }
-
-    .library-location {
-      display: block;
-      margin-left: 105px;
-
-      @media (max-width: 500px) {
-        clear: both;
-        margin: 0;
-        width: 100%;
       }
     }
   }
