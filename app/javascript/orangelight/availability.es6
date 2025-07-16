@@ -460,7 +460,7 @@ export default class AvailabilityUpdater {
         location.startsWith('marquand$') ||
         location === 'RES_SHARE$IN_RS_REQ'
       ) {
-        availability_element.text('Request').addClass('bg-secondary');
+        availability_element.text('Request').addClass('gray');
       }
     }
 

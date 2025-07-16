@@ -15,13 +15,17 @@ module HoldingsHelper
       block << first_two_holdings_block(document, id, holding)
     end
 
-    block << controller.view_context.render(Holdings::OnlineHoldingsComponent.new(document:))
+    
 
     if block.empty?
       content_tag(:div, t('blacklight.holdings.search_missing'))
     else
       content_tag(:div, block, class: "holdings-card")
     end
+  end
+
+  def online_content_block(document)
+    controller.view_context.render(Holdings::OnlineHoldingsComponent.new(document:))
   end
 
   # rubocop:disable Metrics/MethodLength
