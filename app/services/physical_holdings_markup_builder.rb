@@ -3,30 +3,6 @@
 class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   include ApplicationHelper
 
-  # Generate <span> markup used in links for browsing by call numbers
-  # @return [String] the markup
-  def call_number_span
-    %(<span class="link-text">#{I18n.t('blacklight.holdings.browse')}</span>\
-      <span class="icon-bookslibrary"></span>)
-  end
-
-  ##
-  # Add call number link
-  # @param [Hash] holding
-  # @param [String] cn_value - a call number
-  def call_number_link(holding, cn_value)
-    cn = ''
-    unless cn_value.nil?
-      children = call_number_span
-      cn_browse_link = link_to(children.html_safe,
-                               "/browse/call_numbers?q=#{CGI.escape(cn_value)}",
-                               class: 'browse-cn',
-                               'data-original-title' => "Browse: #{cn_value}")
-      cn = "#{holding['call_number']} #{cn_browse_link}"
-    end
-    content_tag(:td, cn.html_safe, class: 'holding-call-number')
-  end
-
   def holding_location_repository
     children = content_tag(:span,
                            'On-site access',
@@ -377,7 +353,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
           cn_value
         )
       end
-      markup << call_number_link(holding, cn_value)
+      markup << ApplicationController.new.view_context.render(Holdings::CallNumberLinkComponent.new(holding, cn_value))
       markup << if @adapter.repository_holding?(holding)
                   holding_location_repository
                 elsif @adapter.scsb_holding?(holding) && !@adapter.empty_holding?(holding)
