@@ -68,45 +68,6 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
     end
   end
 
-  describe '.shelving_title' do
-    let(:shelving_title_markup) { described_class.shelving_titles_list(holding.first[1]) }
-
-    it 'generates the markup for a supplement note' do
-      expect(shelving_title_markup).to include "<li>#{shelving_title[0]}</li>"
-      expect(shelving_title_markup).to include '<ul class="shelving-title">'
-    end
-  end
-
-  describe '.supplements_list' do
-    let(:supplements_list_markup) { described_class.supplements_list(holding.first[1]) }
-
-    it 'generates the markup for a supplement note' do
-      expect(supplements_list_markup).to include "<li>#{supplements[0]}</li>"
-      expect(supplements_list_markup).to include '<ul class="holding-supplements">'
-    end
-  end
-
-  describe '.indexes_list' do
-    let(:indexes_list_markup) { described_class.indexes_list(holding.first[1]) }
-
-    it 'generates the markup for a index note' do
-      expect(indexes_list_markup).to include "<li>#{indexes[0]}</li>"
-      expect(indexes_list_markup).to include "<li>#{indexes[1]}</li>"
-      expect(indexes_list_markup).to include '<ul class="holding-indexes">'
-    end
-  end
-
-  describe '.multi_item_availability' do
-    let(:bib_id) { '9092827' }
-    let(:multi_item_availability_markup) { described_class.multi_item_availability(bib_id, holding_id) }
-
-    it 'generates the markup to support loading multi-item availability' do
-      expect(multi_item_availability_markup).to include "data-record-id=\"#{bib_id}\""
-      expect(multi_item_availability_markup).to include "data-holding-id=\"#{holding_id}\""
-      expect(multi_item_availability_markup).to include '<ul class="item-status"'
-    end
-  end
-
   describe '.holding_location' do
     let(:holding_location_markup) { builder.holding_location(holding.first[1], location, holding_id, call_number) }
 

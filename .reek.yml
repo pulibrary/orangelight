@@ -222,7 +222,6 @@ detectors:
     - OnlineHoldingsMarkupBuilder#self.electronic_access_link
     - OnlineHoldingsMarkupBuilder#self.electronic_portfolio_markup
     - OnlineHoldingsMarkupBuilder#self.urlify
-    - PhysicalHoldingsMarkupBuilder#build_holding_notes
     - PhysicalHoldingsMarkupBuilder#request_link_component
     - Requests::BibdataService#self.delivery_locations
     - StackmapService::Url#url
@@ -760,7 +759,6 @@ detectors:
     - OnlineHoldingsMarkupBuilder#self.electronic_access_link
     - OnlineHoldingsMarkupBuilder#self.electronic_portfolio_markup
     - OnlineHoldingsMarkupBuilder#self.urlify
-    - PhysicalHoldingsMarkupBuilder#build_holding_notes
     - PhysicalHoldingsMarkupBuilder#process_physical_holding
     - PhysicalHoldingsMarkupBuilder#request_link_component
     - PhysicalHoldingsMarkupBuilder#self.restrictions_markup
@@ -810,7 +808,6 @@ detectors:
     - HoldingRequestsAdapter#doc_holdings_elf
     - HoldingRequestsAdapter#doc_holdings_physical
     - HoldingRequestsAdapter#sorted_physical_holdings
-    - PhysicalHoldingsMarkupBuilder#self.listify_array
   UnusedParameters:
     exclude:
     - Requests::RequestMailer#annex_edd_email

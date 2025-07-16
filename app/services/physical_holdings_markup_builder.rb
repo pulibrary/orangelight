@@ -18,50 +18,6 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     content_tag(:td, children.html_safe, class: 'holding-status')
   end
 
-  def self.holding_label(label)
-    content_tag(:li, label, class: 'holding-label')
-  end
-
-  def self.shelving_titles_list(holding)
-    children = "#{holding_label('Shelving title')} #{listify_array(holding['shelving_title'])}"
-    content_tag(:ul, children.html_safe, class: 'shelving-title')
-  end
-
-  def self.location_notes_list(holding)
-    children = "#{holding_label('Location note')} #{listify_array(holding['location_note'])}"
-    content_tag(:ul, children.html_safe, class: 'location-note')
-  end
-
-  def self.location_has_list(holding)
-    children = "#{holding_label('Location has')} #{listify_array(holding['location_has'])}"
-    content_tag(:ul, children.html_safe, class: 'location-has')
-  end
-
-  def self.multi_item_availability(doc_id, holding_id)
-    content_tag(:ul, '',
-                class: 'item-status',
-                data: {
-                  'record_id' => doc_id,
-                  'holding_id' => holding_id
-                })
-  end
-
-  def self.supplements_list(holding)
-    children = "#{holding_label('Supplements')} #{listify_array(holding['supplements'])}"
-    content_tag(:ul, children.html_safe, class: 'holding-supplements')
-  end
-
-  def self.indexes_list(holding)
-    children = "#{holding_label('Indexes')} #{listify_array(holding['indexes'])}"
-    content_tag(:ul, children.html_safe, class: 'holding-indexes')
-  end
-
-  def self.journal_issues_list(holding_id)
-    content_tag(:ul, '',
-                class: 'journal-current-issues',
-                data: { journal: true, holding_id: })
-  end
-
   def self.scsb_use_label(restriction)
     "#{restriction} Only"
   end
@@ -146,14 +102,6 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                   aeon: aeon_location?(location_rules),
                   holding_id:
                 })
-  end
-
-  ##
-  def self.listify_array(arr)
-    arr = arr.map do |e|
-      content_tag(:li, e)
-    end
-    arr.join
   end
 
   def doc_id(holding)
@@ -318,24 +266,10 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
       request_placeholder_markup = request_placeholder(@adapter, holding_id, location_rules, holding)
       markup << request_placeholder_markup.html_safe
 
-      markup << build_holding_notes(holding, holding_id)
+      markup << render_component(Holdings::HoldingNotesComponent.new(holding, holding_id, @adapter))
 
       markup = self.class.holding_block(markup) unless markup.empty?
       markup
-    end
-
-    def build_holding_notes(holding, holding_id)
-      holding_notes = ''
-
-      holding_notes << self.class.shelving_titles_list(holding) if @adapter.shelving_title?(holding)
-      holding_notes << self.class.location_notes_list(holding) if @adapter.location_note?(holding)
-      holding_notes << self.class.location_has_list(holding) if @adapter.location_has?(holding)
-      holding_notes << self.class.multi_item_availability(doc_id(holding), holding_id)
-      holding_notes << self.class.supplements_list(holding) if @adapter.supplements?(holding)
-      holding_notes << self.class.indexes_list(holding) if @adapter.indexes?(holding)
-      holding_notes << self.class.journal_issues_list(holding_id) if @adapter.journal?
-
-      self.class.holding_details(holding_notes) unless holding_notes.empty?
     end
 
     # Generate the markup for physical holdings
