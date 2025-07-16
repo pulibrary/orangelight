@@ -233,6 +233,7 @@ detectors:
     - Orangelight::SearchBarComponent#search_fields
     - ApplicationController#after_sign_out_path_for
     - Requests::FormController#sanitize_submission
+    - ApplicationHelper#holding_library_label
     - ApplicationHelper#series_results
     - ApplicationHelper#title_hierarchy
     - BlacklightHelper#isbn_resolve
@@ -545,7 +546,9 @@ detectors:
     - Orangelight::BrowsablesController#rpp
     - Requests::FormController#mode
     - ApplicationHelper#aeon_location?
+    - ApplicationHelper#alma_library_display
     - ApplicationHelper#alma_location_display
+    - ApplicationHelper#holding_library_label
     - ApplicationHelper#holding_location_label
     - ApplicationHelper#render_location_code
     - BlacklightHelper#html_facets
@@ -664,7 +667,6 @@ detectors:
     - ApplicationHelper#location_has
     - ApplicationHelper#name_title_hierarchy
     - ApplicationHelper#render_location_code
-    - ApplicationHelper#search_location_display
     - ApplicationHelper#title_hierarchy
     - BlacklightHelper#cjk_mm
     - BlacklightHelper#isbn_resolve
@@ -826,6 +828,7 @@ detectors:
     - FeedbackForm#error_message
     - ReportBiasedResultsForm#routed_mail_to
     - ApplicationHelper#aeon_location?
+    - ApplicationHelper#alma_library_display
     - ApplicationHelper#alma_location_display
     - ApplicationHelper#bibdata_location_code_to_sym
     - ApplicationHelper#current_year
