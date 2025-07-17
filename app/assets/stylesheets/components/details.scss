@@ -1,0 +1,39 @@
+/* styles for the native HTML <details> and <summary> elements */
+
+details {
+    border: 1px solid var(--color-grayscale-light);
+    border-radius: 12px;
+    margin: var(--space-x-small) 0;
+}
+summary {
+    border-radius: 12px;
+    background-color: var(--color-gray-10);
+    color: var(--color-gray-90);
+    font-family: var(--font-family-text);
+    font-weight: var(--font-weight-semi-bold);
+    display: flex;
+    justify-content: space-between;
+}
+
+summary .lux-icon path {
+    stroke: var(--color-gray-90);
+    stroke-width: 2;
+}
+
+details[open] summary {
+    border-bottom: 1px solid var(--color-grayscale-light);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+details[open] summary .when-closed {
+    display: none;
+}
+
+details:not([open]) summary .when-open {
+    display: none;
+}
+
+details>* {
+    padding: var(--space-small);
+}

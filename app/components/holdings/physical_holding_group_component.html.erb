@@ -1,0 +1,28 @@
+<details <% if open_by_default? %>open<% end %>>
+  <summary><%= group.group_name %>
+  <div class="lux">
+    <span class="when-closed">
+      <lux-icon-base width="20" height="20" icon-hide="true"><lux-icon-arrow-right></lux-icon-arrow-right></lux-icon-base>
+    </span>
+    <span class="when-open">
+      <lux-icon-base width="20" height="20" icon-hide="true"><lux-icon-arrow-down></lux-icon-arrow-down></lux-icon-base>
+    </span>
+  </div>
+  </summary>
+  <div class="detailed-content">
+    <table class="availability-table" aria-label="Library locations availability">
+      <thead>
+        <tr>
+          <th>Location</th>
+          <th>Call Number</th>
+          <th>Status</th>
+          <th class="location-services"><span class="visually-hidden">Location Service</span></th>
+          <th><span class="visually-hidden">Notes</span></th>
+        </tr>
+      </thead>
+      <% group.holdings.each do |holding| %>
+        <%= render Holdings::PhysicalHoldingComponent.new(adapter, holding.mfhd_id, holding.holding_data) %>
+      <% end %>
+    </table>
+  </div>
+</details>

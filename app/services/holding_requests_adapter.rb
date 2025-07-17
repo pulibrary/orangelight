@@ -61,12 +61,13 @@ class HoldingRequestsAdapter
   end
   alias physical_holdings doc_holdings_physical
 
-  # Retrieve the physical holdings records sorted by location code
-  # @return [Hash] sorted physical holding information
-  def sorted_physical_holdings
-    doc_holdings_physical.sort_by do |_id, h|
-      @bib_data_service.holding_locations.keys.index(h['location_code']) || end_of_list
-    end
+  # Retrieve the physical holdings records grouped by Library and Location
+  # Returns an array of Requests::HoldingGroup objects
+  def grouped_physical_holdings
+    doc_holdings_physical
+      .map { |id, data| Requests::Holding.new(mfhd_id: id, holding_data: data) }
+      .group_by(&:full_location_name)
+      .map { |group_name, holdings| Requests::HoldingGroup.new(group_name:, holdings:) }
   end
 
   # Retrieve the restrictions placed upon physical holdings

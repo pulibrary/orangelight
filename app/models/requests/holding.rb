@@ -15,5 +15,19 @@ module Requests
     def to_h
       Hash[mfhd_id, holding_data].with_indifferent_access
     end
+
+    def full_location_name
+      "#{library_name} - #{location_name}"
+    end
+
+    private
+
+      def library_name
+        holding_data['current_library'] || holding_data['library']
+      end
+
+      def location_name
+        holding_data['current_location'] || holding_data['location']
+      end
   end
 end
