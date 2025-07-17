@@ -3,25 +3,6 @@
 class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   include ApplicationHelper
 
-  def holding_location_repository
-    children = content_tag(:span,
-                           'On-site access',
-                           class: 'availability-icon badge bg-success')
-    content_tag(:td, children.html_safe)
-  end
-
-  # Holding record with "dspace": false
-  def holding_location_unavailable
-    children = content_tag(:span,
-                           'Unavailable',
-                           class: 'availability-icon badge bg-danger')
-    content_tag(:td, children.html_safe, class: 'holding-status')
-  end
-
-  def doc_id(holding)
-    holding.dig("mms_id") || adapter.doc_id
-  end
-
   attr_reader :adapter
   delegate :content_tag, :link_to, to: :class
 
@@ -44,7 +25,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     def physical_holdings
       markup = ''
       @adapter.sorted_physical_holdings.each do |holding_id, holding|
-        markup << process_physical_holding(holding, holding_id)
+        markup << render_component(Holdings::PhysicalHoldingComponent.new(adapter, holding_id, holding))
       end
       markup
     end

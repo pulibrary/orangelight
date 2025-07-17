@@ -744,7 +744,6 @@ detectors:
     - OnlineHoldingsMarkupBuilder#self.electronic_access_link
     - OnlineHoldingsMarkupBuilder#self.electronic_portfolio_markup
     - OnlineHoldingsMarkupBuilder#self.urlify
-    - PhysicalHoldingsMarkupBuilder#process_physical_holding
     - Requests::BibdataService#self.delivery_locations
   UncommunicativeMethodName:
     exclude:
