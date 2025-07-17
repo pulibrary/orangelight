@@ -1,4 +1,7 @@
 # frozen_string_literal: true
+
+# This component is responsible for showing the details of a physical
+# holding (such as on the show page)
 class Holdings::PhysicalHoldingComponent < ViewComponent::Base
   def initialize(adapter, holding_id, holding)
     @adapter = adapter
@@ -21,22 +24,6 @@ class Holdings::PhysicalHoldingComponent < ViewComponent::Base
     def holding_loc
       adapter.holding_location_label(holding)
     end
-
-    # rubocop:disable Rails/OutputSafety
-    def holding_location_unavailable
-      children = content_tag(:span,
-                             'Unavailable',
-                             class: 'availability-icon badge bg-danger')
-      content_tag(:td, children.html_safe, class: 'holding-status')
-    end
-
-    def holding_location_repository
-      children = content_tag(:span,
-                             'On-site access',
-                             class: 'availability-icon badge bg-success')
-      content_tag(:td, children.html_safe)
-    end
-    # rubocop:enable Rails/OutputSafety
 
     def location_rules
       adapter.holding_location_rules(holding)
