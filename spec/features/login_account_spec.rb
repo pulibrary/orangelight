@@ -163,6 +163,10 @@ describe 'Account login' do
 
           it 'does not require authentication', js: true do
             visit "/catalog/#{bib_id}"
+
+            # open the desired holding group
+            find('summary', text: 'Special Collections - Remote Storage (ReCAP): Historic Maps. Special Collections Use Only').click
+
             expect(page).to have_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*CallNumber\=RECAP-94760855'))
             click_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*CallNumber\=RECAP-94760855'))
             expect(page.current_url).to include(Requests.config[:aeon_base])
