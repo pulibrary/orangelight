@@ -788,7 +788,6 @@ detectors:
     - Bibdata#sorted_locations
     - HoldingRequestsAdapter#doc_holdings_elf
     - HoldingRequestsAdapter#doc_holdings_physical
-    - HoldingRequestsAdapter#sorted_physical_holdings
   UnusedParameters:
     exclude:
     - Requests::RequestMailer#annex_edd_email
