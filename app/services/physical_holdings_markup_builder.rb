@@ -18,25 +18,6 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     content_tag(:td, children.html_safe, class: 'holding-status')
   end
 
-  def self.scsb_use_label(restriction)
-    "#{restriction} Only"
-  end
-
-  # Generate the markup for record restrictions
-  # @param holding [Hash] the restrictions for all holdings
-  # @return [String] the markup
-  def self.restrictions_markup(restrictions)
-    restricted_items = restrictions.map do |value|
-      content_tag(:td, scsb_use_label(value))
-    end
-    if restricted_items.length > 1
-      list = restricted_items.map { |value| content_tag(:li, value) }
-      content_tag(:ul, list.join.html_safe, class: 'restrictions-list item-list')
-    else
-      restricted_items.join.html_safe
-    end
-  end
-
   def self.open_location?(location)
     location.nil? ? false : location[:open]
   end
