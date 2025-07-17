@@ -9,3 +9,4 @@ exceptions:
     - 'RedisClient::CannotConnectError'
     - 'RedisClient::ReadTimeoutError'
     - 'RSolr::Error::ConnectionRefused'
+    - 'SignalException'
