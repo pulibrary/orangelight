@@ -496,9 +496,6 @@ detectors:
     - Requests::Illiad#illiad_query_parameters
     - Requests::IlliadMetadata::Metadata#initialize
     - Requests::SelectedItemsValidator#validate_ill_on_shelf
-    - PhysicalHoldingsMarkupBuilder#holding_location
-    - PhysicalHoldingsMarkupBuilder#holding_location_container
-    - PhysicalHoldingsMarkupBuilder#locate_link
     - PhysicalHoldingsMarkupBuilder#request_link_component
     - PhysicalHoldingsMarkupBuilder#request_placeholder
     - PhysicalHoldingsMarkupBuilder#self.location_services_block
@@ -639,7 +636,6 @@ detectors:
     - SearchBuilder
     - SolrDocument
     - HoldingRequestsAdapter
-    - PhysicalHoldingsMarkupBuilder
   TooManyStatements:
     exclude:
     - initialize
