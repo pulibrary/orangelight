@@ -1,6 +1,13 @@
 import { createApp } from 'vue';
 import 'lux-design-system/dist/style.css';
-import { LuxAlert, LuxBadge, LuxLibraryFooter } from 'lux-design-system';
+import {
+  LuxAlert,
+  LuxBadge,
+  LuxLibraryFooter,
+  LuxIconArrowDown,
+  LuxIconArrowRight,
+  LuxIconBase,
+} from 'lux-design-system';
 import OrangelightHeader from '../orangelight/vue_components/orangelight_header.vue';
 import OnlineOptions from './vue_components/online_options.vue';
 import BookmarkLoginDialog from './vue_components/bookmark_login_dialog.vue';
@@ -18,6 +25,9 @@ export function luxImport() {
       createMyApp()
         .component('lux-alert', LuxAlert)
         .component('lux-badge', LuxBadge)
+        .component('lux-icon-arrow-down', LuxIconArrowDown)
+        .component('lux-icon-arrow-right', LuxIconArrowRight)
+        .component('lux-icon-base', LuxIconBase)
         .component('lux-library-footer', LuxLibraryFooter)
         .component('online-options', OnlineOptions)
         .component('orangelight-header', OrangelightHeader)

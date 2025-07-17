@@ -24,8 +24,8 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     # @return [String] the markup
     def physical_holdings
       markup = ''
-      @adapter.sorted_physical_holdings.each do |holding_id, holding|
-        markup << render_component(Holdings::PhysicalHoldingComponent.new(adapter, holding_id, holding))
+      @adapter.grouped_physical_holdings.each_with_index do |group, index|
+        markup << render_component(Holdings::PhysicalHoldingGroupComponent.new(adapter:, group:, index:))
       end
       markup
     end
