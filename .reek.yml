@@ -54,13 +54,11 @@ detectors:
     - Requests::Illiad#genere
     - Requests::Illiad#identifiers_for_type
     - Requests::Patron#initialize
-    - PhysicalHoldingsMarkupBuilder#self.thesis?
   DataClump:
     exclude:
     - HoldingsHelper
     - Requests::ApplicationHelper
     - Requests::SelectedItemsValidator
-    - PhysicalHoldingsMarkupBuilder
   DuplicateMethodCall:
     exclude:
     - Holdings::OnlineHoldingsComponent#marc_links
@@ -222,7 +220,6 @@ detectors:
     - OnlineHoldingsMarkupBuilder#self.electronic_access_link
     - OnlineHoldingsMarkupBuilder#self.electronic_portfolio_markup
     - OnlineHoldingsMarkupBuilder#self.urlify
-    - PhysicalHoldingsMarkupBuilder#request_link_component
     - Requests::BibdataService#self.delivery_locations
     - StackmapService::Url#url
   FeatureEnvy:
@@ -496,9 +493,6 @@ detectors:
     - Requests::Illiad#illiad_query_parameters
     - Requests::IlliadMetadata::Metadata#initialize
     - Requests::SelectedItemsValidator#validate_ill_on_shelf
-    - PhysicalHoldingsMarkupBuilder#request_link_component
-    - PhysicalHoldingsMarkupBuilder#request_placeholder
-    - PhysicalHoldingsMarkupBuilder#self.location_services_block
   ManualDispatch:
     exclude:
     - Orangelight::ConstraintComponent#constraint_value
@@ -584,10 +578,6 @@ detectors:
     - HoldingRequestsAdapter#location_note?
     - HoldingRequestsAdapter#shelving_title?
     - LinkedDocumentResolver::LinkedDocuments#response
-    - PhysicalHoldingsMarkupBuilder#self.aeon_location?
-    - PhysicalHoldingsMarkupBuilder#self.open_location?
-    - PhysicalHoldingsMarkupBuilder#self.requestable_location?
-    - PhysicalHoldingsMarkupBuilder#self.scsb_location?
     - Requests::BibdataService#self.delivery_locations
     - StackmapLocationFactory#call_number?
     - StackmapService::Url#location_label
@@ -597,7 +587,6 @@ detectors:
     - ContactController
     - Requests::FormDecorator
     - Requests::RequestableDecorator
-    - PhysicalHoldingsMarkupBuilder
   TooManyInstanceVariables:
     exclude:
     - MultiselectComboboxComponent
@@ -756,8 +745,6 @@ detectors:
     - OnlineHoldingsMarkupBuilder#self.electronic_portfolio_markup
     - OnlineHoldingsMarkupBuilder#self.urlify
     - PhysicalHoldingsMarkupBuilder#process_physical_holding
-    - PhysicalHoldingsMarkupBuilder#request_link_component
-    - PhysicalHoldingsMarkupBuilder#self.restrictions_markup
     - Requests::BibdataService#self.delivery_locations
   UncommunicativeMethodName:
     exclude:
