@@ -1,13 +1,17 @@
 <details <% if open_by_default? %>open<% end %>>
-  <summary><%= group.group_name %>
-  <div class="lux">
-    <span class="when-closed">
-      <lux-icon-base width="20" height="20" icon-hide="true"><lux-icon-arrow-right></lux-icon-arrow-right></lux-icon-base>
-    </span>
-    <span class="when-open">
-      <lux-icon-base width="20" height="20" icon-hide="true"><lux-icon-arrow-down></lux-icon-arrow-down></lux-icon-base>
-    </span>
-  </div>
+  <summary class="lux">
+    <div class="side-by-side">
+      <span class="text"><%= group.group_name %></span>
+      <span class="when-closed"><holding-group-availability /></span>
+    </div>
+    <div>
+      <span class="when-closed">
+        <lux-icon-base width="20" height="20" icon-hide="true"><lux-icon-arrow-right></lux-icon-arrow-right></lux-icon-base>
+      </span>
+      <span class="when-open">
+        <lux-icon-base width="20" height="20" icon-hide="true"><lux-icon-arrow-down></lux-icon-arrow-down></lux-icon-base>
+      </span>
+    </div>
   </summary>
   <div class="detailed-content">
     <table class="availability-table">

@@ -16,6 +16,7 @@ import BookmarkLoginDialog from './vue_components/bookmark_login_dialog.vue';
 import MultiselectCombobox from './vue_components/multiselect_combobox.vue';
 import BookmarkAllButton from './vue_components/bookmark_all_button.vue';
 import BookmarkButton from './vue_components/bookmark_button.vue';
+import HoldingGroupAvailability from './vue_components/holding_group_availability.vue';
 
 export function luxImport() {
   const app = createApp({});
@@ -38,6 +39,7 @@ export function luxImport() {
         .component('bookmark-login-dialog', BookmarkLoginDialog)
         .component('bookmark-all-button', BookmarkAllButton)
         .component('bookmark-button', BookmarkButton)
+        .component('holding-group-availability', HoldingGroupAvailability)
         .mount(elements[i]);
     }
     const vueapp = createApp({});
