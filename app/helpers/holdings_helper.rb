@@ -10,7 +10,7 @@ module HoldingsHelper
   def holding_block_search(document)
     block = ''.html_safe
     block_extra = ''.html_safe
-    holdings_hash = document.holdings_all_display
+    holdings_hash = document.holdings_all_display.sort { |a, b| sort_holdings(a, b) }
     @scsb_multiple = false
     if holdings_hash.count <= 4
       holdings_hash.each do |id, holding|
@@ -26,7 +26,7 @@ module HoldingsHelper
         block << holdings_block(document, id, holding)
       end
       block_extra << content_tag(:a, href: "/catalog/#{document['id']}") do
-        content_tag(:"lux-card") do
+        content_tag(:"lux-card", class: 'show-more-holdings') do
           content_tag(:span, "See #{holdings_remaining} locations", class: 'lux-text-style blue')
         end
       end
@@ -182,5 +182,36 @@ module HoldingsHelper
       )
     end
   end
+
+  private
+
+    # rubocop:disable Naming/MethodParameterName
+    # rubocop:disable Lint/DuplicateBranch
+    # :reek:DuplicateMethodCall
+    # :reek:TooManyStatements
+    # :reek:UncommunicativeParameterName
+    # :reek:UtilityFunction
+    def sort_holdings(a, b)
+      # First, check if one of the items is Firestone.  If so, it should come first
+      if a.second['location_code'].starts_with?('firestone') && !b.second['location_code'].starts_with?('firestone')
+        -1
+      elsif b.second['location_code'].starts_with?('firestone') && !a.second['location_code'].starts_with?('firestone')
+        1
+      # Next, check if one of the items is Recap.  If so, it should come last
+      elsif a.second['location_code'].starts_with?('recap') && !b.second['location_code'].starts_with?('recap')
+        1
+      elsif b.second['location_code'].starts_with?('recap') && !a.second['location_code'].starts_with?('recap')
+        -1
+      # Next, check if one of the items is Annex.  If so, it should come last (but still before recap, which was handled previously)
+      elsif a.second['location_code'].starts_with?('annex') && !b.second['location_code'].starts_with?('annex')
+        1
+      elsif b.second['location_code'].starts_with?('annex') && !a.second['location_code'].starts_with?('annex')
+        -1
+      else
+        a.second['location_code'] <=> b.second['location_code']
+      end
+    end
+  # rubocop:enable Naming/MethodParameterName
+  # rubocop:enable Lint/DuplicateBranch
 end
 # rubocop:enable Metrics/ModuleLength

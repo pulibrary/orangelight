@@ -29,10 +29,10 @@ article .lux-card {
 
 .holdings-card article.lux-card {
   height: 100%;
+}
 
-  span {
-    text-align: center;
-  }
+.holdings-card article.lux-card.show-more-holdings span {
+  text-align: center;
 }
 
 
