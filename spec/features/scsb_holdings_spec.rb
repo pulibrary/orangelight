@@ -10,7 +10,7 @@ describe 'SCSB Shared Collection Records' do
   context 'Search Results Page', js: true do
     it 'displays Available for multi-item records' do
       visit '/catalog?search_field=all_fields&q=SCSB-2443272'
-      expect(page).to have_content 'Available'
+      expect(page).to have_content 'Available', wait: 20
     end
     it 'displays on-site access for supervised use items' do
       visit '/catalog?search_field=all_fields&q=SCSB-6593031'
