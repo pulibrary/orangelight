@@ -19,8 +19,10 @@ export default class AvailabilityUpdater {
 
   request_availability(allowRetry) {
     let url;
+    let searchResults;
     // a search results page or a call number browse page
     if ($('.documents-list').length > 0) {
+      searchResults = true;
       const bib_ids = this.record_ids();
       if (bib_ids.length < 1) {
         return;
@@ -47,6 +49,7 @@ export default class AvailabilityUpdater {
       }
 
       // a show page
+      searchResults = false;
     } else if ($("*[data-availability-record='true']").length > 0) {
       this.id = window.location.pathname.split('/').pop();
       this.host_id = $('#main-content').data('host-id') || '';
@@ -68,14 +71,14 @@ export default class AvailabilityUpdater {
             if (allowRetry) {
               console.log(`Retrying availability for record ${this.id}`);
               window.setTimeout(() => {
-                this.update_availability_retrying();
+                this.update_availability_retrying(searchResults);
                 this.request_availability(false);
               }, 1500);
             } else {
               console.error(
                 `Failed to retrieve availability data for the bib (retry). Record ${this.id}: ${errorThrown}`
               );
-              this.update_availability_undetermined();
+              this.update_availability_undetermined(searchResults);
             }
             return;
           }
@@ -218,11 +221,11 @@ export default class AvailabilityUpdater {
         // If we are not getting holding info select the availability element by record id only.
         if (holding_id == 'RES_SHARE$IN_RS_REQ') {
           availability_element = $(
-            `*[data-availability-record='true'][data-record-id='${id}'][data-temp-location-code='RES_SHARE$IN_RS_REQ'] .lux-text-style`
+            `*[data-availability-record='true'][data-record-id='${id}'][data-temp-location-code='RES_SHARE$IN_RS_REQ'] .availability-icon`
           );
         } else {
           availability_element = $(
-            `*[data-availability-record='true'][data-record-id='${id}'][data-holding-id='${holding_id}'] .lux-text-style`
+            `*[data-availability-record='true'][data-record-id='${id}'][data-holding-id='${holding_id}'] .availability-icon`
           );
         }
         if (label) {
@@ -243,21 +246,39 @@ export default class AvailabilityUpdater {
   }
 
   // Sets the availability display to indicate that we are retrying to fetch the information
-  update_availability_retrying() {
-    const availability_display = $(
-      `*[data-availability-record='true'] span.lux-text-style`
-    );
-    $(availability_display).text('Loading...');
-    $(availability_display).addClass('gray');
+  update_availability_retrying(searchResults) {
+    if (searchResults) {
+      const availability_display = $(
+        `*[data-availability-record='true'] span.lux-text-style`
+      );
+      $(availability_display).text('Loading...');
+      $(availability_display).addClass('gray');
+    } else {
+      // For the show page we use a different selector.
+      // We assume that the availability display is always a span with class lux-text-style.
+      const avBadges = $(
+        `*[data-availability-record='true'] span.availability-icon`
+      );
+      $(avBadges).text('Loading...');
+      $(avBadges).addClass('badge bg-secondary');
+    }
   }
 
   // Sets the availability display to indicate that we could not determine the availability
-  update_availability_undetermined() {
-    const availability_display = $(
-      `*[data-availability-record='true'] span.lux-text-style`
-    );
-    $(availability_display).text('Undetermined');
-    $(availability_display).addClass('gray');
+  update_availability_undetermined(searchResults) {
+    if (searchResults) {
+      const availability_display = $(
+        `*[data-availability-record='true'] span.lux-text-style`
+      );
+      $(availability_display).text('Undetermined');
+      $(availability_display).addClass('gray');
+    } else {
+      const avBadges = $(
+        `*[data-availability-record='true'] span.availability-icon`
+      );
+      $(avBadges).text('Undetermined');
+      $(avBadges).addClass('badge bg-secondary');
+    }
   }
 
   process_scsb_single(item_records) {
@@ -267,7 +288,7 @@ export default class AvailabilityUpdater {
       for (barcode in item_records) {
         availability_info = item_records[barcode];
         if (availability_info['itemAvailabilityStatus'] !== 'Available') {
-          status_message = 'Request';
+          status_message = 'Unavailable';
         }
       }
     }
@@ -276,35 +297,35 @@ export default class AvailabilityUpdater {
       for (barcode in item_records) {
         availability_info = item_records[barcode];
         const availability_element = $(
-          `*[data-availability-record='true'][data-record-id='${this.id}'][data-scsb-barcode='${barcode}'] .lux-text-style`
+          `*[data-availability-record='true'][data-record-id='${this.id}'][data-scsb-barcode='${barcode}'] .availability-icon`
         );
         const aeon = $(
           `*[data-availability-record='true'][data-record-id='${this.id}'][data-scsb-barcode='${barcode}']`
         ).attr('data-aeon');
         if (aeon === 'true') {
-          availability_element.text('On-Site Access').addClass('green');
+          availability_element.text('On-Site Access').addClass('badge');
           result.push(availability_element);
         } else if (multi_items) {
           if (status_message) {
-            availability_element.addClass('gray');
+            availability_element.addClass('bg-secondary');
             availability_element.text(status_message);
             result.push(availability_element);
           } else {
-            availability_element.addClass('green');
+            availability_element.addClass('bg-success');
             availability_element.text('All Items Available');
             result.push(availability_element);
           }
         } else {
           if (availability_info['itemAvailabilityStatus'] === 'Available') {
-            availability_element.addClass('green');
+            availability_element.addClass('bg-success');
             availability_element.text(
               availability_info['itemAvailabilityStatus']
             );
             result.push(availability_element);
           } else {
-            availability_element
-              .text(availability_info['itemAvailabilityStatus'])
-              .addClass('gray');
+            availability_element.text(
+              availability_info['itemAvailabilityStatus']
+            );
             result.push(availability_element);
           }
         }
@@ -378,7 +399,11 @@ export default class AvailabilityUpdater {
     availability_info,
     searchResults
   ) {
-    availability_element.addClass('lux-text-style');
+    if (searchResults == true) {
+      availability_element.addClass('lux-text-style');
+    } else {
+      availability_element.addClass('badge');
+    }
     const { status_label, location, id } = availability_info;
     const specialStatusLocations = [
       'marquand$stacks',
@@ -450,9 +475,9 @@ export default class AvailabilityUpdater {
     // record page -> searchResults == false
     if (searchResults == false) {
       if (location.startsWith('marquand$')) {
-        availability_element.text('Ask Staff').addClass('gray');
+        availability_element.text('Ask Staff').addClass('bg-secondary');
       } else {
-        availability_element.text('Unavailable').addClass('red');
+        availability_element.text('Unavailable').addClass('bg-danger');
       }
       // search results page -> searchResults is true.
     } else {
