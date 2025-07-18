@@ -13,6 +13,7 @@ summary {
     font-weight: var(--font-weight-semi-bold);
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 summary .lux-icon path {
@@ -36,4 +37,13 @@ details:not([open]) summary .when-open {
 
 details>* {
     padding: var(--space-small);
+}
+
+summary .side-by-side {
+    display: flex;
+    gap: 4px;
+}
+
+.side-by-side span.text {
+    line-height: 2.1rem;
 }

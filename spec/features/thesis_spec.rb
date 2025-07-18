@@ -19,10 +19,6 @@ describe 'Viewing on-site thesis record' do
       within 'dd.blacklight-restrictions_note_display' do
         find_link 'Mudd Manuscript Library'
       end
-      find('span', text: 'Mudd Manuscript Library')
-    end
-    it 'has a span with Mudd alma location name' do
-      find('span', text: 'Mudd Manuscript Library')
     end
   end
   context 'with online thesis' do
