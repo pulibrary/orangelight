@@ -177,9 +177,6 @@ RSpec.describe 'catalog/show' do
   context 'when indexes is included in the holdings JSON' do
     it 'displays indexes statement' do
       visit 'catalog/995597013506421'
-
-      # Expand the holding location that has indexes
-      page.find('summary', text: 'Forrestal Annex - Stacks').click
       expect(page).to have_selector('.holding-indexes')
     end
   end
