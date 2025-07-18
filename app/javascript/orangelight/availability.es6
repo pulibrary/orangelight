@@ -1,12 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS101: Remove unnecessary use of Array.from
- * DS102: Remove unnecessary code created because of implicit returns
- * DS205: Consider reworking code to avoid use of IIFEs
- * DS206: Consider reworking classes to avoid initClass
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
- */
 import { insert_online_link } from './insert_online_link.es6';
 
 export default class AvailabilityUpdater {
@@ -28,8 +19,10 @@ export default class AvailabilityUpdater {
 
   request_availability(allowRetry) {
     let url;
+    let searchResults;
     // a search results page or a call number browse page
     if ($('.documents-list').length > 0) {
+      searchResults = true;
       const bib_ids = this.record_ids();
       if (bib_ids.length < 1) {
         return;
@@ -56,6 +49,7 @@ export default class AvailabilityUpdater {
       }
 
       // a show page
+      searchResults = false;
     } else if ($("*[data-availability-record='true']").length > 0) {
       this.id = window.location.pathname.split('/').pop();
       this.host_id = $('#main-content').data('host-id') || '';
@@ -77,14 +71,14 @@ export default class AvailabilityUpdater {
             if (allowRetry) {
               console.log(`Retrying availability for record ${this.id}`);
               window.setTimeout(() => {
-                this.update_availability_retrying();
+                this.update_availability_retrying(searchResults);
                 this.request_availability(false);
               }, 1500);
             } else {
               console.error(
                 `Failed to retrieve availability data for the bib (retry). Record ${this.id}: ${errorThrown}`
               );
-              this.update_availability_undetermined();
+              this.update_availability_undetermined(searchResults);
             }
             return;
           }
@@ -150,19 +144,19 @@ export default class AvailabilityUpdater {
     for (const holding_id in holding_records) {
       if (holding_id === 'RES_SHARE$IN_RS_REQ') {
         // This holding location should always show as Request in the search results.
-        const badges = $(
-          `*[data-availability-record='true'][data-record-id='${record_id}'][data-temp-location-code='RES_SHARE$IN_RS_REQ'] span.availability-icon`
+        const availability_display = $(
+          `*[data-availability-record='true'][data-record-id='${record_id}'][data-temp-location-code='RES_SHARE$IN_RS_REQ'] span.lux-text-style`
         );
-        badges.addClass('bg-danger');
-        badges.text('Request');
+        availability_display.addClass('gray');
+        availability_display.text('Request');
         return true;
       }
       if (holding_id.match(/[a-zA-Z]\$[a-zA-Z]/)) {
         // We assume that items in temp locations are available.
-        const badges = $(
-          `*[data-availability-record='true'][data-record-id='${record_id}'] span.availability-icon`
+        const availability_display = $(
+          `*[data-availability-record='true'][data-record-id='${record_id}'] span.lux-text-style`
         );
-        badges.text('Available');
+        availability_display.text('Available').addClass('green');
         return true;
       }
 
@@ -177,7 +171,7 @@ export default class AvailabilityUpdater {
         location.text(this.getLibraryName(label));
       }
       const availability_element = $(
-        `*[data-availability-record='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .availability-icon`
+        `*[data-availability-record='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .lux-text-style`
       );
       this.apply_availability_label(
         availability_element,
@@ -187,12 +181,12 @@ export default class AvailabilityUpdater {
     }
 
     // Bib data does not know about bound-with records and therefore we don't get availability
-    // information for holdings coming from the host record. For those holdings we display Available
-    // in the search results page.
-    const boundWithBadges = $(
-      `*[data-availability-record='true'][data-record-id='${record_id}'][data-bound-with='true'] span.availability-icon`
+    // information for holdings coming from the host record.
+    // For those holdings we display Available in the search results page.
+    const boundWithDisplays = $(
+      `*[data-availability-record='true'][data-record-id='${record_id}'][data-bound-with='true'] span.lux-text-style`
     );
-    boundWithBadges.text('Available');
+    boundWithDisplays.text('Available').addClass('green');
 
     return true;
   }
@@ -251,22 +245,40 @@ export default class AvailabilityUpdater {
     })();
   }
 
-  // Sets the availability badge to indicate that we are retrying to fetch the information
-  update_availability_retrying() {
-    const avBadges = $(
-      `*[data-availability-record='true'] span.availability-icon`
-    );
-    $(avBadges).text('Loading...');
-    $(avBadges).addClass('badge bg-secondary');
+  // Sets the availability display to indicate that we are retrying to fetch the information
+  update_availability_retrying(searchResults) {
+    if (searchResults) {
+      const availability_display = $(
+        `*[data-availability-record='true'] span.lux-text-style`
+      );
+      $(availability_display).text('Loading...');
+      $(availability_display).addClass('gray');
+    } else {
+      // For the show page we use a different selector.
+      // We assume that the availability display is always a span with class lux-text-style.
+      const avBadges = $(
+        `*[data-availability-record='true'] span.availability-icon`
+      );
+      $(avBadges).text('Loading...');
+      $(avBadges).addClass('badge bg-secondary');
+    }
   }
 
-  // Sets the availability badge to indicate that we could not determine the availability
-  update_availability_undetermined() {
-    const avBadges = $(
-      `*[data-availability-record='true'] span.availability-icon`
-    );
-    $(avBadges).text('Undetermined');
-    $(avBadges).addClass('badge bg-secondary');
+  // Sets the availability display to indicate that we could not determine the availability
+  update_availability_undetermined(searchResults) {
+    if (searchResults) {
+      const availability_display = $(
+        `*[data-availability-record='true'] span.lux-text-style`
+      );
+      $(availability_display).text('Undetermined');
+      $(availability_display).addClass('gray');
+    } else {
+      const avBadges = $(
+        `*[data-availability-record='true'] span.availability-icon`
+      );
+      $(avBadges).text('Undetermined');
+      $(avBadges).addClass('badge bg-secondary');
+    }
   }
 
   process_scsb_single(item_records) {
@@ -276,7 +288,7 @@ export default class AvailabilityUpdater {
       for (barcode in item_records) {
         availability_info = item_records[barcode];
         if (availability_info['itemAvailabilityStatus'] !== 'Available') {
-          status_message = 'Some Available';
+          status_message = 'Unavailable';
         }
       }
     }
@@ -290,10 +302,8 @@ export default class AvailabilityUpdater {
         const aeon = $(
           `*[data-availability-record='true'][data-record-id='${this.id}'][data-scsb-barcode='${barcode}']`
         ).attr('data-aeon');
-        availability_element.addClass('badge');
         if (aeon === 'true') {
-          availability_element.addClass('bg-success');
-          availability_element.text('On-Site Access');
+          availability_element.text('On-Site Access').addClass('badge');
           result.push(availability_element);
         } else if (multi_items) {
           if (status_message) {
@@ -313,7 +323,6 @@ export default class AvailabilityUpdater {
             );
             result.push(availability_element);
           } else {
-            availability_element.addClass('bg-danger');
             availability_element.text(
               availability_info['itemAvailabilityStatus']
             );
@@ -373,11 +382,12 @@ export default class AvailabilityUpdater {
       `*[data-scsb-availability='true'][data-scsb-barcode='${barcode}']`
     );
     if (item_data['itemAvailabilityStatus'] === 'Available') {
-      availability_element.addClass('bg-success');
-      availability_element.text(item_data['itemAvailabilityStatus']);
+      availability_element
+        .text(item_data['itemAvailabilityStatus'])
+        .addClass('green');
       availability_element;
     } else {
-      availability_element.addClass('bg-danger');
+      availability_element.addClass('gray');
       availability_element.text('Request');
       availability_element;
     }
@@ -389,7 +399,11 @@ export default class AvailabilityUpdater {
     availability_info,
     searchResults
   ) {
-    availability_element.addClass('badge');
+    if (searchResults) {
+      availability_element.addClass('lux-text-style');
+    } else {
+      availability_element.addClass('badge');
+    }
     const { status_label, location, id } = availability_info;
     const specialStatusLocations = [
       'marquand$stacks',
@@ -409,7 +423,9 @@ export default class AvailabilityUpdater {
         specialStatusLocations,
         searchResults
       );
-    } else if (status_label.toLowerCase() === 'available') {
+    } else if (status_label.toLowerCase() === 'available' && searchResults) {
+      availability_element.addClass('green');
+    } else if (status_label.toLowerCase() === 'available' && !searchResults) {
       availability_element.addClass('bg-success');
     } else if (status_label.toLowerCase() === 'on-site access') {
       this.handleOnSiteAccessStatus(
@@ -417,16 +433,18 @@ export default class AvailabilityUpdater {
         status_label,
         searchResults
       );
+    } else if (searchResults) {
+      availability_element.addClass('gray');
     } else {
       availability_element.addClass('bg-secondary');
     }
     return availability_element;
   }
   handleOnSiteAccessStatus(availability_element, status_label, searchResults) {
-    if (searchResults === true) {
-      availability_element.text('Available').addClass('bg-success');
+    if (searchResults) {
+      availability_element.text('Available').addClass('green');
     } else {
-      availability_element.text('On-site Access').addClass('bg-secondary');
+      availability_element.text('On-site access').addClass('bg-secondary');
     }
     return availability_element;
   }
@@ -441,10 +459,10 @@ export default class AvailabilityUpdater {
     if (specialStatusLocations.includes(location)) {
       this.checkSpecialLocation(location, availability_element, searchResults);
     } else {
-      if (searchResults == false) {
-        availability_element.text('Unavailable').addClass('bg-danger');
+      if (searchResults) {
+        availability_element.text('Request').addClass('gray');
       } else {
-        availability_element.text('Request').addClass('bg-secondary');
+        availability_element.text('Unavailable').addClass('bg-danger');
       }
     }
   }
@@ -471,7 +489,7 @@ export default class AvailabilityUpdater {
         location.startsWith('marquand$') ||
         location === 'RES_SHARE$IN_RS_REQ'
       ) {
-        availability_element.text('Request').addClass('bg-secondary');
+        availability_element.text('Request').addClass('gray');
       }
     }
 
