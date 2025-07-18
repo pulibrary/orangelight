@@ -16,7 +16,7 @@
   padding: 0.5rem 0rem 0.5rem 0rem;
 }
 
-  article .lux-card {
+article .lux-card {
   padding: 1rem;
   border-radius: 8px;
   border: 1px solid #EEE;
@@ -25,8 +25,16 @@
   justify-content: space-between;
   flex-direction: column;
   gap: 0.5rem;
-  // height: 9.375rem;
 }
+
+.holdings-card article.lux-card {
+  height: 100%;
+
+  span {
+    text-align: center;
+  }
+}
+
 
 .library-location {
   flex: 1 1 0px;
