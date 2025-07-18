@@ -68,6 +68,7 @@ class HoldingRequestsAdapter
       .map { |id, data| Requests::Holding.new(mfhd_id: id, holding_data: data) }
       .group_by(&:full_location_name)
       .map { |group_name, holdings| Requests::HoldingGroup.new(group_name:, holdings:) }
+      .sort
   end
 
   # Retrieve the restrictions placed upon physical holdings
