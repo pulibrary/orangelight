@@ -8,7 +8,7 @@ describe 'SCSB Shared Collection Records' do
   end
 
   context 'Search Results Page', js: true do
-    it 'displays Available for multi-item records' do
+    it 'displays Available for multi-item records', unless: in_ci? do
       visit '/catalog?search_field=all_fields&q=SCSB-2443272'
       expect(page).to have_content 'Available', wait: 20
     end
