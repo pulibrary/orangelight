@@ -113,4 +113,49 @@ RSpec.describe HoldingRequestsAdapter do
       end
     end
   end
+
+  describe '#grouped_physical_holdings' do
+    it 'puts Firestone locations before branch locations' do
+      allow(document).to receive(:holdings_all_display).and_return({
+                                                                     '123' => { 'library' => 'Firestone', 'location' => 'Stacks', 'location_code' => 'firestone$stacks' },
+                                                                     '456' => { 'library' => 'Special Collections', 'location' => 'Rare Books', 'location_code' => 'rare$ex' },
+                                                                     '789' => { 'library' => 'Firestone', 'location' => 'Classics Collection', 'location_code' => 'firestone$class' },
+                                                                     'abc' => { 'library' => 'Architecture Library', 'location' => 'Stacks', 'location_code' => 'arch$stacks' }
+                                                                   })
+
+      group_order = holdings.grouped_physical_holdings.map(&:group_name)
+      expect(group_order).to eq [
+        'Firestone - Classics Collection',
+        'Firestone - Stacks',
+        'Architecture Library - Stacks',
+        'Special Collections - Rare Books'
+      ]
+    end
+
+    it 'puts Annex locations after branch locations' do
+      allow(document).to receive(:holdings_all_display).and_return({
+                                                                     '123' => { 'library' => 'Annex', 'location' => 'Locked', 'location_code' => 'annex$locked' },
+                                                                     'abc' => { 'library' => 'Architecture Library', 'location' => 'Stacks', 'location_code' => 'arch$stacks' }
+                                                                   })
+
+      group_order = holdings.grouped_physical_holdings.map(&:group_name)
+      expect(group_order).to eq [
+        'Architecture Library - Stacks',
+        'Annex - Locked'
+      ]
+    end
+
+    it 'puts Remote Storage locations after branch locations' do
+      allow(document).to receive(:holdings_all_display).and_return({
+                                                                     '123' => { 'library' => 'Special Collections', 'location' => 'Remote Storage (ReCAP): Historic Maps. Special Collections Use Only', 'location_code' => 'stokes$index' },
+                                                                     'abc' => { 'library' => 'Stokes Library', 'location' => 'Indexes. Wallace Hall', 'location_code' => 'stokes$index' }
+                                                                   })
+
+      group_order = holdings.grouped_physical_holdings.map(&:group_name)
+      expect(group_order).to eq [
+        'Stokes Library - Indexes. Wallace Hall',
+        'Special Collections - Remote Storage (ReCAP): Historic Maps. Special Collections Use Only'
+      ]
+    end
+  end
 end
