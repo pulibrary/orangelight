@@ -2,8 +2,11 @@
 <span class="Z3988" aria-hidden='true' title="<%= document.export_as_openurl_ctx_kev %>"></span>
 <ul class="document-metadata dl-horizontal dl-invert">
   <%= render IndexMetadataComponent.new presenter: doc_presenter %>
-  <li class="blacklight-holdings"><%= holding_block_search(document) %></li>
 </ul>
+  <div class="lux">
+    <%= holding_block_search(document) %>
+    <%= online_content_block(document) %>
+  </div>
 </div>
 
   <div class="thumbnail-wrapper lux">
@@ -11,5 +14,5 @@
       v-bind:in-bookmarks="<%= bookmarked? document %>"
       v-bind:logged-in="<%= !!current_user %>"
       document-id="<%= document.id %>"></bookmark-button>
-    <%= render ThumbnailComponent.new document: %>
+      <%= render ThumbnailComponent.new document: %>
   </div>
