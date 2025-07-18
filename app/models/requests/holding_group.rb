@@ -32,7 +32,7 @@ class Requests::HoldingGroup
   end
 
   def off_site?
-    group_name.start_with?('Annex') || group_name.include?('Remote Storage')
+    group_name.start_with?('Annex', 'Forrestal') || group_name.include?('Remote Storage') || group_name.downcase.include?('(off-site)')
   end
 
   attr_reader :group_name, :holdings
