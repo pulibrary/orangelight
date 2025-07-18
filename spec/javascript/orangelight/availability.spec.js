@@ -303,7 +303,7 @@ describe('AvailabilityUpdater', function () {
       '      </td>' +
       '      <td class="holding-call-number">' +
       '        QP355.2 .P76 2013 <a class="browse-cn" title="Browse: QP355.2 .P76 2013" data-original-title="Browse: QP355.2 .P76 2013"' +
-      'href="/browse/call_numbers?q=QP355.2+.P76+2013"><span class="link-text">Browse related items</span> </a>' +
+      'href="/browse/call_numbers?q=QP355.2+.P76+2013"><span class="link-text">Call no. browse</span> </a>' +
       '      </td>' +
       '      <td class="holding-status" data-availability-record="true" data-record-id="9972879153506421" data-holding-id="22732100160006421" data-aeon="false">' +
       '        <span class="availability-icon" title=""></span>' +
@@ -323,7 +323,7 @@ describe('AvailabilityUpdater', function () {
       '      </td>' +
       '      <td class="holding-call-number">' +
       '        QP355.2 .P76 2013 <a class="browse-cn" title="Browse: QP355.2 .P76 2013" data-original-title="Browse: QP355.2 .P76 2013"' +
-      'href="/browse/call_numbers?q=QP355.2+.P76+2013"><span class="link-text">Browse related items</span> </a>' +
+      'href="/browse/call_numbers?q=QP355.2+.P76+2013"><span class="link-text">Call no. browse</span> </a>' +
       '      </td>' +
       '      <td class="holding-status" data-availability-record="true" data-record-id="9972879153506421" data-holding-id="lewis$resterm" data-aeon="false">' +
       '        <span class="availability-icon" title=""></span>' +
