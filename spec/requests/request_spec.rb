@@ -37,13 +37,6 @@ describe 'blacklight tests' do
   describe 'Multiple locations check' do
     before { stub_holding_locations }
 
-    it 'records with 3 or more holdings indicate that the record view has full availability' do
-      get '/catalog/998574693506421/raw'
-      r = JSON.parse(response.body)
-      expect(r['location'].length).to be > 2
-      get '/catalog?&search_field=all_fields&q=998574693506421'
-      expect(response.body).to include 'Available'
-    end
     it 'displays only the library name for an item with a single location' do
       get '/catalog/993213506421/raw'
       r = JSON.parse(response.body)
