@@ -3,7 +3,6 @@ import 'lux-design-system/dist/style.css';
 import {
   LuxAlert,
   LuxBadge,
-  LuxLibraryFooter,
   LuxIconArrowDown,
   LuxIconArrowRight,
   LuxIconBase,

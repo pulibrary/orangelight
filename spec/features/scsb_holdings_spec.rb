@@ -7,8 +7,8 @@ describe 'SCSB Shared Collection Records' do
     stub_holding_locations
   end
 
-  context 'Search Results Page' do
-    it 'displays view full record for multi-item records' do
+  context 'Search Results Page', js: true do
+    it 'displays Available for multi-item records' do
       visit '/catalog?search_field=all_fields&q=SCSB-2443272'
       expect(page).to have_content 'Available'
     end
