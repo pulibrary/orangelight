@@ -6,6 +6,7 @@ module HoldingsHelper
   # @param document [SolrDocument] the Solr Document retrieved in the search result set
   # @return [String] the markup
 
+  # rubocop:disable Metrics/MethodLength
   def holding_block_search(document)
     block = ''.html_safe
     block_extra = ''.html_safe
@@ -24,11 +25,13 @@ module HoldingsHelper
       holdings_array_first_three.each do |id, holding|
         block << holdings_block(document, id, holding)
       end
-      block_extra << content_tag(:div, class: 'holdings-card') do
-        content_tag(:span, "See #{holdings_remaining} location", class: 'lux-text-style gray')
+      block_extra << content_tag(:a, href: "/catalog/#{document['id']}") do
+        content_tag(:"lux-card") do
+          content_tag(:span, "See #{holdings_remaining} locations", class: 'lux-text-style blue')
+        end
       end
 
-      block << content_tag(:div, block_extra, class: 'holdings-card extra-holdings')
+      block << block_extra
 
     end
 
@@ -38,6 +41,7 @@ module HoldingsHelper
       content_tag(:div, block, class: "holdings-card")
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def online_content_block(document)
     controller.view_context.render(Holdings::OnlineHoldingsComponent.new(document:))
@@ -162,19 +166,21 @@ module HoldingsHelper
 
   def holding_status_li(accumulator, document, check_availability, id, holding)
     location = holding_location(holding)
-    content_tag(
-      :'lux-card',
-      accumulator,
-      class: 'holding-status',
-      data: {
-        availability_record: check_availability,
-        record_id: document['id'],
-        holding_id: id,
-        temp_location_code: holding['temp_location_code'],
-        aeon: aeon_location?(location),
-        bound_with: document.bound_with?
-      }.compact
-    )
+    content_tag(:a, href: "/catalog/#{document['id']}") do
+      content_tag(
+        :'lux-card',
+        accumulator,
+        class: 'holding-status',
+        data: {
+          availability_record: check_availability,
+          record_id: document['id'],
+          holding_id: id,
+          temp_location_code: holding['temp_location_code'],
+          aeon: aeon_location?(location),
+          bound_with: document.bound_with?
+        }.compact
+      )
+    end
   end
 end
 # rubocop:enable Metrics/ModuleLength
