@@ -61,5 +61,13 @@ RSpec.describe Requests::Holding, requests: true do
       )
       expect(holding.full_location_name).to eq 'Lewis Library - Course Reserve'
     end
+
+    it 'does not repeat the library name if it is also included in the location name' do
+      holding = described_class.new(
+        mfhd_id: "22749747440006421",
+        holding_data: JSON.parse('{"location_code":"lewis$serial","location":"Lewis Library - Serials (Off-Site)","library":"Lewis Library","call_number":"TX795 .W45 2011","call_number_browse":"TX795 .W45 2011","items":[{"holding_id":"22749747440006421","id":"23749747430006421","status_at_load":"1","barcode":"32101083249613","copy_number":"1"}]}')
+      )
+      expect(holding.full_location_name).to eq 'Lewis Library - Serials (Off-Site)'
+    end
   end
 end
