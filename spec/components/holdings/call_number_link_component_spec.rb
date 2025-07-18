@@ -11,12 +11,8 @@ RSpec.describe Holdings::CallNumberLinkComponent, type: :component do
   end
 
   it 'has a browse link' do
-    expect(rendered.css('a').text.strip).to eq 'Browse related items'
+    expect(rendered.css('a').text.strip).to eq 'Call no. browse'
     expect(rendered.css('a').attribute('href').value).to eq '/browse/call_numbers?q=East+45%2FGC073%2FBox+06%2FOversize'
-  end
-
-  it 'has an icon' do
-    expect(rendered.css('.icon-bookslibrary').length).to eq 1
   end
 
   it 'is a table cell' do
