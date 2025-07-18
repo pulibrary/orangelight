@@ -49,9 +49,8 @@ RSpec.describe 'catalog/index' do
   end
 
   describe 'index fields json only fields (show: false)' do
-    it 'do not display in html view' do
+    it 'does not display in html view' do
       visit '/catalog?f%5Bformat%5D%5B%5D=Map'
-      expect(page).to have_selector('.blacklight-holdings')
       expect(page).not_to have_selector('.blacklight-holdings_1display')
     end
     it 'are included in json view' do

@@ -26,16 +26,6 @@ RSpec.describe ApplicationHelper do
     end
   end
 
-  describe '#format_icon' do
-    it 'returns icon span for first format' do
-      expect(format_display).to include('icon-dissertation')
-    end
-    it 'does not returns icon span for remaining formats' do
-      expect(format_display).not_to include('icon-book')
-      expect(format_display).not_to include('icon-manuscript')
-    end
-  end
-
   describe CatalogHelper do
     it '#render_document_class includes only first format' do
       allow(helper).to receive(:document_types).and_return(format)

@@ -1,6 +1,5 @@
 import AvailabilityUpdater from '../orangelight/availability.es6';
 import BookCoverManager from '../orangelight/book_covers.es6';
-import BookmarkAllManager from '../orangelight/bookmark_all.es6';
 import { FiggyManifestManager } from '../orangelight/figgy_manifest_manager';
 import GoogleBooksSnippets from '../orangelight/google_books_snippets.es6';
 import RelatedRecordsDisplayer from '../orangelight/related_records.es6';
@@ -16,7 +15,6 @@ export default class OrangelightUiLoader {
     this.setup_modal_focus();
     this.setup_viewers();
     this.setup_book_covers();
-    this.setup_bookmark_all();
     handleBtnKeyDown();
   }
 
@@ -86,9 +84,5 @@ export default class OrangelightUiLoader {
 
   setup_book_covers() {
     new BookCoverManager();
-  }
-
-  setup_bookmark_all() {
-    new BookmarkAllManager();
   }
 }

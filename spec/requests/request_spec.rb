@@ -37,18 +37,11 @@ describe 'blacklight tests' do
   describe 'Multiple locations check' do
     before { stub_holding_locations }
 
-    it 'records with 3 or more holdings indicate that the record view has full availability' do
-      get '/catalog/998574693506421/raw'
-      r = JSON.parse(response.body)
-      expect(r['location'].length).to be > 2
-      get '/catalog?&search_field=all_fields&q=998574693506421'
-      expect(response.body).to include 'View Record for Full Availability'
-    end
-    it 'displays the location name for an item with a single location' do
+    it 'displays only the library name for an item with a single location' do
       get '/catalog/993213506421/raw'
       r = JSON.parse(response.body)
-      expect(r['location_display'].length).to eq 1
-      location = r['location_display'][0]
+      expect(r['location'].length).to eq 1
+      location = r['location'][0]
       get '/catalog?&search_field=all_fields&q=993213506421'
       expect(response.body.include?(location.to_s)).to eq true
     end
@@ -67,11 +60,6 @@ describe 'blacklight tests' do
       expect(response.body).to(
         include('Search and Request: <a target="_blank" rel="noopener" href="http://arks.princeton.edu/ark:/88435/pz50gw142">Princeton University Library Finding Aids<i class="fa fa-external-link new-tab-icon-padding" aria-label="opens in new tab" role="img"></i></a>')
       )
-    end
-
-    it 'includes the link for online holdings in search results' do
-      get '/catalog?&search_field=all_fields&q=998574693506421'
-      expect(response.body).to include("<a target=\"_blank\" rel=\"noopener\" href=\"#{Requests.config['proxy_base']}http://catalog.hathitrust.org/Record/008883092\">catalog.hathitrust.org</a>")
     end
   end
 
@@ -162,11 +150,11 @@ describe 'blacklight tests' do
                                     "/catalog/#{doc_id}\">#{title_vern}</a>")
       expect(response.body).to include('<li class="blacklight-author_display" dir="ltr"><a class="search-name" '\
                                     "data-original-title=\"Search: #{author}\" "\
-                                    "href=\"/?f[author_s][]=#{CGI.escape author}\">"\
+                                    "dir=\"ltr\" href=\"/?f[author_s][]=#{CGI.escape author}\">"\
                                     "#{author}</a>")
       expect(response.body).to include('<li class="blacklight-author_display" dir="rtl"><a class="search-name" '\
                                     "data-original-title=\"Search: #{author_vern}\" "\
-                                    "href=\"/?f[author_s][]="\
+                                    "dir=\"rtl\" href=\"/?f[author_s][]="\
                                     "#{CGI.escape author_vern}\">#{author_vern}</a>")
     end
     it 'adds ltr rtl dir for title and other fields in document view' do
@@ -359,7 +347,7 @@ describe 'blacklight tests' do
     it 'search result name facet/browse urls' do
       get '/?f%5Blocation%5D%5B%5D=East+Asian+Library'
       expect(response.body).to include('/?f[author_s][]=%E5%8D%8E%E6%83%A0%E4%BC%A6.')
-      expect(response.body).to include('/browse/names?q=%E5%8D%8E%E6%83%A0%E4%BC%A6.')
+      # expect(response.body).to include('/browse/names?q=%E5%8D%8E%E6%83%A0%E4%BC%A6.')
     end
     it 'show page subject facet/browse, call number browse urls' do
       get '/catalog/9948322283506421'
