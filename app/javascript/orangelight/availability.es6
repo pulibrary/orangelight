@@ -197,7 +197,7 @@ export default class AvailabilityUpdater {
   // `holding_records` has data for two or more bibs: `this.id`, `this.host_id`.
   process_single(holding_records) {
     this.update_single(holding_records, this.id);
-    // Availability response in bibdata should be refactogray not to include the host holdings under the mms_id of the record page.
+    // Availability response in bibdata should be refactored not to include the host holdings under the mms_id of the record page.
     // problematic availability response behavior for constituent record page with host records.
     // It treats host records as holdings of the constituent record. see: https://github.com/pulibrary/bibdata/issues/1739
     if (this.host_id.length > 0) {
@@ -399,7 +399,7 @@ export default class AvailabilityUpdater {
     availability_info,
     searchResults
   ) {
-    if (searchResults == true) {
+    if (searchResults) {
       availability_element.addClass('lux-text-style');
     } else {
       availability_element.addClass('badge');
@@ -423,24 +423,28 @@ export default class AvailabilityUpdater {
         specialStatusLocations,
         searchResults
       );
-    } else if (status_label.toLowerCase() === 'available') {
+    } else if (status_label.toLowerCase() === 'available' && searchResults) {
       availability_element.addClass('green');
+    } else if (status_label.toLowerCase() === 'available' && !searchResults) {
+      availability_element.addClass('bg-success');
     } else if (status_label.toLowerCase() === 'on-site access') {
       this.handleOnSiteAccessStatus(
         availability_element,
         status_label,
         searchResults
       );
-    } else {
+    } else if (searchResults) {
       availability_element.addClass('gray');
+    } else {
+      availability_element.addClass('bg-secondary');
     }
     return availability_element;
   }
   handleOnSiteAccessStatus(availability_element, status_label, searchResults) {
-    if (searchResults === true) {
+    if (searchResults) {
       availability_element.text('Available').addClass('green');
     } else {
-      availability_element.text('On-site access').addClass('gray');
+      availability_element.text('On-site access').addClass('bg-secondary');
     }
     return availability_element;
   }
@@ -455,10 +459,10 @@ export default class AvailabilityUpdater {
     if (specialStatusLocations.includes(location)) {
       this.checkSpecialLocation(location, availability_element, searchResults);
     } else {
-      if (searchResults == false) {
-        availability_element.text('Unavailable').addClass('gray');
-      } else {
+      if (searchResults) {
         availability_element.text('Request').addClass('gray');
+      } else {
+        availability_element.text('Unavailable').addClass('bg-danger');
       }
     }
   }

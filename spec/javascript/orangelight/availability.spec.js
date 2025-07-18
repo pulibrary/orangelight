@@ -20,7 +20,7 @@ describe('AvailabilityUpdater', function () {
       '<ul class="document-metadata dl-horizontal dl-invert">' +
       '<li class="blacklight-holdings">' +
       '<ul>' +
-      `<li data-availability-record="true" data-record-id="${avail_id}" data-holding-id="2224357860006421" data-aeon="false"><span class="availability-icon"></span></li>` +
+      `<li data-availability-record="true" data-record-id="${avail_id}" data-holding-id="2224357860006421" data-aeon="false"><span class="lux-text-style"></span></li>` +
       '</ul>' +
       '</li>' +
       '</ul>' +
@@ -33,7 +33,7 @@ describe('AvailabilityUpdater', function () {
       '<ul class="document-metadata dl-horizontal dl-invert">' +
       '<li class="blacklight-holdings">' +
       '<ul>' +
-      `<li data-availability-record="true" data-record-id="${unavail_id}" data-holding-id="2278269270006421" data-aeon="false"><span class="availability-icon"></span></li>` +
+      `<li data-availability-record="true" data-record-id="${unavail_id}" data-holding-id="2278269270006421" data-aeon="false"><span class="lux-text-style"></span></li>` +
       '</ul>' +
       '</li>' +
       '</ul>' +
@@ -46,7 +46,7 @@ describe('AvailabilityUpdater', function () {
       '<ul class="document-metadata dl-horizontal dl-invert">' +
       '<li class="blacklight-holdings">' +
       '<ul>' +
-      `<li data-availability-record="true" data-record-id="${mixed_id}" data-holding-id="22186788410006421" data-aeon="false"><span class="availability-icon"></span></li>` +
+      `<li data-availability-record="true" data-record-id="${mixed_id}" data-holding-id="22186788410006421" data-aeon="false"><span class="lux-text-style"></span></li>` +
       '</ul>' +
       '</li>' +
       '</ul>' +
@@ -63,25 +63,22 @@ describe('AvailabilityUpdater', function () {
     u.process_results_list(bibdata_response);
 
     const available_result = $(
-      `*[data-record-id="${avail_id}"] .availability-icon`
+      `*[data-record-id="${avail_id}"] .lux-text-style`
     );
 
-    expect(available_result.hasClass('badge')).toBe(true);
-    expect(available_result.hasClass('bg-success')).toBe(true);
+    expect(available_result.hasClass('green')).toBe(true);
     expect(available_result.text()).toEqual('Available');
 
     const unavailable_result = $(
-      `*[data-record-id="${unavail_id}"] .availability-icon`
+      `*[data-record-id="${unavail_id}"] .lux-text-style`
     );
-    expect(unavailable_result.hasClass('badge')).toBe(true);
-    expect(unavailable_result.hasClass('bg-secondary')).toBe(true);
+
+    expect(unavailable_result.hasClass('gray')).toBe(true);
     expect(unavailable_result.text()).toEqual('Request');
 
-    const mixed_result = $(
-      `*[data-record-id="${mixed_id}"] .availability-icon`
-    );
-    expect(mixed_result.hasClass('badge')).toBe(true);
-    expect(mixed_result.hasClass('bg-secondary')).toBe(true);
+    const mixed_result = $(`*[data-record-id="${mixed_id}"] .lux-text-style`);
+
+    expect(mixed_result.hasClass('gray')).toBe(true);
     expect(mixed_result.text()).toEqual('Some Available');
   });
 
@@ -240,7 +237,7 @@ describe('AvailabilityUpdater', function () {
     u.process_single(holding_records);
 
     const badge = document.getElementsByClassName('availability-icon')[0];
-
+    console.log(badge.outerHTML);
     expect(badge.classList.values()).toContain('badge');
     expect(badge.classList.values()).toContain('bg-danger');
     expect(badge.textContent).toEqual('Unavailable');
@@ -368,14 +365,15 @@ describe('AvailabilityUpdater', function () {
     u.id = '9972879153506421';
     u.process_single(availability_response);
 
-    const badge = document.getElementsByClassName('badge')[0];
+    const badge = document.getElementsByClassName('availability-icon')[0];
+    expect(badge.classList.values()).toContain('badge');
     expect(badge.classList.values()).toContain('bg-success');
     expect(badge.textContent).toEqual('Available');
 
     const badge_second =
       document.getElementsByClassName('availability-icon')[1];
-    expect(badge_second.classList.values()).toContain('lux-text-style');
-    expect(badge_second.classList.values()).toContain('green');
+    expect(badge_second.classList.values()).toContain('badge');
+    expect(badge_second.classList.values()).toContain('bg-success');
     expect(badge_second.textContent).toEqual('Available');
   });
 
