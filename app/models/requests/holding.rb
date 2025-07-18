@@ -17,7 +17,11 @@ module Requests
     end
 
     def full_location_name
-      "#{library_name} - #{location_name}"
+      if location_name.starts_with? library_name
+        location_name
+      else
+        "#{library_name} - #{location_name}"
+      end
     end
 
     private
