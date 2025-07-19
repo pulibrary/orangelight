@@ -16,7 +16,7 @@ RSpec.describe Holdings::CallNumberLinkComponent, type: :component do
   end
 
   it 'is a table cell' do
-    expect(rendered.css('td').length).to eq 1
+    expect(rendered.css('div').length).to eq 1
   end
 
   context 'when no call_number is provided' do
@@ -30,8 +30,8 @@ RSpec.describe Holdings::CallNumberLinkComponent, type: :component do
     end
 
     it 'has an empty table cell' do
-      expect(rendered.css('td').length).to eq 1
-      expect(rendered.css('td').text.strip).to eq ''
+      expect(rendered.css('div').length).to eq 1
+      expect(rendered.css('div').text.strip).to eq ''
     end
   end
 end

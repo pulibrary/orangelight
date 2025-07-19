@@ -8,6 +8,7 @@ import {
   LuxIconBase,
   LuxCard,
   LuxLibraryFooter,
+  LuxShowMore,
   LuxTextStyle,
 } from 'lux-design-system';
 import OrangelightHeader from '../orangelight/vue_components/orangelight_header.vue';
@@ -33,6 +34,7 @@ export function luxImport() {
         .component('lux-icon-base', LuxIconBase)
         .component('lux-library-footer', LuxLibraryFooter)
         .component('lux-card', LuxCard)
+        .component('lux-show-more', LuxShowMore)
         .component('lux-text-style', LuxTextStyle)
         .component('online-options', OnlineOptions)
         .component('orangelight-header', OrangelightHeader)

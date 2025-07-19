@@ -36,7 +36,7 @@ details:not([open]) summary .when-open {
 }
 
 details>* {
-    padding: var(--space-small);
+    padding: var(--space-small) var(--space-base);
 }
 
 summary .side-by-side {

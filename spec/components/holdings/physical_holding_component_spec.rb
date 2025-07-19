@@ -33,9 +33,8 @@ RSpec.describe Holdings::PhysicalHoldingComponent, type: :component do
     allow(adapter).to receive(:doc_id).and_return("doc-456")
   end
 
-  it "renders the holding block with location, call number, availability, services, and notes" do
+  it "renders the holding block with call number, availability, services, and notes" do
     render_inline described_class.new(adapter, holding_id, holding)
-    expect(rendered_content).to include("Architecture Library")
     expect(rendered_content).to include("QA123 .B45")
     expect(rendered_content).to include("holding-block")
   end

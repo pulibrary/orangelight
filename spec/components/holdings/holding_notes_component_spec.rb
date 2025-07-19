@@ -108,9 +108,9 @@ RSpec.describe Holdings::HoldingNotesComponent, type: :component do
     let(:holding) { { "shelving_title" => ["Title 1"] } }
     before { allow(adapter).to receive(:shelving_title?).with(holding).and_return(true) }
 
-    it "wraps notes in td.holding-details" do
-      expect(rendered.css("td.holding-details")).to be_present
-      expect(rendered.css("td.holding-details").text).to include("Shelving title")
+    it "wraps notes in .holding-details" do
+      expect(rendered.css(".holding-details")).to be_present
+      expect(rendered.css(".holding-details").text).to include("Shelving title")
     end
   end
 end

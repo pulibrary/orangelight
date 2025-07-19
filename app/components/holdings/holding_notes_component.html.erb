@@ -1,4 +1,4 @@
-<td class="holding-details">
+<div class="holding-details lux">
   <%= if render_shelving_titles?
     render_list label: 'Shelving title', list_class: 'shelving-title', notes: holding['shelving_title']
   end %>
@@ -24,4 +24,4 @@
   <% if render_issues? %>
     <ul class="journal-current-issues" data-journal="true" data-holding-id="<%= holding_id %>"></ul>
   <% end %>
-</td>
+</div>

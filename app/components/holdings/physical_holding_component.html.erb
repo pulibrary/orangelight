@@ -1,6 +1,8 @@
 <tr class="holding-block">
-    <%= render Holdings::HoldingLocationComponent.new(holding, holding_loc, holding_id, cn_value) if holding_loc.present? %>
-    <%= render(Holdings::CallNumberLinkComponent.new(holding, cn_value)) %>
+    <td class="call-number-details">
+      <%= render(Holdings::CallNumberLinkComponent.new(holding, cn_value)) %>
+      <%= render(Holdings::HoldingNotesComponent.new(holding, holding_id, adapter)) %>
+    </td>
     <% if adapter.repository_holding?(holding) %>
       <td>
         <span class="availability-icon badge bg-success">On-site access</span>
@@ -12,11 +14,10 @@
         <span class="availability-icon badge bg-danger">Unavailable</span>
       </td>
     <% else %>
-    <%= render Holdings::HoldingAvailabilityComponent.new(doc_id, holding_id, location_rules, temp_location_code) %>
+      <%= render Holdings::HoldingAvailabilityComponent.new(doc_id, holding_id, location_rules, temp_location_code) %>
     <% end %>
 
     <%= render(Holdings::LocationServicesComponent.new(adapter, holding_id, location_rules, holding)) %>
-    <%= render(Holdings::HoldingNotesComponent.new(holding, holding_id, adapter)) %>
 </tr>
 
 
