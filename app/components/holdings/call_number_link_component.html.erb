@@ -1,4 +1,4 @@
-<td>
+<div>
 <% unless cn_value.nil? %>
   <%= holding['call_number'] %>
   <a href="<%= browse_url %>" class="browse-cn"
@@ -6,4 +6,4 @@
     <span class="link-text"><%= I18n.t('blacklight.holdings.browse') %></span>
   </a>
 <% end %>
-</td>
+</div>

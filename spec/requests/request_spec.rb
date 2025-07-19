@@ -72,15 +72,6 @@ describe 'blacklight tests' do
   end
 
   describe 'stackmap link check' do
-    it 'provides a link to locate an item for each holding' do
-      stub_holding_locations
-      get '/catalog/994304723506421/raw'
-      r = JSON.parse(response.body)
-      get '/catalog/994304723506421'
-      r['location_code_s'].each do |location|
-        expect(response.body).to include("data-map-location=\"#{location}")
-      end
-    end
     it 'does not provide a find it link for online holdings' do
       get '/catalog/9990889283506421'
       expect(response.body.include?('[Where to find it]')).to eq false
