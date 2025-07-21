@@ -64,7 +64,7 @@ class Holdings::HoldingNotesComponent < ViewComponent::Base
           <ul class="<%= list_class %>">
             <li class="holding-label"><%= label %></li>
             <% notes.each do |note| %>
-              <li><lux-show-more v-bind:character-limit="150" show-label="See more" hideLabel="See less"><%= note %></lux-show-more></li>
+              <li><lux-show-more v-bind:character-limit="150" show-label="See more" hide-label="See less"><%= note %></lux-show-more></li>
             <% end %>
           </ul>
         END_TEMPLATE
