@@ -36,7 +36,7 @@ module HoldingsHelper
     end
 
     if block.empty?
-      content_tag(:div, t('blacklight.holdings.search_missing'))
+      ''
     else
       content_tag(:div, block, class: "holdings-card")
     end
