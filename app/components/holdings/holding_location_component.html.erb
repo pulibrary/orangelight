@@ -1,8 +1,0 @@
-<td class="library-location" data-holding-id="<%= holding_id %>">
-  <span class="location-text" data-location="true" data-holding-id="<%= holding_id %>"><%= location %></span>
-  <% if render_stackmap? %>
-    <span data-map-location="<%= location_code.to_s %>"
-        data-location-library="<%= library %>"
-        data-location-name="<%= holding['location'] %>"></span>
-  <% end %>
-</td>

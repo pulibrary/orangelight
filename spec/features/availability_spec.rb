@@ -22,7 +22,7 @@ describe 'Availability' do
       it 'still displays the record with a ReCAP location' do
         stub_holding_locations
         visit 'catalog/SCSB-7935196'
-        expect(page).to have_selector '.library-location', text: 'ReCAP'
+        expect(page).to have_selector 'summary', text: 'ReCAP'
       end
     end
   end
