@@ -168,7 +168,9 @@ export default class AvailabilityUpdater {
         const location = $(
           `*[data-location='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .results_location`
         );
+        const pin = `<span class= "icon icon-location"></span>`;
         location.text(this.getLibraryName(label));
+        location.prepend(pin);
       }
       const availability_element = $(
         `*[data-availability-record='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .lux-text-style`
