@@ -221,6 +221,21 @@ article .lux-card {
     }
   }
 
+  .call-number-details {
+    flex: 0 1 60%;
+  }
+
+  .holding-status {
+    flex: 1;
+  }
+
+  .location-services {
+    flex: min-content;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+
   .location-services a {
     display: none;
   }
@@ -318,19 +333,10 @@ article .lux-card {
       display: block;
       flex: 1;
       padding: 10px 15px 10px 0;
-
-      &:nth-child(3) {
-        flex: 0 0 135px;
-      }
-    }
-
-    th:last-child {
-      display: none;
     }
 
     td:last-child{
       width: 100%;
-      flex: auto;
     }
 
     .location-services {
@@ -338,12 +344,15 @@ article .lux-card {
     }
 
     .holding-details {
-      padding: 0 0 0 1em;
       color: $gray-light;
 
       ul,
       li {
         font-size: .875rem;
+      }
+
+      .lux-show-more {
+        font-size: var(--font-size-small);
       }
     }
   }
