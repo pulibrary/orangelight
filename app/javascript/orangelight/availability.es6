@@ -314,7 +314,7 @@ export default class AvailabilityUpdater {
             result.push(availability_element);
           } else {
             availability_element.addClass('bg-success');
-            availability_element.text('All Items Available');
+            availability_element.text('Available');
             result.push(availability_element);
           }
         } else {
