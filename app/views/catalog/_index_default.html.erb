@@ -4,8 +4,14 @@
   <%= render IndexMetadataComponent.new presenter: doc_presenter %>
 </ul>
   <div class="lux">
-    <%= holding_block_search(document) %>
-    <%= online_content_block(document) %>
+    <% physical_block = holding_block_search(document) -%>
+    <% online_block = online_content_block(document) -%>
+    <% if physical_block.present? || online_block.present? -%>
+      <%= holding_block_search(document) -%>
+      <%= online_content_block(document) -%>
+    <% else -%>
+      <div><%= t('blacklight.holdings.search_missing') %></div>
+    <% end -%>
   </div>
 </div>
 
