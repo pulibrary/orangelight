@@ -15,6 +15,10 @@
   flex-direction: row;
   border-radius: 0.375rem;
   padding: 0.5rem 0rem 0.5rem 0rem;
+
+  a {
+    max-width: 25%;
+  }
 }
 
 article .lux-card {
