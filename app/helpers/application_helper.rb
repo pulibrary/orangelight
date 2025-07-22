@@ -79,8 +79,8 @@ module ApplicationHelper
   # Location display in the search results page
   def search_location_display(holding)
     location = holding_library_label(holding)
-
-    location_display = content_tag(:div, location, class: 'results_location') + " " +
+    pin = content_tag(:span, "", class: 'icon icon-location')
+    location_display = content_tag(:div, pin.html_safe + location, class: 'results_location row') + " " +
                        content_tag(:div, holding['call_number'], class: 'call-number')
     location_display.html_safe
   end
