@@ -164,7 +164,6 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
       end
 
       it 'displays the public note properly' do
-        puts portfolio_markup
         expect(portfolio_markup).to eq "<li class=\"electronic-access lux\"><a target=\"_blank\" rel=\"noopener\" " \
                                        "href=\"https://princeton.edu/great-resource\">1980 - 2015: Title<i class=\"fa fa-external-link new-tab-icon-padding\" aria-label=\"opens in new tab\" role=\"img\"></i></a><br/> " \
                                        "<lux-show-more v-bind:character-limit=150 show-label='See more' hide-label='See less'>" \
