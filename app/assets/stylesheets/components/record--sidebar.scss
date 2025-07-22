@@ -7,7 +7,11 @@
 }
 
 .availability .info-url {
-  display: none;
+    display: none;
+}
+
+.documents-list .document .document-thumbnail {
+    padding: 0;
 }
 
 .document-thumbnail {
@@ -20,7 +24,7 @@
     img,
     .default {
         display: block;
-        margin: 0 auto;
+        margin: 0;
         max-width: 80px;
         max-height: 100%;
         height: auto;
