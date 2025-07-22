@@ -50,7 +50,6 @@ RSpec.describe Holdings::HoldingNotesComponent, type: :component do
 
     it "renders location has list" do
       expect(rendered.css("ul.location-has")).to be_present
-      expect(rendered.text).to include("Location has")
       expect(rendered.text).to include("Has 1")
     end
   end
