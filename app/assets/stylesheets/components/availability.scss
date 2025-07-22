@@ -19,6 +19,23 @@
   a {
     max-width: 25%;
   }
+
+  a:hover, a:focus {
+    outline: solid 0.25rem var(--color-princeton-orange-on-white) !important;
+    background-color: var(--color-grayscale-lighter);
+    text-decoration: none !important;
+
+    .lux-card {
+      background-color: transparent;
+    }
+
+    .call-number {
+      color: var(--color-grayscale-darker);
+    }
+    .green {
+      color: var(--color-forest-green);
+    }
+  }
 }
 
 article .lux-card {
