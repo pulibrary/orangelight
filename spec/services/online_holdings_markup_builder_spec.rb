@@ -168,7 +168,6 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
                                        "href=\"https://princeton.edu/great-resource\">1980 - 2015: Title<i class=\"fa fa-external-link new-tab-icon-padding\" aria-label=\"opens in new tab\" role=\"img\"></i></a><br/> " \
                                        "<lux-show-more v-bind:character-limit=150 show-label='See more' hide-label='See less'>" \
                                        "Description</lux-show-more><br/> (First note, Second note)</li>"
-
       end
     end
   end
