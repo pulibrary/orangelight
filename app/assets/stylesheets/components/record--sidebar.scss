@@ -17,14 +17,16 @@
 .document-thumbnail {
     display: block;
     // height: 110px;
-    width: 100%;
+    // width: 100%;
     margin: 0 auto;
     padding: 0;
 
     img,
     .default {
         display: block;
-        margin: 0;
+        margin: 0 auto;
+        border: 1px solid #E1E1E1;
+        border-radius: 10px;
         max-width: 80px;
         max-height: 100%;
         height: auto;
