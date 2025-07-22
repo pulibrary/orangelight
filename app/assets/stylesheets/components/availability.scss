@@ -4,7 +4,7 @@
 
 .holdings-card .lux-card .lux-text-style {
   padding: 0;
-  margin-left: 18px;
+  margin-left: 22px;
   flex: 1 1 0px;
   align-content: flex-end
 }
@@ -42,19 +42,25 @@ article .lux-card {
 .library-location {
   flex: 1 1 0px;
   .icon-location {
-    margin-right: 8px;
+    display: grid;
+    padding: 0;
+    place-items: center;
   }
   .results_location {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: auto;
     color: var(--color-bleu-de-france);
   }
   .call-number {
-    margin-left: 18px;
+    margin-left: 22px;
     color: $gray-light;
   }
 }
 
 .lux-card.medium {
   width: 100% !important;
+  padding: 16px 8px;
 }
 
 .availability-column,

@@ -27,7 +27,6 @@
     font-variant: normal;
     text-transform: none;
     line-height: 1;
-    margin-right: 6px;
 
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
@@ -114,6 +113,7 @@
 .icon-location {
     &:before {
         content: $icon-location;
+        display: block;
     }
 }
 
