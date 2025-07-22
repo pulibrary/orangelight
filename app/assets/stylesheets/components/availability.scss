@@ -3,7 +3,8 @@
 @import "variables/typography";
 
 .holdings-card .lux-card .lux-text-style {
-  padding: 0 1rem 1rem 0;
+  padding: 0;
+  margin-left: 18px;
   flex: 1 1 0px;
   align-content: flex-end
 }
@@ -24,7 +25,6 @@ article .lux-card {
   flex-wrap: wrap;
   justify-content: space-between;
   flex-direction: column;
-  gap: 0.5rem;
 }
 
 .holdings-card article.lux-card {
@@ -33,11 +33,24 @@ article .lux-card {
 
 .holdings-card article.lux-card.show-more-holdings span {
   text-align: center;
+  align-content: center;
+  margin: 0 9px;
+  color: var(--color-bleu-de-france)
 }
 
 
 .library-location {
   flex: 1 1 0px;
+  .icon-location {
+    margin-right: 8px;
+  }
+  .results_location {
+    color: var(--color-bleu-de-france);
+  }
+  .call-number {
+    margin-left: 18px;
+    color: $gray-light;
+  }
 }
 
 .lux-card.medium {
@@ -453,3 +466,7 @@ article .lux-card {
       margin-top: 1rem;
     }
   }
+
+.electronic-access {
+  color: #717171;
+}
