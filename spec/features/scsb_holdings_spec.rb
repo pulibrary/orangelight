@@ -17,13 +17,13 @@ describe 'SCSB Shared Collection Records' do
       expect(page).to have_content 'On-site access'
       expect(page).not_to have_selector 'span.icon-request-reading-room'
     end
-    it 'includes a data attribute to trigger availability check against scsb' do
-      visit '/catalog?search_field=all_fields&q=SCSB-2143785'
-      expect(page).to have_selector("*[data-scsb-availability='true']")
+    it 'includes a data attribute to trigger availability check against scsb', type: :request do
+      get '/catalog?search_field=all_fields&q=SCSB-2143785'
+      expect(response.body).to include('data-scsb-availability="true"')
     end
-    it 'includes a data attribute with a scsb barcode' do
-      visit '/catalog?search_field=all_fields&q=SCSB-2143785'
-      expect(page).to have_selector("*[data-scsb-barcode='AR00234770']")
+    it 'includes a data attribute with a scsb barcode', type: :request do
+      get '/catalog?search_field=all_fields&q=SCSB-2143785'
+      expect(response.body).to include('data-scsb-barcode="AR00234770"')
     end
   end
   context 'Record with no use restrictions' do

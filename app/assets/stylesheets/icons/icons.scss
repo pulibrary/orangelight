@@ -100,6 +100,12 @@
     }
 }
 
+.icon-location {
+    &:before {
+        content: $icon-location;
+    }
+}
+
 .icon-senior-thesis,
 .blacklight-senior-thesis .document-thumbnail .default {
     &:before {
