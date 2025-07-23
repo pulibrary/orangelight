@@ -81,7 +81,7 @@ module ApplicationHelper
     location = holding_library_label(holding)
     pin = content_tag(:span, "", class: 'icon icon-location')
     location_display = content_tag(:div, pin.html_safe + location, class: 'results_location row') + " " +
-                       content_tag(:div, holding['call_number'], class: 'call-number')
+                       content_tag(:div, CallNumber.new(holding['call_number']).with_line_break_suggestions, class: 'call-number')
     location_display.html_safe
   end
 
