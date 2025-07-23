@@ -35,7 +35,7 @@ a {
 }
 
 .icon {
-  padding-right: 0px;
+  padding-right: var(--space-xx-small);
 
   &.icon-external {
     margin-left: 6px;
