@@ -27,7 +27,7 @@ module HoldingsHelper
       end
       block_extra << content_tag(:a, href: "/catalog/#{document['id']}") do
         content_tag(:"lux-card", class: 'show-more-holdings') do
-          content_tag(:span, "See #{holdings_remaining} locations", class: 'lux-text-style blue')
+          content_tag(:span, "See #{holdings_remaining} more locations", class: 'lux-text-style blue')
         end
       end
 
