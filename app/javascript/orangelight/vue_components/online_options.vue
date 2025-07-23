@@ -1,8 +1,6 @@
 <template>
   <div v-if="count > 1" class="online-wrapper">
-    <LuxHyperlink :href="url"
-      ><span class="icon icon-web d-inline"></span>{{ text }}</LuxHyperlink
-    >
+    <LuxHyperlink :href="url">{{ text }}</LuxHyperlink>
   </div>
   <div class="online-wrapper" v-else>
     <LuxHyperlink :href="link.url"
