@@ -110,6 +110,7 @@ function toggle() {
   display: flex;
   align-items: center;
   border: 0.125rem solid var(--color-grayscale-light);
+  margin-bottom: var(--space-x-small);
   color: var(--color-grayscale-dark);
   width: fit-content;
   padding: 4px 8px 4px 1px;
