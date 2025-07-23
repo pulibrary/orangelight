@@ -78,7 +78,7 @@ describe('AvailabilityUpdater', function () {
 
     const mixed_result = $(`*[data-record-id="${mixed_id}"] .lux-text-style`);
 
-    expect(mixed_result.hasClass('gray')).toBe(true);
+    expect(mixed_result.hasClass('green')).toBe(true);
     expect(mixed_result.text()).toEqual('Some Available');
   });
 
