@@ -12,5 +12,9 @@ RSpec.describe CallNumber do
       expect(described_class.new('G4312<script><p><div>').with_line_break_suggestions).to eq 'G4312'
       expect(described_class.new('G4312<script>alert("HI!")</script>').with_line_break_suggestions).to eq 'G4312'
     end
+
+    it 'returns an empty string if call number label is nil' do
+      expect(described_class.new(nil).with_line_break_suggestions).to eq ''
+    end
   end
 end

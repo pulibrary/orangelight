@@ -12,7 +12,9 @@ class CallNumber
 
     private
 
-      attr_reader :label
+      def label
+        @label || ''
+      end
 
       def sanitize(html)
         ActionController::Base.helpers.sanitize html, scrubber:
