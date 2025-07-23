@@ -44,16 +44,10 @@
 /* If there are multiple cards, they should be consistent widths */
 .holdings-card:has(a:nth-child(n+2)) a {
   width: 24%;
-} 
+}
 
-article .lux-card {
-  padding: 1rem;
-  border-radius: 8px;
-  border: 1px solid #EEE;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  flex-direction: column;
+.holdings-card article.lux-card {
+  padding: var(--space-xx-small);
 }
 
 .holdings-card article.lux-card {
