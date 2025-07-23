@@ -16,10 +16,6 @@
   border-radius: 0.375rem;
   padding: 0.5rem 0rem 0.5rem 0rem;
 
-  a {
-    max-width: 25%;
-  }
-
   a:hover, a:focus {
     outline: solid 0.25rem var(--color-princeton-orange-on-white) !important;
     background-color: var(--color-grayscale-lighter);
@@ -37,6 +33,18 @@
     }
   }
 }
+
+/* If there is a single card, it should be wide enough that its
+  text does not wrap */
+.holdings-card a {
+  width: max-content;
+  min-width: 24%;
+}
+    
+/* If there are multiple cards, they should be consistent widths */
+.holdings-card:has(a:nth-child(n+2)) a {
+  width: 24%;
+} 
 
 article .lux-card {
   padding: 1rem;
