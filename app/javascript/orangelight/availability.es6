@@ -427,6 +427,11 @@ export default class AvailabilityUpdater {
       );
     } else if (status_label.toLowerCase() === 'available' && searchResults) {
       availability_element.addClass('green');
+    } else if (
+      status_label.toLowerCase() === 'some available' &&
+      searchResults
+    ) {
+      availability_element.addClass('green');
     } else if (status_label.toLowerCase() === 'available' && !searchResults) {
       availability_element.addClass('bg-success');
     } else if (status_label.toLowerCase() === 'on-site access') {
