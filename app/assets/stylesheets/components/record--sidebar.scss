@@ -21,9 +21,12 @@
     margin: 0 auto;
     padding: 0;
 
+    img {
+        display: block;
+    }
+
     img,
     .default {
-        display: block;
         margin: 0 auto;
         border: 1px solid #E1E1E1;
         border-radius: 10px;
