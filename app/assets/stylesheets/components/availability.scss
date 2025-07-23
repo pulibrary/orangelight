@@ -265,6 +265,7 @@
 
   .call-number-details {
     flex: 0 1 60%;
+    line-height: var(--line-height-small);
   }
 
   .holding-status {
@@ -386,7 +387,7 @@
     }
 
     .holding-details {
-      color: $gray-light;
+      margin-top: var(--space-x-small);
 
       ul,
       li {
