@@ -3,7 +3,7 @@ require 'rails_helper'
 
 RSpec.describe Holdings::CallNumberLinkComponent, type: :component do
   let :holding do
-    { call_number: 'East 45/GC073/Box 06/Oversize' }
+    { call_number: 'East 45/GC073/Box 06/Oversize' }.with_indifferent_access
   end
   let(:call_number) { 'East 45/GC073/Box 06/Oversize' }
   let :rendered do
@@ -17,6 +17,10 @@ RSpec.describe Holdings::CallNumberLinkComponent, type: :component do
 
   it 'is a table cell' do
     expect(rendered.css('div').length).to eq 1
+  end
+
+  it 'puts the call number in a .call-number class' do
+    expect(rendered.css('.call-number').text).to eq 'East 45/GC073/Box 06/Oversize'
   end
 
   context 'when no call_number is provided' do
