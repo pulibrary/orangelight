@@ -77,5 +77,10 @@
     <%= render partial: 'show_digital_content', locals: { document: @document } %>
   <% end %>
   <%= render :partial => 'shared/footer' %>
+  <script>
+    // Intentionally block DOM parsing until we have removed the no-js class,
+    // to avoid layout shifts
+    document.querySelector('html').classList.remove('no-js');
+  </script>
   </body>
 </html>
