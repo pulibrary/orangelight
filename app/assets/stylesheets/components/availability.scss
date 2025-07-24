@@ -55,7 +55,13 @@
   height: 100%;
 }
 
-.holdings-card article.lux-card.show-more-holdings span {
+.holdings-card .lux-card.show-more-holdings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.holdings-card .lux-card.show-more-holdings span {
   text-align: center;
   align-content: center;
   margin: 0 9px;
