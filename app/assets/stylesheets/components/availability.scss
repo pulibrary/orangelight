@@ -493,3 +493,24 @@
 .electronic-access {
   color: #717171;
 }
+
+@media screen and (max-width: 900px) {
+  .holdings-card {
+    display: grid;
+    width: 100% !important;
+    grid-template-rows: repeat(1, 1fr);
+  }
+
+  /* If there is a single card, it should be wide enough that its
+  text does not wrap */
+  .holdings-card a {
+    width: max-content;
+    min-width: 72%;
+  }
+      
+  /* If there are multiple cards, they should be consistent widths */
+  .holdings-card:has(a:nth-child(n+2)) a {
+    width: 100%;
+  }
+
+}
