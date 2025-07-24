@@ -12,6 +12,7 @@
 .holdings-card {
   display: flex;
   gap: 0.5rem;
+  justify-content: flex-start;
   flex-direction: row;
   border-radius: 0.375rem;
   padding: 0.5rem 0rem 0.5rem 0rem;
@@ -39,12 +40,12 @@
   text does not wrap */
 .holdings-card a {
   width: max-content;
-  min-width: 24%;
+  min-width: 23%;
 }
     
 /* If there are multiple cards, they should be consistent widths */
 .holdings-card:has(a:nth-child(n+2)) a {
-  width: 24%;
+  width: 23%;
 }
 
 .holdings-card article.lux-card {
@@ -494,4 +495,25 @@
 
 .electronic-access {
   color: #717171;
+}
+
+@media screen and (max-width: $bp-large) {
+  .holdings-card {
+    display: grid;
+    width: 100% !important;
+    grid-template-rows: repeat(1, 1fr);
+  }
+
+  /* If there is a single card, it should be wide enough that its
+  text does not wrap */
+  .holdings-card a {
+    width: max-content;
+    min-width: 69%;
+  }
+      
+  /* If there are multiple cards, they should be consistent widths */
+  .holdings-card:has(a:nth-child(n+2)) a {
+    width: 100%;
+  }
+
 }
