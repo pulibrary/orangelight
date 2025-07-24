@@ -12,7 +12,7 @@
 .holdings-card {
   display: flex;
   gap: 0.5rem;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-direction: row;
   border-radius: 0.375rem;
   padding: 0.5rem 0rem 0.5rem 0rem;
@@ -500,7 +500,6 @@
 @media screen and (max-width: $bp-large) {
   .holdings-card {
     display: grid;
-    justify-content: start;
     width: 100% !important;
     grid-template-rows: repeat(1, 1fr);
   }
