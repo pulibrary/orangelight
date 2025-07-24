@@ -90,9 +90,14 @@
 }
 
 .lux-card.medium {
+  display: flex;
+  flex-direction: column;
   width: 100% !important;
   padding: 16px 8px;
   border-radius: 10px;
+  .lux-text-style {
+    margin-top: auto;
+  }
 }
 
 .availability-column,
