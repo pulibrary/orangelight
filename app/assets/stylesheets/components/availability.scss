@@ -498,6 +498,7 @@
 @media screen and (max-width: $bp-large) {
   .holdings-card {
     display: grid;
+    justify-content: start;
     width: 100% !important;
     grid-template-rows: repeat(1, 1fr);
   }
