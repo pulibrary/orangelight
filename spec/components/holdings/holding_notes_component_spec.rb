@@ -50,7 +50,6 @@ RSpec.describe Holdings::HoldingNotesComponent, type: :component do
 
     it "renders location has list" do
       expect(rendered.css("ul.location-has")).to be_present
-      expect(rendered.text).to include("Location has")
       expect(rendered.text).to include("Has 1")
     end
   end
@@ -108,9 +107,9 @@ RSpec.describe Holdings::HoldingNotesComponent, type: :component do
     let(:holding) { { "shelving_title" => ["Title 1"] } }
     before { allow(adapter).to receive(:shelving_title?).with(holding).and_return(true) }
 
-    it "wraps notes in td.holding-details" do
-      expect(rendered.css("td.holding-details")).to be_present
-      expect(rendered.css("td.holding-details").text).to include("Shelving title")
+    it "wraps notes in .holding-details" do
+      expect(rendered.css(".holding-details")).to be_present
+      expect(rendered.css(".holding-details").text).to include("Shelving title")
     end
   end
 end

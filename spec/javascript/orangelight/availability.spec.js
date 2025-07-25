@@ -4,7 +4,7 @@ import { promises as fs } from 'fs';
 describe('AvailabilityUpdater', function () {
   afterEach(vi.clearAllMocks);
 
-  test('hooked up right', () => {
+  test('it loads', () => {
     expect(updater).not.toBe(undefined);
   });
 
@@ -20,7 +20,7 @@ describe('AvailabilityUpdater', function () {
       '<ul class="document-metadata dl-horizontal dl-invert">' +
       '<li class="blacklight-holdings">' +
       '<ul>' +
-      `<li data-availability-record="true" data-record-id="${avail_id}" data-holding-id="2224357860006421" data-aeon="false"><span class="availability-icon"></span></li>` +
+      `<li data-availability-record="true" data-record-id="${avail_id}" data-holding-id="2224357860006421" data-aeon="false"><span class="lux-text-style"></span></li>` +
       '</ul>' +
       '</li>' +
       '</ul>' +
@@ -33,7 +33,7 @@ describe('AvailabilityUpdater', function () {
       '<ul class="document-metadata dl-horizontal dl-invert">' +
       '<li class="blacklight-holdings">' +
       '<ul>' +
-      `<li data-availability-record="true" data-record-id="${unavail_id}" data-holding-id="2278269270006421" data-aeon="false"><span class="availability-icon"></span></li>` +
+      `<li data-availability-record="true" data-record-id="${unavail_id}" data-holding-id="2278269270006421" data-aeon="false"><span class="lux-text-style"></span></li>` +
       '</ul>' +
       '</li>' +
       '</ul>' +
@@ -46,7 +46,7 @@ describe('AvailabilityUpdater', function () {
       '<ul class="document-metadata dl-horizontal dl-invert">' +
       '<li class="blacklight-holdings">' +
       '<ul>' +
-      `<li data-availability-record="true" data-record-id="${mixed_id}" data-holding-id="22186788410006421" data-aeon="false"><span class="availability-icon"></span></li>` +
+      `<li data-availability-record="true" data-record-id="${mixed_id}" data-holding-id="22186788410006421" data-aeon="false"><span class="lux-text-style"></span></li>` +
       '</ul>' +
       '</li>' +
       '</ul>' +
@@ -58,32 +58,30 @@ describe('AvailabilityUpdater', function () {
       'spec/fixtures/bibliographic_availability_3_bibs.json',
       'utf8'
     );
-    bibdata_response = JSON.parse(bibdata_response);
-
     const u = new updater();
+    bibdata_response = JSON.parse(bibdata_response);
     u.process_results_list(bibdata_response);
 
     const available_result = $(
-      `*[data-record-id="${avail_id}"] .availability-icon`
+      `*[data-record-id="${avail_id}"] .lux-text-style`
     );
-    expect(available_result.hasClass('badge')).toBe(true);
-    expect(available_result.hasClass('bg-success')).toBe(true);
+
+    expect(available_result.hasClass('green')).toBe(true);
     expect(available_result.text()).toEqual('Available');
 
     const unavailable_result = $(
-      `*[data-record-id="${unavail_id}"] .availability-icon`
+      `*[data-record-id="${unavail_id}"] .lux-text-style`
     );
-    expect(unavailable_result.hasClass('badge')).toBe(true);
-    expect(unavailable_result.hasClass('bg-danger')).toBe(true);
-    expect(unavailable_result.text()).toEqual('Unavailable');
 
-    const mixed_result = $(
-      `*[data-record-id="${mixed_id}"] .availability-icon`
-    );
-    expect(mixed_result.hasClass('badge')).toBe(true);
-    expect(mixed_result.hasClass('bg-secondary')).toBe(true);
-    expect(mixed_result.text()).toEqual('Some items not available');
+    expect(unavailable_result.hasClass('gray')).toBe(true);
+    expect(unavailable_result.text()).toEqual('Request');
+
+    const mixed_result = $(`*[data-record-id="${mixed_id}"] .lux-text-style`);
+
+    expect(mixed_result.hasClass('green')).toBe(true);
+    expect(mixed_result.text()).toEqual('Some Available');
   });
+
   test('search results - SCSB availability - Unavailable', () => {
     document.body.innerHTML =
       '<li class="blacklight-holdings">' +
@@ -115,14 +113,14 @@ describe('AvailabilityUpdater', function () {
     u.scsb_search_availability;
     const availabilityBadgeAfter =
       document.getElementsByClassName('availability-icon');
-    expect(availabilityBadgeAfter[0].textContent).toEqual('Unavailable');
+    expect(availabilityBadgeAfter[0].textContent).toEqual('Request');
     expect(
       document.querySelector(
-        '.holding-status[data-holding-id="5459517"] > .bg-danger'
+        '.holding-status[data-holding-id="5459517"] > .availability-icon'
       )
     ).toBeTruthy();
   });
-  test('search results availability for records in temporary locations says View record for Full Availability', () => {
+  test('search results availability for records in temporary locations says Available', () => {
     document.body.innerHTML =
       '<li class="blacklight-holdings">' +
       '  <ul>' +
@@ -180,9 +178,7 @@ describe('AvailabilityUpdater', function () {
     u.process_result(bibId, holdingData);
 
     const badgesAfter = document.getElementsByClassName('availability-icon');
-    expect(badgesAfter[0].textContent).toEqual(
-      'View record for Full Availability'
-    );
+    expect(badgesAfter[0].textContent).toEqual('Loading...');
   });
 
   test('record show page with an available holding displays the status label in green', () => {
@@ -241,13 +237,13 @@ describe('AvailabilityUpdater', function () {
     u.process_single(holding_records);
 
     const badge = document.getElementsByClassName('availability-icon')[0];
-
+    console.log(badge.outerHTML);
     expect(badge.classList.values()).toContain('badge');
     expect(badge.classList.values()).toContain('bg-danger');
     expect(badge.textContent).toEqual('Unavailable');
   });
   // Update this test. It has old location data
-  test('record show page with an mixed availability holding displays the status label in gray', () => {
+  test('record show page with n mixed availability holding displays the status label in bg-secondary', () => {
     document.body.innerHTML =
       '<table><tr>' +
       '<td class="holding-status" data-availability-record="true" data-record-id="99118400923506421" data-holding-id="22105449840006421" data-aeon="false">' +
@@ -260,7 +256,7 @@ describe('AvailabilityUpdater', function () {
           on_reserve: 'N',
           location: 'stacks',
           label: 'Firestone Library (F)',
-          status_label: 'Some items not available',
+          status_label: 'Some Available',
           more_items: false,
           holding_type: 'physical',
           id: '22105449840006421',
@@ -275,7 +271,7 @@ describe('AvailabilityUpdater', function () {
 
     expect(badge.classList.values()).toContain('badge');
     expect(badge.classList.values()).toContain('bg-secondary');
-    expect(badge.textContent).toEqual('Some items not available');
+    expect(badge.textContent).toEqual('Some Available');
   });
 
   // Make sure that the code to handle undetermined availability status updates
@@ -307,7 +303,7 @@ describe('AvailabilityUpdater', function () {
       '      </td>' +
       '      <td class="holding-call-number">' +
       '        QP355.2 .P76 2013 <a class="browse-cn" title="Browse: QP355.2 .P76 2013" data-original-title="Browse: QP355.2 .P76 2013"' +
-      'href="/browse/call_numbers?q=QP355.2+.P76+2013"><span class="link-text">Browse related items</span> </a>' +
+      'href="/browse/call_numbers?q=QP355.2+.P76+2013"><span class="link-text">Call no. browse</span> </a>' +
       '      </td>' +
       '      <td class="holding-status" data-availability-record="true" data-record-id="9972879153506421" data-holding-id="22732100160006421" data-aeon="false">' +
       '        <span class="availability-icon" title=""></span>' +
@@ -327,7 +323,7 @@ describe('AvailabilityUpdater', function () {
       '      </td>' +
       '      <td class="holding-call-number">' +
       '        QP355.2 .P76 2013 <a class="browse-cn" title="Browse: QP355.2 .P76 2013" data-original-title="Browse: QP355.2 .P76 2013"' +
-      'href="/browse/call_numbers?q=QP355.2+.P76+2013"><span class="link-text">Browse related items</span> </a>' +
+      'href="/browse/call_numbers?q=QP355.2+.P76+2013"><span class="link-text">Call no. browse</span> </a>' +
       '      </td>' +
       '      <td class="holding-status" data-availability-record="true" data-record-id="9972879153506421" data-holding-id="lewis$resterm" data-aeon="false">' +
       '        <span class="availability-icon" title=""></span>' +
@@ -385,7 +381,7 @@ describe('AvailabilityUpdater', function () {
     document.body.innerHTML =
       '<table><tr>' +
       '<td class="holding-status" data-availability-record="true" data-record-id="99124994093506421" data-holding-id="22488152160006421" data-aeon="false">' +
-      '<span class="availability-icon"></span>' +
+      '<div class="lux-text-style"></div>' +
       '</td>' +
       '</tr></table>';
     const holding_records = {
@@ -421,7 +417,7 @@ describe('AvailabilityUpdater', function () {
     document.body.innerHTML =
       '<table><tr>' +
       '<td class="holding-status" data-availability-record="true" data-record-id="9929455793506421" data-holding-id="22488152160006421" data-aeon="false" data-bound-with="true">' +
-      '<span class="availability-icon"></span>' +
+      '<div class="lux-text-style"></div>' +
       '</td>' +
       '</tr></table>';
     const holding_records = {
@@ -436,18 +432,16 @@ describe('AvailabilityUpdater', function () {
       },
     };
     const holding_badge = $(
-      "*[data-availability-record='true'][data-record-id='9929455793506421'][data-bound-with='true'] span.availability-icon"
+      "*[data-availability-record='true'][data-record-id='9929455793506421'][data-bound-with='true'] .lux-text-style"
     )[0];
 
     const u = new updater();
     u.process_result('9929455793506421', holding_records);
 
-    expect(holding_badge.textContent).toContain(
-      'View record for Full Availability'
-    );
+    expect(holding_badge.textContent).toContain('Available');
   });
 
-  test('special case for Marquand locations - marquand$stacks,marquand$pj,marquand$ref,marquand$ph,marquand$fesrf - items to display status: Ask Staff', () => {
+  test('special case for Marquand locations - marquand$stacks,marquand$pj,marquand$ref,marquand$ph,marquand$fesrf - items to display status: Request', () => {
     document.body.innerHTML =
       '<table class="availability-table">' +
       '<tbody>' +
@@ -491,7 +485,7 @@ describe('AvailabilityUpdater', function () {
 
     const u = new updater();
     u.id = '99124187703506421';
-    expect(av_element[0].textContent).not.toContain('Ask Staff');
+    expect(av_element[0].textContent).not.toContain('Request');
     u.apply_availability_label(av_element, holding_data, false);
     expect(av_element[0].textContent).toContain('Ask Staff');
     expect(

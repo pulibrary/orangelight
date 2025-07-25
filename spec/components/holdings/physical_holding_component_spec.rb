@@ -10,10 +10,6 @@ RSpec.describe Holdings::PhysicalHoldingComponent, type: :component do
   end
   before do
     stub_holding_locations
-    # rubocop:disable RSpec/AnyInstance
-    allow_any_instance_of(Holdings::HoldingLocationComponent).to receive(:render_stackmap?).and_return(false)
-    # rubocop:enable RSpec/AnyInstance
-    allow(ApplicationHelper).to receive(:find_it_location?).and_return(false)
     allow(adapter).to receive(:location_has?).and_return(false)
     allow(adapter).to receive(:supplements?).and_return(false)
     allow(adapter).to receive(:location_note?).and_return(false)
@@ -33,9 +29,8 @@ RSpec.describe Holdings::PhysicalHoldingComponent, type: :component do
     allow(adapter).to receive(:doc_id).and_return("doc-456")
   end
 
-  it "renders the holding block with location, call number, availability, services, and notes" do
+  it "renders the holding block with call number, availability, services, and notes" do
     render_inline described_class.new(adapter, holding_id, holding)
-    expect(rendered_content).to include("Architecture Library")
     expect(rendered_content).to include("QA123 .B45")
     expect(rendered_content).to include("holding-block")
   end

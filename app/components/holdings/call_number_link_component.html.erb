@@ -1,10 +1,9 @@
-<td>
+<div>
 <% unless cn_value.nil? %>
   <span class="call-number"><%= holding['call_number'] %></span>
   <a href="<%= browse_url %>" class="browse-cn"
     data-original-title="<%= original_title %>">
     <span class="link-text"><%= I18n.t('blacklight.holdings.browse') %></span>
-    <span class="icon-bookslibrary"></span>
   </a>
 <% end %>
-</td>
+</div>

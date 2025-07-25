@@ -200,6 +200,10 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
     context 'aeon constituent record' do
       it 'links directly to aeon with data about the host and constituent' do
         visit("catalog/9923427953506421")
+
+        # open the desired holding group
+        find('summary', text: 'Special Collections - Rare Books').click
+
         expect(page).to have_link('Reading Room Request', href: Regexp.new('princeton\.aeon\.atlas-sys.*title=The\+reply\+of\+a\+member\+of\+Parliament.*CallNumber=HJ5118\+\.H4\+1733'))
       end
     end

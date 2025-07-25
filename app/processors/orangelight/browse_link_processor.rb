@@ -36,8 +36,13 @@ module Orangelight
 
       def add_links_to(value)
         return value unless should_render_links?(value)
-        link_to(value, "/?f[#{facet_field}][]=#{strip_tags(CGI.escape(strip_tags(value)))}", class: search_class, 'data-original-title' => "Search: #{strip_tags(value)}") + ' ' +
-          link_to('[Browse]', "/browse/#{browse_path}?q=#{CGI.escape(strip_tags(value))}", class: browse_class, 'data-original-title' => "Browse: #{strip_tags(value)}", dir: value.dir.to_s)
+
+        if context.action_name == "show"
+          link_to(value, "/?f[#{facet_field}][]=#{strip_tags(CGI.escape(strip_tags(value)))}", class: search_class, 'data-original-title' => "Search: #{strip_tags(value)}") + ' ' +
+            link_to('[Browse]', "/browse/#{browse_path}?q=#{CGI.escape(strip_tags(value))}", class: browse_class, 'data-original-title' => "Browse: #{strip_tags(value)}", dir: value.dir.to_s)
+        else
+          link_to(value, "/?f[#{facet_field}][]=#{strip_tags(CGI.escape(strip_tags(value)))}", class: search_class, 'data-original-title' => "Search: #{strip_tags(value)}", dir: value.dir.to_s)
+        end
       end
 
       def should_render_links?(value)

@@ -78,11 +78,10 @@ module ApplicationHelper
 
   # Location display in the search results page
   def search_location_display(holding)
-    location = holding_location_label(holding)
-    render_arrow = (location.present? && holding['call_number'].present?)
-    arrow = render_arrow ? ' &raquo; ' : ''
-    location_display = content_tag(:span, location, class: 'results_location') + arrow.html_safe +
-                       content_tag(:span, holding['call_number'], class: 'call-number')
+    location = holding_library_label(holding)
+    pin = content_tag(:span, "", class: 'icon icon-location')
+    location_display = content_tag(:div, pin.html_safe + location, class: 'results_location row') + " " +
+                       content_tag(:div, CallNumber.new(holding['call_number']).with_line_break_suggestions, class: 'call-number')
     location_display.html_safe
   end
 
@@ -160,14 +159,6 @@ module ApplicationHelper
     all_links
   end
 
-  def format_icon(args)
-    icon = render_icon(args[:document][args[:field]][0]).to_s
-    formats = format_render(args)
-    content_tag :ul do
-      content_tag :li, " #{icon} #{formats} ".html_safe, class: 'blacklight-format', dir: 'ltr'
-    end
-  end
-
   def format_render(args)
     args[:document][args[:field]].join(', ')
   end
@@ -211,10 +202,19 @@ module ApplicationHelper
   end
 
   def holding_location_label(holding)
-    loc_code = holding['location_code']
-    location = bibdata_location_code_to_sym(loc_code) unless loc_code.nil?
+    location_code = holding['location_code']
+    bibdata_location = bibdata_location_code_to_sym(location_code) unless location_code.nil?
     # If the Bibdata location is nil, use the location value from the solr document.
-    alma_location_display(holding, location) unless location.blank? && holding.blank?
+    alma_location_display(holding, bibdata_location) unless bibdata_location.blank? && holding.blank?
+  end
+
+  def holding_library_label(holding)
+    location_code = holding['location_code']
+
+    bibdata_location = bibdata_location_code_to_sym(location_code) unless location_code.nil?
+    return holding['library'] if bibdata_location.nil?
+
+    alma_library_display(holding, bibdata_location) unless bibdata_location.blank? && holding.blank?
   end
 
   # Alma location display on search results
@@ -224,6 +224,11 @@ module ApplicationHelper
     else
       [location['library']['label'], location['label']].select(&:present?).join(' - ')
     end
+  end
+
+  def alma_library_display(holding, bibdata_location)
+    return holding['library'] if bibdata_location.nil?
+    bibdata_location['library']['label']
   end
 
   # location = Bibdata.holding_locations[value.to_sym]

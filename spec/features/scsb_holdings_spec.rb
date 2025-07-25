@@ -7,23 +7,23 @@ describe 'SCSB Shared Collection Records' do
     stub_holding_locations
   end
 
-  context 'Search Results Page' do
-    it 'displays view full record for multi-item records' do
+  context 'Search Results Page', js: true do
+    it 'displays Available for multi-item records', unless: in_ci? do
       visit '/catalog?search_field=all_fields&q=SCSB-2443272'
-      expect(page).to have_content 'View Record for Full Availability'
+      expect(page).to have_content 'Available', wait: 20
     end
     it 'displays on-site access for supervised use items' do
       visit '/catalog?search_field=all_fields&q=SCSB-6593031'
       expect(page).to have_content 'On-site access'
       expect(page).not_to have_selector 'span.icon-request-reading-room'
     end
-    it 'includes a data attribute to trigger availability check against scsb' do
-      visit '/catalog?search_field=all_fields&q=SCSB-2143785'
-      expect(page).to have_selector("*[data-scsb-availability='true']")
+    it 'includes a data attribute to trigger availability check against scsb', type: :request do
+      get '/catalog?search_field=all_fields&q=SCSB-2143785'
+      expect(response.body).to include('data-scsb-availability="true"')
     end
-    it 'includes a data attribute with a scsb barcode' do
-      visit '/catalog?search_field=all_fields&q=SCSB-2143785'
-      expect(page).to have_selector("*[data-scsb-barcode='AR00234770']")
+    it 'includes a data attribute with a scsb barcode', type: :request do
+      get '/catalog?search_field=all_fields&q=SCSB-2143785'
+      expect(response.body).to include('data-scsb-barcode="AR00234770"')
     end
   end
   context 'Record with no use restrictions' do

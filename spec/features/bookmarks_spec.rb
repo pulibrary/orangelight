@@ -64,7 +64,7 @@ RSpec.describe 'bookmarks' do
       visit "/bookmarks"
       expect(page).to have_content 'Bookmarks (1)'
 
-      uncheck 'In Bookmarks'
+      click_button 'In Bookmarks'
 
       expect(page).to have_content 'Bookmarks (0)'
     end

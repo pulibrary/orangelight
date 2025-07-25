@@ -64,6 +64,38 @@ RSpec.describe ApplicationHelper do
     end
   end
 
+  describe '#holding_library_label' do
+    let(:holding) { { 'location_code' => 'firestone$stacks', 'library' => { 'label' => 'Firestone Library' } } }
+
+    before do
+      stub_holding_locations
+    end
+
+    it 'returns the library label for a valid location code' do
+      expect(holding_library_label(holding)).to eq('Firestone Library')
+    end
+
+    it 'returns the correct label when library label is a string and location_code is valid' do
+      holding = { 'location_code' => 'firestone$stacks', 'library' => { 'label' => 'Firestone Library' } }
+      expect(holding_library_label(holding)).to eq('Firestone Library')
+    end
+  end
+
+  describe '#bibdata_location_code_to_sym' do
+    let(:location_code) { 'rare$num' }
+    let(:location_data) do
+      { "label" => "Numismatics Collection", "code" => "rare$num", "aeon_location" => true, "recap_electronic_delivery_location" => false, "open" => false, "requestable" => true, "always_requestable" => true, "circulates" => false, "remote_storage" => "", "fulfillment_unit" => "Closed", "url" => "https://bibdata-qa.princeton.edu/locations/holding_locations/rare$num.json", "library" => { "label" => "Special Collections", "code" => "rare", "order" => 0 }, "holding_library" => nil }
+    end
+
+    before do
+      allow(Bibdata).to receive(:holding_locations).and_return({ location_code.to_sym => location_data })
+    end
+
+    it 'returns the location data from Bibdata for the given code' do
+      expect(helper.bibdata_location_code_to_sym(location_code)).to eq(location_data)
+    end
+  end
+
   describe '#aeon_location?' do
     let(:loc) { { aeon_location: true } }
 

@@ -2,11 +2,23 @@
 <span class="Z3988" aria-hidden='true' title="<%= document.export_as_openurl_ctx_kev %>"></span>
 <ul class="document-metadata dl-horizontal dl-invert">
   <%= render IndexMetadataComponent.new presenter: doc_presenter %>
-  <li class="blacklight-holdings"><%= holding_block_search(document) %></li>
 </ul>
+  <div class="lux">
+    <% physical_block = holding_block_search(document) -%>
+    <% online_block = online_content_block(document) -%>
+    <% if physical_block.present? || online_block.present? -%>
+      <%= holding_block_search(document) -%>
+      <%= online_content_block(document) -%>
+    <% else -%>
+      <div><%= t('blacklight.holdings.search_missing') %></div>
+    <% end -%>
+  </div>
 </div>
 
-  <div class="thumbnail-wrapper">
-    <%= render Blacklight::Document::BookmarkComponent.new document:, action: %>
-    <%= render ThumbnailComponent.new document: %>
+  <div class="thumbnail-wrapper lux">
+    <bookmark-button
+      v-bind:in-bookmarks="<%= bookmarked? document %>"
+      v-bind:logged-in="<%= !!current_user %>"
+      document-id="<%= document.id %>"></bookmark-button>
+      <%= render ThumbnailComponent.new document: %>
   </div>

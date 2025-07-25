@@ -8,7 +8,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
   def self.online_link(bib_id, holding_id)
     children = content_tag(
       :span, 'Link Missing',
-      class: 'availability-icon badge bg-secondary'
+      class: 'lux-text-style gray'
     )
     # AJAX requests are made using availability.js here
     content_tag(:div, children.html_safe,
@@ -89,9 +89,10 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
       date_range = "#{start_date} - #{end_date}: " if start_date && end_date
       label = new_tab_icon("#{date_range}#{portfolio['title']}")
       link = link_to(label, portfolio["url"], target: '_blank', rel: 'noopener')
-      link += " #{portfolio['desc']}"
+      link += "<br/> <lux-show-more v-bind:character-limit=150 show-label='See more' hide-label='See less'>#{portfolio['desc']}</lux-show-more><br/>".html_safe
+
       link = "#{link} (#{portfolio['notes'].join(', ')})" if portfolio['notes']&.any?
-      markup << content_tag(:li, link.html_safe, class: 'electronic-access')
+      markup << content_tag(:li, link.html_safe, class: 'electronic-access lux')
     end
 
     markup

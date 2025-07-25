@@ -1,34 +1,6 @@
-@import "variables/breaks";
-@import "variables/colors";
-@import "variables/typography";
-
-.checkbox.toggle-bookmark {
-  margin-bottom: 5px;
-  padding: 0;
-  text-align: center;
-
-  label {
-    cursor: pointer;
-    margin-left: -10px;
-  }
-}
-
-.checkbox.bookmark_all {
-  margin-left: 3px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.checkbox.bookmark_all {
-  float: right;
-
-  label {
-    padding: 0;
-    display: inline-block;
-    margin: 0;
-  }
-
-  input {
-    display: none;
-  }
+// Reserve some space before Vue renders the bookmark-all-button
+// component, so that we avoid a layout shift
+bookmark-all-button {
+  width: calc(12ch + 25px);
+  height: calc(1.5rem + 20px);
 }
