@@ -62,6 +62,14 @@ RSpec.describe Requests::Holding, requests: true do
       expect(holding.full_location_name).to eq 'Lewis Library - Course Reserve'
     end
 
+    it 'does not include the hyphen if location name is empty' do
+      holding = described_class.new(
+        mfhd_id: "22749747440006421",
+        holding_data: JSON.parse('{"location_code":"eastasian$cjk","location":"","library":"East Asian Library","call_number":"DS747.45 .S673 2025"}')
+      )
+      expect(holding.full_location_name).to eq 'East Asian Library'
+    end
+
     it 'does not repeat the library name if it is also included in the location name' do
       holding = described_class.new(
         mfhd_id: "22749747440006421",
