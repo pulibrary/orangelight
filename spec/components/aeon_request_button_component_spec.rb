@@ -14,7 +14,7 @@ RSpec.describe AeonRequestButtonComponent, type: :component do
   end
   subject { render_inline(described_class.new(document:)) }
   it "renders a link with the appropriate classes" do
-    expect(subject.css('a').attribute('class').to_s).to eq('request btn btn-xs btn-primary')
+    expect(subject.css('a').attribute('class').to_s).to eq('request btn btn-sm btn-primary')
   end
   it 'renders the typical request text' do
     expect(subject.css('a').text).to eq('Reading Room Request')

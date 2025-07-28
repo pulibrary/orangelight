@@ -309,7 +309,7 @@ describe('AvailabilityUpdater', function () {
       '        <span class="availability-icon" title=""></span>' +
       '      </td>' +
       '      <td class="location-services service-conditional" data-open="true" data-requestable="true" data-aeon="false" data-holding-id="22732100160006421">' +
-      '        <a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary"' +
+      '        <a title="View Options to Request copies from this Location" class="request btn btn-sm btn-primary"' +
       'href="/requests/9972879153506421?mfhd=22732100160006421">Request</a>' +
       '      </td>' +
       '      <td class="holding-details">' +
@@ -329,7 +329,7 @@ describe('AvailabilityUpdater', function () {
       '        <span class="availability-icon" title=""></span>' +
       '      </td>' +
       '      <td class="location-services service-conditional" data-open="false" data-requestable="true" data-aeon="false" data-holding-id="lewis$resterm">' +
-      '        <a title="" class="request btn btn-xs btn-primary" href="/requests/9972879153506421?mfhd=22732100140006421" data-original-title="View Options to Request copies' +
+      '        <a title="" class="request btn btn-sm btn-primary" href="/requests/9972879153506421?mfhd=22732100140006421" data-original-title="View Options to Request copies' +
       'from this Location">Request</a>' +
       '      </td>' +
       '      <td class="holding-details">' +
@@ -454,7 +454,7 @@ describe('AvailabilityUpdater', function () {
       '      <span class="availability-icon"></span>' +
       '    </td>' +
       '    <td class="location-services service-conditional" data-open="false" data-requestable="true" data-aeon="false" data-holding-id="22642015240006421">' +
-      '     <a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary" href="/requests/99124187703506421?mfhd=22642015240006421">Request</a>' +
+      '     <a title="View Options to Request copies from this Location" class="request btn btn-sm btn-primary" href="/requests/99124187703506421?mfhd=22642015240006421">Request</a>' +
       '    </td>' +
       '    <td class="holding-details">' +
       '      <ul class="item-status" data-record-id="99124187703506421" data-holding-id="22642015240006421"></ul>' +
@@ -634,7 +634,7 @@ describe('AvailabilityUpdater', function () {
       '  <span class="availability-icon" title="">Available</span>' +
       '</td>' +
       '<td class="location-services service-conditional" data-open="true" data-requestable="true" data-aeon="false" data-holding-id="22936525030006421">' +
-      '<a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary" href="/requests/99118399983506421?mfhd=22555936970006421">Request</a>' +
+      '<a title="View Options to Request copies from this Location" class="request btn btn-sm btn-primary" href="/requests/99118399983506421?mfhd=22555936970006421">Request</a>' +
       '</td>';
     ('<tr><table>');
     const res_share_response = {
@@ -661,7 +661,7 @@ describe('AvailabilityUpdater', function () {
     u.update_single(res_share_response, u.id);
     expect(
       document.querySelector(
-        '.location-services.service-conditional[data-holding-id="22936525030006421"] > .btn.btn-xs.btn-primary'
+        '.location-services.service-conditional[data-holding-id="22936525030006421"] > .btn.btn-sm.btn-primary'
       ).style.display
     ).not.toBe('none');
     expect(

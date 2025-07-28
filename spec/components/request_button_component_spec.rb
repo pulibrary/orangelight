@@ -8,7 +8,7 @@ RSpec.describe RequestButtonComponent, type: :component do
   end
   subject { render_inline(described_class.new(location:, doc_id: '123', holding_id: '456')) }
   it "renders a link with the appropriate classes" do
-    expect(subject.css('a').attribute('class').to_s).to eq('request btn btn-xs btn-primary')
+    expect(subject.css('a').attribute('class').to_s).to eq('request btn btn-sm btn-primary')
   end
   it 'does not render a tooltip' do
     expect(subject.css('a').attribute('title')).to be_falsey
