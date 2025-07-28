@@ -20,7 +20,7 @@ module Requests
       if location_name.starts_with? library_name
         location_name
       else
-        "#{library_name} - #{location_name}"
+        [library_name, location_name].compact_blank.join(' - ')
       end
     end
 
