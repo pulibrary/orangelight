@@ -15,6 +15,7 @@ module Requests
       system_id = sanitize(params[:system_id])
       mfhd = sanitize(params[:mfhd])
       params.require(:mfhd) unless system_id.starts_with?("SCSB") # there are not multiple locations for shared items so no MFHD is passed
+      @back_to_record_url = BackToRecordUrl.new(params)
 
       @user = current_or_guest_user
 
@@ -25,9 +26,8 @@ module Requests
       @title = "Request ID: #{system_id}"
 
       # needed to see if we can suppress login for this item
-      @request = FormDecorator.new(Requests::Form.new(system_id:, mfhd:, patron: @patron), view_context)
+      @request = FormDecorator.new(Requests::Form.new(system_id:, mfhd:, patron: @patron), view_context, @back_to_record_url)
     rescue ActionController::ParameterMissing
-      @system_id = system_id
       render 'requests/form/no_location_specified'
     end
 

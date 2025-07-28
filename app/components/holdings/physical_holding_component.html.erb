@@ -17,7 +17,7 @@
       <%= render Holdings::HoldingAvailabilityComponent.new(doc_id, holding_id, location_rules, temp_location_code) %>
     <% end %>
 
-    <%= render(Holdings::LocationServicesComponent.new(adapter, holding_id, location_rules, holding)) %>
+    <%= render(Holdings::LocationServicesComponent.new(adapter, holding_id, location_rules, holding, open_holdings)) %>
 </tr>
 
 
