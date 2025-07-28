@@ -24,7 +24,8 @@ module ApplicationHelper
     adapter = HoldingRequestsAdapter.new(document, Bibdata)
     markup_builder = HoldingRequestsBuilder.new(adapter:,
                                                 online_markup_builder: OnlineHoldingsMarkupBuilder,
-                                                physical_markup_builder: PhysicalHoldingsMarkupBuilder)
+                                                physical_markup_builder: PhysicalHoldingsMarkupBuilder,
+                                                params:)
     online_markup, physical_markup = markup_builder.build
     [online_markup, physical_markup]
   end
