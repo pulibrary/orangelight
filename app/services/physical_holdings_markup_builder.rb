@@ -10,8 +10,10 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
 
   # Constructor
   # @param adapter [HoldingRequestsAdapter] adapter for the SolrDocument and Bibdata API
-  def initialize(adapter)
+  # @param params [ActionController::Parameters]
+  def initialize(adapter, params = ActionController::Parameters.new)
     @adapter = adapter
+    @params = params.permit(:open_holdings)
   end
 
   # Builds the markup for online and physical holdings for a given record
@@ -22,11 +24,13 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
 
   private
 
+    attr_reader :params
+
     # Generate the markup for physical holdings
     # @return [String] the markup
     def physical_holdings
       @adapter.grouped_physical_holdings.each_with_index.map do |group, index|
-        render_component(Holdings::PhysicalHoldingGroupComponent.new(adapter:, group:, index:))
+        render_component(Holdings::PhysicalHoldingGroupComponent.new(adapter:, group:, open: open_group?(index, group)))
       end.join
     end
 
@@ -47,5 +51,9 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
 
     def view_context
       @view_context ||= ApplicationController.new.view_context
+    end
+
+    def open_group?(index, group)
+      index.zero? || params[:open_holdings] == group.group_name
     end
 end

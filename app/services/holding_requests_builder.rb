@@ -28,10 +28,12 @@ class HoldingRequestsBuilder
   # @param adapter [HoldingRequestsAdapter] adapter for the SolrDocument and Bibdata API
   # @param online_markup_builder [Class] the builder class for online holdings blocks
   # @param physical_markup_builder [Class] the builder class for physical holdings blocks
-  def initialize(adapter:, online_markup_builder:, physical_markup_builder:)
+  # @param params [ActionController::Parameters]
+  def initialize(adapter:, online_markup_builder:, physical_markup_builder:, params:)
     @adapter = adapter
     @online_markup_builder = online_markup_builder
     @physical_markup_builder = physical_markup_builder
+    @params = params
   end
 
   # Builds the markup for online and physical holdings for a given record
@@ -40,11 +42,15 @@ class HoldingRequestsBuilder
     online_builder = @online_markup_builder.new(@adapter)
     online_markup = online_builder.build
 
-    physical_builder = @physical_markup_builder.new(@adapter)
+    physical_builder = @physical_markup_builder.new(@adapter, params)
     physical_markup = physical_builder.build
 
     physical_markup = self.class.missing_holdings if physical_markup.blank? && online_markup.blank?
 
     [online_markup, physical_markup]
   end
+
+  private
+
+    attr_reader :params
 end
