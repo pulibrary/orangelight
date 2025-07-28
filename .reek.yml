@@ -475,7 +475,6 @@ detectors:
     - HoldingRequestsBuilder
     - OAuthService::CouldNotGenerateOAuthToken
     - OnlineHoldingsMarkupBuilder
-    - PhysicalHoldingsMarkupBuilder
     - Requests::BibdataService
     - StackmapLocationFactory
     - EventHandler
