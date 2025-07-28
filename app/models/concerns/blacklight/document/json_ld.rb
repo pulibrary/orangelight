@@ -95,7 +95,7 @@ module Blacklight::Document::JsonLd
   end
 
   def title_language
-    self['language_iana_s']&.first.presence
+    self['mult_languages_iana_s']&.first.presence
   end
 
   def contributors
