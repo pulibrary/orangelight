@@ -9,19 +9,6 @@ describe 'sorting', type: :system, js: false do
     stub_holding_locations
   end
 
-  context 'the catalog page' do
-    it 'includes relevance' do
-      visit '/catalog?search_field=all_fields&q=engineering'
-      sort_dropdown = page.find("#sort-dropdown")
-      expect(sort_dropdown.text).to eq("Sort by relevance\nrelevance year (newest first) year (oldest first) author title date cataloged")
-      sort_dropdown.click
-      within('#sort-dropdown') do
-        expect(page).to have_link('relevance')
-        expect(page).not_to have_link('library')
-      end
-    end
-  end
-
   context 'the bookmarks page' do
     before do
       Bookmark.create(user:, document_id: "99106471643506421", document_type: "SolrDocument")
@@ -31,10 +18,9 @@ describe 'sorting', type: :system, js: false do
 
     it 'includes library' do
       sort_dropdown = page.find("#sort-dropdown")
-      expect(sort_dropdown.text).to eq("Sort by relevance\nrelevance library year (newest first) year (oldest first) author title date cataloged")
+      expect(sort_dropdown.text).to eq("Sort by library\nlibrary year (newest first) year (oldest first) author title date cataloged")
       sort_dropdown.click
       within('#sort-dropdown') do
-        expect(page).to have_link('relevance')
         expect(page).to have_link('library')
       end
     end
