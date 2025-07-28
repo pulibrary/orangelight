@@ -32,6 +32,10 @@
 }
 
 .document-metadata {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
   line-height: 1.5em;
   vertical-align: middle;
   margin-bottom: 0;
