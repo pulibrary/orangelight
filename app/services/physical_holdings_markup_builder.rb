@@ -1,5 +1,7 @@
-# frozen_string_literal: false
+# frozen_string_literal: true
 
+# This builder is responsible for constructing all markup for physical holdings
+# on the catalog show page
 class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   include ApplicationHelper
 
@@ -13,7 +15,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   end
 
   # Builds the markup for online and physical holdings for a given record
-  # @return [String] the markup for the online and physical holdings
+  # @return [String] the markup for the physical holdings
   def build
     physical_holdings_block
   end
@@ -23,20 +25,20 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     # Generate the markup for physical holdings
     # @return [String] the markup
     def physical_holdings
-      markup = ''
-      @adapter.grouped_physical_holdings.each_with_index do |group, index|
-        markup << render_component(Holdings::PhysicalHoldingGroupComponent.new(adapter:, group:, index:))
-      end
-      markup
+      @adapter.grouped_physical_holdings.each_with_index.map do |group, index|
+        render_component(Holdings::PhysicalHoldingGroupComponent.new(adapter:, group:, index:))
+      end.join
     end
 
     # Generate the markup block for physical holdings
     # @return [String] the markup
     def physical_holdings_block
-      markup = ''
       children = physical_holdings
-      markup = self.class.content_tag(:tbody, children.html_safe) unless children.empty?
-      markup
+      if children.empty?
+        ''
+      else
+        self.class.content_tag(:tbody, children.html_safe)
+      end
     end
 
     def render_component(component)
