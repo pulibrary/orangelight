@@ -4,7 +4,7 @@ require 'rails_helper'
 describe Requests::FormDecorator, requests: true do
   include ActionView::TestCase::Behavior
 
-  subject(:decorator) { described_class.new(request, view) }
+  subject(:decorator) { described_class.new(request, view, '/catalog/123abc') }
   let(:user) { FactoryBot.build(:user) }
   let(:test_patron) do
     { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
@@ -34,12 +34,6 @@ describe Requests::FormDecorator, requests: true do
   describe "#bib_id" do
     it 'is the system id' do
       expect(decorator.bib_id).to eq('123abc')
-    end
-  end
-
-  describe "#catalog_url" do
-    it 'points to the catalog' do
-      expect(decorator.catalog_url).to eq('/catalog/123abc')
     end
   end
 
@@ -193,7 +187,7 @@ describe Requests::FormDecorator, requests: true do
       request2 = instance_double(Requests::RequestableDecorator, aeon?: true)
       request = instance_double(Requests::Form, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [request1, request2], patron:, first_filtered_requestable: requestable,
                                                 hidden_field_metadata: { title: 'title', author: 'author', isbn: 'isbn' })
-      decorator = described_class.new(request, view)
+      decorator = described_class.new(request, view, '/catalog/123abc')
       expect(decorator.only_aeon?).to be_truthy
     end
 
@@ -202,7 +196,7 @@ describe Requests::FormDecorator, requests: true do
       request2 = instance_double(Requests::RequestableDecorator, aeon?: false)
       request = instance_double(Requests::Form, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [request1, request2], patron:, first_filtered_requestable: requestable,
                                                 hidden_field_metadata: { title: 'title', author: 'author', isbn: 'isbn' })
-      decorator = described_class.new(request, view)
+      decorator = described_class.new(request, view, '/catalog/123abc')
       expect(decorator.only_aeon?).to be_falsey
     end
   end
@@ -211,21 +205,21 @@ describe Requests::FormDecorator, requests: true do
     it "shows the library name" do
       request = instance_double(Requests::Form, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [], patron:, first_filtered_requestable: requestable,
                                                 hidden_field_metadata: { title: 'title', author: 'author', isbn: 'isbn' }, holdings: { '112233' => { "library" => 'abc' } })
-      decorator = described_class.new(request, view)
+      decorator = described_class.new(request, view, '/catalog/123abc')
       expect(decorator.location_label).to eq('abc')
     end
 
     it "shows the library name and location" do
       request = instance_double(Requests::Form, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [], patron:, first_filtered_requestable: requestable,
                                                 hidden_field_metadata: { title: 'title', author: 'author', isbn: 'isbn' }, holdings: { '112233' => { "library" => 'abc', "location" => "123" } })
-      decorator = described_class.new(request, view)
+      decorator = described_class.new(request, view, '/catalog/123abc')
       expect(decorator.location_label).to eq('abc - 123')
     end
 
     it "shows the nothing if the holding is empty" do
       request = instance_double(Requests::Form, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [], patron:, first_filtered_requestable: requestable,
                                                 hidden_field_metadata: { title: 'title', author: 'author', isbn: 'isbn' }, holdings: {})
-      decorator = described_class.new(request, view)
+      decorator = described_class.new(request, view, '/catalog/123abc')
       expect(decorator.location_label).to eq('')
     end
   end

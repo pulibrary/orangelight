@@ -11,21 +11,18 @@ module Requests
 
     alias bib_id system_id
 
-    attr_reader :request, :view_context, :first_filtered_requestable, :non_requestable_message
-    def initialize(request, view_context)
+    attr_reader :request, :view_context, :first_filtered_requestable, :non_requestable_message, :back_to_record_url
+    def initialize(request, view_context, back_to_record_url)
       @request = request
       @view_context = view_context
       @requestable_list = request.requestable.map { |req| RequestableDecorator.new(req, view_context) }
       @first_filtered_requestable = RequestableDecorator.new(request.first_filtered_requestable, view_context)
       @non_requestable_message = "See Circulation Desk, there are no requestable items for this record"
+      @back_to_record_url = back_to_record_url
     end
 
     def requestable
       @requestable_list
-    end
-
-    def catalog_url
-      "/catalog/#{system_id}"
     end
 
     # rubocop:disable Rails/OutputSafety
