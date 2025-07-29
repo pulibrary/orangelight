@@ -248,3 +248,9 @@
 .holding-details .lux-show-more button.lux-button {
   font-size: var(--font-size-small);
 }
+
+.lux-button.outline.small {
+  padding: 5px 10px 5px 2px !important;
+  border: 1px solid #E1E1E1 !important ;
+  border-radius: 10px !important;
+}

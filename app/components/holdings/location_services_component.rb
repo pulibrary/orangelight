@@ -3,17 +3,19 @@
 # which services are available for a holding, given
 # its location (typically some type of Request button)
 # :reek:TooManyMethods
+# :reek:TooManyInstanceVariables
 class Holdings::LocationServicesComponent < ViewComponent::Base
-  def initialize(adapter, holding_id, location_rules, holding)
+  def initialize(adapter, holding_id, location_rules, holding, open_holdings = nil)
     @adapter = adapter
     @holding_id = holding_id
     @location_rules = location_rules
     @holding = holding
+    @open_holdings = open_holdings
   end
 
     private
 
-      attr_reader :adapter, :holding_id, :location_rules, :holding
+      attr_reader :adapter, :holding_id, :location_rules, :holding, :open_holdings
 
       def doc_id
         holding["mms_id"] || adapter.doc_id
@@ -29,16 +31,16 @@ class Holdings::LocationServicesComponent < ViewComponent::Base
         if holding_id == 'thesis' || numismatics?
           AeonRequestButtonComponent.new(document:, holding: holding_hash, url_class: Requests::NonAlmaAeonUrl)
         elsif items && items.length > 1
-          RequestButtonComponent.new(doc_id:, holding_id:, location: location_rules)
+          RequestButtonComponent.new(doc_id:, holding_id:, location: location_rules, open_holdings:)
         elsif aeon_location?
           AeonRequestButtonComponent.new(document:, holding: holding_hash)
         elsif scsb_location?
-          RequestButtonComponent.new(doc_id:, location: location_rules, holding:)
+          RequestButtonComponent.new(doc_id:, location: location_rules, holding:, open_holdings:)
         elsif temporary_holding_id?
           holding_identifier = temporary_location_holding_id_first
-          RequestButtonComponent.new(doc_id:, holding_id: holding_identifier, location: location_rules)
+          RequestButtonComponent.new(doc_id:, holding_id: holding_identifier, location: location_rules, open_holdings:)
         else
-          RequestButtonComponent.new(doc_id:, holding_id:, location: location_rules)
+          RequestButtonComponent.new(doc_id:, holding_id:, location: location_rules, open_holdings:)
         end
       end
       # rubocop:enable Lint/DuplicateBranch

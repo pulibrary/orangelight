@@ -94,7 +94,7 @@ describe 'Account login' do
         expect(page).to have_link('Log in with netID')
         click_link('Log in with netID')
         expect(page).to have_content('Library Material Request')
-        expect(page).to have_current_path('/requests/SCSB-2143785?aeon=false')
+        expect(page.current_path).to start_with('/requests/SCSB-2143785')
         expect(page).to have_selector('#request_3270290')
       end
 
