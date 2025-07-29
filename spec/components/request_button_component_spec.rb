@@ -59,4 +59,11 @@ RSpec.describe RequestButtonComponent, type: :component do
       end
     end
   end
+  context 'when open_holdings is provided' do
+    subject { render_inline(described_class.new(location:, doc_id: '123', holding_id: '456', open_holdings: 'Firestone Library - Stacks')) }
+
+    it 'includes it in the link url' do
+      expect(subject.css('a').attribute('href').text).to eq('/requests/123?aeon=false&mfhd=456&open_holdings=Firestone+Library+-+Stacks')
+    end
+  end
 end

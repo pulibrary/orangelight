@@ -23,7 +23,7 @@
         </tr>
       </thead>
       <% group.holdings.each do |holding| %>
-        <%= render Holdings::PhysicalHoldingComponent.new(adapter, holding.mfhd_id, holding.holding_data) %>
+        <%= render Holdings::PhysicalHoldingComponent.new(adapter, holding.mfhd_id, holding.holding_data, group.group_name) %>
       <% end %>
     </table>
   </div>
