@@ -1,6 +1,6 @@
 <% document = @request.try(:request)&.doc %>
 <div class="col-12">
-    <%= render partial: 'return_to_record_link', locals: {record_url: @request.catalog_url} %>
+    <%= render partial: 'return_to_record_link', locals: {back_to_record_url: @request.back_to_record_url} %>
     <div class="doc-<%= @request.system_id %>">
         <h1>
           <%= request_title %>

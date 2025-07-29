@@ -49,7 +49,7 @@
 }
 
 .holdings-card article.lux-card {
-  padding: var(--space-xx-small);
+  padding: var(--space-x-small);
 }
 
 .holdings-card article.lux-card {
@@ -72,10 +72,11 @@
 
 .library-location {
   flex: 1 1 0px;
+  padding-right: 0.2rem;
   .icon-location {
-    display: grid;
+    display: flex;
     padding: 0;
-    place-items: center;
+    align-items: center;
   }
   .results_location {
     display: flex;
