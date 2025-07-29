@@ -201,7 +201,7 @@ export default class AvailabilityUpdater {
   process_single(holding_records) {
     this.update_single(holding_records, this.id);
     // Availability response in bibdata should be refactored not to include the host holdings under the mms_id of the record page.
-    // problematic availability response behaviour for constituent record page with host records.
+    // problematic availability response behavior for constituent record page with host records.
     // It treats host records as holdings of the constituent record. see: https://github.com/pulibrary/bibdata/issues/1739
     if (this.host_id.length > 0) {
       this.host_id.forEach((mms_id) => {
