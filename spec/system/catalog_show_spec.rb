@@ -210,7 +210,7 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
     context 'aeon holding with multiple items' do
       it 'links to the requests form so user can select the item they want' do
         visit("catalog/9930960283506421")
-        expect(page).to have_link('Reading Room Request', href: '/requests/9930960283506421?aeon=true&mfhd=22632199160006421')
+        expect(page).to have_link('Reading Room Request', href: '/requests/9930960283506421?aeon=true&mfhd=22632199160006421&open_holdings=Special+Collections+-+East+Asian+Library+Rare+Books')
       end
     end
   end
