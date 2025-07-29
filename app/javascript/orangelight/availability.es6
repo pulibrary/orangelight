@@ -325,6 +325,7 @@ export default class AvailabilityUpdater {
             );
             result.push(availability_element);
           } else {
+            availability_element.addClass('bg-danger');
             availability_element.text(
               availability_info['itemAvailabilityStatus']
             );
