@@ -7,6 +7,7 @@
   // padding: 0 0 1.5em;
   margin: 0;
   padding: 0.75em 0 0.5em;
+  font-family: 'Libre Franklin', 'Dejavu Sans', Helvetica, sans-serif;
 }
 
 .documents-list dl {
@@ -15,8 +16,10 @@
 
 .documents-list .document h3.document-title-heading {
   padding-left: 0;
-  font-size: 1.3em;
+  font-size: 1.25rem;
   margin-top: 0;
+  font-weight: 550;
+  font-style: normal;
 }
 
 .document .blacklight-format .icon {
@@ -57,6 +60,10 @@
 
   .search-metadata {
     color: $dark-gray;
+    font-size: 0.875rem;
+    .search-name {
+      font-size: 1rem;
+    }
   }
 }
 

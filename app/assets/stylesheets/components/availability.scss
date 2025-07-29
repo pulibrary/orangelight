@@ -6,7 +6,8 @@
   padding: 0;
   margin-left: 22px;
   flex: 1 1 0px;
-  align-content: flex-end
+  align-content: flex-end;
+  font-size: 0.75rem;
 }
 
 .holdings-card {
@@ -83,11 +84,15 @@
     flex-wrap: nowrap;
     margin: auto;
     color: var(--color-bleu-de-france);
+    font-weight: 550;
+    letter-spacing: 0.15px;
   }
   .call-number {
     margin-left: 22px;
     color: $gray-light;
+    font-size: 0.75rem;
   }
+  font-size: 0.75rem;
 }
 
 .lux-card.medium {
