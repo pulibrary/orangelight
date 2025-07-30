@@ -158,4 +158,11 @@ RSpec.describe HoldingRequestsAdapter do
       ]
     end
   end
+
+  describe '#doc_id' do
+    let(:document) { SolrDocument.new(id: 'SCSB-1234') }
+    it 'can find the document id' do
+      expect(holdings.doc_id).to eq 'SCSB-1234'
+    end
+  end
 end
