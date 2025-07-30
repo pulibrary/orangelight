@@ -21,7 +21,6 @@ RSpec.describe Holdings::PhysicalHoldingComponent, type: :component do
     allow(adapter).to receive(:alma_holding?).and_return(true)
     allow(adapter).to receive(:holding_location_rules).and_return(location_rules)
     allow(adapter).to receive(:call_number).and_return("QA123 .B45")
-    allow(adapter).to receive(:holding_location_label).and_return("Architecture Library")
     allow(adapter).to receive(:repository_holding?).and_return(false)
     allow(adapter).to receive(:scsb_holding?).and_return(false)
     allow(adapter).to receive(:empty_holding?).and_return(false)
@@ -52,15 +51,6 @@ RSpec.describe Holdings::PhysicalHoldingComponent, type: :component do
       render_inline described_class.new(adapter, holding_id, holding)
       expect(rendered_content).to include("On-site access")
       expect(rendered_content).to include("bg-success")
-    end
-  end
-
-  context "when holding location label is not present" do
-    before { allow(adapter).to receive(:holding_location_label).and_return(nil) }
-
-    it "does not render location component" do
-      render_inline described_class.new(adapter, holding_id, holding)
-      expect(rendered_content).not_to include("Firestone Library")
     end
   end
 end

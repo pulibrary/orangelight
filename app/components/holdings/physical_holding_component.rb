@@ -22,10 +22,6 @@ class Holdings::PhysicalHoldingComponent < ViewComponent::Base
       holding["mms_id"] || adapter.doc_id
     end
 
-    def holding_loc
-      adapter.holding_location_label(holding)
-    end
-
     def location_rules
       adapter.holding_location_rules(holding)
     end
