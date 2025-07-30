@@ -40,7 +40,7 @@ RSpec.describe Holdings::PhysicalHoldingComponent, type: :component do
     it "renders unavailable status" do
       render_inline described_class.new(adapter, holding_id, holding)
       expect(rendered_content).to include("Unavailable")
-      expect(rendered_content).to include("bg-danger")
+      expect(rendered_content).to include("red")
     end
   end
 
@@ -50,7 +50,7 @@ RSpec.describe Holdings::PhysicalHoldingComponent, type: :component do
     it "renders on-site access status" do
       render_inline described_class.new(adapter, holding_id, holding)
       expect(rendered_content).to include("On-site access")
-      expect(rendered_content).to include("bg-success")
+      expect(rendered_content).to include("green")
     end
   end
 end
