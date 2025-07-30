@@ -66,7 +66,7 @@ describe('AvailabilityUpdater', function () {
       `*[data-record-id="${avail_id}"] .lux-text-style`
     );
 
-    expect(available_result.hasClass('green')).toBe(true);
+    expect(available_result.hasClass('green strong')).toBe(true);
     expect(available_result.text()).toEqual('Available');
 
     const unavailable_result = $(
@@ -78,7 +78,7 @@ describe('AvailabilityUpdater', function () {
 
     const mixed_result = $(`*[data-record-id="${mixed_id}"] .lux-text-style`);
 
-    expect(mixed_result.hasClass('green')).toBe(true);
+    expect(mixed_result.hasClass('green strong')).toBe(true);
     expect(mixed_result.text()).toEqual('Some Available');
   });
 
