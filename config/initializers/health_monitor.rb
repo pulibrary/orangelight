@@ -15,7 +15,6 @@ Rails.application.config.after_initialize do
     config.add_custom_provider(BibdataStatus)
     config.add_custom_provider(IlliadStatus)
     config.add_custom_provider(ScsbStatus)
-    config.add_custom_provider(StackmapStatus)
 
     # Make this health check available at /health
     config.path = :health

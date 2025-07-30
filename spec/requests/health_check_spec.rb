@@ -110,22 +110,6 @@ RSpec.describe "Health Check", type: :request do
       end
     end
 
-    context 'when stackmap is down' do
-      let(:stackmap_stub) do
-        stub_request(:head, stackmap_url).to_return(status: 404)
-      end
-      before { stackmap_stub }
-
-      it 'has error but does not show as down when stackmap is down' do
-        get "/health.json"
-        expect(stackmap_stub).to have_been_requested
-        expect(response).to be_successful
-        expect(response.status).to eq 200
-        stackmap_response = JSON.parse(response.body)["results"].find { |x| x["name"] == "StackmapStatus" }
-        expect(stackmap_response["message"]).to start_with "Stackmap has an invalid status"
-      end
-    end
-
     context 'when scsb is down' do
       let(:scsb_stub) do
         stub_request(:get, scsb_url).to_return(status: 500)

@@ -6,7 +6,6 @@ detectors:
     - AeonStatus#critical
     - IlliadStatus#critical
     - ScsbStatus#critical
-    - StackmapStatus#critical
     - AskAQuestionForm#context
     - AskAQuestionForm#email
     - AskAQuestionForm#message
@@ -343,7 +342,6 @@ detectors:
     - BibdataStatus
     - IlliadStatus
     - ScsbStatus
-    - StackmapStatus
     - AlwaysShowMetadataFieldComponent
     - BookmarkButtonComponent
     - DisplayMoreFieldComponent
@@ -503,7 +501,6 @@ detectors:
     - BibdataStatus
     - IlliadStatus
     - ScsbStatus
-    - StackmapStatus
     - ApplicationController
     - SearchBuilder
   NestedIterators:
