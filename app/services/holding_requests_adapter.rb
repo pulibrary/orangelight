@@ -210,10 +210,4 @@ class HoldingRequestsAdapter
     return false if %w[thesis numismatics visuals].include? holding_id
     true
   end
-
-  # When the holding location code is invalid, the holding should appear last
-  # @return Integer
-  def end_of_list
-    999
-  end
 end
