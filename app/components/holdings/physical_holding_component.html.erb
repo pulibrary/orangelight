@@ -5,13 +5,13 @@
     </td>
     <% if adapter.repository_holding?(holding) %>
       <td>
-        <span class="availability-icon badge bg-success">On-site access</span>
+        <span class="availability-icon lux-text-style green strong">On-site access</span>
       </td>
     <% elsif adapter.scsb_holding?(holding) && !adapter.empty_holding?(holding) %>
       <%= render Holdings::HoldingAvailabilityScsbComponent.new(holding, doc_id, holding_id) %>
     <% elsif adapter.unavailable_holding?(holding) %>
       <td class="holding-status">
-        <span class="availability-icon badge bg-danger">Unavailable</span>
+        <span class="availability-icon lux-text-style red strong">Unavailable</span>
       </td>
     <% else %>
       <%= render Holdings::HoldingAvailabilityComponent.new(doc_id, holding_id, location_rules, temp_location_code) %>

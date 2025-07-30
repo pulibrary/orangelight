@@ -27,6 +27,6 @@ RSpec.describe Holdings::HoldingAvailabilityScsbComponent, type: :component do
       '7854805' # holding_id
     )
     expect(render_inline(holding_location).css('td span').attribute('class').value).to include 'availability-icon'
-    expect(render_inline(holding_location).css('td span').attribute('class').value).to include 'badge'
+    expect(render_inline(holding_location).css('td span').attribute('class').value).to include 'lux-text-style'
   end
 end
