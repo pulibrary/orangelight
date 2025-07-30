@@ -24,7 +24,7 @@ RSpec.describe Holdings::SearchLocationComponent, type: :component do
 
   it "renders the location icon" do
     rendered = render_inline(described_class.new(holding_hash))
-    expect(rendered.css('.icon-location').length).to eq 1
+    expect(rendered.css('svg').length).to eq 1
   end
 
   it "renders the call number" do
