@@ -74,6 +74,12 @@
     }
 }
 
+@media (max-width: $bp-medium) {
+    #sidebar .document-thumbnail {
+        margin: 0 auto;
+    }
+}
+
 #sidebar .availability {
     position: relative;
     clear: both;
