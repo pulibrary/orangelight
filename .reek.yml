@@ -476,7 +476,6 @@ detectors:
     - OAuthService::CouldNotGenerateOAuthToken
     - OnlineHoldingsMarkupBuilder
     - Requests::BibdataService
-    - StackmapLocationFactory
     - EventHandler
   LongParameterList:
     exclude:
@@ -581,7 +580,6 @@ detectors:
     - HoldingRequestsAdapter#shelving_title?
     - LinkedDocumentResolver::LinkedDocuments#response
     - Requests::BibdataService#self.delivery_locations
-    - StackmapLocationFactory#call_number?
     - StackmapService::Url#location_label
     - StackmapService::Url#valid?
   RepeatedConditional:
@@ -915,5 +913,3 @@ detectors:
     - HoldingRequestsAdapter#temp_location_code
     - HoldingRequestsAdapter#unavailable_holding?
     - LinkedDocumentResolver::LinkedDocuments#bib_id?
-    - StackmapLocationFactory#call_number?
-    - StackmapLocationFactory#excluded?
