@@ -52,14 +52,24 @@ describe 'blacklight tests' do
 
     it 'links to an electronic resource with the appropriate display text' do
       get '/catalog/9918309193506421'
-      expect(response.body).to include("<a href=\"/catalog/9918309193506421#view\">Book preliminaries</a>")
+      parsed = Nokogiri::HTML.parse response.body
+
+      link = parsed.at_css('a[href="/catalog/9918309193506421#view"]')
+      expect(link).to be_present
+      expect(link.text).to eq 'Book preliminaries'
     end
 
     it 'includes $z as an additional label for the link' do
+      subfield_z_text = 'Search and Request'
       get '/catalog/998449623506421'
-      expect(response.body).to(
-        include('Search and Request: <a target="_blank" rel="noopener" href="http://arks.princeton.edu/ark:/88435/pz50gw142">Princeton University Library Finding Aids<i class="fa fa-external-link new-tab-icon-padding" aria-label="opens in new tab" role="img"></i></a>')
-      )
+      parsed = Nokogiri::HTML.parse response.body
+
+      additional_label = parsed.xpath("//*[contains(text(),'#{subfield_z_text}')]")
+      expect(additional_label).to be_present
+
+      link = additional_label.at_css('a')
+      expect(link['href']).to eq 'http://arks.princeton.edu/ark:/88435/pz50gw142'
+      expect(link.text).to eq 'Princeton University Library Finding Aids'
     end
   end
 

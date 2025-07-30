@@ -25,16 +25,16 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
   # @param text [String] the label for the link
   def self.electronic_access_link(url, texts)
     markup = if /Open access/.match? texts.first
-               link_to(texts.first, url.to_s, target: '_blank', rel: 'noopener')
+               link_to(texts.first, url.to_s, target: '_blank', rel: 'noopener', class: 'electronic-access-link')
              elsif %r{(\/catalog\/.+?#view)} =~ url.to_s
                if texts.first == "arks.princeton.edu"
-                 link_to('Digital content', ::Regexp.last_match(0))
+                 link_to('Digital content', ::Regexp.last_match(0), class: 'electronic-access-link')
                else
-                 link_to(texts.first, ::Regexp.last_match(0))
+                 link_to(texts.first, ::Regexp.last_match(0), class: 'electronic-access-link')
                end
              else
                link_text = new_tab_icon(texts.first)
-               link_to(link_text, EzProxyService.ez_proxy_url(url), target: '_blank', rel: 'noopener')
+               link_to(link_text, EzProxyService.ez_proxy_url(url), target: '_blank', rel: 'noopener', class: 'electronic-access-link')
              end
     markup
   end
@@ -88,7 +88,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
       end_date = portfolio['end']
       date_range = "#{start_date} - #{end_date}: " if start_date && end_date
       label = new_tab_icon("#{date_range}#{portfolio['title']}")
-      link = link_to(label, portfolio["url"], target: '_blank', rel: 'noopener')
+      link = link_to(label, portfolio["url"], target: '_blank', rel: 'noopener', class: 'electronic-access-link')
       link += "<br/><lux-show-more v-bind:character-limit=150 show-label='See more' hide-label='See less'>#{portfolio['desc']}</lux-show-more>".html_safe
 
       link = "#{link} (#{portfolio['notes'].join(', ')})" if portfolio['notes']&.any?

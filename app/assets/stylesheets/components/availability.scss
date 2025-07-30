@@ -346,6 +346,12 @@
       color: $gray-light;
     }
   }
+
+  a.electronic-access-link, #google_preview_link a {
+    font-family: var(--font-family-text);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semi-bold);
+  }
 }
 
 .availability-table .find-it,
