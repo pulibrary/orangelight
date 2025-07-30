@@ -154,7 +154,7 @@ module HoldingsHelper
   def library_location_div(holding, document, id)
     content_tag(
       :div,
-      search_location_display(holding),
+      ApplicationController.new.view_context.render(Holdings::SearchLocationComponent.new(holding)),
       class: 'library-location',
       data: {
         location: true,
