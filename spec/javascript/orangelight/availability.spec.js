@@ -116,7 +116,7 @@ describe('AvailabilityUpdater', function () {
     expect(availabilityBadgeAfter[0].textContent).toEqual('Request');
     expect(
       document.querySelector(
-        '.holding-status[data-holding-id="5459517"] > .availability-icon'
+        '.holding-status[data-holding-id="5459517"] > .availability-icon.lux-text-style.gray.strong'
       )
     ).toBeTruthy();
   });
