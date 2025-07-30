@@ -147,7 +147,7 @@ export default class AvailabilityUpdater {
         const availability_display = $(
           `*[data-availability-record='true'][data-record-id='${record_id}'][data-temp-location-code='RES_SHARE$IN_RS_REQ'] span.lux-text-style`
         );
-        availability_display.addClass('gray');
+        availability_display.addClass('gray strong');
         availability_display.text('Request');
         return true;
       }
@@ -156,7 +156,7 @@ export default class AvailabilityUpdater {
         const availability_display = $(
           `*[data-availability-record='true'][data-record-id='${record_id}'] span.lux-text-style`
         );
-        availability_display.text('Available').addClass('green');
+        availability_display.text('Available').addClass('green strong');
         return true;
       }
 
@@ -188,7 +188,7 @@ export default class AvailabilityUpdater {
     const boundWithDisplays = $(
       `*[data-availability-record='true'][data-record-id='${record_id}'][data-bound-with='true'] span.lux-text-style`
     );
-    boundWithDisplays.text('Available').addClass('green');
+    boundWithDisplays.text('Available').addClass('green strong');
 
     return true;
   }
@@ -254,7 +254,7 @@ export default class AvailabilityUpdater {
         `*[data-availability-record='true'] span.lux-text-style`
       );
       $(availability_display).text('Loading...');
-      $(availability_display).addClass('gray');
+      $(availability_display).addClass('gray strong');
     } else {
       // For the show page we use a different selector.
       // We assume that the availability display is always a span with class lux-text-style.
@@ -273,7 +273,7 @@ export default class AvailabilityUpdater {
         `*[data-availability-record='true'] span.lux-text-style`
       );
       $(availability_display).text('Undetermined');
-      $(availability_display).addClass('gray');
+      $(availability_display).addClass('gray strong');
     } else {
       const avBadges = $(
         `*[data-availability-record='true'] span.availability-icon`
@@ -390,7 +390,7 @@ export default class AvailabilityUpdater {
         .addClass('green');
       availability_element;
     } else {
-      availability_element.addClass('gray');
+      availability_element.addClass('gray strong');
       availability_element.text('Request');
       availability_element;
     }
@@ -427,12 +427,12 @@ export default class AvailabilityUpdater {
         searchResults
       );
     } else if (status_label.toLowerCase() === 'available' && searchResults) {
-      availability_element.addClass('green');
+      availability_element.addClass('green strong');
     } else if (
       status_label.toLowerCase() === 'some available' &&
       searchResults
     ) {
-      availability_element.addClass('green');
+      availability_element.addClass('green strong');
     } else if (status_label.toLowerCase() === 'available' && !searchResults) {
       availability_element.addClass('bg-success');
     } else if (status_label.toLowerCase() === 'on-site access') {
@@ -442,7 +442,7 @@ export default class AvailabilityUpdater {
         searchResults
       );
     } else if (searchResults) {
-      availability_element.addClass('gray');
+      availability_element.addClass('gray strong');
     } else {
       availability_element.addClass('bg-secondary');
     }
@@ -468,7 +468,7 @@ export default class AvailabilityUpdater {
       this.checkSpecialLocation(location, availability_element, searchResults);
     } else {
       if (searchResults) {
-        availability_element.text('Request').addClass('gray');
+        availability_element.text('Request').addClass('gray strong');
       } else {
         availability_element.text('Unavailable').addClass('bg-danger');
       }
@@ -497,7 +497,7 @@ export default class AvailabilityUpdater {
         location.startsWith('marquand$') ||
         location === 'RES_SHARE$IN_RS_REQ'
       ) {
-        availability_element.text('Request').addClass('gray');
+        availability_element.text('Request').addClass('gray strong');
       }
     }
 

@@ -86,7 +86,7 @@ module HoldingsHelper
     data = content_tag(
       :span,
       'Link Missing',
-      class: 'lux-text-style gray'
+      class: 'lux-text-style gray strong'
     )
     data << content_tag(
       :div,
@@ -99,7 +99,7 @@ module HoldingsHelper
     content_tag(
       :span,
       'On-site access',
-      class: 'lux-text-style green'
+      class: 'lux-text-style green strong'
     )
   end
 
@@ -107,7 +107,7 @@ module HoldingsHelper
     content_tag(
       :span,
       'Available',
-      class: 'lux-text-style green'
+      class: 'lux-text-style green strong'
     )
   end
 
@@ -139,7 +139,7 @@ module HoldingsHelper
     content_tag(
       :span,
       'Loading...',
-      class: 'lux-text-style gray'
+      class: 'lux-text-style gray strong'
     )
   end
 
@@ -147,7 +147,7 @@ module HoldingsHelper
     content_tag(
       :span,
       'Request',
-      class: 'lux-text-style red'
+      class: 'lux-text-style gray strong'
     )
   end
 
