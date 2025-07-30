@@ -77,15 +77,6 @@ module ApplicationHelper
     resolved_location ? resolved_location : {}
   end
 
-  # Location display in the search results page
-  def search_location_display(holding)
-    location = holding_library_label(holding)
-    pin = content_tag(:span, "", class: 'icon icon-location')
-    location_display = content_tag(:div, pin.html_safe + location, class: 'results_location row') + " " +
-                       content_tag(:div, CallNumber.new(holding['call_number']).with_line_break_suggestions, class: 'call-number')
-    location_display.html_safe
-  end
-
   def title_hierarchy(args)
     titles = JSON.parse(args[:document][args[:field]])
     all_links = []
