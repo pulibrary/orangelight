@@ -387,7 +387,7 @@ export default class AvailabilityUpdater {
     if (item_data['itemAvailabilityStatus'] === 'Available') {
       availability_element
         .text(item_data['itemAvailabilityStatus'])
-        .addClass('green');
+        .addClass('green strong');
       availability_element;
     } else {
       availability_element.addClass('gray strong');
