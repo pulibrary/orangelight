@@ -574,7 +574,6 @@ detectors:
     - SolrDocument#identifier_data
     - Bibdata#holding_locations
     - HoldingRequestsAdapter#empty_holding?
-    - HoldingRequestsAdapter#holding_location_label
     - HoldingRequestsAdapter#holding_location_rules
     - HoldingRequestsAdapter#location_has?
     - HoldingRequestsAdapter#location_note?
@@ -899,8 +898,6 @@ detectors:
     - Orangelight::JoinProcessor#direction
     - DBMigrateUppercaseUsernames#find_uppercase_users
     - EventProcessor::Processor#index
-    - HoldingRequestsAdapter#alma_location_label_display_bibdata_location
-    - HoldingRequestsAdapter#alma_location_label_display_holding
     - HoldingRequestsAdapter#call_number
     - HoldingRequestsAdapter#empty_holding?
     - HoldingRequestsAdapter#indexes?
