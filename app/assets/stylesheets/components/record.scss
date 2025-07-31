@@ -207,6 +207,8 @@
     .availability-table td {
       width: 100%;
       flex: auto;
+      justify-content: flex-start;
+      padding: 10px 15px 10px 0;
     }
 
     .availability-table thead {
@@ -221,6 +223,10 @@
 
     .availability-table tbody tr:first-child,
     .availability-table tbody tr:first-child .library-location {
+      padding-top: 0;
+    }
+
+    .availability-icon {
       padding-top: 0;
     }
   }
