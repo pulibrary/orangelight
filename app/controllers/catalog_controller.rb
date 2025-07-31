@@ -712,6 +712,9 @@ class CatalogController < ApplicationController
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
     config.add_sort_field 'score desc, pub_date_start_sort desc, title_sort asc', label: 'relevance'
+                                                                                  unless: lambda { |controller, _config|
+                                                                                    controller.controller_path == 'bookmarks'
+                                                                                  }
     config.add_sort_field 'location asc, advanced_location_s asc, call_number_browse_s asc', label: 'library',
                                                                                              if: lambda { |controller, _config|
                                                                                                controller.controller_path == 'bookmarks'
