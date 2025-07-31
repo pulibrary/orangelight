@@ -5,6 +5,7 @@ require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 require_relative "lando_env"
 require_relative "../lib/orangelight/browse_lists"
+require_relative "../lib/orangelight/middleware/no_file_uploads"
 
 # For reasons we don't fully understand, yell is messing up the Rails6 zeitwerk
 # auto-loader in some cases, in our consuming app that uses kithe.
@@ -78,5 +79,7 @@ module Orangelight
 
     # Hide sass deprecation warnings for dependencies
     config.sass.quiet_deps = true
+
+    config.middleware.insert_before Rack::MethodOverride, Orangelight::Middleware::NoFileUploads
   end
 end
