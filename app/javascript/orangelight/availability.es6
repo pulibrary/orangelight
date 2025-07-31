@@ -1,4 +1,5 @@
 import { insert_online_link } from './insert_online_link.es6';
+import StatusDisplay from './status_display.js';
 
 export default class AvailabilityUpdater {
   constructor() {
@@ -15,6 +16,7 @@ export default class AvailabilityUpdater {
       this.update_availability_undetermined.bind(this);
     this.process_scsb_single = this.process_scsb_single.bind(this);
     this.availability_url_show = this.availability_url_show.bind(this);
+    this.status_display = new StatusDisplay();
   }
 
   request_availability(allowRetry) {
@@ -147,8 +149,7 @@ export default class AvailabilityUpdater {
         const availability_display = $(
           `*[data-availability-record='true'][data-record-id='${record_id}'][data-temp-location-code='RES_SHARE$IN_RS_REQ'] span.lux-text-style`
         );
-        availability_display.addClass('gray strong');
-        availability_display.text('Request');
+        this.status_display.setRequestStatus(availability_display);
         return true;
       }
       if (holding_id.match(/[a-zA-Z]\$[a-zA-Z]/)) {
@@ -156,7 +157,7 @@ export default class AvailabilityUpdater {
         const availability_display = $(
           `*[data-availability-record='true'][data-record-id='${record_id}'] span.lux-text-style`
         );
-        availability_display.text('Available').addClass('green strong');
+        this.status_display.setAvailableStatus(availability_display);
         return true;
       }
 
@@ -186,7 +187,7 @@ export default class AvailabilityUpdater {
     const boundWithDisplays = $(
       `*[data-availability-record='true'][data-record-id='${record_id}'][data-bound-with='true'] span.lux-text-style`
     );
-    boundWithDisplays.text('Available').addClass('green strong');
+    this.status_display.setAvailableStatus(boundWithDisplays);
 
     return true;
   }
@@ -313,22 +314,15 @@ export default class AvailabilityUpdater {
             availability_element.text(status_message);
             result.push(availability_element);
           } else {
-            availability_element.addClass('green strong');
-            availability_element.text('Available');
+            this.status_display.setAvailableStatus(availability_element);
             result.push(availability_element);
           }
         } else {
           if (availability_info['itemAvailabilityStatus'] === 'Available') {
-            availability_element.addClass('green strong');
-            availability_element.text(
-              availability_info['itemAvailabilityStatus']
-            );
+            this.status_display.setAvailableStatus(availability_element);
             result.push(availability_element);
           } else {
-            availability_element.addClass('red strong');
-            availability_element.text(
-              availability_info['itemAvailabilityStatus']
-            );
+            this.status_display.setUnavailableStatus(availability_element);
             result.push(availability_element);
           }
         }
@@ -385,13 +379,10 @@ export default class AvailabilityUpdater {
       `*[data-scsb-availability='true'][data-scsb-barcode='${barcode}']`
     );
     if (item_data['itemAvailabilityStatus'] === 'Available') {
-      availability_element
-        .text(item_data['itemAvailabilityStatus'])
-        .addClass('green strong');
+      this.status_display.setAvailableStatus(availability_element);
       availability_element;
     } else {
-      availability_element.addClass('gray strong');
-      availability_element.text('Request');
+      this.status_display.setRequestStatus(availability_element);
       availability_element;
     }
     return true;
@@ -402,11 +393,7 @@ export default class AvailabilityUpdater {
     availability_info,
     searchResults
   ) {
-    if (searchResults) {
-      availability_element.addClass('lux-text-style');
-    } else {
-      availability_element.addClass('lux-text-style');
-    }
+    availability_element.addClass('lux-text-style');
     const { status_label, location, id } = availability_info;
     const specialStatusLocations = [
       'marquand$stacks',
@@ -441,8 +428,6 @@ export default class AvailabilityUpdater {
         status_label,
         searchResults
       );
-    } else if (searchResults) {
-      availability_element.addClass('gray strong');
     } else {
       availability_element.addClass('gray strong');
     }
@@ -450,9 +435,9 @@ export default class AvailabilityUpdater {
   }
   handleOnSiteAccessStatus(availability_element, status_label, searchResults) {
     if (searchResults) {
-      availability_element.text('Available').addClass('green strong');
+      this.status_display.setAvailableStatus(availability_element);
     } else {
-      availability_element.text('On-site access').addClass('green strong');
+      this.status_display.setOnSiteAccessStatus(availability_element);
     }
     return availability_element;
   }
@@ -468,9 +453,9 @@ export default class AvailabilityUpdater {
       this.checkSpecialLocation(location, availability_element, searchResults);
     } else {
       if (searchResults) {
-        availability_element.text('Request').addClass('gray strong');
+        this.status_display.setRequestStatus(availability_element);
       } else {
-        availability_element.text('Unavailable').addClass('red strong');
+        this.status_display.setUnavailableStatus(availability_element);
       }
     }
   }
@@ -487,9 +472,9 @@ export default class AvailabilityUpdater {
     // record page -> searchResults == false
     if (searchResults == false) {
       if (location.startsWith('marquand$')) {
-        availability_element.text('Ask Staff').addClass('gray strong');
+        this.status_display.setAskStaffStatus(availability_element);
       } else {
-        availability_element.text('Unavailable').addClass('red strong');
+        this.status_display.setUnavailableStatus(availability_element);
       }
       // search results page -> searchResults is true.
     } else {
@@ -497,7 +482,7 @@ export default class AvailabilityUpdater {
         location.startsWith('marquand$') ||
         location === 'RES_SHARE$IN_RS_REQ'
       ) {
-        availability_element.text('Request').addClass('gray strong');
+        this.status_display.setRequestStatus(availability_element);
       }
     }
 
