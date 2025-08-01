@@ -16,6 +16,10 @@
   color: $available-green;
 }
 
+.when-closed .lux-badge-gray {
+  background: var(--color-grayscale-light);
+}
+
 .lux {
   // We use Libre Franklin since it is a variable font and is a new
   // recommendation from the Communications Office.  Once Lux includes
