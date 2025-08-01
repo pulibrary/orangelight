@@ -749,6 +749,11 @@ class CatalogController < ApplicationController
     }
   end
 
+  def sms_mappings
+    # remove AT&T from Send me a Text option
+    super.except('AT&T')
+  end
+
   def render_search_results_as_json
     { response: { docs: @document_list, facets: search_facets_as_json, pages: pagination_info(@response) } }
   end
