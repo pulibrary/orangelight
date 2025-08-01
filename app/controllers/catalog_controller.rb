@@ -29,6 +29,9 @@ class CatalogController < ApplicationController
   end
 
   configure_blacklight do |config|
+    # remove AT&T from Send me a Text option
+    config.sms_mappings&.delete('AT&T')
+
     # config.add_field_configuration_to_solr_request!
     config.raw_endpoint.enabled = true
 
