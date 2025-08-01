@@ -3,3 +3,23 @@
     align-content: center;
   }
 }
+
+.lux-badge {
+  text-transform: uppercase;
+}
+
+.holdings-card .lux-text-style.green {
+  color: $available-green;
+}
+
+.holding-status .lux-text-style.green {
+  color: $available-green;
+}
+
+.lux {
+  // We use Libre Franklin since it is a variable font and is a new
+  // recommendation from the Communications Office.  Once Lux includes
+  // Libre Franklin, we can remove these customizations.
+  --font-family-heading: 'Libre Franklin', Helvetica, Arial, sans-serif;
+  --font-family-text: 'Libre Franklin', Helvetica, Arial, sans-serif;
+}

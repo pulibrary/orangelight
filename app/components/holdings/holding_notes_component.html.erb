@@ -1,4 +1,4 @@
-<td class="holding-details">
+<div class="holding-details lux">
   <%= if render_shelving_titles?
     render_list label: 'Shelving title', list_class: 'shelving-title', notes: holding['shelving_title']
   end %>
@@ -7,9 +7,13 @@
     render_list label: 'Location note', list_class: 'location-note', notes: holding['location_note']
   end %>
 
-  <%= if render_location_has?
-    render_list label: 'Location has', list_class: 'location-has', notes: holding['location_has']
-  end %>
+  <% if render_location_has? -%>
+    <ul class="location-has">
+      <% holding['location_has'].each do |note| %>
+        <li><lux-show-more v-bind:character-limit="150" show-label="See more" hide-label="See less"><%= note %></lux-show-more></li>
+      <% end %>
+    </ul>
+  <% end -%>
 
   <ul class="item-status" data-record-id="<%= doc_id %>" data-holding-id="<%= holding_id %>"></ul>
 
@@ -24,4 +28,4 @@
   <% if render_issues? %>
     <ul class="journal-current-issues" data-journal="true" data-holding-id="<%= holding_id %>"></ul>
   <% end %>
-</td>
+</div>

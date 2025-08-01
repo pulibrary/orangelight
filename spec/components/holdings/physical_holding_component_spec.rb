@@ -10,10 +10,6 @@ RSpec.describe Holdings::PhysicalHoldingComponent, type: :component do
   end
   before do
     stub_holding_locations
-    # rubocop:disable RSpec/AnyInstance
-    allow_any_instance_of(Holdings::HoldingLocationComponent).to receive(:render_stackmap?).and_return(false)
-    # rubocop:enable RSpec/AnyInstance
-    allow(ApplicationHelper).to receive(:find_it_location?).and_return(false)
     allow(adapter).to receive(:location_has?).and_return(false)
     allow(adapter).to receive(:supplements?).and_return(false)
     allow(adapter).to receive(:location_note?).and_return(false)
@@ -25,7 +21,6 @@ RSpec.describe Holdings::PhysicalHoldingComponent, type: :component do
     allow(adapter).to receive(:alma_holding?).and_return(true)
     allow(adapter).to receive(:holding_location_rules).and_return(location_rules)
     allow(adapter).to receive(:call_number).and_return("QA123 .B45")
-    allow(adapter).to receive(:holding_location_label).and_return("Architecture Library")
     allow(adapter).to receive(:repository_holding?).and_return(false)
     allow(adapter).to receive(:scsb_holding?).and_return(false)
     allow(adapter).to receive(:empty_holding?).and_return(false)
@@ -33,9 +28,8 @@ RSpec.describe Holdings::PhysicalHoldingComponent, type: :component do
     allow(adapter).to receive(:doc_id).and_return("doc-456")
   end
 
-  it "renders the holding block with location, call number, availability, services, and notes" do
+  it "renders the holding block with call number, availability, services, and notes" do
     render_inline described_class.new(adapter, holding_id, holding)
-    expect(rendered_content).to include("Architecture Library")
     expect(rendered_content).to include("QA123 .B45")
     expect(rendered_content).to include("holding-block")
   end
@@ -46,7 +40,7 @@ RSpec.describe Holdings::PhysicalHoldingComponent, type: :component do
     it "renders unavailable status" do
       render_inline described_class.new(adapter, holding_id, holding)
       expect(rendered_content).to include("Unavailable")
-      expect(rendered_content).to include("bg-danger")
+      expect(rendered_content).to include("red")
     end
   end
 
@@ -56,16 +50,7 @@ RSpec.describe Holdings::PhysicalHoldingComponent, type: :component do
     it "renders on-site access status" do
       render_inline described_class.new(adapter, holding_id, holding)
       expect(rendered_content).to include("On-site access")
-      expect(rendered_content).to include("bg-success")
-    end
-  end
-
-  context "when holding location label is not present" do
-    before { allow(adapter).to receive(:holding_location_label).and_return(nil) }
-
-    it "does not render location component" do
-      render_inline described_class.new(adapter, holding_id, holding)
-      expect(rendered_content).not_to include("Firestone Library")
+      expect(rendered_content).to include("green")
     end
   end
 end

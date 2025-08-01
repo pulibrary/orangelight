@@ -52,18 +52,24 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
     let(:link_markup) { described_class.electronic_access_link('http://arks.princeton.edu/ark:/88435/dsp01ft848s955', ['Full text']) }
 
     it 'generates electronic access links for a catalog record' do
-      expect(link_markup).to include '<a target="_blank"'
-      expect(link_markup).to include 'href="http://arks.princeton.edu/ark:/88435/dsp01ft848s955"'
-      expect(link_markup).to include 'Full text'
+      parsed = Nokogiri::HTML link_markup
+
+      link = parsed.at_css('a')
+      expect(link['target']).to eq '_blank'
+      expect(link['href']).to eq 'http://arks.princeton.edu/ark:/88435/dsp01ft848s955'
+      expect(link.text).to eq 'Full text'
     end
 
     context 'with an open access record' do
       let(:link_markup) { described_class.electronic_access_link('http://hdl.handle.net/1802/27831', ['Open access']) }
 
       it 'generates electronic access links for a catalog record without a proxy' do
-        expect(link_markup).to include '<a target="_blank"'
-        expect(link_markup).to include 'href="http://hdl.handle.net/1802/27831"'
-        expect(link_markup).to include 'Open access'
+        parsed = Nokogiri::HTML link_markup
+
+        link = parsed.at_css('a')
+        expect(link['target']).to eq '_blank'
+        expect(link['href']).to eq 'http://hdl.handle.net/1802/27831'
+        expect(link.text).to eq 'Open access'
       end
     end
 
@@ -71,15 +77,21 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
       let(:link_markup) { described_class.electronic_access_link('https://pulsearch.princeton.edu/catalog/4609321#view', ['arks.princeton.edu']) }
 
       it 'generates electronic access links for a catalog record which link to the IIIF Viewer' do
-        expect(link_markup).to include '<a href="/catalog/4609321#view"'
-        expect(link_markup).to include 'Digital content'
+        parsed = Nokogiri::HTML link_markup
+
+        link = parsed.at_css('a')
+        expect(link['href']).to eq '/catalog/4609321#view'
+        expect(link.text).to include 'Digital content'
       end
     end
     context "with a labeled link to the IIIF viewer" do
       let(:link_markup) { described_class.electronic_access_link('https://pulsearch.princeton.edu/catalog/4609321#view', ['Selected images']) }
       it 'generates electronic access links for a catalog record which link to the IIIF Viewer' do
-        expect(link_markup).to include '<a href="/catalog/4609321#view"'
-        expect(link_markup).to include 'Selected images'
+        parsed = Nokogiri::HTML link_markup
+
+        link = parsed.at_css('a')
+        expect(link['href']).to eq '/catalog/4609321#view'
+        expect(link.text).to include 'Selected images'
       end
     end
   end
@@ -164,9 +176,24 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
       end
 
       it 'displays the public note properly' do
-        expect(portfolio_markup).to eq '<li class="electronic-access"><a target="_blank" rel="noopener" '\
-                                       'href="https://princeton.edu/great-resource">1980 - 2015: Title<i class="fa fa-external-link new-tab-icon-padding" aria-label="opens in new tab" role="img"></i></a> '\
-                                       'Description (First note, Second note)</li>'
+        parsed = Nokogiri::HTML.fragment(portfolio_markup)
+
+        expect(parsed.children.count).to eq 1
+        list_item = parsed.children.first
+        expect(list_item.name).to eq 'li'
+        expect(list_item['class']).to eq 'electronic-access lux'
+
+        link = list_item.at_css 'a'
+        expect(link['target']).to eq '_blank'
+        expect(link['rel']).to eq 'noopener'
+        expect(link['class']).to eq 'electronic-access-link'
+        expect(link['href']).to eq 'https://princeton.edu/great-resource'
+        expect(link.text).to eq '1980 - 2015: Title'
+
+        show_more = list_item.at_css 'lux-show-more'
+        expect(show_more.text).to eq 'Description'
+
+        expect(list_item.text).to include '(First note, Second note)'
       end
     end
   end

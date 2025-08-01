@@ -10,16 +10,6 @@
 <% unless physical.empty? %>
   <div class="availability--physical">
     <h3><%= t('blacklight.holdings.print') %></h3>
-    <table class="availability-table" aria-label="Library locations availability">
-      <thead>
-        <tr>
-          <th>Location</th>
-          <th>Call Number</th>
-          <th>Status</th>
-          <th class="location-services"><span class="visually-hidden">Location Service</span></th>
-          <th><span class="visually-hidden">Notes</span></th>
-        </tr>
-      </thead>
       <%= physical %>
     </table>
   </div>

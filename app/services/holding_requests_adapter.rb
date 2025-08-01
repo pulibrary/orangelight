@@ -61,12 +61,14 @@ class HoldingRequestsAdapter
   end
   alias physical_holdings doc_holdings_physical
 
-  # Retrieve the physical holdings records sorted by location code
-  # @return [Hash] sorted physical holding information
-  def sorted_physical_holdings
-    doc_holdings_physical.sort_by do |_id, h|
-      @bib_data_service.holding_locations.keys.index(h['location_code']) || end_of_list
-    end
+  # Retrieve the physical holdings records grouped by Library and Location
+  # Returns an array of Requests::HoldingGroup objects
+  def grouped_physical_holdings
+    doc_holdings_physical
+      .map { |id, data| Requests::Holding.new(mfhd_id: id, holding_data: data) }
+      .group_by(&:full_location_name)
+      .map { |group_name, holdings| Requests::HoldingGroup.new(group_name:, holdings:) }
+      .sort
   end
 
   # Retrieve the restrictions placed upon physical holdings
@@ -101,30 +103,8 @@ class HoldingRequestsAdapter
     @bib_data_service.holding_locations[loc_code.to_sym]
   end
 
-  # Generate the label for a location from the holding values
-  # @param holding [Hash] the holding values
-  # @return [String] the location label
-  # Record page location label display
-  def holding_location_label(holding)
-    # location is the information coming from bibdata
-    location = holding_location_rules(holding)
-    location.nil? ? alma_location_label_display_holding(holding) : alma_location_label_display_bibdata_location(location)
-  end
-
   def temp_location_code(holding)
     holding['temp_location_code']
-  end
-
-  # Alma location display on record page using the location info from bibdata.
-  # This is a location fall back if Javascript does not work.
-  def alma_location_label_display_bibdata_location(location)
-    [location['library']['label'], location['label']].select(&:present?).join(" - ")
-  end
-
-  # Alma location display on record page using the solr indexed holding
-  # This is a location fall back if Javascript does not work and bibdata returns nil.
-  def alma_location_label_display_holding(holding)
-    [holding['library'], holding['location']].select(&:present?).join(' - ')
   end
 
   # Retrieve the call number from holding values
@@ -207,11 +187,5 @@ class HoldingRequestsAdapter
     return false if @document.fetch(:id, '').start_with?('SCSB')
     return false if %w[thesis numismatics visuals].include? holding_id
     true
-  end
-
-  # When the holding location code is invalid, the holding should appear last
-  # @return Integer
-  def end_of_list
-    999
   end
 end

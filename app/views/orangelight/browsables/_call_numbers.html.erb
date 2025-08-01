@@ -25,7 +25,7 @@
               <%= content_tag(:span, '', class: 'more-info empty', data: { record_id: orangelight_name.bibid }) unless orangelight_name.location == 'Multiple locations' %>
               <% if scsb_id?(orangelight_name.bibid) %>
                 </br>
-                <span class="more-info badge bg-secondary" data-record-id="<%= orangelight_name.bibid %>">View record for full availability</span>
+                <span class="more-info badge bg-secondary" data-record-id="<%= orangelight_name.bibid %>">Available</span>
               <% end %>
             </td>
 

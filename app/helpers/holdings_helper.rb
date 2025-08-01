@@ -6,33 +6,50 @@ module HoldingsHelper
   # @param document [SolrDocument] the Solr Document retrieved in the search result set
   # @return [String] the markup
 
+  # rubocop:disable Metrics/MethodLength
   def holding_block_search(document)
     block = ''.html_safe
-    holdings_hash = document.holdings_all_display
+    block_extra = ''.html_safe
+    holdings_hash = document.holdings_all_display.sort { |a, b| sort_holdings(a, b) }
     @scsb_multiple = false
+    if holdings_hash.count <= 4
+      holdings_hash.each do |id, holding|
+        block << holdings_block(document, id, holding)
+      end
+    elsif holdings_hash.count > 4
+      holdings_array = holdings_hash.to_a
+      holdings_array_first_three = holdings_array.first(3)
+      holdings_array.count
+      holdings_remaining = holdings_array.count - 3
 
-    holdings_hash.first(2).each do |id, holding|
-      block << first_two_holdings_block(document, id, holding)
-    end
+      holdings_array_first_three.each do |id, holding|
+        block << holdings_block(document, id, holding)
+      end
+      block_extra << content_tag(:a, href: "/catalog/#{document['id']}") do
+        content_tag(:"lux-card", class: 'show-more-holdings') do
+          content_tag(:span, "See #{holdings_remaining} more locations", class: 'lux-text-style blue')
+        end
+      end
 
-    block << controller.view_context.render(Holdings::OnlineHoldingsComponent.new(document:))
+      block << block_extra
 
-    if @scsb_multiple == true || holdings_hash.length > 2
-      block << view_record_for_full_avail_li(document)
-    elsif !holdings_hash.empty?
-      block << view_record_for_full_avail_li_two(document)
     end
 
     if block.empty?
-      content_tag(:div, t('blacklight.holdings.search_missing'))
+      ''
     else
-      content_tag(:ul, block)
+      content_tag(:div, block, class: "holdings-card")
     end
+  end
+  # rubocop:enable Metrics/MethodLength
+
+  def online_content_block(document)
+    controller.view_context.render(Holdings::OnlineHoldingsComponent.new(document:))
   end
 
   # rubocop:disable Metrics/MethodLength
   # Currently having trouble breaking up this method further due to the "check_availability" variable
-  def first_two_holdings_block(document, id, holding)
+  def holdings_block(document, id, holding)
     location = holding_location(holding)
     check_availability = render_availability?
     accumulator = ''.html_safe
@@ -44,9 +61,10 @@ module HoldingsHelper
       accumulator << empty_link_online_holding_block
 
     else
+      accumulator << library_location_div(holding, document, id)
       if holding['dspace'] || holding['location_code'] == 'rare$num'
         check_availability = false
-        accumulator << dspace_or_numismatics_holding_block(location)
+        accumulator << dspace_or_numismatics_holding_block
       elsif /^scsb.+/.match? location[:code]
         check_availability = false
         unless holding['items'].nil?
@@ -59,7 +77,6 @@ module HoldingsHelper
         check_availability = false
         accumulator << under_embargo_block
       end
-      accumulator << library_location_div(holding, document, id)
     end
     holding_status_li(accumulator, document, check_availability, id, holding)
   end
@@ -69,7 +86,7 @@ module HoldingsHelper
     data = content_tag(
       :span,
       'Link Missing',
-      class: 'availability-icon badge bg-secondary'
+      class: 'lux-text-style gray strong'
     )
     data << content_tag(
       :div,
@@ -82,12 +99,20 @@ module HoldingsHelper
     content_tag(
       :span,
       'On-site access',
-      class: 'availability-icon badge bg-success'
+      class: 'lux-text-style green strong'
     )
   end
 
-  def dspace_or_numismatics_holding_block(_location)
-    onsite_access_span
+  def available_access_span
+    content_tag(
+      :span,
+      'Available',
+      class: 'lux-text-style green strong'
+    )
+  end
+
+  def dspace_or_numismatics_holding_block
+    available_access_span
   end
 
   def scsb_item_block(holding)
@@ -102,7 +127,7 @@ module HoldingsHelper
     content_tag(
       :span,
       '',
-      class: 'availability-icon badge',
+      class: 'lux-text-style',
       data: {
         'scsb-availability': 'true',
         'scsb-barcode': holding['items'].first['barcode'].to_s
@@ -114,22 +139,22 @@ module HoldingsHelper
     content_tag(
       :span,
       'Loading...',
-      class: 'availability-icon badge bg-secondary'
+      class: 'lux-text-style gray strong'
     )
   end
 
   def under_embargo_block
     content_tag(
       :span,
-      'Unavailable',
-      class: 'availability-icon badge bg-danger'
+      'Request',
+      class: 'lux-text-style gray strong'
     )
   end
 
   def library_location_div(holding, document, id)
     content_tag(
       :div,
-      search_location_display(holding),
+      ApplicationController.new.view_context.render(Holdings::SearchLocationComponent.new(holding)),
       class: 'library-location',
       data: {
         location: true,
@@ -141,43 +166,52 @@ module HoldingsHelper
 
   def holding_status_li(accumulator, document, check_availability, id, holding)
     location = holding_location(holding)
-    content_tag(
-      :li,
-      accumulator,
-      class: 'holding-status',
-      data: {
-        availability_record: check_availability,
-        record_id: document['id'],
-        holding_id: id,
-        temp_location_code: holding['temp_location_code'],
-        aeon: aeon_location?(location),
-        bound_with: document.bound_with?
-      }.compact
-    )
-  end
-
-  def view_record_for_full_avail_li(document)
-    content_tag(
-      :li,
-      link_to(
-        'View Record for Full Availability',
-        solr_document_path(document['id']),
-        class: 'availability-icon badge bg-secondary more-info'
+    content_tag(:a, href: "/catalog/#{document['id']}") do
+      content_tag(
+        :'lux-card',
+        accumulator,
+        class: 'holding-status',
+        data: {
+          availability_record: check_availability,
+          record_id: document['id'],
+          holding_id: id,
+          temp_location_code: holding['temp_location_code'],
+          aeon: aeon_location?(location),
+          bound_with: document.bound_with?
+        }.compact
       )
-    )
+    end
   end
 
-  def view_record_for_full_avail_li_two(document)
-    content_tag(
-      :li,
-      link_to(
-        '',
-        solr_document_path(document['id']),
-        class: 'availability-icon more-info'
-      ),
-      class: 'empty',
-      data: { record_id: document['id'] }
-    )
-  end
+  private
+
+    # rubocop:disable Naming/MethodParameterName
+    # rubocop:disable Lint/DuplicateBranch
+    # :reek:DuplicateMethodCall
+    # :reek:TooManyStatements
+    # :reek:UncommunicativeParameterName
+    # :reek:UtilityFunction
+    def sort_holdings(a, b)
+      # First, check if one of the items is Firestone.  If so, it should come first
+      if a.second['location_code'].starts_with?('firestone') && !b.second['location_code'].starts_with?('firestone')
+        -1
+      elsif b.second['location_code'].starts_with?('firestone') && !a.second['location_code'].starts_with?('firestone')
+        1
+      # Next, check if one of the items is Recap.  If so, it should come last
+      elsif a.second['location_code'].starts_with?('recap') && !b.second['location_code'].starts_with?('recap')
+        1
+      elsif b.second['location_code'].starts_with?('recap') && !a.second['location_code'].starts_with?('recap')
+        -1
+      # Next, check if one of the items is Annex.  If so, it should come last (but still before recap, which was handled previously)
+      elsif a.second['location_code'].starts_with?('annex') && !b.second['location_code'].starts_with?('annex')
+        1
+      elsif b.second['location_code'].starts_with?('annex') && !a.second['location_code'].starts_with?('annex')
+        -1
+      else
+        a.second['location_code'] <=> b.second['location_code']
+      end
+    end
+  # rubocop:enable Naming/MethodParameterName
+  # rubocop:enable Lint/DuplicateBranch
 end
 # rubocop:enable Metrics/ModuleLength

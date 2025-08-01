@@ -3,15 +3,16 @@
 # This component is responsible for showing the details of a physical
 # holding (such as on the show page)
 class Holdings::PhysicalHoldingComponent < ViewComponent::Base
-  def initialize(adapter, holding_id, holding)
+  def initialize(adapter, holding_id, holding, open_holdings = nil)
     @adapter = adapter
     @holding_id = holding_id
     @holding = holding
+    @open_holdings = open_holdings
   end
 
   private
 
-    attr_reader :adapter, :holding_id, :holding
+    attr_reader :adapter, :holding_id, :holding, :open_holdings
 
     def cn_value
       adapter.call_number(holding)
@@ -19,10 +20,6 @@ class Holdings::PhysicalHoldingComponent < ViewComponent::Base
 
     def doc_id
       holding["mms_id"] || adapter.doc_id
-    end
-
-    def holding_loc
-      adapter.holding_location_label(holding)
     end
 
     def location_rules

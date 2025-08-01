@@ -11,16 +11,12 @@ RSpec.describe Holdings::CallNumberLinkComponent, type: :component do
   end
 
   it 'has a browse link' do
-    expect(rendered.css('a').text.strip).to eq 'Browse related items'
+    expect(rendered.css('a').text.strip).to eq 'Call no. browse'
     expect(rendered.css('a').attribute('href').value).to eq '/browse/call_numbers?q=East+45%2FGC073%2FBox+06%2FOversize'
   end
 
-  it 'has an icon' do
-    expect(rendered.css('.icon-bookslibrary').length).to eq 1
-  end
-
   it 'is a table cell' do
-    expect(rendered.css('td').length).to eq 1
+    expect(rendered.css('div').length).to eq 1
   end
 
   it 'puts the call number in a .call-number class' do
@@ -38,8 +34,8 @@ RSpec.describe Holdings::CallNumberLinkComponent, type: :component do
     end
 
     it 'has an empty table cell' do
-      expect(rendered.css('td').length).to eq 1
-      expect(rendered.css('td').text.strip).to eq ''
+      expect(rendered.css('div').length).to eq 1
+      expect(rendered.css('div').text.strip).to eq ''
     end
   end
 end

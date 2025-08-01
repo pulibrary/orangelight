@@ -1,0 +1,52 @@
+dialog {
+    border: 1px solid var(--color-grayscale-lighter);
+    border-radius: 20px;
+    filter: drop-shadow(0 2px var(--color-grayscale-lighter));
+    width: min(700px, 90%);
+    font-family: var(--font-family-text);
+    padding: 0;
+}
+
+dialog h2 {
+    font-weight: var(--font-weight-semi-bold);
+    font-size: var(--font-size-large);
+    line-height: var(--line-height-heading);
+    margin-bottom: 0;
+}
+
+dialog h3 {
+    font-weight: var(--font-weight-semi-bold);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-heading);
+    margin-bottom: 0;
+}
+
+dialog .dialog-content {
+    padding: 0 0 6px 15px;
+    border-radius: 20px;
+}
+
+dialog .dialog-content:focus {
+    /* Don't display a focus indicator on :focus, only on :focus-visible */
+    outline: none !important;
+}
+
+dialog .dialog-content:focus-visible {
+    outline-offset: -6px !important;
+    outline: .25rem solid var(--color-princeton-orange-on-white) !important;
+}
+
+dialog .dialog-content .close-button:focus-visible {
+    border-radius: 20px;
+    outline: .25rem solid var(--color-princeton-orange-on-white) !important;
+}
+
+dialog .dialog-content a:focus-visible {
+    border-radius: .1rem;
+    outline: .25rem solid var(--color-princeton-orange-on-white) !important;
+}
+
+dialog .dialog-title {
+    display: flex;
+    justify-content: space-between;
+}

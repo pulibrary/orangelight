@@ -3,10 +3,9 @@
 @import "variables/typography";
 
 #documents .document {
-  // margin: 1.5em 0;
-  // padding: 0 0 1.5em;
   margin: 0;
   padding: 0.75em 0 0.5em;
+  font-family: 'Libre Franklin', 'Dejavu Sans', Helvetica, sans-serif;
 }
 
 .documents-list dl {
@@ -15,8 +14,10 @@
 
 .documents-list .document h3.document-title-heading {
   padding-left: 0;
-  font-size: 1.3em;
+  font-size: 1.25rem;
   margin-top: 0;
+  font-weight: 550;
+  font-style: normal;
 }
 
 .document .blacklight-format .icon {
@@ -32,6 +33,9 @@
 }
 
 .document-metadata {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   line-height: 1.5em;
   vertical-align: middle;
   margin-bottom: 0;
@@ -49,6 +53,14 @@
   .blacklight-format {
     font-size: 0.875em;
     text-transform: uppercase;
+  }
+
+  .search-metadata {
+    color: $dark-gray;
+    font-size: 0.875rem;
+    .search-name {
+      font-size: 1rem;
+    }
   }
 }
 
@@ -73,20 +85,18 @@ dd.blacklight-electronic_access_display {
 
 .search-result-wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 10px 20px;
   width: 100%;
 }
 
 .thumbnail-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   width: 120px;
-  float: right;
   padding-left: 10px;
-}
-
-// remove when https://github.com/projectblacklight/blacklight/pull/2125 is released
-.documents-list .document .document-thumbnail {
-  margin-bottom: ($spacer * 3);
-  padding-left: ($spacer * 2);
 }
 
 #spell {
