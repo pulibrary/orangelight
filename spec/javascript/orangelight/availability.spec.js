@@ -272,7 +272,7 @@ describe('AvailabilityUpdater', function () {
       document.getElementsByClassName('availability-icon')[0];
 
     expect(availability_style.classList.values()).toContain('lux-text-style');
-    expect(availability_style.classList.values()).toContain('gray');
+    expect(availability_style.classList.values()).toContain('green');
     expect(availability_style.textContent).toEqual('Some Available');
   });
 

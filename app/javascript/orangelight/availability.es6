@@ -402,11 +402,7 @@ export default class AvailabilityUpdater {
     availability_info,
     searchResults
   ) {
-    if (searchResults) {
-      availability_element.addClass('lux-text-style');
-    } else {
-      availability_element.addClass('lux-text-style');
-    }
+    availability_element.addClass('lux-text-style');
     const { status_label, location, id } = availability_info;
     const specialStatusLocations = [
       'marquand$stacks',
@@ -426,14 +422,10 @@ export default class AvailabilityUpdater {
         specialStatusLocations,
         searchResults
       );
-    } else if (status_label.toLowerCase() === 'available' && searchResults) {
-      availability_element.addClass('green strong');
     } else if (
-      status_label.toLowerCase() === 'some available' &&
-      searchResults
+      status_label.toLowerCase() === 'available' ||
+      status_label.toLowerCase() === 'some available'
     ) {
-      availability_element.addClass('green strong');
-    } else if (status_label.toLowerCase() === 'available' && !searchResults) {
       availability_element.addClass('green strong');
     } else if (status_label.toLowerCase() === 'on-site access') {
       this.handleOnSiteAccessStatus(
@@ -441,8 +433,6 @@ export default class AvailabilityUpdater {
         status_label,
         searchResults
       );
-    } else if (searchResults) {
-      availability_element.addClass('gray strong');
     } else {
       availability_element.addClass('gray strong');
     }
