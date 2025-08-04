@@ -1,11 +1,5 @@
 <div>
 <% unless cn_value.nil? %>
-  <script>
-    let libcalScript = document.createElement('script');
-    libcalScript.type = 'text/javascript';
-    libcalScript.src = 'https://libcal.princeton.edu/libmaps/blacklight';
-    document.head.appendChild(libcalScript);
-  </script>
   <span class="call-number"><%= holding['call_number'] %></span>
   <a href="<%= browse_url %>" class="browse-cn"
     data-original-title="<%= original_title %>">
