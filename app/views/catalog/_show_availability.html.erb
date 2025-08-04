@@ -9,6 +9,12 @@
 
 <% unless physical.empty? %>
   <div class="availability--physical">
+    <script>
+      let libcalScript = document.createElement('script');
+      libcalScript.type = 'text/javascript';
+      libcalScript.src = 'https://libcal.princeton.edu/libmaps/blacklight';
+      document.head.appendChild(libcalScript);
+    </script>
     <h3><%= t('blacklight.holdings.print') %></h3>
       <%= physical %>
     </table>
