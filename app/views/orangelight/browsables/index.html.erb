@@ -8,6 +8,8 @@
         <nav aria-label="Top pager" class="nav">
           <%= render "orangelight/browsables/browse_pagination"%>
         </nav>
+        <% byebug %>
+        <%= render BrowsePerPageComponent.new(blacklight_config:, response:, search_state:, current_browse_per_page:) %>
         <%= render(Blacklight::System::DropdownComponent.new(
           param: :per_page,
           choices: per_page_options_for_select,
