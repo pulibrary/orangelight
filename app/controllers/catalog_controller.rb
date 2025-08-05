@@ -767,11 +767,7 @@ class CatalogController < ApplicationController
   end
 
   def numismatics
-    unless request.method == :post
-      @response = search_service.search_results do |search_builder|
-        search_builder.except(:add_advanced_search_to_solr).append(:facets_for_advanced_search_form)
-      end
-    end
+    @response = search_service.search_results
     respond_to do |format|
       format.html { render "advanced/numismatics" }
       format.json { render plain: "Format not supported", status: :bad_request }
