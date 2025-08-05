@@ -166,6 +166,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'lc_1letter_facet', label: 'Classification', limit: 25, include_in_request: false, sort: 'index'
     config.add_facet_field 'lc_rest_facet', label: 'Full call number code', limit: 25, include_in_request: false, sort: 'index'
     config.add_facet_field 'sudoc_facet', label: 'SuDocs', limit: true, sort: 'index', include_in_advanced_search: false
+    config.add_facet_field 'original_language_of_translation_facet', label: 'Original language of translation', show: false
 
     # The following facet configurations are purely for display purposes. They
     # will not show up in the facet bar, but without them the labels and other
