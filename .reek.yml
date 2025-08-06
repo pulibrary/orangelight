@@ -193,9 +193,7 @@ detectors:
     - Requests::Submissions::Recap#handle_item
     - SearchBuilder#add_edismax
     - SearchBuilder#advanced_search?
-    - SearchBuilder#facets_for_advanced_search_form
     - SearchBuilder#numismatics_advanced
-    - SearchBuilder#numismatics_facets
     - SearchBuilder#parslet_trick
     - SolrDocument#electronic_access_uris
     - SolrDocument#holdings_all_display
@@ -286,7 +284,6 @@ detectors:
     - Requests::Submission#selected_items
     - Requests::Submissions::HoldItem#payload
     - Requests::Submissions::Service#error_hash
-    - SearchBuilder#facets_for_advanced_search_form
     - SearchBuilder#numismatics_advanced
     - SolrDocument#electronic_access_uris
     - SolrDocument#holdings_with_host_id
@@ -519,7 +516,6 @@ detectors:
     - Blacklight::Document::Ris#export_as_ris
     - Blacklight::Marc::DocumentExtension#get_author_list
     - Requests::Location#build_delivery_locations
-    - SearchBuilder#facets_for_advanced_search_form
     - SolrDocument#identifiers
   NilCheck:
     exclude:
@@ -813,7 +809,6 @@ detectors:
     - ApplicationHelper#current_year
     - ApplicationHelper#format_render
     - ApplicationHelper#holding_location
-    - ApplicationHelper#holding_request_block
     - ApplicationHelper#html_safe
     - ApplicationHelper#location_full_display
     - ApplicationHelper#rails_env?

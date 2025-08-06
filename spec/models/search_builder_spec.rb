@@ -79,20 +79,6 @@ RSpec.describe SearchBuilder do
     end
   end
 
-  describe '#facets_for_advanced_search_form', advanced_search: true do
-    before do
-      blacklight_config.advanced_search.form_solr_parameters = { 'facet.field' => ["issue_denomination_s"] }
-    end
-
-    context 'with the built-in advanced search form', advanced_search: true do
-      it 'includes the advanced search facets' do
-        solr_p = { fq: ["{!lucene}{!query v=$f_inclusive.issue_denomination_s.0} OR {!query v=$f_inclusive.issue_denomination_s.1}", nil, "format:Coin"] }
-        search_builder.facets_for_advanced_search_form(solr_p)
-        expect(solr_p[:fq]).to eq(['format:Coin'])
-      end
-    end
-  end
-
   describe '#only_home_facets' do
     let(:blacklight_params) do
       { q: 'Douglas fir' }
