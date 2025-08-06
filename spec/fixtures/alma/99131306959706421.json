@@ -1,0 +1,187 @@
+{
+    "id": "99131306959706421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Zeē, Alkē"
+    ],
+    "author_citation_display": [
+        "Zeē, Alkē",
+        "Emmerich, Karen"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[\"Emmerich, Karen\"],\"editors\":[],\"compilers\":[],\"primary_author\":\"Zeē, Alkē\"}",
+    "author_s": [
+        "Zeē, Alkē",
+        "Emmerich, Karen"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "uniform_title_s": [
+        "Kaplani tēs vitrinas. English"
+    ],
+    "title_display": "The wildcat behind glass / Alki Zei ; translated from the Greek by Karen Emmerich.",
+    "title_t": [
+        "The wildcat behind glass / Alki Zei ; translated from the Greek by Karen Emmerich."
+    ],
+    "title_citation_display": [
+        "The wildcat behind glass"
+    ],
+    "compiled_created_t": [
+        "The wildcat behind glass / Alki Zei ; translated from the Greek by Karen Emmerich."
+    ],
+    "edition_display": [
+        "First Restless Books hardcover edition."
+    ],
+    "pub_created_display": [
+        "New York : Restless Books, 2024.",
+        "©2024"
+    ],
+    "pub_created_s": [
+        "New York : Restless Books, 2024.",
+        "©2024"
+    ],
+    "pub_citation_display": [
+        "New York: Restless Books"
+    ],
+    "publication_location_citation_display": [
+        "New York"
+    ],
+    "publisher_citation_display": [
+        "Restless Books"
+    ],
+    "pub_date_display": [
+        "2024"
+    ],
+    "pub_date_start_sort": 2024,
+    "pub_date_end_sort": 2024,
+    "publication_date_citation_display": [
+        "2024"
+    ],
+    "cataloged_tdt": "2024-11-15T13:25:35Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "xii, 223 pages ; 22 cm"
+    ],
+    "description_t": [
+        "xii, 223 pages ; 22 cm"
+    ],
+    "number_of_pages_citation_display": [
+        "xii, 223 pages"
+    ],
+    "summary_note_display": [
+        "\"For Melia and her sister Myrto, the summer of 1936 means a break from Grandfather's history lessons and weeks of running free at the Greek seaside with their ragtag group of friends. Best of all, cousin Nikos will visit and tell his fabulous stories about the taxidermied wildcat, which opens its blue glass eye when it wants to do good deeds and its black one when it makes trouble. The black eye must be open lately because all the adults have been acting strangely, arguing about politics and fearful of the police. Soon even the children are divided--who can Melia trust? And can the wildcat help keep her family safe?\"-- Page 4 of cover."
+    ],
+    "notes_display": [
+        "\"A new translation by Karen Emmerich\"--Cover.",
+        "\"First published as Το Καπλάνι της βιτρίνας  by Themelio Publications, Athens, 1963\"--Title page verso."
+    ],
+    "language_display": [
+        "In English, translated from the Greek."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "lc_subject_display": [
+        "Liberty—Juvenile fiction",
+        "Greece—History—1917-1944—Juvenile fiction",
+        "Greece—Social conditions—20th century—Juvenile fiction"
+    ],
+    "subject_facet": [
+        "Liberty—Juvenile fiction",
+        "Greece—History—1917-1944—Juvenile fiction",
+        "Greece—Social conditions—20th century—Juvenile fiction",
+        "Historical fiction",
+        "Juvenile literature"
+    ],
+    "lc_subject_facet": [
+        "Liberty",
+        "Liberty—Juvenile fiction",
+        "Greece",
+        "Greece—History",
+        "Greece—History—1917-1944",
+        "Greece—History—1917-1944—Juvenile fiction",
+        "Greece—Social conditions",
+        "Greece—Social conditions—20th century",
+        "Greece—Social conditions—20th century—Juvenile fiction"
+    ],
+    "lcgft_s": [
+        "Historical fiction"
+    ],
+    "lcgft_genre_facet": [
+        "Historical fiction"
+    ],
+    "rbgenr_s": [
+        "Juvenile literature"
+    ],
+    "rbgenr_genre_facet": [
+        "Juvenile literature"
+    ],
+    "related_name_json_1display": "{\"Translator\":[\"Emmerich, Karen\"]}",
+    "other_title_display": [
+        "Wild cat behind glass"
+    ],
+    "alt_title_246_display": [
+        "Wild cat behind glass"
+    ],
+    "isbn_display": [
+        "9781632063649",
+        "1632063646 ((hardcover))"
+    ],
+    "isbn_s": [
+        "9781632063649"
+    ],
+    "oclc_s": [
+        "1391433087"
+    ],
+    "other_version_s": [
+        "9781632063649",
+        "on1391433087"
+    ],
+    "subject_era_facet": [
+        "1917-1944",
+        "20th century",
+        "20e siècle"
+    ],
+    "holdings_1display": "{\"221033451820006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"PA5610.Z37 K313 2024\",\"call_number_browse\":\"PA5610.Z37 K313 2024\",\"items\":[{\"holding_id\":\"221033451820006421\",\"id\":\"231033451810006421\",\"status_at_load\":\"1\",\"barcode\":\"32101116678143\"}]}}",
+    "location_code_s": [
+        "firestone$stacks"
+    ],
+    "location": [
+        "Firestone Library"
+    ],
+    "location_display": [
+        "Stacks"
+    ],
+    "advanced_location_s": [
+        "firestone$stacks",
+        "Firestone Library"
+    ],
+    "name_uniform_title_1display": "[[\"Zeē, Alkē.\",\"Kaplani tēs vitrinas.\",\"English\"]]",
+    "name_title_browse_s": [
+        "Zeē, Alkē. Kaplani tēs vitrinas",
+        "Zeē, Alkē. Kaplani tēs vitrinas. English"
+    ],
+    "call_number_display": [
+        "PA5610.Z37 K313 2024"
+    ],
+    "call_number_browse_s": [
+        "PA5610.Z37 K313 2024"
+    ],
+    "call_number_locator_display": [
+        "PA5610.Z37 K313 2024"
+    ],
+    "original_language_of_translation_facet": [
+        "Greek, Modern (1453- )"
+    ]
+}
