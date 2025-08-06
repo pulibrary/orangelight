@@ -11,7 +11,7 @@ class SearchBuilder < Blacklight::SearchBuilder
                                      cjk_mm wildcard_char_strip
                                      only_home_facets prepare_left_anchor_search
                                      series_title_results pul_holdings html_facets
-                                     numismatics_facets numismatics_advanced
+                                     numismatics_advanced
                                      adjust_mm remove_unneeded_facets]
 
   # mutate the solr_parameters to remove words that are
@@ -35,23 +35,6 @@ class SearchBuilder < Blacklight::SearchBuilder
     return unless blacklight_params[:advanced_type] == 'numismatics'
     solr_parameters[:fq] ||= []
     solr_parameters[:fq] << "format:Coin"
-  end
-
-  def numismatics_facets(solr_parameters)
-    return unless blacklight_params[:action] == 'numismatics'
-    blacklight_config.advanced_search[:form_solr_parameters]['facet.field'] = blacklight_config.numismatics_search['facet_fields']
-    solr_parameters['facet.field'] = blacklight_config.numismatics_search['facet_fields']
-  end
-
-  def facets_for_advanced_search_form(solr_p)
-    # Reject any facets that are meant to display on the advanced
-    # search form, so that the form displays accurate counts for
-    # them in its dropdowns
-    advanced_search_facets = blacklight_config.advanced_search.form_solr_parameters['facet.field']
-    solr_p[:fq]&.compact!
-    solr_p[:fq]&.reject! do |facet_from_query|
-      advanced_search_facets.any? { |facet_to_exclude| facet_from_query.include? facet_to_exclude }
-    end
   end
 
   def only_home_facets(solr_parameters)
