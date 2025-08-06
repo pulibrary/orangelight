@@ -252,16 +252,15 @@ export default class AvailabilityUpdater {
       const availability_display = $(
         `*[data-availability-record='true'] span.lux-text-style`
       );
-      $(availability_display).text('Loading...');
-      $(availability_display).addClass('gray strong');
+      this.status_display.setLoadingStatus(availability_display);
     } else {
       // For the show page we use a different selector.
       // We assume that the availability display is always a span with class lux-text-style.
       const availability_span_display = $(
         `*[data-availability-record='true'] span.availability-icon`
       );
-      $(availability_span_display).text('Loading...');
-      $(availability_span_display).addClass('lux-text-style gray strong');
+      $(availability_span_display).addClass('lux-text-style');
+      this.status_display.setLoadingStatus(availability_span_display);
     }
   }
 
@@ -271,8 +270,7 @@ export default class AvailabilityUpdater {
       const availability_display = $(
         `*[data-availability-record='true'] span.lux-text-style`
       );
-      $(availability_display).text('Undetermined');
-      $(availability_display).addClass('gray strong');
+      this.status_display.setUndeterminedStatus(availability_display);
     } else {
       const availability_span_display = $(
         `*[data-availability-record='true'] span.availability-icon`
@@ -304,9 +302,8 @@ export default class AvailabilityUpdater {
           `*[data-availability-record='true'][data-record-id='${this.id}'][data-scsb-barcode='${barcode}']`
         ).attr('data-aeon');
         if (aeon === 'true') {
-          availability_element
-            .text('On-Site Access')
-            .addClass('lux-text-style');
+          availability_element.addClass('lux-text-style');
+          this.status_display.setOnSiteAccessStatus(availability_element);
           result.push(availability_element);
         } else if (multi_items) {
           if (status_message) {
@@ -413,11 +410,10 @@ export default class AvailabilityUpdater {
         specialStatusLocations,
         searchResults
       );
-    } else if (
-      status_label.toLowerCase() === 'available' ||
-      status_label.toLowerCase() === 'some available'
-    ) {
-      availability_element.addClass('green strong');
+    } else if (status_label.toLowerCase() === 'available') {
+      this.status_display.setAvailableStatus(availability_element);
+    } else if (status_label.toLowerCase() === 'some available') {
+      this.status_display.setSomeAvailableStatus(availability_element);
     } else if (status_label.toLowerCase() === 'on-site access') {
       this.handleOnSiteAccessStatus(
         availability_element,
