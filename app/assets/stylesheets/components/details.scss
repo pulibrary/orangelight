@@ -44,6 +44,13 @@ summary .side-by-side {
     gap: 4px;
 }
 
+@media (max-width: $bp-small) {
+    .side-by-side {
+        flex-direction: column;
+    }
+}
+
+
 .side-by-side span.text {
     line-height: 2.1rem;
 }
