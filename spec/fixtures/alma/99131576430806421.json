@@ -1,0 +1,162 @@
+{
+    "id": "99131576430806421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Neuman, Andrés, 1977-"
+    ],
+    "author_citation_display": [
+        "Neuman, Andrés",
+        "Myers, Robin"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"Neuman, Andrés\",\"Neuman, Andrés\"],\"translators\":[\"Myers, Robin\"],\"editors\":[],\"compilers\":[],\"primary_author\":\"Neuman, Andrés\"}",
+    "author_s": [
+        "Neuman, Andrés, 1977-",
+        "Myers, Robin, 1987-"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "uniform_title_s": [
+        "Umbilical. English"
+    ],
+    "title_display": "A father is born / by Andrés Neuman ; translated from the Spanish by Robin Myers.",
+    "title_t": [
+        "A father is born / by Andrés Neuman ; translated from the Spanish by Robin Myers."
+    ],
+    "title_citation_display": [
+        "A father is born"
+    ],
+    "compiled_created_t": [
+        "A father is born / by Andrés Neuman ; translated from the Spanish by Robin Myers."
+    ],
+    "edition_display": [
+        "First Open Letter edition."
+    ],
+    "pub_created_display": [
+        "Rochester, NY : Open Letter Books, 2025.",
+        "©2025"
+    ],
+    "pub_created_s": [
+        "Rochester, NY : Open Letter Books, 2025.",
+        "©2025"
+    ],
+    "pub_citation_display": [
+        "Rochester, NY: Open Letter Books"
+    ],
+    "publication_location_citation_display": [
+        "Rochester, NY"
+    ],
+    "publisher_citation_display": [
+        "Open Letter Books"
+    ],
+    "pub_date_display": [
+        "2025"
+    ],
+    "pub_date_start_sort": 2025,
+    "pub_date_end_sort": 2025,
+    "publication_date_citation_display": [
+        "2025"
+    ],
+    "cataloged_tdt": "2025-08-06T08:08:43Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "265 pages ; 21 cm"
+    ],
+    "description_t": [
+        "265 pages ; 21 cm"
+    ],
+    "number_of_pages_citation_display": [
+        "265 pages"
+    ],
+    "related_record_info_display": [
+        "Online version:"
+    ],
+    "summary_note_display": [
+        "\"A man awaits his son's birth. Captivated, he follows the mother's pregnancy, imagining the child that will transform his house, his language, his relationship, and his family history. For a year, he annotates the memorable first steps leading the three of them into these new existential situations: being a father, a mother, a son; three different characters in a universal story, told in newly born words. A situation further complicated when the child begins speaking and articulating his world. A Father Is Born is a lyrical tale that resonates both on intimate and collective levels. Its understanding of fatherhood faces masculinity with the miracle of life and its incessant rereading of the present. In a time that redefines traditionally attributed roles, A Father Is Born accepts Anne Waldman's invitation: \"Tell the man to give up tumult for the while / To wonder at the sight of baby's beauty.\" But it is also, and above all, a love statement\"-- Provided by publisher."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "contents_display": [
+        "Umbilical",
+        "Small speaker."
+    ],
+    "subject_facet": [
+        "Fiction"
+    ],
+    "lcgft_s": [
+        "Fiction"
+    ],
+    "lcgft_genre_facet": [
+        "Fiction"
+    ],
+    "related_name_json_1display": "{\"Translator\":[\"Myers, Robin, 1987-\"]}",
+    "contains_1display": "[[\"Neuman, Andrés, 1977-\",\"Umbilical.\",\"English.\"],[\"Neuman, Andrés, 1977-\",\"Pequeño hablante.\",\"English.\"]]",
+    "isbn_display": [
+        "9781960385413 (paperback)",
+        "1960385410 (paperback)"
+    ],
+    "lccn_display": [
+        "  2025009154"
+    ],
+    "lccn_s": [
+        "2025009154"
+    ],
+    "isbn_s": [
+        "9781960385413"
+    ],
+    "oclc_s": [
+        "1452503939"
+    ],
+    "other_version_s": [
+        "9781960385413",
+        "9781960385420",
+        "on1452503939"
+    ],
+    "holdings_1display": "{\"221082631780006421\":{\"location_code\":\"firestone$dixn\",\"location\":\"Dixon Books\",\"library\":\"Firestone Library\",\"call_number\":\"PQ6664.E478 F38 2025\",\"call_number_browse\":\"PQ6664.E478 F38 2025\",\"items\":[{\"holding_id\":\"221082631780006421\",\"id\":\"231082631770006421\",\"status_at_load\":\"0\",\"barcode\":\"32101116136084\",\"process_type\":\"ACQ\"}]}}",
+    "location_code_s": [
+        "firestone$dixn"
+    ],
+    "location": [
+        "Firestone Library"
+    ],
+    "location_display": [
+        "Dixon Books"
+    ],
+    "advanced_location_s": [
+        "firestone$dixn",
+        "Firestone Library"
+    ],
+    "name_uniform_title_1display": "[[\"Neuman, Andrés, 1977-.\",\"Umbilical.\",\"English\"]]",
+    "name_title_browse_s": [
+        "Neuman, Andrés, 1977- Umbilical",
+        "Neuman, Andrés, 1977- Umbilical. English",
+        "Neuman, Andrés, 1977- Pequeño hablante",
+        "Neuman, Andrés, 1977- Pequeño hablante. English",
+        "Neuman, Andrés, 1977-. Umbilical",
+        "Neuman, Andrés, 1977-. Umbilical. English"
+    ],
+    "call_number_display": [
+        "PQ6664.E478 F38 2025"
+    ],
+    "call_number_browse_s": [
+        "PQ6664.E478 F38 2025"
+    ],
+    "call_number_locator_display": [
+        "PQ6664.E478 F38 2025"
+    ],
+    "original_language_of_translation_facet": [
+        "Spanish"
+    ]
+}

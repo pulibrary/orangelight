@@ -1,0 +1,147 @@
+{
+    "id": "9947572503506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Usman, Zuber, 1916-"
+    ],
+    "author_citation_display": [
+        "Usman, Zuber"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Usman, Zuber\"}",
+    "author_s": [
+        "Usman, Zuber, 1916-"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "uniform_title_s": [
+        "Dua puluh dongeng anak-anak. English"
+    ],
+    "title_display": "Tales from Indonesian folklore / Zuber Usman ; translated from the Indonesian by Gary Lichtenstein.",
+    "title_t": [
+        "Tales from Indonesian folklore / Zuber Usman ; translated from the Indonesian by Gary Lichtenstein."
+    ],
+    "title_citation_display": [
+        "Tales from Indonesian folklore"
+    ],
+    "compiled_created_t": [
+        "Tales from Indonesian folklore / Zuber Usman ; translated from the Indonesian by Gary Lichtenstein."
+    ],
+    "pub_created_display": [
+        "Jakarta : Balai Pustaka, 1982."
+    ],
+    "pub_created_s": [
+        "Jakarta : Balai Pustaka, 1982."
+    ],
+    "pub_citation_display": [
+        "Jakarta: Balai Pustaka"
+    ],
+    "publication_location_citation_display": [
+        "Jakarta"
+    ],
+    "publisher_citation_display": [
+        "Balai Pustaka"
+    ],
+    "pub_date_display": [
+        "1982"
+    ],
+    "pub_date_start_sort": 1982,
+    "publication_date_citation_display": [
+        "1982"
+    ],
+    "cataloged_tdt": "2007-09-28T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "84 p. : ill. ; 21 cm."
+    ],
+    "description_t": [
+        "84 p. : ill. ; 21 cm."
+    ],
+    "number_of_pages_citation_display": [
+        "84 p."
+    ],
+    "geocode_display": [
+        "Indonesia"
+    ],
+    "summary_note_display": [
+        "A collection of folk tales from the Indonesian archipelago complied by Zuber Usman as children's reading."
+    ],
+    "notes_display": [
+        "Translation of: Dua puluh dongeng anak-anak (8th edition 1977)..",
+        "Illustrations are signed by two artists: Sofjan Z. and S. Karim."
+    ],
+    "binding_note_display": [
+        "Pub. magenta pictorial wrappers printed in maroon."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "lc_subject_display": [
+        "Tales—Indonesia",
+        "Legends—Indonesia"
+    ],
+    "subject_facet": [
+        "Tales—Indonesia",
+        "Legends—Indonesia"
+    ],
+    "lc_subject_facet": [
+        "Tales",
+        "Tales—Indonesia",
+        "Legends",
+        "Legends—Indonesia"
+    ],
+    "lccn_display": [
+        "   84940070 "
+    ],
+    "lccn_s": [
+        "84940070"
+    ],
+    "oclc_s": [
+        "10611378"
+    ],
+    "other_version_s": [
+        "ocm10611378"
+    ],
+    "holdings_1display": "{\"22611486670006421\":{\"location_code\":\"rare$ctsn\",\"location\":\"Cotsen Children's Library\",\"library\":\"Special Collections\",\"call_number\":\"4436 Pams / Eng 20 / Box 99\",\"call_number_browse\":\"4436 Pams / Eng 20 / Box 99\",\"sub_location\":[\"Pams / Eng 20 / Box 99\"],\"items\":[{\"holding_id\":\"22611486670006421\",\"id\":\"23611486660006421\",\"status_at_load\":\"1\",\"barcode\":\"32101054273659\",\"copy_number\":\"1\"}]}}",
+    "location_code_s": [
+        "rare$ctsn"
+    ],
+    "location": [
+        "Special Collections"
+    ],
+    "location_display": [
+        "Cotsen Children's Library"
+    ],
+    "advanced_location_s": [
+        "rare$ctsn",
+        "Special Collections"
+    ],
+    "name_uniform_title_1display": "[[\"Usman, Zuber, 1916-.\",\"Dua puluh dongeng anak-anak.\",\"English\"]]",
+    "name_title_browse_s": [
+        "Usman, Zuber, 1916-. Dua puluh dongeng anak-anak",
+        "Usman, Zuber, 1916-. Dua puluh dongeng anak-anak. English"
+    ],
+    "call_number_display": [
+        "Pams / Eng 20 / Box 99 4436"
+    ],
+    "call_number_browse_s": [
+        "4436 Pams / Eng 20 / Box 99"
+    ],
+    "call_number_locator_display": [
+        "4436"
+    ],
+    "original_language_of_translation_facet": [
+        "Indonesian"
+    ]
+}
