@@ -123,6 +123,20 @@ $(function () {
     window.location = $(this).data('href');
   });
 
+  window.addEventListener('beforeprint', () => {
+    document.querySelectorAll('details').forEach((element) => {
+      if (element.hasAttribute('open')) element.setAttribute('opened', 'true');
+      element.setAttribute('open', '');
+    });
+  });
+
+  window.addEventListener('afterprint', () => {
+    document.querySelectorAll('details').forEach((element) => {
+      if (!element.hasAttribute('opened')) element.removeAttribute('open');
+      element.removeAttribute('opened');
+    });
+  });
+
   $(document).ready(function () {
     $('.document-metadata').each(function () {
       let justify = 'ltr';
