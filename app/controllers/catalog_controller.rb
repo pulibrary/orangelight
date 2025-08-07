@@ -305,6 +305,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'uniform_title_1display', label: 'Uniform title', helper_method: :title_hierarchy, if: false, default_top_field: true
     config.add_show_field 'format', label: 'Format', helper_method: :format_render, if: false, coin_top_field: true, default_top_field: true
     config.add_show_field 'language_name_display', label: 'Language', if: false, default_top_field: true
+    config.add_show_field 'original_language_of_translation_facet', label: 'Translated from', if: false, default_top_field: true
     config.add_show_field 'edition_display', label: 'Εdition', if: false, default_top_field: true
     config.add_show_field 'pub_created_display', label: "Published/\u200BCreated", if: false, default_top_field: true
     config.add_show_field 'description_display', label: 'Description', if: false, default_top_field: true
