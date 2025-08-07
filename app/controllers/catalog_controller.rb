@@ -39,17 +39,13 @@ class CatalogController < ApplicationController
     config.advanced_search[:url_key] ||= 'advanced'
     config.advanced_search[:query_parser] ||= 'edismax'
     config.advanced_search[:form_solr_parameters] ||= {}
-    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w[access_facet format publication_place_hierarchical_facet language_facet advanced_location_s]
+    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w[access_facet format publication_place_hierarchical_facet language_facet original_language_of_translation_facet advanced_location_s]
     config.advanced_search[:form_solr_parameters]['facet.query'] ||= ''
     config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['facet.pivot'] ||= ''
-    config.advanced_search[:form_solr_parameters]['f.language_facet.facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['f.language_facet.facet.sort'] ||= 'index'
     # TODO: Remove non-pipe options after re-index with pipe delimiter
-    config.advanced_search[:form_solr_parameters]['f.publication_place_hierarchical_facet.facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['f.publication_place_hierarchical_facet.facet.sort'] ||= 'index'
-
-    config.advanced_search[:form_solr_parameters]['f.publication_place_hierarchical_pipe_facet.facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['f.publication_place_hierarchical_pipe_facet.facet.sort'] ||= 'index'
 
     config.numismatics_search ||= Blacklight::OpenStructWithHashAccess.new
@@ -141,6 +137,7 @@ class CatalogController < ApplicationController
       show_missing_link: false
     }
     config.add_facet_field 'language_facet', label: 'Language', limit: true, include_in_advanced_search: true, suggest: true
+    config.add_facet_field 'original_language_of_translation_facet', label: 'Source language of translation', show: false, include_in_advanced_search_if: -> { Flipflop.source_language_of_translation? }
     config.add_facet_field 'subject_topic_facet', label: 'Subject: Topic', limit: true, include_in_advanced_search: false, suggest: true
     config.add_facet_field 'genre_facet', label: 'Subject: Genre', limit: true, include_in_advanced_search: false
     config.add_facet_field 'subject_era_facet', label: 'Subject: Era', limit: true, include_in_advanced_search: false
@@ -166,7 +163,6 @@ class CatalogController < ApplicationController
     config.add_facet_field 'lc_1letter_facet', label: 'Classification', limit: 25, include_in_request: false, sort: 'index'
     config.add_facet_field 'lc_rest_facet', label: 'Full call number code', limit: 25, include_in_request: false, sort: 'index'
     config.add_facet_field 'sudoc_facet', label: 'SuDocs', limit: true, sort: 'index', include_in_advanced_search: false
-    config.add_facet_field 'original_language_of_translation_facet', label: 'Original language of translation', show: false
 
     # The following facet configurations are purely for display purposes. They
     # will not show up in the facet bar, but without them the labels and other
@@ -305,6 +301,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'uniform_title_1display', label: 'Uniform title', helper_method: :title_hierarchy, if: false, default_top_field: true
     config.add_show_field 'format', label: 'Format', helper_method: :format_render, if: false, coin_top_field: true, default_top_field: true
     config.add_show_field 'language_name_display', label: 'Language', if: false, default_top_field: true
+    config.add_show_field 'original_language_of_translation_facet', label: 'Translated from', if: false, default_top_field: true
     config.add_show_field 'edition_display', label: 'Εdition', if: false, default_top_field: true
     config.add_show_field 'pub_created_display', label: "Published/\u200BCreated", if: false, default_top_field: true
     config.add_show_field 'description_display', label: 'Description', if: false, default_top_field: true

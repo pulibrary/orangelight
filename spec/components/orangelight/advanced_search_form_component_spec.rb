@@ -48,4 +48,36 @@ RSpec.describe Orangelight::AdvancedSearchFormComponent, type: :component, advan
       expect(rendered).to have_field 'f[subject_topic_facet][]', type: :hidden, with: 'Manuscripts, Arabic'
     end
   end
+
+  context 'when a facet field has an include_in_advanced_search_if lambda that returns false' do
+    before do
+      allow(view_context).to receive(:blacklight_config).and_return(
+        Blacklight::Configuration.new do |config|
+          config.add_facet_field 'format', label: 'Format', include_in_advanced_search_if: -> { false }
+        end
+      )
+    end
+    let(:response) do
+      Blacklight::Solr::Response.new({ facet_counts: { facet_fields: { format: { 'Book' => 10, 'CD' => 5 } } } }.with_indifferent_access, {})
+    end
+    it 'does not include the facet field in the UI' do
+      expect(rendered).not_to have_selector 'multiselect-combobox[field-name="format"]'
+    end
+  end
+
+  context 'when a facet field has an include_in_advanced_search_if lambda that returns true' do
+    before do
+      allow(view_context).to receive(:blacklight_config).and_return(
+        Blacklight::Configuration.new do |config|
+          config.add_facet_field 'format', label: 'Format', include_in_advanced_search_if: -> { true }
+        end
+      )
+    end
+    let(:response) do
+      Blacklight::Solr::Response.new({ facet_counts: { facet_fields: { format: { 'Book' => 10, 'CD' => 5 } } } }.with_indifferent_access, {})
+    end
+    it 'includes the facet field in the UI' do
+      expect(rendered).to have_selector 'multiselect-combobox[field-name="format"]'
+    end
+  end
 end
