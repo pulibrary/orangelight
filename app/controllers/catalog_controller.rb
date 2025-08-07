@@ -43,13 +43,9 @@ class CatalogController < ApplicationController
     config.advanced_search[:form_solr_parameters]['facet.query'] ||= ''
     config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['facet.pivot'] ||= ''
-    config.advanced_search[:form_solr_parameters]['f.language_facet.facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['f.language_facet.facet.sort'] ||= 'index'
     # TODO: Remove non-pipe options after re-index with pipe delimiter
-    config.advanced_search[:form_solr_parameters]['f.publication_place_hierarchical_facet.facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['f.publication_place_hierarchical_facet.facet.sort'] ||= 'index'
-
-    config.advanced_search[:form_solr_parameters]['f.publication_place_hierarchical_pipe_facet.facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['f.publication_place_hierarchical_pipe_facet.facet.sort'] ||= 'index'
 
     config.numismatics_search ||= Blacklight::OpenStructWithHashAccess.new
