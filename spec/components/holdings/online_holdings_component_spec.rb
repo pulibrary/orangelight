@@ -12,7 +12,7 @@ RSpec.describe Holdings::OnlineHoldingsComponent, type: :component do
   it 'renders an OnlineOptions vue component if there are multiple links in the document' do
     document = SolrDocument.new({ electronic_portfolio_s: ['{"title": "Link 1", "url": "http://example.com/1"}', '{"title": "Link 2", "url": "http://example.com/2"}'] })
     rendered = render_inline(described_class.new(document:))
-    expect(rendered.css('.lux online-options')).not_to be_empty
+    expect(rendered.css('.online-holdings-list')).not_to be_empty
   end
 
   it 'does not render an online availability lux-text-style for items with finding aids' do

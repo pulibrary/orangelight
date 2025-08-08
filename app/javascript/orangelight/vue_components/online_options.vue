@@ -1,12 +1,11 @@
 <template>
-  <div v-if="count > 1" class="online-wrapper">
-    <LuxHyperlink :href="url">{{ text }}</LuxHyperlink>
-  </div>
-  <div class="online-wrapper" v-else>
-    <LuxHyperlink :href="link.url"
-      >{{ link.title }}<span class="icon icon-external d-inline"></span
-    ></LuxHyperlink>
-  </div>
+  <LuxHyperlink v-if="count > 1" :href="url">
+    <span>{{ text }}</span>
+  </LuxHyperlink>
+  <LuxHyperlink :href="link.url" v-else>
+    <span>{{ link.title }}</span>
+    <span class="icon icon-external d-inline"></span>
+  </LuxHyperlink>
 </template>
 <script setup>
 import { LuxHyperlink } from 'lux-design-system';
@@ -23,10 +22,17 @@ a {
   font-size: 0.875rem;
 }
 
-.online-wrapper {
+.lux-link {
+  display: block;
+  padding: 0.5rem;
   border: solid 2px var(--color-grayscale-lighter);
   border-radius: 8px;
+  margin: 0;
+  span {
+    color: var(--color-bleu-de-france-dark);
+  }
 }
+
 .lux-link:hover {
   text-decoration: none;
   color: var(--color-princeton-orange-50);

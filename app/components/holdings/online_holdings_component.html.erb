@@ -1,8 +1,6 @@
-<div class="online-holdings-list">
-    <%= content_tag(
+<%= content_tag(
         :div,
         tag(:'online-options', :'document-id' => document.id, :'options-count' => links.length, :'link-json' => links.first),
-        class: 'lux'
-        )
-    %>
-</div>
+        class: 'online-holdings-list'
+    )
+%>

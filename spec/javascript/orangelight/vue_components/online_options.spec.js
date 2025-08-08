@@ -11,7 +11,7 @@ describe('OnlineOptions', () => {
         linkJson: '[]',
       },
     });
-    expect(wrapper.get('a').text()).toContain('2 Online Options');
+    expect(wrapper.get('span').text()).toContain('2 Online Options');
   });
   it('links to the available online section of the show page', () => {
     const wrapper = mount(OnlineOptions, {
