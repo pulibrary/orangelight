@@ -61,6 +61,7 @@ detectors:
   DuplicateMethodCall:
     exclude:
     - Holdings::OnlineHoldingsComponent#marc_links
+    - Holdings::SearchLocationComponent#library_in_use
     - NumismaticsSearchFormComponent#initialize_constraints
     - Orangelight::AdvancedSearchFormComponent#fields_for_etc
     - Orangelight::ConstraintComponent#constraint_value
@@ -221,6 +222,7 @@ detectors:
     - StackmapService::Url#url
   FeatureEnvy:
     exclude:
+    - Holdings::SearchLocationComponent#library_in_use
     - Orangelight::ConstraintsComponent#guided_search_value
     - Orangelight::FacetFieldCheckboxesComponent#values
     - Orangelight::ProcessVocabularyComponent#fast_subjects_value?
@@ -745,7 +747,6 @@ detectors:
     - Orangelight::LinkToFacetProcessor#link
   UncommunicativeVariableName:
     exclude:
-    - Orangelight::AdvancedSearchFormComponent#initialize_search_filter_controls
     - Orangelight::ConstraintsComponent#remove_guided_query_path
     - Orangelight::ProcessVocabularyComponent#build_search_subject_links
     - BookmarksController#csv_bom

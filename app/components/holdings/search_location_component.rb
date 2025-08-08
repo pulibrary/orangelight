@@ -28,7 +28,7 @@ class Holdings::SearchLocationComponent < ViewComponent::Base
           'mendel$pk': "Mendel (Remote Storage)",
           'stokes$pm': "Stokes (Remote Storage)"
         }.freeze
-        library_in_use_locations[location_code.to_sym] if library_in_use_locations.key?(location_code.to_sym)
+        library_in_use_locations[location_code.to_sym]
       end
 
       def call_number
