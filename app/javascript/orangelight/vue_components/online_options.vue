@@ -1,9 +1,7 @@
 <template>
-  <div v-if="count > 1" class="online-wrapper">
-    <LuxHyperlink :href="url">
-      <span>{{ title }}</span>
-    </LuxHyperlink>
-  </div>
+  <LuxHyperlink v-if="count > 1" :href="url">
+    <span>{{ text }}</span>
+  </LuxHyperlink>
   <LuxHyperlink :href="link.url" v-else>
     <span>{{ link.title }}</span>
     <span class="icon icon-external d-inline"></span>
