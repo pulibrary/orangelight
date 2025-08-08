@@ -37,4 +37,10 @@ RSpec.describe Holdings::SearchLocationComponent, type: :component do
     expect(rendered.css('.results_location').length).to eq 1
     expect(rendered.css('.call-number').length).to eq 1
   end
+
+  it "renders the in library use label when the location code is for library in use" do
+    holding_hash['location_code'] = 'firestone$pf'
+    rendered = render_inline(described_class.new(holding_hash))
+    expect(rendered.css('.results_location').text).to include("Firestone (Remote Storage)")
+  end
 end
