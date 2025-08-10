@@ -6,7 +6,8 @@ RSpec.describe Holdings::SearchLocationComponent, type: :component do
   let(:holding_hash) do
     {
       "call_number" => "QA76.73.R83",
-      "library" => "firestone"
+      "library" => "firestone",
+      "location_code" => "firestone$stacks"
     }
   end
 
