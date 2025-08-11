@@ -163,13 +163,12 @@ export default class AvailabilityUpdater {
 
       // In Alma the label from the endpoint includes both the library name and the location.
       const availability_info = holding_records[holding_id];
-      const { label } = availability_info;
-
-      if (label) {
-        const location = $(
+      const { label, location } = availability_info;
+      if (label && location) {
+        const availability_location = $(
           `*[data-location='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .results_location .search-result-library-name`
         );
-        location.text(this.getLibraryName(label));
+        availability_location.text(this.getLibraryName(label, location));
       }
       const availability_element = $(
         `*[data-availability-record='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .lux-text-style`
@@ -481,8 +480,24 @@ export default class AvailabilityUpdater {
     return availability_element;
   }
 
-  getLibraryName(label) {
-    let library_name = label.replace(/-(.*)/, '').trim();
+  getLibraryName(label, location) {
+    let library_name;
+    let library_in_use = {
+      arch$pw: 'Archictecture (Remote Storage)',
+      eastasian$pl: 'East Asian (Remote Storage)',
+      engineer$pt: 'Engineering (Remote Storage)',
+      firestone$pb: 'Firestone (Remote Storage)',
+      firestone$pf: 'Firestone (Remote Storage)',
+      lewis$pn: 'Lewis (Remote Storage)',
+      lewis$ps: 'Lewis (Remote Storage)',
+      mendel$pk: 'Mendel (Remote Storage)',
+      stokes$pm: 'Stokes (Remote Storage)',
+    };
+    if (location in library_in_use) {
+      library_name = library_in_use[location];
+    } else {
+      library_name = label.replace(/-(.*)/, '').trim();
+    }
     return library_name;
   }
 
