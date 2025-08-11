@@ -736,3 +736,52 @@ describe('AvailabilityUpdater', function () {
     ).toBe('Request');
   });
 });
+
+describe('getLibraryName', () => {
+  const availabilityUpdater = new updater();
+
+  it('returns the mapped name for an In library use location', () => {
+    expect(
+      availabilityUpdater.getLibraryName(
+        'Firestone Library - Remote Storage (ReCAP): Firestone Library Use Only',
+        'firestone$pb'
+      )
+    ).toBe('Firestone (Remote Storage)');
+    expect(
+      availabilityUpdater.getLibraryName(
+        'Lewis Library - Remote Storage (ReCAP): Lewis Library Use Only',
+        'lewis$pn'
+      )
+    ).toBe('Lewis (Remote Storage)');
+    expect(
+      availabilityUpdater.getLibraryName(
+        'Stokes Library - Remote Storage (ReCAP): Stokes Library Use Only',
+        'stokes$pm'
+      )
+    ).toBe('Stokes (Remote Storage)');
+  });
+
+  it('returns the label with suffix removed for not in library use locations', () => {
+    expect(
+      availabilityUpdater.getLibraryName(
+        'Firestone Library - Stacks',
+        'firestone$stacks'
+      )
+    ).toBe('Firestone Library');
+    expect(
+      availabilityUpdater.getLibraryName(
+        'Lewis Library - Reference (Fine Hall Wing)',
+        'lewis$ref'
+      )
+    ).toBe('Lewis Library');
+  });
+
+  it('trims whitespace from the result', () => {
+    expect(
+      availabilityUpdater.getLibraryName(
+        'Mendel Music Library - Main   ',
+        'mendel$main'
+      )
+    ).toBe('Mendel Music Library');
+  });
+});
