@@ -51,6 +51,9 @@ RSpec.describe Requests::AeonUrl, requests: true do
   it 'includes publisher as a publisher' do
     expect(subject).to include('rft.pub=Random+House')
   end
+  it 'uses the text "Reading Room Access Only" for the ItemInfo1 by default' do
+    expect(subject).to include("ItemInfo1=Reading+Room+Access+Only")
+  end
   context 'when the location is at a Mudd location' do
     let(:holdings) do
       { "12345" => {
@@ -111,6 +114,19 @@ RSpec.describe Requests::AeonUrl, requests: true do
     end
     it('takes enumeration from the item') do
       expect(subject).to include('rft.volume=Vol+1%3A+no.+1+-+4')
+    end
+  end
+  context 'when the document has access_restrictions_note_display' do
+    let(:document) do
+      SolrDocument.new({
+                         id: '9999999',
+                         pub_citation_display: ['Random House'],
+                         holdings_1display: holdings.to_json,
+                         access_restrictions_note_display: ["For conservation reasons, access is granted for compelling reasons only."]
+                       })
+    end
+    it 'includes the restriction note in ItemInfo1' do
+      expect(subject).to include("ItemInfo1=For+conservation+reasons%2C+access+is+granted+for+compelling+reasons+only.")
     end
   end
 end
