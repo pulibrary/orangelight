@@ -38,7 +38,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     end
     let(:request_with_items_on_reserve) { Requests::Form.new(**params) }
     let(:requestable_list) { request_with_items_on_reserve.requestable }
-    let(:submit_button_disabled) { helper.submit_button_disabled(requestable_list) }
+    let(:submit_button_disabled) { helper.submit_button_disabled?(requestable_list) }
 
     it 'returns a boolean to disable/enable submit' do
       expect(submit_button_disabled).to be_truthy
@@ -90,9 +90,9 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     let(:default_pick_ups) do
       [{ label: "Firestone Library", gfa_pickup: "PA", staff_only: false }, { label: "Architecture Library", gfa_pickup: "PW", staff_only: false }, { label: "East Asian Library", gfa_pickup: "PL", staff_only: false }, { label: "Lewis Library", gfa_pickup: "PN", staff_only: false }, { label: "Marquand Library of Art and Archaeology", gfa_pickup: "PJ", staff_only: false }, { label: "Mendel Music Library", gfa_pickup: "PK", staff_only: false }, { label: "Plasma Physics Library", gfa_pickup: "PQ", staff_only: false }, { label: "Stokes Library", gfa_pickup: "PM", staff_only: false }]
     end
-    let(:lewis_request_with_multiple_requestable) { Requests::FormDecorator.new(Requests::Form.new(**params), self) }
+    let(:lewis_request_with_multiple_requestable) { Requests::FormDecorator.new(Requests::Form.new(**params), self, '/catalog/12345') }
     let(:requestable_list) { lewis_request_with_multiple_requestable.requestable }
-    let(:submit_button_disabled) { helper.submit_button_disabled(requestable_list) }
+    let(:submit_button_disabled) { helper.submit_button_disabled?(requestable_list) }
     it 'lewis is a submitable request' do
       choices = helper.pick_up_choices(lewis_request_with_multiple_requestable.requestable.last, default_pick_ups)
       expect(choices).to eq("<div id=\"fields-print__23724990920006421\" class=\"collapse request--print\"><div><ul class=\"service-list\"><li class=\"service-item\">Requests for pick-up typically take 2 business days to process.</li></ul></div><div id=\"fields-print__23724990920006421_card\" class=\"card card-body bg-light\"><input type=\"hidden\" name=\"requestable[][pick_up]\" id=\"requestable__pick_up_23724990920006421\" value=\"{&quot;pick_up&quot;:&quot;PN&quot;,&quot;pick_up_location_code&quot;:&quot;lewis&quot;}\" class=\"single-pick-up-hidden\" autocomplete=\"off\" /><label class=\"single-pick-up\" style=\"\" for=\"requestable__pick_up_23724990920006421\">Pick-up location: Lewis Library</label></div></div>")
@@ -110,9 +110,9 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     let(:default_pick_ups) do
       [{ label: "Firestone Library", gfa_pickup: "PA", staff_only: false }, { label: "Architecture Library", gfa_pickup: "PW", staff_only: false }, { label: "East Asian Library", gfa_pickup: "PL", staff_only: false }, { label: "Lewis Library", gfa_pickup: "PN", staff_only: false }, { label: "Marquand Library of Art and Archaeology", gfa_pickup: "PJ", staff_only: false }, { label: "Mendel Music Library", gfa_pickup: "PK", staff_only: false }, { label: "Plasma Physics Library", gfa_pickup: "PQ", staff_only: false }, { label: "Stokes Library", gfa_pickup: "PM", staff_only: false }]
     end
-    let(:lewis_request_with_multiple_requestable) { Requests::FormDecorator.new(Requests::Form.new(**params), self) }
+    let(:lewis_request_with_multiple_requestable) { Requests::FormDecorator.new(Requests::Form.new(**params), self, '/catalog/12345') }
     let(:requestable_list) { lewis_request_with_multiple_requestable.requestable }
-    let(:submit_button_disabled) { helper.submit_button_disabled(requestable_list) }
+    let(:submit_button_disabled) { helper.submit_button_disabled?(requestable_list) }
     let(:availability_response) { File.read("spec/fixtures/scsb_availability_994264203506421.json") }
     it 'lewis is a submitable request' do
       stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
@@ -125,7 +125,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     end
   end
 
-  describe '#suppress_login' do
+  describe '#suppress_login?' do
     let(:unauthenticated_patron) { FactoryBot.build(:unauthenticated_patron) }
     let(:patron) { Requests::Patron.new(user: unauthenticated_patron) }
     let(:params) do
@@ -135,8 +135,8 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
         patron:
       }
     end
-    let(:aeon_only_request) { Requests::FormDecorator.new(Requests::Form.new(**params), nil) }
-    let(:login_suppressed) { helper.suppress_login(aeon_only_request) }
+    let(:aeon_only_request) { Requests::FormDecorator.new(Requests::Form.new(**params), nil, '/catalog/12345') }
+    let(:login_suppressed) { helper.suppress_login?(aeon_only_request) }
 
     it 'returns a boolean to disable/enable submit' do
       expect(login_suppressed).to be true

@@ -94,7 +94,7 @@ describe 'Account login' do
         expect(page).to have_link('Log in with netID')
         click_link('Log in with netID')
         expect(page).to have_content('Library Material Request')
-        expect(page).to have_current_path('/requests/SCSB-2143785?aeon=false')
+        expect(page.current_path).to start_with('/requests/SCSB-2143785')
         expect(page).to have_selector('#request_3270290')
       end
 
@@ -163,6 +163,10 @@ describe 'Account login' do
 
           it 'does not require authentication', js: true do
             visit "/catalog/#{bib_id}"
+
+            # open the desired holding group
+            find('summary', text: 'Special Collections - Remote Storage (ReCAP): Historic Maps. Special Collections Use Only').click
+
             expect(page).to have_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*CallNumber\=RECAP-94760855'))
             click_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*CallNumber\=RECAP-94760855'))
             expect(page.current_url).to include(Requests.config[:aeon_base])

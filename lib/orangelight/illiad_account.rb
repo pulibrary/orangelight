@@ -14,7 +14,7 @@ module Orangelight
       @illiad_api_base = Requests.config["illiad_api_base"]
     end
 
-    def verify_user
+    def verify_user?
       return false if illiad_patron_response == false
 
       illiad_patron_response&.success?

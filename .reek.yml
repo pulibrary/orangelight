@@ -6,7 +6,6 @@ detectors:
     - AeonStatus#critical
     - IlliadStatus#critical
     - ScsbStatus#critical
-    - StackmapStatus#critical
     - AskAQuestionForm#context
     - AskAQuestionForm#email
     - AskAQuestionForm#message
@@ -40,7 +39,7 @@ detectors:
     exclude:
     - ApplicationController#after_sign_out_path_for
     - BookmarksController#two_values
-    - Requests::ApplicationHelper#check_box_selected
+    - Requests::ApplicationHelper#check_box_selected?
     - Requests::ApplicationHelper#hidden_service_options
     - Requests::ApplicationHelper#single_pickup
     - Requests::RequestHelper#reshare_type
@@ -54,13 +53,11 @@ detectors:
     - Requests::Illiad#genere
     - Requests::Illiad#identifiers_for_type
     - Requests::Patron#initialize
-    - PhysicalHoldingsMarkupBuilder#self.thesis?
   DataClump:
     exclude:
     - HoldingsHelper
     - Requests::ApplicationHelper
     - Requests::SelectedItemsValidator
-    - PhysicalHoldingsMarkupBuilder
   DuplicateMethodCall:
     exclude:
     - Holdings::OnlineHoldingsComponent#marc_links
@@ -96,7 +93,6 @@ detectors:
     - ApplicationHelper#location_full_display
     - ApplicationHelper#name_title_hierarchy
     - ApplicationHelper#scsb_supervised_items?
-    - ApplicationHelper#search_location_display
     - ApplicationHelper#series_results
     - BlacklightHelper#browse_related_name_hash
     - BlacklightHelper#cjk_mm
@@ -109,8 +105,9 @@ detectors:
     - BlacklightHelper#oclc_resolve
     - BlacklightHelper#pul_holdings
     - CatalogHelper#render_search_to_page_title
-    - HoldingsHelper#first_two_holdings_block
-    - HoldingsHelper#view_record_for_full_avail_li_two
+    - HoldingsHelper#holding_block_search
+    - HoldingsHelper#holding_status_li
+    - HoldingsHelper#holdings_block
     - Orangelight::BrowsablesHelper#current_browse_per_page
     - Requests::ApplicationHelper#available_pick_ups
     - Requests::ApplicationHelper#current_location_label
@@ -125,7 +122,7 @@ detectors:
     - Requests::ApplicationHelper#pick_up_locations
     - Requests::ApplicationHelper#preferred_request_content_tag
     - Requests::ApplicationHelper#show_service_options
-    - Requests::ApplicationHelper#submit_button_disabled
+    - Requests::ApplicationHelper#submit_button_disabled?
     - Requests::ApplicationHelper#submit_message
     - Requests::ApplicationHelper#system_status_label
     - Requests::RequestHelper#login_url
@@ -196,11 +193,8 @@ detectors:
     - Requests::Submissions::Recap#handle_item
     - SearchBuilder#add_edismax
     - SearchBuilder#advanced_search?
-    - SearchBuilder#facets_for_advanced_search_form
     - SearchBuilder#numismatics_advanced
-    - SearchBuilder#numismatics_facets
     - SearchBuilder#parslet_trick
-    - SearchBuilder#q_param_needs_boolean_cleanup
     - SolrDocument#electronic_access_uris
     - SolrDocument#holdings_all_display
     - SolrDocument#host_id
@@ -223,9 +217,6 @@ detectors:
     - OnlineHoldingsMarkupBuilder#self.electronic_access_link
     - OnlineHoldingsMarkupBuilder#self.electronic_portfolio_markup
     - OnlineHoldingsMarkupBuilder#self.urlify
-    - PhysicalHoldingsMarkupBuilder#build_holding_notes
-    - PhysicalHoldingsMarkupBuilder#request_link_component
-    - PhysicalHoldingsMarkupBuilder#self.scsb_supervised_items?
     - Requests::BibdataService#self.delivery_locations
     - StackmapService::Url#url
   FeatureEnvy:
@@ -236,6 +227,7 @@ detectors:
     - Orangelight::SearchBarComponent#search_fields
     - ApplicationController#after_sign_out_path_for
     - Requests::FormController#sanitize_submission
+    - ApplicationHelper#holding_library_label
     - ApplicationHelper#series_results
     - ApplicationHelper#title_hierarchy
     - BlacklightHelper#isbn_resolve
@@ -292,9 +284,7 @@ detectors:
     - Requests::Submission#selected_items
     - Requests::Submissions::HoldItem#payload
     - Requests::Submissions::Service#error_hash
-    - SearchBuilder#facets_for_advanced_search_form
     - SearchBuilder#numismatics_advanced
-    - SearchBuilder#q_param_needs_boolean_cleanup
     - SolrDocument#electronic_access_uris
     - SolrDocument#holdings_with_host_id
     - SubmissionSerializer#serialize
@@ -350,7 +340,6 @@ detectors:
     - BibdataStatus
     - IlliadStatus
     - ScsbStatus
-    - StackmapStatus
     - AlwaysShowMetadataFieldComponent
     - BookmarkButtonComponent
     - DisplayMoreFieldComponent
@@ -481,9 +470,7 @@ detectors:
     - HoldingRequestsBuilder
     - OAuthService::CouldNotGenerateOAuthToken
     - OnlineHoldingsMarkupBuilder
-    - PhysicalHoldingsMarkupBuilder
     - Requests::BibdataService
-    - StackmapLocationFactory
     - EventHandler
   LongParameterList:
     exclude:
@@ -500,13 +487,6 @@ detectors:
     - Requests::Illiad#illiad_query_parameters
     - Requests::IlliadMetadata::Metadata#initialize
     - Requests::SelectedItemsValidator#validate_ill_on_shelf
-    - PhysicalHoldingsMarkupBuilder#holding_location
-    - PhysicalHoldingsMarkupBuilder#holding_location_container
-    - PhysicalHoldingsMarkupBuilder#holding_location_default
-    - PhysicalHoldingsMarkupBuilder#locate_link
-    - PhysicalHoldingsMarkupBuilder#request_link_component
-    - PhysicalHoldingsMarkupBuilder#request_placeholder
-    - PhysicalHoldingsMarkupBuilder#self.location_services_block
   ManualDispatch:
     exclude:
     - Orangelight::ConstraintComponent#constraint_value
@@ -517,7 +497,6 @@ detectors:
     - BibdataStatus
     - IlliadStatus
     - ScsbStatus
-    - StackmapStatus
     - ApplicationController
     - SearchBuilder
   NestedIterators:
@@ -537,7 +516,6 @@ detectors:
     - Blacklight::Document::Ris#export_as_ris
     - Blacklight::Marc::DocumentExtension#get_author_list
     - Requests::Location#build_delivery_locations
-    - SearchBuilder#facets_for_advanced_search_form
     - SolrDocument#identifiers
   NilCheck:
     exclude:
@@ -553,7 +531,9 @@ detectors:
     - Orangelight::BrowsablesController#rpp
     - Requests::FormController#mode
     - ApplicationHelper#aeon_location?
+    - ApplicationHelper#alma_library_display
     - ApplicationHelper#alma_location_display
+    - ApplicationHelper#holding_library_label
     - ApplicationHelper#holding_location_label
     - ApplicationHelper#render_location_code
     - BlacklightHelper#html_facets
@@ -561,7 +541,7 @@ detectors:
     - BlacklightHelper#issn_resolve
     - BlacklightHelper#lccn_resolve
     - BlacklightHelper#oclc_resolve
-    - HoldingsHelper#first_two_holdings_block
+    - HoldingsHelper#holdings_block
     - Requests::ApplicationHelper#display_status
     - Requests::ApplicationHelper#hidden_fields_for_item
     - Requests::ApplicationHelper#hidden_fields_item
@@ -586,20 +566,12 @@ detectors:
     - SolrDocument#identifier_data
     - Bibdata#holding_locations
     - HoldingRequestsAdapter#empty_holding?
-    - HoldingRequestsAdapter#holding_location_label
     - HoldingRequestsAdapter#holding_location_rules
     - HoldingRequestsAdapter#location_has?
     - HoldingRequestsAdapter#location_note?
     - HoldingRequestsAdapter#shelving_title?
     - LinkedDocumentResolver::LinkedDocuments#response
-    - PhysicalHoldingsMarkupBuilder#call_number_link
-    - PhysicalHoldingsMarkupBuilder#holding_location_default
-    - PhysicalHoldingsMarkupBuilder#self.aeon_location?
-    - PhysicalHoldingsMarkupBuilder#self.open_location?
-    - PhysicalHoldingsMarkupBuilder#self.requestable_location?
-    - PhysicalHoldingsMarkupBuilder#self.scsb_location?
     - Requests::BibdataService#self.delivery_locations
-    - StackmapLocationFactory#call_number?
     - StackmapService::Url#location_label
     - StackmapService::Url#valid?
   RepeatedConditional:
@@ -607,7 +579,6 @@ detectors:
     - ContactController
     - Requests::FormDecorator
     - Requests::RequestableDecorator
-    - PhysicalHoldingsMarkupBuilder
   TooManyInstanceVariables:
     exclude:
     - MultiselectComboboxComponent
@@ -646,7 +617,6 @@ detectors:
     - SearchBuilder
     - SolrDocument
     - HoldingRequestsAdapter
-    - PhysicalHoldingsMarkupBuilder
   TooManyStatements:
     exclude:
     - initialize
@@ -675,7 +645,6 @@ detectors:
     - ApplicationHelper#location_has
     - ApplicationHelper#name_title_hierarchy
     - ApplicationHelper#render_location_code
-    - ApplicationHelper#search_location_display
     - ApplicationHelper#title_hierarchy
     - BlacklightHelper#cjk_mm
     - BlacklightHelper#isbn_resolve
@@ -685,8 +654,8 @@ detectors:
     - BlacklightHelper#oclc_resolve
     - BlacklightHelper#prepare_left_anchor_search
     - CatalogHelper#render_search_to_page_title
-    - HoldingsHelper#first_two_holdings_block
     - HoldingsHelper#holding_block_search
+    - HoldingsHelper#holdings_block
     - Requests::ApplicationHelper#available_pick_ups
     - Requests::ApplicationHelper#current_location_label
     - Requests::ApplicationHelper#display_requestable_list
@@ -722,7 +691,7 @@ detectors:
     - Orangelight::RecordMailer#email_record
     - Requests::AeonUrl#ctx_with_item_info
     - Requests::ClancyItem#post_clancy
-    - Requests::ClancyItem#request
+    - Requests::ClancyItem#request?
     - Requests::Form#build_barcode_sort
     - Requests::Form#build_holding_scsb_items
     - Requests::Form#build_requestable_with_items
@@ -766,10 +735,6 @@ detectors:
     - OnlineHoldingsMarkupBuilder#self.electronic_access_link
     - OnlineHoldingsMarkupBuilder#self.electronic_portfolio_markup
     - OnlineHoldingsMarkupBuilder#self.urlify
-    - PhysicalHoldingsMarkupBuilder#build_holding_notes
-    - PhysicalHoldingsMarkupBuilder#process_physical_holding
-    - PhysicalHoldingsMarkupBuilder#request_link_component
-    - PhysicalHoldingsMarkupBuilder#self.restrictions_markup
     - Requests::BibdataService#self.delivery_locations
   UncommunicativeMethodName:
     exclude:
@@ -792,6 +757,7 @@ detectors:
     - ApplicationHelper#name_title_hierarchy
     - ApplicationHelper#same_series_result
     - ApplicationHelper#title_hierarchy
+    - HoldingsHelper#holding_block_search
     - Blacklight::Document::DublinCore#export_as_oai_dc_xml
     - Blacklight::Document::DublinCore#export_as_rdf_dc
     - Blacklight::Document::Email#add_multi_valued_field
@@ -815,8 +781,6 @@ detectors:
     - Bibdata#sorted_locations
     - HoldingRequestsAdapter#doc_holdings_elf
     - HoldingRequestsAdapter#doc_holdings_physical
-    - HoldingRequestsAdapter#sorted_physical_holdings
-    - PhysicalHoldingsMarkupBuilder#self.listify_array
   UnusedParameters:
     exclude:
     - Requests::RequestMailer#annex_edd_email
@@ -827,7 +791,7 @@ detectors:
     exclude:
     - Orangelight::DropdownHelpTextComponent#option_text_and_value
     - Orangelight::ProcessVocabularyComponent#accumulate_subsubjects
-    - AccountController#cancel_ill_success
+    - AccountController#cancel_ill_success?
     - AccountController#current_patron
     - ApplicationController#default_url_options
     - ApplicationController#referrer_from_url
@@ -839,12 +803,12 @@ detectors:
     - FeedbackForm#error_message
     - ReportBiasedResultsForm#routed_mail_to
     - ApplicationHelper#aeon_location?
+    - ApplicationHelper#alma_library_display
     - ApplicationHelper#alma_location_display
     - ApplicationHelper#bibdata_location_code_to_sym
     - ApplicationHelper#current_year
     - ApplicationHelper#format_render
     - ApplicationHelper#holding_location
-    - ApplicationHelper#holding_request_block
     - ApplicationHelper#html_safe
     - ApplicationHelper#location_full_display
     - ApplicationHelper#rails_env?
@@ -862,7 +826,7 @@ detectors:
     - Orangelight::BrowsablesHelper#vocab_type
     - Requests::ApplicationHelper#aeon_base
     - Requests::ApplicationHelper#available_pick_ups
-    - Requests::ApplicationHelper#check_box_selected
+    - Requests::ApplicationHelper#check_box_selected?
     - Requests::ApplicationHelper#current_location_label
     - Requests::ApplicationHelper#display_label
     - Requests::ApplicationHelper#enum_copy_display
@@ -872,7 +836,7 @@ detectors:
     - Requests::ApplicationHelper#isbn_string
     - Requests::ApplicationHelper#pick_up_classlist
     - Requests::ApplicationHelper#submit_message
-    - Requests::ApplicationHelper#suppress_login
+    - Requests::ApplicationHelper#suppress_login?
     - Requests::ApplicationHelper#table_sorter_present?
     - Requests::RequestHelper#login_url
     - Requests::RequestHelper#parse_json
@@ -903,11 +867,11 @@ detectors:
     - Requests::IlliadMetadata::Loan#call_number
     - Requests::IlliadMetadata::Loan#volume_number
     - Requests::IlliadTransactionClient#disavowed_illiad_patron?
-    - Requests::IlliadTransactionClient#validate_illiad_patron
+    - Requests::IlliadTransactionClient#validate_illiad_patron?
     - Requests::Item#available_statuses
     - Requests::Item#unavailable_statuses
     - Requests::SelectedItemsValidator#validate_delivery_mode
-    - Requests::SelectedItemsValidator#validate_item_id
+    - Requests::SelectedItemsValidator#validate_item_id?
     - Requests::SelectedItemsValidator#validate_pick_up_location
     - Requests::SelectedItemsValidator#validate_recap_no_items
     - Requests::Submission#delivery_mode
@@ -918,15 +882,12 @@ detectors:
     - Requests::Submissions::ClancyEdd#hold_id
     - Requests::Submissions::Illiad#success_message
     - SearchBuilder#cleaned_query
-    - SearchBuilder#using_json_query_dsl
     - SolrDocument#clean_ids
     - SolrDocument#doc_by_id
     - SolrDocument#ensure_voyager_to_alma_id
     - Orangelight::JoinProcessor#direction
     - DBMigrateUppercaseUsernames#find_uppercase_users
     - EventProcessor::Processor#index
-    - HoldingRequestsAdapter#alma_location_label_display_bibdata_location
-    - HoldingRequestsAdapter#alma_location_label_display_holding
     - HoldingRequestsAdapter#call_number
     - HoldingRequestsAdapter#empty_holding?
     - HoldingRequestsAdapter#indexes?
@@ -941,6 +902,3 @@ detectors:
     - HoldingRequestsAdapter#temp_location_code
     - HoldingRequestsAdapter#unavailable_holding?
     - LinkedDocumentResolver::LinkedDocuments#bib_id?
-    - PhysicalHoldingsMarkupBuilder#call_number_span
-    - StackmapLocationFactory#call_number?
-    - StackmapLocationFactory#excluded?

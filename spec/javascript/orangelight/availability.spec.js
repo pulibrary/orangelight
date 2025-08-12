@@ -4,7 +4,7 @@ import { promises as fs } from 'fs';
 describe('AvailabilityUpdater', function () {
   afterEach(vi.clearAllMocks);
 
-  test('hooked up right', () => {
+  test('it loads', () => {
     expect(updater).not.toBe(undefined);
   });
 
@@ -20,7 +20,7 @@ describe('AvailabilityUpdater', function () {
       '<ul class="document-metadata dl-horizontal dl-invert">' +
       '<li class="blacklight-holdings">' +
       '<ul>' +
-      `<li data-availability-record="true" data-record-id="${avail_id}" data-holding-id="2224357860006421" data-aeon="false"><span class="availability-icon"></span></li>` +
+      `<li data-availability-record="true" data-record-id="${avail_id}" data-holding-id="2224357860006421" data-aeon="false"><span class="lux-text-style"></span></li>` +
       '</ul>' +
       '</li>' +
       '</ul>' +
@@ -33,7 +33,7 @@ describe('AvailabilityUpdater', function () {
       '<ul class="document-metadata dl-horizontal dl-invert">' +
       '<li class="blacklight-holdings">' +
       '<ul>' +
-      `<li data-availability-record="true" data-record-id="${unavail_id}" data-holding-id="2278269270006421" data-aeon="false"><span class="availability-icon"></span></li>` +
+      `<li data-availability-record="true" data-record-id="${unavail_id}" data-holding-id="2278269270006421" data-aeon="false"><span class="lux-text-style"></span></li>` +
       '</ul>' +
       '</li>' +
       '</ul>' +
@@ -46,7 +46,7 @@ describe('AvailabilityUpdater', function () {
       '<ul class="document-metadata dl-horizontal dl-invert">' +
       '<li class="blacklight-holdings">' +
       '<ul>' +
-      `<li data-availability-record="true" data-record-id="${mixed_id}" data-holding-id="22186788410006421" data-aeon="false"><span class="availability-icon"></span></li>` +
+      `<li data-availability-record="true" data-record-id="${mixed_id}" data-holding-id="22186788410006421" data-aeon="false"><span class="lux-text-style"></span></li>` +
       '</ul>' +
       '</li>' +
       '</ul>' +
@@ -58,38 +58,36 @@ describe('AvailabilityUpdater', function () {
       'spec/fixtures/bibliographic_availability_3_bibs.json',
       'utf8'
     );
-    bibdata_response = JSON.parse(bibdata_response);
-
     const u = new updater();
+    bibdata_response = JSON.parse(bibdata_response);
     u.process_results_list(bibdata_response);
 
     const available_result = $(
-      `*[data-record-id="${avail_id}"] .availability-icon`
+      `*[data-record-id="${avail_id}"] .lux-text-style`
     );
-    expect(available_result.hasClass('badge')).toBe(true);
-    expect(available_result.hasClass('bg-success')).toBe(true);
+
+    expect(available_result.hasClass('green strong')).toBe(true);
     expect(available_result.text()).toEqual('Available');
 
     const unavailable_result = $(
-      `*[data-record-id="${unavail_id}"] .availability-icon`
+      `*[data-record-id="${unavail_id}"] .lux-text-style`
     );
-    expect(unavailable_result.hasClass('badge')).toBe(true);
-    expect(unavailable_result.hasClass('bg-danger')).toBe(true);
-    expect(unavailable_result.text()).toEqual('Unavailable');
 
-    const mixed_result = $(
-      `*[data-record-id="${mixed_id}"] .availability-icon`
-    );
-    expect(mixed_result.hasClass('badge')).toBe(true);
-    expect(mixed_result.hasClass('bg-secondary')).toBe(true);
-    expect(mixed_result.text()).toEqual('Some items not available');
+    expect(unavailable_result.hasClass('gray')).toBe(true);
+    expect(unavailable_result.text()).toEqual('Request');
+
+    const mixed_result = $(`*[data-record-id="${mixed_id}"] .lux-text-style`);
+
+    expect(mixed_result.hasClass('green strong')).toBe(true);
+    expect(mixed_result.text()).toEqual('Some Available');
   });
+
   test('search results - SCSB availability - Unavailable', () => {
     document.body.innerHTML =
       '<li class="blacklight-holdings">' +
       '<ul>' +
       '<li class="holding-status sm-checked" data-availability-record="false" data-record-id="SCSB-5467030" data-holding-id="5459517" data-aeon="false" data-bound-with="false">' +
-      '<span class="availability-icon badge" data-scsb-availability="true" data-scsb-barcode="CU15957330">Unavailable</span>' +
+      '<span class="availability-icon lux-text-style" data-scsb-availability="true" data-scsb-barcode="CU15957330">Unavailable</span>' +
       '<div class="library-location" data-location="true" data-record-id="SCSB-5467030" data-holding-id="5459517">' +
       '<span class="results_location">ReCAP - Remote Storage</span> » <span class="call-number">PL5132 .B68 2007g</span>' +
       '</div>' +
@@ -115,19 +113,19 @@ describe('AvailabilityUpdater', function () {
     u.scsb_search_availability;
     const availabilityBadgeAfter =
       document.getElementsByClassName('availability-icon');
-    expect(availabilityBadgeAfter[0].textContent).toEqual('Unavailable');
+    expect(availabilityBadgeAfter[0].textContent).toEqual('Request');
     expect(
       document.querySelector(
-        '.holding-status[data-holding-id="5459517"] > .bg-danger'
+        '.holding-status[data-holding-id="5459517"] > .availability-icon.lux-text-style.gray.strong'
       )
     ).toBeTruthy();
   });
-  test('search results availability for records in temporary locations says View record for Full Availability', () => {
+  test('search results availability for records in temporary locations says Available', () => {
     document.body.innerHTML =
       '<li class="blacklight-holdings">' +
       '  <ul>' +
       '    <li data-availability-record="true" data-record-id="9972879153506421" data-holding-id="lewis$resterm" data-aeon="false" data-bound-with="false">' +
-      '      <span class="availability-icon badge bg-secondary">Loading...</span>' +
+      '      <span class="availability-icon lux-text-style gray strong">Loading...</span>' +
       '      <div class="library-location" data-location="true" data-record-id="9972879153506421" data-holding-id="lewis$resterm">' +
       '        <span class="results_location">Lewis Library - Term Loan Reserves</span> » <span class="call-number">QP355.2 .P76 2013 <a title="Where to find it" class="find-it"' +
       '      data-map-location="lewis$resterm" data-blacklight-modal="trigger" aria-label="Where to find it"' +
@@ -135,7 +133,7 @@ describe('AvailabilityUpdater', function () {
       '      </div>' +
       '    </li>' +
       '    <li data-availability-record="true" data-record-id="9972879153506421" data-holding-id="22732100160006421" data-aeon="false" data-bound-with="false">' +
-      '      <span class="availability-icon badge bg-secondary">Loading...</span>' +
+      '      <span class="availability-icon lux-text-style gray strong">Loading...</span>' +
       '      <div class="library-location" data-location="true" data-record-id="9972879153506421" data-holding-id="22732100160006421">' +
       '        <span class="results_location">Engineering Library - Stacks</span> » <span class="call-number">QP355.2 .P76 2013 <a title="Where to find it" class="find-it"' +
       '        data-map-location="engineer$stacks" data-blacklight-modal="trigger" aria-label="Where to find it"' +
@@ -180,9 +178,7 @@ describe('AvailabilityUpdater', function () {
     u.process_result(bibId, holdingData);
 
     const badgesAfter = document.getElementsByClassName('availability-icon');
-    expect(badgesAfter[0].textContent).toEqual(
-      'View record for Full Availability'
-    );
+    expect(badgesAfter[0].textContent).toEqual('Available');
   });
 
   test('record show page with an available holding displays the status label in green', () => {
@@ -209,11 +205,12 @@ describe('AvailabilityUpdater', function () {
     u.id = '99118400923506421';
     u.process_single(holding_records);
 
-    const badge = document.getElementsByClassName('availability-icon')[0];
+    const availability_style =
+      document.getElementsByClassName('availability-icon')[0];
 
-    expect(badge.classList.values()).toContain('badge');
-    expect(badge.classList.values()).toContain('bg-success');
-    expect(badge.textContent).toEqual('Available');
+    expect(availability_style.classList.values()).toContain('lux-text-style');
+    expect(availability_style.classList.values()).toContain('green');
+    expect(availability_style.textContent).toEqual('Available');
   });
 
   test('record show page with an unavailable holding displays the status label in red', () => {
@@ -240,14 +237,14 @@ describe('AvailabilityUpdater', function () {
     u.id = '99118400923506421';
     u.process_single(holding_records);
 
-    const badge = document.getElementsByClassName('availability-icon')[0];
-
-    expect(badge.classList.values()).toContain('badge');
-    expect(badge.classList.values()).toContain('bg-danger');
-    expect(badge.textContent).toEqual('Unavailable');
+    const availability_style =
+      document.getElementsByClassName('availability-icon')[0];
+    expect(availability_style.classList.values()).toContain('lux-text-style');
+    expect(availability_style.classList.values()).toContain('red');
+    expect(availability_style.textContent).toEqual('Unavailable');
   });
   // Update this test. It has old location data
-  test('record show page with an mixed availability holding displays the status label in gray', () => {
+  test('record show page with a mixed availability holding displays the status label in gray', () => {
     document.body.innerHTML =
       '<table><tr>' +
       '<td class="holding-status" data-availability-record="true" data-record-id="99118400923506421" data-holding-id="22105449840006421" data-aeon="false">' +
@@ -260,7 +257,7 @@ describe('AvailabilityUpdater', function () {
           on_reserve: 'N',
           location: 'stacks',
           label: 'Firestone Library (F)',
-          status_label: 'Some items not available',
+          status_label: 'Some Available',
           more_items: false,
           holding_type: 'physical',
           id: '22105449840006421',
@@ -271,11 +268,12 @@ describe('AvailabilityUpdater', function () {
     u.id = '99118400923506421';
     u.process_single(holding_records);
 
-    const badge = document.getElementsByClassName('availability-icon')[0];
+    const availability_style =
+      document.getElementsByClassName('availability-icon')[0];
 
-    expect(badge.classList.values()).toContain('badge');
-    expect(badge.classList.values()).toContain('bg-secondary');
-    expect(badge.textContent).toEqual('Some items not available');
+    expect(availability_style.classList.values()).toContain('lux-text-style');
+    expect(availability_style.classList.values()).toContain('green');
+    expect(availability_style.textContent).toEqual('Some Available');
   });
 
   // Make sure that the code to handle undetermined availability status updates
@@ -307,13 +305,13 @@ describe('AvailabilityUpdater', function () {
       '      </td>' +
       '      <td class="holding-call-number">' +
       '        QP355.2 .P76 2013 <a class="browse-cn" title="Browse: QP355.2 .P76 2013" data-original-title="Browse: QP355.2 .P76 2013"' +
-      'href="/browse/call_numbers?q=QP355.2+.P76+2013"><span class="link-text">Browse related items</span> </a>' +
+      'href="/browse/call_numbers?q=QP355.2+.P76+2013"><span class="link-text">Call no. browse</span> </a>' +
       '      </td>' +
       '      <td class="holding-status" data-availability-record="true" data-record-id="9972879153506421" data-holding-id="22732100160006421" data-aeon="false">' +
       '        <span class="availability-icon" title=""></span>' +
       '      </td>' +
       '      <td class="location-services service-conditional" data-open="true" data-requestable="true" data-aeon="false" data-holding-id="22732100160006421">' +
-      '        <a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary"' +
+      '        <a title="View Options to Request copies from this Location" class="request btn btn-sm btn-primary"' +
       'href="/requests/9972879153506421?mfhd=22732100160006421">Request</a>' +
       '      </td>' +
       '      <td class="holding-details">' +
@@ -327,13 +325,13 @@ describe('AvailabilityUpdater', function () {
       '      </td>' +
       '      <td class="holding-call-number">' +
       '        QP355.2 .P76 2013 <a class="browse-cn" title="Browse: QP355.2 .P76 2013" data-original-title="Browse: QP355.2 .P76 2013"' +
-      'href="/browse/call_numbers?q=QP355.2+.P76+2013"><span class="link-text">Browse related items</span> </a>' +
+      'href="/browse/call_numbers?q=QP355.2+.P76+2013"><span class="link-text">Call no. browse</span> </a>' +
       '      </td>' +
       '      <td class="holding-status" data-availability-record="true" data-record-id="9972879153506421" data-holding-id="lewis$resterm" data-aeon="false">' +
       '        <span class="availability-icon" title=""></span>' +
       '      </td>' +
       '      <td class="location-services service-conditional" data-open="false" data-requestable="true" data-aeon="false" data-holding-id="lewis$resterm">' +
-      '        <a title="" class="request btn btn-xs btn-primary" href="/requests/9972879153506421?mfhd=22732100140006421" data-original-title="View Options to Request copies' +
+      '        <a title="" class="request btn btn-sm btn-primary" href="/requests/9972879153506421?mfhd=22732100140006421" data-original-title="View Options to Request copies' +
       'from this Location">Request</a>' +
       '      </td>' +
       '      <td class="holding-details">' +
@@ -369,15 +367,16 @@ describe('AvailabilityUpdater', function () {
     u.id = '9972879153506421';
     u.process_single(availability_response);
 
-    const badge = document.getElementsByClassName('availability-icon')[0];
-    expect(badge.classList.values()).toContain('badge');
-    expect(badge.classList.values()).toContain('bg-success');
-    expect(badge.textContent).toEqual('Available');
+    const availability_style =
+      document.getElementsByClassName('availability-icon')[0];
+    expect(availability_style.classList.values()).toContain('lux-text-style');
+    expect(availability_style.classList.values()).toContain('green');
+    expect(availability_style.textContent).toEqual('Available');
 
     const badge_second =
       document.getElementsByClassName('availability-icon')[1];
-    expect(badge_second.classList.values()).toContain('badge');
-    expect(badge_second.classList.values()).toContain('bg-success');
+    expect(badge_second.classList.values()).toContain('lux-text-style');
+    expect(badge_second.classList.values()).toContain('green');
     expect(badge_second.textContent).toEqual('Available');
   });
 
@@ -385,7 +384,7 @@ describe('AvailabilityUpdater', function () {
     document.body.innerHTML =
       '<table><tr>' +
       '<td class="holding-status" data-availability-record="true" data-record-id="99124994093506421" data-holding-id="22488152160006421" data-aeon="false">' +
-      '<span class="availability-icon"></span>' +
+      '<div class="lux-text-style"></div>' +
       '</td>' +
       '</tr></table>';
     const holding_records = {
@@ -421,7 +420,7 @@ describe('AvailabilityUpdater', function () {
     document.body.innerHTML =
       '<table><tr>' +
       '<td class="holding-status" data-availability-record="true" data-record-id="9929455793506421" data-holding-id="22488152160006421" data-aeon="false" data-bound-with="true">' +
-      '<span class="availability-icon"></span>' +
+      '<div class="lux-text-style"></div>' +
       '</td>' +
       '</tr></table>';
     const holding_records = {
@@ -436,18 +435,16 @@ describe('AvailabilityUpdater', function () {
       },
     };
     const holding_badge = $(
-      "*[data-availability-record='true'][data-record-id='9929455793506421'][data-bound-with='true'] span.availability-icon"
+      "*[data-availability-record='true'][data-record-id='9929455793506421'][data-bound-with='true'] .lux-text-style"
     )[0];
 
     const u = new updater();
     u.process_result('9929455793506421', holding_records);
 
-    expect(holding_badge.textContent).toContain(
-      'View record for Full Availability'
-    );
+    expect(holding_badge.textContent).toContain('Available');
   });
 
-  test('special case for Marquand locations - marquand$stacks,marquand$pj,marquand$ref,marquand$ph,marquand$fesrf - items to display status: Ask Staff', () => {
+  test('special case for Marquand locations - marquand$stacks,marquand$pj,marquand$ref,marquand$ph,marquand$fesrf - items to display status: Request', () => {
     document.body.innerHTML =
       '<table class="availability-table">' +
       '<tbody>' +
@@ -460,7 +457,7 @@ describe('AvailabilityUpdater', function () {
       '      <span class="availability-icon"></span>' +
       '    </td>' +
       '    <td class="location-services service-conditional" data-open="false" data-requestable="true" data-aeon="false" data-holding-id="22642015240006421">' +
-      '     <a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary" href="/requests/99124187703506421?mfhd=22642015240006421">Request</a>' +
+      '     <a title="View Options to Request copies from this Location" class="request btn btn-sm btn-primary" href="/requests/99124187703506421?mfhd=22642015240006421">Request</a>' +
       '    </td>' +
       '    <td class="holding-details">' +
       '      <ul class="item-status" data-record-id="99124187703506421" data-holding-id="22642015240006421"></ul>' +
@@ -491,17 +488,17 @@ describe('AvailabilityUpdater', function () {
 
     const u = new updater();
     u.id = '99124187703506421';
-    expect(av_element[0].textContent).not.toContain('Ask Staff');
+    expect(av_element[0].textContent).not.toContain('Request');
     u.apply_availability_label(av_element, holding_data, false);
     expect(av_element[0].textContent).toContain('Ask Staff');
     expect(
       document.querySelector(
-        '.holding-status[data-holding-id="22642015240006421"] > .bg-secondary'
+        '.holding-status[data-holding-id="22642015240006421"] > .gray.strong'
       )
     ).toBeTruthy();
     expect(
       document.querySelector(
-        '.holding-status[data-holding-id="22642015240006421"] > .bg-danger'
+        '.holding-status[data-holding-id="22642015240006421"] > .red.strong'
       )
     ).toBeFalsy();
   });
@@ -538,17 +535,17 @@ describe('AvailabilityUpdater', function () {
     expect(element[0].textContent).toContain('Unavailable');
     expect(
       document.querySelector(
-        '.holding-status[data-holding-id="RES_SHARE$IN_RS_REQ"] > .bg-secondary'
+        '.holding-status[data-holding-id="RES_SHARE$IN_RS_REQ"] > .gray.strong'
       )
     ).toBeFalsy();
     expect(
       document.querySelector(
-        '.holding-status[data-holding-id="RES_SHARE$IN_RS_REQ"] > .bg-primary'
+        '.holding-status[data-holding-id="RES_SHARE$IN_RS_REQ"] > .blue.strong'
       )
     ).toBeFalsy();
     expect(
       document.querySelector(
-        '.holding-status[data-holding-id="RES_SHARE$IN_RS_REQ"] > .bg-danger'
+        '.holding-status[data-holding-id="RES_SHARE$IN_RS_REQ"] > .red.strong'
       )
     ).toBeTruthy();
   });
@@ -563,7 +560,7 @@ describe('AvailabilityUpdater', function () {
       '  <div class="row">' +
       '    <div class="record-wrapper">' +
       '      <ul class="document-metadata dl-horizontal dl-invert">' +
-      '        <li class="blacklight-holdings"><ul><li data-availability-record="false" data-record-id="SCSB-8562843" data-holding-id="8720897" data-aeon="false"><span class="availability-icon badge" title data-scsb-availability="true" data-scsb-barcode="33433038233809"></span></li>' +
+      '        <li class="blacklight-holdings"><ul><li data-availability-record="false" data-record-id="SCSB-8562843" data-holding-id="8720897" data-aeon="false"><span class="availability-icon lux-text-style" title data-scsb-availability="true" data-scsb-barcode="33433038233809"></span></li>' +
       '      </ul>' +
       '    </div>' +
       '  </div>' +
@@ -640,7 +637,7 @@ describe('AvailabilityUpdater', function () {
       '  <span class="availability-icon" title="">Available</span>' +
       '</td>' +
       '<td class="location-services service-conditional" data-open="true" data-requestable="true" data-aeon="false" data-holding-id="22936525030006421">' +
-      '<a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary" href="/requests/99118399983506421?mfhd=22555936970006421">Request</a>' +
+      '<a title="View Options to Request copies from this Location" class="request btn btn-sm btn-primary" href="/requests/99118399983506421?mfhd=22555936970006421">Request</a>' +
       '</td>';
     ('<tr><table>');
     const res_share_response = {
@@ -667,7 +664,7 @@ describe('AvailabilityUpdater', function () {
     u.update_single(res_share_response, u.id);
     expect(
       document.querySelector(
-        '.location-services.service-conditional[data-holding-id="22936525030006421"] > .btn.btn-xs.btn-primary'
+        '.location-services.service-conditional[data-holding-id="22936525030006421"] > .btn.btn-sm.btn-primary'
       ).style.display
     ).not.toBe('none');
     expect(
@@ -684,14 +681,14 @@ describe('AvailabilityUpdater', function () {
     ).toBe('Unavailable');
   });
 
-  test('Reshare holdings availability badge loads correctly', () => {
+  test('Reshare holdings availability lux-text-style loads correctly', () => {
     document.body.innerHTML =
       '<ul class="document-metadata dl-horizontal dl-invert">' +
       '  <li class="blacklight-format" dir="ltr"><span class="icon icon-book" aria-hidden="true"></span> Book</li>' +
       '  <li class="blacklight-holdings">' +
       '    <ul>' +
       '      <li class="holding-status" data-availability-record="true" data-record-id="99125535710106421" data-holding-id="22936525030006421" data-temp-location-code="RES_SHARE$IN_RS_REQ" data-aeon="false" data-bound-with="false">' +
-      '        <span class="availability-icon badge bg-secondary">Loading...</span>' +
+      '        <span class="availability-icon lux-text-style gray strong">Loading...</span>' +
       '        <div class="library-location" data-location="true" data-record-id="99125535710106421" data-holding-id="22936525030006421">' +
       '          <span class="results_location">Firestone Library - Stacks</span> &raquo; <span class="call-number">B2433.M351 W55 2022 ' +
       '            <a title="Where to find it" class="find-it" data-map-location="firestone$stacks" data-blacklight-modal="trigger" aria-label="Where to find it" href="/catalog/99125535710106421/stackmap?loc=firestone$stacks&amp;cn=B2433.M351 W55 2022">' +
@@ -736,6 +733,55 @@ describe('AvailabilityUpdater', function () {
       document.querySelector(
         '.holding-status[data-temp-location-code="RES_SHARE$IN_RS_REQ"] span'
       ).textContent
-    ).toBe('Unavailable');
+    ).toBe('Request');
+  });
+});
+
+describe('getLibraryName', () => {
+  const availabilityUpdater = new updater();
+
+  it('returns the mapped name for an In library use location', () => {
+    expect(
+      availabilityUpdater.getLibraryName(
+        'Firestone Library - Remote Storage (ReCAP): Firestone Library Use Only',
+        'firestone$pb'
+      )
+    ).toBe('Firestone (Remote Storage)');
+    expect(
+      availabilityUpdater.getLibraryName(
+        'Lewis Library - Remote Storage (ReCAP): Lewis Library Use Only',
+        'lewis$pn'
+      )
+    ).toBe('Lewis (Remote Storage)');
+    expect(
+      availabilityUpdater.getLibraryName(
+        'Stokes Library - Remote Storage (ReCAP): Stokes Library Use Only',
+        'stokes$pm'
+      )
+    ).toBe('Stokes (Remote Storage)');
+  });
+
+  it('returns the label with suffix removed for not in library use locations', () => {
+    expect(
+      availabilityUpdater.getLibraryName(
+        'Firestone Library - Stacks',
+        'firestone$stacks'
+      )
+    ).toBe('Firestone Library');
+    expect(
+      availabilityUpdater.getLibraryName(
+        'Lewis Library - Reference (Fine Hall Wing)',
+        'lewis$ref'
+      )
+    ).toBe('Lewis Library');
+  });
+
+  it('trims whitespace from the result', () => {
+    expect(
+      availabilityUpdater.getLibraryName(
+        'Mendel Music Library - Main   ',
+        'mendel$main'
+      )
+    ).toBe('Mendel Music Library');
   });
 });

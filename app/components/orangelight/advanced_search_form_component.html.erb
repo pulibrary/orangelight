@@ -35,12 +35,14 @@
             </div>
           </div>
         <% end %>
-        <div class="mb-3 advanced-search-facet row">
-          <%= label_tag pub_date_field.parameterize, :class => "col-sm-4 control-label advanced-facet-label" do %>Publication year<% end %>
-          <div class="col-sm-8">
-            <%= render RangeFormComponent.new(facet_field: pub_date_presenter) %>
+        <% if pub_date_field -%>
+          <div class="mb-3 advanced-search-facet row">
+            <%= label_tag pub_date_field.parameterize, :class => "col-sm-4 control-label advanced-facet-label" do %>Publication year<% end %>
+            <div class="col-sm-8">
+              <%= render RangeFormComponent.new(facet_field: pub_date_presenter) %>
+            </div>
           </div>
-        </div>
+        <% end -%>
       </div>
       <%# End Column 2 %>
   </div>

@@ -36,7 +36,7 @@ module Requests
       end
 
       def validate_ill_on_shelf(record, selected, pick_up_phrase: 'your selected item', action_phrase: 'Requested')
-        return unless validate_item_id(record:, selected:, action_phrase:)
+        return unless validate_item_id?(record:, selected:, action_phrase:)
         item_id = selected['item_id']
         return if selected['pick_up'].present?
 
@@ -58,7 +58,7 @@ module Requests
       end
 
       def validate_offsite(record, selected)
-        return unless validate_item_id(record:, selected:, action_phrase: 'Requested from Off-site Facility')
+        return unless validate_item_id?(record:, selected:, action_phrase: 'Requested from Off-site Facility')
         validate_delivery_mode(record:, selected:)
       end
 
@@ -75,7 +75,7 @@ module Requests
         end
       end
 
-      def validate_item_id(record:, selected:, action_phrase:)
+      def validate_item_id?(record:, selected:, action_phrase:)
         return true if selected['item_id'].present?
 
         record.errors.add(:items, { selected['mfhd'] => { 'text' => "Item Cannot be #{action_phrase}, see circulation desk.", 'type' => 'options' } })

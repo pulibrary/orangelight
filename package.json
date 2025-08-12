@@ -6,7 +6,7 @@
     "blacklight-range-limit": "^9.0.0",
     "chart.js": "^4.4.7",
     "graphql": "^16.10.0",
-    "lux-design-system": "^6.1.6",
+    "lux-design-system": "^6.10.0",
     "serialize-javascript": "^6.0.2",
     "unfetch": "^5.0.0",
     "vue": "^3.4.21"

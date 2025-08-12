@@ -1,0 +1,26 @@
+.format-badge-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-bottom: var(--space-x-small); 
+    font-weight: var(--font-weight-semi-bold);
+}
+
+.format-badge-group svg.format-icon {
+    height: 1rem;
+}
+
+.format-badge-group svg.access-icon {
+    height: 1rem;
+    overflow: visible;
+    margin-top: 4px;
+}
+
+.format-badge-group {
+    .lux-badge-yellow {
+        color: #4f2000;
+    }
+    .lux-badge-gray {
+        color: #717171;
+    }
+}

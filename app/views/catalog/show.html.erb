@@ -16,7 +16,7 @@
 
 <div id="main-content" class="col-12 main-content" data-host-id="<%= @document.host_id %>">
   <div id="sidebar" class="<%= render_document_class %>">
-    <%= render_document_sidebar_partial(@document) %>
+    <%= render partial: 'show_sidebar', locals: { document: @document } %>
     <%= render partial: 'show_restrictions', locals: { document: @document } %>
   </div>
   <div id="content" class="content">

@@ -4,7 +4,7 @@
 # OAuth tokens to the database
 class OAuthToken < ApplicationRecord
   def token
-    if expiration_time && not_yet_expired
+    if expiration_time && not_yet_expired?
       self[:token]
     else
       fetch_new_token
@@ -21,7 +21,7 @@ class OAuthToken < ApplicationRecord
         save
       end
 
-      def not_yet_expired
+      def not_yet_expired?
         (Time.zone.now < expiration_time)
       end
 end

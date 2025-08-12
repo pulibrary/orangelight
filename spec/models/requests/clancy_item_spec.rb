@@ -30,7 +30,7 @@ describe Requests::ClancyItem, requests: true do
       end
     end
 
-    describe '#request' do
+    describe '#request?' do
       let(:response) { instance_double Faraday::Response, "success?": true, body: "{\"success\":true,\"error\":\"\",\"request_count\":\"1\",\"results\":[{\"item\":\"32101068477817\",\"deny\":\"N\",\"istatus\":\"Item Requested\"}]}" }
       let(:user) { FactoryBot.build(:user) }
       let(:valid_patron) do
@@ -46,13 +46,13 @@ describe Requests::ClancyItem, requests: true do
       end
 
       it "responds with success" do
-        expect(clancy_item.request(patron:, hold_id: 'hold_id')).to be_truthy
+        expect(clancy_item.request?(patron:, hold_id: 'hold_id')).to be_truthy
       end
 
       context "request denied" do
         let(:response) { instance_double Faraday::Response, "success?": true, body: "{\"success\":true,\"error\":\"\",\"request_count\":\"1\",\"results\":[{\"item\":\"32101068477817\",\"deny\":\"Y\",\"istatus\":\"Item Restricted from this API Key\"}]}" }
         it "responds with error" do
-          expect(clancy_item.request(patron:, hold_id: 'hold_id')).to be_falsey
+          expect(clancy_item.request?(patron:, hold_id: 'hold_id')).to be_falsey
         end
       end
     end
@@ -161,7 +161,7 @@ describe Requests::ClancyItem, requests: true do
       end
 
       it "responds with failure" do
-        expect(clancy_item.request(patron:, hold_id: 'hold_id')).to be_falsey
+        expect(clancy_item.request?(patron:, hold_id: 'hold_id')).to be_falsey
         expect(clancy_item.errors).to eq(["Error connecting with Clancy: 403"])
       end
     end

@@ -270,4 +270,12 @@ inputModel.value = inputValue.value;
   margin: 0px;
   transform: translate(0px, 42px);
 }
+
+.advanced-search-facet {
+  min-height: 3rem;
+
+  .combobox-multiselect {
+    align-self: center;
+  }
+}
 </style>

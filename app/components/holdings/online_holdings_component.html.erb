@@ -1,19 +1,6 @@
-<li>
-<% if links.length == 1 %>
-    <% unless links.first.include?("Princeton University Library Finding Aids") %>
-        <%= content_tag(
-            :span,
-            'Online',
-            class: 'availability-icon badge bg-primary'
-        ) %>
-    <% end %>
-    <%= links.first %>
-<% elsif links.length > 1 %>
-    <%= content_tag(
+<%= content_tag(
         :div,
-        tag(:'online-options', :'document-id' => document.id),
-        class: 'lux'
-        )
-    %>
-<% end %>
-</li>
+        tag(:'online-options', :'document-id' => document.id, :'options-count' => links.length, :'link-json' => links.first),
+        class: 'online-holdings-list'
+    )
+%>

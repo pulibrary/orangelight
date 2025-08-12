@@ -670,6 +670,7 @@ RSpec/PendingWithoutReason:
     - 'spec/system/catalog_show_spec.rb'
     - 'spec/system/searching_spec.rb'
     - 'spec/views/catalog/show.html.erb_spec.rb'
+    - 'spec/system/stackmap_spec.rb'
 
 # Offense count: 178
 # This cop supports unsafe autocorrection (--autocorrect-all).

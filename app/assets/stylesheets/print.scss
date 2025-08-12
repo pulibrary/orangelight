@@ -327,3 +327,29 @@ header.documentHeader a {
     }
   }
 }
+
+@media print {
+    [xmlns="http://www.w3.org/2000/svg"] {
+      display: none;
+    }
+
+    summary {
+      list-style-type: none;
+    }
+
+    .holding-block > * {
+      display: inline-block !important;
+      vertical-align: baseline;
+    }
+
+    .lux-badge.lux-badge-green::before {
+      content: "\00a0|\00a0";
+      display: inline-block;
+    }
+
+    .availability-icon.lux-text-style::before {
+      content: "\00a0|\00a0";
+      display: inline-block;
+      vertical-align: baseline;
+    }
+}

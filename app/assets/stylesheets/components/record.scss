@@ -9,6 +9,7 @@
     margin-top: 0.5rem;
     margin-bottom: 0;
     line-height: 1.25;
+    font-weight: 600;
   }
 
   .main-content {
@@ -67,10 +68,10 @@
       font-family: $font-sans-alt;
       font-size: 1rem;
 
-      .badge {
-        font-size: 1rem;
-        font-weight: 500;
+      .lux-text-style {
+        font-size: 0.875rem;
         letter-spacing: initial;
+        padding-top: 9px;
       }
 
       .find-it,
@@ -84,10 +85,6 @@
 
       .holding-details .holding-label {
         color: $blacklight-gray;
-      }
-
-      .holding-details li {
-        color: $black;
       }
 
       .item-status:empty {
@@ -211,6 +208,8 @@
     .availability-table td {
       width: 100%;
       flex: auto;
+      justify-content: flex-start;
+      padding: 10px 15px 10px 0;
     }
 
     .availability-table thead {
@@ -225,6 +224,10 @@
 
     .availability-table tbody tr:first-child,
     .availability-table tbody tr:first-child .library-location {
+      padding-top: 0;
+    }
+
+    .availability-icon {
       padding-top: 0;
     }
   }
@@ -247,4 +250,14 @@
   .journal-current-issues {
     columns: 3;
   }
+}
+
+.holding-details .lux-show-more button.lux-button {
+  font-size: var(--font-size-small);
+}
+
+.lux-button.outline.small {
+  padding: 5px 10px 5px 2px !important;
+  border: 1px solid #E1E1E1 !important ;
+  border-radius: 10px !important;
 }

@@ -8,7 +8,7 @@ RSpec.describe RequestButtonComponent, type: :component do
   end
   subject { render_inline(described_class.new(location:, doc_id: '123', holding_id: '456')) }
   it "renders a link with the appropriate classes" do
-    expect(subject.css('a').attribute('class').to_s).to eq('request btn btn-xs btn-primary')
+    expect(subject.css('a').attribute('class').to_s).to eq('request btn btn-sm btn-primary')
   end
   it 'does not render a tooltip' do
     expect(subject.css('a').attribute('title')).to be_falsey
@@ -57,6 +57,13 @@ RSpec.describe RequestButtonComponent, type: :component do
       it 'includes aeon=true in the link url' do
         expect(subject.css('a').attribute('href').text).to eq('/requests/123?aeon=true&mfhd=456')
       end
+    end
+  end
+  context 'when open_holdings is provided' do
+    subject { render_inline(described_class.new(location:, doc_id: '123', holding_id: '456', open_holdings: 'Firestone Library - Stacks')) }
+
+    it 'includes it in the link url' do
+      expect(subject.css('a').attribute('href').text).to eq('/requests/123?aeon=false&mfhd=456&open_holdings=Firestone+Library+-+Stacks')
     end
   end
 end

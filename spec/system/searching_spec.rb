@@ -42,10 +42,10 @@ describe 'Searching', type: :system, js: false do
     expect(page).to have_selector '.blacklight-format .icon[aria-hidden="true"]'
   end
 
-  context 'Availability: On-site by request' do
+  context 'Availability: Available' do
     it 'On-site label is green' do
       visit '/?f%5Baccess_facet%5D%5B%5D=In+the+Library&q=id%3Adsp*&search_field=all_fields'
-      expect(page).to have_selector '#documents > article.document.blacklight-senior-thesis.document-position-1 > div > div.record-wrapper > ul > li.blacklight-holdings > ul > li:nth-child(1) > span.availability-icon.badge.bg-success'
+      expect(page).to have_selector '.green', text: 'Available'
     end
   end
 
@@ -94,14 +94,13 @@ describe 'Searching', type: :system, js: false do
     end
   end
 
-  context 'searching for series title from advanced search', advanced_search: true do
+  context 'searching for series title from advanced search', advanced_search: true, js: true do
     it 'displays the online availability' do
       visit 'advanced'
       select('Series title', from: 'Options for advanced search')
       fill_in('Advanced search terms', with: 'SAGE research methods')
       click_on('Search')
       expect(page).to have_content('The lives of Black and Latino teenagers')
-      expect(page).not_to have_content('No holdings available for this record')
       expect(page).to have_content('SAGE Research Methods Cases Part I')
       expect(page).to have_content('SAGE research methods. Cases.')
     end
@@ -152,6 +151,8 @@ describe 'Searching', type: :system, js: false do
     it 'can handle a boolean OR search' do
       visit '/catalog?search_field=all_fields&q=plasticity+OR+afganistan'
       expect(page).to have_content('1 - 2 of 2')
+      expect(page).not_to have_content('Online')
+      expect(page).to have_content('Physical')
     end
   end
 
@@ -191,15 +192,16 @@ describe 'Searching', type: :system, js: false do
       expect(page).to have_content(/Any of:\nIn the Library/)
     end
 
-    it 'displays the online availability for a series title', advanced_search: true do
+    it 'displays the online availability for a series title', advanced_search: true, js: true do
       visit 'advanced'
       select('Series title', from: 'clause_0_field')
       fill_in('clause_0_query', with: 'SAGE research methods')
       click_on('advanced-search-submit')
       expect(page).to have_content('The lives of Black and Latino teenagers')
-      expect(page).not_to have_content('No holdings available for this record')
       expect(page).to have_content('SAGE Research Methods Cases Part I')
       expect(page).to have_content('SAGE research methods. Cases.')
+      expect(page).to have_content('ONLINE')
+      expect(page).not_to have_content('PHYSICAL')
     end
 
     it 'shows facets on the advanced search results page', advanced_search: true do
@@ -211,6 +213,8 @@ describe 'Searching', type: :system, js: false do
       expect(page).to have_button('Format')
       expect(page).to have_button('Publication year')
       expect(page).to have_button('Language')
+      expect(page).to have_content('Online')
+      expect(page).to have_content('Physical')
     end
   end
 

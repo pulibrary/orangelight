@@ -86,4 +86,24 @@ RSpec.describe AdvancedFormSearchBuilder, advanced_search: true do
       expect(solr_params).to eq({ "rows" => 0 })
     end
   end
+
+  describe '#do_not_limit_configured_facets' do
+    let(:blacklight_config) do
+      Blacklight::Configuration.new do |config|
+        config.advanced_search[:form_solr_parameters] ||= {}
+        config.advanced_search.form_solr_parameters['facet.field'] = %w[access_facet format publication_place_facet language_facet advanced_location_s]
+      end
+    end
+    it 'adds facet limits of -1 for all configured facet fields' do
+      solr_params = {}
+      builder.do_not_limit_configured_facets(solr_params)
+      expect(solr_params).to eq({
+                                  'f.access_facet.facet.limit' => '-1',
+                                  'f.format.facet.limit' => '-1',
+                                  'f.publication_place_facet.facet.limit' => '-1',
+                                  'f.language_facet.facet.limit' => '-1',
+                                  'f.advanced_location_s.facet.limit' => '-1'
+                                })
+    end
+  end
 end

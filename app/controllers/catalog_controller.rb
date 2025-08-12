@@ -39,17 +39,13 @@ class CatalogController < ApplicationController
     config.advanced_search[:url_key] ||= 'advanced'
     config.advanced_search[:query_parser] ||= 'edismax'
     config.advanced_search[:form_solr_parameters] ||= {}
-    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w[access_facet format publication_place_hierarchical_facet language_facet advanced_location_s]
+    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w[access_facet format publication_place_hierarchical_facet language_facet original_language_of_translation_facet advanced_location_s]
     config.advanced_search[:form_solr_parameters]['facet.query'] ||= ''
     config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['facet.pivot'] ||= ''
-    config.advanced_search[:form_solr_parameters]['f.language_facet.facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['f.language_facet.facet.sort'] ||= 'index'
     # TODO: Remove non-pipe options after re-index with pipe delimiter
-    config.advanced_search[:form_solr_parameters]['f.publication_place_hierarchical_facet.facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['f.publication_place_hierarchical_facet.facet.sort'] ||= 'index'
-
-    config.advanced_search[:form_solr_parameters]['f.publication_place_hierarchical_pipe_facet.facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['f.publication_place_hierarchical_pipe_facet.facet.sort'] ||= 'index'
 
     config.numismatics_search ||= Blacklight::OpenStructWithHashAccess.new
@@ -141,6 +137,7 @@ class CatalogController < ApplicationController
       show_missing_link: false
     }
     config.add_facet_field 'language_facet', label: 'Language', limit: true, include_in_advanced_search: true, suggest: true
+    config.add_facet_field 'original_language_of_translation_facet', label: 'Source language of translation', show: false, include_in_advanced_search_if: -> { Flipflop.source_language_of_translation? }
     config.add_facet_field 'subject_topic_facet', label: 'Subject: Topic', limit: true, include_in_advanced_search: false, suggest: true
     config.add_facet_field 'genre_facet', label: 'Subject: Genre', limit: true, include_in_advanced_search: false
     config.add_facet_field 'subject_era_facet', label: 'Subject: Era', limit: true, include_in_advanced_search: false
@@ -264,7 +261,7 @@ class CatalogController < ApplicationController
     config.add_index_field 'series_display', label: 'Series', helper_method: :series_results
     config.add_index_field 'author_display', label: 'Author/Artist', browse_link: :name, presenter: Orangelight::HighlightPresenter
     config.add_index_field 'pub_created_display', label: 'Published/Created'
-    config.add_index_field 'format', label: 'Format', helper_method: :format_icon
+    config.add_index_field 'format', label: 'Format', component: FormatBadgeFieldComponent
     config.add_index_field 'holdings_1display', if: :json_request?
     config.add_index_field 'contained_in_s', if: :json_request?
     config.add_index_field 'isbn_t', if: :json_request?
@@ -304,6 +301,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'uniform_title_1display', label: 'Uniform title', helper_method: :title_hierarchy, if: false, default_top_field: true
     config.add_show_field 'format', label: 'Format', helper_method: :format_render, if: false, coin_top_field: true, default_top_field: true
     config.add_show_field 'language_name_display', label: 'Language', if: false, default_top_field: true
+    config.add_show_field 'original_language_of_translation_facet', label: 'Translated from', if: false, default_top_field: true
     config.add_show_field 'edition_display', label: 'Εdition', if: false, default_top_field: true
     config.add_show_field 'pub_created_display', label: "Published/\u200BCreated", if: false, default_top_field: true
     config.add_show_field 'description_display', label: 'Description', if: false, default_top_field: true
@@ -749,6 +747,11 @@ class CatalogController < ApplicationController
     }
   end
 
+  def sms_mappings
+    # remove AT&T from Send me a Text option
+    super.except('AT&T')
+  end
+
   def render_search_results_as_json
     { response: { docs: @document_list, facets: search_facets_as_json, pages: pagination_info(@response) } }
   end
@@ -767,11 +770,7 @@ class CatalogController < ApplicationController
   end
 
   def numismatics
-    unless request.method == :post
-      @response = search_service.search_results do |search_builder|
-        search_builder.except(:add_advanced_search_to_solr).append(:facets_for_advanced_search_form)
-      end
-    end
+    @response = search_service.search_results
     respond_to do |format|
       format.html { render "advanced/numismatics" }
       format.json { render plain: "Format not supported", status: :bad_request }
