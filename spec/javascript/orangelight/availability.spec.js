@@ -743,6 +743,12 @@ describe('getLibraryName', () => {
   it('returns the mapped name for an In library use location', () => {
     expect(
       availabilityUpdater.getLibraryName(
+        'Marquand Library - Remote Storage (ReCAP): Firestone Library Use Only',
+        'marquand$pz'
+      )
+    ).toBe('Marquand (Remote Storage)');
+    expect(
+      availabilityUpdater.getLibraryName(
         'Firestone Library - Remote Storage (ReCAP): Firestone Library Use Only',
         'firestone$pb'
       )
