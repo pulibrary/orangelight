@@ -47,7 +47,7 @@ module Requests
           Site: site,
           Location: shelf_location_code,
           SubLocation: sub_location,
-          ItemInfo1: I18n.t("requests.aeon.access_statement"),
+          ItemInfo1: document['access_restrictions_note_display']&.first || I18n.t("requests.aeon.access_statement"),
           ItemNumber: item&.barcode,
           'rft.aucorp': document['pub_citation_display']&.first
         }.compact
