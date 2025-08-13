@@ -492,6 +492,10 @@ export default class AvailabilityUpdater {
       lewis$ps: 'Lewis (Remote Storage)',
       mendel$pk: 'Mendel (Remote Storage)',
       stokes$pm: 'Stokes (Remote Storage)',
+      marquand$pj: 'Marquand (Remote Storage)',
+      marquand$pjm: 'Marquand (Remote Storage)',
+      marquand$pv: 'Marquand (Remote Storage)',
+      marquand$pz: 'Marquand (Remote Storage)',
     };
     if (location in library_in_use) {
       library_name = library_in_use[location];

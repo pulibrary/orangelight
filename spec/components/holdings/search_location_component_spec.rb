@@ -44,4 +44,10 @@ RSpec.describe Holdings::SearchLocationComponent, type: :component do
     rendered = render_inline(described_class.new(holding_hash))
     expect(rendered.css('.results_location').text).to include("Firestone (Remote Storage)")
   end
+
+  it "renders the marquand in library use label when the location code is for library in use" do
+    holding_hash['location_code'] = 'marquand$pv'
+    rendered = render_inline(described_class.new(holding_hash))
+    expect(rendered.css('.results_location').text).to include("Marquand (Remote Storage)")
+  end
 end
