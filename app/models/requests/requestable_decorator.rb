@@ -90,7 +90,7 @@ module Requests
     end
 
     def create_fill_in_requestable
-      fill_in_req = Requestable.new(bib:, holding:, item: nil, location: location.to_h, patron:)
+      fill_in_req = Requestable.new(bib:, holding:, item: NullItem.new({}), location: location.to_h, patron:)
       fill_in_req.replace_existing_services services
       RequestableDecorator.new(fill_in_req, view_context)
     end
