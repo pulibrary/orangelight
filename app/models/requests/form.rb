@@ -265,10 +265,10 @@ module Requests
         end
       end
 
-      # This method will always return a Requestable object where .item is a NullItem
+      # This method will always return a Requestable object where .item is some kind of placeholder item, like NullItem
       def build_requestable_from_holding(holding_id, holding)
         return if holding.blank?
-        params = build_requestable_params(holding: Holding.new(mfhd_id: holding_id.to_sym.to_s, holding_data: holding), location:, item: NullItem.new({}))
+        params = build_requestable_params(holding: Holding.new(mfhd_id: holding_id.to_sym.to_s, holding_data: holding), location:, item: placeholder_item_class.new({}))
         Requests::Requestable.new(**params)
       end
 
@@ -323,6 +323,15 @@ module Requests
                               end
         get_current_location(item_location_code:)
       end
+
+      def placeholder_item_class
+        if too_many_items?
+          TooManyItemsPlaceholderItem
+        else
+          NullItem
+        end
+      end
+
       attr_reader :item_location_code
   end
 end
