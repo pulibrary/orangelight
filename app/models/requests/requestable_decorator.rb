@@ -107,7 +107,7 @@ module Requests
     end
 
     def status_badge
-      content_tag(:span, requestable.status, class: "availability--label badge #{css_class}")
+      content_tag(:span, status, class: "availability--label badge #{css_class}") if status
     end
 
     def css_class
