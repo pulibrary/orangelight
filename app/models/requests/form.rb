@@ -169,7 +169,7 @@ module Requests
         barcodesort = build_barcode_sort(items: values_items, availability_data:)
         barcodesort.each_value do |item|
           item['location_code'] = location_code
-          params = build_requestable_params(item: item.with_indifferent_access, holding: Holding.new(mfhd_id: id.to_sym.to_s, holding_data: holdings[id]),
+          params = build_requestable_params(item: Item.new(item.with_indifferent_access), holding: Holding.new(mfhd_id: id.to_sym.to_s, holding_data: holdings[id]),
                                             location:)
           requestable_items << Requests::Requestable.new(**params)
         end
@@ -249,7 +249,7 @@ module Requests
         item['status_label'] = barcodesort[item['barcode']][:status_label] unless barcodesort.empty?
         item_current_location = item_current_location(item)
         params = build_requestable_params(
-          item: item.with_indifferent_access,
+          item: Item.new(item.with_indifferent_access),
           holding: Holding.new(mfhd_id: holding_id.to_sym.to_s, holding_data: holding_data(item, holding_id, item_location_code)),
           location: item_current_location
         )
@@ -265,10 +265,10 @@ module Requests
         end
       end
 
-      # This method will always return a Requestable object where .item is a NullItem, because we don't pass an item in
+      # This method will always return a Requestable object where .item is a NullItem
       def build_requestable_from_holding(holding_id, holding)
         return if holding.blank?
-        params = build_requestable_params(holding: Holding.new(mfhd_id: holding_id.to_sym.to_s, holding_data: holding), location:)
+        params = build_requestable_params(holding: Holding.new(mfhd_id: holding_id.to_sym.to_s, holding_data: holding), location:, item: NullItem.new({}))
         Requests::Requestable.new(**params)
       end
 
