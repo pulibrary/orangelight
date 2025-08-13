@@ -26,7 +26,7 @@ module Requests
         Site: site,
         Location: shelf_location_code,
         SubLocation: sub_location,
-        ItemInfo1: I18n.t("requests.aeon.access_statement")
+        ItemInfo1: bib[:access_restrictions_note_display]&.first || I18n.t("requests.aeon.access_statement")
       }.compact
     end
 
