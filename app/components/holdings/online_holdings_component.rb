@@ -31,7 +31,7 @@ class Holdings::OnlineHoldingsComponent < ViewComponent::Base
         links_hash = JSON.parse(electronic_access)
         links_hash.first(2).each do |url, text|
           description = text[1] ? "#{text[1]}: #{text[0]}" : text[0]
-          urls << { "url" => url, "title" => description }.to_json
+          urls << { "url" => EzProxyService.ez_proxy_url(url), "title" => description }.to_json
         end
       end
       urls

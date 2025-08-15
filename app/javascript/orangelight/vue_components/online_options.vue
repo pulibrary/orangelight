@@ -2,7 +2,12 @@
   <LuxHyperlink v-if="count > 1" :href="url">
     <span>{{ text }}</span>
   </LuxHyperlink>
-  <LuxHyperlink :href="link.url" v-else>
+  <LuxHyperlink
+    v-else-if="
+      !link.title.includes('Princeton University Library Finding Aids')
+    "
+    :href="link.url"
+  >
     <span>{{ link.title }}</span>
     <span class="icon icon-external d-inline"></span>
   </LuxHyperlink>
