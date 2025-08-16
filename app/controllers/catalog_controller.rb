@@ -137,7 +137,7 @@ class CatalogController < ApplicationController
       show_missing_link: false
     }
     config.add_facet_field 'language_facet', label: 'Language', limit: true, include_in_advanced_search: true, suggest: true
-    config.add_facet_field 'original_language_of_translation_facet', label: 'Source language of translation', show: false, include_in_advanced_search_if: -> { Flipflop.source_language_of_translation? }
+    config.add_facet_field 'original_language_of_translation_facet', label: 'Source language of translation', show: false, include_in_advanced_search: true
     config.add_facet_field 'subject_topic_facet', label: 'Subject: Topic', limit: true, include_in_advanced_search: false, suggest: true
     config.add_facet_field 'genre_facet', label: 'Subject: Genre', limit: true, include_in_advanced_search: false
     config.add_facet_field 'subject_era_facet', label: 'Subject: Era', limit: true, include_in_advanced_search: false

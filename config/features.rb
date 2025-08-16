@@ -48,8 +48,4 @@ Flipflop.configure do
   feature :blacklight_hierarchy_publication_facet,
   default: true,
   description: "When on / true, use the colon delimited field to display the place of publication facet, when off / false use the pipe delimited field"
-
-  feature :source_language_of_translation,
-  default: false,
-  description: 'When on / true, show the Source Language of Translations dropdown on the advanced search page.  We need a full re-index before turning it on.'
 end
