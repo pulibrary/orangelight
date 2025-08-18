@@ -19,18 +19,12 @@
       aria-expanded="false"
       :aria-controls="listboxId"
     />
-    <lux-icon-base icon-name="Arrow Right">
+    <lux-icon-base icon-name="Arrow Right" data-bs-toggle="dropdown">
       <lux-icon-arrow-down
         class="lux-icon lux-icon-arrow-down"
         aria-hidden="true"
-        data-bs-toggle="dropdown"
       ></lux-icon-arrow-down>
     </lux-icon-base>
-    <!-- <span
-      class="fa fa-caret-down"
-      aria-hidden="true"
-      data-bs-toggle="dropdown"
-    ></span> -->
     <ul
       @focus="focus"
       ref="dropdown"
@@ -107,6 +101,7 @@
 </template>
 <script setup>
 import { computed, ref } from 'vue';
+import { LuxIconBase, LuxIconArrowDown } from 'lux-design-system';
 
 const props = defineProps({
   fieldName: { type: String, required: true },
