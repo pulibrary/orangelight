@@ -30,6 +30,7 @@ module Requests
     # :clancy_edd - item in the clancy warehouse in a location that permits digitization
     # :marquand_in_library - non clancy marquand item in a location that can be paged to marquand
     # :marquand_edd - non clancy marquand item in a location that is permitted to be scanned
+    # :marquand_page_charged_item - a Marquand item that is charged (checked out) to somebody else's carrel, but marquand staff can retrieve it for you
     # :ask_me - catchall service if the item isn't eligible for anything else.
 
     def routed_request
@@ -45,6 +46,7 @@ module Requests
 
     private
 
+      # rubocop:disable Metrics/AbcSize
       def eligibility_checks
         [
           ServiceEligibility::ILL.new(requestable:, patron:, any_loanable:),
@@ -58,6 +60,7 @@ module Requests
           ServiceEligibility::InProcess.new(requestable:, user:),
           ServiceEligibility::MarquandInLibrary.new(requestable:, user:),
           ServiceEligibility::MarquandEdd.new(requestable:, user:),
+          ServiceEligibility::MarquandPageChargedItem.new(requestable:, user:),
           ServiceEligibility::Recap::NoItems.new(requestable:, user:),
           ServiceEligibility::Recap::InLibrary.new(requestable:, user:),
           ServiceEligibility::Recap::AskMe.new(requestable:, user:),
@@ -66,5 +69,6 @@ module Requests
           ServiceEligibility::Aeon.new(requestable:)
         ]
       end
+    # rubocop:enable Metrics/AbcSize
   end
 end

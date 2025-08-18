@@ -229,6 +229,18 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
         end
       end
 
+      context "marquand_page_charged_item" do
+        before do
+          stubbed_questions[:circulates?] = true
+          stubbed_questions[:item_at_clancy?] = true
+          stubbed_questions[:clancy_available?] = false
+          stubbed_questions[:charged?] = true
+        end
+        it "returns marquand_page_charged_item in the services" do
+          expect(router.calculate_services).to eq(['marquand_page_charged_item'])
+        end
+      end
+
       context "not alma managed or scsb" do
         before do
           stubbed_questions[:alma_managed?] = false
