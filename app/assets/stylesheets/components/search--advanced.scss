@@ -116,13 +116,14 @@
   margin: 5px 5px 1rem;
 }
 
-.dropdown .fa-caret-down {
+.dropdown .fa-caret-down, .lux-icon-arrow-down {
   display: none;
-  width: inherit;
+  width: 10px;
+  height: 10px;
 }
 
 @media (min-width: $bp-small) {
-  .dropdown .fa-caret-down {
+  .dropdown .fa-caret-down, .lux-icon-arrow-down {
     display: inline;
     position: absolute;
     right: 5px;

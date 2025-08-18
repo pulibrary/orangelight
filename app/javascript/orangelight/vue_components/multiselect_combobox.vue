@@ -19,11 +19,18 @@
       aria-expanded="false"
       :aria-controls="listboxId"
     />
-    <span
+    <lux-icon-base icon-name="Arrow Right">
+      <lux-icon-arrow-down
+        class="lux-icon lux-icon-arrow-down"
+        aria-hidden="true"
+        data-bs-toggle="dropdown"
+      ></lux-icon-arrow-down>
+    </lux-icon-base>
+    <!-- <span
       class="fa fa-caret-down"
       aria-hidden="true"
       data-bs-toggle="dropdown"
-    ></span>
+    ></span> -->
     <ul
       @focus="focus"
       ref="dropdown"
