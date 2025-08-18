@@ -12,7 +12,8 @@ RSpec.describe Requests::ServiceEligibility::ILL, requests: true do
           alma_managed?: true,
           aeon?: false,
           charged?: true,
-          marquand_item?: false
+          marquand_item?: false,
+          item_at_clancy?: false
         )
 
       expect(eligibility.eligible?).to be(true)
@@ -37,7 +38,8 @@ RSpec.describe Requests::ServiceEligibility::ILL, requests: true do
           alma_managed?: true,
           aeon?: false,
           charged?: true,
-          marquand_item?: false
+          marquand_item?: false,
+          item_at_clancy?: false
         )
 
         expect(eligibility.eligible?).to be(false)

@@ -66,7 +66,7 @@ describe 'requests for Marquand items', type: :feature, requests: true do
       it 'does not give the option for ILL' do
         visit("requests/#{bib_id}?aeon=false&mfhd=#{holding_id}")
         expect(page).not_to have_content('Request via Partner Library')
-        expect(page).to have_content('Contact marquand@princeton.edu for use of this item')
+        expect(page).to have_content('Email marquand@princeton.edu for access')
         expect(catalog_raw_stub).to have_been_requested
         expect(availability_stub).to have_been_requested
         expect(holding_location_stub).to have_been_requested

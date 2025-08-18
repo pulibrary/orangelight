@@ -156,6 +156,15 @@ module Requests
       Location.new requestable.location
     end
 
+    # Return true if the patron needs to reach out to Marquand directly
+    # to use the Requestable.
+    # This is a temporary situation, after Marquand is done moving materials
+    # back into the library, we can work with Marquand staff to automate this
+    # workflow.
+    def patron_should_contact_marquand?
+      services.include? 'marquand_page_charged_item'
+    end
+
     private
 
       def first_delivery_location
