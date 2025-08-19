@@ -64,7 +64,7 @@ module Requests
     end
 
     def marquand_edd?
-      !(['clancy_edd', 'clancy_unavailable', 'marquand_edd'] & services).empty?
+      (['clancy_edd', 'clancy_unavailable', 'marquand_edd'] & services).any?
     end
 
     def in_library_use_required?
