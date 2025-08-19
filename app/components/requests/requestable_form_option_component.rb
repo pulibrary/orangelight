@@ -20,7 +20,7 @@ module Requests
       partial
     end
 
-    delegate :digitize, :in_library_use_required?, :pick_up?, to: :requestable
+    delegate :digitize?, :in_library_use_required?, :pick_up?, to: :requestable
 
       private
 
