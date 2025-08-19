@@ -69,7 +69,7 @@ describe 'Account login' do
       end
     end
   end
-  describe 'Account login from requests page' do
+  describe 'Account login from requests page', :requests do
     let(:bib_id) { 'SCSB-2143785' }
     before do
       stub_request(:post, 'https://scsb.recaplib.org:9093/sharedCollection/bibAvailabilityStatus')
