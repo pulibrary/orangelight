@@ -29,7 +29,7 @@
       <% if fill_in_eligible %>
         <%= render partial: "requestable_fill_in_field", locals: { requestable: requestable_list.last.create_fill_in_requestable, default_pick_ups: default_pick_ups, requestable_list: requestable_list } %>
       <% end %>
-      <%= render partial: "requestable_form", collection: requestable_list, as: :requestable, locals: { mfhd:, default_pick_ups: } %>
+      <%= render Requests::RequestableFormOptionComponent.with_collection(requestable_list, mfhd:, default_pick_ups:, form: @request, patron: @patron) %>
     </tbody>
   </table>
 </div>
