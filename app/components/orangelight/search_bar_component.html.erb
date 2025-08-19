@@ -41,7 +41,11 @@
     <%= append %>
         <button type="submit" class="btn btn-primary search-btn" id="search">
           <span class="submit-search-text visually-hidden"><%=t('blacklight.search.form.submit')%></span>
-          <i class="fa fa-search" aria-hidden="true"></i>
+          <span class="lux">
+            <lux-icon-base icon-name="search">
+              <lux-icon-search class="lux-icon lux-icon-search" aria-hidden="true"></lux-icon-search>
+            </lux-icon-base>
+          </span>
         </button>
   </div>
 <% end %>
