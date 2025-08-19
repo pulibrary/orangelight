@@ -29,23 +29,6 @@ module Requests
       I18n.t('requests.default.form_title')
     end
 
-    ### FIXME. This should come directly as a sub-property from the request object holding property.
-    # def render_mfhd_message requestable_list
-    #   mfhd_services = []
-    #   requestable_list.each do |requestable|
-    #     requestable.services.each do |service|
-    #       mfhd_services << service
-    #     end
-    #   end
-    #   mfhd_services.uniq!
-    #   if mfhd_services.include? 'paging'
-    #     content_tag(:div, class: 'flash_mesages-mfhd flash-notice') do
-    #       concat content_tag(:div, I18n.t('requests.paging.status').html_safe)
-    #       concat content_tag(:div, I18n.t('requests.paging.message').html_safe)
-    #     end
-    #   end
-    # end
-
     def return_message(submission)
       link_to "Return to Record", return_url(submission.id), class: 'btn btn-secondary icon-moveback', title: 'Return to Record'
     end
