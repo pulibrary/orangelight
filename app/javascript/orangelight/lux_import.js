@@ -6,6 +6,7 @@ import {
   LuxIconArrowDown,
   LuxIconArrowRight,
   LuxIconBase,
+  LuxIconNewTab,
   LuxCard,
   LuxLibraryFooter,
   LuxShowMore,
@@ -32,6 +33,7 @@ export function luxImport() {
         .component('lux-icon-arrow-down', LuxIconArrowDown)
         .component('lux-icon-arrow-right', LuxIconArrowRight)
         .component('lux-icon-base', LuxIconBase)
+        .component('lux-icon-new-tab', LuxIconNewTab)
         .component('lux-library-footer', LuxLibraryFooter)
         .component('lux-card', LuxCard)
         .component('lux-show-more', LuxShowMore)

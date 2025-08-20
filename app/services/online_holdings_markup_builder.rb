@@ -100,7 +100,9 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
 
   def self.new_tab_icon(text)
     text = text.html_safe
-    text + content_tag(:i, "", class: "fa fa-external-link new-tab-icon-padding", "aria-label": "opens in new tab", role: "img")
+    text + "<lux-icon-base width='18' height='18' icon-name='Add Item'>
+               <lux-icon-new-tab class='lux-icon lux-icon-new-tab new-tab-icon-padding' aria-label='opens in new tab' aria-hidden='true' role='img'>
+             </lux-icon-new-tab></lux-icon-base>".html_safe
   end
 
   # Constructor

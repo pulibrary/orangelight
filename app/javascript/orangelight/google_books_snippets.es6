@@ -50,7 +50,7 @@ export default class GoogleBooksSnippets {
         const bookId = url.searchParams.get('id');
         const link = `https://www.google.com/books/edition/_/${bookId}?hl=en&gbpv=1&pg=PP1`;
         const content = (link, target) => {
-          return `<a href="${link}" target="${target}">Google Books (${previewString} View)<i class="fa fa-external-link new-tab-icon-padding" aria-label="opens in new tab" role="img"></i></a>`;
+          return `<a href="${link}" target="${target}">Google Books (${previewString} View)<lux-icon-base width='18' height='18' icon-name='Add Item'><lux-icon-new-tab class='lux-icon lux-icon-new-tab new-tab-icon-padding' aria-label='opens in new tab' aria-hidden='true' role='img'></lux-icon-new-tab></lux-icon-base></a>`;
         };
         insert_online_link(link, 'google_preview_link', content);
         break;
