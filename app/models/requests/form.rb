@@ -64,14 +64,11 @@ module Requests
       requestable_unrouted.any?(&:enumerated?)
     end
 
+    # returns an array of Requests::Requestable objects that can respond to #services with an array of the relevant services
     def route_requests(requestable_items)
-      routed_requests = []
-      return [] if requestable_items.blank?
-      requestable_items.each do |requestable|
-        router = Requests::Router.new(requestable:, any_loanable: any_loanable_copies?, patron:)
-        routed_requests << router.routed_request
+      requestable_items.map do |requestable|
+        Requests::Router.new(requestable:, any_loanable: any_loanable_copies?, patron:).routed_request
       end
-      routed_requests
     end
 
     def serial?
