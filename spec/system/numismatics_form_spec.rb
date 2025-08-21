@@ -22,7 +22,7 @@ RSpec.describe 'Numismatics search form', advanced_search: true do
     visit '/numismatics'
     first_facet = page.first('.advanced-search-facet')
     within(first_facet) do
-      page.find('span').click
+      page.find('svg').click
       expect(page).to have_content('coin (3)')
     end
   end
