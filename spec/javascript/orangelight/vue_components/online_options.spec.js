@@ -34,8 +34,20 @@ describe('OnlineOptions', () => {
       },
     });
     await nextTick();
-    console.log(wrapper.text());
     expect(wrapper.get('a').text()).toEqual('Link 1');
     expect(wrapper.get('a').attributes('href')).toEqual('http://example.com/1');
+  });
+  it('Does not render the link when it is a finding aid', async () => {
+    const wrapper = mount(OnlineOptions, {
+      props: {
+        documentId: '998449623506421',
+        optionsCount: '1',
+        linkJson:
+          '{"title": "Princeton University Library Finding Aids", "url": "http://example.com/1"}',
+      },
+    });
+    await nextTick();
+    const link = wrapper.find('icon-external');
+    expect(link.exists()).toBe(false);
   });
 });
