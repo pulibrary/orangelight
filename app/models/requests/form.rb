@@ -64,14 +64,11 @@ module Requests
       requestable_unrouted.any?(&:enumerated?)
     end
 
+    # returns an array of Requests::Requestable objects that can respond to #services with an array of the relevant services
     def route_requests(requestable_items)
-      routed_requests = []
-      return [] if requestable_items.blank?
-      requestable_items.each do |requestable|
-        router = Requests::Router.new(requestable:, any_loanable: any_loanable_copies?, patron:)
-        routed_requests << router.routed_request
+      requestable_items.map do |requestable|
+        Requests::Router.new(requestable:, any_loanable: any_loanable_copies?, patron:).routed_request
       end
-      routed_requests
     end
 
     def serial?
@@ -169,7 +166,7 @@ module Requests
         barcodesort = build_barcode_sort(items: values_items, availability_data:)
         barcodesort.each_value do |item|
           item['location_code'] = location_code
-          params = build_requestable_params(item: item.with_indifferent_access, holding: Holding.new(mfhd_id: id.to_sym.to_s, holding_data: holdings[id]),
+          params = build_requestable_params(item: Item.new(item.with_indifferent_access), holding: Holding.new(mfhd_id: id.to_sym.to_s, holding_data: holdings[id]),
                                             location:)
           requestable_items << Requests::Requestable.new(**params)
         end
@@ -249,7 +246,7 @@ module Requests
         item['status_label'] = barcodesort[item['barcode']][:status_label] unless barcodesort.empty?
         item_current_location = item_current_location(item)
         params = build_requestable_params(
-          item: item.with_indifferent_access,
+          item: Item.new(item.with_indifferent_access),
           holding: Holding.new(mfhd_id: holding_id.to_sym.to_s, holding_data: holding_data(item, holding_id, item_location_code)),
           location: item_current_location
         )
@@ -265,10 +262,10 @@ module Requests
         end
       end
 
-      # This method will always return a Requestable object where .item is a NullItem, because we don't pass an item in
+      # This method will always return a Requestable object where .item is some kind of placeholder item, like NullItem
       def build_requestable_from_holding(holding_id, holding)
         return if holding.blank?
-        params = build_requestable_params(holding: Holding.new(mfhd_id: holding_id.to_sym.to_s, holding_data: holding), location:)
+        params = build_requestable_params(holding: Holding.new(mfhd_id: holding_id.to_sym.to_s, holding_data: holding), location:, item: placeholder_item_class.new({}))
         Requests::Requestable.new(**params)
       end
 
@@ -323,6 +320,15 @@ module Requests
                               end
         get_current_location(item_location_code:)
       end
+
+      def placeholder_item_class
+        if too_many_items?
+          TooManyItemsPlaceholderItem
+        else
+          NullItem
+        end
+      end
+
       attr_reader :item_location_code
   end
 end

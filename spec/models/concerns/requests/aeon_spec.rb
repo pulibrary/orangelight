@@ -12,6 +12,12 @@ class ObjectWithAeon
   end
 end
 
+class ObjectWithAeonAndAccessRestrictions < ObjectWithAeon
+  def bib
+    { id: 1234, access_restrictions_note_display: ["For conservation reasons, access is granted for compelling reasons only."] }
+  end
+end
+
 describe Requests::Aeon, requests: true do
   subject { ObjectWithAeon.new }
   let(:location) do
@@ -27,6 +33,17 @@ describe Requests::Aeon, requests: true do
 
     it 'takes its SubLocation from the holdings_1display' do
       expect(subject.aeon_basic_params[:SubLocation]).to eq('Euro 20Q')
+    end
+
+    it 'uses a default text for ItemInfo1' do
+      expect(subject.aeon_basic_params[:ItemInfo1]).to eq('Reading Room Access Only')
+    end
+  end
+
+  context 'when document has access restrictions' do
+    subject { ObjectWithAeonAndAccessRestrictions.new }
+    it 'takes ItemInfo1 from access restrictions' do
+      expect(subject.aeon_basic_params[:ItemInfo1]).to eq('For conservation reasons, access is granted for compelling reasons only.')
     end
   end
 end

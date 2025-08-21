@@ -38,6 +38,11 @@ RSpec.describe Requests::Form, type: :model, requests: true do
         expect(request.requestable.size).to eq(1)
         expect(request.requestable[0].item?).to be_falsey
       end
+
+      it 'does not provide a status for display' do
+        requestable_decorator = Requests::RequestableDecorator.new request.requestable.first, ApplicationController.new.view_context
+        expect(requestable_decorator.status_badge).not_to be_present
+      end
     end
   end
 end

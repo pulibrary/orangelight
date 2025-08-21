@@ -116,16 +116,26 @@
   margin: 5px 5px 1rem;
 }
 
-.dropdown .fa-caret-down {
+.row.dropdown svg {
   display: none;
-  width: inherit;
+  width: 15px;
+  height: 15px;
+
+  path {
+    stroke-width: 2px;
+  }
 }
 
 @media (min-width: $bp-small) {
-  .dropdown .fa-caret-down {
-    display: inline;
+  .row.dropdown svg {
+    display: block;
+  }
+  
+  .row.dropdown .lux-icon {
+    display: block;
     position: absolute;
-    right: 5px;
+    width: fit-content;
+    left: calc(100% - 40px);
     top: calc(50% - .6rem);
   }
 }

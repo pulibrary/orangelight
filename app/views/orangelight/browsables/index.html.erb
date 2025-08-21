@@ -8,18 +8,7 @@
         <nav aria-label="Top pager" class="nav">
           <%= render "orangelight/browsables/browse_pagination"%>
         </nav>
-        <%= render(Blacklight::System::DropdownComponent.new(
-          param: :per_page,
-          choices: per_page_options_for_select,
-          id: 'per_page-dropdown',
-          search_state: search_state,
-          selected: current_browse_per_page,
-          interpolation: :count)) do |component| %>
-          <% component.with_options(
-            [10, 25, 50, 100].map do |count|
-              {text: count, url: params.merge(rpp: count).permit(:rpp, :start, :model, :controller, :action) }
-            end) %>
-        <% end %>
+        <%= render BrowsePerPageComponent.new(blacklight_config:, response:, search_state:, current_browse_per_page:) %>
     </div>
   </div>
 </div>

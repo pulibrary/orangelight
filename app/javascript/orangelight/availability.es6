@@ -485,13 +485,19 @@ export default class AvailabilityUpdater {
     let library_in_use = {
       arch$pw: 'Archictecture (Remote Storage)',
       eastasian$pl: 'East Asian (Remote Storage)',
+      eastasian$ql: 'East Asian (Remote Storage)',
       engineer$pt: 'Engineering (Remote Storage)',
       firestone$pb: 'Firestone (Remote Storage)',
       firestone$pf: 'Firestone (Remote Storage)',
       lewis$pn: 'Lewis (Remote Storage)',
       lewis$ps: 'Lewis (Remote Storage)',
       mendel$pk: 'Mendel (Remote Storage)',
+      mendel$qk: 'Mendel (Remote Storage)',
       stokes$pm: 'Stokes (Remote Storage)',
+      marquand$pj: 'Marquand (Remote Storage)',
+      marquand$pjm: 'Marquand (Remote Storage)',
+      marquand$pv: 'Marquand (Remote Storage)',
+      marquand$pz: 'Marquand (Remote Storage)',
     };
     if (location in library_in_use) {
       library_name = library_in_use[location];

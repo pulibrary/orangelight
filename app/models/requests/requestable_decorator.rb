@@ -64,7 +64,7 @@ module Requests
     end
 
     def marquand_edd?
-      !(['clancy_edd', 'clancy_unavailable', 'marquand_edd'] & services).empty?
+      (['clancy_edd', 'clancy_unavailable', 'marquand_edd'] & services).any?
     end
 
     def in_library_use_required?
@@ -90,7 +90,7 @@ module Requests
     end
 
     def create_fill_in_requestable
-      fill_in_req = Requestable.new(bib:, holding:, item: nil, location: location.to_h, patron:)
+      fill_in_req = Requestable.new(bib:, holding:, item: NullItem.new({}), location: location.to_h, patron:)
       fill_in_req.replace_existing_services services
       RequestableDecorator.new(fill_in_req, view_context)
     end
@@ -107,7 +107,7 @@ module Requests
     end
 
     def status_badge
-      content_tag(:span, requestable.status, class: "availability--label badge #{css_class}")
+      content_tag(:span, status, class: "availability--label badge #{css_class}") if status
     end
 
     def css_class

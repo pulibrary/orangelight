@@ -60,6 +60,8 @@ en:
       per_page:
         label: '%{count}<span class="visually-hidden"> results per page</span>'
         button_label: '%{count}<span class="d-none d-xl-inline"> per page</span>'
+      rpp:
+        button_label_html: '%{count}<span class="d-none d-sm-inline"> per page</span>'
       start_over: 'Start over'
       cite: 'Cite'
       bookmarks:

@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-require 'faraday'
 
 module Requests::Submissions
   class ClancyEdd < Service

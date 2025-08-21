@@ -19,15 +19,13 @@ module Requests
 
     # @param bib [Hash] Solr Document of the Top level Request
     # @param holding [Requests::Holding] Bibdata information on where the item is held, created with data from the parsed solr_document[holdings_1display] json
-    # @param item [Hash] Item level data from bib data (https://bibdata.princeton.edu/availability?id= or mfhd=)
+    # @param item [Requests::Item] A Requests::Item or similar object (e.g. NullItem)
     # @param location [Hash] The hash for a bib data holding (https://bibdata.princeton.edu/locations/holding_locations)
     # @param patron [Patron] the patron information about the current user
-    def initialize(bib:, holding: nil, item: nil, location: nil, patron:)
+    def initialize(bib:, holding: nil, item:, location: nil, patron:)
       @bib = bib
       @holding = holding
-      # Item inherits from SimpleDelegator which requires at least one argument
-      # The argument is the Object that SimpleDelegator will delegate to.
-      @item = item.present? ? Item.new(item) : NullItem.new({})
+      @item = item
       @location = location
       @services = []
       @patron = patron
