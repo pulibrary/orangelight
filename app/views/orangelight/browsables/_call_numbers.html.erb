@@ -40,7 +40,12 @@
           <% end %>
           <% if orangelight_name.id == @match && !@exact_match %>
               <tr class="alert alert-info"> <td colspan=5>
-              <i class="fa fa-search" aria-hidden="true"></i> <strong>Your query "<%= @query %>" would be here.</strong> </td>
+              <span class="lux">
+                <lux-icon-base icon-name="search" width="16" height="16">
+                  <lux-icon-search class="lux-icon lux-icon-search" aria-hidden="true"></lux-icon-search>
+                </lux-icon-base>
+              </span>
+              <strong>Your query "<%= @query %>" would be here.</strong> </td>
             </tr>
           <% end %>
         <% end %>

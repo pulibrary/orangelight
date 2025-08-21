@@ -9,7 +9,7 @@ describe 'Searching', type: :system, js: false do
 
   it 'renders an accessible search button' do
     visit '/catalog'
-    expect(page).to have_selector '.fa-search[aria-hidden="true"]'
+    expect(page).to have_selector '.lux-icon-search[aria-hidden="true"]'
   end
 
   context 'with highlighting feature on' do
