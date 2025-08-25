@@ -1,0 +1,14 @@
+<%# app/components/viewer_component.html.erb %>
+<%# This component renders the Figgy viewer using the manifest_url %>
+<% if manifest_url.present? %>
+  <% manifest_url.each do |url|%>
+    <div class="intrinsic-container intrinsic-container-16x9" id="viewer-container">
+      <iframe
+        allowfullscreen="true"
+        title="Digital content viewer"
+        id="iframe-1"
+    src="<%= "#{ENV['FIGGY_URL'] || 'https://figgy.princeton.edu'}/viewer#?manifest=#{url}&config=#{ENV['FIGGY_URL'] || 'https://figgy.princeton.edu'}/uv/uv_config.json" %>"   
+      ></iframe>
+    </div>
+  <% end %>
+<% end %>

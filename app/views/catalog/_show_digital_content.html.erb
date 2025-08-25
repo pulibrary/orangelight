@@ -5,3 +5,12 @@
 <% @document.related_bibs_iiif_manifest.each_with_index do |related_bib, ix| %>
   <div id="view_<%= ix+1 %>" class="document-viewers" data-bib-id="<%= related_bib %>"></div>
 <% end %>
+
+<!-- Ephemera resources viewer that checks for a uuid until we start indexing the digital inventory -->
+<!-- ephemera resources are indexed with the figgy uuid as a catalog document id -->
+
+<% if @document.uuid? && @document["electronic_access_1display"].present? %>
+  <div id="view_ephemera" class="document-viewers" data-bib-id="<%= @document.id %>">
+    <%= render ViewerComponent.new(electronic_access_1display: @document["electronic_access_1display"]) %>
+  </div>
+<% end %>
