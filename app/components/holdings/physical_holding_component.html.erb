@@ -16,7 +16,7 @@
     <% else %>
       <%= render Holdings::HoldingAvailabilityComponent.new(doc_id, holding_id, location_rules, temp_location_code) %>
     <% end %>
-
+    <%= render Holdings::LibmapButtonComponent.new(adapter, holding) %>
     <%= render(Holdings::LocationServicesComponent.new(adapter, holding_id, location_rules, holding, open_holdings)) %>
 </tr>
 
