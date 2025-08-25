@@ -24,6 +24,10 @@ async function loadResourcesByOrangelightIds(ids) {
           manifestUrl
           orangelightId
         }
+        ... on EphemeraFolder {
+          manifestUrl
+          orangelightId
+        }
       }
     }
   `;

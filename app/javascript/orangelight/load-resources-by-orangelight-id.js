@@ -32,6 +32,9 @@ async function loadResourcesByOrangelightId(id) {
         ... on Coin {
           manifestUrl
         }
+        ... on EphemeraFolder {
+          manifestUrl
+        }
       }
     }
   `;

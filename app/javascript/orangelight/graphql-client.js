@@ -19,6 +19,7 @@ const fragmentMatcher = new InMemoryCache({
             { name: 'ScannedResource' },
             { name: 'ScannedMap' },
             { name: 'Coin' },
+            { name: 'EphemeraFolder' },
           ],
         },
       ],
