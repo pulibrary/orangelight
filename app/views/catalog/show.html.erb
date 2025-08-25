@@ -27,6 +27,12 @@
         <%= render partial: 'show_availability', locals: { document: @document } %>
       </div>
     <% end %>
+    <script>
+      let libcalScript = document.createElement('script');
+      libcalScript.type = 'text/javascript';
+      libcalScript.src = 'https://libcal.princeton.edu/libmaps/blacklight';
+      document.head.appendChild(libcalScript);
+    </script>
     <%= render 'show_main_content' %>
     <% if @document.alma_record? %>
       <dl class="dl-horizontal dl-invert">
