@@ -92,6 +92,10 @@ class SolrDocument
     m[1]
   end
 
+  def uuid?
+    id.match?(/\A[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}\z/)
+  end
+
   # Retrieve the electronic access information
   # @return [String] electronic access value
   def doc_electronic_access
