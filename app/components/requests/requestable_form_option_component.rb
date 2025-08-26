@@ -20,7 +20,7 @@ module Requests
       partial
     end
 
-    delegate :digitize?, :in_library_use_required?, :pick_up?, to: :requestable
+    delegate :digitize?, :in_library_use_required?, :pick_up?, :patron_should_contact_marquand?, to: :requestable
 
       private
 
@@ -30,6 +30,8 @@ module Requests
             'requestable_form_alma_login'
           elsif requestable.aeon?
             'requestable_form_aeon'
+          elsif patron_should_contact_marquand?
+            'requestable_form_marquand_contact_info'
           elsif digitize? && pick_up?
             'requestable_form_digitize_and_pick_up'
           elsif pick_up?

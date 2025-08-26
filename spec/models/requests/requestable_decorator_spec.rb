@@ -1130,5 +1130,23 @@ describe Requests::RequestableDecorator, requests: true do
       end
     end
   end
+  describe '#patron_should_contact_marquand?' do
+    let(:stubbed_questions) { default_stubbed_questions.merge(services: ['recap_edd']) }
+    it 'defaults to false' do
+      expect(decorator.patron_should_contact_marquand?).to be false
+    end
+    context 'when requestable is charged and eligible for marquand_page_charged_item' do
+      let(:stubbed_questions) do
+        default_stubbed_questions.merge(
+          services: ['marquand_page_charged_item'],
+          held_at_marquand_library?: true, item_at_clancy?: false, alma_managed?: true, aeon?: false,
+          charged?: true, in_process?: false, on_order?: false, recap?: false
+        )
+      end
+      it 'returns true' do
+        expect(decorator.patron_should_contact_marquand?).to be true
+      end
+    end
+  end
 end
 # rubocop:enable Metrics/BlockLength

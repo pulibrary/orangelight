@@ -1,0 +1,8 @@
+<tr id='<%= "request_#{requestable.preferred_request_id}" %>'>
+  <td></td>
+  <%= render partial: 'requestable_enum', locals: { requestable: } %>
+  <td><span class="availability--label badge bg-warning">Item in Use, Ask Staff for Access</span></td>
+  <td class='delivery--options'>
+    <a href="<%= href %>">Email marquand@princeton.edu for access</a>
+  </td>
+</tr>
