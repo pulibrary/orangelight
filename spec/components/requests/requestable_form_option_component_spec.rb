@@ -36,7 +36,7 @@ RSpec.describe Requests::RequestableFormOptionComponent, :requests, type: :compo
     with_controller_class Requests::FormController do
       mfhd = '22701449030006421'
       holding = Requests::Holding.new(mfhd_id: mfhd, holding_data: { 'location_code' => 'firestone$stacks' })
-      item = Requests::Item.new({ 'barcode' => '32101064185703' })
+      item = Requests::Item.new({ 'barcode' => '32101064185703', 'process_type' => 'LOAN' })
       bib = SolrDocument.new
       status_badge = '<span class=\"availability--label badge bg-success\">Available</span>'.html_safe
       requestable = double Requests::Requestable
@@ -58,7 +58,7 @@ RSpec.describe Requests::RequestableFormOptionComponent, :requests, type: :compo
       component = described_class.new(requestable:, mfhd:, default_pick_ups:, form:, patron:)
       rendered = render_inline component
 
-      expect(rendered.text).to include 'Item in Use, Ask Staff for Access'
+      expect(rendered.text).to include 'Item in use'
       expect(rendered.text).to include 'Email marquand@princeton.edu for access'
     end
   end

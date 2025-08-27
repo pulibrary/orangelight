@@ -29,6 +29,19 @@ module Requests
           requestable.item&.fetch 'barcode', nil
         end
 
+        def status_label
+          if process_type == 'LOAN'
+            'Item in use'
+          else
+            'Item unavailable'
+          end
+        end
+
+        # Process type will be something like MISSING or LOAN
+        def process_type
+          requestable.item&.fetch 'process_type', nil
+        end
+
         attr_reader :requestable, :single_item_request
   end
 end
