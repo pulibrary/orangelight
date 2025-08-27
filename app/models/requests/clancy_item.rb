@@ -45,12 +45,19 @@ module Requests
 
     private
 
+      # :reek:TooManyStatements
       def load_clancy_status
         return empty_status if barcode.blank?
 
         response = get_clancy(url: "itemstatus/v1/#{barcode}")
         if response.success?
-          JSON.parse(response.body)
+          response_body = response.body
+          begin
+            JSON.parse(response_body)
+          rescue JSON::ParserError
+            errors << "Error connecting with Clancy: #{response_body}"
+            empty_status
+          end
         else
           errors << "Error connecting with Clancy: #{response.status}"
           empty_status
@@ -80,11 +87,18 @@ module Requests
         { "success" => false }
       end
 
+      # :reek:TooManyStatements
       def request_item(location:, hold_id:, patron:, request_type: "PYR")
         body = { "requests": [{ "request_id": hold_id, "request_type": request_type, "barcode": barcode, "stop": location, "requestor": "#{patron.first_name} #{patron.last_name}", "patron_id": patron.university_id }] }
         response = post_clancy(url: "circrequests/v1", body: body.to_json)
         if response.success?
-          JSON.parse(response.body)
+          response_body = response.body
+          begin
+            JSON.parse(response_body)
+          rescue JSON::ParserError
+            errors << "Error connecting with Clancy: #{response_body}"
+            empty_status
+          end
         else
           errors << "Error connecting with Clancy: #{response.status}"
           empty_status
