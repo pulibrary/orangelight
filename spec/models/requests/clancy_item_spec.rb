@@ -167,6 +167,55 @@ describe Requests::ClancyItem, requests: true do
     end
   end
 
+  context 'Clancy API returns non-JSON' do
+    let(:response) do
+      instance_double Faraday::Response,
+                      "success?": true, status: 200,
+                      body: "<br />\n<b>Fatal error</b>:  Uncaught Error: Call to undefined method mysqli_result::fetch_aassoc() in /var/www/vhosts/caiasoft.com/api/itemstatus.inc:279"
+    end
+
+    describe '#status' do
+      it "is has the status json" do
+        expect(clancy_item.status["success"]).to be_falsey
+        expect(clancy_item.errors.length).to eq 1
+        expect(clancy_item.errors.first).to include 'Error connecting with Clancy'
+        expect(clancy_item.errors.first).to include 'Uncaught Error: Call to undefined method mysqli_result::fetch_aassoc()'
+      end
+    end
+
+    describe '#not_at_clancy?' do
+      it "is not_at_clancy" do
+        expect(clancy_item.not_at_clancy?).to be_truthy
+      end
+    end
+
+    describe '#available?' do
+      it "is not available" do
+        expect(clancy_item.available?).to be_falsey
+      end
+    end
+
+    describe '#request' do
+      let(:user) { FactoryBot.build(:user) }
+      let(:valid_patron) do
+        { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request", "barcode" => "22101007797777",
+          "university_id" => "9999999", "patron_group" => "REG", "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
+      end
+      let(:patron) do
+        Requests::Patron.new(user:, patron_hash: valid_patron)
+      end
+
+      before do
+        allow(connection).to receive(:post).and_return(response)
+      end
+
+      it "responds with failure" do
+        expect(clancy_item.request?(patron:, hold_id: 'hold_id')).to be_falsey
+        expect(clancy_item.errors.length).to eq 1
+      end
+    end
+  end
+
   context 'blank barcode' do
     let(:response) { "" }
     let(:clancy_item) { described_class.new(barcode: "", connection:) }
