@@ -15,10 +15,12 @@
   </div>
 </div>
 
-  <div class="thumbnail-wrapper lux">
+  <div class="thumbnail-wrapper">
+    <div class="lux">
     <bookmark-button
       v-bind:in-bookmarks="<%= bookmarked? document %>"
       v-bind:logged-in="<%= !!current_user %>"
       document-id="<%= document.id %>"></bookmark-button>
+    </div>
       <%= render ThumbnailComponent.new document: %>
   </div>
