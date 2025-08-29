@@ -23,4 +23,8 @@ class ThumbnailComponent < ViewComponent::Base
         all_identifiers
       end
     end
+
+    def thumbnail_display
+      document.thumbnail_display
+    end
 end
