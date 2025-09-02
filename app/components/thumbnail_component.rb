@@ -25,6 +25,6 @@ class ThumbnailComponent < ViewComponent::Base
     end
 
     def thumbnail_display
-      document.thumbnail_display
+      document["thumbnail_display"]
     end
 end

@@ -20,7 +20,7 @@ RSpec.describe ThumbnailComponent, type: :component, thumbnails: true do
   it "renders a viewer link and thumbnail image when document has uuid and thumbnail_display" do
     document = instance_double(SolrDocument)
     allow(document).to receive(:uuid?).and_return(true)
-    allow(document).to receive(:[]).with("thumbnail_display").and_return(["/thumb.jpg"])
+    allow(document).to receive(:[]).with("thumbnail_display").and_return("/thumb.jpg")
     allow(document).to receive(:[]).with("id").and_return("123")
     allow(document).to receive(:in_a_special_collection?).and_return(false)
     allow(document).to receive(:identifier_data).and_return({ oclc: ["40810988"], 'bib-id': "123" })
