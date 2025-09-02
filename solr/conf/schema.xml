@@ -536,6 +536,7 @@
    <field name="homoit_subject_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="local_subject_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="siku_subject_facet" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="thumbnail_display" type="text" indexed="false" stored="true" multiValued="false" />
    <field name="original_language_of_translation_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="author_int" type="author" indexed="true" stored="false" multiValued="true"/>
    <field name="title_sort" type="alphaNumSort" indexed="true" stored="false" />
@@ -603,7 +604,7 @@
 
  </fields>
 
- <!-- Field to use to determine and enforce document uniqueness.
+  <!-- Field to use to determine and enforce document uniqueness.
       Unless this field is marked with required="false", it will be a required field
    -->
  <uniqueKey>id</uniqueKey>
@@ -611,17 +612,17 @@
   <!-- copyField commands copy one field to another at the time a document
         is added to the index.  It's used either to index the same field differently,
         or to add multiple fields to the same field for easier/faster searching.  -->
-   <!-- Copy Fields -->
+  <!-- Copy Fields -->
 
-   <!-- author keyword -->
+  <!-- author keyword -->
    <copyField source="author_display" dest="author_main_unstem_search"/>
    <copyField source="author_s" dest="author_unstem_search"/>
    <copyField source="author_s" dest="author_int"/>
 
-   <!-- publisher keyword -->
+  <!-- publisher keyword -->
    <copyField source="pub_created_s" dest="pub_created_unstem_search"/>
 
-   <!-- unstemmed fields -->
+  <!-- unstemmed fields -->
    <copyField source="title_display" dest="title_unstem_search"/>
    <copyField source="lcgft_s" dest="genre_unstem_search"/>
    <copyField source="aat_s" dest="genre_unstem_search"/>
@@ -630,10 +631,10 @@
    <copyField source="subject_topic_facet" dest="subject_topic_unstem_search"/>
 
 
-   <!-- sort fields -->
+  <!-- sort fields -->
    <copyField source="pub_date" dest="pub_date_sort"/>
 
-   <!-- left-anchored search fields -->
+  <!-- left-anchored search fields -->
    <copyField source="title_a_index" dest="title_245a_la"/>
    <copyField source="title_a_index" dest="title_245a_lr"/>
    <copyField source="title_display" dest="title_245_la"/>
@@ -659,36 +660,36 @@
 
    <copyField source="more_in_this_series_t" dest="more_in_this_series_la"/>
 
-   <!-- advanced search fields cjk config -->
+  <!-- advanced search fields cjk config -->
    <copyField source="pub_created_vern_display" dest="cjk_publisher"/>
 
   <!-- default, catch all search field -->
    <copyField source="id" dest="text"/>
    <copyField source="timestamp" dest="text"/>
 
-   <!-- these fields are NOT multi-valued -->
+  <!-- these fields are NOT multi-valued -->
    <copyField source="title_display" dest="text"/>
    <copyField source="title_vern_display" dest="text"/>
 
-   <!-- these fields are also used for display, so they must be stored -->
+  <!-- these fields are also used for display, so they must be stored -->
    <copyField source="isbn_s" dest="isbn_t"/>
    <copyField source="isbn_s" dest="text"/>
    <copyField source="language_facet" dest="text"/>
    <copyField source="subject_era_facet" dest="text"/>
    <copyField source="subject_geo_facet" dest="text"/>
-   <!-- pub_date is used for facet and display so it must be indexed and stored -->
+  <!-- pub_date is used for facet and display so it must be indexed and stored -->
    <copyField source="pub_date" dest="text"/>
-   <!-- pub_date sort uses new trie-based int fields, which are recommended for any int and are displayable, sortable, and range-quer
+  <!-- pub_date sort uses new trie-based int fields, which are recommended for any int and are displayable, sortable, and range-quer
    we use 'pint' for faster range-queries. -->
    <copyField source="pub_date_start_sort" dest="text"/>
    <copyField source="pub_date_end_sort" dest="text"/>
 
-   <!-- format is used for facet, display, and choosing which partial to use for the show view, so it must be stored and indexed -->
+  <!-- format is used for facet, display, and choosing which partial to use for the show view, so it must be stored and indexed -->
    <copyField source="format" dest="text"/>
 
    <copyField source="location" dest="text"/>
 
-   <!-- Dynamic field definitions.  If a field name is not found, dynamicFields
+  <!-- Dynamic field definitions.  If a field name is not found, dynamicFields
         will be used if the name matches any of the patterns.
         RESTRICTION: the glob-like pattern in the name attribute must have
         a "*" only at the start or the end.
@@ -733,7 +734,7 @@
    <copyField source="title_la" dest="text"/>
    <copyField source="title_addl_la" dest="text"/>
 
-   <!-- copy notes_index to cjk_notes_copied -->
+  <!-- copy notes_index to cjk_notes_copied -->
    <copyField source="notes_index" dest="cjk_notes_copied"/>
    <copyField source="notes_index" dest="cjk_text"/>
 </schema>
