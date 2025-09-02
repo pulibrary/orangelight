@@ -337,7 +337,8 @@
         electronic_portfolio_s,
         cataloged_tdt,
         contained_in_s,
-        call_number_display
+        call_number_display,
+        thumbnail_display
       </str>
 
       <str name="facet">true</str>
