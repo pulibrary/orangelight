@@ -50,6 +50,15 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
 
   describe '.electronic_access_link' do
     let(:link_markup) { described_class.electronic_access_link('http://arks.princeton.edu/ark:/88435/dsp01ft848s955', ['Full text']) }
+    context 'when label - texts.first - for an external icon is an empty string' do
+      it 'does not generate an icon for an empty string key and value' do
+        # "electronic_access_1display": "{\"\":[\"\"], ... }"
+        url = ''
+        texts = ['']
+        markup = described_class.electronic_access_link(url, texts)
+        expect(markup).not_to include 'fa fa-external-link new-tab-icon-padding'
+      end
+    end
 
     it 'generates electronic access links for a catalog record' do
       parsed = Nokogiri::HTML link_markup

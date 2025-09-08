@@ -135,8 +135,8 @@
     "113.2"
   ],
   "electronic_portfolio_s": [
-    "{\"desc\":null,\"title\":null,\"url\":\"https://na07.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true\u0026portfolio_pid=53356055290006421\u0026Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
-    "{\"desc\":null,\"title\":null,\"url\":\"https://na07.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true\u0026portfolio_pid=53356055310006421\u0026Force_direct=true\",\"start\":null,\"end\":\"latest\"}"
+    "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na07.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true\u0026portfolio_pid=53356055290006421\u0026Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+    "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na07.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true\u0026portfolio_pid=53356055310006421\u0026Force_direct=true\",\"start\":null,\"end\":\"latest\"}"
   ],
   "timestamp": "2021-04-14T13:28:36.105Z"
 }

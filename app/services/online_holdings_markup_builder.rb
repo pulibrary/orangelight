@@ -33,7 +33,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
                  link_to(texts.first, ::Regexp.last_match(0), class: 'electronic-access-link')
                end
              else
-               link_text = new_tab_icon(texts.first)
+               link_text = new_tab_icon(texts.first) if texts.first.present?
                link_to(link_text, EzProxyService.ez_proxy_url(url), target: '_blank', rel: 'noopener', class: 'electronic-access-link')
              end
     markup
