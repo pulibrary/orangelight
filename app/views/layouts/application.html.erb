@@ -39,12 +39,6 @@
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
     <%= render 'shared/analytics' if rails_env? %>
-    <script>
-      let libcalScript = document.createElement('script');
-      libcalScript.type = 'text/javascript';
-      libcalScript.src = 'https://libcal.princeton.edu/libmaps/blacklight';
-      document.head.appendChild(libcalScript);
-    </script>
   </head>
 
   <body class="<%= render_body_class %>"
