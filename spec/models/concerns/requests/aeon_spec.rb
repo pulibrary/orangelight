@@ -3,6 +3,7 @@ require 'rails_helper'
 
 class ObjectWithAeon
   include Requests::Aeon
+
   def bib
     { id: 1234 }
   end

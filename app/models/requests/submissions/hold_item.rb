@@ -10,7 +10,6 @@ module Requests::Submissions
       @duplicate = false
     end
 
-    # rubocop:disable Naming/PredicateMethod
     def handle
       items = submission.filter_items_by_service(service_type)
       items.each do |item|
@@ -19,7 +18,6 @@ module Requests::Submissions
       end
       return false if @errors.present?
     end
-    # rubocop:enable Naming/PredicateMethod
 
     def duplicate?
       duplicate

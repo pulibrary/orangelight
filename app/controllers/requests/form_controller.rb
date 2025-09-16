@@ -107,7 +107,9 @@ module Requests
       end
 
       def sanitize(str)
+        # rubocop:disable Style/RedundantRegexpEscape
         str.gsub(/[^A-Za-z0-9@\-_\.]/, '') if str.is_a? String
+        # rubocop:enable Style/RedundantRegexpEscape
         str
       end
 
