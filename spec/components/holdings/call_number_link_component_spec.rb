@@ -7,7 +7,7 @@ RSpec.describe Holdings::CallNumberLinkComponent, type: :component do
   end
   let(:call_number) { 'East 45/GC073/Box 06/Oversize' }
   let :rendered do
-    render_inline described_class.new(holding, call_number)
+    render_inline described_class.new(holding)
   end
 
   it 'has a browse link' do

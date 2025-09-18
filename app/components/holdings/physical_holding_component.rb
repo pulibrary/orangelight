@@ -14,6 +14,10 @@ class Holdings::PhysicalHoldingComponent < ViewComponent::Base
 
     attr_reader :adapter, :holding_id, :holding, :open_holdings
 
+    def mapable?
+      libmap_libraries.include?(holding['library'])
+    end
+
     def cn_value
       adapter.call_number(holding)
     end
@@ -28,5 +32,9 @@ class Holdings::PhysicalHoldingComponent < ViewComponent::Base
 
     def temp_location_code
       adapter.temp_location_code(holding)
+    end
+
+    def libmap_libraries
+      ["Firestone Library"]
     end
 end
