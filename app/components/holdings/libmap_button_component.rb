@@ -20,7 +20,7 @@ class Holdings::LibmapButtonComponent < ViewComponent::Base
       end
 
       def collection
-        "Firestone #{holding_hash['location']}"
+        "#{holding_hash['location']}"
       end
 
       def call_number
