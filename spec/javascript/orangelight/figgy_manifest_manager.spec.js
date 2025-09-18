@@ -1,7 +1,38 @@
 import {
   FiggyViewer,
   FiggyViewerSet,
+  isRecordPagePath,
+  wrapWithViewerLink,
 } from '../../../app/javascript/orangelight/figgy_manifest_manager';
+describe('isRecordPagePath', () => {
+  it('returns true when on record page', () => {
+    const origin = 'http://localhost';
+    delete window.location;
+    window.location = { origin, pathname: '/catalog/998873506421' };
+    expect(isRecordPagePath()).toBe(true);
+  });
+
+  it('returns false on search results page', () => {
+    const origin = 'http://localhost';
+    delete window.location;
+    window.location = {
+      origin,
+      pathname: '/catalog?search_field=all_fields&q=test',
+    };
+    expect(isRecordPagePath()).toBe(false);
+  });
+});
+
+describe('wrapWithViewerLink', () => {
+  it('wraps element with viewer link and adds accessibility span', () => {
+    const $element = window.jQuery('<div></div>');
+    wrapWithViewerLink($element);
+    expect($element.hasClass('has-viewer-link')).toBe(true);
+    expect($element.parent('a').attr('href')).toBe('#viewer-container');
+    expect($element.find('span.visually-hidden').length).toBe(1);
+    expect($element.find('span.visually-hidden').text()).toBe('Go to viewer');
+  });
+});
 
 describe('RelatedRecords', function () {
   afterEach(vi.clearAllMocks);

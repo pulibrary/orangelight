@@ -1,15 +1,5 @@
-<% if document.uuid? && thumbnail_display.present? %>
-  <a href="#viewer-container">
-    <div class="document-thumbnail has-viewer-link" data-bib-id="<%= document['id'] %>">
-      <span class="visually-hidden">Go to viewer</span>
-      <img alt="" src="<%= thumbnail_display %>">
-    </div>
-  </a>
-<% else %>
-<%= helpers.content_tag(
-  :div,
-  helpers.content_tag(:div, nil, class: "default"),
-  class: 'document-thumbnail',
-  data: identifier_data)
-%>
+<% if action_name == 'show' %>
+  <%= render ThumbnailShowComponent.new document: %>
+<% elsif action_name == 'index' %>
+  <%= render ThumbnailIndexComponent.new document: %>
 <% end %>
