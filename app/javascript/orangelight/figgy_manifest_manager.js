@@ -1,3 +1,15 @@
+function shouldUseViewerLink() {
+  const origin = window.location.origin;
+  const href = window.location.href;
+  const searchPath = origin + '/catalog?search_field';
+  return !href.startsWith(searchPath);
+}
+// Helper to wrap thumbnail element with viewer link and accessibility span
+function wrapWithViewerLink($element) {
+  $element.addClass('has-viewer-link');
+  $element.wrap('<a href="#viewer-container"></a>');
+  $element.append('<span class="visually-hidden">Go to viewer</span>');
+}
 import loadResourcesByFiggyIds from './load-resources-by-figgy-ids';
 import loadResourcesByOrangelightId from './load-resources-by-orangelight-id';
 import loadResourcesByOrangelightIds from './load-resources-by-orangelight-ids';
@@ -248,10 +260,9 @@ class FiggyThumbnailSet {
         return;
       }
       $element.empty();
-      $element.addClass('has-viewer-link');
-      $element
-        .wrap('<a href="#viewer-container"></a>')
-        .append('<span class="visually-hidden">Go to viewer</span>');
+      if (shouldUseViewerLink()) {
+        wrapWithViewerLink($element);
+      }
       $element.append($thumbnailElement);
     });
   }
