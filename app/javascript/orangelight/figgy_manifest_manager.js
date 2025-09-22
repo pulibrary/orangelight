@@ -1,3 +1,22 @@
+// Checks if the current path is a valid record page (catalog/ID)
+// Matches catalog/ followed by:
+// - starts with 99 and ends with 3506421 (Alma)
+// - dsp + 1 or more alphanumeric
+// - UUID (8-4-4-4-12)
+// - SCSB- + digits
+function isRecordPagePath() {
+  const path = window.location.pathname;
+  const regex =
+    /^\/catalog\/(\d{14,}|99\w+3506421|dsp[\w]+|[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}|SCSB-\d+)$/;
+  return regex.test(path);
+}
+
+// Helper to wrap thumbnail element with viewer link and accessibility span
+function wrapWithViewerLink($element) {
+  $element.addClass('has-viewer-link');
+  $element.wrap('<a href="#viewer-container"></a>');
+  $element.append('<span class="visually-hidden">Go to viewer</span>');
+}
 import loadResourcesByFiggyIds from './load-resources-by-figgy-ids';
 import loadResourcesByOrangelightId from './load-resources-by-orangelight-id';
 import loadResourcesByOrangelightIds from './load-resources-by-orangelight-ids';
@@ -248,10 +267,9 @@ class FiggyThumbnailSet {
         return;
       }
       $element.empty();
-      $element.addClass('has-viewer-link');
-      $element
-        .wrap('<a href="#viewer-container"></a>')
-        .append('<span class="visually-hidden">Go to viewer</span>');
+      if (isRecordPagePath()) {
+        wrapWithViewerLink($element);
+      }
       $element.append($thumbnailElement);
     });
   }
@@ -301,4 +319,10 @@ class FiggyManifestManager {
   }
 }
 
-export { FiggyManifestManager, FiggyViewer, FiggyViewerSet };
+export {
+  FiggyManifestManager,
+  FiggyViewer,
+  FiggyViewerSet,
+  wrapWithViewerLink,
+  isRecordPagePath,
+};

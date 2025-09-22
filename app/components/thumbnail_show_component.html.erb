@@ -1,0 +1,16 @@
+
+<% if document.uuid? && thumbnail_display.present? %>
+<a href="#viewer-container">
+  <%= content_tag(
+    :div,
+    capture do
+      concat content_tag(:span, "Go to viewer", class: "visually-hidden")
+      concat image_tag(thumbnail_display, alt: "")
+    end,
+    class: "document-thumbnail has-viewer-link",
+    data: identifier_data
+  ) %>
+</a>
+<% else %>
+  <%= render partial: "catalog/default_thumbnail", locals: { identifier_data: identifier_data } %>
+<% end %>
