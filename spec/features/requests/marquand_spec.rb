@@ -29,7 +29,7 @@ describe 'requests for Marquand items', type: :feature, requests: true do
       .to_return(status: 200, body: availability)
   end
   let(:bibdata_holding_response) do
-    { library: { code: "marquand" } }.to_json
+    { code: "marquand$stacks", library: { code: "marquand" } }.to_json
   end
   let(:holding_location_stub) do
     stub_request(:get, "#{Requests.config[:bibdata_base]}/locations/holding_locations/#{location_code}.json")
@@ -87,10 +87,13 @@ describe 'requests for Marquand items', type: :feature, requests: true do
       end
       let(:location_code) { 'marquand$pj' }
       let(:bibdata_holding_response) do
-        { recap_electronic_delivery_location: true,
+        {
+          code: "marquand$pj",
+          recap_electronic_delivery_location: true,
           remote_storage: "recap_rmt",
           library: { code: "marquand" },
-          holding_library: { code: 'marquand' } }.to_json
+          holding_library: { code: 'marquand' }
+        }.to_json
       end
       let(:scsb_post_stub) do
         stub_request(:post, "#{Requests.config[:scsb_base]}/requestItem/requestItem")
@@ -145,7 +148,7 @@ describe 'requests for Marquand items', type: :feature, requests: true do
       context 'with an on-order item' do
         let(:availability) { [{ id: item_id, status: 'Unavailable', status_label: 'Acquisition', location: location_code }].to_json }
         let(:bibdata_holding_response) do
-          { library: { code: "marquand" }, delivery_locations: [{ library: { code: 'marquand' } }] }.to_json
+          { code: "marquand$pj", library: { code: "marquand" }, delivery_locations: [{ library: { code: 'marquand' } }] }.to_json
         end
         it 'allows a user to request the item' do
           visit("requests/#{bib_id}?mfhd=#{holding_id}")

@@ -68,10 +68,6 @@ module Requests
       in_scsb_edd_collection? && !scsb_in_library_use?
     end
 
-    def preservation?
-      location_object.code == 'pres'
-    end
-
     def circulates?
       item_type_non_circulate? == false && location[:circulates] == true
     end
@@ -100,12 +96,6 @@ module Requests
 
     def item?
       item.present?
-    end
-
-    def pending?
-      return false unless location_valid?
-      return false unless on_order? || in_process? || preservation?
-      location[:library][:code] != 'recap' || location[:holding_library].present?
     end
 
     def ill_eligible?

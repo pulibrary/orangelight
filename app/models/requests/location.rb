@@ -13,6 +13,12 @@ module Requests
       bibdata_location['code']
     end
 
+    def fulfillment_unit
+      bibdata_fulfillment_unit = bibdata_location['fulfillment_unit']
+      return nil if bibdata_fulfillment_unit.blank?
+      bibdata_fulfillment_unit
+    end
+
     def short_label
       bibdata_location["label"]
     end

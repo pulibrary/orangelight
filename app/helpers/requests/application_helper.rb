@@ -131,21 +131,6 @@ module Requests
         end
     end
 
-    def available_pick_ups(requestable, default_pick_ups)
-      idx = (default_pick_ups.pluck(:label)).index(requestable.location.library_label)
-      if idx.present?
-        [default_pick_ups[idx]]
-      elsif requestable.recap? || requestable.annex?
-        locations = requestable.pick_up_locations || default_pick_ups
-        # open libraries
-        pick_ups = locations.select { |loc| ['PJ', 'PA', 'PL', 'PK', 'PM', 'PT', 'QX', 'PW', 'QA', 'QT', 'QC'].include?(loc[:gfa_pickup]) }
-        pick_ups << default_pick_ups[0] if pick_ups.empty?
-        pick_ups
-      else
-        [default_pick_ups[0]]
-      end
-    end
-
     # rubocop:disable Rails/OutputSafety
     def hidden_fields_mfhd(mfhd)
       hidden = ""
@@ -281,6 +266,22 @@ module Requests
       end
     end
 
+    def self.recap_annex_available_pick_ups(requestable, default_pick_ups)
+      locations = requestable.pick_up_locations || default_pick_ups
+      pick_ups = locations.select { |loc| ['PJ', 'PA', 'PL', 'PK', 'PM', 'PT', 'QX', 'PW', 'QA', 'QT', 'QC'].include?(loc[:gfa_pickup]) }
+      pick_ups << default_pick_ups[0] if pick_ups.empty?
+      pick_ups
+    end
+
+    def self.standard_circ_locations?(requestable)
+      requestable_location = requestable.location
+      location_code = requestable_location&.code
+
+      return false unless location_code
+
+      location_code.start_with?("arch$", "eastasian$", "engineering$", "firestone$", "plasma$", "lewis", "mendel$", "stokes$") && requestable_location.fulfillment_unit == 'General'
+    end
+
     private
 
       def display_requestable_list(requestable)
@@ -308,12 +309,13 @@ module Requests
       end
 
       def pick_up_locations(requestable, default_pick_ups)
+        # we don't want to change the ill_eligible rules
         return [default_pick_ups[0]] if requestable.ill_eligible?
-        return available_pick_ups(requestable, default_pick_ups) unless requestable.pending?
+        return Requests::ApplicationHelper.recap_annex_available_pick_ups(requestable, default_pick_ups) if requestable.recap? || requestable.annex?
+        return default_pick_ups if Requests::ApplicationHelper.standard_circ_locations?(requestable)
         if requestable.delivery_location_label.present?
           [{ label: requestable.delivery_location_label, gfa_pickup: requestable.delivery_location_code, pick_up_location_code: requestable.pick_up_location_code, staff_only: false }]
         else
-          # TODO: Why is this option here
           [{ label: requestable.location.library_label, gfa_pickup: gfa_lookup(requestable.location.library_code), staff_only: false }]
         end
       end
