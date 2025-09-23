@@ -131,19 +131,19 @@ module Requests
         end
     end
 
-    def available_pick_ups(requestable, default_pick_ups)
-      idx = (default_pick_ups.pluck(:label)).index(requestable.location.library_label)
-      if idx.present?
-        [default_pick_ups[idx]]
-      elsif requestable.recap? || requestable.annex?
-        locations = requestable.pick_up_locations || default_pick_ups
-        # open libraries
-        pick_ups = locations.select { |loc| ['PJ', 'PA', 'PL', 'PK', 'PM', 'PT', 'QX', 'PW', 'QA', 'QT', 'QC'].include?(loc[:gfa_pickup]) }
-        pick_ups << default_pick_ups[0] if pick_ups.empty?
-        pick_ups
-      else
-        [default_pick_ups[0]]
-      end
+    def recap_annex_available_pick_ups(requestable, default_pick_ups)
+      # idx = (default_pick_ups.pluck(:label)).index(requestable.location.library_label)
+      # if idx.present?
+      # [default_pick_ups[idx]]
+      # elsif requestable.recap? || requestable.annex?
+      locations = requestable.pick_up_locations || default_pick_ups
+      # open libraries
+      pick_ups = locations.select { |loc| ['PJ', 'PA', 'PL', 'PK', 'PM', 'PT', 'QX', 'PW', 'QA', 'QT', 'QC'].include?(loc[:gfa_pickup]) }
+      pick_ups << default_pick_ups[0] if pick_ups.empty?
+      pick_ups
+      # else
+      #   [default_pick_ups[0]]
+      # end
     end
 
     # rubocop:disable Rails/OutputSafety
@@ -308,8 +308,10 @@ module Requests
       end
 
       def pick_up_locations(requestable, default_pick_ups)
+        # we don't want to change the ill_eligible rules
         return [default_pick_ups[0]] if requestable.ill_eligible?
-        return available_pick_ups(requestable, default_pick_ups) unless requestable.pending?
+        return recap_annex_available_pick_ups(requestable, default_pick_ups) if requestable.recap? || requestable.annex?
+        return default_pick_ups if requestable.fulfillment_unit == "General"
         if requestable.delivery_location_label.present?
           [{ label: requestable.delivery_location_label, gfa_pickup: requestable.delivery_location_code, pick_up_location_code: requestable.pick_up_location_code, staff_only: false }]
         else

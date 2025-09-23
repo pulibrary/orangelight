@@ -15,7 +15,6 @@ patron_message
 single_item_request?
 ask_me?
 item_location_code
-pending?
 pick_up_locations
 urls
 use_restriction?
