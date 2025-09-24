@@ -21,7 +21,7 @@ executors:
           POSTGRES_USER: orangelight
           POSTGRES_PASSWORD: orangelight_password
           POSTGRES_DB: orangelight_test
-      - image: pulibrary/ci-solr:8.4-v1.0.0
+      - image: quay.io/pulibrary/ci-solr:9.9-v1.0.0
         command: server/scripts/ci-start.sh
       - image: cimg/redis:6.0.16
     resource_class: large
