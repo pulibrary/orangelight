@@ -119,8 +119,8 @@ jobs:
             cd solr/conf
             zip -1 -r solr_config.zip ./*
             curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://solr:SolrRocks@127.0.0.1:8984/solr/admin/configs?action=UPLOAD&name=orangelight"
-            curl -H 'Content-type: application/json' http://solr:SolrRocks@127.0.0.1:8984/api/collections/  -d '{"create": {"name": "orangelight-core-test", "config": "orangelight", "numShards": 1}}'
-            curl -H 'Content-type: application/json' http://solr:SolrRocks@127.0.0.1:8984/api/collections/  -d '{"create": {"name": "orangelight-core-small-test", "config": "orangelight", "numShards": 1}}'
+            curl -H 'Content-type: application/json' http://solr:SolrRocks@127.0.0.1:8984/api/collections/  -d '{"name": "orangelight-core-test", "config": "orangelight", "numShards": 1}'
+            curl -H 'Content-type: application/json' http://solr:SolrRocks@127.0.0.1:8984/api/collections/  -d '{"name": "orangelight-core-small-test", "config": "orangelight", "numShards": 1}'
       - run:
           name: Index Test Data
           command: bundle exec rake pulsearch:solr:index
@@ -169,7 +169,7 @@ jobs:
             cd solr/conf
             zip -1 -r solr_config.zip ./*
             curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://solr:SolrRocks@127.0.0.1:8984/solr/admin/configs?action=UPLOAD&name=orangelight"
-            curl -H 'Content-type: application/json' http://solr:SolrRocks@127.0.0.1:8984/api/collections/  -d '{create: {name: orangelight-core-test, config: orangelight, numShards: 1}}'
+            curl -H 'Content-type: application/json' http://solr:SolrRocks@127.0.0.1:8984/api/collections/  -d '{"name": "orangelight-core-test", "config": "orangelight", "numShards": 1}'
       - run:
           name: Index Test Data
           command: bundle exec rake pulsearch:solr:index
