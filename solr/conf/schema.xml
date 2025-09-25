@@ -172,96 +172,94 @@
      -->
      <fieldType name="text" class="solr.TextField" positionIncrementGap="100">
        <analyzer>
-         <tokenizer class="solr.StandardTokenizerFactory"/>
-         <filter class="solr.ICUFoldingFilterFactory" />
-         <filter class="solr.WordDelimiterGraphFilterFactory" catenateAll="1" preserveOriginal="1"/>
-         <filter class="solr.FlattenGraphFilterFactory"/>
-         <filter class="solr.SnowballPorterFilterFactory" language="English" protected="protwords.txt"/>
+         <tokenizer name="standard" />
+         <filter name="icuFolding" />
+         <filter name="wordDelimiterGraph" catenateAll="1" preserveOriginal="1"/>
+         <filter name="flattenGraph"/>
+         <filter name="snowballPorter" language="English" protected="protwords.txt"/>
        </analyzer>
      </fieldType>
 
      <fieldType name="descendent_path" class="solr.TextField">
        <analyzer type="index">
-         <tokenizer class="solr.PathHierarchyTokenizerFactory" delimiter="—" />
+         <tokenizer name="pathHierarchy" delimiter="—" />
        </analyzer>
        <analyzer type="query">
-         <tokenizer class="solr.KeywordTokenizerFactory" />
+         <tokenizer name="keyword" />
        </analyzer>
      </fieldType>
 
      <fieldType name="author" class="solr.TextField">
        <analyzer>
           <!-- Filters for individual characters -->
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="[ʹ’՚Ꞌꞌ']" replacement="" />
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\p{Punct}" replacement="" />
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\s+" replacement=" " />
+          <charFilter name="patternReplace" pattern="[ʹ’՚Ꞌꞌ']" replacement="" />
+          <charFilter name="patternReplace" pattern="\p{Punct}" replacement="" />
+          <charFilter name="patternReplace" pattern="\s+" replacement=" " />
           <!-- Tokenize the string -->
-          <tokenizer class="solr.StandardTokenizerFactory"/>
+          <tokenizer name="standard"/>
           <!-- Remove trailing and leading spaces -->
-          <filter class="solr.TrimFilterFactory"/>
+          <filter name="trim"/>
           <!-- Handle non-Latin orthographies -->
-          <filter class="solr.ICUFoldingFilterFactory" />
+          <filter name="icuFolding" />
        </analyzer>
      </fieldType>
 
     <fieldType name="text_lr" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index">
-        <charFilter class="solr.PatternReplaceCharFilterFactory"
-          pattern="^(.*)$" replacement="AAAA $1 ZZZZ" />
-        <tokenizer class="solr.StandardTokenizerFactory"/>
-        <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
-        <filter class="solr.FlattenGraphFilterFactory"/>
-        <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="０" replacement="〇" />
-        <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="([\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}][\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}]*)\s+(?=[\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}])" replacement="$1"/>
+        <charFilter name="patternReplace" pattern="^(.*)$" replacement="AAAA $1 ZZZZ" />
+        <tokenizer name="standard"/>
+        <filter name="synonymGraph" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+        <filter name="flattenGraph"/>
+        <charFilter name="patternReplace" pattern="０" replacement="〇" />
+        <charFilter name="patternReplace" pattern="([\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}][\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}]*)\s+(?=[\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}])" replacement="$1"/>
           <!-- a korean char guaranteed at the end of the pattern:    pattern="([\p{Hangul}\p{Han}])\s+(?=[\p{Han}\s]*\p{Hangul})" -->
-        <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="([\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}])\s+(?=[\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}\s]*[\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}])" replacement="$1"/>
-        <filter class="solr.CJKWidthFilterFactory"/>
+        <charFilter name="patternReplace" pattern="([\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}])\s+(?=[\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}\s]*[\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}])" replacement="$1"/>
+        <filter name="cjkWidth"/>
         <filter class="edu.stanford.lucene.analysis.CJKFoldingFilterFactory"/>
-        <filter class="solr.ICUTransformFilterFactory" id="Traditional-Simplified"/>
-        <filter class="solr.ICUTransformFilterFactory" id="Katakana-Hiragana"/>
-        <filter class="solr.ICUFoldingFilterFactory"/>   <!-- NFKC, case folding, diacritics removed -->
-        <filter class="solr.PatternReplaceFilterFactory" pattern="(\p{Punct})" replacement="" replace="all" />
-        <filter class="solr.TrimFilterFactory"/>
+        <filter name="icuTransform" id="Traditional-Simplified"/>
+        <filter name="icuTransform" id="Katakana-Hiragana"/>
+        <filter name="icuFolding"/>   <!-- NFKC, case folding, diacritics removed -->
+        <filter name="patternReplace" pattern="(\p{Punct})" replacement="" replace="all" />
+        <filter name="trim"/>
       </analyzer>
       <analyzer type="query">
-        <charFilter class="solr.PatternReplaceCharFilterFactory"
-          pattern="^(.*)$" replacement="AAAA $1 ZZZZ" />
-        <tokenizer class="solr.StandardTokenizerFactory"/>
-        <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
-        <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="０" replacement="〇" />
-        <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="([\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}][\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}]*)\s+(?=[\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}])" replacement="$1"/>
+        <charFilter name="patternReplace" pattern="^(.*)$" replacement="AAAA $1 ZZZZ" />
+        <tokenizer name="standard"/>
+        <filter name="synonymGraph" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+        <charFilter name="patternReplace" pattern="０" replacement="〇" />
+        <charFilter name="patternReplace" pattern="([\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}][\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}]*)\s+(?=[\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}])" replacement="$1"/>
           <!-- a korean char guaranteed at the end of the pattern:    pattern="([\p{Hangul}\p{Han}])\s+(?=[\p{Han}\s]*\p{Hangul})" -->
-        <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="([\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}])\s+(?=[\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}\s]*[\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}])" replacement="$1"/>
-        <filter class="solr.CJKWidthFilterFactory"/>
+        <charFilter name="patternReplace" pattern="([\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}])\s+(?=[\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}\s]*[\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}])" replacement="$1"/>
+        <filter name="cjkWidth"/>
         <filter class="edu.stanford.lucene.analysis.CJKFoldingFilterFactory"/>
-        <filter class="solr.ICUTransformFilterFactory" id="Traditional-Simplified"/>
-        <filter class="solr.ICUTransformFilterFactory" id="Katakana-Hiragana"/>
-        <filter class="solr.ICUFoldingFilterFactory"/>   <!-- NFKC, case folding, diacritics removed -->
-        <filter class="solr.PatternReplaceFilterFactory" pattern="(\p{Punct})" replacement="" replace="all" />
-        <filter class="solr.TrimFilterFactory"/>
+        <filter name="icuTransform" id="Traditional-Simplified"/>
+        <filter name="icuTransform" id="Katakana-Hiragana"/>
+        <filter name="icuFolding"/>   <!-- NFKC, case folding, diacritics removed -->
+        <filter name="patternReplace" pattern="(\p{Punct})" replacement="" replace="all" />
+        <filter name="trim"/>
       </analyzer>
     </fieldType>
 
      <fieldType name="title_l" class="solr.TextField" positionIncrementGap="100" >
        <analyzer>
           <!-- Filters for individual characters -->
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="[ʹ’՚Ꞌꞌ']" replacement="" />
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\p{Punct}" replacement="" />
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\s+" replacement=" " />
+          <charFilter name="patternReplace" pattern="[ʹ’՚Ꞌꞌ']" replacement="" />
+          <charFilter name="patternReplace" pattern="\p{Punct}" replacement="" />
+          <charFilter name="patternReplace" pattern="\s+" replacement=" " />
           <!-- Tokenize the string -->
-          <tokenizer class="solr.KeywordTokenizerFactory" />
+          <tokenizer name="keyword" />
           <!-- Remove trailing and leading spaces -->
-          <filter class="solr.TrimFilterFactory"/>
+          <filter name="trim"/>
           <!-- Handle non-Latin orthographies -->
-          <filter class="solr.ICUFoldingFilterFactory" />
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="０" replacement="〇" />
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="([\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}][\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}]*)\s+(?=[\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}])" replacement="$1"/>
+          <filter name="icuFolding" />
+          <charFilter name="patternReplace" pattern="０" replacement="〇" />
+          <charFilter name="patternReplace" pattern="([\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}][\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}]*)\s+(?=[\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}])" replacement="$1"/>
           <!-- a korean char guaranteed at the end of the pattern:    pattern="([\p{Hangul}\p{Han}])\s+(?=[\p{Han}\s]*\p{Hangul})" -->
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="([\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}])\s+(?=[\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}\s]*[\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}])" replacement="$1"/>
-          <filter class="solr.CJKWidthFilterFactory"/>
+          <charFilter name="patternReplace" pattern="([\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}])\s+(?=[\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}\s]*[\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}])" replacement="$1"/>
+          <filter name="cjkWidth"/>
           <filter class="edu.stanford.lucene.analysis.CJKFoldingFilterFactory"/>
-          <filter class="solr.ICUTransformFilterFactory" id="Traditional-Simplified"/>
-          <filter class="solr.ICUTransformFilterFactory" id="Katakana-Hiragana"/>
+          <filter name="icuTransform" id="Traditional-Simplified"/>
+          <filter name="icuTransform" id="Katakana-Hiragana"/>
        </analyzer>
      </fieldType>
 
@@ -275,7 +273,7 @@
     <!-- A text field that only splits on whitespace for exact matching of words -->
     <fieldType name="text_ws" class="solr.TextField" positionIncrementGap="100">
       <analyzer>
-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+        <tokenizer name="whitespace"/>
       </analyzer>
     </fieldType>
 
@@ -286,24 +284,24 @@
    also applies synonyms. -->
     <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index">
-        <tokenizer class="solr.StandardTokenizerFactory"/>
-        <filter class="solr.ICUFoldingFilterFactory" />
-        <filter class="solr.LowerCaseFilterFactory"/>
+        <tokenizer name="standard"/>
+        <filter name="icuFolding" />
+        <filter name="lowercase"/>
       </analyzer>
       <analyzer type="query">
-        <tokenizer class="solr.StandardTokenizerFactory"/>
-        <filter class="solr.ICUFoldingFilterFactory" />
-        <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
-        <filter class="solr.LowerCaseFilterFactory"/>
+        <tokenizer name="standard"/>
+        <filter name="icuFolding" />
+        <filter name="synonymGraph" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+        <filter name="lowercase"/>
       </analyzer>
     </fieldType>
 
     <fieldType name="textSpell" class="solr.TextField" positionIncrementGap="100" >
       <analyzer>
-        <tokenizer class="solr.StandardTokenizerFactory"/>
-        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt"/>
-        <filter class="solr.LowerCaseFilterFactory"/>
-        <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+        <tokenizer name="standard"/>
+        <filter name="stop" ignoreCase="true" words="stopwords.txt"/>
+        <filter name="lowercase"/>
+        <filter name="removeDuplicates"/>
       </analyzer>
     </fieldType>
 
@@ -312,45 +310,45 @@
      <analyzer>
         <!-- remove spaces among hangul and han chars if there is at least one hangul char -->
         <!-- a korean char guaranteed at the start of the pattern:  pattern="(\p{Hangul}\p{Han}*)\s+(?=[\p{Hangul}\p{Han}])" -->
-        <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="０" replacement="〇" />
-        <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="([\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}][\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}]*)\s+(?=[\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}])" replacement="$1"/>
+        <charFilter name="patternReplace" pattern="０" replacement="〇" />
+        <charFilter name="patternReplace" pattern="([\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}][\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}]*)\s+(?=[\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}])" replacement="$1"/>
         <!-- a korean char guaranteed at the end of the pattern:    pattern="([\p{Hangul}\p{Han}])\s+(?=[\p{Han}\s]*\p{Hangul})" -->
-        <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="([\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}])\s+(?=[\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}\s]*[\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}])" replacement="$1"/>
+        <charFilter name="patternReplace" pattern="([\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}])\s+(?=[\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}\s]*[\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}])" replacement="$1"/>
         <charFilter class="edu.stanford.lucene.analysis.ICUCustomTransformCharFilterFactory" id="edu/stanford/lucene/analysis/stanford_cjk_transliterations.txt" />
         <charFilter class="edu.stanford.lucene.analysis.ICUTransformCharFilterFactory" id="Traditional-Simplified" />
         <charFilter class="edu.stanford.lucene.analysis.ICUTransformCharFilterFactory" id="Katakana-Hiragana" />
-        <charFilter class="solr.PatternReplaceCharFilterFactory"
+        <charFilter name="patternReplace"
           pattern="([\p{InHiragana}\p{InKatakana}\p{InKatakana_Phonetic_Extensions}])([^\p{InHiragana}\p{InKatakana}\p{InKatakana_Phonetic_Extensions}])"
           replacement="$1 $2"
         />
-        <tokenizer class="solr.ICUTokenizerFactory" />
-        <filter class="solr.CJKWidthFilterFactory"/>
-        <filter class="solr.ICUFoldingFilterFactory"/>   <!-- NFKC, case folding, diacritics removed -->
-        <filter class="solr.CJKBigramFilterFactory" han="false" hiragana="false" katakana="false" hangul="true" outputUnigrams="true" />
+        <tokenizer name="icu" />
+        <filter name="cjkWidth"/>
+        <filter name="icuFolding"/>   <!-- NFKC, case folding, diacritics removed -->
+        <filter name="cjkBigram" han="false" hiragana="false" katakana="false" hangul="true" outputUnigrams="true" />
       </analyzer>
     </fieldtype>
 
     <fieldType name="lccn" class="solr.TextField">
       <analyzer type="index">
-        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <tokenizer name="keyword"/>
       </analyzer>
       <analyzer type="query">
-        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <tokenizer name="keyword"/>
         <filter class="edu.umich.lib.solr_filters.LCCNNormalizerFilterFactory"/>
-        <filter class="solr.PatternReplaceFilterFactory" pattern="([\p{Punct}])" replacement=""/>
-        <filter class="solr.LengthFilterFactory" min="1" max="100"/>
+        <filter name="patternReplace" pattern="([\p{Punct}])" replacement=""/>
+        <filter name="length" min="1" max="100"/>
       </analyzer>
     </fieldType>
 
     <fieldType name="isbn" class="solr.TextField">
       <analyzer type="index">
-        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <tokenizer name="keyword"/>
       </analyzer>
       <analyzer type="query">
-        <tokenizer class="solr.PatternTokenizerFactory" pattern="[;,]\s*" />
+        <tokenizer name="pattern" pattern="[;,]\s*" />
         <filter class="edu.umich.lib.solr_filters.ISBNNormalizerFilterFactory"/>
-        <filter class="solr.PatternReplaceFilterFactory" pattern="([\p{Punct}])" replacement=""/>
-        <filter class="solr.LengthFilterFactory" min="1" max="100"/>
+        <filter name="patternReplace" pattern="([\p{Punct}])" replacement=""/>
+        <filter name="length" min="1" max="100"/>
       </analyzer>
     </fieldType>
 
@@ -363,13 +361,13 @@
         <!-- KeywordTokenizer does no actual tokenizing, so the entire
              input string is preserved as a single token
           -->
-        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <tokenizer name="keyword"/>
         <!-- The LowerCase TokenFilter does what you expect, which can be
              when you want your sorting to be case insensitive
           -->
-        <filter class="solr.LowerCaseFilterFactory" />
+        <filter name="lowercase" />
         <!-- The TrimFilter removes any leading or trailing whitespace -->
-        <filter class="solr.TrimFilterFactory" />
+        <filter name="trim" />
         <!-- The PatternReplaceFilter gives you the flexibility to use
              Java Regular expression to replace any sequence of characters
              matching a pattern with an arbitrary replacement string,
@@ -381,9 +379,7 @@
 
              http://java.sun.com/j2se/1.5.0/docs/api/java/util/regex/package-summary.html
           -->
-        <filter class="solr.PatternReplaceFilterFactory"
-                pattern="([^a-z])" replacement="" replace="all"
-        />
+        <filter name="patternReplace" pattern="([^a-z])" replacement="" replace="all" />
       </analyzer>
     </fieldType>
 
@@ -392,13 +388,13 @@
         <!-- KeywordTokenizer does no actual tokenizing, so the entire
              input string is preserved as a single token
           -->
-        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <tokenizer name="keyword"/>
         <!-- The LowerCase TokenFilter does what you expect, which can be
              when you want your sorting to be case insensitive
           -->
-        <filter class="solr.LowerCaseFilterFactory" />
+        <filter name="lowercase" />
         <!-- The TrimFilter removes any leading or trailing whitespace -->
-        <filter class="solr.TrimFilterFactory" />
+        <filter name="trim" />
         <!-- The PatternReplaceFilter gives you the flexibility to use
              Java Regular expression to replace any sequence of characters
              matching a pattern with an arbitrary replacement string,
@@ -410,31 +406,27 @@
 
              http://java.sun.com/j2se/1.5.0/docs/api/java/util/regex/package-summary.html
           -->
-        <filter class="solr.PatternReplaceFilterFactory"
-                pattern="([^a-z0-9])" replacement="" replace="all"
-        />
+        <filter name="patternReplace" pattern="([^a-z0-9])" replacement="" replace="all" />
       </analyzer>
       <analyzer type="query">
-        <tokenizer class="solr.KeywordTokenizerFactory"/>
-        <filter class="solr.LowerCaseFilterFactory" />
-        <filter class="solr.TrimFilterFactory" />
-        <filter class="solr.PatternReplaceFilterFactory"
-                pattern="([^a-z0-9])" replacement="" replace="all"
-        />
-        <filter class="solr.LengthFilterFactory" min="1" max="100"/>
+        <tokenizer name="keyword"/>
+        <filter name="lowercase" />
+        <filter name="trim" />
+        <filter name="patternReplace" pattern="([^a-z0-9])" replacement="" replace="all" />
+        <filter name="length" min="1" max="100"/>
       </analyzer>
     </fieldType>
 
     <fieldtype name="phonetic" stored="false" indexed="true" class="solr.TextField" >
       <analyzer>
-        <tokenizer class="solr.StandardTokenizerFactory"/>
-        <filter class="solr.DoubleMetaphoneFilterFactory" inject="false"/>
+        <tokenizer name="standard"/>
+        <filter name="doubleMetaphone" inject="false"/>
       </analyzer>
     </fieldtype>
 
     <fieldtype name="payloads" stored="false" indexed="true" class="solr.TextField" >
       <analyzer>
-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+        <tokenizer name="whitespace"/>
         <!--
         The DelimitedPayloadTokenFilter can put payloads on tokens... for example,
         a token of "foo|1.4"  would be indexed as "foo" with a payload of 1.4f
@@ -446,21 +438,21 @@
       identity -> o.a.l.a.p.IdentityEncoder
             Fully Qualified class name implementing PayloadEncoder, Encoder must have a no arg constructor.
          -->
-        <filter class="solr.DelimitedPayloadTokenFilterFactory" encoder="float"/>
+        <filter name="delimitedPayload" encoder="float"/>
       </analyzer>
     </fieldtype>
 
     <!-- lowercases the entire field value, keeping it as a single token.  -->
     <fieldType name="lowercase" class="solr.TextField" positionIncrementGap="100">
       <analyzer>
-        <tokenizer class="solr.KeywordTokenizerFactory"/>
-        <filter class="solr.LowerCaseFilterFactory" />
+        <tokenizer name="keyword"/>
+        <filter name="lowercase" />
       </analyzer>
     </fieldType>
 
     <fieldType name="text_path" class="solr.TextField" positionIncrementGap="100">
       <analyzer>
-        <tokenizer class="solr.PathHierarchyTokenizerFactory"/>
+        <tokenizer name="pathHierarchy"/>
       </analyzer>
     </fieldType>
 
@@ -517,7 +509,7 @@
    <field name="title_display" type="text" indexed="true" stored="true" multiValued="false"/>
    <field name="title_vern_display" type="text" indexed="true" stored="true" multiValued="false"/>
 
-   <!-- these fields are also used for display, so they must be stored -->
+    <!-- these fields are also used for display, so they must be stored -->
    <field name="isbn_t" type="isbn" indexed="true" stored="true" multiValued="true"/>
    <field name="lccn_s" type="lccn" indexed="true" stored="true" multiValued="true"/>
    <field name="issn_s" type="alphaNumSort" indexed="true" stored="true" multiValued="true"/>
@@ -525,7 +517,7 @@
    <field name="subject_facet" type="descendent_path" indexed="true" stored="true" multiValued="true" />
    <field name="subject_era_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="subject_geo_facet" type="string" indexed="true" stored="true" multiValued="true" />
-   <!-- pub_date is used for facet and display so it must be indexed and stored -->
+    <!-- pub_date is used for facet and display so it must be indexed and stored -->
    <field name="pub_date" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="lc_subject_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="fast_subject_facet" type="string" indexed="true" stored="true" multiValued="true" />
@@ -734,7 +726,5 @@
    <copyField source="title_la" dest="text"/>
    <copyField source="title_addl_la" dest="text"/>
 
-  <!-- copy notes_index to cjk_notes_copied -->
-   <copyField source="notes_index" dest="cjk_notes_copied"/>
-   <copyField source="notes_index" dest="cjk_text"/>
+   <copyField source="cjk_notes" dest="cjk_text"/>
 </schema>

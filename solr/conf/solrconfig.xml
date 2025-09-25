@@ -17,14 +17,10 @@
 -->
 
 <config>
-  <luceneMatchVersion>8.4.1</luceneMatchVersion>
-
-  <lib dir="${solr.install.dir}/contrib/analysis-extras/lib" />
-  <lib dir="${solr.install.dir}/contrib/analysis-extras/lucene-libs" />
-  <lib dir="conf" />
+  <luceneMatchVersion>9.11.1</luceneMatchVersion>
 
   <directoryFactory name="DirectoryFactory"
-                    class="${solr.directoryFactory:solr.StandardDirectoryFactory}">
+    class="${solr.directoryFactory:solr.StandardDirectoryFactory}">
   </directoryFactory>
 
   <updateHandler class="solr.DirectUpdateHandler2">
@@ -235,12 +231,10 @@
       <str name="notes_qf">
         notes_index^2.2
         cjk_notes^2.2
-        cjk_notes_copied^2.2
       </str>
       <str name="notes_pf">
         notes_index^2.2
         cjk_notes^2.2
-        cjk_notes_copied^2.2
       </str>
       <str name="series_title_qf">
         series_title_index^11
