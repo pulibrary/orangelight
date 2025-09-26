@@ -38,7 +38,7 @@ module Requests
              :temp_loc_other_than_resource_sharing?, :on_reserve?, :enumerated?, :item_type_non_circulate?, :partner_holding?,
              :id, :use_statement, :collection_code, :charged?, :status, :status_label, :barcode?, :barcode, :preservation_conservation?, to: :item
 
-    delegate :annex?, :location_label, to: :location_object
+    delegate :annex?, :location_label, :fulfillment_unit, to: :location_object
 
     delegate :thesis?, to: :@holding
 
@@ -66,10 +66,6 @@ module Requests
     def recap_edd?
       return location[:recap_electronic_delivery_location] == true unless partner_holding?
       in_scsb_edd_collection? && !scsb_in_library_use?
-    end
-
-    def preservation?
-      location_object.code == 'pres'
     end
 
     def circulates?
@@ -100,12 +96,6 @@ module Requests
 
     def item?
       item.present?
-    end
-
-    def pending?
-      return false unless location_valid?
-      return false unless on_order? || in_process? || preservation?
-      location[:library][:code] != 'recap' || location[:holding_library].present?
     end
 
     def ill_eligible?
