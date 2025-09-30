@@ -136,4 +136,13 @@ describe Requests::IlliadPatron, type: :controller, requests: true, patrons: tru
       expect(illiad_patron.attributes).to eq({})
     end
   end
+
+  context 'ILLiad is down' do
+    it 'create_illiad_patron is empty' do
+      stub_request(:post, "#{illiad_patron.illiad_api_base}/ILLiadWebPlatform/Users")
+        .to_timeout
+      patron = illiad_patron.create_illiad_patron
+      expect(patron).to be_blank
+    end
+  end
 end
