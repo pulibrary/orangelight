@@ -10,3 +10,4 @@ exceptions:
     - 'RedisClient::ReadTimeoutError'
     - 'RSolr::Error::ConnectionRefused'
     - 'SignalException'
+    - !ruby/regexp '/Sorry, the catalog does not support file uploads/i'
