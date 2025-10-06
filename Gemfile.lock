@@ -6,7 +6,7 @@ GIT
     stringex (2.5.2)
 
 GEM
-  remote: https://rubygems.org/
+  remote: https://gem.coop/
   specs:
     actioncable (7.2.2.2)
       actionpack (= 7.2.2.2)
@@ -390,6 +390,8 @@ GEM
     libddwaf (1.22.0.0.2-aarch64-linux)
       ffi (~> 1.0)
     libddwaf (1.22.0.0.2-x86_64-linux)
+      ffi (~> 1.0)
+    libddwaf (1.22.0.0.2-x86_64-linux-musl)
       ffi (~> 1.0)
     library_stdnums (1.6.0)
     lint_roller (1.1.0)
