@@ -20,10 +20,22 @@ class Holdings::LibmapButtonComponent < ViewComponent::Base
       end
 
       def collection
-        holding_hash['location'].to_s
+        if oversize?
+          "Oversize #{holding_hash['location']}"
+        else
+          holding_hash['location'].to_s
+        end
       end
 
       def call_number
         holding_hash['call_number']
+      end
+
+      def oversize?
+        if holding_hash['sub_location'].nil?
+          false
+        else
+          holding_hash['sub_location'] == 'Oversize'
+        end
       end
 end
