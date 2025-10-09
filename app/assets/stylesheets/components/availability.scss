@@ -154,6 +154,14 @@
   border-bottom: 1px solid $gray;
 }
 
+.holding-status {
+  span {
+    &.lux-text-style {
+      padding:.25rem .5rem;
+    }
+  }
+}
+
 .holding-label {
   font-weight: 500;
 }

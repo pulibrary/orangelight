@@ -9,8 +9,19 @@ RSpec.describe Holdings::LibmapButtonComponent, type: :component do
       location: 'Firestone Stacks'
     }.with_indifferent_access
   end
+  let :oversize_holding do
+    {
+      call_number: 'D1 .H57865q',
+      library: 'Firestone Library',
+      location: 'Firestone Stacks',
+      sub_location: ['Oversize']
+    }.with_indifferent_access
+  end
   let :rendered do
     render_inline described_class.new(adapter, holding)
+  end
+  let :rendered_oversize do
+    render_inline described_class.new(adapter, oversize_holding)
   end
   let(:adapter) { instance_double(HoldingRequestsAdapter) }
   let(:document) { SolrDocument.new({ id: '123456', title_display: 'A Title' }) }
@@ -37,5 +48,9 @@ RSpec.describe Holdings::LibmapButtonComponent, type: :component do
 
   it 'puts the holding location name in a data-collection attribute' do
     expect(rendered.to_s).to include 'data-collection="Firestone Stacks"'
+  end
+
+  it 'puts the holding location name with the Oversize collection prefix in a data-collection attribute' do
+    expect(rendered_oversize.to_s).to include 'data-collection="Oversize Firestone Stacks"'
   end
 end
