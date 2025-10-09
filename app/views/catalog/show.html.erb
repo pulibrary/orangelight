@@ -32,6 +32,59 @@
       libcalScript.type = 'text/javascript';
       libcalScript.src = 'https://libcal.princeton.edu/libmaps/blacklight';
       document.head.appendChild(libcalScript);
+      function addStyle(styleString) {
+        const style = document.createElement('style');
+        style.textContent = styleString;
+        document.head.append(style);
+      }
+
+      addStyle(`
+          .springy-icon { display: none !important; }
+          a.springy-button {
+             font-size: 14px !important;
+            }
+  .springy-button-div {
+      margin-left: 1.25em !important;
+  }
+  @media screen and (max-width: 480px) {
+   .springy-button-div {
+      margin-left: 0 !important;
+    }
+  }
+  .springy-button {
+    height:auto !important;
+    cursor:pointer !important;
+    display:inline-block !important;
+    white-space:nowrap !important;
+    margin:0 0 0px 0px !important;
+    padding:.25rem .5rem !important;
+    text-shadow:none !important;
+    font-size:1rem !important;
+    font-weight:bold !important;
+    color:#3072AB !important;
+    background-color: black !important;
+    border-radius:3px !important;
+    border-color: #3072AB !important;
+    border-radius: 0.25rem !important;
+    border-width: 1.5px !important;
+    background-color: white !important;
+    border-style: solid !important;
+    line-height: inherit !important;
+}
+
+.springy-button:active{
+    background-color: #255783 !important;
+    border-color: #225179 !important;
+}
+.springy-button:focus{
+    color: #ffffff !important;
+    background-color: #285e8d !important;
+    border-color: #255783 !important;
+    box-shadow: 0 0 0 0.2rem rgba(79, 135, 184, 0.5) !important;
+}
+
+      `);
+
     </script>
     <%= render 'show_main_content' %>
     <% if @document.alma_record? %>

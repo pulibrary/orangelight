@@ -46,12 +46,12 @@ RSpec.describe Holdings::PhysicalHoldingComponent, type: :component do
     end
   end
 
-  # context "When the Library is eligible for Libmap" do
-  #   it "Includes a Libmap Div" do
-  #     byebug
-  #      expect(rendered_content).to include('data-location="Firestone Library"')
-  #   end
-  # end
+  context "When the Library is eligible for Libmap" do
+    it "Includes a Libmap Div" do
+      render_inline described_class.new(adapter, holding_id, holding)
+      expect(rendered_content).to include('data-location="Firestone Library"')
+    end
+  end
   context "when holding is a repository holding" do
     before { allow(adapter).to receive(:repository_holding?).and_return(true) }
 
