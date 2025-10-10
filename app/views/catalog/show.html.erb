@@ -32,6 +32,8 @@
       libcalScript.type = 'text/javascript';
       libcalScript.src = 'https://libcal.princeton.edu/libmaps/blacklight';
       document.head.appendChild(libcalScript);
+      springyMap.injectStyles(document.head, '.springy-icon { display: none }');
+
     </script>
     <%= render 'show_main_content' %>
     <% if @document.alma_record? %>
