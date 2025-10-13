@@ -80,7 +80,7 @@ module Requests
       code.start_with?("arch$", "eastasian$", "engineering$", "firestone$", "plasma$", "lewis", "mendel$", "stokes$") && fulfillment_unit == 'General'
     end
 
-    def self.it_recap_annex_pickup?(location_hash)
+    def self.valid_recap_annex_pickup?(location_hash)
       ['PJ', 'PA', 'PL', 'PK', 'PM', 'PT', 'QX', 'PW', 'QA', 'QT', 'QC'].include?(location_hash[:gfa_pickup])
     end
 

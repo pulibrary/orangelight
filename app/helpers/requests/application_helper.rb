@@ -268,7 +268,7 @@ module Requests
 
     def self.recap_annex_available_pick_ups(requestable, default_pick_ups)
       locations = requestable.pick_up_locations || default_pick_ups
-      pick_ups = locations.select { |loc| Requests::Location.it_recap_annex_pickup?(loc) }
+      pick_ups = locations.select { |loc| Requests::Location.valid_recap_annex_pickup?(loc) }
       pick_ups << default_pick_ups[0] if pick_ups.empty?
       pick_ups
     end
