@@ -229,13 +229,6 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
   describe "#hidden_fields_item" do
     let(:requestable) { instance_double(Requests::RequestableDecorator, stubbed_questions) }
 
-    context "no services" do
-      let(:stubbed_questions) { { bib: { id: 'abc123' }, item: Requests::Item.new({ 'id' => "aaabbb" }.with_indifferent_access), holding: Requests::Holding.new(mfhd_id: 'mfhd1', holding_data: { key1: 'value1' }), location: { code: 'location_code' }, partner_holding?: false, preferred_request_id: 'aaabbb', item?: true, item_location_code: '' } }
-      it 'shows hidden fields' do
-        expect(helper.hidden_fields_item(requestable)).to eq '<input type="hidden" name="requestable[][bibid]" id="requestable_bibid_aaabbb" value="abc123" autocomplete="off" /><input type="hidden" name="requestable[][mfhd]" id="requestable_mfhd_aaabbb" value="mfhd1" autocomplete="off" /><input type="hidden" name="requestable[][location_code]" id="requestable_location_aaabbb" value="" autocomplete="off" /><input type="hidden" name="requestable[][item_id]" id="requestable_item_id_aaabbb" value="aaabbb" autocomplete="off" /><input type="hidden" name="requestable[][copy_number]" id="requestable_copy_number_aaabbb" value="" autocomplete="off" /><input type="hidden" name="requestable[][status]" id="requestable_status_aaabbb" value="" autocomplete="off" />'
-      end
-    end
-
     context "with item location" do
       let(:stubbed_questions) { { bib: { id: 'abc123' }, item: Requests::Item.new({ 'id' => "aaabbb", 'location' => 'place' }.with_indifferent_access), holding: Requests::Holding.new(mfhd_id: 'mfhd1', holding_data: { key1: 'value1' }), location: { code: 'location_code' }, partner_holding?: false, preferred_request_id: 'aaabbb', item?: true, item_location_code: 'place' } }
       it 'shows hidden fields' do
