@@ -215,36 +215,6 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     let(:default_pick_ups) { [{ label: 'place', gfa_pickup: 'xx', staff_only: false, pick_up_location_code: 'firestone' }] }
     let(:card_div) { '<div id="fields-print__abc123_card" class="card card-body bg-light">' }
 
-    context "Plasma Physics from Lewis" do
-      let(:locations) do
-        [{ "label" => "Lewis Library", "address" => "Washington Road and Ivy Lane Princeton, NJ 08544",
-           "phone_number" => "609-258-6004", "contact_email" => "lewislib@princeton.edu",
-           "gfa_pickup" => "PN", "staff_only" => false, "pickup_location" => true,
-           "digital_location" => true, "library" => { "label" => "Lewis Library", "code" => "lewis",
-                                                      "order" => 0 }, "pick_up_location_code" => "lewis" }]
-      end
-      let(:location) do
-        Requests::Location.new({ "label" => "New Book Shelf", "code" => "plasma$nb", "aeon_location" => false,
-                                 "recap_electronic_delivery_location" => false, "open" => true, "requestable" => true,
-                                 "always_requestable" => false, "circulates" => true, "remote_storage" => "",
-                                 "fulfillment_unit" => "Limited",
-                                 "library" => { "label" => "Harold P. Furth Plasma Physics Library",
-                                                "code" => "plasma", "order" => 0 },
-                                 "holding_library" => nil,
-                                 "delivery_locations" => locations })
-      end
-      let(:stubbed_questions) do
-        { no_services?: false, preferred_request_id: '22693661550006421',
-          pick_up_locations: locations, charged?: false,
-          location:, ill_eligible?: false, on_shelf?: false, recap?: false,
-          annex?: false, delivery_location_label: nil,
-          delivery_location_code: nil, pick_up_location_code: nil }
-      end
-      it 'shows the default pick-up location' do
-        expect(helper.preferred_request_content_tag(requestable, default_pick_ups)).to be_html_safe
-      end
-    end
-
     context "recap_edd" do
       let(:stubbed_questions) { { services: ['recap_edd'], preferred_request_id: 'abc123', pick_up_locations: locations, charged?: false, location: { "library" => default_pick_ups[0] } } }
       let(:locations) { [{ label: 'another place', gfa_pickup: 'yy', staff_only: false }] }

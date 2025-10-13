@@ -74,6 +74,16 @@ module Requests
       bibdata_location[:remote_storage] == "recap_rmt"
     end
 
+    def standard_circ_location?
+      return false if code.blank?
+
+      code.start_with?("arch$", "eastasian$", "engineering$", "firestone$", "plasma$", "lewis", "mendel$", "stokes$") && fulfillment_unit == 'General'
+    end
+
+    def self.it_recap_annex_pickup?(location_hash)
+      ['PJ', 'PA', 'PL', 'PK', 'PM', 'PT', 'QX', 'PW', 'QA', 'QT', 'QC'].include?(location_hash[:gfa_pickup])
+    end
+
     ## Accepts an array of location hashes and sorts them according to our quirks
     def sort_pick_ups
       # staff only locations go at the bottom of the list and Firestone to the top
