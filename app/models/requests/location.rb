@@ -77,7 +77,7 @@ module Requests
     def standard_circ_location?
       return false if code.blank?
 
-      code.start_with?("arch$", "eastasian$", "engineering$", "firestone$", "plasma$", "lewis", "mendel$", "stokes$") && fulfillment_unit == 'General'
+      code.start_with?("arch$", "eastasian$", "engineer$", "firestone$", "plasma$", "lewis", "mendel$", "stokes$") && fulfillment_unit == 'General'
     end
 
     def self.valid_recap_annex_pickup?(location_hash)
