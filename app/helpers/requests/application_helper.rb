@@ -125,7 +125,9 @@ module Requests
           id = "requestable__pick_up_#{requestable.preferred_request_id}"
           if locs.size > 1
             prompt_text = custom_pickup_prompt(requestable, locs) || I18n.t("requests.default.pick_up_placeholder")
-            select_tag name.to_s, options_for_select(locs.map { |loc| [loc[:label], { 'pick_up' => loc[:gfa_pickup], 'pick_up_location_code' => loc[:pick_up_location_code] }.to_json] }), prompt: prompt_text, id: id
+            selected_value = find_selected_pickup_value(requestable, locs)
+            options = [[prompt_text, '', { disabled: true, selected: false }]] + locs.map { |loc| [loc[:label], { 'pick_up' => loc[:gfa_pickup], 'pick_up_location_code' => loc[:pick_up_location_code] }.to_json] }
+            select_tag name.to_s, options_for_select(options, selected_value), id: id
           else
             single_pickup(requestable.charged?, name, id, locs[0])
           end
@@ -321,6 +323,25 @@ module Requests
           return "Select a Delivery Location (Recommended: #{engineering_loc[:label]})" if engineering_loc
         end
         nil
+      end
+
+      # :reek:UtilityFunction
+      # :reek:TooManyStatements
+      def find_selected_pickup_value(requestable, locs)
+        holding_library = normalize_holding_library(requestable)
+        return nil if holding_library.blank?
+
+        # Check for special engineering library cases first
+        if ['lewis', 'plasma'].include?(holding_library)
+          engineering_loc = locs.find { |loc| loc[:label] == "Engineering Library" }
+          return { 'pick_up' => engineering_loc[:gfa_pickup], 'pick_up_location_code' => engineering_loc[:pick_up_location_code] }.to_json if engineering_loc
+        end
+
+        # Find matching library by code and select it
+        matching_loc = find_matching_location_by_code(holding_library, locs)
+        return nil unless matching_loc
+
+        { 'pick_up' => matching_loc[:gfa_pickup], 'pick_up_location_code' => matching_loc[:pick_up_location_code] }.to_json
       end
 
       def display_requestable_list(requestable)

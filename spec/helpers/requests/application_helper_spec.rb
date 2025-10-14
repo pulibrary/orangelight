@@ -120,7 +120,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
         .and_return(status: 200, body: availability_response)
 
       choices = helper.pick_up_choices(lewis_request_with_multiple_requestable.requestable.last, default_pick_ups)
-      expected_choices = "<div id=\"fields-print__22697858020006421\" class=\"collapse request--print show\"><ul class=\"service-list\"><li class=\"service-item\">ReCAP Paging Request, will be delivered to:</li></ul><div id=\"fields-print__22697858020006421_card\" class=\"card card-body bg-light\"><select name=\"requestable[][pick_up]\" id=\"requestable__pick_up_22697858020006421\"><option value=\"\">Select a Delivery Location</option><option value=\"{&quot;pick_up&quot;:&quot;QA&quot;,&quot;pick_up_location_code&quot;:&quot;firestone&quot;}\">Firestone Library, Resource Sharing (Staff Only)</option>\n<option value=\"{&quot;pick_up&quot;:&quot;QT&quot;,&quot;pick_up_location_code&quot;:&quot;firestone&quot;}\">Technical Services 693 (Staff Only)</option>\n<option value=\"{&quot;pick_up&quot;:&quot;QC&quot;,&quot;pick_up_location_code&quot;:&quot;firestone&quot;}\">Technical Services HMT (Staff Only)</option></select></div></div>"
+      expected_choices = "<div id=\"fields-print__22697858020006421\" class=\"collapse request--print show\"><ul class=\"service-list\"><li class=\"service-item\">ReCAP Paging Request, will be delivered to:</li></ul><div id=\"fields-print__22697858020006421_card\" class=\"card card-body bg-light\"><select name=\"requestable[][pick_up]\" id=\"requestable__pick_up_22697858020006421\"><option disabled=\"disabled\" value=\"\">Select a Delivery Location</option>\n<option value=\"{&quot;pick_up&quot;:&quot;QA&quot;,&quot;pick_up_location_code&quot;:&quot;firestone&quot;}\">Firestone Library, Resource Sharing (Staff Only)</option>\n<option value=\"{&quot;pick_up&quot;:&quot;QT&quot;,&quot;pick_up_location_code&quot;:&quot;firestone&quot;}\">Technical Services 693 (Staff Only)</option>\n<option value=\"{&quot;pick_up&quot;:&quot;QC&quot;,&quot;pick_up_location_code&quot;:&quot;firestone&quot;}\">Technical Services HMT (Staff Only)</option></select></div></div>"
       expect(choices).to eq(expected_choices)
     end
   end
@@ -690,7 +690,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       result = helper.preferred_request_content_tag(requestable, sample_locations)
 
       # Should use custom prompt text with recommended location
-      expect(result).to include('<option value="">Select a Delivery Location (Recommended: Engineering Library)</option>')
+      expect(result).to include('<option disabled="disabled" value="">Select a Delivery Location (Recommended: Engineering Library)</option>')
 
       # Should include Engineering Library as a selectable option
       expect(result).to include('EN&quot;,&quot;pick_up_location_code&quot;:&quot;engineering&quot;}">Engineering Library</option>')
@@ -698,6 +698,30 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       # Should still include other locations as options
       expect(result).to include('>Firestone Library</option>')
       expect(result).to include('>Lewis Library</option>')
+    end
+
+    it 'pre-selects the recommended holding library option' do
+      result = helper.preferred_request_content_tag(requestable, sample_locations)
+
+      # Should have Engineering Library pre-selected for lewis holding library
+      expect(result).to include('selected="selected"')
+      expect(result).to include('<option selected="selected" value="{&quot;pick_up&quot;:&quot;EN&quot;,&quot;pick_up_location_code&quot;:&quot;engineering&quot;}">Engineering Library</option>')
+    end
+
+    context 'when holding library is firestone' do
+      let(:requestable) do
+        instance_double(Requests::RequestableDecorator,
+                        holding_library: 'firestone',
+                        preferred_request_id: 'test456',
+                        charged?: false)
+      end
+
+      it 'pre-selects Firestone Library option' do
+        result = helper.preferred_request_content_tag(requestable, sample_locations)
+
+        # Should have Firestone Library pre-selected for firestone holding library
+        expect(result).to include('<option selected="selected" value="{&quot;pick_up&quot;:&quot;PA&quot;,&quot;pick_up_location_code&quot;:&quot;firestone&quot;}">Firestone Library</option>')
+      end
     end
 
     context 'when custom prompt returns nil' do
