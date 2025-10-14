@@ -120,11 +120,12 @@ module Requests
       (show_pick_up_service_options(requestable, nil) || "".html_safe) +
         content_tag(:div, id: "fields-print__#{requestable.preferred_request_id}_card", class: "card card-body bg-light") do
           locs = pick_up_locations(requestable, default_pick_ups)
-          # temporary changes issue 438
+
           name = 'requestable[][pick_up]'
           id = "requestable__pick_up_#{requestable.preferred_request_id}"
           if locs.size > 1
-            select_tag name.to_s, options_for_select(locs.map { |loc| [loc[:label], { 'pick_up' => loc[:gfa_pickup], 'pick_up_location_code' => loc[:pick_up_location_code] }.to_json] }), prompt: I18n.t("requests.default.pick_up_placeholder"), id: id
+            prompt_text = custom_pickup_prompt(requestable, locs) || I18n.t("requests.default.pick_up_placeholder")
+            select_tag name.to_s, options_for_select(locs.map { |loc| [loc[:label], { 'pick_up' => loc[:gfa_pickup], 'pick_up_location_code' => loc[:pick_up_location_code] }.to_json] }), prompt: prompt_text, id: id
           else
             single_pickup(requestable.charged?, name, id, locs[0])
           end
@@ -274,6 +275,53 @@ module Requests
     end
 
     private
+
+      def custom_pickup_prompt(requestable, locs)
+        holding_library = normalize_holding_library(requestable)
+        return nil if holding_library.blank?
+
+        find_prompt_for_holding_library(holding_library, locs)
+      end
+
+      # :reek:UtilityFunction
+      def normalize_holding_library(requestable)
+        requestable.holding_library&.downcase
+      end
+
+      def find_prompt_for_holding_library(holding_library, locs)
+        # Check for special engineering library cases first
+        engineering_prompt = engineering_library_prompt(holding_library, locs)
+        return engineering_prompt if engineering_prompt
+
+        # Find matching library by code and suggest it in the prompt
+        suggested_location = find_matching_location_label(holding_library, locs)
+        return unless suggested_location
+        "Select a Delivery Location (Recommended: #{suggested_location})"
+      end
+
+      def find_matching_location_label(holding_library, locs)
+        matching_loc = find_matching_location_by_code(holding_library, locs)
+        matching_loc&.dig(:label)
+      end
+
+      # :reek:UtilityFunction
+      def find_matching_location_by_code(holding_library, locs)
+        locs.find do |loc|
+          # Extract library code and compare with holding library
+          library_code = loc.dig(:library, :code)
+          library_code&.downcase == holding_library
+        end
+      end
+
+      # :reek:UtilityFunction
+      def engineering_library_prompt(holding_library, locs)
+        # Special case: lewis, plasma should default to Engineering Library
+        if ['lewis', 'plasma'].include?(holding_library)
+          engineering_loc = locs.find { |loc| loc[:label] == "Engineering Library" }
+          return "Select a Delivery Location (Recommended: #{engineering_loc[:label]})" if engineering_loc
+        end
+        nil
+      end
 
       def display_requestable_list(requestable)
         return if requestable.no_services?

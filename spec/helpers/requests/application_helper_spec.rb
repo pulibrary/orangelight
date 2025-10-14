@@ -295,4 +295,427 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       end
     end
   end
+
+  describe '#pick_up_locations' do
+    let(:default_pick_ups) do
+      [
+        {
+          label: "Firestone Library",
+          address: "One Washington Rd. Princeton, NJ 08544",
+          phone_number: "609-258-1470",
+          contact_email: "fstcirc@princeton.edu",
+          gfa_pickup: "PA",
+          staff_only: false,
+          pickup_location: true,
+          digital_location: true,
+          library: { label: "Firestone Library", code: "firestone", order: 0 },
+          pick_up_location_code: "firestone"
+        },
+        {
+          label: "Architecture Library",
+          gfa_pickup: "PW",
+          staff_only: false,
+          pickup_location: true,
+          library: { label: "Architecture Library", code: "arch", order: 1 },
+          pick_up_location_code: "arch"
+        },
+        {
+          label: "Lewis Library",
+          gfa_pickup: "PL",
+          staff_only: false,
+          pickup_location: true,
+          library: { label: "Lewis Library", code: "lewis", order: 2 },
+          pick_up_location_code: "lewis"
+        }
+      ]
+    end
+
+    context 'when requestable is ill_eligible' do
+      let(:requestable) { instance_double(Requests::RequestableDecorator, ill_eligible?: true) }
+
+      it 'returns first default pickup location' do
+        result = helper.send(:pick_up_locations, requestable, default_pick_ups)
+        expected = [default_pick_ups[0]]
+        expect(result).to eq(expected)
+      end
+    end
+
+    context 'when requestable is recap' do
+      let(:requestable) { instance_double(Requests::RequestableDecorator, ill_eligible?: false, recap?: true, annex?: false) }
+
+      it 'calls recap_annex_available_pick_ups method and returns valid recap/annex locations' do
+        expect(described_class).to receive(:recap_annex_available_pick_ups)
+          .with(requestable, default_pick_ups)
+          .and_call_original
+
+        allow(requestable).to receive(:pick_up_locations).and_return(nil)
+
+        result = helper.send(:pick_up_locations, requestable, default_pick_ups)
+
+        # All default locations have valid gfa_pickup codes (PA, PW, PN are all in the allowed list)
+        expect(result).to eq(default_pick_ups)
+      end
+    end
+
+    context 'when requestable is annex' do
+      let(:requestable) { instance_double(Requests::RequestableDecorator, ill_eligible?: false, recap?: false, annex?: true) }
+
+      it 'calls recap_annex_available_pick_ups method and returns valid recap/annex locations' do
+        expect(described_class).to receive(:recap_annex_available_pick_ups)
+          .with(requestable, default_pick_ups)
+          .and_call_original
+
+        allow(requestable).to receive(:pick_up_locations).and_return(nil)
+
+        result = helper.send(:pick_up_locations, requestable, default_pick_ups)
+
+        # All default locations have valid gfa_pickup codes
+        expect(result).to eq(default_pick_ups)
+      end
+    end
+
+    context 'when requestable location has standard_circ_location' do
+      let(:location) { instance_double(Requests::Location, standard_circ_location?: true) }
+      let(:requestable) do
+        instance_double(Requests::RequestableDecorator,
+                        ill_eligible?: false,
+                        recap?: false,
+                        annex?: false,
+                        location: location)
+      end
+
+      it 'returns default pick ups' do
+        result = helper.send(:pick_up_locations, requestable, default_pick_ups)
+        expect(result).to eq(default_pick_ups)
+      end
+    end
+
+    context 'when location exists but standard_circ_location is false' do
+      let(:location) do
+        instance_double(Requests::Location,
+                        standard_circ_location?: false,
+                        library_label: 'Special Library',
+                        library_code: 'special')
+      end
+      let(:requestable) do
+        instance_double(Requests::RequestableDecorator,
+                        ill_eligible?: false,
+                        recap?: false,
+                        annex?: false,
+                        location: location,
+                        delivery_location_label: 'Custom Location',
+                        delivery_location_code: 'CL',
+                        pick_up_location_code: 'custom')
+      end
+
+      it 'returns custom delivery location when delivery_location_label is present' do
+        result = helper.send(:pick_up_locations, requestable, default_pick_ups)
+        expected = [{
+          label: 'Custom Location',
+          gfa_pickup: 'CL',
+          pick_up_location_code: 'custom',
+          staff_only: false
+        }]
+        expect(result).to eq(expected)
+      end
+    end
+
+    context 'when requestable has delivery_location_label present' do
+      let(:location) { instance_double(Requests::Location, standard_circ_location?: false) }
+      let(:requestable) do
+        instance_double(Requests::RequestableDecorator,
+                        ill_eligible?: false,
+                        recap?: false,
+                        annex?: false,
+                        location: location,
+                        delivery_location_label: 'Special Collection Library',
+                        delivery_location_code: 'SC',
+                        pick_up_location_code: 'special')
+      end
+
+      it 'returns custom delivery location' do
+        result = helper.send(:pick_up_locations, requestable, default_pick_ups)
+        expected = [{
+          label: 'Special Collection Library',
+          gfa_pickup: 'SC',
+          pick_up_location_code: 'special',
+          staff_only: false
+        }]
+        expect(result).to eq(expected)
+      end
+    end
+
+    context 'when delivery_location_label is not present' do
+      let(:location) do
+        instance_double(Requests::Location,
+                        standard_circ_location?: false,
+                        library_label: 'East Asian Library',
+                        library_code: 'eastasian')
+      end
+      let(:requestable) do
+        instance_double(Requests::RequestableDecorator,
+                        ill_eligible?: false,
+                        recap?: false,
+                        annex?: false,
+                        location: location,
+                        delivery_location_label: nil)
+      end
+
+      before do
+        allow(helper).to receive(:gfa_lookup).with('eastasian').and_return('PL')
+      end
+
+      it 'returns library-specific location based on library code' do
+        result = helper.send(:pick_up_locations, requestable, default_pick_ups)
+        expected = [{
+          label: 'East Asian Library',
+          gfa_pickup: 'PL',
+          staff_only: false
+        }]
+        expect(result).to eq(expected)
+      end
+    end
+  end
+
+  describe '.recap_annex_available_pick_ups' do
+    let(:valid_default_pick_ups) do
+      [
+        {
+          label: "Firestone Library",
+          gfa_pickup: "PA",
+          pick_up_location_code: "firestone",
+          staff_only: false
+        },
+        {
+          label: "Architecture Library",
+          gfa_pickup: "PW",
+          pick_up_location_code: "arch",
+          staff_only: false
+        }
+      ]
+    end
+
+    let(:invalid_default_pick_ups) do
+      [
+        {
+          label: "Invalid Location 1",
+          gfa_pickup: "XX", # Invalid - not in allowed list
+          pick_up_location_code: "invalid1",
+          staff_only: false
+        },
+        {
+          label: "Invalid Location 2",
+          gfa_pickup: "YY", # Invalid - not in allowed list
+          pick_up_location_code: "invalid2",
+          staff_only: false
+        }
+      ]
+    end
+
+    context 'when requestable has pick_up_locations with mixed gfa_pickup codes' do
+      let(:custom_locations) do
+        [
+          { label: "Valid Custom Location", gfa_pickup: "PJ", pick_up_location_code: "custom1", staff_only: false },
+          { label: "Invalid Custom Location", gfa_pickup: "ZZ", pick_up_location_code: "custom2", staff_only: false }
+        ]
+      end
+      let(:requestable) { instance_double(Requests::RequestableDecorator, pick_up_locations: custom_locations) }
+
+      it 'returns only valid locations based on gfa_pickup codes' do
+        result = described_class.recap_annex_available_pick_ups(requestable, valid_default_pick_ups)
+        # Only the first custom location should be returned (PJ is valid, ZZ is not)
+        expect(result).to eq([custom_locations[0]])
+      end
+    end
+
+    context 'when requestable has no valid pick_up_locations' do
+      let(:custom_locations) do
+        [
+          { label: "Invalid Location", gfa_pickup: "XX", pick_up_location_code: "invalid", staff_only: false }
+        ]
+      end
+      let(:requestable) { instance_double(Requests::RequestableDecorator, pick_up_locations: custom_locations) }
+
+      it 'returns first default pickup when no valid locations found' do
+        result = described_class.recap_annex_available_pick_ups(requestable, valid_default_pick_ups)
+        expect(result).to eq([valid_default_pick_ups[0]])
+      end
+    end
+
+    context 'when requestable has no pick_up_locations' do
+      let(:requestable) { instance_double(Requests::RequestableDecorator, pick_up_locations: nil) }
+
+      context 'and default locations have valid gfa_pickup codes' do
+        it 'returns all valid default locations' do
+          result = described_class.recap_annex_available_pick_ups(requestable, valid_default_pick_ups)
+          expect(result).to eq(valid_default_pick_ups)
+        end
+      end
+    end
+  end
+
+  describe '#custom_pickup_prompt' do
+    let(:sample_locations) do
+      [
+        {
+          label: "Architecture Library",
+          library: { label: "Architecture Library", code: "arch" },
+          pick_up_location_code: "arch"
+        },
+        {
+          label: "Engineering Library",
+          library: { label: "Engineering Library", code: "engineer" },
+          pick_up_location_code: "engineer"
+        },
+        {
+          label: "Firestone Library",
+          library: { label: "Firestone Library", code: "firestone" },
+          pick_up_location_code: "firestone"
+        },
+        {
+          label: "Mendel Music Library",
+          library: { label: "Mendel Music Library", code: "mendel" },
+          pick_up_location_code: "mendel"
+        }
+      ]
+    end
+
+    context 'when holding_library is lewis' do
+      let(:requestable) { instance_double(Requests::RequestableDecorator, holding_library: 'lewis') }
+
+      it 'returns Engineering Library' do
+        result = helper.send(:custom_pickup_prompt, requestable, sample_locations)
+        expect(result).to eq("Select a Delivery Location (Recommended: Engineering Library)")
+      end
+    end
+
+    context 'when holding_library is plasma' do
+      let(:requestable) { instance_double(Requests::RequestableDecorator, holding_library: 'plasma') }
+
+      it 'returns Engineering Library' do
+        result = helper.send(:custom_pickup_prompt, requestable, sample_locations)
+        expect(result).to eq("Select a Delivery Location (Recommended: Engineering Library)")
+      end
+    end
+
+    context 'when holding_library is engineer' do
+      let(:requestable) { instance_double(Requests::RequestableDecorator, holding_library: 'engineer') }
+
+      it 'returns Engineering Library' do
+        result = helper.send(:custom_pickup_prompt, requestable, sample_locations)
+        expect(result).to eq("Select a Delivery Location (Recommended: Engineering Library)")
+      end
+    end
+
+    context 'when holding_library matches a library code' do
+      let(:requestable) { instance_double(Requests::RequestableDecorator, holding_library: 'arch') }
+
+      it 'returns the matching library label' do
+        result = helper.send(:custom_pickup_prompt, requestable, sample_locations)
+        expect(result).to eq("Select a Delivery Location (Recommended: Architecture Library)")
+      end
+    end
+
+    context 'when holding_library is firestone' do
+      let(:requestable) { instance_double(Requests::RequestableDecorator, holding_library: 'firestone') }
+
+      it 'returns Firestone Library' do
+        result = helper.send(:custom_pickup_prompt, requestable, sample_locations)
+        expect(result).to eq("Select a Delivery Location (Recommended: Firestone Library)")
+      end
+    end
+
+    context 'when holding_library does not match any location' do
+      let(:requestable) { instance_double(Requests::RequestableDecorator, holding_library: 'nonexistent') }
+
+      it 'returns nil' do
+        result = helper.send(:custom_pickup_prompt, requestable, sample_locations)
+        expect(result).to be_nil
+      end
+    end
+
+    context 'when Engineering Library is not in locations but special case applies' do
+      let(:locations_without_engineering) do
+        sample_locations.reject { |loc| loc[:label] == "Engineering Library" }
+      end
+      let(:requestable) { instance_double(Requests::RequestableDecorator, holding_library: 'lewis') }
+
+      it 'returns nil when Engineering Library is not available' do
+        result = helper.send(:custom_pickup_prompt, requestable, locations_without_engineering)
+        expect(result).to be_nil
+      end
+    end
+  end
+
+  describe "#preferred_request_content_tag with custom pickup prompt" do
+    let(:sample_locations) do
+      [
+        {
+          label: "Firestone Library",
+          gfa_pickup: "PA",
+          pick_up_location_code: "firestone",
+          staff_only: false,
+          library: { label: "Firestone Library", code: "firestone" }
+        },
+        {
+          label: "Engineering Library",
+          gfa_pickup: "EN",
+          pick_up_location_code: "engineering",
+          staff_only: false,
+          library: { label: "Engineering Library", code: "engineer" }
+        },
+        {
+          label: "Lewis Library",
+          gfa_pickup: "SCI",
+          pick_up_location_code: "lewis",
+          staff_only: false,
+          library: { label: "Lewis Library", code: "lewis" }
+        }
+      ]
+    end
+
+    let(:requestable) do
+      instance_double(Requests::RequestableDecorator,
+                      holding_library: 'lewis',
+                      preferred_request_id: 'test123',
+                      charged?: false)
+    end
+
+    before do
+      allow(helper).to receive(:show_pick_up_service_options).and_return(nil)
+      allow(helper).to receive(:pick_up_locations).and_return(sample_locations)
+    end
+
+    it 'uses custom prompt with recommended location and includes all locations as options' do
+      result = helper.preferred_request_content_tag(requestable, sample_locations)
+
+      # Should use custom prompt text with recommended location
+      expect(result).to include('<option value="">Select a Delivery Location (Recommended: Engineering Library)</option>')
+
+      # Should include Engineering Library as a selectable option
+      expect(result).to include('EN&quot;,&quot;pick_up_location_code&quot;:&quot;engineering&quot;}">Engineering Library</option>')
+
+      # Should still include other locations as options
+      expect(result).to include('>Firestone Library</option>')
+      expect(result).to include('>Lewis Library</option>')
+    end
+
+    context 'when custom prompt returns nil' do
+      let(:requestable) do
+        instance_double(Requests::RequestableDecorator,
+                        holding_library: 'unknown',
+                        preferred_request_id: 'test123',
+                        charged?: false)
+      end
+
+      it 'includes all locations in select options when no custom prompt' do
+        result = helper.preferred_request_content_tag(requestable, sample_locations)
+
+        # Should include all locations as options
+        expect(result).to include('>Firestone Library<')
+        expect(result).to include('>Engineering Library<')
+        expect(result).to include('>Lewis Library<')
+      end
+    end
+  end
 end

@@ -90,6 +90,8 @@ module Requests
     end
 
     ## Class method to sort any array of pickup locations
+    # :reek:TooManyStatements
+    # :reek:DuplicateMethodCall
     def self.sort_pick_up_locations(locations)
       # staff only locations go at the bottom of the list, the rest sort by label
 

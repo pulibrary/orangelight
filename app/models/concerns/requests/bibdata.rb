@@ -43,6 +43,7 @@ module Requests
       JSON.parse(data)
     end
 
+    # :reek:UtilityFunction
     def build_pick_ups
       pick_up_locations = []
       Requests::BibdataService.delivery_locations.each_value do |pick_up|
