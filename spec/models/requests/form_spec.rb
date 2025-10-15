@@ -354,6 +354,9 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     let(:architecture) do
       { label: "Architecture Library", gfa_pickup: "PW", pick_up_location_code: "arch", staff_only: false }
     end
+    let(:eastasian) do
+      { label: "East Asian Library", gfa_pickup: "PL", pick_up_location_code: "eastasian", staff_only: false }
+    end
 
     describe "#requestable" do
       it "has requestable items" do
@@ -375,12 +378,9 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
         expect(request_with_on_order.default_pick_ups.include?(firestone_circ)).to be_truthy
       end
 
-      it "lists Firestone as the first choice" do
-        expect(request_with_on_order.default_pick_ups.first).to eq(firestone_circ)
-      end
-
-      it "alphas sort the pickups between Firestone and staff locations" do
-        expect(request_with_on_order.default_pick_ups[1]).to eq(architecture)
+      it "lists locations in an alphabetical order" do
+        expect(request_with_on_order.default_pick_ups[0]).to eq(architecture)
+        expect(request_with_on_order.default_pick_ups[1]).to eq(eastasian)
       end
     end
   end

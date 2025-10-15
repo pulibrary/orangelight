@@ -14,6 +14,18 @@ RSpec.describe Requests::Location, requests: true do
       expect(location.annex?).to be(true)
     end
   end
+
+  describe '#engineering_library?' do
+    it 'returns true if the label is Engineering Library' do
+      location = described_class.new({ "label" => "Engineering Library", "code" => "engineer$stacks" })
+      expect(location.engineering_library?).to be(true)
+    end
+
+    it 'returns false if the label is not Engineering Library' do
+      location = described_class.new({ "label" => "Firestone Library", "code" => "firestone$stacks" })
+      expect(location.engineering_library?).to be(false)
+    end
+  end
   describe '#sort_pick_ups' do
     let(:delivery_locations) do
       [{ "label" => "Technical Services 693", "address" => "693 Alexander Rd. Princeton, NJ 08544", "phone_number" => "609-258-1470", "contact_email" => "catalogn@princeton.edu", "gfa_pickup" => "QT", "staff_only" => true, "pickup_location" => true, "digital_location" => false, "library" => { "label" => "Firestone Library", "code" => "firestone", "order" => 0 } }, { "label" => "Architecture Library", "address" => "School of Architecture Building, Second Floor Princeton, NJ 08544", "phone_number" => "609-258-3256", "contact_email" => "ues@princeton.edu", "gfa_pickup" => "PW", "staff_only" => false, "pickup_location" => true, "digital_location" => true, "library" => { "label" => "Architecture Library", "code" => "arch", "order" => 0 } }, { "label" => "Firestone Library, Resource Sharing", "address" => "One Washington Rd. Princeton, NJ 08544", "phone_number" => "609-258-1470", "contact_email" => "fstcirc@princeton.edu", "gfa_pickup" => "QA", "staff_only" => true, "pickup_location" => true, "digital_location" => false, "library" => { "label" => "Firestone Library", "code" => "firestone", "order" => 0 } },
