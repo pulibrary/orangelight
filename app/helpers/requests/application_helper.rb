@@ -116,6 +116,7 @@ module Requests
       end
     end
 
+    # :reek:NilCheck
     def preferred_request_content_tag(requestable, default_pick_ups)
       (show_pick_up_service_options(requestable, nil) || "".html_safe) +
         content_tag(:div, id: "fields-print__#{requestable.preferred_request_id}_card", class: "card card-body bg-light") do
@@ -126,6 +127,8 @@ module Requests
           if locs.size > 1
             prompt_text = custom_pickup_prompt(requestable, locs) || I18n.t("requests.default.pick_up_placeholder")
             selected_value = find_selected_pickup_value(requestable, locs)
+            # For ReCAP items, select the empty prompt instead of any actual option
+            selected_value = '' if requestable.recap? && selected_value.nil?
             options = [[prompt_text, '', { disabled: true, selected: false }]] + locs.map { |loc| [loc[:label], { 'pick_up' => loc[:gfa_pickup], 'pick_up_location_code' => loc[:pick_up_location_code] }.to_json] }
             select_tag name.to_s, options_for_select(options, selected_value), id: id
           else
@@ -279,6 +282,9 @@ module Requests
     private
 
       def custom_pickup_prompt(requestable, locs)
+        # For ReCAP items, return nil to use default prompt
+        return nil if requestable.recap?
+
         holding_library = normalize_holding_library(requestable)
         return nil if holding_library.blank?
 
@@ -328,6 +334,9 @@ module Requests
       # :reek:UtilityFunction
       # :reek:TooManyStatements
       def find_selected_pickup_value(requestable, locs)
+        # For ReCAP items, don't pre-select anything
+        return nil if requestable.recap?
+
         holding_library = normalize_holding_library(requestable)
         return nil if holding_library.blank?
 

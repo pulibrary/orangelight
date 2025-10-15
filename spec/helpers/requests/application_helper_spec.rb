@@ -120,7 +120,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
         .and_return(status: 200, body: availability_response)
 
       choices = helper.pick_up_choices(lewis_request_with_multiple_requestable.requestable.last, default_pick_ups)
-      expected_choices = "<div id=\"fields-print__22697858020006421\" class=\"collapse request--print show\"><ul class=\"service-list\"><li class=\"service-item\">ReCAP Paging Request, will be delivered to:</li></ul><div id=\"fields-print__22697858020006421_card\" class=\"card card-body bg-light\"><select name=\"requestable[][pick_up]\" id=\"requestable__pick_up_22697858020006421\"><option disabled=\"disabled\" value=\"\">Select a Delivery Location</option>\n<option value=\"{&quot;pick_up&quot;:&quot;QA&quot;,&quot;pick_up_location_code&quot;:&quot;firestone&quot;}\">Firestone Library, Resource Sharing (Staff Only)</option>\n<option value=\"{&quot;pick_up&quot;:&quot;QT&quot;,&quot;pick_up_location_code&quot;:&quot;firestone&quot;}\">Technical Services 693 (Staff Only)</option>\n<option value=\"{&quot;pick_up&quot;:&quot;QC&quot;,&quot;pick_up_location_code&quot;:&quot;firestone&quot;}\">Technical Services HMT (Staff Only)</option></select></div></div>"
+      expected_choices = "<div id=\"fields-print__22697858020006421\" class=\"collapse request--print show\"><ul class=\"service-list\"><li class=\"service-item\">ReCAP Paging Request, will be delivered to:</li></ul><div id=\"fields-print__22697858020006421_card\" class=\"card card-body bg-light\"><select name=\"requestable[][pick_up]\" id=\"requestable__pick_up_22697858020006421\"><option disabled=\"disabled\" selected=\"selected\" value=\"\">Select a Delivery Location</option>\n<option value=\"{&quot;pick_up&quot;:&quot;QA&quot;,&quot;pick_up_location_code&quot;:&quot;firestone&quot;}\">Firestone Library, Resource Sharing (Staff Only)</option>\n<option value=\"{&quot;pick_up&quot;:&quot;QT&quot;,&quot;pick_up_location_code&quot;:&quot;firestone&quot;}\">Technical Services 693 (Staff Only)</option>\n<option value=\"{&quot;pick_up&quot;:&quot;QC&quot;,&quot;pick_up_location_code&quot;:&quot;firestone&quot;}\">Technical Services HMT (Staff Only)</option></select></div></div>"
       expect(choices).to eq(expected_choices)
     end
   end
@@ -581,7 +581,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     end
 
     context 'when holding_library is lewis' do
-      let(:requestable) { instance_double(Requests::RequestableDecorator, holding_library: 'lewis') }
+      let(:requestable) { instance_double(Requests::RequestableDecorator, holding_library: 'lewis', recap?: false) }
 
       it 'returns Engineering Library' do
         result = helper.send(:custom_pickup_prompt, requestable, sample_locations)
@@ -590,7 +590,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     end
 
     context 'when holding_library is plasma' do
-      let(:requestable) { instance_double(Requests::RequestableDecorator, holding_library: 'plasma') }
+      let(:requestable) { instance_double(Requests::RequestableDecorator, holding_library: 'plasma', recap?: false) }
 
       it 'returns Engineering Library' do
         result = helper.send(:custom_pickup_prompt, requestable, sample_locations)
@@ -599,7 +599,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     end
 
     context 'when holding_library is engineer' do
-      let(:requestable) { instance_double(Requests::RequestableDecorator, holding_library: 'engineer') }
+      let(:requestable) { instance_double(Requests::RequestableDecorator, holding_library: 'engineer', recap?: false) }
 
       it 'returns Engineering Library' do
         result = helper.send(:custom_pickup_prompt, requestable, sample_locations)
@@ -608,7 +608,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     end
 
     context 'when holding_library matches a library code' do
-      let(:requestable) { instance_double(Requests::RequestableDecorator, holding_library: 'arch') }
+      let(:requestable) { instance_double(Requests::RequestableDecorator, holding_library: 'arch', recap?: false) }
 
       it 'returns the matching library label' do
         result = helper.send(:custom_pickup_prompt, requestable, sample_locations)
@@ -617,7 +617,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     end
 
     context 'when holding_library is firestone' do
-      let(:requestable) { instance_double(Requests::RequestableDecorator, holding_library: 'firestone') }
+      let(:requestable) { instance_double(Requests::RequestableDecorator, holding_library: 'firestone', recap?: false) }
 
       it 'returns Firestone Library' do
         result = helper.send(:custom_pickup_prompt, requestable, sample_locations)
@@ -626,7 +626,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     end
 
     context 'when holding_library does not match any location' do
-      let(:requestable) { instance_double(Requests::RequestableDecorator, holding_library: 'nonexistent') }
+      let(:requestable) { instance_double(Requests::RequestableDecorator, holding_library: 'nonexistent', recap?: false) }
 
       it 'returns nil' do
         result = helper.send(:custom_pickup_prompt, requestable, sample_locations)
@@ -638,7 +638,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       let(:locations_without_engineering) do
         sample_locations.reject { |loc| loc[:label] == "Engineering Library" }
       end
-      let(:requestable) { instance_double(Requests::RequestableDecorator, holding_library: 'lewis') }
+      let(:requestable) { instance_double(Requests::RequestableDecorator, holding_library: 'lewis', recap?: false) }
 
       it 'returns nil when Engineering Library is not available' do
         result = helper.send(:custom_pickup_prompt, requestable, locations_without_engineering)
@@ -678,7 +678,8 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       instance_double(Requests::RequestableDecorator,
                       holding_library: 'lewis',
                       preferred_request_id: 'test123',
-                      charged?: false)
+                      charged?: false,
+                      recap?: false)
     end
 
     before do
@@ -713,7 +714,8 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
         instance_double(Requests::RequestableDecorator,
                         holding_library: 'firestone',
                         preferred_request_id: 'test456',
-                        charged?: false)
+                        charged?: false,
+                        recap?: false)
       end
 
       it 'pre-selects Firestone Library option' do
@@ -724,12 +726,38 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       end
     end
 
+    context 'when item is ReCAP' do
+      let(:requestable) do
+        instance_double(Requests::RequestableDecorator,
+                        holding_library: 'firestone',
+                        preferred_request_id: 'test789',
+                        charged?: false,
+                        recap?: true)
+      end
+
+      it 'uses default prompt and does not pre-select anything' do
+        result = helper.preferred_request_content_tag(requestable, sample_locations)
+
+        # Should use default prompt text (not custom) and have it selected
+        expect(result).to include('<option disabled="disabled" selected="selected" value="">Select a Delivery Location</option>')
+
+        # Should have only one selected option (the prompt)
+        expect(result.scan('selected="selected"').length).to eq(1)
+
+        # Should still include all locations as options
+        expect(result).to include('>Firestone Library</option>')
+        expect(result).to include('>Engineering Library</option>')
+        expect(result).to include('>Lewis Library</option>')
+      end
+    end
+
     context 'when custom prompt returns nil' do
       let(:requestable) do
         instance_double(Requests::RequestableDecorator,
                         holding_library: 'unknown',
                         preferred_request_id: 'test123',
-                        charged?: false)
+                        charged?: false,
+                        recap?: false)
       end
 
       it 'includes all locations in select options when no custom prompt' do
