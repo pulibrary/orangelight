@@ -118,14 +118,14 @@ GEM
       parser (>= 2.4)
       smart_properties
     bigdecimal (3.2.2)
-    blacklight (8.11.0)
+    blacklight (9.0.0.beta7)
       globalid
       i18n (>= 1.7.0)
       jbuilder (~> 2.7)
       kaminari (>= 0.15)
       ostruct (>= 0.3.2)
-      rails (>= 6.1, < 9)
-      view_component (>= 2.74, < 4)
+      rails (>= 7.0, < 9)
+      view_component (>= 3.0, < 5.0)
       zeitwerk
     blacklight-hierarchy (6.6.0)
       blacklight (>= 7.18, < 9)
@@ -786,7 +786,7 @@ DEPENDENCIES
   axe-core-rspec
   babel-transpiler
   bcrypt_pbkdf
-  blacklight (~> 8.8)
+  blacklight (~> 9.0.0.beta7)
   blacklight-hierarchy
   blacklight-marc (~> 8.1)
   blacklight_dynamic_sitemap
