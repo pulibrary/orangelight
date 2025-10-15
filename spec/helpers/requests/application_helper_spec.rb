@@ -585,7 +585,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
 
       it 'returns Engineering Library' do
         result = helper.send(:custom_pickup_prompt, requestable, sample_locations)
-        expect(result).to eq("Select a Delivery Location (Recommended: Engineering Library)")
+        expect(result).to eq(I18n.t('requests.pick_up_suggested.holding_library', holding_library: 'Engineering Library'))
       end
     end
 
@@ -594,7 +594,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
 
       it 'returns Engineering Library' do
         result = helper.send(:custom_pickup_prompt, requestable, sample_locations)
-        expect(result).to eq("Select a Delivery Location (Recommended: Engineering Library)")
+        expect(result).to eq(I18n.t('requests.pick_up_suggested.holding_library', holding_library: 'Engineering Library'))
       end
     end
 
@@ -603,7 +603,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
 
       it 'returns Engineering Library' do
         result = helper.send(:custom_pickup_prompt, requestable, sample_locations)
-        expect(result).to eq("Select a Delivery Location (Recommended: Engineering Library)")
+        expect(result).to eq(I18n.t('requests.pick_up_suggested.holding_library', holding_library: 'Engineering Library'))
       end
     end
 
@@ -612,7 +612,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
 
       it 'returns the matching library label' do
         result = helper.send(:custom_pickup_prompt, requestable, sample_locations)
-        expect(result).to eq("Select a Delivery Location (Recommended: Architecture Library)")
+        expect(result).to eq(I18n.t('requests.pick_up_suggested.holding_library', holding_library: 'Architecture Library'))
       end
     end
 
@@ -621,7 +621,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
 
       it 'returns Firestone Library' do
         result = helper.send(:custom_pickup_prompt, requestable, sample_locations)
-        expect(result).to eq("Select a Delivery Location (Recommended: Firestone Library)")
+        expect(result).to eq(I18n.t('requests.pick_up_suggested.holding_library', holding_library: 'Firestone Library'))
       end
     end
 

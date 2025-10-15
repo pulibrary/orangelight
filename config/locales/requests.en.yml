@@ -11,6 +11,9 @@ en:
       service_error_email: "recapproblems@princeton.edu"
       service_error_subject: "Request Service Error"
       service_error_conf_msg: "The following errors were reported with a Library Request Service:"
+    pick_up_suggested:
+      holding_library: 'Select a Delivery Location (Recommended: %{holding_library})'
+      engineering_holding_library: 'Select a Delivery Location (Recommended: %{engineering_holding_library})'
     submit:
       success: "Request submitted. See confirmation email with details about when your item(s) will be available."
       recap_success: "Request submitted to ReCAP, our offsite storage facility. See confirmation email with details about when your item(s) will be available."

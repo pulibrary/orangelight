@@ -304,7 +304,8 @@ module Requests
         # Find matching library by code and suggest it in the prompt
         suggested_location = find_matching_location_label(holding_library, locs)
         return unless suggested_location
-        "Select a Delivery Location (Recommended: #{suggested_location})"
+        I18n.t('requests.pick_up_suggested.holding_library', holding_library: suggested_location)
+        # "Select a Delivery Location (Recommended: #{suggested_location})"
       end
 
       def find_matching_location_label(holding_library, locs)
@@ -316,8 +317,8 @@ module Requests
       def find_matching_location_by_code(holding_library, locs)
         locs.find do |loc|
           # Extract library code and compare with holding library
-          library_code = loc.dig(:library, :code)
-          library_code&.downcase == holding_library
+          location = Requests::Location.new(loc)
+          location.library_code&.downcase == holding_library
         end
       end
 
@@ -326,31 +327,42 @@ module Requests
         # Special case: lewis, plasma should default to Engineering Library
         if ['lewis', 'plasma'].include?(holding_library)
           engineering_loc = locs.find { |loc| loc[:label] == "Engineering Library" }
-          return "Select a Delivery Location (Recommended: #{engineering_loc[:label]})" if engineering_loc
+          return I18n.t('requests.pick_up_suggested.engineering_holding_library', engineering_holding_library: engineering_loc[:label]) if engineering_loc
         end
         nil
       end
 
-      # :reek:UtilityFunction
-      # :reek:TooManyStatements
       def find_selected_pickup_value(requestable, locs)
-        # For ReCAP items, don't pre-select anything
-        return nil if requestable.recap?
+        return nil if should_skip_form_preselection?(requestable)
 
         holding_library = normalize_holding_library(requestable)
         return nil if holding_library.blank?
 
-        # Check for special engineering library cases first
-        if ['lewis', 'plasma'].include?(holding_library)
-          engineering_loc = locs.find { |loc| loc[:label] == "Engineering Library" }
-          return { 'pick_up' => engineering_loc[:gfa_pickup], 'pick_up_location_code' => engineering_loc[:pick_up_location_code] }.to_json if engineering_loc
-        end
+        find_form_preselected_location_json(holding_library, locs)
+      end
 
-        # Find matching library by code and select it
-        matching_loc = find_matching_location_by_code(holding_library, locs)
-        return nil unless matching_loc
+      # :reek:UtilityFunction
+      def should_skip_form_preselection?(requestable)
+        requestable.recap?
+      end
 
-        { 'pick_up' => matching_loc[:gfa_pickup], 'pick_up_location_code' => matching_loc[:pick_up_location_code] }.to_json
+      def find_form_preselected_location_json(holding_library, locs)
+        selected_location = find_engineering_location(holding_library, locs) ||
+                            find_matching_location_by_code(holding_library, locs)
+        return nil unless selected_location
+
+        location_to_json(selected_location)
+      end
+
+      # :reek:UtilityFunction
+      def find_engineering_location(holding_library, locs)
+        return nil unless ['lewis', 'plasma'].include?(holding_library)
+        locs.find { |loc| Requests::Location.new(loc).engineering_library? }
+      end
+
+      # :reek:UtilityFunction
+      def location_to_json(location)
+        { 'pick_up' => location[:gfa_pickup], 'pick_up_location_code' => location[:pick_up_location_code] }.to_json
       end
 
       def display_requestable_list(requestable)

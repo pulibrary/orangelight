@@ -74,6 +74,10 @@ module Requests
       bibdata_location[:remote_storage] == "recap_rmt"
     end
 
+    def engineering_library?
+      short_label == "Engineering Library"
+    end
+
     def standard_circ_location?
       return false if code.blank?
 
