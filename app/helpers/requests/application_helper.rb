@@ -124,14 +124,17 @@ module Requests
           name = 'requestable[][pick_up]'
           id = "requestable__pick_up_#{requestable.preferred_request_id}"
           if locs.size > 1
+            byebug
             select_tag name.to_s, options_for_select(locs.map { |loc| [loc[:label], { 'pick_up' => loc[:gfa_pickup], 'pick_up_location_code' => loc[:pick_up_location_code] }.to_json] }), prompt: I18n.t("requests.default.pick_up_placeholder"), id: id
           else
+            byebug
             single_pickup(requestable.charged?, name, id, locs[0])
           end
         end
     end
 
     def available_pick_ups(requestable, default_pick_ups)
+      byebug
       idx = (default_pick_ups.pluck(:label)).index(requestable.location.library_label)
       if idx.present?
         [default_pick_ups[idx]]
@@ -308,7 +311,8 @@ module Requests
       end
 
       def pick_up_locations(requestable, default_pick_ups)
-        return [default_pick_ups[0]] if requestable.ill_eligible?
+        byebug
+        return ill_eligible_pick_up_location(default_pick_ups) if requestable.ill_eligible?
         return available_pick_ups(requestable, default_pick_ups) unless requestable.pending?
         if requestable.delivery_location_label.present?
           [{ label: requestable.delivery_location_label, gfa_pickup: requestable.delivery_location_code, pick_up_location_code: requestable.pick_up_location_code, staff_only: false }]
@@ -316,6 +320,10 @@ module Requests
           # TODO: Why is this option here
           [{ label: requestable.location.library_label, gfa_pickup: gfa_lookup(requestable.location.library_code), staff_only: false }]
         end
+      end
+
+      def ill_eligible_pick_up_location(default_pick_ups)
+        pa_location = default_pick_ups.find { |location| location[:gfa_pickup] == "PA" }
       end
 
       def hidden_fields_for_item(item:, preferred_request_id:)
