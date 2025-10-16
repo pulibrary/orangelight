@@ -67,4 +67,122 @@ RSpec.describe Requests::Location, requests: true do
       end
     end
   end
+
+  describe '.filter_pick_up_locations_by_code' do
+    let(:locations_with_pf) do
+      [
+        { label: "Firestone Library", gfa_pickup: "PA", staff_only: false },
+        { label: "Firestone Library, Microforms", gfa_pickup: "PF", staff_only: false },
+        { label: "Architecture Library", gfa_pickup: "PW", staff_only: false }
+      ]
+    end
+
+    context 'when code is firestone$pf' do
+      it 'returns only locations with gfa_pickup PF' do
+        result = described_class.filter_pick_up_locations_by_code(locations_with_pf, 'firestone$pf')
+        expect(result).to eq([{ label: "Firestone Library, Microforms", gfa_pickup: "PF", staff_only: false }])
+      end
+    end
+
+    context 'when code is not firestone' do
+      it 'rejects locations with gfa_pickup PF' do
+        result = described_class.filter_pick_up_locations_by_code(locations_with_pf, 'arch$stacks')
+        expect(result).to eq([
+                               { label: "Firestone Library", gfa_pickup: "PA", staff_only: false },
+                               { label: "Architecture Library", gfa_pickup: "PW", staff_only: false }
+                             ])
+      end
+    end
+
+    context 'when code starts with firestone but is not firestone$pf' do
+      it 'rejects locations with gfa_pickup PF' do
+        result = described_class.filter_pick_up_locations_by_code(locations_with_pf, 'firestone$stacks')
+        expect(result).to eq([
+                               { label: "Firestone Library", gfa_pickup: "PA", staff_only: false },
+                               { label: "Architecture Library", gfa_pickup: "PW", staff_only: false }
+                             ])
+      end
+    end
+
+    context 'when locations array is empty' do
+      it 'returns empty array' do
+        result = described_class.filter_pick_up_locations_by_code([], 'firestone$pf')
+        expect(result).to eq([])
+      end
+    end
+
+    context 'when code is blank' do
+      it 'returns original locations' do
+        result = described_class.filter_pick_up_locations_by_code(locations_with_pf, '')
+        expect(result).to eq(locations_with_pf)
+      end
+    end
+  end
+
+  describe '#filter_pick_ups' do
+    let(:delivery_locations_with_pf) do
+      [
+        { "label" => "Firestone Library", "gfa_pickup" => "PA", "staff_only" => false },
+        { "label" => "Firestone Library, Microforms", "gfa_pickup" => "PF", "staff_only" => false },
+        { "label" => "Architecture Library", "gfa_pickup" => "PW", "staff_only" => false }
+      ]
+    end
+
+    context 'when location code is firestone$pf' do
+      let(:location) { described_class.new({ "code" => "firestone$pf", "delivery_locations" => delivery_locations_with_pf }) }
+
+      it 'filters to only PF locations' do
+        result = location.filter_pick_ups
+        expect(result).to eq([{ "label" => "Firestone Library, Microforms", "gfa_pickup" => "PF", "staff_only" => false }])
+      end
+    end
+
+    context 'when location code is not firestone' do
+      let(:location) { described_class.new({ "code" => "arch$stacks", "delivery_locations" => delivery_locations_with_pf }) }
+
+      it 'rejects PF locations' do
+        result = location.filter_pick_ups
+        expect(result).to eq([
+                               { "label" => "Firestone Library", "gfa_pickup" => "PA", "staff_only" => false },
+                               { "label" => "Architecture Library", "gfa_pickup" => "PW", "staff_only" => false }
+                             ])
+      end
+    end
+  end
+
+  describe '#sort_and_filter_pick_ups' do
+    let(:delivery_locations_with_pf) do
+      [
+        { "label" => "Lewis Library", "gfa_pickup" => "PN", "staff_only" => false },
+        { "label" => "Firestone Library", "gfa_pickup" => "PA", "staff_only" => false },
+        { "label" => "Firestone Library, Microforms", "gfa_pickup" => "PF", "staff_only" => false },
+        { "label" => "Architecture Library", "gfa_pickup" => "PW", "staff_only" => false },
+        { "label" => "Technical Services HMT", "gfa_pickup" => "QC", "staff_only" => true }
+      ]
+    end
+
+    context 'when location code is firestone$pf' do
+      let(:location) { described_class.new({ "code" => "firestone$pf", "delivery_locations" => delivery_locations_with_pf }) }
+
+      it 'filters to only PF locations and sorts them' do
+        result = location.sort_and_filter_pick_ups
+        expect(result).to eq([{ "label" => "Firestone Library, Microforms", "gfa_pickup" => "PF", "staff_only" => false }])
+      end
+    end
+
+    context 'when location code is not firestone' do
+      let(:location) { described_class.new({ "code" => "arch$stacks", "delivery_locations" => delivery_locations_with_pf }) }
+
+      it 'rejects PF locations and sorts them' do
+        result = location.sort_and_filter_pick_ups
+        expected = [
+          { "label" => "Architecture Library", "gfa_pickup" => "PW", "staff_only" => false },
+          { "label" => "Firestone Library", "gfa_pickup" => "PA", "staff_only" => false },
+          { "label" => "Lewis Library", "gfa_pickup" => "PN", "staff_only" => false },
+          { "label" => "Technical Services HMT (Staff Only)", "gfa_pickup" => "QC", "staff_only" => true }
+        ]
+        expect(result).to eq(expected)
+      end
+    end
+  end
 end

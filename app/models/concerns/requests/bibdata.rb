@@ -49,7 +49,11 @@ module Requests
       Requests::BibdataService.delivery_locations.each_value do |pick_up|
         pick_up_locations << { label: pick_up["label"], gfa_pickup: pick_up["gfa_pickup"], pick_up_location_code: pick_up["library"]["code"] || 'firestone', staff_only: pick_up["staff_only"] } if pick_up["pickup_location"] == true
       end
-      Requests::Location.sort_pick_up_locations(pick_up_locations)
+      # Filter pickup locations based on this location's code:
+      # - When code is 'firestone$pf', only include PF locations
+      # - All other locations, exclude PF locations
+      filtered_locations = Requests::Location.filter_pick_up_locations_by_code(pick_up_locations, location_code)
+      Requests::Location.sort_pick_up_locations(filtered_locations)
     end
 
     # get the location contact email from thr delivery locations via the library code

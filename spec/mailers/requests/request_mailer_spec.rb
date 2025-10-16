@@ -932,5 +932,119 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
       expect(mail.text_part.body.to_s).to have_content '32101068477817'
     end
   end
+
+  # Test the _item_info partial template
+  describe '_item_info partial' do
+    let(:requestable_with_pickup) do
+      [
+        {
+          "selected" => "true",
+          "mfhd" => "22202822560006421",
+          "call_number" => "QA76.73 .R83",
+          "location_code" => "firestone$stacks",
+          "item_id" => "23202822550006421",
+          "barcode" => "32101098722844",
+          "enum_display" => "v.1",
+          "copy_number" => "1",
+          "status" => "Not Charged",
+          "type" => "annex",
+          "pick_up" => "PA" # Firestone Library pickup
+        }.with_indifferent_access,
+        {
+          "selected" => "true",
+          "mfhd" => "22202822560006422",
+          "call_number" => "QA76.73 .R83",
+          "location_code" => "engineering$stacks",
+          "item_id" => "23202822550006422",
+          "barcode" => "32101098722845",
+          "enum_display" => "v.2",
+          "copy_number" => "1",
+          "status" => "Not Charged",
+          "type" => "annex",
+          "pick_up" => "PT" # Engineering Library pickup
+        }.with_indifferent_access,
+        {
+          "selected" => "false" # This should not appear in email
+        }.with_indifferent_access
+      ]
+    end
+
+    let(:bib) do
+      {
+        "id" => "9999443553506421",
+        "title" => "Ruby programming language guide",
+        "author" => "Test Author"
+      }.with_indifferent_access
+    end
+
+    let(:params) do
+      {
+        request: user_info,
+        requestable: requestable_with_pickup,
+        bib:
+      }
+    end
+
+    let(:submission) do
+      Requests::Submission.new(params, user_info)
+    end
+
+    let(:mail) do
+      described_class.send("annex_confirmation", submission.to_h).deliver_later.perform_now
+    end
+
+    it "displays pick-up locations correctly in the email body" do
+      expect(mail.html_part.body.to_s).to have_content "Items Requested"
+
+      # Check that selected items are included
+      expect(mail.html_part.body.to_s).to have_content "32101098722844" # barcode 1
+      expect(mail.html_part.body.to_s).to have_content "32101098722845" # barcode 2
+      expect(mail.html_part.body.to_s).to have_content "v.1" # enum_display 1
+      expect(mail.html_part.body.to_s).to have_content "v.2" # enum_display 2
+
+      # Check pick-up location labels are displayed correctly
+      expect(mail.html_part.body.to_s).to have_content "Pick-up"
+      expect(mail.html_part.body.to_s).to have_content "Firestone Library" # PA pickup location
+      expect(mail.html_part.body.to_s).to have_content "Engineering Library" # PT pickup location
+    end
+
+    it "only shows items where selected is true" do
+      # Should show 2 selected items but not the unselected one
+      selected_items = mail.html_part.body.to_s.scan(/32101098722844|32101098722845/)
+      expect(selected_items.length).to eq(2)
+    end
+
+    it "formats labels correctly" do
+      expect(mail.html_part.body.to_s).to have_content "Pick-up" # Pick-up label should be formatted
+      expect(mail.html_part.body.to_s).to have_content "Barcode" # Other labels should be formatted
+      expect(mail.html_part.body.to_s).to have_content "Enum Display"
+    end
+
+    it "handles items without enum_display gracefully" do
+      requestable_no_enum = [
+        {
+          "selected" => "true",
+          "mfhd" => "22202822560006421",
+          "call_number" => "QA76.73 .R83",
+          "location_code" => "firestone$stacks",
+          "item_id" => "23202822550006421",
+          "barcode" => "32101098722844",
+          "copy_number" => "1",
+          "status" => "Not Charged",
+          "type" => "annex",
+          "pick_up" => "PA"
+          # No enum_display field
+        }.with_indifferent_access
+      ]
+
+      params_no_enum = params.merge(requestable: requestable_no_enum)
+      submission_no_enum = Requests::Submission.new(params_no_enum, user_info)
+      mail_no_enum = described_class.send("annex_confirmation", submission_no_enum.to_h).deliver_later.perform_now
+
+      expect(mail_no_enum.html_part.body.to_s).to have_content "Items Requested"
+      expect(mail_no_enum.html_part.body.to_s).to have_content "32101098722844"
+      expect(mail_no_enum.html_part.body.to_s).to have_content "Firestone Library"
+    end
+  end
 end
 # rubocop:enable RSpec/MultipleExpectations

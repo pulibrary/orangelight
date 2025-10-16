@@ -132,6 +132,7 @@ module Requests
             options = [[prompt_text, '', { disabled: true, selected: false }]] + locs.map { |loc| [loc[:label], { 'pick_up' => loc[:gfa_pickup], 'pick_up_location_code' => loc[:pick_up_location_code] }.to_json] }
             select_tag name.to_s, options_for_select(options, selected_value), id: id
           else
+
             single_pickup(requestable.charged?, name, id, locs[0])
           end
         end
@@ -391,7 +392,7 @@ module Requests
 
       def pick_up_locations(requestable, default_pick_ups)
         # we don't want to change the ill_eligible rules
-        return [default_pick_ups[0]] if requestable.ill_eligible?
+        return ill_eligible_pick_up_location(default_pick_ups) if requestable.ill_eligible?
         return Requests::ApplicationHelper.recap_annex_available_pick_ups(requestable, default_pick_ups) if requestable.recap? || requestable.annex?
         return default_pick_ups if requestable.location&.standard_circ_location?
         if requestable.delivery_location_label.present?
@@ -399,6 +400,13 @@ module Requests
         else
           [{ label: requestable.location.library_label, gfa_pickup: gfa_lookup(requestable.location.library_code), staff_only: false }]
         end
+      end
+
+      # :reek:UtilityFunction
+      def ill_eligible_pick_up_location(default_pick_ups)
+        # currently for resource sharing items through Illiad we use firestone Library with gfa_pickup of PA
+        location = default_pick_ups.find { |location| location[:gfa_pickup] == "PA" }
+        [location].compact
       end
 
       def hidden_fields_for_item(item:, preferred_request_id:)
