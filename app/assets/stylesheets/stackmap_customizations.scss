@@ -1,6 +1,6 @@
 // stackmap customizations until the vendor changes them
-
-.SMsearchbtn{
+/*
+.springy-button{
     height:auto;
     cursor:pointer;
     border-radius:3px;
@@ -17,18 +17,23 @@
     border-radius: 0.25rem;
   }
 
-.SMsearchbtn:hover{
+.springy-button:hover{
     background-color:#285e8d;
     color:#ffffff;
     text-decoration: none;
 }
-.SMsearchbtn:active{
+.springy-button:active{
     background-color: #255783;
     border-color: #225179;
 }
-.SMsearchbtn:focus{
+.springy-button:focus{
     color: #ffffff;
     background-color: #285e8d;
     border-color: #255783;
     box-shadow: 0 0 0 0.2rem rgba(79, 135, 184, 0.5);
 }
+
+.springy-icon{
+    display: none;
+}
+*/
