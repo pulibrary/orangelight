@@ -3,8 +3,8 @@ module Requests
   class RequestableDecorator
     delegate :system_id, :services, :charged?, :annex?, :on_reserve?,
              :ask_me?, :aeon_request_url, :temp_loc_other_than_resource_sharing?, :call_number, :eligible_for_library_services?,
-             :holding_library_in_library_only?, :holding_library, :bib, :circulates?, :item_data?, :recap_edd?, :clancy_available?,
-             :holding, :item_location_code, :item?, :item, :partner_holding?, :status, :status_label, :use_restriction?, :library_code, :enum_value, :item_at_clancy?,
+             :holding_library_in_library_only?, :holding_library, :bib, :circulates?, :item_data?, :recap_edd?,
+             :holding, :item_location_code, :item?, :item, :partner_holding?, :status, :status_label, :use_restriction?, :library_code, :enum_value,
              :cron_value, :illiad_request_parameters, :location_label, :aeon?, :patron, :held_at_marquand_library?,
              :ill_eligible?, :scsb_in_library_use?, :pick_up_locations, :on_shelf?, :recap?, :recap_pf?, :illiad_request_url, :available?,
              :on_order?, :in_process?, :alma_managed?, :title, :cul_avery?, :cul_music?,
@@ -64,23 +64,19 @@ module Requests
     end
 
     def marquand_edd?
-      (['clancy_edd', 'clancy_unavailable', 'marquand_edd'] & services).any?
+      services.include? 'marquand_edd'
     end
 
     def in_library_use_required?
-      available? && (!held_at_marquand_library? || !item_at_clancy? || clancy_available?) && ((off_site? && !circulates?) || holding_library_in_library_only? || scsb_in_library_use?)
+      available? && ((off_site? && !circulates?) || holding_library_in_library_only? || scsb_in_library_use?)
     end
 
     def off_site?
-      recap? || annex? || item_at_clancy? || held_at_marquand_library?
+      recap? || annex? || held_at_marquand_library?
     end
 
     def off_site_location
-      if clancy_available?
-        "clancy" # at clancy and available
-      elsif item_at_clancy?
-        "clancy_unavailable" # at clancy but not available
-      elsif recap? && (holding_library == "marquand" || requestable.cul_avery?)
+      if recap? && (holding_library == "marquand" || requestable.cul_avery?)
         "recap_marquand"
       elsif recap?
         "recap"

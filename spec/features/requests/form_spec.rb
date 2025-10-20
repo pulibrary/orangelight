@@ -614,7 +614,6 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       context 'disavowed Illiad user' do
         it 'allows a non circulating item with not item data to be digitized to be requested, but then errors' do
           stub_illiad_patron(disavowed: true)
-          stub_clancy_status(barcode: "32101072349515")
           visit '/requests/9941274093506421?mfhd=22690999210006421'
           expect(page).to have_content 'Electronic Delivery'
           choose('requestable__delivery_mode_22690999210006421_edd') # chooses 'edd' radio button

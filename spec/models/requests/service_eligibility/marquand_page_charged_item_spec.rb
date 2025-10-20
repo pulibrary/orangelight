@@ -7,7 +7,6 @@ RSpec.describe Requests::ServiceEligibility::MarquandPageChargedItem, :requests 
       requestable = instance_double(Requests::Requestable)
       allow(requestable).to receive_messages(
         held_at_marquand_library?: true,
-        item_at_clancy?: false,
         alma_managed?: true,
         aeon?: false,
         charged?: true,
@@ -24,7 +23,6 @@ RSpec.describe Requests::ServiceEligibility::MarquandPageChargedItem, :requests 
       requestable = instance_double(Requests::Requestable)
       allow(requestable).to receive_messages(
         held_at_marquand_library?: true,
-        item_at_clancy?: false,
         alma_managed?: true,
         aeon?: false,
         charged?: false,
@@ -41,7 +39,6 @@ RSpec.describe Requests::ServiceEligibility::MarquandPageChargedItem, :requests 
       requestable = instance_double(Requests::Requestable)
       allow(requestable).to receive_messages(
         held_at_marquand_library?: true,
-        item_at_clancy?: false,
         alma_managed?: true,
         aeon?: false,
         charged?: false,
@@ -54,28 +51,10 @@ RSpec.describe Requests::ServiceEligibility::MarquandPageChargedItem, :requests 
       expect(eligibility.eligible?).to be(false)
     end
 
-    it 'can consider clancy items eligible' do
-      requestable = instance_double(Requests::Requestable)
-      allow(requestable).to receive_messages(
-        held_at_marquand_library?: false,
-        item_at_clancy?: true,
-        alma_managed?: true,
-        aeon?: false,
-        charged?: true,
-        in_process?: false,
-        on_order?: false,
-        recap?: false
-      )
-      eligibility = described_class.new(requestable:, user: FactoryBot.create(:user))
-
-      expect(eligibility.eligible?).to be(true)
-    end
-
     it 'does not consider non-Marquand items eligible' do
       requestable = instance_double(Requests::Requestable)
       allow(requestable).to receive_messages(
         held_at_marquand_library?: false,
-        item_at_clancy?: false,
         alma_managed?: true,
         aeon?: false,
         charged?: true,
@@ -92,7 +71,6 @@ RSpec.describe Requests::ServiceEligibility::MarquandPageChargedItem, :requests 
       requestable = instance_double(Requests::Requestable)
       allow(requestable).to receive_messages(
         held_at_marquand_library?: true,
-        item_at_clancy?: false,
         alma_managed?: true,
         aeon?: false,
         charged?: false,

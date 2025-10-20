@@ -26,8 +26,6 @@ We have two groupings of patron types.
 * In Process Requests (Items in the Alma "In Process" Process Type and the Alma Work Order Type "Acquisitions and Cataloging". Items that are here on campus but are not yet prepared for final shelving."
 * Pick-up Service (request an item for pick-up that is shelved at a campus library)
 * Digitization Request (scan a selection from an item shelved on campus on demand)
-* Clancy Physical Delivery Request (Offsite Marquand Items at the Clancy Facility)
-* Clancy Electronic Delivery Request (scan a selection shelved at Clancy on demand)
 * Resource Sharing Services (Request an item from another library via Borrow Direct or InterLibrary Loan (Illiad))
 * Reading Room Request (request supervised use materials for viewing in a Special Collections Reading Room)
 
@@ -42,4 +40,3 @@ We have two groupings of patron types.
 * Recap Physical Delivery Request (Offsite Materials)
 * Recap Electronic Delivery Request (scan a selection shelved at ReCAP on demand)
 * Annex Physical Delivery Request (Offsite Materials)
-* Clancy Physical Delivery Request (page an offsite Marquand Library Item)

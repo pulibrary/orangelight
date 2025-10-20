@@ -18,13 +18,13 @@ module Requests
       def validate_selected(record, selected)
         return unless selected['selected'] == 'true'
         case selected["type"]
-        when 'digitize', 'digitize_fill_in', 'annex_edd', 'marquand_edd', 'clancy_edd', "clancy_unavailable_edd"
+        when 'digitize', 'digitize_fill_in', 'annex_edd', 'marquand_edd'
           validate_delivery_mode(record:, selected:)
         when 'ill'
           validate_ill_on_shelf(record, selected, pick_up_phrase: 'delivery of your borrow direct item', action_phrase: 'requested via Borrow Direct')
         when 'recap_no_items'
           validate_recap_no_items(record, selected)
-        when 'recap', 'recap_edd', 'recap_in_library', 'clancy_in_library', 'marquand_in_library', 'recap_marquand_edd', 'recap_marquand_in_library'
+        when 'recap', 'recap_edd', 'recap_in_library', 'marquand_in_library', 'recap_marquand_edd', 'recap_marquand_in_library'
           validate_offsite(record, selected)
         when 'on_shelf'
           validate_ill_on_shelf(record, selected)

@@ -51,7 +51,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
           recap?: false, recap_pf?: false, held_at_marquand_library?: false,
           item_data?: false, recap_edd?: false, scsb_in_library_use?: false, item:,
           library_code: 'ABC', eligible_for_library_services?: true,
-          item_at_clancy?: false, marquand_item?: false }
+          marquand_item?: false }
       end
       let(:requestable) { instance_double(Requests::Requestable, stubbed_questions) }
 
@@ -232,8 +232,8 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
       context "marquand_page_charged_item" do
         before do
           stubbed_questions[:circulates?] = true
-          stubbed_questions[:item_at_clancy?] = true
-          stubbed_questions[:clancy_available?] = false
+          stubbed_questions[:marquand_item?] = true
+          stubbed_questions[:held_at_marquand_library?] = true
           stubbed_questions[:charged?] = true
         end
         it "returns marquand_page_charged_item in the services" do

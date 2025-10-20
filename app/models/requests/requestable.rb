@@ -59,10 +59,6 @@ module Requests
       location_object.code == "firestone$pf"
     end
 
-    def clancy_available?
-      item_at_clancy? && clancy_item.available?
-    end
-
     def recap_edd?
       return location[:recap_electronic_delivery_location] == true unless partner_holding?
       in_scsb_edd_collection? && !scsb_in_library_use?
@@ -159,14 +155,6 @@ module Requests
 
     def marquand_item?
       holding_library == 'marquand'
-    end
-
-    def clancy_item
-      @clancy_item ||= Requests::ClancyItem.new(barcode:)
-    end
-
-    def item_at_clancy?
-      held_at_marquand_library? && clancy_item.at_clancy?
     end
 
     def available?

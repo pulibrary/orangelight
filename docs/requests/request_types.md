@@ -26,13 +26,6 @@
     * Materials Managed in Alma Base Status: Item in Place
     * Materials without a base status and which are not in a process type (Alma Physical Titles Only)
     * Digitization requests for campus materials are placed through ILLiad.
-* Clancy Physical Delivery Request (Offsite Marquand Items at the Clancy Facility)
-    * Items in Marquand locations that are not at ReCAP or are not Supervised Use Materials (items that are in Special Collections. In bibdata's holding_location table the flag aeon=true)
-    * Materials Managed in Alma Base Status: Item in Place
-    * Materials without a base status and which are not in a process type (Alma Physical Titles Only) - Request sent via email to Marquand staff. 
-* Clancy Electronic Delivery Request (scan a selection shelved at Clancy on demand)
-    * Items in Marquand locations that are not at ReCAP or are not Supervised Use Materials (items that are in Special Collections. In bibdata's holding_location table the flag aeon=true)
-    * Requests are placed in ILLiad
 * Resource Sharing Services (Request an item from another library via Borrow Direct or InterLibrary Loan (Illiad)
     * Any item that has a process type that is not Acquisition or In Process and has an Alma Base Status of "Item Not In Place". For items that are in the "In Process" type any items in a work order type that is NOT "Acquisitions and Cataloging". 
     * If a match is found requests are placed in Borrow Direct's Relais system; otherwise requests are placed in ILLiad. 

@@ -395,18 +395,6 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     end
     let(:request_with_missing) { described_class.new(**params) }
 
-    before do
-      stub_request(:get, "#{Requests.config[:clancy_base]}/itemstatus/v1/32101026169985")
-        .to_return(status: 200, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"32101026169985\",\"status\":\"Item not Found\"}", headers: {})
-      stub_request(:get, "#{Requests.config[:clancy_base]}/itemstatus/v1/32101026132058")
-        .to_return(status: 200, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"32101026132058\",\"status\":\"Item not Found\"}", headers: {})
-      stub_request(:get, "#{Requests.config[:clancy_base]}/itemstatus/v1/32101025649177")
-        .to_return(status: 200, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"32101025649177\",\"status\":\"Item not Found\"}", headers: {})
-      stub_request(:get, "#{Requests.config[:clancy_base]}/itemstatus/v1/32101025649169")
-        .to_return(status: 200, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"32101025649169\",\"status\":\"Item not Found\"}", headers: {})
-      stub_request(:get, "#{Requests.config[:clancy_base]}/itemstatus/v1/32101026173334")
-        .to_return(status: 200, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"32101026173334\",\"status\":\"Item not Found\"}", headers: {})
-    end
     describe "#requestable" do
       it "has an requestable items" do
         expect(request_with_missing.requestable.size).to be >= 1
@@ -862,36 +850,6 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     describe '#available?' do
       it 'is available' do
         expect(request_scsb.requestable.first.available?).to be true
-      end
-    end
-  end
-
-  context "Marquand item in Clancy" do
-    let(:valid_patron) do
-      { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
-        "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "REG",
-        "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
-    end
-    let(:location_code) { 'scsbnypl' }
-    let(:params) do
-      {
-        system_id: '9956200533506421',
-        mfhd: '2219823460006421',
-        patron:
-      }
-    end
-    let(:request) { described_class.new(**params) }
-    before do
-      stub_catalog_raw(bib_id: '9956200533506421')
-      stub_availability_by_holding_id(bib_id: params[:system_id], holding_id: params[:mfhd])
-      stub_request(:get, "#{Requests.config[:clancy_base]}/itemstatus/v1/32101068477817")
-        .to_return(status: 200, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"32101068477817\",\"status\":\"Item In at Rest\"}", headers: {})
-    end
-    describe '#requestable' do
-      it 'has an unknown format' do
-        requestable = request.requestable.first
-        expect(requestable.circulates?).to be_falsey
-        expect(requestable.services).to eq(['clancy_in_library', 'clancy_edd'])
       end
     end
   end

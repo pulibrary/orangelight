@@ -24,17 +24,6 @@ def stub_alma_hold(id, mfhd, item_id, patron_id, status: 200, fixture_name: "alm
 end
 # rubocop:enable Metrics/ParameterLists
 
-def stub_clancy_post(barcode:, status: 'Item Requested', deny: 'N')
-  clancy_url = "#{Requests.config[:clancy_base]}/circrequests/v1"
-  stub_request(:post, clancy_url).to_return(status: 200, body: "{\"success\":true,\"error\":\"\",\"request_count\":\"1\",\"results\":[{\"item\":\"#{barcode}\",\"deny\":\"#{deny}\",\"istatus\":\"#{status}\"}]}", headers: {})
-  clancy_url
-end
-
-def stub_clancy_status(barcode:, status: "Item not Found")
-  stub_request(:get, "#{Requests.config[:clancy_base]}/itemstatus/v1/#{barcode}")
-    .to_return(status: 200, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"#{barcode}\",\"status\":\"#{status}\"}", headers: {})
-end
-
 def stub_illiad_patron(disavowed: false, uid: "jstudent")
   patron_url = "https://lib-illiad.princeton.edu/ILLiadWebPlatform/Users/#{uid}"
 

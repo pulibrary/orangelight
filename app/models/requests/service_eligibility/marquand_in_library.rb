@@ -22,7 +22,7 @@ module Requests
       end
 
       def requestable_eligible?
-        requestable.held_at_marquand_library? && !requestable.item_at_clancy? &&
+        requestable.held_at_marquand_library? &&
           !(requestable.recap? || requestable.recap_pf?) &&
           !requestable.annex? &&
           !requestable.on_order? &&
