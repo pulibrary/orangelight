@@ -116,34 +116,25 @@ module Requests
       end
     end
 
+    # :reek:NilCheck
     def preferred_request_content_tag(requestable, default_pick_ups)
       (show_pick_up_service_options(requestable, nil) || "".html_safe) +
         content_tag(:div, id: "fields-print__#{requestable.preferred_request_id}_card", class: "card card-body bg-light") do
           locs = pick_up_locations(requestable, default_pick_ups)
-          # temporary changes issue 438
+
           name = 'requestable[][pick_up]'
           id = "requestable__pick_up_#{requestable.preferred_request_id}"
           if locs.size > 1
-            select_tag name.to_s, options_for_select(locs.map { |loc| [loc[:label], { 'pick_up' => loc[:gfa_pickup], 'pick_up_location_code' => loc[:pick_up_location_code] }.to_json] }), prompt: I18n.t("requests.default.pick_up_placeholder"), id: id
+            prompt_text = custom_pickup_prompt(requestable, locs) || I18n.t("requests.default.pick_up_placeholder")
+            selected_value = find_selected_pickup_value(requestable, locs)
+            # For ReCAP items, select the empty prompt instead of any actual option
+            selected_value = '' if requestable.recap? && selected_value.nil?
+            options = [[prompt_text, '', { disabled: true, selected: false }]] + locs.map { |loc| [loc[:label], { 'pick_up' => loc[:gfa_pickup], 'pick_up_location_code' => loc[:pick_up_location_code] }.to_json] }
+            select_tag name.to_s, options_for_select(options, selected_value), id: id
           else
             single_pickup(requestable.charged?, name, id, locs[0])
           end
         end
-    end
-
-    def available_pick_ups(requestable, default_pick_ups)
-      idx = (default_pick_ups.pluck(:label)).index(requestable.location.library_label)
-      if idx.present?
-        [default_pick_ups[idx]]
-      elsif requestable.recap? || requestable.annex?
-        locations = requestable.pick_up_locations || default_pick_ups
-        # open libraries
-        pick_ups = locations.select { |loc| ['PJ', 'PA', 'PL', 'PK', 'PM', 'PT', 'QX', 'PW', 'QA', 'QT', 'QC'].include?(loc[:gfa_pickup]) }
-        pick_ups << default_pick_ups[0] if pick_ups.empty?
-        pick_ups
-      else
-        [default_pick_ups[0]]
-      end
     end
 
     # rubocop:disable Rails/OutputSafety
@@ -281,7 +272,98 @@ module Requests
       end
     end
 
+    def self.recap_annex_available_pick_ups(requestable, default_pick_ups)
+      locations = requestable.pick_up_locations || default_pick_ups
+      pick_ups = locations.select { |loc| Requests::Location.valid_recap_annex_pickup?(loc) }
+      pick_ups << default_pick_ups[0] if pick_ups.empty?
+      pick_ups
+    end
+
     private
+
+      def custom_pickup_prompt(requestable, locs)
+        # For ReCAP items, return nil to use default prompt
+        return nil if requestable.recap?
+
+        holding_library = normalize_holding_library(requestable)
+        return nil if holding_library.blank?
+
+        find_prompt_for_holding_library(holding_library, locs)
+      end
+
+      # :reek:UtilityFunction
+      def normalize_holding_library(requestable)
+        requestable.holding_library&.downcase
+      end
+
+      def find_prompt_for_holding_library(holding_library, locs)
+        # Check for special engineering library cases first
+        engineering_prompt = engineering_library_prompt(holding_library, locs)
+        return engineering_prompt if engineering_prompt
+
+        # Find matching library by code and suggest it in the prompt
+        suggested_location = find_matching_location_label(holding_library, locs)
+        return unless suggested_location
+        I18n.t('requests.pick_up_suggested.holding_library', holding_library: suggested_location)
+        # "Select a Delivery Location (Recommended: #{suggested_location})"
+      end
+
+      def find_matching_location_label(holding_library, locs)
+        matching_loc = find_matching_location_by_code(holding_library, locs)
+        matching_loc&.dig(:label)
+      end
+
+      # :reek:UtilityFunction
+      def find_matching_location_by_code(holding_library, locs)
+        locs.find do |loc|
+          # Extract library code and compare with holding library
+          location = Requests::Location.new(loc)
+          location.library_code&.downcase == holding_library
+        end
+      end
+
+      # :reek:UtilityFunction
+      def engineering_library_prompt(holding_library, locs)
+        # Special case: lewis, plasma should default to Engineering Library
+        if ['lewis', 'plasma'].include?(holding_library)
+          engineering_loc = locs.find { |loc| loc[:label] == "Engineering Library" }
+          return I18n.t('requests.pick_up_suggested.engineering_holding_library', engineering_holding_library: engineering_loc[:label]) if engineering_loc
+        end
+        nil
+      end
+
+      def find_selected_pickup_value(requestable, locs)
+        return nil if should_skip_form_preselection?(requestable)
+
+        holding_library = normalize_holding_library(requestable)
+        return nil if holding_library.blank?
+
+        find_form_preselected_location_json(holding_library, locs)
+      end
+
+      # :reek:UtilityFunction
+      def should_skip_form_preselection?(requestable)
+        requestable.recap?
+      end
+
+      def find_form_preselected_location_json(holding_library, locs)
+        selected_location = find_engineering_location(holding_library, locs) ||
+                            find_matching_location_by_code(holding_library, locs)
+        return nil unless selected_location
+
+        location_to_json(selected_location)
+      end
+
+      # :reek:UtilityFunction
+      def find_engineering_location(holding_library, locs)
+        return nil unless ['lewis', 'plasma'].include?(holding_library)
+        locs.find { |loc| Requests::Location.new(loc).engineering_library? }
+      end
+
+      # :reek:UtilityFunction
+      def location_to_json(location)
+        { 'pick_up' => location[:gfa_pickup], 'pick_up_location_code' => location[:pick_up_location_code] }.to_json
+      end
 
       def display_requestable_list(requestable)
         return if requestable.no_services?
@@ -308,12 +390,13 @@ module Requests
       end
 
       def pick_up_locations(requestable, default_pick_ups)
+        # we don't want to change the ill_eligible rules
         return [default_pick_ups[0]] if requestable.ill_eligible?
-        return available_pick_ups(requestable, default_pick_ups) unless requestable.pending?
+        return Requests::ApplicationHelper.recap_annex_available_pick_ups(requestable, default_pick_ups) if requestable.recap? || requestable.annex?
+        return default_pick_ups if requestable.location&.standard_circ_location?
         if requestable.delivery_location_label.present?
           [{ label: requestable.delivery_location_label, gfa_pickup: requestable.delivery_location_code, pick_up_location_code: requestable.pick_up_location_code, staff_only: false }]
         else
-          # TODO: Why is this option here
           [{ label: requestable.location.library_label, gfa_pickup: gfa_lookup(requestable.location.library_code), staff_only: false }]
         end
       end

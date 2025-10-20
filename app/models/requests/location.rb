@@ -13,6 +13,12 @@ module Requests
       bibdata_location['code']
     end
 
+    def fulfillment_unit
+      bibdata_fulfillment_unit = bibdata_location['fulfillment_unit']
+      return nil if bibdata_fulfillment_unit.blank?
+      bibdata_fulfillment_unit
+    end
+
     def short_label
       bibdata_location["label"]
     end
@@ -68,23 +74,41 @@ module Requests
       bibdata_location[:remote_storage] == "recap_rmt"
     end
 
+    def engineering_library?
+      short_label == "Engineering Library"
+    end
+
+    def standard_circ_location?
+      return false if code.blank?
+
+      code.start_with?("arch$", "eastasian$", "engineer$", "firestone$", "plasma$", "lewis", "mendel$", "stokes$") && fulfillment_unit == 'General'
+    end
+
+    def self.valid_recap_annex_pickup?(location_hash)
+      ['PJ', 'PA', 'PL', 'PK', 'PM', 'PT', 'QX', 'PW', 'QA', 'QT', 'QC'].include?(location_hash[:gfa_pickup])
+    end
+
     ## Accepts an array of location hashes and sorts them according to our quirks
     def sort_pick_ups
-      # staff only locations go at the bottom of the list and Firestone to the top
+      self.class.sort_pick_up_locations(delivery_locations)
+    end
 
-      public_delivery_locations = delivery_locations.select { |loc| loc[:staff_only] == false }
-      public_delivery_locations.sort_by! { |loc| loc[:label] }
+    ## Class method to sort any array of pickup locations
+    # :reek:TooManyStatements
+    # :reek:DuplicateMethodCall
+    def self.sort_pick_up_locations(locations)
+      # staff only locations go at the bottom of the list, the rest sort by label
 
-      firestone = public_delivery_locations.find { |loc| loc[:label] == "Firestone Library" }
-      public_delivery_locations.insert(0, public_delivery_locations.delete_at(public_delivery_locations.index(firestone))) unless firestone.nil?
+      public_locations = locations.select { |loc| loc[:staff_only] == false }
+      public_locations.sort_by! { |loc| loc[:label] }
 
-      staff_delivery_locations = delivery_locations.select { |loc| loc[:staff_only] == true }
-      staff_delivery_locations.sort_by! { |loc| loc[:label] }
+      staff_locations = locations.select { |loc| loc[:staff_only] == true }
+      staff_locations.sort_by! { |loc| loc[:label] }
 
-      staff_delivery_locations.each do |loc|
+      staff_locations.each do |loc|
         loc[:label] = loc[:label] + " (Staff Only)"
       end
-      public_delivery_locations + staff_delivery_locations
+      public_locations + staff_locations
     end
 
     def build_delivery_locations

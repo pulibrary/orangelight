@@ -43,31 +43,13 @@ module Requests
       JSON.parse(data)
     end
 
+    # :reek:UtilityFunction
     def build_pick_ups
       pick_up_locations = []
       Requests::BibdataService.delivery_locations.each_value do |pick_up|
         pick_up_locations << { label: pick_up["label"], gfa_pickup: pick_up["gfa_pickup"], pick_up_location_code: pick_up["library"]["code"] || 'firestone', staff_only: pick_up["staff_only"] } if pick_up["pickup_location"] == true
       end
-      sort_pick_ups(pick_up_locations)
-    end
-
-    ## Accepts an array of location hashes and sorts them according to our quirks
-    def sort_pick_ups(locs)
-      # staff only locations go at the bottom of the list and Firestone to the top
-
-      public_locs = locs.select { |loc| loc[:staff_only] == false }
-      public_locs.sort_by! { |loc| loc[:label] }
-
-      firestone = public_locs.find { |loc| loc[:label] == "Firestone Library" }
-      public_locs.insert(0, public_locs.delete_at(public_locs.index(firestone))) unless firestone.nil?
-
-      staff_locs = locs.select { |loc| loc[:staff_only] == true }
-      staff_locs.sort_by! { |loc| loc[:label] }
-
-      staff_locs.each do |loc|
-        loc[:label] = loc[:label] + " (Staff Only)"
-      end
-      public_locs + staff_locs
+      Requests::Location.sort_pick_up_locations(pick_up_locations)
     end
 
     # get the location contact email from thr delivery locations via the library code
