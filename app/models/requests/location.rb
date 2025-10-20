@@ -6,6 +6,9 @@ module Requests
     # @param bibdata_location [Hash] The hash for a bibdata holding (https://bibdata.princeton.edu/locations/holding_locations)
     def initialize(bibdata_location)
       @bibdata_location = bibdata_location.to_h.with_indifferent_access
+    rescue TypeError
+      # Handle cases where to_h fails (e.g., symbols, invalid types)
+      @bibdata_location = {}.with_indifferent_access
     end
 
     def code
@@ -93,22 +96,52 @@ module Requests
       self.class.sort_pick_up_locations(delivery_locations)
     end
 
+    ## Filter pickup locations based on the location code
+    def filter_pick_ups
+      self.class.filter_pick_up_locations_by_code(delivery_locations, code)
+    end
+
+    ## Accepts an array of location hashes, filters them based on the location code, and sorts them
+    def sort_and_filter_pick_ups
+      location_class = self.class
+      filtered_locations = location_class.filter_pick_up_locations_by_code(delivery_locations, code)
+      location_class.sort_pick_up_locations(filtered_locations)
+    end
+
     ## Class method to sort any array of pickup locations
     # :reek:TooManyStatements
     # :reek:DuplicateMethodCall
     def self.sort_pick_up_locations(locations)
       # staff only locations go at the bottom of the list, the rest sort by label
+      public_locations = locations.reject { |loc| (loc[:staff_only] || loc["staff_only"]) == true }
+      public_locations.sort_by! { |loc| loc[:label] || loc["label"] }
 
-      public_locations = locations.select { |loc| loc[:staff_only] == false }
-      public_locations.sort_by! { |loc| loc[:label] }
-
-      staff_locations = locations.select { |loc| loc[:staff_only] == true }
-      staff_locations.sort_by! { |loc| loc[:label] }
+      staff_locations = locations.select { |loc| (loc[:staff_only] || loc["staff_only"]) == true }
+      staff_locations.sort_by! { |loc| loc[:label] || loc["label"] }
 
       staff_locations.each do |loc|
-        loc[:label] = loc[:label] + " (Staff Only)"
+        if loc.key?(:label)
+          loc[:label] = loc[:label] + " (Staff Only)"
+        else
+          loc["label"] = loc["label"] + " (Staff Only)"
+        end
       end
       public_locations + staff_locations
+    end
+
+    ## Filter pickup locations based on location code and gfa_pickup values
+    # When code is 'firestone$pf', only include locations with gfa_pickup 'PF'
+    # For all other codes (including other firestone codes), reject locations with gfa_pickup 'PF'
+    def self.filter_pick_up_locations_by_code(locations, code)
+      return locations if locations.blank? || code.blank?
+
+      pf_filter = ->(loc) { (loc[:gfa_pickup] || loc["gfa_pickup"]) == 'PF' }
+
+      if code == 'firestone$pf'
+        locations.select(&pf_filter)
+      else
+        locations.reject(&pf_filter)
+      end
     end
 
     def build_delivery_locations
