@@ -150,10 +150,6 @@ detectors:
     - Requests::Scsb#scsb_request
     - Orangelight::RecordMailer#email_record
     - Requests::AeonUrl#ctx_with_item_info
-    - Requests::ClancyItem#get_clancy
-    - Requests::ClancyItem#initialize
-    - Requests::ClancyItem#not_at_clancy?
-    - Requests::ClancyItem#post_clancy
     - Requests::Form#build_requestable_from_data
     - Requests::Form#initialize
     - Requests::Form#serial?
@@ -183,8 +179,6 @@ detectors:
     - Requests::SolrOpenUrlContext#initialize
     - Requests::Submission#categorize_by_delivery_and_location
     - Requests::Submission#recap_no_items?
-    - Requests::Submissions::Clancy#handle_item
-    - Requests::Submissions::ClancyEdd#handle_item
     - Requests::Submissions::DigitizeItem#handle
     - Requests::Submissions::DigitizeItem#handle_item
     - Requests::Submissions::HoldItem#payload
@@ -259,8 +253,6 @@ detectors:
     - Requests::Scsb#scsb_request
     - Orangelight::RecordMailer#email_record
     - Requests::AlmaPatron#active_barcode
-    - Requests::ClancyItem#get_clancy
-    - Requests::ClancyItem#post_clancy
     - Requests::Form#any_loanable_copies?
     - Requests::Form#build_barcode_sort
     - Requests::Illiad#get_identifier
@@ -326,8 +318,6 @@ detectors:
     - Requests::Item
     - Requests::NonAlmaAeonUrl
     - Requests::Submission
-    - Requests::Submissions::Clancy
-    - Requests::Submissions::ClancyEdd
     - Requests::Submissions::DigitizeItem
     - Requests::Submissions::HoldItem
     - Requests::Submissions::Illiad
@@ -410,7 +400,6 @@ detectors:
     - Orangelight::RecordMailer
     - Orangelight::Subject
     - Orangelight
-    - Requests::ClancyItem
     - Requests::IlliadClient
     - Requests::IlliadMetadata::ArticleExpress
     - Requests::IlliadMetadata::Loan
@@ -423,16 +412,11 @@ detectors:
     - Requests::RequestableDecorator
     - Requests::SelectedItemsValidator
     - Requests::ServiceEligibility::AbstractOnShelf
-    - Requests::ServiceEligibility::ClancyEdd
-    - Requests::ServiceEligibility::ClancyInLibrary
-    - Requests::ServiceEligibility::ClancyUnavailable
     - Requests::ServiceEligibility::InProcess
     - Requests::ServiceEligibility::MarquandEdd
     - Requests::ServiceEligibility::MarquandInLibrary
     - Requests::SolrOpenUrlContext
     - Requests::Submission
-    - Requests::Submissions::Clancy
-    - Requests::Submissions::ClancyEdd
     - Requests::Submissions::DigitizeItem
     - Requests::Submissions::Generic
     - Requests::Submissions::HoldItem
@@ -480,7 +464,6 @@ detectors:
     - Requests::RequestMailer#confirmation_email
     - Requests::RequestMailer#request_email
     - RecordFeedbackFormSubmission#initialize
-    - Requests::ClancyItem#request_item
     - Requests::Form#build_holding_scsb_items
     - Requests::Form#build_requestable_from_mfhd_items
     - Requests::Illiad#get_identifier
@@ -690,8 +673,6 @@ detectors:
     - Requests::Scsb#scsb_request
     - Orangelight::RecordMailer#email_record
     - Requests::AeonUrl#ctx_with_item_info
-    - Requests::ClancyItem#post_clancy
-    - Requests::ClancyItem#request?
     - Requests::Form#build_barcode_sort
     - Requests::Form#build_holding_scsb_items
     - Requests::Form#build_requestable_with_items
@@ -710,8 +691,6 @@ detectors:
     - Requests::SelectedItemsValidator#validate_selected
     - Requests::Submission#categorize_by_delivery_and_location
     - Requests::Submission#service_by_type
-    - Requests::Submissions::Clancy#handle_item
-    - Requests::Submissions::ClancyEdd#handle_item
     - Requests::Submissions::DigitizeItem#handle
     - Requests::Submissions::DigitizeItem#handle_item
     - Requests::Submissions::HoldItem#handle_item
@@ -878,8 +857,6 @@ detectors:
     - Requests::Submission#off_site?
     - Requests::Submission#partner_item?
     - Requests::Submission#recap_no_items?
-    - Requests::Submissions::Clancy#hold_id
-    - Requests::Submissions::ClancyEdd#hold_id
     - Requests::Submissions::Illiad#success_message
     - SearchBuilder#cleaned_query
     - SolrDocument#clean_ids

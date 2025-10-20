@@ -25,11 +25,8 @@ module Requests
     # :recap_edd - material is stored in a recap location that permits digitization
     # :recap_no_items - material in a recap location with no item record data
     # :ill - material has a status in Alma making it unavailable for circulation and is in a location that is eligible for resource sharing
-    # :clancy_unavailable - item is at clancy but clancy system says it is not available; but its alma status is available
-    # :clancy_in_library - item in the clancy warehouse and can be paged to marquand
-    # :clancy_edd - item in the clancy warehouse in a location that permits digitization
-    # :marquand_in_library - non clancy marquand item in a location that can be paged to marquand
-    # :marquand_edd - non clancy marquand item in a location that is permitted to be scanned
+    # :marquand_in_library - marquand item in a location that can be paged to marquand
+    # :marquand_edd - marquand item in a location that is permitted to be scanned
     # :marquand_page_charged_item - a Marquand item that is charged (checked out) to somebody else's carrel, but marquand staff can retrieve it for you
     # :ask_me - catchall service if the item isn't eligible for anything else.
 
@@ -46,7 +43,6 @@ module Requests
 
     private
 
-      # rubocop:disable Metrics/AbcSize
       def eligibility_checks
         [
           ServiceEligibility::ILL.new(requestable:, patron:, any_loanable:),
@@ -54,9 +50,6 @@ module Requests
           ServiceEligibility::Annex.new(requestable:, patron:),
           ServiceEligibility::OnShelfDigitize.new(requestable:, patron:),
           ServiceEligibility::OnShelfPickup.new(requestable:, patron:),
-          ServiceEligibility::ClancyUnavailable.new(requestable:, user:),
-          ServiceEligibility::ClancyInLibrary.new(requestable:, user:),
-          ServiceEligibility::ClancyEdd.new(requestable:, patron:),
           ServiceEligibility::InProcess.new(requestable:, user:),
           ServiceEligibility::MarquandInLibrary.new(requestable:, user:),
           ServiceEligibility::MarquandEdd.new(requestable:, user:),
@@ -69,6 +62,5 @@ module Requests
           ServiceEligibility::Aeon.new(requestable:)
         ]
       end
-    # rubocop:enable Metrics/AbcSize
   end
 end

@@ -11,7 +11,7 @@ RSpec.describe Requests::RequestableFormOptionComponent, :requests, type: :compo
       status_badge = '<span class=\"availability--label badge bg-success\">Available</span>'.html_safe
       requestable = double Requests::Requestable
       allow(requestable).to receive_messages(
-        digitize?: true, pick_up?: true, will_submit_via_form?: true, aeon?: false, item_at_clancy?: false,
+        digitize?: true, pick_up?: true, will_submit_via_form?: true, aeon?: false,
         preferred_request_id: '23701449010006421', bib: bib, holding: holding, item_location_code: 'firestone$stacks',
         item?: true, item:, partner_holding?: false, status_badge:, use_restriction?: false, holding_library: 'firestone',
         services: ['on_shelf_edd', 'on_shelf'], fill_in_pick_up?: true,

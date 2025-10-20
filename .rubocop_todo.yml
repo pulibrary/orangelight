@@ -78,9 +78,6 @@ Layout/FirstArgumentIndentation:
     - 'spec/models/feedback_form_submission_spec.rb'
     - 'spec/models/record_feedback_form_submission_spec.rb'
     - 'spec/models/requests/service_eligibility/annex_spec.rb'
-    - 'spec/models/requests/service_eligibility/clancy_edd_spec.rb'
-    - 'spec/models/requests/service_eligibility/clancy_in_library_spec.rb'
-    - 'spec/models/requests/service_eligibility/clancy_unavailable_spec.rb'
     - 'spec/models/requests/service_eligibility/ill_spec.rb'
     - 'spec/models/requests/service_eligibility/in_process_spec.rb'
     - 'spec/models/requests/service_eligibility/marquand_edd_spec.rb'
@@ -678,7 +675,6 @@ RSpec/PendingWithoutReason:
 # SupportedStyles: inflected, explicit
 RSpec/PredicateMatcher:
   Exclude:
-    - 'spec/models/requests/clancy_item_spec.rb'
     - 'spec/models/requests/form_decorator_spec.rb'
     - 'spec/models/requests/form_no_vcr_spec.rb'
     - 'spec/models/requests/form_spec.rb'
@@ -778,7 +774,6 @@ RSpec/UnspecifiedException:
 # SupportedStyles: constant, string
 RSpec/VerifiedDoubleReference:
   Exclude:
-    - 'spec/models/requests/clancy_item_spec.rb'
     - 'spec/requests/feedback_forms_spec.rb'
     - 'spec/views/catalog/_sort_and_per_page.html.erb_spec.rb'
 
@@ -1114,14 +1109,12 @@ Style/OptionalBooleanParameter:
 Style/QuotedSymbols:
   Exclude:
     - 'app/helpers/holdings_helper.rb'
-    - 'app/models/requests/clancy_item.rb'
     - 'app/processors/orangelight/series_link_processor.rb'
     - 'app/services/online_holdings_markup_builder.rb'
     - 'spec/controllers/omniauth_callbacks_controller_spec.rb'
     - 'spec/helpers/blacklight_advanced_search/parsing_nesting_spec.rb'
     - 'spec/helpers/holding_block_spec.rb'
     - 'spec/models/requests/aeon_url_spec.rb'
-    - 'spec/models/requests/clancy_item_spec.rb'
     - 'spec/models/requests/requestable/item_spec.rb'
     - 'spec/models/ris_spec.rb'
     - 'spec/models/solr_document_spec.rb'
@@ -1311,14 +1304,6 @@ Style/SymbolArray:
 # SupportedStyles: percent, brackets
 Style/WordArray:
   Enabled: false
-
-# Offense count: 1
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: forbid_for_all_comparison_operators, forbid_for_equality_operators_only, require_for_all_comparison_operators, require_for_equality_operators_only
-Style/YodaCondition:
-  Exclude:
-    - 'app/models/requests/clancy_item.rb'
 
 # Offense count: 812
 # This cop supports safe autocorrection (--autocorrect).

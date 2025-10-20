@@ -170,30 +170,6 @@ module Requests
       confirmation_email(submission:, subject_key: 'requests.recap_edd.email_subject')
     end
 
-    def clancy_in_library_email(submission)
-      request_email(submission:, subject_key: 'requests.clancy_in_library.email_subject', destination_key: 'requests.clancy_in_library.email_destination')
-    end
-
-    def clancy_in_library_confirmation(submission)
-      confirmation_email(submission:, subject_key: 'requests.clancy_in_library.confirmation_subject')
-    end
-
-    def clancy_unavailable_edd_email(submission)
-      request_email(submission:, subject_key: 'requests.clancy_unavailable_edd.email_subject', destination_key: 'requests.clancy_unavailable_edd.email_destination')
-    end
-
-    def clancy_unavailable_edd_confirmation(submission)
-      confirmation_email(submission:, subject_key: 'requests.clancy_unavailable_edd.confirmation_subject')
-    end
-
-    def clancy_edd_email(submission)
-      request_email(submission:, subject_key: 'requests.clancy_edd.email_subject', destination_key: 'requests.clancy_edd.email_destination')
-    end
-
-    def clancy_edd_confirmation(submission)
-      confirmation_email(submission:, subject_key: 'requests.clancy_edd.confirmation_subject')
-    end
-
     def marquand_edd_email(submission)
       request_email(submission:, subject_key: 'requests.marquand_edd.email_subject', destination_key: 'requests.marquand_edd.email_destination')
     end

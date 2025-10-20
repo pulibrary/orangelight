@@ -26,7 +26,7 @@ module Requests
             end
 
             def correct_location?
-              requestable.held_at_marquand_library? || requestable.item_at_clancy?
+              requestable.held_at_marquand_library?
             end
 
             def user_eligible?

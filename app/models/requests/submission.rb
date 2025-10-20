@@ -128,11 +128,7 @@ module Requests
           Requests::Submissions::HoldItem.new(self, service_type: type)
         when 'recap', 'recap_edd', 'recap_in_library', 'recap_marquand_in_library', 'recap_marquand_edd'
           Requests::Submissions::Recap.new(self, service_type: type)
-        when 'clancy_in_library'
-          Requests::Submissions::Clancy.new(self)
-        when 'clancy_edd'
-          Requests::Submissions::ClancyEdd.new(self)
-        when 'digitize', 'annex_edd', 'marquand_edd', 'clancy_unavailable_edd'
+        when 'digitize', 'annex_edd', 'marquand_edd'
           Requests::Submissions::DigitizeItem.new(self, service_type: type)
         when *inter_library_services
           Requests::Submissions::Illiad.new(self, service_type: type)
@@ -172,7 +168,7 @@ module Requests
       end
 
       def off_site?(library_code)
-        library_code == 'recap' || library_code == 'marquand' || library_code == 'clancy' || library_code == 'recap_marquand' || library_code == 'clancy_unavailable' || library_code == 'annex'
+        library_code == 'recap' || library_code == 'marquand' || library_code == 'recap_marquand' || library_code == 'annex'
       end
 
       def print?(item)
