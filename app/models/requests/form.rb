@@ -17,7 +17,6 @@ module Requests
     attr_reader :items
     attr_reader :pick_ups
     alias default_pick_ups pick_ups
-    delegate :ctx, to: :@ctx_obj
     delegate :eligible_for_library_services?, to: :patron
 
     include Requests::Bibdata
@@ -40,7 +39,6 @@ module Requests
       @pick_ups = build_pick_ups
       @requestable_unrouted = build_requestable
       @requestable = route_requests(@requestable_unrouted)
-      @ctx_obj = Requests::SolrOpenUrlContext.new(solr_doc: doc)
     end
 
     delegate :user, to: :patron
@@ -126,6 +124,10 @@ module Requests
       return true if items.count > 500
 
       false
+    end
+
+    def ctx
+      @ctx ||= Requests::SolrOpenUrlContext.new(solr_doc: doc).ctx
     end
 
     private
