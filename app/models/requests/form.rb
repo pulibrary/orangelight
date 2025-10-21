@@ -5,17 +5,7 @@ module Requests
   # Request class is responsible of building a request
   # using items and location of the holding
   class Form
-    attr_reader :system_id
-    attr_reader :mfhd
-    attr_reader :patron
-    attr_reader :doc
-    attr_reader :requestable
-    attr_reader :requestable_unrouted
-    attr_reader :holdings
-    attr_reader :location
-    attr_reader :location_code
-    attr_reader :items
-    attr_reader :pick_ups
+    attr_reader :system_id, :mfhd, :patron, :doc, :requestable, :requestable_unrouted, :holdings, :location, :location_code, :items, :pick_ups
     alias default_pick_ups pick_ups
     delegate :ctx, to: :@ctx_obj
     delegate :eligible_for_library_services?, to: :patron

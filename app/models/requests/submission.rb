@@ -26,7 +26,7 @@ module Requests
       new({ requestable:, bib: original_hash['bib'] }, patron)
     end
 
-    attr_reader :patron, :success_messages
+    attr_reader :patron, :success_messages, :items, :bib
 
     def email
       @patron.active_email
@@ -37,8 +37,6 @@ module Requests
     def user_name
       @patron.netid
     end
-
-    attr_reader :items
 
     def filter_items_by_service(service)
       @items.select { |item| item["type"] == service }
@@ -56,8 +54,6 @@ module Requests
     def user_barcode
       @patron.barcode
     end
-
-    attr_reader :bib
 
     def id
       @bib[:id]
