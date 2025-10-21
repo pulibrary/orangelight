@@ -12,6 +12,8 @@ module Requests
 
     attr_reader :holding_data, :mfhd_id
 
+    delegate :blank?, to: :holding_data
+
     def to_h
       Hash[mfhd_id, holding_data].with_indifferent_access
     end
@@ -22,6 +24,10 @@ module Requests
       else
         [library_name, location_name].compact_blank.join(' - ')
       end
+    end
+
+    def items
+      holding_data['items'] || []
     end
 
     private

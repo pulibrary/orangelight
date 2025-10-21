@@ -2,12 +2,12 @@
 require 'faraday'
 
 module Requests
-  # Request class is responsible of building a request
-  # using items and location of the holding
+  # This class is responsible for assembling the data to display the Requests form
   class Form
-    attr_reader :system_id, :mfhd, :patron, :doc, :requestable, :requestable_unrouted, :holdings, :location, :location_code, :items, :pick_ups
+    attr_reader :system_id, :mfhd, :patron, :requestable, :requestable_unrouted, :holdings, :location, :location_code, :pick_ups
     alias default_pick_ups pick_ups
     delegate :eligible_for_library_services?, to: :patron
+    delegate :items, :too_many_items?, to: :requestables_list
 
     include Requests::Bibdata
     include Requests::Scsb
@@ -17,7 +17,6 @@ module Requests
     # @option opts [Patron] :patron current Patron object
     def initialize(system_id:, mfhd:, patron: nil)
       @system_id = system_id
-      @doc = SolrDocument.new(solr_doc(system_id))
       @holdings = JSON.parse(doc[:holdings_1display] || '{}')
       # scsb items are the only ones that come in without a MFHD parameter from the catalog now
       # set it for them, because they only ever have one location
@@ -25,9 +24,8 @@ module Requests
       @patron = patron
       @location_code = @holdings[@mfhd]["location_code"] if @holdings[@mfhd].present?
       @location = load_bibdata_location
-      @items = load_items
       @pick_ups = build_pick_ups
-      @requestable_unrouted = build_requestable
+      @requestable_unrouted = requestables_list.to_a
       @requestable = route_requests(@requestable_unrouted)
     end
 
@@ -59,20 +57,6 @@ module Requests
       doc[:format].present? && doc[:format].include?('Journal')
     end
 
-    def recap?
-      return false if location.blank?
-      location[:remote_storage] == "recap_rmt"
-    end
-
-    # returns nil if there are no attached items
-    # if mfhd set returns only items associated with that mfhd
-    # if no mfhd returns items sorted by mfhd
-    def load_items
-      return nil if too_many_items?
-      mfhd_items = load_items_by_mfhd
-      mfhd_items.empty? ? nil : mfhd_items.with_indifferent_access
-    end
-
     # returns basic metadata for hidden fields on the request form via solr_doc values
     # Fields to return all keys are arrays
     ## Add more fields here as needed
@@ -85,141 +69,15 @@ module Requests
       }
     end
 
-    # Catalog records that we have indexed from SCSB will have a SCSB internal id (for example: .b22165219x)
-    # Alma records do not have this
-    def scsb_internal_id
-      doc['other_id_s'].first
-    end
-
-    def scsb_location
-      doc['location_code_s'].first
-    end
-
-    # holdings: The holdings1_display from the SolrDocument
-    # holding: The holding of the holding_id(mfhd) from the SolrDocument
-    # happens on 'click' the 'Request' button
-    def too_many_items?
-      holding = holdings[@mfhd]
-      items = holding.try(:[], "items")
-      return false if items.blank?
-
-      return true if items.count > 500
-
-      false
-    end
-
     def ctx
       @ctx ||= Requests::SolrOpenUrlContext.new(solr_doc: doc).ctx
     end
 
+    def doc
+      @doc ||= SolrDocument.new(solr_doc(system_id))
+    end
+
     private
-
-      ### builds a list of possible requestable items
-      # returns a collection of requestable objects or nil
-      # @return [Array<Requests::Requestable>] array containing Requests::Requestables
-      def build_requestable
-        return [] if doc._source.blank?
-        if doc.scsb_record?
-          build_scsb_requestable
-        elsif items.present?
-          # for single aeon item, ends up in this statement
-          build_requestable_with_items
-        else
-          # for too many aeon items, ends up in this statement
-          build_requestable_from_data
-        end
-      end
-
-      # @return [Array<Requests::Requestable>] array containing Requests::Requestables
-      def build_scsb_requestable
-        requestable_items = []
-        recap_barcodes = RecapItemAvailability.new(id: scsb_internal_id, scsb_location:)
-        holdings.each do |id, values|
-          requestable_items = build_holding_scsb_items(id:, values:, requestable_items:, recap_barcodes:)
-        end
-        requestable_items
-      end
-
-      # @return [Array<Requests::Requestable>] array containing Requests::Requestables
-      # :reek:DuplicateMethodCall -- it makes it clearer that values['items'] is being mutated to my eye
-      def build_holding_scsb_items(id:, values:, requestable_items:, recap_barcodes:)
-        values['items'] = recap_barcodes.items_with_availability(items: values['items'])
-        return requestable_items if values['items'].blank?
-        values['items'].each do |item|
-          item['location_code'] = location_code
-          params = build_requestable_params(item: Item.new(item.with_indifferent_access), holding: Holding.new(mfhd_id: id.to_sym.to_s, holding_data: holdings[id]),
-                                            location:)
-          requestable_items << Requests::Requestable.new(**params)
-        end
-        requestable_items
-      end
-
-      # @return [Array<Requests::Requestable>] array containing Requests::Requestables
-      def build_requestable_with_items
-        requestable_items = []
-        items[mfhd] = RecapItemAvailability.new(id: system_id, scsb_location:).items_with_availability(items: items[mfhd]) if recap?
-        # items from the availability lookup using the Bibdata Service
-        items.each do |holding_id, mfhd_items|
-          next if mfhd != holding_id
-          requestable_items = build_requestable_from_mfhd_items(requestable_items:, holding_id:, mfhd_items:)
-        end
-        requestable_items.compact
-      end
-
-      # @return [Array<Requests::Requestable>] array containing Requests::Requestables or empty array
-      def build_requestable_from_data
-        return if doc[:holdings_1display].blank?
-        return [] if holdings[@mfhd].blank?
-
-        [build_requestable_from_holding(@mfhd, holdings[@mfhd].with_indifferent_access)]
-      end
-
-      def build_requestable_from_mfhd_items(requestable_items:, holding_id:, mfhd_items:)
-        if !mfhd_items.empty?
-          mfhd_items.each do |item|
-            requestable_items << build_requestable_mfhd_item(holding_id, item)
-          end
-        else
-          requestable_items << build_requestable_from_holding(holding_id, holdings[holding_id])
-        end
-        requestable_items.compact
-      end
-
-      def holding_data(item, holding_id, item_location_code)
-        if item["in_temp_library"] && item["temp_location_code"] != "RES_SHARE$IN_RS_REQ"
-          holdings[item_location_code]
-        else
-          holdings[holding_id]
-        end
-      end
-
-      # Item we get from the 'load_items' live call to bibdata
-      def build_requestable_mfhd_item(holding_id, item)
-        return if item['on_reserve'] == 'Y'
-        item_current_location = item_current_location(item)
-        params = build_requestable_params(
-          item: Item.new(item.with_indifferent_access),
-          holding: Holding.new(mfhd_id: holding_id.to_sym.to_s, holding_data: holding_data(item, holding_id, item_location_code)),
-          location: item_current_location
-        )
-        Requests::Requestable.new(**params)
-      end
-
-      def get_current_location(item_location_code:)
-        if item_location_code != location_code
-          @temp_locations ||= TempLocationCache.new
-          @temp_locations.retrieve(item_location_code)
-        else
-          location
-        end
-      end
-
-      # This method will always return a Requestable object where .item is some kind of placeholder item, like NullItem
-      def build_requestable_from_holding(holding_id, holding)
-        return if holding.blank?
-        params = build_requestable_params(holding: Holding.new(mfhd_id: holding_id.to_sym.to_s, holding_data: holding), location:, item: placeholder_item_class.new({}))
-        Requests::Requestable.new(**params)
-      end
 
       def load_bibdata_location
         return if location_code.blank?
@@ -229,54 +87,8 @@ module Requests
         location
       end
 
-      def build_requestable_params(params)
-        {
-          bib: doc,
-          holding: params[:holding],
-          item: params[:item],
-          location: build_requestable_location(params),
-          patron:
-        }
+      def requestables_list
+        @requestables_list ||= RequestablesList.new(document: doc, holdings:, mfhd:, location:, patron:)
       end
-
-      def build_requestable_location(params)
-        location = params[:location]
-        location_object = Location.new location
-        location["delivery_locations"] = location_object.build_delivery_locations if location_object.delivery_locations.present?
-        location
-      end
-
-      ## Loads item availability through the Request Bibdata service using the items_by_mfhd method
-      # items_by_mfhd makes the availabiliy call:
-      # bibdata_conn.get "/bibliographic/#{system_id}/holdings/#{mfhd_id}/availability.json"
-      # rename to: load_items_by_holding_id
-      def load_items_by_mfhd
-        mfhd_items = {}
-        mfhd_items[@mfhd] = items_by_mfhd(@system_id, @mfhd)
-        mfhd_items
-      end
-
-      def items_to_symbols(items = [])
-        items.map(&:with_indifferent_access)
-      end
-
-      def item_current_location(item)
-        @item_location_code = if item['in_temp_library']
-                                item['temp_location_code']
-                              else
-                                item['location']
-                              end
-        get_current_location(item_location_code:)
-      end
-
-      def placeholder_item_class
-        if too_many_items?
-          TooManyItemsPlaceholderItem
-        else
-          NullItem
-        end
-      end
-
-      attr_reader :item_location_code
   end
 end
