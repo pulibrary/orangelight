@@ -3,14 +3,7 @@ module Requests
   # This class describes a resource that a
   # library patron might wish to request
   class Requestable
-    attr_reader :bib
-    attr_reader :holding
-    attr_reader :item
-    attr_reader :location
-    attr_reader :call_number
-    attr_reader :title
-    attr_reader :patron
-    attr_reader :services
+    attr_reader :bib, :holding, :item, :location, :call_number, :title, :patron, :services
 
     delegate :illiad_request_url, :illiad_request_parameters, to: :@illiad
     delegate :eligible_for_library_services?, to: :@patron

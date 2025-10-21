@@ -935,16 +935,6 @@ Security/IoMethods:
   Exclude:
     - 'config/initializers/requests_initializer.rb'
 
-# Offense count: 22
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: separated, grouped
-Style/AccessorGrouping:
-  Exclude:
-    - 'app/models/requests/form.rb'
-    - 'app/models/requests/requestable.rb'
-    - 'app/models/requests/submission.rb'
-
 # Offense count: 3
 # This cop supports unsafe autocorrection (--autocorrect-all).
 Style/ArrayIntersect:
