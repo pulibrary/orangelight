@@ -305,11 +305,7 @@ module Requests
       end
 
       def items_to_symbols(items = [])
-        items_with_symbols = []
-        items.each do |item|
-          items_with_symbols << item.with_indifferent_access
-        end
-        items_with_symbols
+        items.map(&:with_indifferent_access)
       end
 
       def item_current_location(item)

@@ -1059,7 +1059,6 @@ Style/KeywordParametersOrder:
 # This cop supports unsafe autocorrection (--autocorrect-all).
 Style/MapIntoArray:
   Exclude:
-    - 'app/models/requests/form.rb'
     - 'lib/orangelight/illiad_patron_client.rb'
     - 'spec/requests/request_spec.rb'
 
