@@ -670,12 +670,6 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
         expect(request.any_loanable_copies?).to be true
       end
     end
-
-    describe '#any_enumerated?' do
-      it 'is enumerated' do
-        expect(request.any_enumerated?).to be true
-      end
-    end
   end
 
   context 'Multi-holding record with charged items and items available at non-restricted locations' do

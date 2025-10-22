@@ -48,10 +48,6 @@ module Requests
       end
     end
 
-    def any_enumerated?
-      requestable_unrouted.any?(&:enumerated?)
-    end
-
     # returns an array of Requests::Requestable objects that can respond to #services with an array of the relevant services
     def route_requests(requestable_items)
       requestable_items.map do |requestable|
