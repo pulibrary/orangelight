@@ -14,9 +14,6 @@
   $('.flash-error.alert-danger').hide();
   //$('tbody .alert-danger').show();
   $('tbody .alert-danger').removeClass('alert-danger');
-  <% if guest_user_error?(@submission.errors.messages.keys) %>
-    $('#other_user_account_info').collapse('show');
-  <% end %>
   <% @submission.errors.messages.each do |key, value| %>
     <%  if key == :items %>
       $(".error-<%= key %>").text("<%= value.first.values[0]['text'].html_safe %>");
