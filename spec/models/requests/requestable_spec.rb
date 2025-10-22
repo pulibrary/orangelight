@@ -876,7 +876,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       stub_availability_by_holding_id(bib_id: '9977664533506421', holding_id: '22109013720006421')
       stub_single_holding_location('RES_SHARE$OUT_RS_REQ')
       stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
-        .to_return(status: 200, body: "[{\"itemBarcode\":\"MR72802120\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]")
+        .to_return(status: 200, body: "[{\"itemBarcode\":\"32101092097763\",\"itemAvailabilityStatus\":\"Not available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]")
     end
 
     describe '#pick_up_locations' do

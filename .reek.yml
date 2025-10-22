@@ -254,7 +254,6 @@ detectors:
     - Orangelight::RecordMailer#email_record
     - Requests::AlmaPatron#active_barcode
     - Requests::Form#any_loanable_copies?
-    - Requests::Form#build_barcode_sort
     - Requests::Illiad#get_identifier
     - Requests::Illiad#identifiers_for_type
     - Requests::Illiad#illiad_query_parameters
@@ -673,7 +672,6 @@ detectors:
     - Requests::Scsb#scsb_request
     - Orangelight::RecordMailer#email_record
     - Requests::AeonUrl#ctx_with_item_info
-    - Requests::Form#build_barcode_sort
     - Requests::Form#build_holding_scsb_items
     - Requests::Form#build_requestable_with_items
     - Requests::Form#route_requests
@@ -839,7 +837,6 @@ detectors:
     - EngineeringSearchBuilder#switch_request_handler
     - Requests::Form#build_requestable_location
     - Requests::Form#items_to_symbols
-    - Requests::Form#status_label
     - Requests::Illiad#au_params
     - Requests::Illiad#genere
     - Requests::IlliadMetadata::ArticleExpress#volume_number
