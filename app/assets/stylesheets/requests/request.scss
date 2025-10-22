@@ -99,11 +99,6 @@ div#punetid-form hr {
   margin-bottom: 0.5rem;
 }
 
-/* updates card_body in the #other_user_account_info*/
-div#other_user_account_info div.card-body {
-  background-color: $other_user_account;
-}
-
 /* replaces btn-default */
 .btn-outline-secondary {
   color: $dark;

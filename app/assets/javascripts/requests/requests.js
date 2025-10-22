@@ -1,54 +1,6 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 $(function () {
-  function isEmail(email) {
-    const regex =
-      /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    return regex.test(email);
-  }
-
-  $('form#logins').on('submit', function (event) {
-    if (!isEmail($('#request_email').val())) {
-      event.preventDefault();
-      $('#request_email').css('background-color', '#f2dede');
-      $('span.error-email').css('color', 'red');
-      $('span.error-email').text('Please supply a valid email address.');
-    } else {
-      $('#request_email').css('background-color', '#ffffff');
-      $('span.error-email').text('');
-    }
-    if ($('#request_user_name').val().trim() == '') {
-      event.preventDefault();
-      $('#request_user_name').css('background-color', '#f2dede');
-      $('span.error-user_name').css('color', 'red');
-      $('span.error-user_name').text('Please supply your full name.');
-    } else {
-      $('#request_user_name').css('background-color', '#ffffff');
-      $('span.error-user_name').text('');
-    }
-  });
-
-  $('#no_netid').on('click', function (event) {
-    event.preventDefault();
-    $('#no_netid').hide();
-    $('#other_user_account_info').show();
-  });
-
-  $('#no_netid').on('keydown', function (e) {
-    const keyCode = e.keyCode || e.which;
-
-    if (keyCode == 13) {
-      $('#no_netid').trigger('click');
-      return false;
-    }
-  });
-
-  $('#go_back').on('click', function (event) {
-    event.preventDefault();
-    $('#no_netid').show();
-    $('#other_user_account_info').hide();
-  });
-
   function activateRequestButton() {
     $('#request-submit-button').prop('disabled', false);
   }
