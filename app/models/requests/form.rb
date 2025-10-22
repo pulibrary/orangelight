@@ -91,7 +91,9 @@ module Requests
       requestable.any? { |r| r.services.include? 'ill' }
     end
 
-    def other_id
+    # Catalog records that we have indexed from SCSB will have a SCSB internal id (for example: .b22165219x)
+    # Alma records do not have this
+    def scsb_internal_id
       doc['other_id_s'].first
     end
 
@@ -134,25 +136,22 @@ module Requests
         end
       end
 
-      def availability_data(id)
-        @availability_data ||= items_by_id(id, scsb_owning_institution(scsb_location))
-      end
-
       # @return [Array<Requests::Requestable>] array containing Requests::Requestables
       def build_scsb_requestable
         requestable_items = []
+        recap_barcodes = RecapItemAvailability.new(id: scsb_internal_id, scsb_location:)
         holdings.each do |id, values|
-          requestable_items = build_holding_scsb_items(id:, values:, availability_data: availability_data(other_id), requestable_items:)
+          requestable_items = build_holding_scsb_items(id:, values:, requestable_items:, recap_barcodes:)
         end
         requestable_items
       end
 
       # @return [Array<Requests::Requestable>] array containing Requests::Requestables
-      def build_holding_scsb_items(id:, values:, availability_data:, requestable_items:)
-        values_items = values['items']
-        return requestable_items if values_items.blank?
-        barcodesort = build_barcode_sort(items: values_items, availability_data:)
-        barcodesort.each_value do |item|
+      # :reek:DuplicateMethodCall -- it makes it clearer that values['items'] is being mutated to my eye
+      def build_holding_scsb_items(id:, values:, requestable_items:, recap_barcodes:)
+        values['items'] = recap_barcodes.items_with_availability(items: values['items'])
+        return requestable_items if values['items'].blank?
+        values['items'].each do |item|
           item['location_code'] = location_code
           params = build_requestable_params(item: Item.new(item.with_indifferent_access), holding: Holding.new(mfhd_id: id.to_sym.to_s, holding_data: holdings[id]),
                                             location:)
@@ -161,42 +160,14 @@ module Requests
         requestable_items
       end
 
-      def build_barcode_sort(items:, availability_data:)
-        barcodesort = {}
-        items.each do |item|
-          item[:status_label] = status_label(item:, availability_data:)
-          barcodesort[item['barcode']] = item
-        end
-        availability_data.each do |item|
-          barcode_item = barcodesort[item['itemBarcode']]
-          next if barcode_item.blank? || barcode_item["status_source"] == "work_order" || item['errorMessage'].present?
-          barcode_item['status_label'] = item['itemAvailabilityStatus']
-          barcode_item['status'] = nil
-        end
-        barcodesort
-      end
-
-      # :reek:DuplicateMethodCall
-      def status_label(item:, availability_data:)
-        item_object = Item.new item
-        if item_object.not_a_work_order? && availability_data.empty?
-          "Unavailable"
-        elsif item_object.not_a_work_order? && item_object.status_label == 'Item in place' && availability_data.size == 1 && availability_data.first['errorMessage'] == "Bib Id doesn't exist in SCSB database."
-          "In Process"
-        else
-          item_object.status_label
-        end
-      end
-
       # @return [Array<Requests::Requestable>] array containing Requests::Requestables
       def build_requestable_with_items
         requestable_items = []
-        barcodesort = {}
-        barcodesort = build_barcode_sort(items: items[mfhd], availability_data: availability_data(system_id)) if recap?
+        items[mfhd] = RecapItemAvailability.new(id: system_id, scsb_location:).items_with_availability(items: items[mfhd]) if recap?
         # items from the availability lookup using the Bibdata Service
         items.each do |holding_id, mfhd_items|
           next if mfhd != holding_id
-          requestable_items = build_requestable_from_mfhd_items(requestable_items:, holding_id:, mfhd_items:, barcodesort:)
+          requestable_items = build_requestable_from_mfhd_items(requestable_items:, holding_id:, mfhd_items:)
         end
         requestable_items.compact
       end
@@ -209,10 +180,10 @@ module Requests
         [build_requestable_from_holding(@mfhd, holdings[@mfhd].with_indifferent_access)]
       end
 
-      def build_requestable_from_mfhd_items(requestable_items:, holding_id:, mfhd_items:, barcodesort:)
+      def build_requestable_from_mfhd_items(requestable_items:, holding_id:, mfhd_items:)
         if !mfhd_items.empty?
           mfhd_items.each do |item|
-            requestable_items << build_requestable_mfhd_item(holding_id, item, barcodesort)
+            requestable_items << build_requestable_mfhd_item(holding_id, item)
           end
         else
           requestable_items << build_requestable_from_holding(holding_id, holdings[holding_id])
@@ -229,9 +200,8 @@ module Requests
       end
 
       # Item we get from the 'load_items' live call to bibdata
-      def build_requestable_mfhd_item(holding_id, item, barcodesort)
+      def build_requestable_mfhd_item(holding_id, item)
         return if item['on_reserve'] == 'Y'
-        item['status_label'] = barcodesort[item['barcode']][:status_label] unless barcodesort.empty?
         item_current_location = item_current_location(item)
         params = build_requestable_params(
           item: Item.new(item.with_indifferent_access),

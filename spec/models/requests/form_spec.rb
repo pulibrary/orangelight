@@ -768,9 +768,9 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
         expect(request_scsb.requestable.size).to eq(1)
       end
     end
-    describe '#other_id' do
-      it 'provides an other id value' do
-        expect(request_scsb.other_id).to eq('5992543')
+    describe '#scsb_internal_id' do
+      it 'provides the scsb internal id from the other_id_s value in the solr document' do
+        expect(request_scsb.scsb_internal_id).to eq('5992543')
       end
     end
     describe '#scsb_owning_institution' do
