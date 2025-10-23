@@ -782,7 +782,6 @@ detectors:
     - ApplicationHelper#alma_library_display
     - ApplicationHelper#alma_location_display
     - ApplicationHelper#bibdata_location_code_to_sym
-    - ApplicationHelper#current_year
     - ApplicationHelper#format_render
     - ApplicationHelper#holding_location
     - ApplicationHelper#html_safe

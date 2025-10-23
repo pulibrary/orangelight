@@ -232,10 +232,6 @@ module ApplicationHelper
     args[:document][args[:field]].each_with_index { |v, i| args[:document][args[:field]][i] = v.html_safe }
   end
 
-  def current_year
-    DateTime.now.year
-  end
-
   # Construct an adapter for Solr Documents and the bib. data service
   # @return [HoldingRequestsAdapter]
   def holding_requests_adapter
