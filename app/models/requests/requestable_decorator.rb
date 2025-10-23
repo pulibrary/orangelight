@@ -144,10 +144,6 @@ module Requests
       end
     end
 
-    def no_services?
-      !(digitize? || pick_up? || aeon? || ill_eligible? || in_library_use_required? || request? || on_shelf? || off_site?)
-    end
-
     def location
       Location.new requestable.location
     end
