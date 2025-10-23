@@ -51,6 +51,7 @@ RSpec.describe Requests::RequestablesList, :requests do
     expect(list.to_a.length).to eq 1
     expect(list.to_a.first.item).to be_a Requests::TooManyItemsPlaceholderItem
   end
+
   it 'creates requestables for Alma items' do
     stub_single_holding_location 'stokes$nb'
     stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/99999/holdings/123/availability.json")
@@ -69,6 +70,27 @@ RSpec.describe Requests::RequestablesList, :requests do
     expect(list.to_a.length).to eq 1
     expect(list.to_a.first.barcode).to eq 'my-barcode'
     expect(list.to_a.first).to be_available
+  end
+
+  it 'creates a requestable with the permanent location for Alma items in the temporary RES_SHARE$IN_RS_REQ location' do
+    stub_single_holding_location 'firestone$stacks'
+    stub_single_holding_location 'RES_SHARE$IN_RS_REQ'
+    stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/99999/holdings/123/availability.json")
+      .to_return(body: '[{"barcode":"my-barcode","status":"Unavailable","status_label":"Resource Sharing Request","location":"RES_SHARE$IN_RS_REQ","in_temp_library":true,"temp_library_code":"RES_SHARE","temp_location_code":"RES_SHARE$IN_RS_REQ"}]')
+    items = [{ barcode: 'my-barcode', holding_id: '123' }]
+    holdings = { '123' => { library: 'Firestone Library', items: } }
+
+    list = described_class.new(
+      document: SolrDocument.new(id: '99999', holdings_1display: holdings.to_json),
+      holdings:,
+      location: { code: 'firestone$stacks', label: 'Firestone Stacks' },
+      mfhd: '123',
+      patron: FactoryBot.build(:patron)
+    )
+
+    expect(list.to_a.length).to eq 1
+    expect(list.to_a.first.barcode).to eq 'my-barcode'
+    expect(list.to_a.first.location[:code]).to eq 'firestone$stacks'
   end
 
   it 'creates requestables for SCSB items' do
