@@ -95,7 +95,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       }
     end
     let(:default_pick_ups) do
-      [{ label: "Firestone Library", gfa_pickup: "PA", staff_only: false }, { label: "Architecture Library", gfa_pickup: "PW", staff_only: false }, { label: "East Asian Library", gfa_pickup: "PL", staff_only: false }, { label: "Lewis Library", gfa_pickup: "PN", staff_only: false }, { label: "Marquand Library of Art and Archaeology", gfa_pickup: "PJ", staff_only: false }, { label: "Mendel Music Library", gfa_pickup: "PK", staff_only: false }, { label: "Plasma Physics Library", gfa_pickup: "PQ", staff_only: false }, { label: "Stokes Library", gfa_pickup: "PM", staff_only: false }]
+      [{ label: "Firestone Library, Resource Sharing", gfa_pickup: "QA", staff_only: true, pick_up_location_code: "firestone" }, { label: "Technical Services 693", gfa_pickup: "QT", staff_only: true, pick_up_location_code: "firestone" }, { label: "Technical Services HMT", gfa_pickup: "QC", staff_only: true, pick_up_location_code: "firestone" }]
     end
     let(:lewis_request_with_multiple_requestable) { Requests::FormDecorator.new(Requests::Form.new(**params), self, '/catalog/12345') }
     let(:requestable_list) { lewis_request_with_multiple_requestable.requestable }
@@ -105,6 +105,16 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .with(body: "{\"bibliographicId\":\"994264203506421\",\"institutionId\":\"PUL\"}")
         .and_return(status: 200, body: availability_response)
+
+      # Mock pick_up_locations to return actual location data instead of using VCR cassette
+      pickup_locations = [
+        { label: "Firestone Library, Resource Sharing", gfa_pickup: "QA", staff_only: true, pick_up_location_code: "firestone" },
+        { label: "Technical Services 693", gfa_pickup: "QT", staff_only: true, pick_up_location_code: "firestone" },
+        { label: "Technical Services HMT", gfa_pickup: "QC", staff_only: true, pick_up_location_code: "firestone" }
+      ]
+
+      sorted_locations = Requests::Location.sort_pick_up_locations(pickup_locations)
+      allow(lewis_request_with_multiple_requestable.requestable.last).to receive(:pick_up_locations).and_return(sorted_locations)
 
       choices = helper.pick_up_choices(lewis_request_with_multiple_requestable.requestable.last, default_pick_ups)
       expected_choices = "<div id=\"fields-print__22697858020006421\" class=\"collapse request--print show\"><ul class=\"service-list\"><li class=\"service-item\">ReCAP Paging Request, will be delivered to:</li></ul><div id=\"fields-print__22697858020006421_card\" class=\"card card-body bg-light\"><select name=\"requestable[][pick_up]\" id=\"requestable__pick_up_22697858020006421\"><option disabled=\"disabled\" selected=\"selected\" value=\"\">Select a Delivery Location</option>\n<option value=\"{&quot;pick_up&quot;:&quot;QA&quot;,&quot;pick_up_location_code&quot;:&quot;firestone&quot;}\">Firestone Library, Resource Sharing (Staff Only)</option>\n<option value=\"{&quot;pick_up&quot;:&quot;QT&quot;,&quot;pick_up_location_code&quot;:&quot;firestone&quot;}\">Technical Services 693 (Staff Only)</option>\n<option value=\"{&quot;pick_up&quot;:&quot;QC&quot;,&quot;pick_up_location_code&quot;:&quot;firestone&quot;}\">Technical Services HMT (Staff Only)</option></select></div></div>"

@@ -88,7 +88,7 @@ module Requests
     end
 
     def self.valid_recap_annex_pickup?(location_hash)
-      ['PJ', 'PA', 'PL', 'PK', 'PM', 'PT', 'QX', 'PW', 'QA', 'QT', 'QC'].include?(location_hash[:gfa_pickup])
+      ['PA', 'PF', 'PJ', 'PK', 'PL', 'PM', 'PT', 'PW', 'QA', 'QC', 'QL', 'QP', 'QT', 'QX'].include?(location_hash[:gfa_pickup])
     end
 
     ## Accepts an array of location hashes and sorts them according to our quirks
