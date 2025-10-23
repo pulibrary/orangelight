@@ -2,10 +2,6 @@
 # rubocop:disable Metrics/ModuleLength
 module Requests
   module ApplicationHelper
-    def format_email(email)
-      email&.downcase
-    end
-
     def format_label(key)
       label = key.to_s
       human_label = label.tr('_', ' ')
