@@ -1,0 +1,110 @@
+{
+    "label": "Stacks",
+    "code": "firestone$stacks",
+    "aeon_location": false,
+    "recap_electronic_delivery_location": false,
+    "open": true,
+    "requestable": true,
+    "always_requestable": false,
+    "circulates": true,
+    "remote_storage": "",
+    "fulfillment_unit": "General",
+    "library": {
+        "label": "Firestone Library",
+        "code": "firestone",
+        "order": 0
+    },
+    "holding_library": null,
+    "delivery_locations": [
+        {
+            "label": "Architecture Library",
+            "address": "School of Architecture Building, Second Floor Princeton, NJ 08544",
+            "phone_number": "609-258-3256",
+            "contact_email": "ues@princeton.edu",
+            "gfa_pickup": "PW",
+            "staff_only": false,
+            "pickup_location": true,
+            "digital_location": true,
+            "library": {
+                "label": "Architecture Library",
+                "code": "arch",
+                "order": 0
+            }
+        },
+        {
+            "label": "East Asian Library",
+            "address": "Frist Campus Center, Room 317 Princeton, NJ 08544",
+            "phone_number": "609-258-3182",
+            "contact_email": "gestcirc@princeton.edu",
+            "gfa_pickup": "PL",
+            "staff_only": false,
+            "pickup_location": true,
+            "digital_location": true,
+            "library": {
+                "label": "East Asian Library",
+                "code": "eastasian",
+                "order": 0
+            }
+        },
+        {
+            "label": "Engineering Library",
+            "address": "Friend Center for Engineering Education Princeton, NJ 08544",
+            "phone_number": "609-258-3200",
+            "contact_email": "englib@princeton.edu",
+            "gfa_pickup": "PT",
+            "staff_only": false,
+            "pickup_location": true,
+            "digital_location": true,
+            "library": {
+                "label": "Engineering Library",
+                "code": "engineer",
+                "order": 0
+            }
+        },
+        {
+            "label": "Mendel Music Library",
+            "address": "Woolworth Center Princeton, NJ 08544",
+            "phone_number": "609-258-3230",
+            "contact_email": "muslib@princeton.edu",
+            "gfa_pickup": "PK",
+            "staff_only": false,
+            "pickup_location": true,
+            "digital_location": true,
+            "library": {
+                "label": "Mendel Music Library",
+                "code": "mendel",
+                "order": 0
+            }
+        },
+        {
+            "label": "Stokes Library",
+            "address": "Wallace Hall, Lower Level Princeton, NJ 08544",
+            "phone_number": "609-258-5455",
+            "contact_email": "piaprlib@princeton.edu",
+            "gfa_pickup": "PM",
+            "staff_only": false,
+            "pickup_location": true,
+            "digital_location": true,
+            "library": {
+                "label": "Stokes Library",
+                "code": "stokes",
+                "order": 0
+            }
+        },
+        {
+            "label": "Firestone Library",
+            "address": "One Washington Rd. Princeton, NJ 08544",
+            "phone_number": "609-258-1470",
+            "contact_email": "fstcirc@princeton.edu",
+            "gfa_pickup": "PA",
+            "staff_only": false,
+            "pickup_location": true,
+            "digital_location": true,
+            "library": {
+                "label": "Firestone Library",
+                "code": "firestone",
+                "order": 0
+            }
+        }
+    ]
+}

@@ -78,6 +78,7 @@ module Requests
           # Calls Requests::BibdataService to get the delivery_locations
           # :reek:TooManyStatements
           def item_current_location(item)
+            # rubocop:disable Lint/DuplicateBranch
             item_location_code = if item['in_temp_library']
                                    item['temp_location_code']
                                  else
@@ -85,12 +86,19 @@ module Requests
                                  end
             current_location = if item_location_code == location_code
                                  location
+                               # Items that are checked out to a patron at another library via ILL (in alma they have the temp location of RES_SHARE$IN_RS_REQ)
+                               # These items are indexed as permanent locations, even though they are actually in a temporary location.  We want these items to
+                               # use the lending and pickup rules of their permanent location.
+                               # See https://github.com/pulibrary/bibdata/blob/main/docs/temporary_locations.md#case-2
+                               elsif Item.new(item).in_resource_sharing?
+                                 location
                                else
                                  temp_locations.retrieve(item_location_code)
                                end
             current_location_object = Location.new current_location
             current_location["delivery_locations"] = current_location_object.build_delivery_locations if current_location_object.delivery_locations.present?
             current_location
+            # rubocop:enable Lint/DuplicateBranch
           end
 
           attr_reader :document, :holdings, :location, :mfhd, :patron
