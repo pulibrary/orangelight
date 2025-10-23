@@ -809,7 +809,6 @@ detectors:
     - Requests::ApplicationHelper#format_label
     - Requests::ApplicationHelper#gfa_lookup
     - Requests::ApplicationHelper#guest_user_error?
-    - Requests::ApplicationHelper#isbn_string
     - Requests::ApplicationHelper#pick_up_classlist
     - Requests::ApplicationHelper#submit_message
     - Requests::ApplicationHelper#suppress_login?
