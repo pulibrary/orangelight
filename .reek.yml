@@ -150,7 +150,6 @@ detectors:
     - Requests::Scsb#scsb_request
     - Orangelight::RecordMailer#email_record
     - Requests::AeonUrl#ctx_with_item_info
-    - Requests::Form#build_requestable_from_data
     - Requests::Form#initialize
     - Requests::Form#serial?
     - Requests::Illiad#au_params
@@ -463,8 +462,6 @@ detectors:
     - Requests::RequestMailer#confirmation_email
     - Requests::RequestMailer#request_email
     - RecordFeedbackFormSubmission#initialize
-    - Requests::Form#build_holding_scsb_items
-    - Requests::Form#build_requestable_from_mfhd_items
     - Requests::Illiad#get_identifier
     - Requests::Illiad#illiad_query_parameters
     - Requests::IlliadMetadata::Metadata#initialize
@@ -672,8 +669,6 @@ detectors:
     - Requests::Scsb#scsb_request
     - Orangelight::RecordMailer#email_record
     - Requests::AeonUrl#ctx_with_item_info
-    - Requests::Form#build_holding_scsb_items
-    - Requests::Form#build_requestable_with_items
     - Requests::Form#route_requests
     - Requests::FormDecorator#any_fill_in_eligible?
     - Requests::Illiad#get_identifier
@@ -831,8 +826,6 @@ detectors:
     - Requests::Scsb#scsb_owning_institution
     - Requests::Scsb#scsb_request_map
     - EngineeringSearchBuilder#switch_request_handler
-    - Requests::Form#build_requestable_location
-    - Requests::Form#items_to_symbols
     - Requests::Illiad#au_params
     - Requests::Illiad#genere
     - Requests::IlliadMetadata::ArticleExpress#volume_number
