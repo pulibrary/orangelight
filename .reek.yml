@@ -745,7 +745,6 @@ detectors:
     - Blacklight::Marc::DocumentExtension#get_author_list
     - Blacklight::Marc::DocumentExtension#load_marc
     - Requests::Aeon#aeon_mapped_params
-    - Requests::Form#ill_eligible?
     - Requests::IlliadMetadata::Metadata
     - Requests::Location#build_delivery_locations
     - Requests::Submission#selected_items

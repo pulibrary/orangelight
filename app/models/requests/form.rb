@@ -85,12 +85,6 @@ module Requests
       }
     end
 
-    # Calls Requests::BibdataService to get the delivery_locations
-
-    def ill_eligible?
-      requestable.any? { |r| r.services.include? 'ill' }
-    end
-
     # Catalog records that we have indexed from SCSB will have a SCSB internal id (for example: .b22165219x)
     # Alma records do not have this
     def scsb_internal_id
