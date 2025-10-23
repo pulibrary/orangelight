@@ -34,7 +34,11 @@ module Requests
           end
 
           def location_code
-            location['code'] if location
+            location_object.code
+          end
+
+          def location_object
+            @location_object ||= Location.new(location)
           end
 
           def scsb_location
