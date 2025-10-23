@@ -164,7 +164,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     let(:solr_context) { instance_double(Requests::SolrOpenUrlContext) }
     context "lewis library" do
       let(:stubbed_questions) do
-        { services: ['on_shelf'], no_services?: false, charged?: false, aeon?: false,
+        { services: ['on_shelf'], charged?: false, aeon?: false,
           on_shelf?: true, ill_eligible?: false,
           location: { library: { label: "Lewis Library" } } }
       end
@@ -175,7 +175,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     end
 
     context "lewis library charged" do
-      let(:stubbed_questions) { { charged?: true, aeon?: false, on_shelf?: false, ask_me?: false, no_services?: false } }
+      let(:stubbed_questions) { { charged?: true, aeon?: false, on_shelf?: false, ask_me?: false } }
       it 'a message for lewis charged' do
         expect(helper).to receive(:render).with(partial: 'checked_out_options', locals: { requestable: }).and_return('partial rendered')
         expect(helper.show_service_options(requestable, 'acb')).to eq "partial rendered"
@@ -184,7 +184,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
 
     context "on shelf" do
       let(:stubbed_questions) do
-        { services: ['on_shelf'], no_services?: false, charged?: false, aeon?: false,
+        { services: ['on_shelf'], charged?: false, aeon?: false,
           alma_managed?: false, ask_me?: false, on_shelf?: true, ill_eligible?: false,
           location: { library: { label: 'abc' } } }
       end
