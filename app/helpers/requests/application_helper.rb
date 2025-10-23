@@ -433,10 +433,6 @@ module Requests
         label = label_tag id, "Pick-up location: #{location[:label]}", class: 'single-pick-up', style: style.to_s
         hidden + label
       end
-
-      def aeon_base
-        Requests.config[:aeon_base]
-      end
   end
 end
 # rubocop:enable Metrics/ModuleLength
