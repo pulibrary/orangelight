@@ -164,10 +164,6 @@ module Requests
       hidden
     end
 
-    def isbn_string(array_of_isbns)
-      array_of_isbns.join(',')
-    end
-
     def suppress_login?(request)
       request.only_aeon?
     end

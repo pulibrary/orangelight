@@ -14,19 +14,6 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     Requests::Patron.new(user:, patron_hash: valid_patron)
   end
 
-  describe '#isbn_string' do
-    let(:isbns) do
-      [
-        '9780544343757',
-        '179758877'
-      ]
-    end
-    let(:isbn_string) { helper.isbn_string(isbns) }
-    it 'returns a list of formatted isbns' do
-      expect(isbn_string).to eq('9780544343757,179758877')
-    end
-  end
-
   describe '#submit_disabled' do
     let(:user) { FactoryBot.build(:user) }
     let(:params) do
