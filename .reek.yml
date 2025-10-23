@@ -799,7 +799,6 @@ detectors:
     - BlacklightHelper#render_icon
     - Orangelight::BrowsablesHelper#bib_for_availability
     - Orangelight::BrowsablesHelper#vocab_type
-    - Requests::ApplicationHelper#aeon_base
     - Requests::ApplicationHelper#available_pick_ups
     - Requests::ApplicationHelper#check_box_selected?
     - Requests::ApplicationHelper#current_location_label
