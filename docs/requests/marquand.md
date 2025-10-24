@@ -1,9 +1,9 @@
 # Marquand requests integration
 
 ## Sequence of a request
-All Marquand items are classified as in remote storage through at least Jan 2026, until the Marquand library reopens.
+All Marquand items are back on campus but shipped to Firestone for use through at least Jan 2026, until the Marquand library reopens.
 
-### Requests for items in remote storage (on campus)
+### Requests for "remote" items in on campus storage
 A Marquand request for an item in on campus storage goes through the following steps:
 
 1. Patron presses the "Request" button
