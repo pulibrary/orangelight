@@ -4,7 +4,7 @@ require 'faraday'
 module Requests
   # This class is responsible for assembling the data to display the Requests form
   class Form
-    attr_reader :system_id, :mfhd, :patron, :requestable, :requestable_unrouted, :holdings, :location, :location_code, :pick_ups
+    attr_reader :system_id, :mfhd, :requestable, :requestable_unrouted, :holdings, :location, :location_code, :pick_ups
     alias default_pick_ups pick_ups
     delegate :eligible_for_library_services?, to: :patron
     delegate :items, :too_many_items?, to: :requestables_list
@@ -14,14 +14,14 @@ module Requests
 
     # @option opts [String] :system_id A bib record id or a special collection ID value
     # @option opts [Fixnum] :mfhd alma holding id
-    # @option opts [Patron] :patron current Patron object
-    def initialize(system_id:, mfhd:, patron: nil)
+    # @option opts [Patron] :patron_request an Async request that will resolve to the current patron
+    def initialize(system_id:, mfhd:, patron_request: nil)
       @system_id = system_id
       @holdings = JSON.parse(doc[:holdings_1display] || '{}')
       # scsb items are the only ones that come in without a MFHD parameter from the catalog now
       # set it for them, because they only ever have one location
       @mfhd = mfhd || @holdings.keys.first
-      @patron = patron
+      @patron_request = patron_request
       @location_code = @holdings[@mfhd]["location_code"] if @holdings[@mfhd].present?
       @location = load_bibdata_location
       @pick_ups = build_pick_ups
@@ -77,7 +77,11 @@ module Requests
       @doc ||= SolrDocument.new(solr_doc(system_id))
     end
 
+    delegate :patron, to: :patron_request
+
     private
+
+      attr_reader :patron_request
 
       def load_bibdata_location
         return if location_code.blank?

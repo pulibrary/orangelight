@@ -1,4 +1,4 @@
-<% if !@user.guest && @patron.blank? %>
+<% if !@user.guest && @patron_request.patron.blank? %>
   <%= render partial: 'auth_user_lookup_fail' %>
 <% else %>
   <%= render partial: 'request_form' %>

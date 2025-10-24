@@ -19,14 +19,14 @@ module Requests
 
       @user = current_or_guest_user
 
-      @patron = Patron.authorize(user: @user)
-      patron_errors = @patron.errors
-      flash.now[:error] = patron_errors.join(", ") if patron_errors.present?
+      @patron_request = AsyncPatronRequest.new(user: @user)
 
       @title = "Request ID: #{system_id}"
 
       # needed to see if we can suppress login for this item
-      @request = FormDecorator.new(Requests::Form.new(system_id:, mfhd:, patron: @patron), view_context, @back_to_record_url)
+      @request = FormDecorator.new(Requests::Form.new(system_id:, mfhd:, patron_request: @patron_request), view_context, @back_to_record_url)
+      patron_errors = @patron_request.patron.errors
+      flash.now[:error] = patron_errors.join(", ") if patron_errors.present?
     rescue ActionController::ParameterMissing
       render 'requests/form/no_location_specified'
     end
