@@ -244,6 +244,10 @@ class SolrDocument
     (doc_electronic_access.length + electronic_portfolios.length).positive?
   end
 
+  def holdings_1display
+    @holdings_1display ||= JSON.parse(self[:holdings_1display] || '{}', symbolize_names: true)
+  end
+
   private
 
     def electronic_access_uris

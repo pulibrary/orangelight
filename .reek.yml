@@ -722,7 +722,7 @@ detectors:
     - Orangelight::ProcessVocabularyComponent#build_search_subject_links
     - BookmarksController#csv_bom
     - BookmarksController#two_values
-    - Orangelight::Catalog#online_holding_note?
+    - Orangelight::Catalog#show_location_has?
     - ApplicationHelper#action_notes_display
     - ApplicationHelper#html_safe
     - ApplicationHelper#location_has
@@ -768,7 +768,7 @@ detectors:
     - ApplicationController#referrer_from_url
     - BookmarksController#csv_bom
     - BookmarksController#two_values
-    - Orangelight::Catalog#online_holding_note?
+    - Orangelight::Catalog#show_location_has?
     - Orangelight::BrowsablesController#validate_rpp
     - Requests::FormController#sanitize
     - FeedbackForm#error_message
