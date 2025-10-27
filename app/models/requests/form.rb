@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-require 'faraday'
 
 module Requests
   # This class is responsible for assembling the data to display the Requests form
