@@ -10,8 +10,8 @@
   <% if flash[type] %>
       <% if !@submission.nil? %>
         <div class="alert <%= alert_class %>" aria-live="polite"><%= flash[type] %>
+          <button class="close" data-bs-dismiss="alert">&times;</button>
           <% if !@submission.errors.empty? %>
-            <button class="close" data-bs-dismiss="alert">&times;</button>
             <ul>
               <% @submission.errors.messages.each do |key, value| %>
                 <% if key == :items %>
