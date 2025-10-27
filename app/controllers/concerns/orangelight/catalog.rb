@@ -67,9 +67,9 @@ module Orangelight
       return current_user.email if current_or_guest_user.cas_provider?
     end
 
-    def online_holding_note?(_field_config, document)
-      location_notes = JSON.parse(document[:holdings_1display] || '{}').collect { |_k, v| v['location_has'] }
-      document[:electronic_access_1display].present? && location_notes.any? && document[:location].blank?
+    def show_location_has?(_field_config, document)
+      any_location_notes = document.holdings_1display.any? { |_key, value| value[:location_has] }
+      document[:electronic_access_1display].present? && any_location_notes && document[:location].blank?
     end
 
     def linked_records

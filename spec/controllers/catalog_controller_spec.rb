@@ -39,8 +39,8 @@ RSpec.describe CatalogController do
       expect(email).to be_nil
     end
   end
-  describe '#online_holding_note?' do
-    subject(:note) { described_class.new.online_holding_note?(nil, document) }
+  describe '#show_location_has?' do
+    subject(:note) { described_class.new.show_location_has?(nil, document) }
 
     let(:link) { 'field not blank' }
     let(:holdings) do
@@ -48,21 +48,21 @@ RSpec.describe CatalogController do
     end
 
     describe 'for document with link and holding note' do
-      let(:document) { { electronic_access_1display: link, holdings_1display: holdings } }
+      let(:document) { SolrDocument.new({ electronic_access_1display: link, holdings_1display: holdings }) }
 
       it 'returns true' do
         expect(note).to be true
       end
     end
     describe 'document with link missing holding note' do
-      let(:document) { { electronic_access_1display: link } }
+      let(:document) { SolrDocument.new({ electronic_access_1display: link }) }
 
       it 'returns false' do
         expect(note).to be false
       end
     end
     describe 'document missing link with holding note' do
-      let(:document) { { holdings_1display: holdings } }
+      let(:document) { SolrDocument.new({ holdings_1display: holdings }) }
 
       it 'returns false' do
         expect(note).to be false

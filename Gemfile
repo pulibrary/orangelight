@@ -91,6 +91,7 @@ gem 'yajl-ruby', '>= 1.3.1', require: 'yajl'
 gem 'yard'
 
 group :development do
+  gem 'benchmark-ips'
   gem 'capistrano', '~> 3.4', require: false
   gem 'capistrano-passenger'
   gem 'capistrano-rails'
