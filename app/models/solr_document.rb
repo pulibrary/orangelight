@@ -193,15 +193,12 @@ class SolrDocument
   end
 
   def in_a_special_collection?
-    holdings_1display = self['holdings_1display']
-    return true unless holdings_1display
+    return true if holdings_1display.blank?
 
-    JSON.parse(holdings_1display)
-        &.values
-        &.any? do |holding|
-          location_code = holding['location_code']
-          Bibdata.holding_locations.dig(location_code, 'aeon_location') if location_code
-        end
+    holdings_1display&.any? do |_holding_id, holding|
+      location_code = holding[:location_code]
+      holding_locations.dig(location_code, :aeon_location) if location_code
+    end
   end
 
   # host_id an Array of host id(s)
@@ -295,5 +292,9 @@ class SolrDocument
       params = { q: "id:#{RSolr.solr_escape(id)}" }
       solr_response = Blacklight.default_index.connection.get('select', params:)
       solr_response["response"]["docs"].first
+    end
+
+    def holding_locations
+      @holding_locations ||= Bibdata.holding_locations
     end
 end
