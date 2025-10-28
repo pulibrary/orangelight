@@ -11,13 +11,14 @@ describe Requests::Scsb, requests: true do
   let(:patron) do
     Requests::Patron.new(user:, patron_hash: valid_patron)
   end
+  let(:patron_request) { instance_double(Thread, value: patron) }
   let(:scsb_no_format) { file_fixture('../SCSB-7935196.json') }
   let(:location_code) { 'scsbnypl' }
   let(:params) do
     {
       system_id: 'SCSB-7935196',
       mfhd: nil,
-      patron:
+      patron_request:
     }
   end
   let(:request_scsb) { Requests::Form.new(**params) }
@@ -27,6 +28,8 @@ describe Requests::Scsb, requests: true do
   context 'with an authorized scsb key', vcr: { cassette_name: 'authorized_ol_authorized_bibdata_scsb_key', record: :none } do
     it 'is available' do
       stub_scsb_availability(bib_id: ".b106574619", institution_id: "NYPL", barcode: "33433088591924")
+      # build Requestables, which also loads the availability info from SCSB
+      request_scsb.requestable
       expect(first_item["barcode"]).to eq('33433088591924')
       expect(first_item["status_at_load"]).to eq("Available")
       expect(first_item[:status_label]).to be_nil
@@ -43,7 +46,7 @@ describe Requests::Scsb, requests: true do
         {
           system_id: bib_id,
           mfhd: nil,
-          patron:
+          patron_request:
         }
       end
       let(:first_item) { request_scsb.items[holding_id].first }
@@ -56,7 +59,7 @@ describe Requests::Scsb, requests: true do
       end
 
       it 'is in process' do
-        request_scsb
+        request_scsb.requestable
         expect(first_item["barcode"]).to eq('32101112612526')
         expect(first_item[:status_label]).to eq('In Process')
         expect(first_item["status_label"]).to eq('In Process')
@@ -73,6 +76,7 @@ describe Requests::Scsb, requests: true do
     end
     it 'is not available' do
       allow(Rails.logger).to receive(:error)
+      request_scsb.requestable
       expect(first_item["barcode"]).to eq('33433088591924')
       expect(first_item["status_at_load"]).to eq("Available")
       expect(first_item[:status_label]).to eq("Unavailable")

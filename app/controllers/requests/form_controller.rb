@@ -12,21 +12,22 @@ module Requests
     end
 
     def generate
+      # Patron can be slow to load, start loading it early
+      @user = current_or_guest_user
+      patron_request = Thread.new { Patron.authorize(user: @user) }
+
       system_id = sanitize(params[:system_id])
       mfhd = sanitize(params[:mfhd])
       params.require(:mfhd) unless system_id.starts_with?("SCSB") # there are not multiple locations for shared items so no MFHD is passed
       @back_to_record_url = BackToRecordUrl.new(params)
 
-      @user = current_or_guest_user
-
-      @patron = Patron.authorize(user: @user)
-      patron_errors = @patron.errors
-      flash.now[:error] = patron_errors.join(", ") if patron_errors.present?
-
       @title = "Request ID: #{system_id}"
 
       # needed to see if we can suppress login for this item
-      @request = FormDecorator.new(Requests::Form.new(system_id:, mfhd:, patron: @patron), view_context, @back_to_record_url)
+      @request = FormDecorator.new(Requests::Form.new(system_id:, mfhd:, patron_request:), view_context, @back_to_record_url)
+      @patron = patron_request.value
+      patron_errors = @patron.errors
+      flash.now[:error] = patron_errors.join(", ") if patron_errors.present?
     rescue ActionController::ParameterMissing
       render 'requests/form/no_location_specified'
     end

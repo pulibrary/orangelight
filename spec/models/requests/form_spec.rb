@@ -11,6 +11,10 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
   let(:patron) do
     Requests::Patron.new(user:, patron_hash: valid_patron)
   end
+  let(:patron_request) do
+    # Mocking Thread, because these tests deadlock if it is a real Thread
+    instance_double(Thread, value: patron)
+  end
 
   context "with a bad system_id" do
     let(:bad_system_id) { 'foo' }
@@ -18,7 +22,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: bad_system_id,
         mfhd: nil,
-        patron:
+        patron_request:
       }
     end
     let(:bad_request) { described_class.new(**params) }
@@ -42,7 +46,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '9960102253506421',
         mfhd: '22548491940006421',
-        patron:
+        patron_request:
       }
     end
     let(:request_with_reserve_items) { described_class.new(**params) }
@@ -59,7 +63,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '9988805493506421',
         mfhd: '22705318390006421',
-        patron:
+        patron_request:
       }
     end
     let(:request_with_holding_item) { described_class.new(**params) }
@@ -160,7 +164,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '9917917633506421',
         mfhd: '22720740220006421',
-        patron:
+        patron_request:
       }
     end
     let(:request_with_only_holding) { described_class.new(**params) }
@@ -188,7 +192,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '994909303506421',
         mfhd: '22584686190006421',
-        patron:
+        patron_request:
       }
     end
 
@@ -216,7 +220,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '9947589763506421',
         mfhd: '22656885190006421',
-        patron:
+        patron_request:
       }
     end
     let(:request_system_id_only_with_holdings) { described_class.new(**params) }
@@ -243,7 +247,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '9924784993506421',
         mfhd: '22708132010006421',
-        patron:
+        patron_request:
       }
     end
     let(:request_system_id_only_with_holdings_with_some_items) { described_class.new(**params) }
@@ -270,7 +274,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '9931805453506421',
         mfhd: '22705623210006421',
-        patron:
+        patron_request:
       }
     end
     let(:request_with_items_at_temp_locations) { described_class.new(**params) }
@@ -288,7 +292,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '9961959423506421',
         mfhd: '22525427880006421',
-        patron:
+        patron_request:
       }
     end
     let(:request_with_items_at_temp_locations) { described_class.new(**params) }
@@ -308,7 +312,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '9923858683506421',
         mfhd: nil,
-        patron:
+        patron_request:
       }
     end
     let(:request_with_only_system_id) { described_class.new(**params) }
@@ -325,7 +329,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '9947595913506421',
         mfhd: '22489764810006421',
-        patron:
+        patron_request:
       }
     end
     let(:request_with_only_system_id) { described_class.new(**params) }
@@ -344,7 +348,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '99103251433506421',
         mfhd: '22480270140006421',
-        patron:
+        patron_request:
       }
     end
     let(:request_with_on_order) { described_class.new(**params) }
@@ -390,7 +394,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '9920022063506421',
         mfhd: '22560993150006421',
-        patron:
+        patron_request:
       }
     end
     let(:request_with_missing) { described_class.new(**params) }
@@ -415,7 +419,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '9996272613506421',
         mfhd: '22529639530006421',
-        patron:
+        patron_request:
       }
     end
     let(:request) { described_class.new(**params) }
@@ -436,7 +440,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '9942430233506421',
         mfhd: '22600149340006421',
-        patron:
+        patron_request:
       }
     end
     let(:request_preservation) { described_class.new(**params) }
@@ -452,7 +456,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '9917917633506421',
         mfhd: '22720740220006421',
-        patron:
+        patron_request:
       }
     end
     let(:request) { described_class.new(**params) }
@@ -476,7 +480,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     let(:params) do
       {
         system_id: '996160863506421',
-        patron:,
+        patron_request:,
         mfhd: '22563389780006421'
       }
     end
@@ -502,7 +506,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '9996764833506421',
         mfhd: '22680107620006421',
-        patron:
+        patron_request:
       }
     end
     let(:request) { described_class.new(**params) }
@@ -532,7 +536,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '994264203506421',
         mfhd: '22697842050006421',
-        patron:
+        patron_request:
       }
     end
     let(:request) { described_class.new(**params) }
@@ -559,7 +563,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '9999074333506421',
         mfhd: '22578723910006421',
-        patron:
+        patron_request:
       }
     end
     let(:request) { described_class.new(**params) }
@@ -584,7 +588,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '994955013506421',
         mfhd: '22644665360006421',
-        patron:
+        patron_request:
       }
     end
     let(:request) { described_class.new(**params) }
@@ -600,7 +604,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '9948152393506421',
         mfhd: '22717671090006421',
-        patron:
+        patron_request:
       }
     end
     let(:request) { described_class.new(**params) }
@@ -616,7 +620,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '994952203506421',
         mfhd: '22644769680006421',
-        patron:
+        patron_request:
       }
     end
     let(:request) { described_class.new(**params) }
@@ -632,7 +636,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '9974943583506421',
         mfhd: '22711798720006421',
-        patron:
+        patron_request:
       }
     end
     let(:request) { described_class.new(**params) }
@@ -678,7 +682,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '9925693243506421',
         mfhd: '22554332290006421',
-        patron:
+        patron_request:
       }
     end
     let(:request) { described_class.new(**params) }
@@ -694,7 +698,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '994955013506421',
         mfhd: '22644665360006421',
-        patron:
+        patron_request:
       }
     end
     let(:request) { described_class.new(**params) }
@@ -710,7 +714,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '9919698813506421',
         mfhd: '22589919750006421',
-        patron:
+        patron_request:
       }
     end
     let(:request_with_optional_params) { described_class.new(**params) }
@@ -727,7 +731,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '9997123553506421',
         mfhd: '22586693240006421',
-        patron:
+        patron_request:
       }
     end
     let(:request_for_preservation) { described_class.new(**params) }
@@ -743,7 +747,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: '9946931463506421',
         mfhd: '22715350280006421',
-        patron:
+        patron_request:
       }
     end
     let(:request_with_single_aeon_holding) { described_class.new(**params) }
@@ -755,7 +759,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: 'SCSB-5290772',
         mfhd: nil,
-        patron:
+        patron_request:
       }
     end
     let(:request_scsb) { described_class.new(**params) }
@@ -791,7 +795,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: 'SCSB-5640725',
         mfhd: nil,
-        patron:
+        patron_request:
       }
     end
     let(:request_scsb) { described_class.new(**params) }
@@ -822,7 +826,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       {
         system_id: 'SCSB-7935196',
         mfhd: nil,
-        patron:
+        patron_request:
       }
     end
     let(:request_scsb) { described_class.new(**params) }
