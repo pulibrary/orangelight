@@ -16,7 +16,9 @@
     <% else %>
       <%= render Holdings::HoldingAvailabilityComponent.new(doc_id, holding_id, location_rules, temp_location_code) %>
     <% end %>
-
+    <% if mapable? %>
+      <%= render Holdings::LibmapButtonComponent.new(adapter, holding) %>
+    <% end %>
     <%= render(Holdings::LocationServicesComponent.new(adapter, holding_id, location_rules, holding, open_holdings)) %>
 </tr>
 
