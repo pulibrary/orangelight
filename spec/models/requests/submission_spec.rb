@@ -981,7 +981,7 @@ describe Requests::Submission, requests: true do
 
       expect(submission.patron.last_name).to eq 'Jónsdóttir'
       expect(submission.patron.first_name).to eq 'Jóna'
-      expect(submission.patron.cas_provider?).to be true
+      expect(submission.patron.cas_patron_group?).to be true
       expect(submission.email).to eq 'jj@princeton.edu'
     end
 

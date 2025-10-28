@@ -46,6 +46,11 @@ module Requests
       patron_hash[:patron_group]
     end
 
+    def cas_patron_group?
+      cas_patron_groups = %w[P REG GRAD SENR UGRD]
+      cas_patron_groups.include?(patron_group)
+    end
+
     def university_id
       patron_hash[:university_id] || user.uid
     end
