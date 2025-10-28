@@ -13,6 +13,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
   let(:patron) do
     Requests::Patron.new(user:, patron_hash: valid_patron)
   end
+  let(:patron_request) { instance_double(Thread, value: patron) }
 
   describe '#submit_disabled' do
     let(:user) { FactoryBot.build(:user) }
@@ -20,7 +21,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       {
         system_id: '9981794023506421',
         mfhd: '22591269990006421',
-        patron:
+        patron_request:
       }
     end
     let(:request_with_items_on_reserve) { Requests::Form.new(**params) }
@@ -37,7 +38,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
         {
           system_id: '9992220243506421',
           mfhd: '22558467250006421',
-          patron:
+          patron_request:
         }
       end
       it 'returns a boolean to enable submit for logged in user' do
@@ -56,7 +57,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
         {
           system_id: '9938488723506421',
           mfhd: '22522147400006421',
-          patron:
+          patron_request:
         }
       end
       it 'lewis is a submitable request' do
@@ -71,7 +72,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       {
         system_id: '994916543506421',
         mfhd: '22724990930006421',
-        patron:
+        patron_request:
       }
     end
     let(:default_pick_ups) do
@@ -91,7 +92,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       {
         system_id: '994264203506421',
         mfhd: '22697858020006421',
-        patron:
+        patron_request:
       }
     end
     let(:default_pick_ups) do
@@ -129,7 +130,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       {
         system_id: '9973529363506421',
         mfhd: '22667098870006421',
-        patron:
+        patron_request:
       }
     end
     let(:aeon_only_request) { Requests::FormDecorator.new(Requests::Form.new(**params), nil, '/catalog/12345') }

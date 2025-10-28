@@ -11,13 +11,14 @@ RSpec.describe Requests::Form, type: :model, requests: true do
   let(:patron) do
     Requests::Patron.new(user:, patron_hash: valid_patron)
   end
+  let(:patron_request) { Thread.new { patron } }
   context "with an object with a LOT of items" do
     let(:document_id) { '9933643713506421' }
     let(:params) do
       {
         system_id: document_id,
         mfhd: '22727480400006421',
-        patron:
+        patron_request:
       }
     end
     let(:request) { described_class.new(**params) }

@@ -8,6 +8,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
     let(:patron) do
       Requests::Patron.new(user:, patron_hash: valid_patron)
     end
+    let(:patron_request) { Thread.new { patron } }
 
     let(:scsb_single_holding_item) { file_fixture('../SCSB-2635660.json') }
     let(:location_code) { 'scsbcul' }
@@ -15,7 +16,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
       {
         system_id: 'SCSB-2635660',
         mfhd: nil,
-        patron:
+        patron_request:
       }
     end
     let(:scsb_availability_params) do
