@@ -36,6 +36,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
         stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
           .with(headers: { Accept: 'application/json', api_key: 'TESTME' }, body: scsb_availability_params)
           .to_return(status: 200, body: scsb_availability_response)
+        stub_delivery_locations
       end
 
       it "has ILL but not Recall as a request service option" do
