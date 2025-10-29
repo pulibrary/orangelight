@@ -145,9 +145,11 @@ describe Requests::FormController, type: :controller, vcr: { cassette_name: 'for
     end
 
     context "service error" do
+      let(:recap_with_errors) { instance_double(Requests::Submissions::Recap, errors: [{ type: 'recap_edd', error: 'Service unavailable' }], handle: {}, service_type: 'recap_edd', error_hash: { recap_edd: 'Service error occurred' }) }
+
       before { stub_request(:post, "#{Requests.config[:scsb_base]}/requestItem/requestItem").to_return(status: 400) }
+
       it 'returns an error' do
-        let(:recap_with_errors) { instance_double(Requests::Submissions::Recap, errors: [{ type: 'recap_edd', error: 'Service unavailable' }], handle: {}, service_type: 'recap_edd', error_hash: { recap_edd: 'Service error occurred' }) }
         requestable.first["library_code"] = "recap"
         requestable.first["delivery_mode_7391704"] = "edd"
 

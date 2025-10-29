@@ -85,6 +85,7 @@ describe('RequestFormHandler', () => {
   describe('displaySuccess', () => {
     it('should hide submit button and display success message in flash container', () => {
       const mockData = {
+        message: 'Request submitted!',
         success: true,
         flash_messages_html:
           '<div class="alert alert-success">Request submitted!</div>',
@@ -101,16 +102,19 @@ describe('RequestFormHandler', () => {
       const flashContainer = document.querySelector(
         '.flash_messages .container'
       );
+      console.log(flashContainer.innerHTML);
+      console.log(document.body.innerHTML);
       expect(flashContainer.querySelector('.alert-success')).toBeTruthy();
-      expect(flashContainer.querySelector('.alert-success').textContent).toBe(
-        'Request submitted!'
-      );
+      expect(
+        flashContainer.querySelector('.alert-success').textContent
+      ).toContain('Request submitted!');
     });
   });
 
   describe('displayErrors', () => {
     it('should display flash messages in flash container', () => {
       const mockData = {
+        message: 'Error occurred',
         success: false,
         flash_messages_html:
           '<div class="alert alert-danger">Error occurred</div>',
@@ -123,9 +127,9 @@ describe('RequestFormHandler', () => {
         '.flash_messages .container'
       );
       expect(flashContainer.querySelector('.alert-danger')).toBeTruthy();
-      expect(flashContainer.querySelector('.alert-danger').textContent).toBe(
-        'Error occurred'
-      );
+      expect(
+        flashContainer.querySelector('.alert-danger').textContent
+      ).toContain('Error occurred');
     });
 
     it('should display field-specific errors', () => {

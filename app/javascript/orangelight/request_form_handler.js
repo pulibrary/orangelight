@@ -181,13 +181,16 @@ class RequestFormHandler {
    * Display success message and update UI
    */
   displaySuccess(data) {
-    // Show success flash message in the flash messages container
-    if (data.flash_messages_html) {
+    if (data.message) {
       const flashContainer = this.getFlashContainer();
       if (flashContainer) {
-        flashContainer.insertAdjacentHTML(
-          'beforeend',
-          data.flash_messages_html
+        const successElement = document.createElement('div');
+        successElement.textContent = data.message;
+        flashContainer.appendChild(successElement);
+        successElement.classList.add('alert', 'alert-success');
+        successElement.insertAdjacentHTML(
+          `beforeend`,
+          `<button class='close' data-bs-dismiss='alert'>&times;</button>`
         );
       }
     }
@@ -206,18 +209,14 @@ class RequestFormHandler {
     if (data.flash_messages_html) {
       const flashContainer = this.getFlashContainer();
       if (flashContainer) {
-        flashContainer.insertAdjacentHTML(
+        const errorElement = document.createElement('div');
+        errorElement.textContent = data.message;
+        flashContainer.appendChild(errorElement);
+        errorElement.classList.add('alert', 'alert-danger');
+        errorElement.insertAdjacentHTML(
           'beforeend',
-          data.flash_messages_html
+          `<button class='close' data-bs-dismiss='alert'>&times;</button>`
         );
-      } else {
-        console.error('Could not create or find flash container!');
-        if (this.submitButton) {
-          this.submitButton.insertAdjacentHTML(
-            'beforebegin',
-            data.flash_messages_html
-          );
-        }
       }
     }
 
@@ -270,9 +269,16 @@ class RequestFormHandler {
   }
 
   displayGenericError(message) {
-    if (this.submitButton) {
-      const errorHtml = `<div class="alert alert-danger">${message}</div>`;
-      this.submitButton.insertAdjacentHTML('beforebegin', errorHtml);
+    const flashContainer = this.getFlashContainer();
+    if (flashContainer) {
+      const errorElement = document.createElement('div');
+      errorElement.classList.add('alert', 'alert-danger');
+      errorElement.textContent = message;
+      errorElement.insertAdjacentHTML(
+        'beforeend',
+        `<button class='close' data-bs-dismiss='alert'>&times;</button>`
+      );
+      flashContainer.appendChild(errorElement);
     }
   }
 
