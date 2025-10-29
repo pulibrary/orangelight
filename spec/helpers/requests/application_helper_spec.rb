@@ -29,6 +29,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     let(:request_with_items_on_reserve) { Requests::Form.new(**params) }
     let(:requestable_list) { request_with_items_on_reserve.requestable }
     let(:submit_button_disabled) { helper.submit_button_disabled?(requestable_list) }
+    before { stub_single_holding_location 'firestone$stacks' }
 
     it 'returns a boolean to disable/enable submit' do
       expect(submit_button_disabled).to be_truthy

@@ -371,6 +371,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     let(:eastasian) do
       { label: "East Asian Library", gfa_pickup: "PL", pick_up_location_code: "eastasian", staff_only: false }
     end
+    before { stub_single_holding_location 'firestone$stacks' }
 
     describe "#requestable" do
       it "has requestable items" do
@@ -408,6 +409,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       }
     end
     let(:request_with_missing) { described_class.new(**params) }
+    before { stub_single_holding_location 'firestone$stacks' }
 
     describe "#requestable" do
       it "has an requestable items" do
@@ -577,6 +579,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       }
     end
     let(:request) { described_class.new(**params) }
+    before { stub_single_holding_location 'firestone$stacks' }
 
     describe '#requestable' do
       it "has an requestable items" do
@@ -618,6 +621,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       }
     end
     let(:request) { described_class.new(**params) }
+    before { stub_single_holding_location 'firestone$stacks' }
     describe '#any_loanable_copies?' do
       it "has available copy" do
         expect(request.any_loanable_copies?).to be true
@@ -696,6 +700,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       }
     end
     let(:request) { described_class.new(**params) }
+    before { stub_single_holding_location 'firestone$stacks' }
     describe '#any_loanable_copies?' do
       it "has available copy" do
         expect(request.any_loanable_copies?).to be true
@@ -776,6 +781,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     before do
       stub_catalog_raw(bib_id: params[:system_id], type: 'scsb')
       stub_scsb_availability(bib_id: "5992543", institution_id: "CUL", barcode: 'CU11388110')
+      stub_single_holding_location 'scsbcul'
     end
     describe '#requestable' do
       it 'has one requestable item' do
@@ -812,6 +818,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     before do
       stub_catalog_raw(bib_id: 'SCSB-5640725', type: 'scsb')
       stub_scsb_availability(bib_id: "9488888", institution_id: "CUL", barcode: 'MR00429228')
+      stub_single_holding_location 'scsbcul'
     end
     describe '#requestable' do
       it 'has one requestable item' do

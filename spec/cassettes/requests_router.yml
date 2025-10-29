@@ -2,59 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/scsbcul.json
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.5.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx/1.19.10
-      Date:
-      - Fri, 06 Aug 2021 12:12:39 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      Access-Control-Allow-Headers:
-      - Origin, Content-Type, Accept, Authorization, Token
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Access-Control-Allow-Origin:
-      - "*"
-      Etag:
-      - W/"40e4e7cd658da7a6477d190d4383ab42"
-      X-Runtime:
-      - '0.009003'
-      Access-Control-Request-Method:
-      - GET
-      X-Request-Id:
-      - 2e942e4b-a249-4e55-a79f-5247665e0bf3
-      X-Powered-By:
-      - Phusion Passenger(R) 6.0.9
-    body:
-      encoding: UTF-8
-      string: '{"label":"","code":"scsbcul","aeon_location":false,"recap_electronic_delivery_location":true,"open":false,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"recap_rmt","library":{"label":"ReCAP","code":"recap","order":0},"holding_library":null,"hours_location":null,"delivery_locations":[{"label":"Firestone
-        Circulation Desk","address":"One Washington Rd. Princeton, NJ 08544","phone_number":"609
-        258-2345","contact_email":"fstcirc@princton.edu","gfa_pickup":"QX","staff_only":false,"pickup_location":false,"digital_location":false,"library":{"label":"Firestone
-        Library","code":"firestone","order":0}}]}'
-  recorded_at: Fri, 06 Aug 2021 12:12:39 GMT
-- request:
-    method: get
     uri: https://bibdata-staging.lib.princeton.edu/bibliographic/SCSB-2635660/holdings/2613391/availability.json
     body:
       encoding: US-ASCII

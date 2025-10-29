@@ -37,6 +37,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
           .with(headers: { Accept: 'application/json', api_key: 'TESTME' }, body: scsb_availability_params)
           .to_return(status: 200, body: scsb_availability_response)
         stub_delivery_locations
+        stub_single_holding_location 'scsbcul'
       end
 
       it "has ILL but not Recall as a request service option" do

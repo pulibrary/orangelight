@@ -236,59 +236,6 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:02:38 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/mudd$stacks.json
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.5.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx/1.19.10
-      Date:
-      - Fri, 06 Aug 2021 12:02:38 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      Access-Control-Allow-Headers:
-      - Origin, Content-Type, Accept, Authorization, Token
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Access-Control-Allow-Origin:
-      - "*"
-      Etag:
-      - W/"4a2c255c2d4dae5921d7f6f4be84d0ae"
-      X-Runtime:
-      - '0.008953'
-      Access-Control-Request-Method:
-      - GET
-      X-Request-Id:
-      - b62cee48-cbff-4b52-9385-408e395c137a
-      X-Powered-By:
-      - Phusion Passenger(R) 6.0.9
-    body:
-      encoding: UTF-8
-      string: '{"label":"Stacks","code":"mudd$stacks","aeon_location":true,"recap_electronic_delivery_location":false,"open":false,"requestable":true,"always_requestable":true,"circulates":false,"remote_storage":"","library":{"label":"Mudd
-        Manuscript Library","code":"mudd","order":0},"holding_library":null,"hours_location":null,"delivery_locations":[{"label":"Mudd
-        Manuscript Library","address":"65 Olden Street Princeton, NJ 08544","phone_number":"609-258-6345","contact_email":"mudd@princeton.edu","gfa_pickup":"PH","staff_only":false,"pickup_location":false,"digital_location":true,"library":{"label":"Mudd
-        Manuscript Library","code":"mudd","order":0}}]}'
-  recorded_at: Fri, 06 Aug 2021 12:02:38 GMT
-- request:
-    method: get
     uri: https://catalog.princeton.edu/catalog/9995768803506421/raw
     body:
       encoding: US-ASCII
