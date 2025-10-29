@@ -977,11 +977,11 @@ describe Requests::Submission, requests: true do
       user.save
     end
     it 'creates a submission with a patron' do
-      submission = described_class.new_from_hash({ 'patron' => { 'last_name' => 'Jónsdóttir', 'first_name' => 'Jóna', 'netid' => 'jj', 'active_email' => 'jj@princeton.edu' } })
+      submission = described_class.new_from_hash({ 'patron' => { 'last_name' => 'Jónsdóttir', 'first_name' => 'Jóna', 'netid' => 'jj', 'active_email' => 'jj@princeton.edu', 'patron_group' => 'REG' } })
 
       expect(submission.patron.last_name).to eq 'Jónsdóttir'
       expect(submission.patron.first_name).to eq 'Jóna'
-      expect(submission.patron.cas_provider?).to be true
+      expect(submission.patron.core_patron_group?).to be true
       expect(submission.email).to eq 'jj@princeton.edu'
     end
 

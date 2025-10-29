@@ -622,9 +622,16 @@ describe Requests::RequestableDecorator, requests: true do
         end
       end
     end
-    context "an Alma user" do
+    context "an Alma Affiliate user" do
       let(:user_flags) { { eligible_for_library_services?: true } }
       let(:user) { FactoryBot.build(:alma_patron) }
+      let(:affiliate_patron) do
+        { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
+          "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "Affiliate",
+          "patron_id" => "99999", "active_email" => "foo@princeton.edu",
+          ldap: }.with_indifferent_access
+      end
+      let(:patron) { Requests::Patron.new(user:, patron_hash: affiliate_patron) }
       context "at an open library" do
         let(:location) { { library_code: 'abc' } }
 
