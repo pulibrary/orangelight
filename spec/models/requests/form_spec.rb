@@ -16,6 +16,8 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     instance_double(Thread, value: patron)
   end
 
+  before { stub_delivery_locations }
+
   context "with a bad system_id" do
     let(:bad_system_id) { 'foo' }
     let(:params) do
@@ -198,6 +200,10 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
 
     let(:request_system_id_only_with_holdings_items) { described_class.new(**params) }
 
+    before do
+      stub_scsb_availability bib_id: '994909303506421', institution_id: 'PUL', barcode: '32101055804825'
+    end
+
     describe "#requestable" do
       it "has a list of request objects" do
         expect(request_system_id_only_with_holdings_items.requestable).to be_truthy
@@ -251,6 +257,10 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       }
     end
     let(:request_system_id_only_with_holdings_with_some_items) { described_class.new(**params) }
+
+    before do
+      stub_scsb_availability bib_id: '9924784993506421', institution_id: 'PUL', barcode: '32101105136228'
+    end
 
     describe "#requestable" do
       it "has a list of request objects" do
@@ -855,6 +865,8 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
         bibdata_availability_url = "#{Requests.config['bibdata_base']}/bibliographic/SCSB-7874204/holdings/8014468/availability.json"
         stub_request(:get, bibdata_availability_url)
           .to_return(status: 400)
+        stub_single_holding_location 'scsbnypl'
+        stub_scsb_availability bib_id: '.b195933230', institution_id: 'NYPL', barcode: '33433088494863'
         expect(request_scsb_multi_volume_manuscript.requestable[0].aeon_mapped_params.key?(:ItemVolume)).to be true
         expect(request_scsb_multi_volume_manuscript.requestable[0].aeon_mapped_params[:ItemVolume]).to eq('v. 2')
       end
