@@ -16,6 +16,8 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     instance_double(Thread, value: patron)
   end
 
+  before { stub_delivery_locations }
+
   context "with a bad system_id" do
     let(:bad_system_id) { 'foo' }
     let(:params) do
