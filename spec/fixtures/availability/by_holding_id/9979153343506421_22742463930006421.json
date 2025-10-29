@@ -1,0 +1,22 @@
+[
+    {
+        "barcode": "32101090972108",
+        "id": "23742463920006421",
+        "holding_id": "22742463930006421",
+        "copy_number": "1",
+        "status": "Available",
+        "status_label": "Item in place",
+        "status_source": "base_status",
+        "process_type": null,
+        "on_reserve": "N",
+        "item_type": "Closed",
+        "pickup_location_id": "marquand",
+        "pickup_location_code": "marquand",
+        "location": "marquand$pz",
+        "label": "Marquand Library - Remote Storage (ReCAP): Marquand Library Use Only Rare Books",
+        "description": "",
+        "enum_display": "",
+        "chron_display": "",
+        "in_temp_library": false
+    }
+]
