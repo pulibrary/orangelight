@@ -1,0 +1,190 @@
+{
+    "id": "9999998003506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Kelm, Orlando R., 1957-"
+    ],
+    "author_citation_display": [
+        "Kelm, Orlando R.",
+        "Victor, David A."
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"Victor, David A.\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Kelm, Orlando R.\"}",
+    "author_s": [
+        "Kelm, Orlando R., 1957-",
+        "Victor, David A., 1956-"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "The 7 keys to communicating in Brazil : an intercultural approach / Orlando R. Kelm, David A. Victor.",
+    "title_t": [
+        "The 7 keys to communicating in Brazil : an intercultural approach / Orlando R. Kelm, David A. Victor."
+    ],
+    "title_citation_display": [
+        "The 7 keys to communicating in Brazil : an intercultural approach"
+    ],
+    "compiled_created_t": [
+        "The 7 keys to communicating in Brazil : an intercultural approach / Orlando R. Kelm, David A. Victor."
+    ],
+    "pub_created_display": [
+        "Washington, DC : Georgetown University Press, [2017]",
+        "©2017"
+    ],
+    "pub_created_s": [
+        "Washington, DC : Georgetown University Press, [2017]",
+        "©2017"
+    ],
+    "pub_citation_display": [
+        "Washington, DC: Georgetown University Press"
+    ],
+    "publication_location_citation_display": [
+        "Washington, DC"
+    ],
+    "publisher_citation_display": [
+        "Georgetown University Press"
+    ],
+    "pub_date_display": [
+        "2017"
+    ],
+    "pub_date_start_sort": 2017,
+    "pub_date_end_sort": 2017,
+    "publication_date_citation_display": [
+        "2017"
+    ],
+    "cataloged_tdt": "2016-11-03T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "xxii, 211 pages : illustrations, maps ; 22 cm"
+    ],
+    "description_t": [
+        "xxii, 211 pages : illustrations, maps ; 22 cm"
+    ],
+    "number_of_pages_citation_display": [
+        "xxii, 211 pages"
+    ],
+    "geocode_display": [
+        "Brazil"
+    ],
+    "summary_note_display": [
+        "This book provides a practical set of guidelines for people wishing to communicate and do business in Brazil. Good communication requires more than knowing the language. Orlando Kelm and David Victor, seasoned cross-cultural trainers for businesspeople, provide a guide through Victor's LESCANT model (Language, Environment, Social Organization, Context, Authority, Nonverbal, and Time). Each chapter addresses one of these topics and demonstrates how to evaluate the difference in Brazil, presenting examples to help people avoid common communication mistakes. The book is generously peppered with photographs to provide visual examples. Kelm and Victor complete the book with a chapter of case studies--good and bad. They then gathered comments from various US professionals working in Brazil and Brazilians working with US professionals about the interactions in the case, providing helpful observations about the situation. The book straddles some language and communication topics, international relations, and reaches into the business community."
+    ],
+    "bib_ref_notes_display": [
+        "Includes bibliographical references (pages 197-199) and index."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "contents_display": [
+        "Brazilian language : that's a lot of Portuguese!",
+        "Brazilian environment : what a huge country!",
+        "Brazilian social organization : let's work on it together",
+        "Brazilian contexting : I'll call you, really I will",
+        "Brazilian authority conception : show me some of that jeitinho",
+        "Brazilian nonverbal communication : one kiss or two?",
+        "Brazilian temporal conception : come on over when you can",
+        "Case study : sitting secure in Latin America, Brazilian style."
+    ],
+    "lc_subject_display": [
+        "Business etiquette—Brazil",
+        "Business communication—Brazil",
+        "Corporate culture—Brazil",
+        "Intercultural communication—Brazil",
+        "Communication and culture—Brazil",
+        "National characteristics, Brazilian",
+        "Americans—Employment—Brazil"
+    ],
+    "subject_facet": [
+        "Business etiquette—Brazil",
+        "Business communication—Brazil",
+        "Corporate culture—Brazil",
+        "Intercultural communication—Brazil",
+        "Communication and culture—Brazil",
+        "National characteristics, Brazilian",
+        "Americans—Employment—Brazil"
+    ],
+    "lc_subject_facet": [
+        "Business etiquette",
+        "Business etiquette—Brazil",
+        "Business communication",
+        "Business communication—Brazil",
+        "Corporate culture",
+        "Corporate culture—Brazil",
+        "Intercultural communication",
+        "Intercultural communication—Brazil",
+        "Communication and culture",
+        "Communication and culture—Brazil",
+        "National characteristics, Brazilian",
+        "Americans",
+        "Americans—Employment",
+        "Americans—Employment—Brazil"
+    ],
+    "related_name_json_1display": "{\"Author\":[\"Victor, David A., 1956-\"]}",
+    "other_title_display": [
+        "Seven keys to communicating in Brazil"
+    ],
+    "alt_title_246_display": [
+        "Seven keys to communicating in Brazil"
+    ],
+    "isbn_display": [
+        "9781626163522 ((pb ; : alk. paper))",
+        "1626163529 ((pb ; : alk. paper))",
+        "9781626163515 ((hc ; : alk. paper))",
+        "1626163510 ((hc ; : alk. paper))"
+    ],
+    "lccn_display": [
+        "  2015048675"
+    ],
+    "lccn_s": [
+        "2015048675"
+    ],
+    "isbn_s": [
+        "9781626163522",
+        "9781626163515"
+    ],
+    "oclc_s": [
+        "933219046"
+    ],
+    "other_version_s": [
+        "9781626163522",
+        "9781626163515",
+        "9781626163539",
+        "ocn933219046"
+    ],
+    "holdings_1display": "{\"22480198860006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"HF5389.3.B7 K45 2017\",\"call_number_browse\":\"HF5389.3.B7 K45 2017\",\"items\":[{\"holding_id\":\"22480198860006421\",\"id\":\"23480198850006421\",\"status_at_load\":\"1\",\"barcode\":\"32101099186403\",\"copy_number\":\"0\"}]}}",
+    "location_code_s": [
+        "recap$pa"
+    ],
+    "location": [
+        "ReCAP"
+    ],
+    "location_display": [
+        "Remote Storage"
+    ],
+    "advanced_location_s": [
+        "recap$pa",
+        "ReCAP"
+    ],
+    "name_title_browse_s": [
+        "Kelm, Orlando R., 1957-. The 7 keys to communicating in Brazil"
+    ],
+    "call_number_display": [
+        "HF5389.3.B7 K45 2017"
+    ],
+    "call_number_browse_s": [
+        "HF5389.3.B7 K45 2017"
+    ],
+    "call_number_locator_display": [
+        "HF5389.3.B7 K45 2017"
+    ]
+}

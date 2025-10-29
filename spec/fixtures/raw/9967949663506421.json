@@ -1,0 +1,135 @@
+{
+    "id": "9967949663506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Partido Socialista (Argentina)"
+    ],
+    "author_citation_display": [
+        "Partido Socialista (Argentina)"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Partido Socialista (Argentina)\"}",
+    "author_s": [
+        "Partido Socialista (Argentina)"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "Igualdad : publicación mensual del Partido Socialista de la Provincia de Buenos Aires.",
+    "title_t": [
+        "Igualdad : publicación mensual del Partido Socialista de la Provincia de Buenos Aires."
+    ],
+    "title_citation_display": [
+        "Igualdad : publicación mensual del Partido Socialista de la Provincia de Buenos Aires"
+    ],
+    "compiled_created_t": [
+        "Igualdad : publicación mensual del Partido Socialista de la Provincia de Buenos Aires."
+    ],
+    "pub_created_display": [
+        "Buenos Aires : Talleres Diario El Eco de Tandil , 2004-"
+    ],
+    "pub_created_s": [
+        "Buenos Aires : Talleres Diario El Eco de Tandil , 2004-"
+    ],
+    "pub_citation_display": [
+        "Buenos Aires: Talleres Diario El Eco de Tandil"
+    ],
+    "publication_location_citation_display": [
+        "Buenos Aires"
+    ],
+    "publisher_citation_display": [
+        "Talleres Diario El Eco de Tandil"
+    ],
+    "pub_date_display": [
+        "2004"
+    ],
+    "pub_date_start_sort": 2004,
+    "publication_date_citation_display": [
+        "2004"
+    ],
+    "cataloged_tdt": "2011-09-08T00:00:00Z",
+    "format": [
+        "Journal"
+    ],
+    "description_display": [
+        "v. : ill. ; 39 cm.",
+        "Año 1, no. 1 (mayo 2004) -"
+    ],
+    "description_t": [
+        "v. : ill. ; 39 cm.",
+        "Año 1, no. 1 (mayo 2004) -"
+    ],
+    "number_of_pages_citation_display": [
+        "v."
+    ],
+    "frequency_display": [
+        "Monthly"
+    ],
+    "notes_display": [
+        "Description based on: Año 1, no. 1 (mayo 2004)."
+    ],
+    "language_name_display": [
+        "Spanish"
+    ],
+    "language_facet": [
+        "Spanish"
+    ],
+    "language_iana_s": [
+        "es"
+    ],
+    "mult_languages_iana_s": [
+        "es"
+    ],
+    "source_acquisition_display": [
+        "Purchase; Centro de Documentación e Investigación de la Cultura de Izquierdas en la Argentina, as part of: Socialismo Argentino: Periódicos, revistas, libros, folletos, declaraciones, públicas, documentos internos, actas de congresos y volantes (1894-2009), 2009."
+    ],
+    "lc_subject_display": [
+        "Socialism—Argentina—Newspapers"
+    ],
+    "subject_facet": [
+        "Socialism—Argentina—Newspapers",
+        "Newspapers"
+    ],
+    "lc_subject_facet": [
+        "Socialism",
+        "Socialism—Argentina",
+        "Socialism—Argentina—Newspapers"
+    ],
+    "lcgft_s": [
+        "Newspapers"
+    ],
+    "lcgft_genre_facet": [
+        "Newspapers"
+    ],
+    "oclc_s": [
+        "753643459"
+    ],
+    "other_version_s": [
+        "ocn753643459"
+    ],
+    "holdings_1display": "{\"22677203260006421\":{\"location_code\":\"rare$xr\",\"location\":\"Remote Storage (ReCAP): Rare Books. Special Collections Use Only\",\"library\":\"Special Collections\",\"call_number\":\"RCPXR-6720550\",\"call_number_browse\":\"RCPXR-6720550\",\"items\":[{\"holding_id\":\"22677203260006421\",\"description\":\"Ano 1, no. 1-6\",\"id\":\"23677203250006421\",\"status_at_load\":\"1\",\"barcode\":\"32101069337713\",\"copy_number\":\"1\"}],\"location_has\":[\"Año 1, no. 1 (mayo 2004) - no. 4 (agosto 2004), no. 6 (oct. 2004)\"],\"supplements\":[null],\"indexes\":[null]}}",
+    "location_code_s": [
+        "rare$xr"
+    ],
+    "location": [
+        "Special Collections"
+    ],
+    "location_display": [
+        "Remote Storage (ReCAP): Rare Books. Special Collections Use Only"
+    ],
+    "advanced_location_s": [
+        "rare$xr",
+        "Special Collections"
+    ],
+    "name_title_browse_s": [
+        "Partido Socialista (Argentina). Igualdad"
+    ],
+    "call_number_display": [
+        "RCPXR-6720550"
+    ],
+    "call_number_browse_s": [
+        "RCPXR-6720550"
+    ],
+    "call_number_locator_display": [
+        "RCPXR-6720550"
+    ]
+}
