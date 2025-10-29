@@ -7,6 +7,7 @@ describe Requests::FormController, type: :controller, vcr: { cassette_name: 'for
   let(:valid_barcode_patron_response) { file_fixture('../bibdata_patron_response_barcode.json') }
   let(:invalid_patron_response) { file_fixture('../bibdata_not_found_patron_response.json') }
   let(:user) { FactoryBot.create(:user) }
+  before { stub_delivery_locations }
 
   describe 'POST #generate' do
     before do
@@ -94,7 +95,6 @@ describe Requests::FormController, type: :controller, vcr: { cassette_name: 'for
       sign_in(user)
       stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
         .to_return(status: 200, body: valid_patron_response, headers: {})
-      stub_delivery_locations
 
       without_partial_double_verification do
         allow(mail_message).to receive(:deliver_later).and_return(nil)
