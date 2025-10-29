@@ -30,6 +30,7 @@ describe Requests::Scsb, requests: true do
   context 'with an authorized scsb key', vcr: { cassette_name: 'authorized_ol_authorized_bibdata_scsb_key', record: :none } do
     it 'is available' do
       stub_scsb_availability(bib_id: ".b106574619", institution_id: "NYPL", barcode: "33433088591924")
+      stub_catalog_raw bib_id: 'SCSB-7935196'
       # build Requestables, which also loads the availability info from SCSB
       request_scsb.requestable
       expect(first_item["barcode"]).to eq('33433088591924')
@@ -75,6 +76,7 @@ describe Requests::Scsb, requests: true do
       stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .with(body: "{\"bibliographicId\":\".b106574619\",\"institutionId\":\"NYPL\"}")
         .and_return(status: 401, body: 'Authentication Failed')
+      stub_catalog_raw bib_id: 'SCSB-7935196', type: 'scsb'
     end
     it 'is not available' do
       allow(Rails.logger).to receive(:error)

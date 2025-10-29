@@ -7,7 +7,10 @@ describe Requests::FormController, type: :controller, vcr: { cassette_name: 'for
   let(:valid_barcode_patron_response) { file_fixture('../bibdata_patron_response_barcode.json') }
   let(:invalid_patron_response) { file_fixture('../bibdata_not_found_patron_response.json') }
   let(:user) { FactoryBot.create(:user) }
-  before { stub_delivery_locations }
+  before do
+    stub_delivery_locations
+    stub_catalog_raw bib_id: '9963773693506421'
+  end
 
   describe 'POST #generate' do
     before do
