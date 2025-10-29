@@ -5,7 +5,7 @@ module Requests
   class Patron
     attr_reader :user, :patron_hash, :errors
 
-    delegate :guest?, :provider, :cas_provider?, :alma_provider?, to: :user
+    delegate :guest?, :provider, :alma_provider?, to: :user
 
     def initialize(user:, patron_hash: nil)
       @user = user
@@ -46,9 +46,9 @@ module Requests
       patron_hash[:patron_group]
     end
 
-    def cas_patron_group?
-      cas_patron_groups = %w[P REG GRAD SENR UGRD]
-      cas_patron_groups.include?(patron_group)
+    def core_patron_group?
+      core_patron_groups = %w[P REG GRAD SENR UGRD SUM]
+      core_patron_groups.include?(patron_group)
     end
 
     def university_id
