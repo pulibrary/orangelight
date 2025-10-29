@@ -2181,59 +2181,6 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:12:00 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9995944353506421/holdings/22500750240006421/availability.json
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.5.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx/1.19.10
-      Date:
-      - Fri, 06 Aug 2021 12:12:06 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      Access-Control-Allow-Headers:
-      - Origin, Content-Type, Accept, Authorization, Token
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Access-Control-Allow-Origin:
-      - "*"
-      Etag:
-      - W/"4e4b67b902eaa78eeb8ee68d316f1fab"
-      X-Runtime:
-      - '6.148800'
-      Access-Control-Request-Method:
-      - GET
-      X-Request-Id:
-      - fc74dcc7-3bc7-4a87-b2b4-65dad3c14525
-      X-Powered-By:
-      - Phusion Passenger(R) 6.0.9
-    body:
-      encoding: UTF-8
-      string: '[{"barcode":"32101033923176","id":"23500750230006421","holding_id":"22500750240006421","copy_number":"1","status":"Available","status_label":"Item
-        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"Closed","pickup_location_id":"rare","pickup_location_code":"rare","location":"rare$xr","label":"Special
-        Collections - Remote Storage (ReCAP): Rare Books. Special Collections Use
-        Only","description":"","enum_display":"","chron_display":"","in_temp_library":false}]'
-  recorded_at: Fri, 06 Aug 2021 12:12:06 GMT
-- request:
-    method: get
     uri: https://catalog.princeton.edu/catalog/9944928463506421/raw
     body:
       encoding: US-ASCII
