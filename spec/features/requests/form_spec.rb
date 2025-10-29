@@ -121,6 +121,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         check "requestable_selected_23492663220006421"
         expect(page).to have_content 'Request via Partner Library'
         expect(page).to have_content 'Pick-up location: Firestone Library'
+        expect(page).to have_title("Request: Xin li ke xue = Journal of psychological science")
         expect do
           click_button 'Request Selected Items'
         end.to change { ActionMailer::Base.deliveries.count }.by(1)
