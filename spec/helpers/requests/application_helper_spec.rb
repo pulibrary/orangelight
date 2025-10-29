@@ -15,6 +15,8 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
   end
   let(:patron_request) { instance_double(Thread, value: patron) }
 
+  before { stub_delivery_locations }
+
   describe '#submit_disabled' do
     let(:user) { FactoryBot.build(:user) }
     let(:params) do

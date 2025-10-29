@@ -25,6 +25,8 @@ describe Requests::Scsb, requests: true do
   let(:first_item) { request_scsb.holdings["8076325"]["items"][0] }
   let(:second_item) { request_scsb.holdings["8076325"]["items"][1] }
 
+  before { stub_delivery_locations }
+
   context 'with an authorized scsb key', vcr: { cassette_name: 'authorized_ol_authorized_bibdata_scsb_key', record: :none } do
     it 'is available' do
       stub_scsb_availability(bib_id: ".b106574619", institution_id: "NYPL", barcode: "33433088591924")
