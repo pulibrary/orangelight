@@ -882,6 +882,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
 
     describe 'Visits a request page', js: true do
       it 'Tells the user their patron record is not available' do
+        stub_scsb_availability bib_id: '99117809653506421', institution_id: 'PUL', barcode: '32101106347378'
         visit "/requests/99117809653506421?mfhd=22613352460006421"
         expect(a_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")).to have_been_made
         expect(page).to have_content(I18n.t("requests.account.auth_user_lookup_fail"))
@@ -940,6 +941,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'disallows access for In Process recap items' do
+        stub_scsb_availability bib_id: '99114026863506421', institution_id: 'PUL', barcode: 'fake-barcode'
         visit "/requests/#{recap_in_process_id}"
         expect(page).not_to have_content 'Electronic Delivery'
         expect(page).not_to have_content 'Physical Item Delivery'
@@ -1117,6 +1119,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     end
 
     it "does not allow physical pickup request On Order PUL ReCAP Item" do
+      stub_scsb_availability bib_id: '99129134216906421', institution_id: 'PUL', barcode: 'fake-barcode'
       visit '/requests/99129134216906421?aeon=false&mfhd=221002424820006421'
       expect(page).not_to have_content 'Electronic Delivery'
       expect(page).not_to have_content 'Physical Item Delivery'
@@ -1198,6 +1201,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     end
 
     it "allows access to In Process items" do
+      stub_scsb_availability bib_id: '99124417723506421', institution_id: 'PUL', barcode: '32101108129568'
       visit "requests/99124417723506421?mfhd=22689758840006421"
       expect(page).not_to have_content 'Electronic Delivery'
       expect(page).to have_content 'In Process materials are typically available in several business days'
