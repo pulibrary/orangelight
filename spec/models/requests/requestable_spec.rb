@@ -12,6 +12,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   end
   let(:patron) { Requests::Patron.new(user:, patron_hash: valid_patron) }
   let(:patron_request) { instance_double(Thread, value: patron) }
+  before { stub_delivery_locations }
 
   context "Is a bibliographic record on the shelf" do
     let(:request) { FactoryBot.build(:request_on_shelf, patron_request:) }
@@ -237,6 +238,12 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:request) { FactoryBot.build(:aeon_rbsc_enumerated, patron_request:) }
     let(:requestable_holding) { request.requestable.select { |r| r.holding.mfhd_id == '22677203260006421' } }
     let(:requestable) { requestable_holding.first } # assume only one requestable
+    before do
+      stub_catalog_raw bib_id: '9967949663506421'
+      stub_single_holding_location 'rare$xr'
+      stub_availability_by_holding_id bib_id: '9967949663506421', holding_id: '22677203260006421'
+      stub_scsb_availability bib_id: '9967949663506421', institution_id: 'PUL', barcode: '32101069337713'
+    end
 
     describe '#location_label' do
       it 'has a location label' do
@@ -351,6 +358,13 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:request) { FactoryBot.build(:aeon_marquand, patron_request:) }
     let(:requestable) { request.requestable.first } # assume only one requestable
 
+    before do
+      stub_catalog_raw bib_id: '9979153343506421'
+      stub_single_holding_location 'marquand$pz'
+      stub_availability_by_holding_id bib_id: '9979153343506421', holding_id: '22742463930006421'
+      stub_scsb_availability bib_id: '9979153343506421', barcode: '32101090972108', institution_id: 'PUL'
+    end
+
     describe '#site' do
       it 'returns a Marquand site param' do
         expect(requestable.site).to eq('MARQ')
@@ -359,7 +373,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
 
     describe '#location_label' do
       it 'has a location label' do
-        expect(requestable.location_label).to eq('Marquand Library - Remote Storage (ReCAP): Marquand Library Use Only')
+        expect(requestable.location_label).to eq('Marquand Library - Remote Storage (ReCAP): Marquand Library Use Only Rare Books')
       end
     end
 
@@ -459,6 +473,12 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   context 'A requestable item from a RBSC holding with an item record including a barcode' do
     let(:request) { FactoryBot.build(:aeon_w_barcode, patron_request:) }
     let(:requestable) { request.requestable.first } # assume only one requestable
+    before do
+      stub_catalog_raw bib_id: '9995944353506421'
+      stub_single_holding_location 'rare$xr'
+      stub_availability_by_holding_id bib_id: '9995944353506421', holding_id: '22500750240006421'
+      stub_scsb_availability bib_id: '9995944353506421', institution_id: 'PUL', barcode: '32101033923176'
+    end
     describe '#barcode?' do
       it 'has a barcode' do
         expect(requestable.barcode?).to be true
@@ -736,6 +756,12 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     end
     let(:request) { Requests::Form.new(**params) }
     let(:requestable) { request.requestable.first }
+    before do
+      stub_catalog_raw bib_id: '9999998003506421'
+      stub_single_holding_location 'recap$pa'
+      stub_availability_by_holding_id bib_id: '9999998003506421', holding_id: '22480198860006421'
+      stub_scsb_availability bib_id: '9999998003506421', institution_id: 'PUL', barcode: '32101099186403'
+    end
 
     describe '#recap requestable' do
       it "does not have recap edd request service available" do
@@ -795,6 +821,10 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:user) { FactoryBot.build(:user) }
     let(:request) { FactoryBot.build(:request_scsb_cu) }
     let(:requestable) { request.requestable.first }
+    before do
+      stub_single_holding_location 'scsbcul'
+      stub_scsb_availability bib_id: '5586863', institution_id: 'CUL', barcode: 'CU11418427'
+    end
     describe '#pick_up_locations' do
       it 'has a single pick-up location' do
         stub_catalog_raw(bib_id: 'SCSB-5235419', type: 'scsb')
@@ -939,6 +969,8 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     before do
       stub_catalog_raw(bib_id: '9925798443506421', type: 'alma')
       stub_availability_by_holding_id(bib_id: '9925798443506421', holding_id: '22733278430006421')
+      stub_single_holding_location 'recap$pa'
+      stub_scsb_availability bib_id: '9925798443506421', institution_id: 'PUL', barcode: '32101063974255'
     end
     describe "#available?" do
       it "is not available" do

@@ -94,6 +94,7 @@ describe Requests::FormController, type: :controller, vcr: { cassette_name: 'for
       sign_in(user)
       stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
         .to_return(status: 200, body: valid_patron_response, headers: {})
+      stub_delivery_locations
 
       without_partial_double_verification do
         allow(mail_message).to receive(:deliver_later).and_return(nil)
@@ -139,7 +140,8 @@ describe Requests::FormController, type: :controller, vcr: { cassette_name: 'for
     end
 
     context "service error" do
-      it 'returns and error' do
+      before { stub_request(:post, "#{Requests.config[:scsb_base]}/requestItem/requestItem").to_return(status: 400) }
+      it 'returns an error' do
         requestable.first["library_code"] = "recap"
         requestable.first["delivery_mode_7391704"] = "edd"
         post :submit, params: { "request" => user_info,

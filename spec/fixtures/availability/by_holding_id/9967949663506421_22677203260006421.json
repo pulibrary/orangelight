@@ -1,0 +1,22 @@
+[
+    {
+        "barcode": "32101069337713",
+        "id": "23677203250006421",
+        "holding_id": "22677203260006421",
+        "copy_number": "1",
+        "status": "Available",
+        "status_label": "Item in place",
+        "status_source": "base_status",
+        "process_type": null,
+        "on_reserve": "N",
+        "item_type": "Gen",
+        "pickup_location_id": "rare",
+        "pickup_location_code": "rare",
+        "location": "rare$xr",
+        "label": "Special Collections - Remote Storage (ReCAP): Rare Books. Special Collections Use Only",
+        "description": "Ano 1, no. 1-6 Mayo 2004 - Oct. 2004",
+        "enum_display": "Ano 1, no. 1-6",
+        "chron_display": "Mayo 2004 - Oct. 2004",
+        "in_temp_library": false
+    }
+]

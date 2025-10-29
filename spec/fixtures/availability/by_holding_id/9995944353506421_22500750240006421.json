@@ -1,0 +1,22 @@
+[
+    {
+        "barcode": "32101033923176",
+        "id": "23500750230006421",
+        "holding_id": "22500750240006421",
+        "copy_number": "1",
+        "status": "Available",
+        "status_label": "Item in place",
+        "status_source": "base_status",
+        "process_type": null,
+        "on_reserve": "N",
+        "item_type": "Closed",
+        "pickup_location_id": "rare",
+        "pickup_location_code": "rare",
+        "location": "rare$xr",
+        "label": "Special Collections - Remote Storage (ReCAP): Rare Books. Special Collections Use Only",
+        "description": "",
+        "enum_display": "",
+        "chron_display": "",
+        "in_temp_library": false
+    }
+]

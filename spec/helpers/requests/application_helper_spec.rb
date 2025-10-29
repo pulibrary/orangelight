@@ -208,22 +208,6 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     end
   end
 
-  describe "#preferred_request_content_tag" do
-    let(:requestable) { instance_double(Requests::RequestableDecorator, stubbed_questions) }
-    let(:default_pick_ups) { [{ label: 'place', gfa_pickup: 'xx', staff_only: false, pick_up_location_code: 'firestone' }] }
-    let(:card_div) { '<div id="fields-print__abc123_card" class="card card-body bg-light">' }
-
-    context "recap_edd" do
-      let(:stubbed_questions) { { services: ['recap_edd'], preferred_request_id: 'abc123', pick_up_locations: locations, charged?: false, location: { "library" => default_pick_ups[0] } } }
-      let(:locations) { [{ label: 'another place', gfa_pickup: 'yy', staff_only: false }] }
-      it 'a message for lewis' do
-        pending "Always uses holding location"
-        expect(helper.preferred_request_content_tag(requestable, default_pick_ups)).to eq \
-          '<div id="fields-print__abc123" class="card card-body bg-light collapse request--print"><input type="hidden" name="requestable[][pick_up]" id="requestable__pick_up" value="" class="single-pick-up-hidden" autocomplete="off" /><label class="single-pick-up" style="" for="requestable__pick_up">Pick-up location: another place</label></div>'
-      end
-    end
-  end
-
   describe "#hidden_fields_item" do
     let(:requestable) { instance_double(Requests::RequestableDecorator, stubbed_questions) }
 

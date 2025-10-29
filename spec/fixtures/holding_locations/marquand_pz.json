@@ -1,0 +1,39 @@
+{
+    "label": "Remote Storage (ReCAP): Marquand Library Use Only Rare Books",
+    "code": "marquand$pz",
+    "aeon_location": true,
+    "recap_electronic_delivery_location": false,
+    "open": false,
+    "requestable": true,
+    "always_requestable": true,
+    "circulates": false,
+    "remote_storage": "recap_rmt",
+    "fulfillment_unit": "Closed",
+    "library": {
+        "label": "Marquand Library",
+        "code": "marquand",
+        "order": 0
+    },
+    "holding_library": {
+        "label": "Marquand Library",
+        "code": "marquand",
+        "order": 0
+    },
+    "delivery_locations": [
+        {
+            "label": "Marquand Library of Art and Archaeology",
+            "address": "McCormick Hall Princeton, NJ 08544",
+            "phone_number": "609-258-5863",
+            "contact_email": "marquand@princeton.edu",
+            "gfa_pickup": "PJ",
+            "staff_only": false,
+            "pickup_location": true,
+            "digital_location": true,
+            "library": {
+                "label": "Marquand Library",
+                "code": "marquand",
+                "order": 0
+            }
+        }
+    ]
+}
