@@ -1,0 +1,39 @@
+{
+    "label": "Remote Storage (ReCAP): Rare Books. Special Collections Use Only",
+    "code": "rare$xr",
+    "aeon_location": true,
+    "recap_electronic_delivery_location": false,
+    "open": false,
+    "requestable": true,
+    "always_requestable": true,
+    "circulates": false,
+    "remote_storage": "recap_rmt",
+    "fulfillment_unit": "Closed",
+    "library": {
+        "label": "Special Collections",
+        "code": "rare",
+        "order": 0
+    },
+    "holding_library": {
+        "label": "Special Collections",
+        "code": "rare",
+        "order": 0
+    },
+    "delivery_locations": [
+        {
+            "label": "Special Collections",
+            "address": "One Washington Rd. Princeton, NJ 08544",
+            "phone_number": "609-258-1470",
+            "contact_email": "rbsc@princeton.edu",
+            "gfa_pickup": "PG",
+            "staff_only": false,
+            "pickup_location": false,
+            "digital_location": true,
+            "library": {
+                "label": "Firestone Library",
+                "code": "firestone",
+                "order": 0
+            }
+        }
+    ]
+}

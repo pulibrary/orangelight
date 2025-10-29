@@ -459,6 +459,13 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   context 'A requestable item from a RBSC holding with an item record including a barcode' do
     let(:request) { FactoryBot.build(:aeon_w_barcode, patron_request:) }
     let(:requestable) { request.requestable.first } # assume only one requestable
+    before do
+      stub_catalog_raw bib_id: '9995944353506421'
+      stub_single_holding_location 'rare$xr'
+      stub_delivery_locations
+      stub_availability_by_holding_id bib_id: '9995944353506421', holding_id: '22500750240006421'
+      stub_scsb_availability bib_id: '9995944353506421', institution_id: 'PUL', barcode: '32101033923176'
+    end
     describe '#barcode?' do
       it 'has a barcode' do
         expect(requestable.barcode?).to be true
