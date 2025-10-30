@@ -46,7 +46,8 @@ RSpec.describe 'Request Form Submission', type: :request do
         json_response = response.parsed_body
         expect(json_response['success']).to be true
         expect(json_response['message']).to include('Request submitted successfully')
-        expect(json_response).to have_key('flash_messages_html')
+        expect(json_response).to have_key('message')
+        expect(json_response).to have_key('success')
       end
     end
 
@@ -97,7 +98,9 @@ RSpec.describe 'Request Form Submission', type: :request do
         expect(json_response['success']).to be false
         expect(json_response['errors']).to be_present
         expect(json_response['errors']['title']).to include('Please specify title for the selection you want digitized.')
-        expect(json_response).to have_key('flash_messages_html')
+        expect(json_response).to have_key('message')
+        expect(json_response).to have_key('success')
+        expect(json_response).to have_key('errors')
       end
     end
 
@@ -147,7 +150,9 @@ RSpec.describe 'Request Form Submission', type: :request do
         json_response = response.parsed_body
         expect(json_response['success']).to be false
         expect(json_response['errors']).to be_present
-        expect(json_response).to have_key('flash_messages_html')
+        expect(json_response).to have_key('message')
+        expect(json_response).to have_key('success')
+        expect(json_response).to have_key('errors')
       end
     end
   end

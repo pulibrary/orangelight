@@ -40,10 +40,13 @@ class RequestFormHandler {
     return false;
   }
 
+  /**
+   * Submit the form via Fetch api and handle the response
+   * We use the rails form to collect all input values (text fields, checkboxes, select)
+   */
   async submitForm() {
     try {
       const formData = new FormData(this.form);
-
       // Add CSRF token for Rails authenticity
       const csrfToken =
         document
@@ -52,7 +55,6 @@ class RequestFormHandler {
         document.querySelector('input[name="authenticity_token"]')?.value;
 
       if (csrfToken) {
-        // Check if the form already has an authenticity_token field
         if (!formData.has('authenticity_token')) {
           formData.append('authenticity_token', csrfToken);
         }
@@ -181,21 +183,19 @@ class RequestFormHandler {
    * Display success message and update UI
    */
   displaySuccess(data) {
-    if (data.message) {
-      const flashContainer = this.getFlashContainer();
-      if (flashContainer) {
-        const successElement = document.createElement('div');
-        successElement.textContent = data.message;
-        flashContainer.appendChild(successElement);
-        successElement.classList.add('alert', 'alert-success');
-        successElement.insertAdjacentHTML(
-          `beforeend`,
-          `<button class='close' data-bs-dismiss='alert'>&times;</button>`
-        );
-      }
+    const flashContainer = this.getFlashContainer();
+    if (flashContainer && data.message) {
+      const successElement = document.createElement('div');
+      successElement.classList.add('alert', 'alert-success');
+      successElement.textContent = data.message;
+      const closeBtn = document.createElement('button');
+      closeBtn.className = 'close';
+      closeBtn.setAttribute('data-bs-dismiss', 'alert');
+      closeBtn.innerHTML = '&times;';
+      successElement.appendChild(closeBtn);
+      flashContainer.appendChild(successElement);
     }
 
-    // Hide or replace the submit button
     if (this.submitButton) {
       this.submitButton.style.display = 'none';
     }
@@ -205,22 +205,19 @@ class RequestFormHandler {
    * Display validation errors
    */
   displayErrors(data) {
-    // Show flash messages in the flash messages container
-    if (data.flash_messages_html) {
-      const flashContainer = this.getFlashContainer();
-      if (flashContainer) {
-        const errorElement = document.createElement('div');
-        errorElement.textContent = data.message;
-        flashContainer.appendChild(errorElement);
-        errorElement.classList.add('alert', 'alert-danger');
-        errorElement.insertAdjacentHTML(
-          'beforeend',
-          `<button class='close' data-bs-dismiss='alert'>&times;</button>`
-        );
-      }
+    const flashContainer = this.getFlashContainer();
+    if (flashContainer && data.message) {
+      const errorElement = document.createElement('div');
+      errorElement.classList.add('alert', 'alert-danger');
+      errorElement.textContent = data.message;
+      const closeBtn = document.createElement('button');
+      closeBtn.className = 'close';
+      closeBtn.setAttribute('data-bs-dismiss', 'alert');
+      closeBtn.innerHTML = '&times;';
+      errorElement.appendChild(closeBtn);
+      flashContainer.appendChild(errorElement);
     }
 
-    // Display field-specific errors
     if (data.errors) {
       Object.entries(data.errors).forEach(([field, messages]) => {
         this.displayFieldError(field, messages);
@@ -274,10 +271,11 @@ class RequestFormHandler {
       const errorElement = document.createElement('div');
       errorElement.classList.add('alert', 'alert-danger');
       errorElement.textContent = message;
-      errorElement.insertAdjacentHTML(
-        'beforeend',
-        `<button class='close' data-bs-dismiss='alert'>&times;</button>`
-      );
+      const closeBtn = document.createElement('button');
+      closeBtn.className = 'close';
+      closeBtn.setAttribute('data-bs-dismiss', 'alert');
+      closeBtn.innerHTML = '&times;';
+      errorElement.appendChild(closeBtn);
       flashContainer.appendChild(errorElement);
     }
   }

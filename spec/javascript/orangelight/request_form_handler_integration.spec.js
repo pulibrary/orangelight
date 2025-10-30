@@ -1,16 +1,13 @@
 /**
- * Integration test to verify JavaScript handler works with real JSON responses
+ * Integration test to verify JavaScript handler works with JSON responses
  */
 
 import RequestFormHandler from '../../../app/javascript/orangelight/request_form_handler.js';
 
-describe('RequestFormHandler with Real JSON Response', () => {
+describe('RequestFormHandler with JSON Response', () => {
   let handler;
-  let mockForm;
-  let mockSubmitButton;
 
   beforeEach(() => {
-    // Set up DOM structure that matches the actual Rails form
     document.body.innerHTML = `
       <div class="flash_messages">
         <div class="container">
@@ -34,8 +31,6 @@ describe('RequestFormHandler with Real JSON Response', () => {
       </form>
     `;
 
-    mockForm = document.querySelector('.simple_form.request-form');
-    mockSubmitButton = document.querySelector('#request-submit-button');
     handler = new RequestFormHandler('.simple_form.request-form');
   });
 
@@ -43,9 +38,8 @@ describe('RequestFormHandler with Real JSON Response', () => {
     document.body.innerHTML = '';
   });
 
-  describe('handling real validation error response', () => {
+  describe('handling a validation error response', () => {
     it('should display errors from actual JSON response structure', () => {
-      // This is the actual JSON response structure we got from the integration test
       const realJsonResponse = {
         success: false,
         message:
@@ -68,14 +62,6 @@ describe('RequestFormHandler with Real JSON Response', () => {
             },
           ],
         },
-        flash_messages_html: `<div class="alert flash-error alert-danger" aria-live="polite">We were unable to process your request. Correct the highlighted errors.
-            <button class="close" data-bs-dismiss="alert">&times;</button>
-            <ul>
-                  <li><em>Email</em> can't be blank</li>
-                  <li><em>User Name</em> can't be blank</li>
-                  <li><em></em> Please choose a Request Method for your selected item.</li>
-            </ul>
-        </div>`,
       };
 
       handler.displayErrors(realJsonResponse);
@@ -85,9 +71,8 @@ describe('RequestFormHandler with Real JSON Response', () => {
         '.flash_messages .container'
       );
       expect(flashContainer.querySelector('.alert-danger')).toBeTruthy();
-      expect(
-        flashContainer.querySelector('.alert-danger').textContent
-      ).toContain('We were unable to process your request');
+      const alertDanger = flashContainer.querySelector('.alert-danger');
+      expect(alertDanger.textContent).toContain(realJsonResponse.message);
 
       // Check that field-specific errors are displayed
       const emailError = document.querySelector('.error-email');

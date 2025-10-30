@@ -89,17 +89,9 @@ module Requests
         flash.now[:success] = success_message
         logger.info "Request Sent"
 
-        begin
-          flash_html = render_to_string(partial: 'flash_messages')
-        rescue StandardError => e
-          logger.error "Failed to render flash_messages partial: #{e.message}"
-          flash_html = "<div class='alert alert-success' aria-live='polite'>#{success_message}<button class='close' data-bs-dismiss='alert'>&times;</button></div>"
-        end
-
         {
           success: true,
-          message: success_message,
-          flash_messages_html: flash_html
+          message: success_message
         }
       end
 
@@ -117,18 +109,10 @@ module Requests
         service_errors = services.map(&:error_hash).inject(:merge)
         send_error_email(service_errors, @submission)
 
-        begin
-          flash_html = render_to_string(partial: 'flash_messages')
-        rescue StandardError => e
-          logger.error "Failed to render flash_messages partial: #{e.message}"
-          flash_html = "<div class='alert alert-danger' aria-live='polite'>#{flash_now_error}<button class='close' data-bs-dismiss='alert'>&times;</button></div>"
-        end
-
         {
           success: false,
           message: flash_now_error,
-          errors: service_errors,
-          flash_messages_html: flash_html
+          errors: service_errors
         }
       end
 
@@ -136,18 +120,15 @@ module Requests
       def respond_to_validation_error(submission)
         error_message = I18n.t('requests.submit.error')
         error_messages = submission.errors.messages
-        specific_errors = extract_specific_errors(error_messages)
+        extract_specific_errors(error_messages)
 
         flash.now[:error] = error_message
         logger.error "Request Submission #{error_messages.as_json}"
 
-        flash_html = render_flash_messages_with_fallback(error_message, specific_errors)
-
         {
           success: false,
           message: error_message,
-          errors: format_validation_errors(error_messages),
-          flash_messages_html: flash_html
+          errors: format_validation_errors(error_messages)
         }
       end
 
@@ -206,17 +187,6 @@ module Requests
           end
         end
         specific_errors
-      end
-
-      # :reek:UncommunicativeVariableName { accept: ['e'] }
-      # :reek:TooManyStatements
-      def render_flash_messages_with_fallback(error_message, specific_errors)
-        render_to_string(partial: 'flash_messages')
-      rescue StandardError => e
-        logger.error "Failed to render flash_messages partial: #{e.message}"
-        # Include specific errors in fallback HTML
-        error_list = specific_errors.map { |err| "<li>#{err}</li>" }.join
-        "<div class='alert alert-danger' aria-live='polite'>#{error_message}<button class='close' data-bs-dismiss='alert'>&times;</button><ul>#{error_list}</ul></div>"
       end
 
       # This has to be a utility function to prevent ActiveJob from trying to serialize too many objects

@@ -87,8 +87,6 @@ describe('RequestFormHandler', () => {
       const mockData = {
         message: 'Request submitted!',
         success: true,
-        flash_messages_html:
-          '<div class="alert alert-success">Request submitted!</div>',
       };
 
       handler.displaySuccess(mockData);
@@ -114,10 +112,8 @@ describe('RequestFormHandler', () => {
   describe('displayErrors', () => {
     it('should display flash messages in flash container', () => {
       const mockData = {
-        message: 'Error occurred',
         success: false,
-        flash_messages_html:
-          '<div class="alert alert-danger">Error occurred</div>',
+        message: 'Error occurred',
         errors: {},
       };
 
