@@ -1,0 +1,150 @@
+{
+    "id": "99125492003506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Gentilli, Roberto"
+    ],
+    "author_citation_display": [
+        "Gentilli, Roberto"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Gentilli, Roberto\"}",
+    "author_s": [
+        "Gentilli, Roberto"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "1923-1926 : l'aviazione italiana prima di Balbo / Roberto Gentilli.",
+    "title_t": [
+        "1923-1926 : l'aviazione italiana prima di Balbo / Roberto Gentilli."
+    ],
+    "title_citation_display": [
+        "1923-1926 : l'aviazione italiana prima di Balbo"
+    ],
+    "compiled_created_t": [
+        "1923-1926 : l'aviazione italiana prima di Balbo / Roberto Gentilli."
+    ],
+    "pub_created_display": [
+        "Roma (Italy) : IBN editore, [2022]"
+    ],
+    "pub_created_s": [
+        "Roma (Italy) : IBN editore, [2022]"
+    ],
+    "pub_citation_display": [
+        "Roma (Italy): IBN editore"
+    ],
+    "publication_location_citation_display": [
+        "Roma (Italy)"
+    ],
+    "publisher_citation_display": [
+        "IBN editore"
+    ],
+    "pub_date_display": [
+        "2022"
+    ],
+    "pub_date_start_sort": 2022,
+    "publication_date_citation_display": [
+        "2022"
+    ],
+    "cataloged_tdt": "2022-04-27T08:06:05Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "252 pages, 3 unnumbered pages : illustrations ; 24 cm."
+    ],
+    "description_t": [
+        "252 pages, 3 unnumbered pages : illustrations ; 24 cm."
+    ],
+    "number_of_pages_citation_display": [
+        "252 pages, 3 unnumbered pages"
+    ],
+    "geocode_display": [
+        "Italy"
+    ],
+    "series_display": [
+        "Aviolibri dossier ; 58.",
+        "Aviolibri dossier ; 58"
+    ],
+    "more_in_this_series_t": [
+        "Aviolibri dossier"
+    ],
+    "bib_ref_notes_display": [
+        "Includes bibliographical references (page 253)."
+    ],
+    "language_name_display": [
+        "Italian"
+    ],
+    "language_facet": [
+        "Italian"
+    ],
+    "language_iana_s": [
+        "it"
+    ],
+    "mult_languages_iana_s": [
+        "it"
+    ],
+    "lc_subject_display": [
+        "Italy Aeronautica—History—20th century",
+        "Aeronautics, Military—Italy—History—20th century"
+    ],
+    "subject_facet": [
+        "Italy Aeronautica—History—20th century",
+        "Aeronautics, Military—Italy—History—20th century"
+    ],
+    "lc_subject_facet": [
+        "Italy Aeronautica",
+        "Italy Aeronautica—History",
+        "Italy Aeronautica—History—20th century",
+        "Aeronautics, Military",
+        "Aeronautics, Military—Italy",
+        "Aeronautics, Military—Italy—History",
+        "Aeronautics, Military—Italy—History—20th century"
+    ],
+    "alt_title_246_display": [
+        "Aviazione italiana"
+    ],
+    "other_title_1display": "{\"Subtitle on cover\":[\"Aviazione italiana\"]}",
+    "isbn_display": [
+        "9788875655501 :"
+    ],
+    "isbn_s": [
+        "9788875655501"
+    ],
+    "oclc_s": [
+        "1310261834"
+    ],
+    "other_version_s": [
+        "9788875655501",
+        "on1310261834"
+    ],
+    "subject_era_facet": [
+        "20th century"
+    ],
+    "holdings_1display": "{\"22927395910006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\" UG635.I8   G46 2022 \",\"call_number_browse\":\" UG635.I8   G46 2022 \",\"items\":[{\"holding_id\":\"22927395910006421\",\"id\":\"23927395900006421\",\"status_at_load\":\"1\",\"barcode\":\"32101104094691\"}]}}",
+    "location_code_s": [
+        "recap$pa"
+    ],
+    "location": [
+        "ReCAP"
+    ],
+    "location_display": [
+        "Remote Storage"
+    ],
+    "advanced_location_s": [
+        "recap$pa",
+        "ReCAP"
+    ],
+    "name_title_browse_s": [
+        "Gentilli, Roberto. 1923-1926"
+    ],
+    "call_number_display": [
+        " UG635.I8   G46 2022 "
+    ],
+    "call_number_browse_s": [
+        " UG635.I8   G46 2022 "
+    ],
+    "call_number_locator_display": [
+        " UG635.I8   G46 2022 "
+    ]
+}

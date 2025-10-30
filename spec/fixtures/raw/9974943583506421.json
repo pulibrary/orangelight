@@ -1,0 +1,128 @@
+{
+    "id": "9974943583506421",
+    "numeric_id_b": true,
+    "author_citation_display": [
+        "Elections Observation Group (Kenya)"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"Elections Observation Group (Kenya)\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+    "author_s": [
+        "Elections Observation Group (Kenya)"
+    ],
+    "title_display": "Darubini la uchaguzi.",
+    "title_t": [
+        "Darubini la uchaguzi."
+    ],
+    "title_citation_display": [
+        "Darubini la uchaguzi"
+    ],
+    "compiled_created_t": [
+        "Darubini la uchaguzi."
+    ],
+    "pub_created_display": [
+        "Nairobi, Kenya : Elections Observation Group, 2012-"
+    ],
+    "pub_created_s": [
+        "Nairobi, Kenya : Elections Observation Group, 2012-"
+    ],
+    "pub_citation_display": [
+        "Nairobi, Kenya: Elections Observation Group"
+    ],
+    "publication_location_citation_display": [
+        "Nairobi, Kenya"
+    ],
+    "publisher_citation_display": [
+        "Elections Observation Group"
+    ],
+    "pub_date_display": [
+        "2012"
+    ],
+    "pub_date_start_sort": 2012,
+    "pub_date_end_sort": 9999,
+    "publication_date_citation_display": [
+        "2012"
+    ],
+    "cataloged_tdt": "2013-05-13T00:00:00Z",
+    "format": [
+        "Journal"
+    ],
+    "description_display": [
+        "21 cm.",
+        "Began with no. 1 (June 2012)."
+    ],
+    "description_t": [
+        "21 cm.",
+        "Began with no. 1 (June 2012)."
+    ],
+    "geocode_display": [
+        "Kenya"
+    ],
+    "notes_display": [
+        "\"Credible, peaceful, free and fair elections.\""
+    ],
+    "source_desc_notes_display": [
+        "Description based on: no. 1 (June 2012); title from cover.",
+        "Latest issue consulted: no. 3 (Sept./Oct. 2012)."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "lc_subject_display": [
+        "Elections—Kenya—Periodicals",
+        "Voting—Kenya—Periodicals"
+    ],
+    "subject_facet": [
+        "Elections—Kenya—Periodicals",
+        "Voting—Kenya—Periodicals"
+    ],
+    "lc_subject_facet": [
+        "Elections",
+        "Elections—Kenya",
+        "Elections—Kenya—Periodicals",
+        "Voting",
+        "Voting—Kenya",
+        "Voting—Kenya—Periodicals"
+    ],
+    "related_name_json_1display": "{\"Issuing body\":[\"Elections Observation Group (Kenya)\"]}",
+    "alt_title_246_display": [
+        "Darubini ya uchaguzi"
+    ],
+    "other_title_1display": "{\"\u003cSept./Oct. 2012-\u003e\":[\"Darubini ya uchaguzi\"]}",
+    "oclc_s": [
+        "855588773"
+    ],
+    "other_version_s": [
+        "ocn855588773"
+    ],
+    "holdings_1display": "{\"22711798720006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"JQ2947.A95 D378\",\"call_number_browse\":\"JQ2947.A95 D378\",\"items\":[{\"holding_id\":\"22711798720006421\",\"description\":\"no.2\",\"id\":\"23711798690006421\",\"status_at_load\":\"1\",\"barcode\":\"32101087922140\",\"copy_number\":\"1\"},{\"holding_id\":\"22711798720006421\",\"description\":\"no.3\",\"id\":\"23711798700006421\",\"status_at_load\":\"1\",\"barcode\":\"32101053324081\",\"copy_number\":\"1\"},{\"holding_id\":\"22711798720006421\",\"description\":\"no.4\",\"id\":\"23711798680006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091639979\",\"copy_number\":\"1\"},{\"holding_id\":\"22711798720006421\",\"description\":\"no.1\",\"id\":\"23711798710006421\",\"status_at_load\":\"1\",\"barcode\":\"32101092034501\",\"copy_number\":\"1\"}],\"location_has\":[\"No. 1 (June 2012)-no. 4 (Dec. 2012/Jan. 2013)\"],\"supplements\":[null],\"indexes\":[null]}}",
+    "location_code_s": [
+        "recap$pa"
+    ],
+    "location": [
+        "ReCAP"
+    ],
+    "location_display": [
+        "Remote Storage"
+    ],
+    "advanced_location_s": [
+        "recap$pa",
+        "ReCAP"
+    ],
+    "call_number_display": [
+        "JQ2947.A95 D378"
+    ],
+    "call_number_browse_s": [
+        "JQ2947.A95 D378"
+    ],
+    "call_number_locator_display": [
+        "JQ2947.A95 D378"
+    ]
+}

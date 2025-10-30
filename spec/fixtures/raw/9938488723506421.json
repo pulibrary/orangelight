@@ -1,0 +1,131 @@
+{
+    "id": "9938488723506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Ryden, Barbara"
+    ],
+    "author_citation_display": [
+        "Ryden, Barbara"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Ryden, Barbara\"}",
+    "author_s": [
+        "Ryden, Barbara"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "Introduction to cosmology / Barbara Ryden.",
+    "title_t": [
+        "Introduction to cosmology / Barbara Ryden."
+    ],
+    "title_citation_display": [
+        "Introduction to cosmology"
+    ],
+    "compiled_created_t": [
+        "Introduction to cosmology / Barbara Ryden."
+    ],
+    "pub_created_display": [
+        "San Francisco : Addison-Wesley, c2003."
+    ],
+    "pub_created_s": [
+        "San Francisco : Addison-Wesley, c2003."
+    ],
+    "pub_citation_display": [
+        "San Francisco: Addison-Wesley"
+    ],
+    "publication_location_citation_display": [
+        "San Francisco"
+    ],
+    "publisher_citation_display": [
+        "Addison-Wesley"
+    ],
+    "pub_date_display": [
+        "2003"
+    ],
+    "pub_date_start_sort": 2003,
+    "publication_date_citation_display": [
+        "2003"
+    ],
+    "cataloged_tdt": "2003-04-07T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "ix, 244 p. : ill. ; 24 cm."
+    ],
+    "description_t": [
+        "ix, 244 p. : ill. ; 24 cm."
+    ],
+    "number_of_pages_citation_display": [
+        "ix, 244 p."
+    ],
+    "bib_ref_notes_display": [
+        "Includes bibliographical references (p. [235]-237) and index."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "lc_subject_display": [
+        "Cosmology"
+    ],
+    "subject_facet": [
+        "Cosmology"
+    ],
+    "lc_subject_facet": [
+        "Cosmology"
+    ],
+    "isbn_display": [
+        "0805389121 (hardcover)"
+    ],
+    "lccn_display": [
+        "  2002013176"
+    ],
+    "lccn_s": [
+        "2002013176"
+    ],
+    "isbn_s": [
+        "9780805389128"
+    ],
+    "oclc_s": [
+        "50478401"
+    ],
+    "other_version_s": [
+        "9780805389128",
+        "ocm50478401"
+    ],
+    "holdings_1display": "{\"22522147400006421\":{\"location_code\":\"lewis$stacks\",\"location\":\"Stacks\",\"library\":\"Lewis Library\",\"call_number\":\"QB981 .R93 2003\",\"call_number_browse\":\"QB981 .R93 2003\",\"items\":[{\"holding_id\":\"22522147400006421\",\"id\":\"23522147390006421\",\"status_at_load\":\"0\",\"barcode\":\"32101050539475\",\"copy_number\":\"2\"}]},\"engineer$res\":{\"location_code\":\"engineer$res\",\"current_location\":\"STEM Reserves\",\"current_library\":\"Engineering Library\",\"call_number\":\"QB981 .R93 2003\",\"call_number_browse\":\"QB981 .R93 2003\",\"temp_location_code\":\"engineer$res\",\"items\":[{\"holding_id\":\"22522147420006421\",\"id\":\"23522147410006421\",\"status_at_load\":\"1\",\"barcode\":\"32101078062997\",\"copy_number\":\"3\"}]},\"22522147440006421\":{\"location_code\":\"lewis$stacks\",\"location\":\"Stacks\",\"library\":\"Lewis Library\",\"call_number\":\"QB981 .R93 2003\",\"call_number_browse\":\"QB981 .R93 2003\",\"items\":[{\"holding_id\":\"22522147440006421\",\"id\":\"23522147430006421\",\"status_at_load\":\"0\",\"barcode\":\"32101048628455\",\"copy_number\":\"1\"}]}}",
+    "location_code_s": [
+        "lewis$stacks"
+    ],
+    "location": [
+        "Lewis Library"
+    ],
+    "location_display": [
+        "Stacks"
+    ],
+    "advanced_location_s": [
+        "lewis$stacks",
+        "Lewis Library"
+    ],
+    "name_title_browse_s": [
+        "Ryden, Barbara. Introduction to cosmology"
+    ],
+    "call_number_display": [
+        "QB981 .R93 2003"
+    ],
+    "call_number_browse_s": [
+        "QB981 .R93 2003"
+    ],
+    "call_number_locator_display": [
+        "QB981 .R93 2003"
+    ]
+}

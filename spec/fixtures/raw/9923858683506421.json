@@ -1,0 +1,114 @@
+{
+    "id": "9923858683506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Blinchikoff, Herman J."
+    ],
+    "author_citation_display": [
+        "Blinchikoff, Herman J.",
+        "Zverev, Anatol I."
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"Zverev, Anatol I.\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Blinchikoff, Herman J.\"}",
+    "author_s": [
+        "Blinchikoff, Herman J.",
+        "Zverev, Anatol I."
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "Filtering in the time and frequency domains / Herman J. Blinchikoff \u0026 Anatol I. Zverev.",
+    "title_t": [
+        "Filtering in the time and frequency domains / Herman J. Blinchikoff \u0026 Anatol I. Zverev."
+    ],
+    "title_citation_display": [
+        "Filtering in the time and frequency domains"
+    ],
+    "compiled_created_t": [
+        "Filtering in the time and frequency domains / Herman J. Blinchikoff \u0026 Anatol I. Zverev."
+    ],
+    "pub_created_display": [
+        "New York : Wiley, c1976."
+    ],
+    "pub_created_s": [
+        "New York : Wiley, c1976."
+    ],
+    "pub_citation_display": [
+        "New York: Wiley"
+    ],
+    "publication_location_citation_display": [
+        "New York"
+    ],
+    "publisher_citation_display": [
+        "Wiley"
+    ],
+    "pub_date_display": [
+        "1976"
+    ],
+    "pub_date_start_sort": 1976,
+    "publication_date_citation_display": [
+        "1976"
+    ],
+    "cataloged_tdt": "2021-07-12T16:15:49Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "xviii, 494 p. : ill. ; 26 cm."
+    ],
+    "description_t": [
+        "xviii, 494 p. : ill. ; 26 cm."
+    ],
+    "number_of_pages_citation_display": [
+        "xviii, 494 p."
+    ],
+    "notes_display": [
+        "\"A Wiley-Interscience publication.\""
+    ],
+    "bib_ref_notes_display": [
+        "Includes bibliographies and index."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "lc_subject_display": [
+        "Electric filters"
+    ],
+    "subject_facet": [
+        "Electric filters"
+    ],
+    "lc_subject_facet": [
+        "Electric filters"
+    ],
+    "related_name_json_1display": "{\"Author\":[\"Zverev, Anatol I.\"]}",
+    "isbn_display": [
+        "0471986798"
+    ],
+    "lccn_display": [
+        "   76000120  "
+    ],
+    "lccn_s": [
+        "76000120"
+    ],
+    "isbn_s": [
+        "9780471986799"
+    ],
+    "oclc_s": [
+        "1994091"
+    ],
+    "other_version_s": [
+        "9780471986799",
+        "ocm01994091"
+    ],
+    "name_title_browse_s": [
+        "Blinchikoff, Herman J.. Filtering in the time and frequency domains"
+    ]
+}

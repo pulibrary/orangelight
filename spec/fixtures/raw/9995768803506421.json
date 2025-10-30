@@ -1,0 +1,188 @@
+{
+    "id": "9995768803506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Barnett, Robert Spencer"
+    ],
+    "author_citation_display": [
+        "Barnett, Robert Spencer"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Barnett, Robert Spencer\"}",
+    "author_s": [
+        "Barnett, Robert Spencer"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "Princeton University and neighboring institutions : an architectural tour / by Robert Spencer Barnett ; principal photography by Robert Spencer Barnett, with additional photography by Walter Smalling Jr. ; foreword by Christopher L. Eisgruber ; preface by Shirley M. Tilghman ; introduction by Ron McCoy.",
+    "title_t": [
+        "Princeton University and neighboring institutions : an architectural tour / by Robert Spencer Barnett ; principal photography by Robert Spencer Barnett, with additional photography by Walter Smalling Jr. ; foreword by Christopher L. Eisgruber ; preface by Shirley M. Tilghman ; introduction by Ron McCoy."
+    ],
+    "title_citation_display": [
+        "Princeton University and neighboring institutions : an architectural tour"
+    ],
+    "compiled_created_t": [
+        "Princeton University and neighboring institutions : an architectural tour / by Robert Spencer Barnett ; principal photography by Robert Spencer Barnett, with additional photography by Walter Smalling Jr. ; foreword by Christopher L. Eisgruber ; preface by Shirley M. Tilghman ; introduction by Ron McCoy."
+    ],
+    "edition_display": [
+        "Second edition."
+    ],
+    "pub_created_display": [
+        "New York : Princeton Architectural Press, [2015]"
+    ],
+    "pub_created_s": [
+        "New York : Princeton Architectural Press, [2015]"
+    ],
+    "pub_citation_display": [
+        "New York: Princeton Architectural Press"
+    ],
+    "publication_location_citation_display": [
+        "New York"
+    ],
+    "publisher_citation_display": [
+        "Princeton Architectural Press"
+    ],
+    "pub_date_display": [
+        "2015"
+    ],
+    "pub_date_start_sort": 2015,
+    "publication_date_citation_display": [
+        "2015"
+    ],
+    "cataloged_tdt": "2016-03-15T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "351 pages : color illustrations ; 26 cm + 1 fold out map."
+    ],
+    "description_t": [
+        "351 pages : color illustrations ; 26 cm + 1 fold out map."
+    ],
+    "number_of_pages_citation_display": [
+        "351 pages"
+    ],
+    "series_display": [
+        "Campus guide (New York, N.Y.)",
+        "The campus guide"
+    ],
+    "more_in_this_series_t": [
+        "Campus guide (New York, N.Y.)"
+    ],
+    "bib_ref_notes_display": [
+        "Includes bibliographical references and index."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "lc_subject_display": [
+        "Princeton University—Guidebooks",
+        "Princeton University—Buildings",
+        "Princeton University—Tours",
+        "Princeton University—Pictorial works"
+    ],
+    "subject_facet": [
+        "Princeton University—Guidebooks",
+        "Princeton University—Buildings",
+        "Princeton University—Tours",
+        "Princeton University—Pictorial works",
+        "Guidebooks"
+    ],
+    "lc_subject_facet": [
+        "Princeton University",
+        "Princeton University—Guidebooks",
+        "Princeton University—Buildings",
+        "Princeton University—Tours",
+        "Princeton University—Pictorial works"
+    ],
+    "lcgft_s": [
+        "Guidebooks"
+    ],
+    "lcgft_genre_facet": [
+        "Guidebooks"
+    ],
+    "isbn_display": [
+        "9781616892340 (paperback)",
+        "161689234X (paperback)"
+    ],
+    "lccn_display": [
+        "  2014044925"
+    ],
+    "lccn_s": [
+        "2014044925"
+    ],
+    "isbn_s": [
+        "9781616892340"
+    ],
+    "oclc_s": [
+        "934880499"
+    ],
+    "other_version_s": [
+        "9781616892340",
+        "ocn934880499"
+    ],
+    "holdings_1display": "{\"22497016260006421\":{\"location_code\":\"arch$ref\",\"location\":\"Reference\",\"library\":\"Architecture Library\",\"call_number\":\"LD4611 .B37 2015\",\"call_number_browse\":\"LD4611 .B37 2015\",\"items\":[{\"holding_id\":\"22497016260006421\",\"id\":\"23497016250006421\",\"status_at_load\":\"1\",\"barcode\":\"32101102528450\",\"copy_number\":\"1\"}]},\"22497016340006421\":{\"location_code\":\"rare$garf\",\"location\":\"Graphic Arts Reference Collection\",\"library\":\"Special Collections\",\"call_number\":\"NA680 .B3 2105\",\"call_number_browse\":\"NA680 .B3 2105\",\"items\":[{\"holding_id\":\"22497016340006421\",\"id\":\"23497016310006421\",\"status_at_load\":\"1\",\"barcode\":\"32101094411939\",\"copy_number\":\"0\"}]},\"22497016200006421\":{\"location_code\":\"marquand$ref\",\"location\":\"Reference Remote Storage: Marquand Use Only\",\"library\":\"Marquand Library\",\"call_number\":\"LD4611 .B37 2015\",\"call_number_browse\":\"LD4611 .B37 2015\",\"items\":[{\"holding_id\":\"22497016200006421\",\"id\":\"23497016190006421\",\"status_at_load\":\"1\",\"barcode\":\"32101102331319\",\"copy_number\":\"0\"}]},\"22497016220006421\":{\"location_code\":\"mudd$prnc\",\"location\":\"Princetoniana Collection\",\"library\":\"Mudd Manuscript Library\",\"call_number\":\"LD4611 .B37 2015\",\"call_number_browse\":\"LD4611 .B37 2015\",\"items\":[{\"holding_id\":\"22497016220006421\",\"id\":\"23497016210006421\",\"status_at_load\":\"1\",\"barcode\":\"32101100136371\",\"copy_number\":\"0\"}]},\"22497016240006421\":{\"location_code\":\"mudd$stacks\",\"location\":\"Stacks\",\"library\":\"Mudd Manuscript Library\",\"call_number\":\"LD4611 .B37 2015\",\"call_number_browse\":\"LD4611 .B37 2015\",\"items\":[{\"holding_id\":\"22497016240006421\",\"id\":\"23497016230006421\",\"status_at_load\":\"1\",\"barcode\":\"32101100136363\",\"copy_number\":\"0\"}]},\"22497016280006421\":{\"location_code\":\"firestone$dr\",\"location\":\"Trustee Reading Room Reference\",\"library\":\"Firestone Library\",\"call_number\":\"LD4611 .B37 2015\",\"call_number_browse\":\"LD4611 .B37 2015\",\"items\":[{\"holding_id\":\"22497016280006421\",\"id\":\"23497016270006421\",\"status_at_load\":\"1\",\"barcode\":\"32101109863082\",\"copy_number\":\"0\"}]},\"22497016300006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"LD4611 .B37 2015\",\"call_number_browse\":\"LD4611 .B37 2015\",\"items\":[{\"holding_id\":\"22497016300006421\",\"id\":\"23497016290006421\",\"status_at_load\":\"1\",\"barcode\":\"32101101502498\",\"copy_number\":\"0\"}]}}",
+    "location_code_s": [
+        "arch$ref",
+        "rare$garf",
+        "marquand$ref",
+        "mudd$prnc",
+        "mudd$stacks",
+        "firestone$dr",
+        "firestone$stacks"
+    ],
+    "location": [
+        "Architecture Library",
+        "Special Collections",
+        "Marquand Library",
+        "Mudd Manuscript Library",
+        "Firestone Library"
+    ],
+    "location_display": [
+        "Reference",
+        "Graphic Arts Reference Collection",
+        "Reference Remote Storage: Marquand Use Only",
+        "Princetoniana Collection",
+        "Stacks",
+        "Trustee Reading Room Reference",
+        "Stacks"
+    ],
+    "advanced_location_s": [
+        "arch$ref",
+        "rare$garf",
+        "marquand$ref",
+        "mudd$prnc",
+        "mudd$stacks",
+        "firestone$dr",
+        "firestone$stacks",
+        "Architecture Library",
+        "Special Collections",
+        "Marquand Library",
+        "Mudd Manuscript Library",
+        "Firestone Library"
+    ],
+    "name_title_browse_s": [
+        "Barnett, Robert Spencer. Princeton University and neighboring institutions"
+    ],
+    "call_number_display": [
+        "LD4611 .B37 2015",
+        "NA680 .B3 2105"
+    ],
+    "call_number_browse_s": [
+        "LD4611 .B37 2015",
+        "NA680 .B3 2105"
+    ],
+    "call_number_locator_display": [
+        "LD4611 .B37 2015",
+        "NA680 .B3 2105"
+    ]
+}

@@ -1,0 +1,84 @@
+{
+    "id": "99129134216906421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Maltbia , C. B."
+    ],
+    "author_citation_display": [
+        "Maltbia , C. B."
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Maltbia , C. B.\"}",
+    "author_s": [
+        "Maltbia , C. B."
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "Harvesting black gold : /",
+    "title_t": [
+        "Harvesting black gold : /"
+    ],
+    "title_citation_display": [
+        "Harvesting black gold :"
+    ],
+    "compiled_created_t": [
+        "Harvesting black gold : /"
+    ],
+    "pub_created_display": [
+        "[S.l] : [s.n.], 2018"
+    ],
+    "pub_created_s": [
+        "[S.l] : [s.n.], 2018"
+    ],
+    "pub_citation_display": [
+        "S.l: s.n."
+    ],
+    "publication_location_citation_display": [
+        "S.l"
+    ],
+    "publisher_citation_display": [
+        "s.n."
+    ],
+    "cataloged_tdt": "2023-12-01T15:42:15Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "426 pages : ;"
+    ],
+    "description_t": [
+        "426 pages : ;"
+    ],
+    "number_of_pages_citation_display": [
+        "426 pages"
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "holdings_1display": "{\"221002424820006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"items\":[{\"holding_id\":\"221002424820006421\",\"id\":\"231002424810006421\",\"status_at_load\":\"0\",\"barcode\":\"32101117043693\"}]}}",
+    "location_code_s": [
+        "recap$pa"
+    ],
+    "location": [
+        "ReCAP"
+    ],
+    "location_display": [
+        "Remote Storage"
+    ],
+    "advanced_location_s": [
+        "recap$pa",
+        "ReCAP"
+    ],
+    "name_title_browse_s": [
+        "Maltbia , C. B.. Harvesting black gold"
+    ]
+}

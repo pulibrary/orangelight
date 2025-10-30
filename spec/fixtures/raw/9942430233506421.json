@@ -1,0 +1,122 @@
+{
+    "id": "9942430233506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Cheng, Tiewu",
+        "成鐵吾"
+    ],
+    "author_citation_display": [
+        "Cheng, Tiewu"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"成鐵吾\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Cheng, Tiewu\"}",
+    "author_s": [
+        "Cheng, Tiewu",
+        "成鐵吾"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "Lü Siniang bie zhuan, Cheng Tiewu zhu.",
+    "title_vern_display": "呂四娘別傳, 成鐵吾著.",
+    "title_t": [
+        "Lü Siniang bie zhuan, Cheng Tiewu zhu."
+    ],
+    "title_citation_display": [
+        "Lü Siniang bie zhuan",
+        "呂四娘別傳"
+    ],
+    "compiled_created_t": [
+        "Lü Siniang bie zhuan, Cheng Tiewu zhu.",
+        "呂四娘別傳, 成鐵吾著."
+    ],
+    "pub_created_vern_display": [
+        "臺北, 真善美出版社, 民國46-52 [1957-63]"
+    ],
+    "pub_created_display": [
+        "Taibei : Zhen shan mei chu ban she, Minguo 46-52 [1957-63]",
+        "臺北, 真善美出版社, 民國46-52 [1957-63]"
+    ],
+    "pub_created_s": [
+        "Taibei : Zhen shan mei chu ban she, Minguo 46-52 [1957-63]",
+        "臺北, 真善美出版社, 民國46-52 [1957-63]"
+    ],
+    "pub_citation_display": [
+        "Taibei: Zhen shan mei chu ban she",
+        "臺北: 真善美出版社"
+    ],
+    "publication_location_citation_display": [
+        "Taibei"
+    ],
+    "publisher_citation_display": [
+        "Zhen shan mei chu ban she"
+    ],
+    "pub_date_display": [
+        "1957"
+    ],
+    "pub_date_start_sort": 1957,
+    "pub_date_end_sort": 1963,
+    "publication_date_citation_display": [
+        "1957"
+    ],
+    "cataloged_tdt": "2023-04-26T16:30:47Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "6 v. in 2. 19 cm."
+    ],
+    "description_t": [
+        "6 v. in 2. 19 cm."
+    ],
+    "number_of_pages_citation_display": [
+        "6 v. in 2."
+    ],
+    "notes_display": [
+        "Library has: v.1-6."
+    ],
+    "language_name_display": [
+        "Chinese"
+    ],
+    "language_facet": [
+        "Chinese"
+    ],
+    "language_iana_s": [
+        "zh"
+    ],
+    "mult_languages_iana_s": [
+        "zh"
+    ],
+    "oclc_s": [
+        "55889160"
+    ],
+    "other_version_s": [
+        "ocm55889160"
+    ],
+    "holdings_1display": "{\"22600149340006421\":{\"location_code\":\"eastasian$hy\",\"location\":\"\",\"library\":\"East Asian Library\",\"call_number\":\"5766/5081\",\"call_number_browse\":\"5766/5081\",\"items\":[{\"holding_id\":\"22600149340006421\",\"id\":\"23970841610006421\",\"status_at_load\":\"1\",\"barcode\":\"32101025384106\"},{\"holding_id\":\"22600149340006421\",\"id\":\"23970841600006421\",\"status_at_load\":\"0\",\"barcode\":\"32101025384098\"}]}}",
+    "location_code_s": [
+        "eastasian$hy"
+    ],
+    "location": [
+        "East Asian Library"
+    ],
+    "location_display": [
+        ""
+    ],
+    "advanced_location_s": [
+        "eastasian$hy",
+        "East Asian Library"
+    ],
+    "name_title_browse_s": [
+        "Cheng, Tiewu. Lü Siniang bie zhuan",
+        "成鐵吾. 呂四娘別傳"
+    ],
+    "call_number_display": [
+        "5766/5081"
+    ],
+    "call_number_browse_s": [
+        "5766/5081"
+    ],
+    "call_number_locator_display": [
+        "5766/5081"
+    ]
+}

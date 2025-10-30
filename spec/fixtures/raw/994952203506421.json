@@ -1,0 +1,167 @@
+{
+    "id": "994952203506421",
+    "numeric_id_b": true,
+    "author_citation_display": [
+        "Polynesian Society (N.Z.)"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"Polynesian Society (N.Z.)\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+    "author_s": [
+        "Polynesian Society (N.Z.)"
+    ],
+    "title_display": "Journal of the Polynesian Society.",
+    "title_t": [
+        "Journal of the Polynesian Society."
+    ],
+    "title_citation_display": [
+        "Journal of the Polynesian Society"
+    ],
+    "compiled_created_t": [
+        "Journal of the Polynesian Society."
+    ],
+    "pub_created_display": [
+        "Wellington : Polynesian Society, 1892-"
+    ],
+    "pub_created_s": [
+        "Wellington : Polynesian Society, 1892-"
+    ],
+    "pub_citation_display": [
+        "Wellington: Polynesian Society"
+    ],
+    "publication_location_citation_display": [
+        "Wellington"
+    ],
+    "publisher_citation_display": [
+        "Polynesian Society"
+    ],
+    "pub_date_display": [
+        "1892"
+    ],
+    "pub_date_start_sort": 1892,
+    "pub_date_end_sort": 9999,
+    "publication_date_citation_display": [
+        "1892"
+    ],
+    "cataloged_tdt": "2000-06-13T00:00:00Z",
+    "format": [
+        "Journal"
+    ],
+    "description_display": [
+        "v. : ill. ; 21-26 cm.",
+        "Vol. 1, no. 1 (Apr. 15, 1892)-"
+    ],
+    "description_t": [
+        "v. : ill. ; 21-26 cm.",
+        "Vol. 1, no. 1 (Apr. 15, 1892)-",
+        "Vols. 1-50 called also no. 1-200.",
+        "Issue for Dec. 2000 misnumbered as v. 110, no. 4, but constitutes v. 109, no. 4."
+    ],
+    "number_of_pages_citation_display": [
+        "v."
+    ],
+    "geocode_display": [
+        "Polynesia"
+    ],
+    "frequency_display": [
+        "Quarterly"
+    ],
+    "notes_display": [
+        "Vols. for 1892-1941 contain the transactions and proceedings of the Society.",
+        "Place of publication varies: \u003c1990-2012\u003e, Auckland, N.Z."
+    ],
+    "numbering_pec_notes_display": [
+        "Vols. 1-50 called also no. 1-200.",
+        "Issue for Dec. 2000 misnumbered as v. 110, no. 4, but constitutes v. 109, no. 4."
+    ],
+    "supplement_notes_display": [
+        "Supplements accompany some vols."
+    ],
+    "source_desc_notes_display": [
+        "Latest issue consulted: Vol. 121, no. 4 (Dec. 2012)."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "indexes_display": [
+        "Vols. 1 (1892)-100 (1991). 1 v."
+    ],
+    "lc_subject_display": [
+        "Polynesia—Periodicals",
+        "Polynesian languages—Periodicals"
+    ],
+    "subject_facet": [
+        "Polynesia—Periodicals",
+        "Polynesian languages—Periodicals",
+        "Periodicals"
+    ],
+    "lc_subject_facet": [
+        "Polynesia",
+        "Polynesia—Periodicals",
+        "Polynesian languages",
+        "Polynesian languages—Periodicals"
+    ],
+    "lcgft_s": [
+        "Periodicals"
+    ],
+    "lcgft_genre_facet": [
+        "Periodicals"
+    ],
+    "related_name_json_1display": "{\"Related name\":[\"Polynesian Society (N.Z.)\"]}",
+    "other_title_display": [
+        "Journal of the Polynesian Society",
+        "JPS \u003c1989-2012\u003e"
+    ],
+    "alt_title_246_display": [
+        "JPS \u003c1989-2012\u003e"
+    ],
+    "issn_display": [
+        "0032-4000"
+    ],
+    "lccn_display": [
+        "   08012644 //r482 "
+    ],
+    "lccn_s": [
+        "08012644"
+    ],
+    "issn_s": [
+        "00324000"
+    ],
+    "oclc_s": [
+        "1762632"
+    ],
+    "other_version_s": [
+        "00324000",
+        "ocm01762632"
+    ],
+    "location_code_s": [
+        "recap$pa"
+    ],
+    "location": [
+        "ReCAP"
+    ],
+    "location_display": [
+        "Remote Storage"
+    ],
+    "advanced_location_s": [
+        "recap$pa",
+        "ReCAP"
+    ],
+    "call_number_display": [
+        "GN670 .P74"
+    ],
+    "call_number_browse_s": [
+        "GN670 .P74"
+    ],
+    "call_number_locator_display": [
+        "GN670 .P74"
+    ],
+    "holdings_1display": "{\"22644769680006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"GN670 .P74\",\"call_number_browse\":\"GN670 .P74\",\"items\":[{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 65\",\"id\":\"23644768730006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858264\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 66\",\"id\":\"23644768720006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858256\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 64\",\"id\":\"23644768760006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858272\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 60\",\"id\":\"23644768770006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858280\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 59\",\"id\":\"23644768780006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858298\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 131, no.1-4 \",\"id\":\"231035856860006421\",\"status_at_load\":\"1\",\"barcode\":\"32101115886986\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 67\",\"id\":\"23644768710006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858249\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 75\",\"id\":\"23644769310006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857605\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 70\",\"id\":\"23644768700006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858231\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 88\",\"id\":\"23644769300006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858504\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 50\",\"id\":\"23644768790006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858306\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 102\",\"id\":\"23644769360006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858389\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 3\",\"id\":\"23644769270006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857159\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 79\",\"id\":\"23644769290006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857597\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"Index, v. 1/100\",\"id\":\"23644769380006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858405\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 109\",\"id\":\"23644769340006421\",\"status_at_load\":\"1\",\"barcode\":\"32101044802229\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 111\",\"id\":\"23644769320006421\",\"status_at_load\":\"1\",\"barcode\":\"32101051680716\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 5\",\"id\":\"23644768340006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858066\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 16\",\"id\":\"23644768410006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858009\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 127\",\"id\":\"23644768450006421\",\"status_at_load\":\"1\",\"barcode\":\"32101109066215\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 12\",\"id\":\"23644768430006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858025\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 117\",\"id\":\"23644768300006421\",\"status_at_load\":\"1\",\"barcode\":\"32101072206905\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 129, no.3-4\",\"id\":\"23952440100006421\",\"status_at_load\":\"1\",\"barcode\":\"32101118956653\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 6\",\"id\":\"23644768380006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858058\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 113\",\"id\":\"23644768320006421\",\"status_at_load\":\"1\",\"barcode\":\"32101054748791\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 1\",\"id\":\"23644768360006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857175\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 45\",\"id\":\"23644768830006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857654\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 47\",\"id\":\"23644768820006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857647\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 124\",\"id\":\"23644768470006421\",\"status_at_load\":\"1\",\"barcode\":\"32101101880241\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 71 (inc.)\",\"id\":\"23644768690006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858223\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 81\",\"id\":\"23644768610006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858140\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 76\",\"id\":\"23644768650006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858181\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 77\",\"id\":\"23644768640006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858173\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 72\",\"id\":\"23644768680006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858215\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 83\",\"id\":\"23644768600006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858132\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 23\",\"id\":\"23644769040006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857860\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 115\",\"id\":\"23644769210006421\",\"status_at_load\":\"1\",\"barcode\":\"32101062805484\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 114\",\"id\":\"23644769220006421\",\"status_at_load\":\"1\",\"barcode\":\"32101059726230\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 24\",\"id\":\"23644769030006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857852\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 41\",\"id\":\"23644768870006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857696\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 27\",\"id\":\"23644769000006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857829\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 20\",\"id\":\"23644769070006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857894\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 19\",\"id\":\"23644769080006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857902\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 30\",\"id\":\"23644769250006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857977\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 42\",\"id\":\"23644768860006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857688\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 101\",\"id\":\"23644769370006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858397\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 107\",\"id\":\"23644769550006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858330\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 82\",\"id\":\"23644769260006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858520\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 110\",\"id\":\"23644769330006421\",\"status_at_load\":\"1\",\"barcode\":\"32101044806360\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 95\",\"id\":\"23644769510006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858462\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 100\",\"id\":\"23644769400006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858413\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 98\",\"id\":\"23644769440006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858439\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 11\",\"id\":\"23644768420006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858033\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"130\",\"id\":\"23644769590006421\",\"status_at_load\":\"0\",\"barcode\":\"ISSitm19807.800-princetondb\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 126\",\"id\":\"23644768460006421\",\"status_at_load\":\"1\",\"barcode\":\"32101109066231\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 125,no.3-4\",\"id\":\"23644768280006421\",\"status_at_load\":\"1\",\"barcode\":\"32101102768874\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 2\",\"id\":\"23644768350006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857167\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 18\",\"id\":\"23644768390006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857985\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 116\",\"id\":\"23644768310006421\",\"status_at_load\":\"1\",\"barcode\":\"32101068945631\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 86\",\"id\":\"23644768580006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858116\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 37\",\"id\":\"23644768910006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857738\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 36\",\"id\":\"23644768920006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857746\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 84\",\"id\":\"23644768590006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858124\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 87\",\"id\":\"23644768570006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858108\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 90\",\"id\":\"23644768530006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858074\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 89, no. 4\",\"id\":\"23644768550006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858082\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 89, no. 1-3\",\"id\":\"23644768560006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858090\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 10\",\"id\":\"23644769120006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857936\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 28\",\"id\":\"23644768990006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857811\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 29\",\"id\":\"23644768980006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857803\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 8\",\"id\":\"23644769160006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857951\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 32\",\"id\":\"23644768960006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857787\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 33\",\"id\":\"23644768950006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857779\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 31\",\"id\":\"23644768970006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857795\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 38\",\"id\":\"23644768900006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857720\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 14\",\"id\":\"23644769110006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857928\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 34\",\"id\":\"23644768940006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857761\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 35\",\"id\":\"23644768930006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857753\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 9\",\"id\":\"23644769150006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857944\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 121\",\"id\":\"23644769170006421\",\"status_at_load\":\"1\",\"barcode\":\"32101087382170\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 119\",\"id\":\"23644769190006421\",\"status_at_load\":\"1\",\"barcode\":\"32101082436823\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 120\",\"id\":\"23644769180006421\",\"status_at_load\":\"1\",\"barcode\":\"32101085669388\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 92\",\"id\":\"23644769540006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858496\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 94\",\"id\":\"23644769520006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858470\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 106\",\"id\":\"23644769560006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858348\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 104\",\"id\":\"23644769580006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858363\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 96\",\"id\":\"23644769500006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858454\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 97\",\"id\":\"23644769490006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858447\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 123\",\"id\":\"23644768290006421\",\"status_at_load\":\"1\",\"barcode\":\"32101094480777\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 74\",\"id\":\"23644768660006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858199\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 73\",\"id\":\"23644768670006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858207\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 44\",\"id\":\"23644768840006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857662\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"129\",\"id\":\"23903443590006421\",\"status_at_load\":\"1\",\"barcode\":\"32101110862511\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 125,no.1-2\",\"id\":\"23644768480006421\",\"status_at_load\":\"1\",\"barcode\":\"32101101880258\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 122\",\"id\":\"23644768490006421\",\"status_at_load\":\"1\",\"barcode\":\"32101086617980\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 78\",\"id\":\"23644768630006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858165\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 80\",\"id\":\"23644768620006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858157\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 130, no. 2-4\",\"id\":\"231035856910006421\",\"status_at_load\":\"1\",\"barcode\":\"32101115886978\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol.128\",\"id\":\"23993654300006421\",\"status_at_load\":\"1\",\"barcode\":\"32101112250285\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 118\",\"id\":\"23644769200006421\",\"status_at_load\":\"1\",\"barcode\":\"32101078942735\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 25\",\"id\":\"23644769020006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857845\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 22\",\"id\":\"23644769050006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857878\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 21\",\"id\":\"23644769060006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857886\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 26\",\"id\":\"23644769010006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857837\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 40\",\"id\":\"23644768880006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857704\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 49\",\"id\":\"23644768800006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857621\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 48\",\"id\":\"23644768810006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857639\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 85\",\"id\":\"23644769230006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858512\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 112\",\"id\":\"23644769240006421\",\"status_at_load\":\"1\",\"barcode\":\"32101049696063\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 43\",\"id\":\"23644768850006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857670\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 39\",\"id\":\"23644768890006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857712\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 4\",\"id\":\"23644769280006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857142\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 93\",\"id\":\"23644769530006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858488\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 15\",\"id\":\"23644769090006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857910\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 103\",\"id\":\"23644769350006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858371\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 105\",\"id\":\"23644769570006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858355\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 99\",\"id\":\"23644769420006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858421\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 91\",\"id\":\"23644768510006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858983\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 13\",\"id\":\"23644768440006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858017\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 17\",\"id\":\"23644768400006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857993\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 7\",\"id\":\"23644768370006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091858041\",\"copy_number\":\"1\"},{\"holding_id\":\"22644769680006421\",\"description\":\"vol. 46\",\"id\":\"23644768330006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091857969\",\"copy_number\":\"1\"}],\"location_has\":[\"Vol. 1, no. 1 (Apr. 15, 1892)-v. 131 , no. 4 (Dec. 2022)\",\"LACKS: v. 51-58; v. 61-63; v. 68-70; v. 71, no. 1; v. 108, v. 130, no. 1\",\"CURRENT ISSUES IN: Periodicals Collection (PR). Firestone\",\"Some of the library's holdings are reprints.\",null],\"supplements\":[null,null,null,null,null],\"indexes\":[null,null,null,null,\"Index, v. 1/100\"]}}"
+}

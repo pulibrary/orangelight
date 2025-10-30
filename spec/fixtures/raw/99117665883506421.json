@@ -1,0 +1,138 @@
+{
+    "id": "99117665883506421",
+    "numeric_id_b": true,
+    "author_citation_display": [
+        "Li, Kangtai",
+        "Lao gai zhuan ye jiao cai bian ji bu \" gai zao jiao yu xue\" bian xie zu"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"Lao gai zhuan ye jiao cai bian ji bu \\\" gai zao jiao yu xue\\\" bian xie zu\",\"劳改专业教材编辑部 \\\" 改造教育学\\\" 编写组\"],\"translators\":[],\"editors\":[\"Li, Kangtai\",\"力康泰\"],\"compilers\":[]}",
+    "author_s": [
+        "Li, Kangtai",
+        "力康泰",
+        "Lao gai zhuan ye jiao cai bian ji bu \" gai zao jiao yu xue\" bian xie zu",
+        "劳改专业教材编辑部 \" 改造教育学\" 编写组"
+    ],
+    "title_display": "Gai zao jiao yu xue : lao gai zhuan ye shi yong jiao cai / Li Kangtai zhu bian ; lao gai zhuan ye jiao cai bian ji bu \" gai zao jiao yu xue\" bian xie zu.",
+    "title_vern_display": "改造教育学: 劳改专业试用教材 / 力康泰主编 ; 劳改专业教材编辑部 \" 改造教育学\" 编写组.",
+    "title_t": [
+        "Gai zao jiao yu xue : lao gai zhuan ye shi yong jiao cai / Li Kangtai zhu bian ; lao gai zhuan ye jiao cai bian ji bu \" gai zao jiao yu xue\" bian xie zu."
+    ],
+    "title_citation_display": [
+        "Gai zao jiao yu xue : lao gai zhuan ye shi yong jiao cai",
+        "改造教育学: 劳改专业试用教材"
+    ],
+    "compiled_created_t": [
+        "Gai zao jiao yu xue : lao gai zhuan ye shi yong jiao cai / Li Kangtai zhu bian ; lao gai zhuan ye jiao cai bian ji bu \" gai zao jiao yu xue\" bian xie zu.",
+        "改造教育学: 劳改专业试用教材 / 力康泰主编 ; 劳改专业教材编辑部 \" 改造教育学\" 编写组."
+    ],
+    "edition_display": [
+        "Di 1 ban.",
+        "第1版."
+    ],
+    "pub_created_vern_display": [
+        "北京 : 群众出版社, 1985."
+    ],
+    "pub_created_display": [
+        "Beijing : Qun zhong chu ban she, 1985.",
+        "北京 : 群众出版社, 1985."
+    ],
+    "pub_created_s": [
+        "Beijing : Qun zhong chu ban she, 1985.",
+        "北京 : 群众出版社, 1985."
+    ],
+    "pub_citation_display": [
+        "Beijing: Qun zhong chu ban she",
+        "北京: 群众出版社"
+    ],
+    "publication_location_citation_display": [
+        "Beijing"
+    ],
+    "publisher_citation_display": [
+        "Qun zhong chu ban she"
+    ],
+    "pub_date_display": [
+        "1985"
+    ],
+    "pub_date_start_sort": 1985,
+    "publication_date_citation_display": [
+        "1985"
+    ],
+    "cataloged_tdt": "2020-10-09T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "2, 7, 298 pages ; 21 cm"
+    ],
+    "description_t": [
+        "2, 7, 298 pages ; 21 cm"
+    ],
+    "number_of_pages_citation_display": [
+        "2, 7, 298 pages"
+    ],
+    "geocode_display": [
+        "China"
+    ],
+    "language_name_display": [
+        "Chinese"
+    ],
+    "language_facet": [
+        "Chinese"
+    ],
+    "language_iana_s": [
+        "zh"
+    ],
+    "mult_languages_iana_s": [
+        "zh"
+    ],
+    "lc_subject_display": [
+        "Criminals—Rehabilitation—China—Textbooks"
+    ],
+    "subject_facet": [
+        "Criminals—Rehabilitation—China—Textbooks"
+    ],
+    "lc_subject_facet": [
+        "Criminals",
+        "Criminals—Rehabilitation",
+        "Criminals—Rehabilitation—China",
+        "Criminals—Rehabilitation—China—Textbooks"
+    ],
+    "related_name_json_1display": "{\"Editor\":[\"Li, Kangtai\",\"力康泰\"],\"Issuing body\":[\"Lao gai zhuan ye jiao cai bian ji bu \\\" gai zao jiao yu xue\\\" bian xie zu\",\"劳改专业教材编辑部 \\\" 改造教育学\\\" 编写组\"]}",
+    "other_title_display": [
+        "Lao gai zhuan ye shi yong jiao cai",
+        "劳改专业试用教材"
+    ],
+    "alt_title_246_display": [
+        "Lao gai zhuan ye shi yong jiao cai",
+        "劳改专业试用教材"
+    ],
+    "oclc_s": [
+        "1376384078"
+    ],
+    "other_version_s": [
+        "on1376384078"
+    ],
+    "holdings_1display": "{\"22707341710006421\":{\"location_code\":\"eastasian$cjk\",\"location\":\"\",\"library\":\"East Asian Library\",\"call_number\":\"KNQ3956.G35 1985\",\"call_number_browse\":\"KNQ3956.G35 1985\",\"items\":[{\"holding_id\":\"22707341710006421\",\"id\":\"23707341700006421\",\"status_at_load\":\"1\",\"barcode\":\"32101098114810\",\"copy_number\":\"0\"}]}}",
+    "location_code_s": [
+        "eastasian$cjk"
+    ],
+    "location": [
+        "East Asian Library"
+    ],
+    "location_display": [
+        ""
+    ],
+    "advanced_location_s": [
+        "eastasian$cjk",
+        "East Asian Library"
+    ],
+    "call_number_display": [
+        "KNQ3956.G35 1985"
+    ],
+    "call_number_browse_s": [
+        "KNQ3956.G35 1985"
+    ],
+    "call_number_locator_display": [
+        "KNQ3956.G35 1985"
+    ]
+}

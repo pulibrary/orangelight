@@ -1,14 +1,14 @@
-@import "variables/colors";
+@use "variables/colors";
 
 .dropdown-menu > li > a {
-  color: $black;
+  color: colors.$black;
   display: inline-block;
   padding: 3px 10px;
   width: 100%;
 
   &:hover {
-    background: $blue;
-    color: $white;
+    background: colors.$blue;
+    color: colors.$white;
     text-decoration: none;
   }
 }

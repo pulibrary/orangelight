@@ -1,5 +1,4 @@
-@import "variables/breaks";
-@import "abstractions/mixins";
+@use "variables/breaks";
 
 .dl-horizontal dt,
 .dl-horizontal dd {
@@ -27,7 +26,7 @@
   margin-top: .3em;
 }
 
-@media (min-width: $bp-medium) {
+@media (min-width: breaks.$bp-medium) {
   .dl-horizontal dt {
     overflow: visible;
     width: 160px;

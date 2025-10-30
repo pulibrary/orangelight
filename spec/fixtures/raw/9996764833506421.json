@@ -1,0 +1,161 @@
+{
+    "id": "9996764833506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Nājī, ʻAlī, 1987-",
+        "ناجي، علي،"
+    ],
+    "author_citation_display": [
+        "Nājī, ʻAlī"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"ناجي، علي،\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Nājī, ʻAlī\"}",
+    "author_s": [
+        "Nājī, ʻAlī, 1987-",
+        "ناجي، علي،"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "Banādiq lil-salām : Turkīyā wa \"PKK\" min Ūslū ilá Imrālī / ʻAlī Nājī.",
+    "title_vern_display": "بنادق للسلام : تركيا و \"PKK\" من أوسلو إلى إمرالي / علي ناجي.",
+    "title_t": [
+        "Banādiq lil-salām : Turkīyā wa \"PKK\" min Ūslū ilá Imrālī / ʻAlī Nājī."
+    ],
+    "title_citation_display": [
+        "Banādiq lil-salām : Turkīyā wa \"PKK\" min Ūslū ilá Imrālī",
+        "بنادق للسلام : تركيا و \"PKK\" من أوسلو إلى إمرالي"
+    ],
+    "compiled_created_t": [
+        "Banādiq lil-salām : Turkīyā wa \"PKK\" min Ūslū ilá Imrālī / ʻAlī Nājī.",
+        "بنادق للسلام : تركيا و \"PKK\" من أوسلو إلى إمرالي / علي ناجي."
+    ],
+    "edition_display": [
+        "al-Ṭabʻah al-ūlá.",
+        "الطبعة الأولى."
+    ],
+    "pub_created_vern_display": [
+        "لندن : دار الحكمة ؛ بغداد : دار بابل للطباعة والنشر والتوزيع، 2017."
+    ],
+    "pub_created_display": [
+        "Landan : Dār al-Ḥikmah ; Baghdād : Dār Bābil lil-Ṭibāʻah wa-al-Nashr wa-al-Tawzīʻ, 2017.",
+        "لندن : دار الحكمة ؛ بغداد : دار بابل للطباعة والنشر والتوزيع، 2017."
+    ],
+    "pub_created_s": [
+        "Landan : Dār al-Ḥikmah ; Baghdād : Dār Bābil lil-Ṭibāʻah wa-al-Nashr wa-al-Tawzīʻ, 2017.",
+        "لندن : دار الحكمة ؛ بغداد : دار بابل للطباعة والنشر والتوزيع، 2017."
+    ],
+    "pub_citation_display": [
+        "Baghdād: Dār Bābil lil-Ṭibāʻah wa-al-Nashr wa-al-Tawzīʻ",
+        "بغداد: دار بابل للطباعة والنشر والتوزيع،"
+    ],
+    "publication_location_citation_display": [
+        "Landan"
+    ],
+    "publisher_citation_display": [
+        "Dār al-Ḥikmah"
+    ],
+    "pub_date_display": [
+        "2017"
+    ],
+    "pub_date_start_sort": 2017,
+    "publication_date_citation_display": [
+        "2017"
+    ],
+    "cataloged_tdt": "2016-06-17T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "130 pages : illustrations ; 22 cm"
+    ],
+    "description_t": [
+        "130 pages : illustrations ; 22 cm"
+    ],
+    "number_of_pages_citation_display": [
+        "130 pages"
+    ],
+    "geocode_display": [
+        "Turkey"
+    ],
+    "bib_ref_notes_display": [
+        "Includes bibliographical references (pages 127-130)."
+    ],
+    "language_name_display": [
+        "Arabic"
+    ],
+    "language_facet": [
+        "Arabic"
+    ],
+    "language_iana_s": [
+        "ar"
+    ],
+    "mult_languages_iana_s": [
+        "ar"
+    ],
+    "lc_subject_display": [
+        "Turkey—Politics and government—21st century",
+        "Partiya Karkerên Kurdistanê—Politics and government—21st century",
+        "Kurds—Turkey—Politics and government—21st century"
+    ],
+    "subject_facet": [
+        "Turkey—Politics and government—21st century",
+        "Partiya Karkerên Kurdistanê—Politics and government—21st century",
+        "Kurds—Turkey—Politics and government—21st century"
+    ],
+    "lc_subject_facet": [
+        "Turkey",
+        "Turkey—Politics and government",
+        "Turkey—Politics and government—21st century",
+        "Partiya Karkerên Kurdistanê",
+        "Partiya Karkerên Kurdistanê—Politics and government",
+        "Partiya Karkerên Kurdistanê—Politics and government—21st century",
+        "Kurds",
+        "Kurds—Turkey",
+        "Kurds—Turkey—Politics and government",
+        "Kurds—Turkey—Politics and government—21st century"
+    ],
+    "isbn_display": [
+        "9781784810627",
+        "1784810622"
+    ],
+    "isbn_s": [
+        "9781784810627"
+    ],
+    "oclc_s": [
+        "951988768"
+    ],
+    "other_version_s": [
+        "9781784810627",
+        "ocn951988768"
+    ],
+    "subject_era_facet": [
+        "21st century"
+    ],
+    "holdings_1display": "{\"22680107620006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"DR603 .N35 2017\",\"call_number_browse\":\"DR603 .N35 2017\",\"items\":[{\"holding_id\":\"22680107620006421\",\"id\":\"23680107610006421\",\"status_at_load\":\"1\",\"barcode\":\"32101099103457\",\"copy_number\":\"0\"}]}}",
+    "location_code_s": [
+        "recap$pa"
+    ],
+    "location": [
+        "ReCAP"
+    ],
+    "location_display": [
+        "Remote Storage"
+    ],
+    "advanced_location_s": [
+        "recap$pa",
+        "ReCAP"
+    ],
+    "name_title_browse_s": [
+        "Nājī, ʻAlī, 1987-. Banādiq lil-salām",
+        "ناجي، علي،. بنادق للسلام"
+    ],
+    "call_number_display": [
+        "DR603 .N35 2017"
+    ],
+    "call_number_browse_s": [
+        "DR603 .N35 2017"
+    ],
+    "call_number_locator_display": [
+        "DR603 .N35 2017"
+    ]
+}

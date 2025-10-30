@@ -1,0 +1,200 @@
+{
+    "id": "996160863506421",
+    "numeric_id_b": true,
+    "figgy_1display": "[{\"visibility\":{\"value\":\"open\",\"label\":\"open\",\"definition\":\"Open to the world. Anyone can view.\"},\"portion_note\":null,\"iiif_manifest_url\":\"https://figgy.princeton.edu/concern/scanned_resources/8b73b1bb-6417-4ae1-b516-bb68d999ed2f/manifest\"}]",
+    "author_display": [
+        "Richardson, Samuel, 1689-1761"
+    ],
+    "author_citation_display": [
+        "Richardson, Samuel",
+        "Bradshaigh, Dorothy"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"Bradshaigh, Dorothy\",\"Richardson, Samuel\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Richardson, Samuel\"}",
+    "author_s": [
+        "Richardson, Samuel, 1689-1761",
+        "Bradshaigh, Dorothy, Lady, approximately 1708-1785"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "uniform_title_s": [
+        "Clarissa"
+    ],
+    "title_display": "Clarissa, or, The history of a young lady : comprehending the most important concerns of private life : and particularly shewing, the distresses that may attend the misconduct both of parents and children, in relation to marriage / published by the editor of Pamela.",
+    "title_t": [
+        "Clarissa, or, The history of a young lady : comprehending the most important concerns of private life : and particularly shewing, the distresses that may attend the misconduct both of parents and children, in relation to marriage / published by the editor of Pamela."
+    ],
+    "title_citation_display": [
+        "Clarissa, or, The history of a young lady : comprehending the most important concerns of private life : and particularly shewing, the distresses that may attend the misconduct both of parents and children, in relation to marriage"
+    ],
+    "compiled_created_t": [
+        "Clarissa, or, The history of a young lady : comprehending the most important concerns of private life : and particularly shewing, the distresses that may attend the misconduct both of parents and children, in relation to marriage / published by the editor of Pamela."
+    ],
+    "pub_created_display": [
+        "London : Printed for S. Richardson and sold by A. Millar ... J. and Ja. Rivington ... John Osborn ... and by J. Leake, at Bath, 1748 [i.e. 1747-1748]"
+    ],
+    "pub_created_s": [
+        "London : Printed for S. Richardson and sold by A. Millar ... J. and Ja. Rivington ... John Osborn ... and by J. Leake, at Bath, 1748 [i.e. 1747-1748]"
+    ],
+    "pub_citation_display": [
+        "London: Printed for S. Richardson and sold by A. Millar ... J. and Ja. Rivington ... John Osborn ... and by J. Leake, at Bath"
+    ],
+    "publication_location_citation_display": [
+        "London"
+    ],
+    "publisher_citation_display": [
+        "Printed for S. Richardson and sold by A. Millar ... J. and Ja. Rivington ... John Osborn ... and by J. Leake, at Bath"
+    ],
+    "pub_date_display": [
+        "1747"
+    ],
+    "pub_date_start_sort": 1747,
+    "pub_date_end_sort": 1748,
+    "publication_date_citation_display": [
+        "1747"
+    ],
+    "cataloged_tdt": "2015-03-16T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "electronic_access_1display": "{\"https://catalog.princeton.edu/catalog/616086#view\":[\"Digital content\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/dz010s704\":\"https://figgy.princeton.edu/concern/scanned_resources/8b73b1bb-6417-4ae1-b516-bb68d999ed2f/manifest\"}}",
+    "description_display": [
+        "7 v. : music (1 folded leaf, engraved) ; 17 cm. (12mo)"
+    ],
+    "description_t": [
+        "7 v. : music (1 folded leaf, engraved) ; 17 cm. (12mo)"
+    ],
+    "number_of_pages_citation_display": [
+        "7 v."
+    ],
+    "geocode_display": [
+        "England"
+    ],
+    "notes_display": [
+        "Novel.",
+        "Vols. 3-7 have variant imprint: London : Printed by S. Richardson and sold by John Osborn ... Andrew Millar ... J. and Ja. Rivington ... and by J. Leake, at Bath, 1748.",
+        "Vol. 2 has 1 folded leaf of plates facing p. 50, with words and music of verses 14-16 of \"Ode to wisdom.\""
+    ],
+    "binding_note_display": [
+        "Princeton copy 1 One blue morocco pull-off case",
+        "Princeton copy 2 Seven fall-down-back boxes covered in red cloth and lined with marbled paper."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "provenance_display": [
+        "Princeton copy 2 Lady Dorothy Bradshaigh's copy with her marginal comments and the author's marginal replies",
+        "Princeton copy 1 Inscription: \"Anne Thomas 173[...].\" Bookplate: Anne Thomas."
+    ],
+    "references_display": [
+        "Barchas, Janine. The Annotations in Lady Bradshaigh's Copy of Clarissa (Victoria,B.C., 1998).",
+        "Bernard Quaritch (Firm). Samuel Richardson, Jane Austen : the complete novels and a play. (London, 1987). [provenance and bibliographical description of Lady Bradshaigh's copy of Clarissa]. (Ex 2005-0745N)",
+        "Sale, W.M. Samuel Richardson, a bibliographical record, p. 45-51.",
+        "ESTC T58992."
+    ],
+    "references_url_display": [
+        "Barchas, Janine. The Annotations in Lady Bradshaigh's Copy of Clarissa (Victoria,B.C., 1998).",
+        "Bernard Quaritch (Firm). Samuel Richardson, Jane Austen : the complete novels and a play. (London, 1987). [provenance and bibliographical description of Lady Bradshaigh's copy of Clarissa]. (Ex 2005-0745N)",
+        "Sale, W.M. Samuel Richardson, a bibliographical record, p. 45-51.",
+        "ESTC T58992."
+    ],
+    "other_format_display": [
+        "Also available in an electronic version."
+    ],
+    "lc_subject_display": [
+        "England—Social life and customs—18th century—Fiction",
+        "Young women—England—Crimes against—Fiction"
+    ],
+    "subject_facet": [
+        "England—Social life and customs—18th century—Fiction",
+        "Young women—England—Crimes against—Fiction",
+        "Fiction",
+        "Authors' annotations",
+        "Annotations",
+        "Bookplates"
+    ],
+    "lc_subject_facet": [
+        "England",
+        "England—Social life and customs",
+        "England—Social life and customs—18th century",
+        "England—Social life and customs—18th century—Fiction",
+        "Young women",
+        "Young women—England",
+        "Young women—England—Crimes against",
+        "Young women—England—Crimes against—Fiction"
+    ],
+    "lcgft_s": [
+        "Fiction"
+    ],
+    "lcgft_genre_facet": [
+        "Fiction"
+    ],
+    "rbgenr_s": [
+        "Authors' annotations",
+        "Annotations",
+        "Bookplates"
+    ],
+    "rbgenr_genre_facet": [
+        "Authors' annotations",
+        "Annotations",
+        "Bookplates"
+    ],
+    "related_name_json_1display": "{\"Annotator\":[\"Bradshaigh, Dorothy, Lady, approximately 1708-1785\",\"Richardson, Samuel, 1689-1761\"]}",
+    "oclc_s": [
+        "13631815"
+    ],
+    "other_version_s": [
+        "ocm13631815"
+    ],
+    "subject_era_facet": [
+        "18th century"
+    ],
+    "holdings_1display": "{\"22563389790006421\":{\"location_code\":\"rare$hsvr\",\"location\":\"Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"18th-446 RHT\",\"call_number_browse\":\"18th-446 RHT\",\"sub_location\":[\"RHT\"],\"location_has\":[\"Princeton copy 2\"],\"supplements\":[null],\"indexes\":[null]},\"22563389800006421\":{\"location_code\":\"rare$hsvr\",\"location\":\"Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"18th-447 RHT\",\"call_number_browse\":\"18th-447 RHT\",\"sub_location\":[\"RHT\"],\"location_has\":[\"Princeton copy 1\"],\"supplements\":[null],\"indexes\":[null]},\"22563389780006421\":{\"location_code\":\"rare$ex\",\"location\":\"Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"2015-0801N\",\"call_number_browse\":\"2015-0801N\",\"items\":[{\"holding_id\":\"22563389780006421\",\"description\":\"v.5\",\"id\":\"23563389710006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091130912\",\"copy_number\":\"1\"},{\"holding_id\":\"22563389780006421\",\"description\":\"v.3\",\"id\":\"23563389740006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091130896\",\"copy_number\":\"1\"},{\"holding_id\":\"22563389780006421\",\"description\":\"v.2\",\"id\":\"23563389750006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091130888\",\"copy_number\":\"1\"},{\"holding_id\":\"22563389780006421\",\"description\":\"v.7\",\"id\":\"23563389680006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091130938\",\"copy_number\":\"1\"},{\"holding_id\":\"22563389780006421\",\"description\":\"v.1\",\"id\":\"23563389760006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091130870\",\"copy_number\":\"1\"},{\"holding_id\":\"22563389780006421\",\"description\":\"v.4\",\"id\":\"23563389770006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091130904\",\"copy_number\":\"1\"},{\"holding_id\":\"22563389780006421\",\"description\":\"v.6\",\"id\":\"23563389700006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091130920\",\"copy_number\":\"1\"}],\"location_has\":[\"Princeton copy 3\"],\"supplements\":[null],\"indexes\":[null]}}",
+    "location_code_s": [
+        "rare$hsvr",
+        "rare$ex"
+    ],
+    "location": [
+        "Special Collections"
+    ],
+    "location_display": [
+        "Rare Books",
+        "Rare Books"
+    ],
+    "advanced_location_s": [
+        "rare$hsvr",
+        "rare$ex",
+        "Special Collections"
+    ],
+    "name_uniform_title_1display": "[[\"Richardson, Samuel, 1689-1761.\",\"Clarissa\"]]",
+    "name_title_browse_s": [
+        "Richardson, Samuel, 1689-1761. Clarissa"
+    ],
+    "call_number_display": [
+        "RHT 18th-446",
+        "RHT 18th-447",
+        "2015-0801N"
+    ],
+    "call_number_browse_s": [
+        "18th-446 RHT",
+        "18th-447 RHT",
+        "2015-0801N"
+    ],
+    "call_number_locator_display": [
+        "18th-446",
+        "18th-447",
+        "2015-0801N"
+    ],
+    "electronic_portfolio_s": [
+        "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true\u0026portfolio_pid=53864833260006421\u0026Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+    ]
+}

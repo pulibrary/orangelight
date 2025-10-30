@@ -1,0 +1,168 @@
+{
+    "id": "9988805493506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "McNeur, Catherine"
+    ],
+    "author_citation_display": [
+        "McNeur, Catherine"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"McNeur, Catherine\"}",
+    "author_s": [
+        "McNeur, Catherine"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "Taming Manhattan : environmental battles in the antebellum city / Catherine McNeur.",
+    "title_t": [
+        "Taming Manhattan : environmental battles in the antebellum city / Catherine McNeur."
+    ],
+    "title_citation_display": [
+        "Taming Manhattan : environmental battles in the antebellum city"
+    ],
+    "compiled_created_t": [
+        "Taming Manhattan : environmental battles in the antebellum city / Catherine McNeur."
+    ],
+    "pub_created_display": [
+        "Cambridge, Massachusetts : Harvard University Press, 2014."
+    ],
+    "pub_created_s": [
+        "Cambridge, Massachusetts : Harvard University Press, 2014."
+    ],
+    "pub_citation_display": [
+        "Cambridge, Massachusetts: Harvard University Press"
+    ],
+    "publication_location_citation_display": [
+        "Cambridge, Massachusetts"
+    ],
+    "publisher_citation_display": [
+        "Harvard University Press"
+    ],
+    "pub_date_display": [
+        "2014"
+    ],
+    "pub_date_start_sort": 2014,
+    "publication_date_citation_display": [
+        "2014"
+    ],
+    "cataloged_tdt": "2015-01-23T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "312 pages : illustrations ; 22 cm"
+    ],
+    "description_t": [
+        "312 pages : illustrations ; 22 cm"
+    ],
+    "number_of_pages_citation_display": [
+        "312 pages"
+    ],
+    "geocode_display": [
+        "New York"
+    ],
+    "bib_ref_notes_display": [
+        "Includes bibliographical references (pages 237-299) and index."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "contents_display": [
+        "Mad dogs and loose hogs",
+        "Unequally green",
+        "The dung heap of the universe",
+        "Hog wash and swill milk",
+        "Clearing the lungs of the city",
+        "Epilogue."
+    ],
+    "lc_subject_display": [
+        "Urbanization—New York (State)—New York—History—19th century",
+        "Manhattan (New York, N.Y.)—Environmental conditions",
+        "City planning—Environmental aspects—New York (State)—New York—History—19th century",
+        "New York (N.Y.)—History—1775-1865"
+    ],
+    "subject_facet": [
+        "Urbanization—New York (State)—New York—History—19th century",
+        "Manhattan (New York, N.Y.)—Environmental conditions",
+        "City planning—Environmental aspects—New York (State)—New York—History—19th century",
+        "New York (N.Y.)—History—1775-1865"
+    ],
+    "lc_subject_facet": [
+        "Urbanization",
+        "Urbanization—New York (State)",
+        "Urbanization—New York (State)—New York",
+        "Urbanization—New York (State)—New York—History",
+        "Urbanization—New York (State)—New York—History—19th century",
+        "Manhattan (New York, N.Y.)",
+        "Manhattan (New York, N.Y.)—Environmental conditions",
+        "City planning",
+        "City planning—Environmental aspects",
+        "City planning—Environmental aspects—New York (State)",
+        "City planning—Environmental aspects—New York (State)—New York",
+        "City planning—Environmental aspects—New York (State)—New York—History",
+        "City planning—Environmental aspects—New York (State)—New York—History—19th century",
+        "New York (N.Y.)",
+        "New York (N.Y.)—History",
+        "New York (N.Y.)—History—1775-1865"
+    ],
+    "isbn_display": [
+        "9780674725096 (alk. paper)",
+        "0674725093 (alk. paper)"
+    ],
+    "lccn_display": [
+        "  2014003557"
+    ],
+    "lccn_s": [
+        "2014003557"
+    ],
+    "isbn_s": [
+        "9780674725096"
+    ],
+    "oclc_s": [
+        "871228508"
+    ],
+    "other_version_s": [
+        "9780674725096",
+        "ocn871228508"
+    ],
+    "subject_era_facet": [
+        "19th century",
+        "1775-1865"
+    ],
+    "holdings_1display": "{\"22705318390006421\":{\"location_code\":\"arch$stacks\",\"location\":\"Stacks\",\"library\":\"Architecture Library\",\"call_number\":\"HN80.N5 M36 2014\",\"call_number_browse\":\"HN80.N5 M36 2014\",\"items\":[{\"holding_id\":\"22705318390006421\",\"id\":\"23705318380006421\",\"status_at_load\":\"1\",\"barcode\":\"32101092469293\",\"copy_number\":\"1\"}]}}",
+    "location_code_s": [
+        "arch$stacks"
+    ],
+    "location": [
+        "Architecture Library"
+    ],
+    "location_display": [
+        "Stacks"
+    ],
+    "advanced_location_s": [
+        "arch$stacks",
+        "Architecture Library"
+    ],
+    "name_title_browse_s": [
+        "McNeur, Catherine. Taming Manhattan"
+    ],
+    "call_number_display": [
+        "HN80.N5 M36 2014"
+    ],
+    "call_number_browse_s": [
+        "HN80.N5 M36 2014"
+    ],
+    "call_number_locator_display": [
+        "HN80.N5 M36 2014"
+    ]
+}

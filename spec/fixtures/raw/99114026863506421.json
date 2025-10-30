@@ -1,0 +1,154 @@
+{
+    "id": "99114026863506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Lewandowski, Krzysztof (Engineer)"
+    ],
+    "author_citation_display": [
+        "Lewandowski, Krzysztof",
+        "Wydawnictwo Naukowe PWN"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"Wydawnictwo Naukowe PWN\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Lewandowski, Krzysztof\"}",
+    "author_s": [
+        "Lewandowski, Krzysztof (Engineer)",
+        "Wydawnictwo Naukowe PWN"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "Konteneryzacja w PRL / Krzysztof Lewandowski.",
+    "title_t": [
+        "Konteneryzacja w PRL / Krzysztof Lewandowski."
+    ],
+    "title_citation_display": [
+        "Konteneryzacja w PRL"
+    ],
+    "compiled_created_t": [
+        "Konteneryzacja w PRL / Krzysztof Lewandowski."
+    ],
+    "edition_display": [
+        "Wydanie I."
+    ],
+    "pub_created_display": [
+        "Warszawa : Rozpisani.pl : Wydawnictwo Naukowe PWN SA, [2019]",
+        "©2019"
+    ],
+    "pub_created_s": [
+        "Warszawa : Rozpisani.pl : Wydawnictwo Naukowe PWN SA, [2019]",
+        "©2019"
+    ],
+    "pub_citation_display": [
+        "Warszawa: Wydawnictwo Naukowe PWN SA"
+    ],
+    "publication_location_citation_display": [
+        "Warszawa"
+    ],
+    "publisher_citation_display": [
+        "Rozpisani.pl"
+    ],
+    "pub_date_display": [
+        "2019"
+    ],
+    "pub_date_start_sort": 2019,
+    "pub_date_end_sort": 2019,
+    "publication_date_citation_display": [
+        "2019"
+    ],
+    "cataloged_tdt": "2019-06-13T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "248 pages : illustrations ; 24 cm"
+    ],
+    "description_t": [
+        "248 pages : illustrations ; 24 cm"
+    ],
+    "number_of_pages_citation_display": [
+        "248 pages"
+    ],
+    "geocode_display": [
+        "Poland"
+    ],
+    "bib_ref_notes_display": [
+        "Includes bibliographical references (pages 225-248)."
+    ],
+    "language_display": [
+        "In Polish; summary in English; table of contents also in English."
+    ],
+    "language_name_display": [
+        "Polish"
+    ],
+    "language_facet": [
+        "Polish"
+    ],
+    "language_iana_s": [
+        "pl"
+    ],
+    "mult_languages_iana_s": [
+        "pl"
+    ],
+    "lc_subject_display": [
+        "Containerization—Poland—History—20th century",
+        "Freight and freightage—Poland—History—20th century"
+    ],
+    "subject_facet": [
+        "Containerization—Poland—History—20th century",
+        "Freight and freightage—Poland—History—20th century"
+    ],
+    "lc_subject_facet": [
+        "Containerization",
+        "Containerization—Poland",
+        "Containerization—Poland—History",
+        "Containerization—Poland—History—20th century",
+        "Freight and freightage",
+        "Freight and freightage—Poland",
+        "Freight and freightage—Poland—History",
+        "Freight and freightage—Poland—History—20th century"
+    ],
+    "related_name_json_1display": "{\"Publisher\":[\"Wydawnictwo Naukowe PWN\"]}",
+    "isbn_display": [
+        "9788395296505",
+        "8395296509"
+    ],
+    "isbn_s": [
+        "9788395296505"
+    ],
+    "oclc_s": [
+        "1127291367"
+    ],
+    "other_version_s": [
+        "9788395296505",
+        "on1127291367"
+    ],
+    "subject_era_facet": [
+        "20th century",
+        "1900-1999"
+    ],
+    "holdings_1display": "{\"22753408610006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"TA1215 .L49 2019\",\"call_number_browse\":\"TA1215 .L49 2019\",\"items\":[{\"holding_id\":\"22753408610006421\",\"id\":\"23753408600006421\",\"status_at_load\":\"1\",\"barcode\":\"32101102681168\",\"copy_number\":\"0\"}]}}",
+    "location_code_s": [
+        "recap$pa"
+    ],
+    "location": [
+        "ReCAP"
+    ],
+    "location_display": [
+        "Remote Storage"
+    ],
+    "advanced_location_s": [
+        "recap$pa",
+        "ReCAP"
+    ],
+    "name_title_browse_s": [
+        "Lewandowski, Krzysztof (Engineer). Konteneryzacja w PRL"
+    ],
+    "call_number_display": [
+        "TA1215 .L49 2019"
+    ],
+    "call_number_browse_s": [
+        "TA1215 .L49 2019"
+    ],
+    "call_number_locator_display": [
+        "TA1215 .L49 2019"
+    ]
+}

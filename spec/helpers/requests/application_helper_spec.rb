@@ -29,7 +29,10 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     let(:request_with_items_on_reserve) { Requests::Form.new(**params) }
     let(:requestable_list) { request_with_items_on_reserve.requestable }
     let(:submit_button_disabled) { helper.submit_button_disabled?(requestable_list) }
-    before { stub_single_holding_location 'firestone$stacks' }
+    before do
+      stub_single_holding_location 'firestone$stacks'
+      stub_catalog_raw bib_id: '9981794023506421'
+    end
 
     it 'returns a boolean to disable/enable submit' do
       expect(submit_button_disabled).to be_truthy
@@ -44,6 +47,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
           patron_request:
         }
       end
+      before { stub_catalog_raw bib_id: '9992220243506421' }
       it 'returns a boolean to enable submit for logged in user' do
         assign(:user, user)
         expect(submit_button_disabled).to be_falsey
@@ -63,6 +67,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
           patron_request:
         }
       end
+      before { stub_catalog_raw bib_id: '9938488723506421' }
       it 'lewis is a submitable request' do
         assign(:user, user)
         expect(submit_button_disabled).to be false
@@ -106,6 +111,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     let(:requestable_list) { lewis_request_with_multiple_requestable.requestable }
     let(:submit_button_disabled) { helper.submit_button_disabled?(requestable_list) }
     let(:availability_response) { File.read("spec/fixtures/scsb_availability_994264203506421.json") }
+    before { stub_catalog_raw bib_id: params[:system_id] }
     it 'lewis is a submitable request' do
       stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .with(body: "{\"bibliographicId\":\"994264203506421\",\"institutionId\":\"PUL\"}")
@@ -139,6 +145,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     end
     let(:aeon_only_request) { Requests::FormDecorator.new(Requests::Form.new(**params), nil, '/catalog/12345') }
     let(:login_suppressed) { helper.suppress_login?(aeon_only_request) }
+    before { stub_catalog_raw bib_id: params[:system_id] }
 
     it 'returns a boolean to disable/enable submit' do
       expect(login_suppressed).to be true
