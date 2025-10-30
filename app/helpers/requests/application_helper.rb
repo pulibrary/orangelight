@@ -367,7 +367,12 @@ module Requests
                                 else
                                   requestable.services.reject { |service_name| service_name.include?("edd") }
                                 end
-            brief_msg = I18n.t("requests.#{filtered_services.first}.brief_msg")
+            # if there is not a valid service this will evaluate to `requests.brief_msg` and display an error message.
+            brief_msg = if filtered_services.first
+                          I18n.t("requests.#{filtered_services.first}.brief_msg")
+                        else
+                          I18n.t("requests.alma_login.no_access")
+                        end
             concat content_tag(:li, sanitize(brief_msg), class: "service-item")
           end
         end
