@@ -142,6 +142,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:no_circ_item_id) { requestable.item['id'] }
     let(:no_circ_item_type) { requestable.item['item_type'] }
     let(:no_circ_pick_up_location_code) { requestable.item['pickup_location_code'] }
+    before { stub_single_holding_location 'firestone$stacks' }
 
     describe 'getters' do
       it 'gets values' do
@@ -305,6 +306,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   context 'A requestable item from a RBSC holding without an item record' do
     let(:request) { FactoryBot.build(:aeon_no_item_record, patron_request:) }
     let(:requestable) { request.requestable.first } # assume only one requestable
+    before { stub_single_holding_location 'mudd$stacks' }
     describe '#barcode?' do
       it 'does not have a barcode' do
         expect(requestable.barcode?).to be false
@@ -346,6 +348,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:user) { FactoryBot.build(:user) }
     let(:request) { FactoryBot.build(:aeon_mudd) }
     let(:requestable) { request.requestable.first } # assume only one requestable
+    before { stub_single_holding_location 'mudd$stacks' }
 
     describe '#site' do
       it 'returns a RBSC site param' do
@@ -633,6 +636,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe '# offsite requestable' do
       before do
         stub_scsb_availability(bib_id: "9999998003506421", institution_id: "PUL", barcode: '32101099186403')
+        stub_single_holding_location 'firestone$stacks'
       end
 
       it "has recap request service available" do
@@ -672,6 +676,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:requestable_aeon_mudd) { request_aeon_mudd.requestable.first }
 
     describe '# reading_room requestable' do
+      before { stub_single_holding_location 'mudd$stacks' }
       it "has Aeon request service available" do
         expect(requestable_aeon_mudd.services.include?('aeon')).to be true
       end
@@ -734,6 +739,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:requestable_aeon_mudd) { request_aeon_mudd.requestable.first }
 
     describe '#reading room requestable' do
+      before { stub_single_holding_location 'mudd$stacks' }
       it "has Aeon request service available" do
         expect(requestable_aeon_mudd.services.include?('aeon')).to be true
       end
@@ -758,6 +764,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:requestable) { request.requestable.first }
     before do
       stub_catalog_raw bib_id: '9999998003506421'
+      stub_single_holding_location 'firestone$stacks'
       stub_single_holding_location 'recap$pa'
       stub_availability_by_holding_id bib_id: '9999998003506421', holding_id: '22480198860006421'
       stub_scsb_availability bib_id: '9999998003506421', institution_id: 'PUL', barcode: '32101099186403'
@@ -773,6 +780,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:requestable_aeon_mudd) { request_aeon_mudd.requestable.first }
 
     describe '#reading room requestable' do
+      before { stub_single_holding_location 'mudd$stacks' }
       it "has Aeon request service available" do
         expect(requestable_aeon_mudd.services.include?('aeon')).to be true
       end
@@ -843,6 +851,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       stub_catalog_raw(bib_id: 'SCSB-2650865', type: 'scsb')
       stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .to_return(status: 200, body: "[{\"itemBarcode\":\"AR65651294\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]")
+      stub_single_holding_location 'scsbcul'
     end
 
     describe '#pick_up_locations' do
@@ -875,6 +884,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       stub_catalog_raw(bib_id: 'SCSB-2901229', type: 'scsb')
       stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .to_return(status: 200, body: "[{\"itemBarcode\":\"MR72802120\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]")
+      stub_single_holding_location 'scsbcul'
     end
 
     describe '#pick_up_locations' do
@@ -948,6 +958,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:request) { FactoryBot.build(:request_col_dev_office, patron_request:) }
     let(:requestable) { request.requestable.first }
     before do
+      stub_single_holding_location 'firestone$stacks'
       stub_catalog_raw(bib_id: '9911629773506421', type: 'alma')
       stub_availability_by_holding_id(bib_id: '9911629773506421', holding_id: '22608294270006421')
     end

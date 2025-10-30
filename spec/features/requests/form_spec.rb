@@ -108,6 +108,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     describe 'When visiting an Alma ID as a CAS User' do
       let(:good_response) { file_fixture('../scsb_request_item_response.json') }
       it 'Shows a ReCAP PUL item that is at "preservation and conservation" as a partner request' do
+        stub_single_holding_location 'recap$pa'
         stub_illiad_patron
         stub_request(:post, transaction_url)
           .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "Zhongguo xin li xue hui", "LoanTitle" => "Xin li ke xue = Journal of psychological science 心理科学 = Journal of psychological science", "LoanPublisher" => nil, "ISSN" => "", "CallNumber" => "BF8.C5 H76", "CitedIn" => "https://catalog.princeton.edu/catalog/9941150973506421", "ItemInfo3" => "no.217-218", "ItemInfo4" => nil, "AcceptNonEnglish" => true, "ESPNumber" => nil, "DocumentType" => "Book", "LoanPlace" => nil))
@@ -137,6 +138,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'allow CAS patrons to request an available ReCAP PUL item.' do
+        stub_single_holding_location 'recap$pa'
         stub_scsb_availability(bib_id: "9994933183506421", institution_id: "PUL", barcode: '32101095798938')
         scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
         stub_request(:post, scsb_url)
@@ -180,6 +182,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
       # In-Process -> it's waiting to be cataloged in a PUL library and then shipped to RECAP
       it 'makes sure In-Process ReCAP items with no holding library can be delivered anywhere' do
+        stub_single_holding_location 'recap$pa'
         stub_scsb_availability(bib_id: "99114026863506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
         visit "/requests/#{recap_in_process_id}"
         expect(page).to have_content 'In Process'
@@ -231,6 +234,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       # This is an example item that was in incorrect state.
       # It has changed. We still want to keep this scenario in case it happens again.
       it 'allows CAS patrons to request a ReCAP PUL record that has no item data' do
+        stub_single_holding_location 'recap$pa'
         visit "/requests/99113283293506421?mfhd=22750642660006421"
         check('requestable_selected', exact: true)
         fill_in 'requestable[][user_supplied_enum]', with: 'Some Volume'
@@ -284,6 +288,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(page).to have_content 'You have sent a duplicate request to Alma for this item'
       end
       it 'allows CAS patrons to request a PUL electronic document delivery (EDD) ReCAP item' do
+        stub_single_holding_location 'recap$pa'
         scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
         stub_request(:post, scsb_url)
           .with(body: hash_including(author: "", bibId: "9999443553506421", callNumber: "DT549 .E274q Oversize", chapterTitle: "ABC", deliveryLocation: "PA", emailAddress: "a@b.com", endPage: "", issue: "",
@@ -637,6 +642,8 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         stub_request(:post, scsb_url)
           .with(body: hash_including(author: "", bibId: "SCSB-2879197", callNumber: "PG3479.3.I84 Z778 1987g", chapterTitle: "", deliveryLocation: "QX", emailAddress: "a@b.com", endPage: "", issue: "", itemBarcodes: ["CU01805363"], itemOwningInstitution: "CUL", patronBarcode: "22101008199999", requestNotes: "", requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: "", titleIdentifier: "Mir, uvidennyĭ s gor : ocherk tvorchestva Shukurbeka Beĭshenalieva", username: "jstudent", volume: ""))
           .to_return(status: 200, body: good_response, headers: {})
+        stub_single_holding_location 'scsbcul'
+
         visit '/requests/SCSB-2879197'
         expect(page).to have_content 'Physical Item Delivery'
         expect(page).to have_content 'Electronic Delivery'
@@ -680,6 +687,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'Shows a PUL ReCAP item that has not made it to ReCAP yet as available for On Order request' do
+        stub_single_holding_location 'recap$pa'
         stub_scsb_availability(bib_id: "99123340993506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
         visit '/requests/99123340993506421?mfhd=22569931350006421'
         expect(page).to have_content 'Unavailable'
@@ -706,6 +714,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       it "Delivers ReCAP Partner in library use music items only to Mendel Music Library" do
         # Why does stub use the wrong bib_id?
         stub_scsb_availability(bib_id: "14577462", institution_id: "CUL", barcode: 'MR00393223')
+        stub_single_holding_location 'scsbcul'
         visit '/requests/SCSB-9726156'
         expect(page).to have_content 'Available for In Library Use'
         expect(page).to have_content 'Pick-up location: Mendel Music Library'
@@ -727,6 +736,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it "Allows On Order Princeton ReCAP Items to be Requested" do
+        stub_single_holding_location 'recap$pa'
         stub_scsb_availability(bib_id: "99125378834306421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
         visit '/requests/99125378834306421?mfhd=22897184810006421'
         expect(page).to have_content 'On Order books have not yet been received. Place a request to be notified when this item has arrived and is ready for your pick-up.'
@@ -925,6 +935,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
 
     describe 'When visiting an Alma ID as a CAS User' do
       it 'disallows access to request an available ReCAP item.' do
+        stub_single_holding_location 'recap$pa'
         stub_scsb_availability(bib_id: "9994933183506421", institution_id: "PUL", barcode: '32101095798938')
         visit "/requests/#{mms_id}"
         expect(page).not_to have_content 'Electronic Delivery'
@@ -942,6 +953,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'disallows access for In Process recap items' do
+        stub_single_holding_location 'recap$pa'
         stub_scsb_availability bib_id: '99114026863506421', institution_id: 'PUL', barcode: 'fake-barcode'
         visit "/requests/#{recap_in_process_id}"
         expect(page).not_to have_content 'Electronic Delivery'
@@ -987,6 +999,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
 
       let(:good_response) { file_fixture('../scsb_request_item_response.json') }
       it 'disallows access to request a physical ReCAP item' do
+        stub_single_holding_location 'recap$pa'
         stub_scsb_availability(bib_id: "9999443553506421", institution_id: "PUL", barcode: '32101098722844')
         visit '/requests/9999443553506421?mfhd=22743365320006421'
         expect(page).not_to have_button('Request this Item')
@@ -1121,6 +1134,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
 
     it "does not allow physical pickup request On Order PUL ReCAP Item" do
       stub_scsb_availability bib_id: '99129134216906421', institution_id: 'PUL', barcode: 'fake-barcode'
+      stub_single_holding_location 'recap$pa'
       visit '/requests/99129134216906421?aeon=false&mfhd=221002424820006421'
       expect(page).not_to have_content 'Electronic Delivery'
       expect(page).not_to have_content 'Physical Item Delivery'
@@ -1128,6 +1142,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     end
 
     it "allows a physical pickup request of ReCAP Item" do
+      stub_single_holding_location 'recap$pa'
       stub_scsb_availability(bib_id: "9941151723506421", institution_id: "PUL", barcode: '33333059902417')
       visit 'requests/9941151723506421?mfhd=22492702000006421'
       expect(page).not_to have_content 'Electronic Delivery'
@@ -1174,6 +1189,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     end
 
     it 'does not allow a ReCAP record that has no item data' do
+      stub_single_holding_location 'recap$pa'
       visit "/requests/99113283293506421?mfhd=22750642660006421"
       expect(page).not_to have_content 'Electronic Delivery'
       expect(page).not_to have_content 'Physical Item Delivery'
@@ -1203,6 +1219,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
 
     it "allows access to In Process items" do
       stub_scsb_availability bib_id: '99124417723506421', institution_id: 'PUL', barcode: '32101108129568'
+      stub_single_holding_location 'recap$pa'
       visit "requests/99124417723506421?mfhd=22689758840006421"
       expect(page).not_to have_content 'Electronic Delivery'
       expect(page).to have_content 'In Process materials are typically available in several business days'
@@ -1232,6 +1249,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .with(headers: { Accept: 'application/json', api_key: 'TESTME' }, body: { bibliographicId: "99125465081006421", institutionId: "PUL" })
         .to_return(status: 200, body: availability_response)
+      stub_single_holding_location 'recap$pa'
 
       visit "requests/99125465081006421?mfhd=22922148510006421"
       expect(page).not_to have_content 'Electronic Delivery'
