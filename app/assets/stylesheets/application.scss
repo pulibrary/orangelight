@@ -13,11 +13,42 @@
  *= require_self
  */
 
-@import 'variables/breaks';
+@use 'components/account';
+@use 'components/alerts';
+@use 'components/ask-a-librarian';
+@use 'components/availability';
+@use 'components/bookmark-all';
+@use 'components/browse';
+@use 'components/constraints';
+@use 'components/contact';
+@use 'components/dialog';
+@use 'components/dropdown';
+@use 'components/dropdown-help-text';
+@use 'components/font-face';
+@use 'components/format';
+@use 'components/front-page';
+@use 'components/footer';
+@use 'components/header';
+@use 'components/nav--accounts';
+@use 'components/nav--harmful-content';
+@use 'components/pagination';
+@use 'components/record';
+@use 'components/release-notes';
+@use 'components/search-banner.scss';
+@use 'components/tables--labels';
+@use 'components/universal-viewer';
+@use 'components/user';
+@use 'shame';
+
+@use 'variables/breaks';
+
+@use "datatables";
+@use "lux_customizations";
+
+
 @import 'variables/colors';
 @import 'variables/typography';
-@import 'bootstrap_override';
-@import 'bootstrap';
+@import 'bootstrap_with_override';
 @import 'blacklight';
 @import 'blacklight_marc';
 
@@ -29,50 +60,19 @@
 
 @import 'icons/icons';
 
-@import 'components/account';
-@import 'components/alerts';
-@import 'components/ask-a-librarian';
-@import 'components/availability';
-@import 'components/bookmark-all';
-@import 'components/browse';
 @import 'components/buttons';
-@import 'components/constraints';
-@import 'components/contact';
-@import 'components/details';
-@import 'components/dialog';
-@import 'components/dropdown';
-@import 'components/dropdown-help-text';
-@import 'components/facets';
-@import 'components/font-face';
-@import 'components/format';
-@import 'components/front-page';
-@import 'components/footer';
-@import 'components/header';
-@import 'components/header--secondary';
-@import 'components/lists';
-@import 'components/nav--accounts';
-@import 'components/nav--harmful-content';
+@import 'components/details'; // needs to override some styles in bootstrap
+@import 'components/facets'; // needs to override some styles in blacklight
+@import 'components/header--secondary'; // depends on shade-color mixin from bootstrap
+@import 'components/lists'; // needs to override some styles in bootstrap
 @import 'components/overrides';
-@import 'components/pagination';
-@import 'components/record';
-@import 'components/record--descriptions';
-@import 'components/record--sidebar';
-@import 'components/record--subject';
-@import 'components/release-notes';
-@import 'components/request';
-@import 'components/search';
-@import 'components/search--advanced';
-@import 'components/search-banner.scss';
+@import 'components/record--descriptions'; // needs to override some styles in bootstrap
+@import 'components/record--sidebar'; // needs to override some styles in blacklight
+@import 'components/record--subject';  // depends on shade-color mixin from bootstrap
+@import 'components/request'; // needs to override some styles in bootstrap
+@import 'components/search'; // needs to override some styles in blacklight
+@import 'components/search--advanced'; // depends on shade-color mixin from bootstrap
 @import 'components/search-options';
-@import 'components/search-results';
-@import 'components/skip-links';
-@import 'components/stackmap-modal';
-@import 'components/tables';
-@import 'components/tables--labels';
-@import 'components/user';
-@import 'components/universal-viewer';
-
-@import 'shame';
-
-@import "datatables";
-@import "lux_customizations";
+@import 'components/search-results'; // depends on shade-color mixin from bootstrap
+@import 'components/skip-links'; // needs to override some styles in blacklight
+@import 'components/tables'; // needs to override some styles in bootstrap

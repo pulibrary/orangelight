@@ -1,10 +1,11 @@
+@use 'variables/breaks';
 
-.harmful-content-feedback {
+nav.harmful-content-feedback {
   background-color: #e4e4e4;
   color: #23578B;
   justify-content: space-around;
   bottom: 0;
-  @media (max-width: $bp-small) {
+  @media (max-width: breaks.$bp-small) {
     align-items: flex-start;
     flex-direction: column;
     flex-wrap: nowrap;

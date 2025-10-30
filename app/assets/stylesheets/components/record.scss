@@ -1,10 +1,14 @@
+@use 'variables/breaks';
+@use 'variables/colors';
+@use 'variables/typography';
+
 .blacklight-catalog-show {
   [dir="rtl"] {
     font-family: verdana, arial;
   }
 
   h1 {
-    font-family: $font-sans;
+    font-family: typography.$font-sans;
     font-size: 1.4rem;
     margin-top: 0.5rem;
     margin-bottom: 0;
@@ -13,13 +17,13 @@
   }
 
   .main-content {
-    font-family: $font-sans;
+    font-family: typography.$font-sans;
     font-size: 1rem;
     line-height: 1.5;
 
     h2,
     h3 {
-      font-family: $font-sans-alt;
+      font-family: typography.$font-sans-alt;
       font-weight: 600;
       font-size: 1.25rem;
       line-height: 1.25;
@@ -35,9 +39,9 @@
     }
 
     th {
-      font-family: $font-sans-alt;
+      font-family: typography.$font-sans-alt;
       font-weight: 500;
-      color: $blacklight-gray;
+      color: colors.$blacklight-gray;
     }
 
     th {
@@ -58,14 +62,14 @@
     .top-fields,
     .availability--online,
     .availability--physical {
-      border-bottom: 2px solid $light-gray;
+      border-bottom: 2px solid colors.$light-gray;
       padding-bottom: .75rem;
     }
 
     .availability--online,
     .availability--physical
     .availability-table {
-      font-family: $font-sans-alt;
+      font-family: typography.$font-sans-alt;
       font-size: 1rem;
 
       .lux-text-style {
@@ -84,7 +88,7 @@
       }
 
       .holding-details .holding-label {
-        color: $blacklight-gray;
+        color: colors.$blacklight-gray;
       }
 
       .item-status:empty {
@@ -107,7 +111,7 @@
   }
 
 #aside, #sidebar {
-  @media (min-width: $bp-medium) {
+  @media (min-width: breaks.$bp-medium) {
     width: 25%;
     float: left;
     padding-right: 1em;
@@ -115,7 +119,7 @@
 }
 
 #content {
-  @media (min-width: $bp-medium) {
+  @media (min-width: breaks.$bp-medium) {
     width: 75%;
     float: right;
     padding-left: 1em;
@@ -123,7 +127,7 @@
 }
 
   #aside h3  {
-    font-family: $font-sans-alt;
+    font-family: typography.$font-sans-alt;
     font-weight: 500;
     font-size: 1.125rem;
     line-height: 1.25;
@@ -134,19 +138,19 @@
   }
 
   .restrictions--panel.alert-warning {
-    font-family: $font-sans-alt;
+    font-family: typography.$font-sans-alt;
     font-weight: 600;
     font-size: 1.25rem;
     line-height: 1.25;
     text-align: center;
     border-color: #faf2cc;
-    color: $black;
+    color: colors.$black;
   }
 
   .availability--excerpts,
   .availability--highlighted,
   .availability--other-versions {
-    border: 1px solid $gray;
+    border: 1px solid colors.$gray;
 
     .section_heading,
     .section-heading {
@@ -180,7 +184,7 @@
     position: absolute;
     z-index: 2;
     width: 3rem;
-    background-color: $black;
+    background-color: colors.$black;
     height: 3rem;
     border-radius: 50%;
     border: 3px solid #ffffff;
@@ -198,11 +202,11 @@
   }
 
   &:hover:before {
-    background-color: $blue;
+    background-color: colors.$blue;
   }
 }
 
-@media (max-width: $bp-medium) {
+@media (max-width: breaks.$bp-medium) {
   #main-content {
     .availability-table td {
       width: 100%;
@@ -245,7 +249,7 @@
 }
 
 
-@media (min-width: $bp-xlarge) {
+@media (min-width: breaks.$bp-xlarge) {
   .journal-current-issues {
     columns: 3;
   }
