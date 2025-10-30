@@ -1,0 +1,123 @@
+{
+    "id": "994955013506421",
+    "numeric_id_b": true,
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+    "title_display": "Look.",
+    "title_t": [
+        "Look."
+    ],
+    "title_citation_display": [
+        "Look"
+    ],
+    "compiled_created_t": [
+        "Look."
+    ],
+    "pub_created_display": [
+        "[Des Moines, Iowa : Cowles Communications]"
+    ],
+    "pub_created_s": [
+        "[Des Moines, Iowa : Cowles Communications]"
+    ],
+    "pub_citation_display": [
+        "Des Moines, Iowa: Cowles Communications"
+    ],
+    "publication_location_citation_display": [
+        "Des Moines, Iowa"
+    ],
+    "publisher_citation_display": [
+        "Cowles Communications"
+    ],
+    "pub_date_display": [
+        "1937"
+    ],
+    "pub_date_start_sort": 1937,
+    "pub_date_end_sort": 1971,
+    "publication_date_citation_display": [
+        "1937"
+    ],
+    "cataloged_tdt": "2000-06-13T00:00:00Z",
+    "format": [
+        "Journal"
+    ],
+    "description_display": [
+        "v. : ill. ; 34-43 cm.",
+        "Vol. 1, no. 1 (Jan. 1937)-v. 35, no. 21 (Oct. 19, 1971)."
+    ],
+    "description_t": [
+        "v. : ill. ; 34-43 cm.",
+        "Vol. 1, no. 1 (Jan. 1937)-v. 35, no. 21 (Oct. 19, 1971).",
+        "Vol. 1, no. 1 (Jan. 1937) never issued."
+    ],
+    "number_of_pages_citation_display": [
+        "v."
+    ],
+    "frequency_display": [
+        "Biweekly, May 11, 1937-Oct. 19, 1971"
+    ],
+    "former_frequency_display": [
+        "Monthly, Jan.-May 1937"
+    ],
+    "linking_notes_display": [
+        "Continued by: Look (New York, N.Y.) published 1979- with differing numbering designation."
+    ],
+    "numbering_pec_notes_display": [
+        "Vol. 1, no. 1 (Jan. 1937) never issued."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "other_title_display": [
+        "Look (Des Moines, Iowa)"
+    ],
+    "issn_display": [
+        "0024-6336"
+    ],
+    "lccn_display": [
+        "   39005737 "
+    ],
+    "lccn_s": [
+        "39005737"
+    ],
+    "issn_s": [
+        "00246336"
+    ],
+    "oclc_s": [
+        "1624492"
+    ],
+    "other_version_s": [
+        "00246336",
+        "ocm01624492"
+    ],
+    "location_code_s": [
+        "annex$fst"
+    ],
+    "location": [
+        "Forrestal Annex"
+    ],
+    "location_display": [
+        "A"
+    ],
+    "advanced_location_s": [
+        "annex$fst",
+        "Forrestal Annex"
+    ],
+    "call_number_display": [
+        "Oversize AP2 .L665q"
+    ],
+    "call_number_browse_s": [
+        "AP2 .L665q Oversize"
+    ],
+    "call_number_locator_display": [
+        "AP2 .L665q"
+    ],
+    "holdings_1display": "{\"22644665360006421\":{\"location_code\":\"annex$fst\",\"location\":\"A\",\"library\":\"Forrestal Annex\",\"call_number\":\"AP2 .L665q Oversize\",\"call_number_browse\":\"AP2 .L665q Oversize\",\"sub_location\":[\"Oversize\"],\"items\":[{\"holding_id\":\"22644665360006421\",\"description\":\"1962 Jan - Mar\",\"id\":\"23644664730006421\",\"status_at_load\":\"1\",\"barcode\":\"32101095101919\",\"copy_number\":\"0\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1968,Apr-June\",\"id\":\"23644664900006421\",\"status_at_load\":\"1\",\"barcode\":\"32101013495658\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1958 Jan.-March\",\"id\":\"23644664740006421\",\"status_at_load\":\"0\",\"copy_number\":\"1\",\"process_type\":\"MISSING\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1961 July - Sept.\",\"id\":\"23644664720006421\",\"status_at_load\":\"1\",\"barcode\":\"32101105910390\",\"copy_number\":\"0\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1955 Jan.11-April 19\",\"id\":\"23644664750006421\",\"status_at_load\":\"1\",\"barcode\":\"32101003436761\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1967,July-Sept\",\"id\":\"23644664920006421\",\"status_at_load\":\"1\",\"barcode\":\"32101006930430\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1968,Jan-Mar\",\"id\":\"23644664910006421\",\"status_at_load\":\"1\",\"barcode\":\"32101013495641\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1967,Apr-June\",\"id\":\"23644664930006421\",\"status_at_load\":\"1\",\"barcode\":\"32101013495690\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1967,Jan-Mar\",\"id\":\"23644664940006421\",\"status_at_load\":\"1\",\"barcode\":\"32101006252991\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1966,Oct-Dec\",\"id\":\"23644664950006421\",\"status_at_load\":\"1\",\"barcode\":\"32101006575607\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1966,July-Sept\",\"id\":\"23644664960006421\",\"status_at_load\":\"1\",\"barcode\":\"32101013495666\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1966,Apr-June\",\"id\":\"23644664970006421\",\"status_at_load\":\"1\",\"barcode\":\"32101002709796\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1961,Oct-Dec\",\"id\":\"23644665100006421\",\"status_at_load\":\"1\",\"barcode\":\"32101006575615\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1961,Jan-Mar\",\"id\":\"23644665110006421\",\"status_at_load\":\"1\",\"barcode\":\"32101013368442\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1960,Oct-Dec\",\"id\":\"23644665120006421\",\"status_at_load\":\"1\",\"barcode\":\"32101006575631\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1971,Jan-Mar\",\"id\":\"23644664790006421\",\"status_at_load\":\"1\",\"barcode\":\"32101013888126\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1971,July-Sept\",\"id\":\"23644664770006421\",\"status_at_load\":\"1\",\"barcode\":\"32101013888142\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1971,Oct\",\"id\":\"23644664760006421\",\"status_at_load\":\"1\",\"barcode\":\"32101003412739\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1971,Apr-June\",\"id\":\"23644664780006421\",\"status_at_load\":\"1\",\"barcode\":\"32101005971450\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1957 Apr.-June\",\"id\":\"23644665260006421\",\"status_at_load\":\"1\",\"barcode\":\"32101002441705\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1967 Oct.-Dec.\",\"id\":\"23644665170006421\",\"status_at_load\":\"1\",\"barcode\":\"32101006575557\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1959 Oct.-Dec.\",\"id\":\"23644665190006421\",\"status_at_load\":\"1\",\"barcode\":\"32101038017396\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1954 July-Dec.\",\"id\":\"23644665330006421\",\"status_at_load\":\"1\",\"barcode\":\"32101031886250\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1964,Jan-Mar\",\"id\":\"23644665060006421\",\"status_at_load\":\"1\",\"barcode\":\"32101002451860\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1963,July-Sept\",\"id\":\"23644665080006421\",\"status_at_load\":\"1\",\"barcode\":\"32101013101124\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1954 Feb.-June\",\"id\":\"23644665350006421\",\"status_at_load\":\"1\",\"barcode\":\"32101031883521\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1955 May-June\",\"id\":\"23644665310006421\",\"status_at_load\":\"1\",\"barcode\":\"32101017716448\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1959 Jan.-Mar.\",\"id\":\"23644665220006421\",\"status_at_load\":\"1\",\"barcode\":\"32101037397930\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1956,Oct-Dec\",\"id\":\"23644665150006421\",\"status_at_load\":\"1\",\"barcode\":\"32101001626785\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1960,July-Sept\",\"id\":\"23644665130006421\",\"status_at_load\":\"1\",\"barcode\":\"32101008375881\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1956 July-Sept.\",\"id\":\"23644665280006421\",\"status_at_load\":\"1\",\"barcode\":\"32101033258409\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1957 Oct.-Dec.\",\"id\":\"23644665240006421\",\"status_at_load\":\"1\",\"barcode\":\"32101015573171\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1959 Jul.-Sept.\",\"id\":\"23644665200006421\",\"status_at_load\":\"1\",\"barcode\":\"32101031884628\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1966,Jan-Mar\",\"id\":\"23644664980006421\",\"status_at_load\":\"1\",\"barcode\":\"32101013493463\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1970,July-Sept\",\"id\":\"23644664810006421\",\"status_at_load\":\"1\",\"barcode\":\"32101001223039\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1970,Apr-June\",\"id\":\"23644664820006421\",\"status_at_load\":\"1\",\"barcode\":\"32101013888134\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1970,Oct-Dec\",\"id\":\"23644664800006421\",\"status_at_load\":\"1\",\"barcode\":\"32101006575532\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1970,Jan-Mar\",\"id\":\"23644664830006421\",\"status_at_load\":\"1\",\"barcode\":\"32101003577598\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1969,Oct-Dec\",\"id\":\"23644664840006421\",\"status_at_load\":\"1\",\"barcode\":\"32101003305719\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1969,July-Sept\",\"id\":\"23644664850006421\",\"status_at_load\":\"1\",\"barcode\":\"32101013655137\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1969,Apr-June\",\"id\":\"23644664860006421\",\"status_at_load\":\"1\",\"barcode\":\"32101013854961\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1968,July-Sept\",\"id\":\"23644664890006421\",\"status_at_load\":\"0\",\"barcode\":\"32101013495609\",\"copy_number\":\"1\",\"process_type\":\"HOLDSHELF\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1965,Jan-Mar\",\"id\":\"23644665020006421\",\"status_at_load\":\"1\",\"barcode\":\"32101013495617\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1968,Oct-Dec\",\"id\":\"23644664880006421\",\"status_at_load\":\"1\",\"barcode\":\"32101006575540\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1969,Jan-Mar\",\"id\":\"23644664870006421\",\"status_at_load\":\"1\",\"barcode\":\"32101013854920\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1964,July-Sept\",\"id\":\"23644665040006421\",\"status_at_load\":\"1\",\"barcode\":\"32101013495674\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1965,July-Sept\",\"id\":\"23644665000006421\",\"status_at_load\":\"1\",\"barcode\":\"32101013495625\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1965,Apr-June\",\"id\":\"23644665010006421\",\"status_at_load\":\"1\",\"barcode\":\"32101013495633\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1964,Oct-Dec\",\"id\":\"23644665030006421\",\"status_at_load\":\"1\",\"barcode\":\"32101006575623\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1964,Apr-June\",\"id\":\"23644665050006421\",\"status_at_load\":\"1\",\"barcode\":\"32101013495716\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1960 Jan.-Mar.\",\"id\":\"23644665180006421\",\"status_at_load\":\"1\",\"barcode\":\"32101035684099\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1957 Jan.-Mar.\",\"id\":\"23644665270006421\",\"status_at_load\":\"1\",\"barcode\":\"32101003423884\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1956 Jan.-March\",\"id\":\"23644665320006421\",\"status_at_load\":\"1\",\"barcode\":\"32101013255771\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1954 Apr.-June\",\"id\":\"23644665340006421\",\"status_at_load\":\"1\",\"barcode\":\"32101003735873\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1963,Oct-Dec\",\"id\":\"23644665070006421\",\"status_at_load\":\"1\",\"barcode\":\"32101006575573\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1962,Oct-Dec\",\"id\":\"23644665090006421\",\"status_at_load\":\"1\",\"barcode\":\"32101012016406\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1960,Apr-June\",\"id\":\"23644665140006421\",\"status_at_load\":\"1\",\"barcode\":\"32101006046963\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1958 Apr.-June\",\"id\":\"23644665230006421\",\"status_at_load\":\"1\",\"barcode\":\"32101007547290\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1955 Oct.-Dec.\",\"id\":\"23644665290006421\",\"status_at_load\":\"1\",\"barcode\":\"32101031883786\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1956,Apr-June\",\"id\":\"23644665160006421\",\"status_at_load\":\"1\",\"barcode\":\"32101025263441\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1959 Apr.-June\",\"id\":\"23644665210006421\",\"status_at_load\":\"1\",\"barcode\":\"32101037397922\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1957 July-Sept.\",\"id\":\"23644665250006421\",\"status_at_load\":\"1\",\"barcode\":\"32101003282850\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1965,Oct-Dec\",\"id\":\"23644664990006421\",\"status_at_load\":\"1\",\"barcode\":\"32101006575565\",\"copy_number\":\"1\"},{\"holding_id\":\"22644665360006421\",\"description\":\"1955 Jul.-Sept.\",\"id\":\"23644665300006421\",\"status_at_load\":\"1\",\"barcode\":\"32101001625399\",\"copy_number\":\"1\"}],\"location_has\":[\"Feb. 1954-Oct. 1971\",\"LACKS: Apr.-June 1963.\"],\"supplements\":[null,null],\"indexes\":[null,null]}}"
+}

@@ -1,0 +1,140 @@
+{
+    "id": "9948152393506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Tufte, Edward R., 1942-"
+    ],
+    "author_citation_display": [
+        "Tufte, Edward R."
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Tufte, Edward R.\"}",
+    "author_s": [
+        "Tufte, Edward R., 1942-"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "Beautiful evidence / Edward R. Tufte.",
+    "title_t": [
+        "Beautiful evidence / Edward R. Tufte."
+    ],
+    "title_citation_display": [
+        "Beautiful evidence"
+    ],
+    "compiled_created_t": [
+        "Beautiful evidence / Edward R. Tufte."
+    ],
+    "pub_created_display": [
+        "Cheshire, Conn. : Graphics Press, c2006."
+    ],
+    "pub_created_s": [
+        "Cheshire, Conn. : Graphics Press, c2006."
+    ],
+    "pub_citation_display": [
+        "Cheshire, Conn: Graphics Press"
+    ],
+    "publication_location_citation_display": [
+        "Cheshire, Conn"
+    ],
+    "publisher_citation_display": [
+        "Graphics Press"
+    ],
+    "pub_date_display": [
+        "2006"
+    ],
+    "pub_date_start_sort": 2006,
+    "publication_date_citation_display": [
+        "2006"
+    ],
+    "cataloged_tdt": "2006-08-31T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "213 p. : ill. (some col.) ; 28 cm."
+    ],
+    "description_t": [
+        "213 p. : ill. (some col.) ; 28 cm."
+    ],
+    "number_of_pages_citation_display": [
+        "213 p."
+    ],
+    "notes_display": [
+        "Includes index."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "lc_subject_display": [
+        "Visual communication"
+    ],
+    "subject_facet": [
+        "Visual communication"
+    ],
+    "lc_subject_facet": [
+        "Visual communication"
+    ],
+    "isbn_display": [
+        "0961392177"
+    ],
+    "isbn_s": [
+        "9780961392178"
+    ],
+    "oclc_s": [
+        "70203994"
+    ],
+    "other_version_s": [
+        "9780961392178",
+        "ocm70203994"
+    ],
+    "holdings_1display": "{\"22717671130006421\":{\"location_code\":\"stokes$spia\",\"location\":\"Wallace Hall (SPIA)\",\"library\":\"Stokes Library\",\"call_number\":\"P93.5 .T847 2006\",\"call_number_browse\":\"P93.5 .T847 2006\",\"items\":[{\"holding_id\":\"22717671130006421\",\"id\":\"23717671120006421\",\"status_at_load\":\"1\",\"barcode\":\"32101059892883\",\"copy_number\":\"1\"}]},\"22717671090006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"P93.5 .T847 2006\",\"call_number_browse\":\"P93.5 .T847 2006\",\"items\":[{\"holding_id\":\"22717671090006421\",\"id\":\"23717671080006421\",\"status_at_load\":\"1\",\"barcode\":\"32101061133466\",\"copy_number\":\"1\"}]},\"22717671110006421\":{\"location_code\":\"marquand$stacks\",\"location\":\"Remote Storage: Marquand Use Only\",\"library\":\"Marquand Library\",\"call_number\":\"P93.5 .T847 2006\",\"call_number_browse\":\"P93.5 .T847 2006\",\"items\":[{\"holding_id\":\"22717671110006421\",\"id\":\"23717671100006421\",\"status_at_load\":\"1\",\"barcode\":\"32101067508992\",\"copy_number\":\"1\"}]},\"22717671150006421\":{\"location_code\":\"lewis$stacks\",\"location\":\"Stacks\",\"library\":\"Lewis Library\",\"call_number\":\"P93.5 .T847 2006\",\"call_number_browse\":\"P93.5 .T847 2006\",\"items\":[{\"holding_id\":\"22717671150006421\",\"id\":\"23717671140006421\",\"status_at_load\":\"1\",\"barcode\":\"32101059938264\",\"copy_number\":\"1\"}]}}",
+    "location_code_s": [
+        "stokes$spia",
+        "firestone$stacks",
+        "marquand$stacks",
+        "lewis$stacks"
+    ],
+    "location": [
+        "Stokes Library",
+        "Firestone Library",
+        "Marquand Library",
+        "Lewis Library"
+    ],
+    "location_display": [
+        "Wallace Hall (SPIA)",
+        "Stacks",
+        "Remote Storage: Marquand Use Only",
+        "Stacks"
+    ],
+    "advanced_location_s": [
+        "stokes$spia",
+        "firestone$stacks",
+        "marquand$stacks",
+        "lewis$stacks",
+        "Stokes Library",
+        "Firestone Library",
+        "Marquand Library",
+        "Lewis Library"
+    ],
+    "name_title_browse_s": [
+        "Tufte, Edward R., 1942-. Beautiful evidence"
+    ],
+    "call_number_display": [
+        "P93.5 .T847 2006"
+    ],
+    "call_number_browse_s": [
+        "P93.5 .T847 2006"
+    ],
+    "call_number_locator_display": [
+        "P93.5 .T847 2006"
+    ]
+}

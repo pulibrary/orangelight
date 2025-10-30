@@ -1,0 +1,149 @@
+{
+    "id": "9917917633506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Richardson, Samuel, 1689-1761"
+    ],
+    "author_citation_display": [
+        "Richardson, Samuel"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Richardson, Samuel\"}",
+    "author_s": [
+        "Richardson, Samuel, 1689-1761"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "uniform_title_s": [
+        "Clarissa"
+    ],
+    "title_display": "Clarissa, or, The history of a young lady : comprehending the most important concerns of private life / abridged from the works of Samuel Richardson, Esq. ...",
+    "title_t": [
+        "Clarissa, or, The history of a young lady : comprehending the most important concerns of private life / abridged from the works of Samuel Richardson, Esq. ..."
+    ],
+    "title_citation_display": [
+        "Clarissa, or, The history of a young lady : comprehending the most important concerns of private life"
+    ],
+    "compiled_created_t": [
+        "Clarissa, or, The history of a young lady : comprehending the most important concerns of private life / abridged from the works of Samuel Richardson, Esq. ..."
+    ],
+    "pub_created_display": [
+        "Printed at Suffield [Conn.] : By H. \u0026 O. Farnsworth, for Oliver D. \u0026 I. Cooke, book-sellers, Hartford, 1798."
+    ],
+    "pub_created_s": [
+        "Printed at Suffield [Conn.] : By H. \u0026 O. Farnsworth, for Oliver D. \u0026 I. Cooke, book-sellers, Hartford, 1798."
+    ],
+    "pub_citation_display": [
+        "Printed at Suffield [Conn.]: By H. \u0026 O. Farnsworth, for Oliver D. \u0026 I. Cooke, book-sellers, Hartford"
+    ],
+    "publication_location_citation_display": [
+        "Printed at Suffield [Conn.]"
+    ],
+    "publisher_citation_display": [
+        "By H. \u0026 O. Farnsworth, for Oliver D. \u0026 I. Cooke, book-sellers, Hartford"
+    ],
+    "pub_date_display": [
+        "1798"
+    ],
+    "pub_date_start_sort": 1798,
+    "publication_date_citation_display": [
+        "1798"
+    ],
+    "cataloged_tdt": "2021-07-13T10:36:10Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "138, [2] p. ; 17 cm."
+    ],
+    "description_t": [
+        "138, [2] p. ; 17 cm."
+    ],
+    "number_of_pages_citation_display": [
+        "138, [2] p."
+    ],
+    "notes_display": [
+        "Caption title: The history of Clarissa Harlowe.",
+        "\"Catalogue of small books constantly kept for sale by Oliver D. \u0026 I. Cooke ...\" -- p. [1] at end.",
+        "Contemporary marbled boards; sheep spine."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "references_display": [
+        "Evans 34463.",
+        "Welch, D.A. Amer. children's books, 1102.5."
+    ],
+    "references_url_display": [
+        "Evans 34463.",
+        "Welch, D.A. Amer. children's books, 1102.5."
+    ],
+    "lc_subject_display": [
+        "Children's stories"
+    ],
+    "subject_facet": [
+        "Children's stories",
+        "Fiction",
+        "Booksellers' advertisements"
+    ],
+    "lc_subject_facet": [
+        "Children's stories"
+    ],
+    "lcgft_s": [
+        "Fiction"
+    ],
+    "lcgft_genre_facet": [
+        "Fiction"
+    ],
+    "rbgenr_s": [
+        "Booksellers' advertisements"
+    ],
+    "rbgenr_genre_facet": [
+        "Booksellers' advertisements"
+    ],
+    "other_title_display": [
+        "History of Clarissa Harlowe."
+    ],
+    "oclc_s": [
+        "12656443"
+    ],
+    "other_version_s": [
+        "ocm12656443"
+    ],
+    "holdings_1display": "{\"22720740220006421\":{\"location_code\":\"rare$ex\",\"location\":\"Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"PR3664 .C4 1798\",\"call_number_browse\":\"PR3664 .C4 1798\"}}",
+    "location_code_s": [
+        "rare$ex"
+    ],
+    "location": [
+        "Special Collections"
+    ],
+    "location_display": [
+        "Rare Books"
+    ],
+    "advanced_location_s": [
+        "rare$ex",
+        "Special Collections"
+    ],
+    "name_uniform_title_1display": "[[\"Richardson, Samuel, 1689-1761.\",\"Clarissa\"]]",
+    "name_title_browse_s": [
+        "Richardson, Samuel, 1689-1761. Clarissa"
+    ],
+    "call_number_display": [
+        "PR3664 .C4 1798"
+    ],
+    "call_number_browse_s": [
+        "PR3664 .C4 1798"
+    ],
+    "call_number_locator_display": [
+        "PR3664 .C4 1798"
+    ]
+}

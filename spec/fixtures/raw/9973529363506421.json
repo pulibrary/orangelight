@@ -1,0 +1,211 @@
+{
+    "id": "9973529363506421",
+    "numeric_id_b": true,
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+    "uniform_title_s": [
+        "Pipa (Plano. Tex.)"
+    ],
+    "title_display": "Pipa : the magazine for Chinese speaking kids in North America.",
+    "title_t": [
+        "Pipa : the magazine for Chinese speaking kids in North America."
+    ],
+    "title_citation_display": [
+        "Pipa : the magazine for Chinese speaking kids in North America"
+    ],
+    "compiled_created_t": [
+        "Pipa : the magazine for Chinese speaking kids in North America."
+    ],
+    "pub_created_display": [
+        "Plano, TX : Noble Tree Publishing, Inc., 2013-"
+    ],
+    "pub_created_s": [
+        "Plano, TX : Noble Tree Publishing, Inc., 2013-"
+    ],
+    "pub_citation_display": [
+        "Plano, TX: Noble Tree Publishing, Inc"
+    ],
+    "publication_location_citation_display": [
+        "Plano, TX"
+    ],
+    "publisher_citation_display": [
+        "Noble Tree Publishing, Inc"
+    ],
+    "pub_date_display": [
+        "2013"
+    ],
+    "pub_date_start_sort": 2013,
+    "pub_date_end_sort": 2024,
+    "publication_date_citation_display": [
+        "2013"
+    ],
+    "cataloged_tdt": "2013-03-07T00:00:00Z",
+    "format": [
+        "Journal"
+    ],
+    "electronic_access_1display": "{\"https://blogs.princeton.edu/cotsen/2020/01/christmas-made-in-china/\":[\"Commentary\"],\"https://blogs.princeton.edu/cotsen/2024/06/mulan/\":[\"Commentary\"]}",
+    "description_display": [
+        "volumes : color illustrations ; 29 cm",
+        "Began with: [Volume 1, number 1] (2013)."
+    ],
+    "description_t": [
+        "volumes : color illustrations ; 29 cm",
+        "Began with: [Volume 1, number 1] (2013).",
+        "Vol. 1, no. 4 (Oct. 2013) erroneously marked as no. 3, July 2013.",
+        "First issue is called \"试刊号,\" undated and lacking numbering.",
+        "Vol. 1, no. 2-4 also called \"春季号,\" \"夏季号,\" \"秋季号\""
+    ],
+    "number_of_pages_citation_display": [
+        "volumes"
+    ],
+    "frequency_display": [
+        "Bimonthly, 2014-"
+    ],
+    "former_frequency_display": [
+        "Quarterly, 2013"
+    ],
+    "related_record_info_display": [
+        "Online version:"
+    ],
+    "notes_display": [
+        "Subtitle varies slightly.",
+        "\"The magazine for Chinese speaking kids all over the world\"--cover of Vol. 2, no. 3 (May 2014)",
+        "Some Chinese characters are accompanied with pronunciation guide in Pinyin.",
+        "Princeton copy 1 Cotsen copy has editor-in-chief's autograph in the first issue.",
+        "The first issue of Volumes 2-4 is inserted with a red paper-cut of a horse, sheep, and monkey respectively, zodiac animals of the upcoming Chinese New Year."
+    ],
+    "numbering_pec_notes_display": [
+        "Vol. 1, no. 4 (Oct. 2013) erroneously marked as no. 3, July 2013.",
+        "First issue is called \"试刊号,\" undated and lacking numbering.",
+        "Vol. 1, no. 2-4 also called \"春季号,\" \"夏季号,\" \"秋季号\""
+    ],
+    "source_desc_notes_display": [
+        "Description based on: [Volume 1, number 1] (2013); title from cover.",
+        "Latest issue consulted: Volume 3, number 1, issue no. 11 (January 2015)."
+    ],
+    "language_display": [
+        "Chiefly in Chinese, with some parallel English translations."
+    ],
+    "language_name_display": [
+        "Chinese",
+        "English"
+    ],
+    "language_facet": [
+        "Chinese",
+        "English"
+    ],
+    "language_iana_s": [
+        "zh"
+    ],
+    "mult_languages_iana_s": [
+        "zh",
+        "en"
+    ],
+    "source_acquisition_display": [
+        "541-00 试刊号 Gift; Publisher; 20130302."
+    ],
+    "lc_subject_display": [
+        "Chinese language—Periodicals—Juvenile literature",
+        "Chinese American children—Periodicals—Juvenile literature",
+        "Children's literature, Chinese—United States—Periodicals",
+        "China—Periodicals—Juvenile literature"
+    ],
+    "subject_facet": [
+        "Chinese language—Periodicals—Juvenile literature",
+        "Chinese American children—Periodicals—Juvenile literature",
+        "Children's literature, Chinese—United States—Periodicals",
+        "China—Periodicals—Juvenile literature",
+        "Periodicals"
+    ],
+    "lc_subject_facet": [
+        "Chinese language",
+        "Chinese language—Periodicals",
+        "Chinese language—Periodicals—Juvenile literature",
+        "Chinese American children",
+        "Chinese American children—Periodicals",
+        "Chinese American children—Periodicals—Juvenile literature",
+        "Children's literature, Chinese",
+        "Children's literature, Chinese—United States",
+        "Children's literature, Chinese—United States—Periodicals",
+        "China",
+        "China—Periodicals",
+        "China—Periodicals—Juvenile literature"
+    ],
+    "lcgft_s": [
+        "Periodicals"
+    ],
+    "lcgft_genre_facet": [
+        "Periodicals"
+    ],
+    "other_title_display": [
+        "Pipa (Plano. Tex.)",
+        "Xiăo pí pa",
+        "小枇杷",
+        "\"Xiao pi pa\" za zhi",
+        "\"小枇杷\"杂志",
+        "Pipa magazine",
+        "Pi pa"
+    ],
+    "alt_title_246_display": [
+        "Xiăo pí pa",
+        "小枇杷",
+        "\"Xiao pi pa\" za zhi",
+        "\"小枇杷\"杂志",
+        "Pipa magazine",
+        "Pi pa"
+    ],
+    "issn_display": [
+        "2326-8131"
+    ],
+    "lccn_display": [
+        "  2013200217"
+    ],
+    "lccn_s": [
+        "2013200217"
+    ],
+    "issn_s": [
+        "23268131"
+    ],
+    "oclc_s": [
+        "828146165"
+    ],
+    "other_version_s": [
+        "23268131",
+        "2326814X",
+        "ocn828146165",
+        "BIB2013200218",
+        "ocn828146171"
+    ],
+    "location_code_s": [
+        "rare$ctsn"
+    ],
+    "location": [
+        "Special Collections"
+    ],
+    "location_display": [
+        "Cotsen Children's Library"
+    ],
+    "advanced_location_s": [
+        "rare$ctsn",
+        "Special Collections"
+    ],
+    "uniform_title_1display": "[[\"Pipa (Plano. Tex.)\"]]",
+    "call_number_display": [
+        "Pams / NR / Chinese / Box 227 91129286",
+        "Pams / NR / Chinese / Box 225B 91129286",
+        "Pams / NR / Chinese / Box 100 91129286",
+        "Pams / NR / Chinese / Box 41A 153521",
+        "Pams / NR / Chinese / Box 85A 91129286"
+    ],
+    "call_number_browse_s": [
+        "91129286 Pams / NR / Chinese / Box 227",
+        "91129286 Pams / NR / Chinese / Box 225B",
+        "91129286 Pams / NR / Chinese / Box 100",
+        "153521 Pams / NR / Chinese / Box 41A",
+        "91129286 Pams / NR / Chinese / Box 85A"
+    ],
+    "call_number_locator_display": [
+        "91129286",
+        "153521"
+    ],
+    "holdings_1display": "{\"22667098870006421\":{\"location_code\":\"rare$ctsn\",\"location\":\"Cotsen Children's Library\",\"library\":\"Special Collections\",\"call_number\":\"91129286 Pams / NR / Chinese / Box 227\",\"call_number_browse\":\"91129286 Pams / NR / Chinese / Box 227\",\"sub_location\":[\"Pams / NR / Chinese / Box 227\"],\"items\":[{\"holding_id\":\"22667098870006421\",\"description\":\"Vol. 8: no. 1-6\",\"id\":\"23667098860006421\",\"status_at_load\":\"1\",\"barcode\":\"32101097271108\",\"copy_number\":\"1\"}],\"location_has\":[\"Vol. 8: no. 1-6 (=Issue no. 41-46; Jan. 2020 - Nov. 2020)\",\"Princeton copy 1\"],\"supplements\":[null,null],\"indexes\":[null,null]},\"22942947590006421\":{\"location_code\":\"rare$ctsn\",\"location\":\"Cotsen Children's Library\",\"library\":\"Special Collections\",\"call_number\":\"91129286 Pams / NR / Chinese / Box 225B\",\"call_number_browse\":\"91129286 Pams / NR / Chinese / Box 225B\",\"sub_location\":[\"Pams / NR / Chinese / Box 225B\"],\"items\":[{\"holding_id\":\"22942947590006421\",\"description\":\"Vol. 9: no. 1-6\",\"id\":\"23667098970006421\",\"status_at_load\":\"1\",\"barcode\":\"32101097272569\",\"copy_number\":\"1\"},{\"holding_id\":\"22942947590006421\",\"description\":\"Vol. 10: no. 1-6\",\"id\":\"23942947060006421\",\"status_at_load\":\"1\",\"barcode\":\"32101097272577\",\"copy_number\":\"1\"},{\"holding_id\":\"22942947590006421\",\"description\":\"Vol. 12: no. 1-6\",\"id\":\"231017978730006421\",\"status_at_load\":\"1\",\"barcode\":\"32101097274615\",\"copy_number\":\"1\"}],\"location_has\":[\"Vol. 9: no. 1-6 (=Issue no. 47-52; Jan. 2021 - Nov. 2021)\",\"Vol. 10: no. 1-4, 6 (=Issue no. 53-56, 58; Jan. 2022 - Nov. 2022)\",\"Vol. 12: no. 1-6 (=Issue no. 65-70; Jan. 2024 - Nov. 2024)\",\"Princeton copy 1\"],\"supplements\":[null,null,null,null],\"indexes\":[null,null,null,null]},\"22667098910006421\":{\"location_code\":\"rare$ctsn\",\"location\":\"Cotsen Children's Library\",\"library\":\"Special Collections\",\"call_number\":\"91129286 Pams / NR / Chinese / Box 100\",\"call_number_browse\":\"91129286 Pams / NR / Chinese / Box 100\",\"sub_location\":[\"Pams / NR / Chinese / Box 100\"],\"items\":[{\"holding_id\":\"22667098910006421\",\"description\":\"Vol. 6: no. 1-6\",\"id\":\"23667098900006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091129286\",\"copy_number\":\"1\"}],\"location_has\":[\"Vol. 6: no. 1-6 (=Issue no. 29-34; Jan. 2018 - Nov. 2018) Princeton copy 1\"],\"supplements\":[null],\"indexes\":[null]},\"22667098990006421\":{\"location_code\":\"rare$ctsn\",\"location\":\"Cotsen Children's Library\",\"library\":\"Special Collections\",\"call_number\":\"153521 Pams / NR / Chinese / Box 41A\",\"call_number_browse\":\"153521 Pams / NR / Chinese / Box 41A\",\"sub_location\":[\"Pams / NR / Chinese / Box 41A\"],\"items\":[{\"holding_id\":\"22667098990006421\",\"description\":\"Vol. 5: no. 1-6\",\"id\":\"23667098930006421\",\"status_at_load\":\"1\",\"barcode\":\"32101094417795\",\"copy_number\":\"1\"},{\"holding_id\":\"22667098990006421\",\"description\":\"Vol. 2: no. 1 - 6\",\"id\":\"23667098950006421\",\"status_at_load\":\"1\",\"barcode\":\"32101071686438\",\"copy_number\":\"1\"},{\"holding_id\":\"22667098990006421\",\"description\":\"Vol. 4: no. 1 - 6\",\"id\":\"23667098920006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091127959\",\"copy_number\":\"1\"},{\"holding_id\":\"22667098990006421\",\"description\":\"Vol. 3: no. 1 - 6\",\"id\":\"23667098940006421\",\"status_at_load\":\"1\",\"barcode\":\"32101071686446\",\"copy_number\":\"1\"},{\"holding_id\":\"22667098990006421\",\"description\":\"Vol 1: no. 1 - 4\",\"id\":\"23667098960006421\",\"status_at_load\":\"1\",\"barcode\":\"32101071302192\",\"copy_number\":\"1\"}],\"location_has\":[\"Vol. 1: [no. 1]-[no. 4] ([Jan.] 2013 - [Oct.] 2013)\",\"Vol. 2: no. 1-6 (=Issue no. 5-10; Jan. 2014 - Nov. 2014)\",\"Vol. 3: no. 1-6 (=Issue no. 11-16; Jan. 2015 - Nov. 2015)\",\"Vol. 4: no. 1-6 (=Issue no. 17-22; Jan. 2016 - Nov. 2016)\",\"Vol. 5: no. 1-6 (=Issue no. 23-28; Jan. 2017 - Nov. 2017)\",\"Princeton copy 1\"],\"supplements\":[null,null,null,null,null,null],\"indexes\":[null,null,null,null,null,null]},\"22667098890006421\":{\"location_code\":\"rare$ctsn\",\"location\":\"Cotsen Children's Library\",\"library\":\"Special Collections\",\"call_number\":\"91129286 Pams / NR / Chinese / Box 85A\",\"call_number_browse\":\"91129286 Pams / NR / Chinese / Box 85A\",\"sub_location\":[\"Pams / NR / Chinese / Box 85A\"],\"items\":[{\"holding_id\":\"22667098890006421\",\"description\":\"Vol. 7: no. 1-6\",\"id\":\"23667098880006421\",\"status_at_load\":\"1\",\"barcode\":\"32101092741931\",\"copy_number\":\"1\"}],\"location_has\":[\"Vol. 7: no. 1-6 (=Issue no. 35-40; Jan. 2019 - Nov. 2019) Princeton copy 1\"],\"supplements\":[null],\"indexes\":[null]}}"
+}

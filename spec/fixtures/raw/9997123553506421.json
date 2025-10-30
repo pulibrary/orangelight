@@ -1,0 +1,140 @@
+{
+    "id": "9997123553506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Connor, Meghan"
+    ],
+    "author_citation_display": [
+        "Connor, Meghan",
+        "Burge, Daniel",
+        "Rochester Institute of Technology"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"Burge, Daniel\",\"Rochester Institute of Technology\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Connor, Meghan\"}",
+    "author_s": [
+        "Connor, Meghan",
+        "Burge, Daniel",
+        "Rochester Institute of Technology. Image Permanence Institute"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "The atlas of water damage on inkjet-printed fine art / by Meghan Connor and Daniel Burge.",
+    "title_t": [
+        "The atlas of water damage on inkjet-printed fine art / by Meghan Connor and Daniel Burge."
+    ],
+    "title_citation_display": [
+        "The atlas of water damage on inkjet-printed fine art"
+    ],
+    "compiled_created_t": [
+        "The atlas of water damage on inkjet-printed fine art / by Meghan Connor and Daniel Burge."
+    ],
+    "pub_created_display": [
+        "Rochester, NY : Image Permanence Institute, Rochester Institute of Technology, [2016]",
+        "©2016"
+    ],
+    "pub_created_s": [
+        "Rochester, NY : Image Permanence Institute, Rochester Institute of Technology, [2016]",
+        "©2016"
+    ],
+    "pub_citation_display": [
+        "Rochester, NY: Image Permanence Institute, Rochester Institute of Technology"
+    ],
+    "publication_location_citation_display": [
+        "Rochester, NY"
+    ],
+    "publisher_citation_display": [
+        "Image Permanence Institute, Rochester Institute of Technology"
+    ],
+    "pub_date_display": [
+        "2016"
+    ],
+    "pub_date_start_sort": 2016,
+    "pub_date_end_sort": 2016,
+    "publication_date_citation_display": [
+        "2016"
+    ],
+    "cataloged_tdt": "2016-08-26T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "47 pages : illustrations (chiefly color) ; 21 cm"
+    ],
+    "description_t": [
+        "47 pages : illustrations (chiefly color) ; 21 cm"
+    ],
+    "number_of_pages_citation_display": [
+        "47 pages"
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "lc_subject_display": [
+        "Digitally printed materials—Conservation and restoration",
+        "Photographs—Conservation and restoration",
+        "Art—Conservation and restoration"
+    ],
+    "subject_facet": [
+        "Digitally printed materials—Conservation and restoration",
+        "Photographs—Conservation and restoration",
+        "Art—Conservation and restoration"
+    ],
+    "lc_subject_facet": [
+        "Digitally printed materials",
+        "Digitally printed materials—Conservation and restoration",
+        "Photographs",
+        "Photographs—Conservation and restoration",
+        "Art",
+        "Art—Conservation and restoration"
+    ],
+    "related_name_json_1display": "{\"Author\":[\"Burge, Daniel\"],\"Issuing body\":[\"Rochester Institute of Technology. Image Permanence Institute\"]}",
+    "isbn_display": [
+        "9780692679968",
+        "0692679960"
+    ],
+    "isbn_s": [
+        "9780692679968"
+    ],
+    "oclc_s": [
+        "950923357"
+    ],
+    "other_version_s": [
+        "9780692679968",
+        "ocn950923357"
+    ],
+    "holdings_1display": "{\"22586693240006421\":{\"location_code\":\"firestone$pres\",\"location\":\"Preservation Office: Contact preservation@princeton.edu\",\"library\":\"Firestone Library\",\"call_number\":\"TR465 .C666 2016\",\"call_number_browse\":\"TR465 .C666 2016\",\"items\":[{\"holding_id\":\"22586693240006421\",\"id\":\"23586693230006421\",\"status_at_load\":\"1\",\"barcode\":\"32101098990656\",\"copy_number\":\"0\"}]}}",
+    "location_code_s": [
+        "firestone$pres"
+    ],
+    "location": [
+        "Firestone Library"
+    ],
+    "location_display": [
+        "Preservation Office: Contact preservation@princeton.edu"
+    ],
+    "advanced_location_s": [
+        "firestone$pres",
+        "Firestone Library"
+    ],
+    "name_title_browse_s": [
+        "Connor, Meghan. The atlas of water damage on inkjet-printed fine art"
+    ],
+    "call_number_display": [
+        "TR465 .C666 2016"
+    ],
+    "call_number_browse_s": [
+        "TR465 .C666 2016"
+    ],
+    "call_number_locator_display": [
+        "TR465 .C666 2016"
+    ]
+}

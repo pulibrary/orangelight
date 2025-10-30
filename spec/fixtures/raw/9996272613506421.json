@@ -1,0 +1,169 @@
+{
+    "id": "9996272613506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Seymour, Terry"
+    ],
+    "author_citation_display": [
+        "Seymour, Terry"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Seymour, Terry\"}",
+    "author_s": [
+        "Seymour, Terry"
+    ],
+    "marc_relator_display": [
+        "Compiler"
+    ],
+    "title_display": "Boswell's books : four generations of collecting and collectors / Terry I. Seymour.",
+    "title_t": [
+        "Boswell's books : four generations of collecting and collectors / Terry I. Seymour."
+    ],
+    "title_citation_display": [
+        "Boswell's books : four generations of collecting and collectors"
+    ],
+    "compiled_created_t": [
+        "Boswell's books : four generations of collecting and collectors / Terry I. Seymour."
+    ],
+    "edition_display": [
+        "First Edition."
+    ],
+    "pub_created_display": [
+        "New Castle, Delaware : Oak Knoll Press, 2016.",
+        "©2016"
+    ],
+    "pub_created_s": [
+        "New Castle, Delaware : Oak Knoll Press, 2016.",
+        "©2016"
+    ],
+    "pub_citation_display": [
+        "New Castle, Delaware: Oak Knoll Press"
+    ],
+    "publication_location_citation_display": [
+        "New Castle, Delaware"
+    ],
+    "publisher_citation_display": [
+        "Oak Knoll Press"
+    ],
+    "pub_date_display": [
+        "2016"
+    ],
+    "pub_date_start_sort": 2016,
+    "pub_date_end_sort": 2016,
+    "publication_date_citation_display": [
+        "2016"
+    ],
+    "cataloged_tdt": "2016-05-27T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "556 pages, 8 unnumbered pages of plates : illustrations (some color) ; 29 cm"
+    ],
+    "description_t": [
+        "556 pages, 8 unnumbered pages of plates : illustrations (some color) ; 29 cm"
+    ],
+    "number_of_pages_citation_display": [
+        "556 pages, 8 unnumbered pages of plates"
+    ],
+    "geocode_display": [
+        "Scotland"
+    ],
+    "bib_ref_notes_display": [
+        "Includes bibliographical references (pages 511-518) and indexes."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "lc_subject_display": [
+        "Johnson, Samuel 1709-1784—Library—Catalogs",
+        "Boswell family—Library—Catalogs",
+        "Private libraries—Scotland—Auchinleck—Catalogs"
+    ],
+    "subject_facet": [
+        "Johnson, Samuel 1709-1784—Library—Catalogs",
+        "Boswell family—Library—Catalogs",
+        "Private libraries—Scotland—Auchinleck—Catalogs",
+        "Catalogs"
+    ],
+    "lc_subject_facet": [
+        "Johnson, Samuel 1709-1784",
+        "Johnson, Samuel 1709-1784—Library",
+        "Johnson, Samuel 1709-1784—Library—Catalogs",
+        "Boswell family",
+        "Boswell family—Library",
+        "Boswell family—Library—Catalogs",
+        "Private libraries",
+        "Private libraries—Scotland",
+        "Private libraries—Scotland—Auchinleck",
+        "Private libraries—Scotland—Auchinleck—Catalogs"
+    ],
+    "lcgft_s": [
+        "Catalogs"
+    ],
+    "lcgft_genre_facet": [
+        "Catalogs"
+    ],
+    "isbn_display": [
+        "9781584563440 ((alk. paper))",
+        "1584563443 ((alk. paper))"
+    ],
+    "lccn_display": [
+        "  2015042730"
+    ],
+    "lccn_s": [
+        "2015042730"
+    ],
+    "isbn_s": [
+        "9781584563440"
+    ],
+    "oclc_s": [
+        "933585833"
+    ],
+    "other_version_s": [
+        "9781584563440",
+        "ocn933585833"
+    ],
+    "holdings_1display": "{\"22529639490006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"Z997.A2 B67 2016\",\"call_number_browse\":\"Z997.A2 B67 2016\",\"items\":[{\"holding_id\":\"22529639490006421\",\"id\":\"23529639480006421\",\"status_at_load\":\"1\",\"barcode\":\"32101098558560\",\"copy_number\":\"0\"}]},\"22529639530006421\":{\"location_code\":\"rare$ex\",\"location\":\"Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"Q-000251\",\"call_number_browse\":\"Q-000251\",\"items\":[{\"holding_id\":\"22529639530006421\",\"id\":\"23529639500006421\",\"status_at_load\":\"1\",\"barcode\":\"32101097152910\",\"copy_number\":\"0\"}]}}",
+    "location_code_s": [
+        "firestone$stacks",
+        "rare$ex"
+    ],
+    "location": [
+        "Firestone Library",
+        "Special Collections"
+    ],
+    "location_display": [
+        "Stacks",
+        "Rare Books"
+    ],
+    "advanced_location_s": [
+        "firestone$stacks",
+        "rare$ex",
+        "Firestone Library",
+        "Special Collections"
+    ],
+    "name_title_browse_s": [
+        "Seymour, Terry. Boswell's books"
+    ],
+    "call_number_display": [
+        "Z997.A2 B67 2016",
+        "Q-000251"
+    ],
+    "call_number_browse_s": [
+        "Z997.A2 B67 2016",
+        "Q-000251"
+    ],
+    "call_number_locator_display": [
+        "Z997.A2 B67 2016",
+        "Q-000251"
+    ]
+}

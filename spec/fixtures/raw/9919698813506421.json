@@ -1,0 +1,149 @@
+{
+    "id": "9919698813506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Arnason, H. H., 1909-1986"
+    ],
+    "author_citation_display": [
+        "Arnason, H. H.",
+        "Prather, Marla"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"Prather, Marla\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Arnason, H. H.\"}",
+    "author_s": [
+        "Arnason, H. H., 1909-1986",
+        "Prather, Marla"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "History of modern art : painting, sculpture, architecture, photography / H.H. Arnason.",
+    "title_t": [
+        "History of modern art : painting, sculpture, architecture, photography / H.H. Arnason."
+    ],
+    "title_citation_display": [
+        "History of modern art : painting, sculpture, architecture, photography"
+    ],
+    "compiled_created_t": [
+        "History of modern art : painting, sculpture, architecture, photography / H.H. Arnason."
+    ],
+    "edition_display": [
+        "4th ed. / Marla F. Prather, revising author, fourth edition."
+    ],
+    "pub_created_display": [
+        "New York : Harry N. Abrams, Inc., 1998."
+    ],
+    "pub_created_s": [
+        "New York : Harry N. Abrams, Inc., 1998."
+    ],
+    "pub_citation_display": [
+        "New York: Harry N. Abrams, Inc"
+    ],
+    "publication_location_citation_display": [
+        "New York"
+    ],
+    "publisher_citation_display": [
+        "Harry N. Abrams, Inc"
+    ],
+    "pub_date_display": [
+        "1998"
+    ],
+    "pub_date_start_sort": 1998,
+    "publication_date_citation_display": [
+        "1998"
+    ],
+    "cataloged_tdt": "2000-06-13T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "856 p. : ill. (some col.) ; 30 cm."
+    ],
+    "description_t": [
+        "856 p. : ill. (some col.) ; 30 cm."
+    ],
+    "number_of_pages_citation_display": [
+        "856 p."
+    ],
+    "notes_display": [
+        "\"Daniel Wheeler, revising author, third edition.\""
+    ],
+    "bib_ref_notes_display": [
+        "Includes bibliographical references (p. [806]-828) and index."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "lc_subject_display": [
+        "Art, Modern—20th century"
+    ],
+    "subject_facet": [
+        "Art, Modern—20th century"
+    ],
+    "lc_subject_facet": [
+        "Art, Modern",
+        "Art, Modern—20th century"
+    ],
+    "related_name_json_1display": "{\"Related name\":[\"Prather, Marla\"]}",
+    "isbn_display": [
+        "0810934396"
+    ],
+    "lccn_display": [
+        "   96049408  "
+    ],
+    "lccn_s": [
+        "96049408"
+    ],
+    "isbn_s": [
+        "9780810934399"
+    ],
+    "oclc_s": [
+        "35919368"
+    ],
+    "other_version_s": [
+        "9780810934399",
+        "ocm35919368"
+    ],
+    "subject_era_facet": [
+        "20th century"
+    ],
+    "holdings_1display": "{\"22589919750006421\":{\"location_code\":\"arch$ref\",\"location\":\"Reference\",\"library\":\"Architecture Library\",\"call_number\":\"N6490 .A713 1998q Oversize\",\"call_number_browse\":\"N6490 .A713 1998q Oversize\",\"sub_location\":[\"Oversize\"],\"items\":[{\"holding_id\":\"22589919750006421\",\"id\":\"23589919740006421\",\"status_at_load\":\"1\",\"barcode\":\"32101031850843\",\"copy_number\":\"1\"}]},\"22589919770006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"N6490 .A713 1998q Oversize\",\"call_number_browse\":\"N6490 .A713 1998q Oversize\",\"sub_location\":[\"Oversize\"],\"items\":[{\"holding_id\":\"22589919770006421\",\"id\":\"23589919760006421\",\"status_at_load\":\"0\",\"barcode\":\"32101109279081\",\"copy_number\":\"1\"}]}}",
+    "location_code_s": [
+        "arch$ref",
+        "recap$pa"
+    ],
+    "location": [
+        "Architecture Library",
+        "ReCAP"
+    ],
+    "location_display": [
+        "Reference",
+        "Remote Storage"
+    ],
+    "advanced_location_s": [
+        "arch$ref",
+        "recap$pa",
+        "Architecture Library",
+        "ReCAP"
+    ],
+    "name_title_browse_s": [
+        "Arnason, H. H., 1909-1986. History of modern art"
+    ],
+    "call_number_display": [
+        "Oversize N6490 .A713 1998q"
+    ],
+    "call_number_browse_s": [
+        "N6490 .A713 1998q Oversize"
+    ],
+    "call_number_locator_display": [
+        "N6490 .A713 1998q"
+    ]
+}
