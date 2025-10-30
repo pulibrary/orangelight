@@ -120,7 +120,6 @@ module Requests
       def respond_to_validation_error(submission)
         error_message = I18n.t('requests.submit.error')
         error_messages = submission.errors.messages
-        extract_specific_errors(error_messages)
 
         flash.now[:error] = error_message
         logger.error "Request Submission #{error_messages.as_json}"
@@ -164,29 +163,6 @@ module Requests
                                   end
         end
         formatted_errors
-      end
-
-      # :reek:NestedIterators
-      # :reek:TooManyStatements
-      # :reek:UtilityFunction
-      def extract_specific_errors(error_messages)
-        specific_errors = []
-        error_messages.each do |key, values|
-          if key == :items
-            values.each do |value|
-              if value.is_a?(Hash)
-                first_value = value.values.first
-                text_value = first_value['text']
-                specific_errors << text_value if text_value
-              else
-                specific_errors << value
-              end
-            end
-          else
-            specific_errors.concat(values)
-          end
-        end
-        specific_errors
       end
 
       # This has to be a utility function to prevent ActiveJob from trying to serialize too many objects

@@ -9,15 +9,10 @@ class RequestFormHandler {
     this.submitTimeout = null;
 
     if (this.form) {
-      this.init();
+      this.form.addEventListener('submit', this.handleSubmit.bind(this));
     } else {
       console.warn('No form found with selector:', formSelector);
     }
-  }
-
-  init() {
-    // Bind form submission handler
-    this.form.addEventListener('submit', this.handleSubmit.bind(this));
   }
 
   handleSubmit(event) {
