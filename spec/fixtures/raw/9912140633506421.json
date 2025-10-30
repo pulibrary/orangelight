@@ -1,0 +1,117 @@
+{
+    "id": "9912140633506421",
+    "numeric_id_b": true,
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+    "title_display": "Cats.",
+    "title_t": [
+        "Cats."
+    ],
+    "title_citation_display": [
+        "Cats"
+    ],
+    "compiled_created_t": [
+        "Cats."
+    ],
+    "pub_created_display": [
+        "Glasgow, Collins; New York, G. P. Putnam's Sons [1974]"
+    ],
+    "pub_created_s": [
+        "Glasgow, Collins; New York, G. P. Putnam's Sons [1974]"
+    ],
+    "pub_citation_display": [
+        "New York: G. P. Putnam's Sons"
+    ],
+    "publication_location_citation_display": [
+        "Glasgow"
+    ],
+    "publisher_citation_display": [
+        "Collins"
+    ],
+    "pub_date_display": [
+        "1974"
+    ],
+    "pub_date_start_sort": 1974,
+    "publication_date_citation_display": [
+        "1974"
+    ],
+    "cataloged_tdt": "2000-06-13T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "108 p. illus. (part col.) 33 cm."
+    ],
+    "description_t": [
+        "108 p. illus. (part col.) 33 cm."
+    ],
+    "number_of_pages_citation_display": [
+        "108 p."
+    ],
+    "series_display": [
+        "Animal world series"
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "lc_subject_display": [
+        "Felidae—Pictorial works"
+    ],
+    "subject_facet": [
+        "Felidae—Pictorial works"
+    ],
+    "lc_subject_facet": [
+        "Felidae",
+        "Felidae—Pictorial works"
+    ],
+    "isbn_display": [
+        "0399112405 (New York)"
+    ],
+    "lccn_display": [
+        "   73085369  "
+    ],
+    "lccn_s": [
+        "73085369"
+    ],
+    "isbn_s": [
+        "9780399112409"
+    ],
+    "oclc_s": [
+        "1001936"
+    ],
+    "other_version_s": [
+        "9780399112409",
+        "ocm01001936"
+    ],
+    "holdings_1display": "{\"22722595360006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"QL737.C23C36.1974q Oversize\",\"call_number_browse\":\"QL737.C23C36.1974q Oversize\",\"sub_location\":[\"Oversize\"],\"items\":[{\"holding_id\":\"22722595360006421\",\"id\":\"23722595340006421\",\"status_at_load\":\"1\",\"barcode\":\"32101002379376\",\"copy_number\":\"1\"},{\"holding_id\":\"22722595360006421\",\"id\":\"23722595350006421\",\"status_at_load\":\"0\",\"barcode\":\"32101004617237\",\"copy_number\":\"1\"}]}}",
+    "location_code_s": [
+        "firestone$stacks"
+    ],
+    "location": [
+        "Firestone Library"
+    ],
+    "location_display": [
+        "Stacks"
+    ],
+    "advanced_location_s": [
+        "firestone$stacks",
+        "Firestone Library"
+    ],
+    "call_number_display": [
+        "Oversize QL737.C23C36.1974q"
+    ],
+    "call_number_browse_s": [
+        "QL737.C23C36.1974q Oversize"
+    ],
+    "call_number_locator_display": [
+        "QL737.C23C36.1974q"
+    ]
+}

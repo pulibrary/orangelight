@@ -20,6 +20,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:mfhd_id) { requestable.holding.mfhd_id }
     let(:call_number) { CGI.escape(requestable.holding.holding_data['call_number']) }
     let(:location_code) { CGI.escape(requestable.holding.holding_data['location_code']) }
+    before { stub_catalog_raw bib_id: '9912140633506421' }
 
     describe '#services' do
       it 'has on shelf and digitization services' do
