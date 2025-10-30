@@ -115,7 +115,7 @@ describe Requests::FormController, type: :controller, vcr: { cassette_name: 'for
         expect(recap).to receive(:send_mail)
         post :submit, params: { "request" => user_info,
                                 "requestable" => requestable,
-                                "bib" => bib, "format" => "js" }
+                                "bib" => bib, "format" => "json" }
       end
     end
 
@@ -128,7 +128,7 @@ describe Requests::FormController, type: :controller, vcr: { cassette_name: 'for
         expect(generic).to receive(:send_mail)
         post :submit, params: { "request" => user_info,
                                 "requestable" => requestable,
-                                "bib" => bib, "format" => "js" }
+                                "bib" => bib, "format" => "json" }
       end
     end
 
@@ -138,22 +138,37 @@ describe Requests::FormController, type: :controller, vcr: { cassette_name: 'for
         requestable.first["edd_art_title"] = ""
         post :submit, params: { "request" => user_info,
                                 "requestable" => requestable,
-                                "bib" => bib, "format" => "js" }
+                                "bib" => bib, "format" => "json" }
         expect(response.status).to eq(200)
-        expect(flash[:error]).to eq('We were unable to process your request. Correct the highlighted errors.')
+        expect(flash.now[:error]).to eq('We were unable to process your request. Correct the highlighted errors.')
       end
     end
 
     context "service error" do
+      let(:recap_with_errors) { instance_double(Requests::Submissions::Recap, errors: [{ type: 'recap_edd', error: 'Service unavailable' }], handle: {}, service_type: 'recap_edd', error_hash: { recap_edd: 'Service error occurred' }) }
+
       before { stub_request(:post, "#{Requests.config[:scsb_base]}/requestItem/requestItem").to_return(status: 400) }
+
       it 'returns an error' do
         requestable.first["library_code"] = "recap"
         requestable.first["delivery_mode_7391704"] = "edd"
+
+        # Mock the submission to be valid but have service errors
+        submission = instance_double(Requests::Submission)
+        allow(Requests::Submission).to receive(:new).and_return(submission)
+        allow(submission).to receive(:valid?).and_return(true)
+        allow(submission).to receive(:process_submission).and_return([recap_with_errors])
+        allow(submission).to receive(:service_errors).and_return(['Service error'])
+        allow(submission).to receive(:to_h).and_return({ 'patron' => { 'netid' => 'test123', 'email' => 'test@example.com' } })
+
+        # Mock the mailer
+        allow(Requests::RequestMailer).to receive(:send).and_return(instance_double(ActionMailer::MessageDelivery, deliver_later: true))
+
         post :submit, params: { "request" => user_info,
                                 "requestable" => requestable,
-                                "bib" => bib, "format" => "js" }
+                                "bib" => bib, "format" => "json" }
         expect(response.status).to eq(200)
-        expect(flash[:error]).to eq("There was a problem with this request which Library staff need to investigate. You'll be notified once it's resolved and requested for you.")
+        expect(flash.now[:error]).to eq("There was a problem with this request which Library staff need to investigate. You'll be notified once it's resolved and requested for you.")
       end
     end
     describe 'allowed params' do
@@ -173,7 +188,7 @@ describe Requests::FormController, type: :controller, vcr: { cassette_name: 'for
             "request" => user_info,
             "bib" => bib,
             "requestable" => requestable,
-            "format" => "js"
+            "format" => "json"
           }
         end
       end
@@ -193,7 +208,7 @@ describe Requests::FormController, type: :controller, vcr: { cassette_name: 'for
             "request" => user_info,
             "bib" => bib,
             "requestable" => requestable,
-            "format" => "js"
+            "format" => "json"
           }
         end
       end

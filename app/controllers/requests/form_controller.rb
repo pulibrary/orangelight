@@ -42,19 +42,19 @@ module Requests
     # user information for further processing and distribution to various request endpoints.
     def submit
       @submission = Requests::Submission.new(sanitize_submission(params), Patron.new(user: current_or_guest_user))
-      respond_to do |format|
-        format.js do
-          valid = @submission.valid?
-          @services = @submission.process_submission if valid
-          if valid && @submission.service_errors.blank?
-            respond_to_submit_success(@submission)
-          elsif valid # submission was valid, but service failed
-            respond_to_service_error(@services)
-          else
-            respond_to_validation_error(@submission)
-          end
-        end
-      end
+
+      valid = @submission.valid?
+      @services = @submission.process_submission if valid
+
+      response_data = if valid && @submission.service_errors.blank?
+                        respond_to_submit_success(@submission)
+                      elsif valid # submission was valid, but service failed
+                        respond_to_service_error(@services)
+                      else
+                        respond_to_validation_error(@submission)
+                      end
+
+      render json: response_data
     end
 
     private
@@ -82,34 +82,87 @@ module Requests
         lparams
       end
 
+      # :reek:UncommunicativeVariableName { accept: ['e'] }
+      # :reek:TooManyStatements
       def respond_to_submit_success(submission)
-        flash.now[:success] = submission.success_messages.join(' ')
-        # TODO: Why does this go into an infinite loop
-        # logger.info "#Request Submission - #{submission.as_json}"
+        success_message = submission.success_messages.join(' ')
+        flash.now[:success] = success_message
         logger.info "Request Sent"
+
+        {
+          success: true,
+          message: success_message
+        }
       end
 
+      # :reek:UncommunicativeVariableName { accept: ['e'] }
       def respond_to_service_error(services)
         errors = services.map(&:errors).flatten
         error_types = errors.pluck(:type).uniq
-        flash.now[:error] = if error_types.include?("digitize")
-                              errors[error_types.index("digitize")][:error]
-                            else
-                              I18n.t('requests.submit.service_error')
-                            end
+        flash_now_error = if error_types.include?("digitize")
+                            errors[error_types.index("digitize")][:error]
+                          else
+                            I18n.t('requests.submit.service_error')
+                          end
+        flash.now[:error] = flash_now_error
         logger.error "Request Service Error"
         service_errors = services.map(&:error_hash).inject(:merge)
         send_error_email(service_errors, @submission)
+
+        {
+          success: false,
+          message: flash_now_error,
+          errors: service_errors
+        }
       end
 
+      # :reek:TooManyStatements
       def respond_to_validation_error(submission)
-        flash.now[:error] = I18n.t('requests.submit.error')
-        logger.error "Request Submission #{submission.errors.messages.as_json}"
+        error_message = I18n.t('requests.submit.error')
+        error_messages = submission.errors.messages
+
+        flash.now[:error] = error_message
+        logger.error "Request Submission #{error_messages.as_json}"
+
+        {
+          success: false,
+          message: error_message,
+          errors: format_validation_errors(error_messages)
+        }
       end
 
       def sanitize(str)
         str.gsub(/[^A-Za-z0-9@\-_\.]/, '') if str.is_a? String
         str
+      end
+
+      # :reek:NestedIterators
+      # :reek:TooManyStatements
+      # :reek:UtilityFunction
+      def format_validation_errors(error_messages)
+        formatted_errors = {}
+
+        error_messages.each do |key, values|
+          formatted_errors[key] = if key == :items
+                                    # Handle special items field format
+                                    values.map do |value|
+                                      if value.is_a?(Hash)
+                                        first_value = value.values.first
+                                        {
+                                          key: value.keys.first,
+                                          type: first_value['type'],
+                                          text: first_value['text']
+                                        }
+                                      else
+                                        { text: value }
+                                      end
+                                    end
+                                  else
+                                    # Handle regular validation errors
+                                    values
+                                  end
+        end
+        formatted_errors
       end
 
       # This has to be a utility function to prevent ActiveJob from trying to serialize too many objects

@@ -13,7 +13,11 @@
           <% end %>
         </div>
       </div>
-      <%= render 'flash_messages' %>
+      <div class="flash_messages">
+        <div class="container">
+          <%= render 'flash_messages' %>
+        </div>
+      </div>
     </div>
     <% if @request.requestable? %>
       <div class="col-12">
