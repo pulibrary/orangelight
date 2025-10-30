@@ -1,3 +1,5 @@
+@use "variables/colors";
+
 @media (min-width: 900px) {
   .lux-library-links ul {
     align-content: center;
@@ -9,11 +11,11 @@
 }
 
 .holdings-card .lux-text-style.green {
-  color: $available-green;
+  color: colors.$available-green;
 }
 
 .holding-status .lux-text-style.green {
-  color: $available-green;
+  color: colors.$available-green;
 }
 
 .when-closed .lux-badge-gray {

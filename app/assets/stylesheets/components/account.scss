@@ -16,21 +16,6 @@
     padding-right: 0;
   }
 
-  @media (max-width: $bp-large) {
-    .account--sidebar,
-    .account--main {
-      padding: 0;
-    }
-  }
-
-  .account--sidebar .nav {
-    margin-bottom: 1em;
-
-    li {
-      float: none;
-    }
-  }
-
   .page-heading {
     display: block;
     margin-bottom: 0;
