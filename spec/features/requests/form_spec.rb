@@ -28,6 +28,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
   let(:valid_graduate_student_no_campus_response) { file_fixture('../bibdata_patron_response_graduate_no_campus.json') }
   let(:invalid_patron_response) { file_fixture('../bibdata_not_found_patron_response.json') }
   let(:valid_patron_response_no_ldap) { file_fixture('../bibdata_patron_response_no_ldap.json') }
+  let(:affiliate_patron_response) { file_fixture('../bibdata_patron_affiliate_response.json') }
 
   let(:responses) do
     {
@@ -1117,6 +1118,19 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
         expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
       end
+    end
+  end
+
+  context 'A CAS user in the affiliate user group' do
+    let(:user) { FactoryBot.create(:user) }
+    before do
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
+        .to_return(status: 200, body: affiliate_patron_response, headers: {})
+      login_as user
+    end
+    it 'displays the correct message when requesting a Firestone stacks item' do
+      visit 'requests/9912636153506421?mfhd=22557213410006421'
+      expect(page).to have_content('Request options for this item are only available to Faculty, Staff, and Students.')
     end
   end
 
