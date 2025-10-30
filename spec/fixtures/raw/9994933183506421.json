@@ -1,0 +1,142 @@
+{
+    "id": "9994933183506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Samḥān, Najāt",
+        "سمحان، نجاة،"
+    ],
+    "author_citation_display": [
+        "Samḥān, Najāt"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"سمحان، نجاة،\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Samḥān, Najāt\"}",
+    "author_s": [
+        "Samḥān, Najāt",
+        "سمحان، نجاة،"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "ʻAwāṭif madfūnah / Najāt al-Samḥān.",
+    "title_vern_display": "عواطف مدفونة / نجاة السمحان.",
+    "title_t": [
+        "ʻAwāṭif madfūnah / Najāt al-Samḥān."
+    ],
+    "title_citation_display": [
+        "ʻAwāṭif madfūnah",
+        "عواطف مدفونة"
+    ],
+    "compiled_created_t": [
+        "ʻAwāṭif madfūnah / Najāt al-Samḥān.",
+        "عواطف مدفونة / نجاة السمحان."
+    ],
+    "pub_created_vern_display": [
+        "القاهرة : دار الكتاب الحديث، 2016."
+    ],
+    "pub_created_display": [
+        "al-Qāhirah : Dār al-Kitāb al-Ḥadīth, 2016.",
+        "القاهرة : دار الكتاب الحديث، 2016."
+    ],
+    "pub_created_s": [
+        "al-Qāhirah : Dār al-Kitāb al-Ḥadīth, 2016.",
+        "القاهرة : دار الكتاب الحديث، 2016."
+    ],
+    "pub_citation_display": [
+        "al-Qāhirah: Dār al-Kitāb al-Ḥadīth",
+        "القاهرة: دار الكتاب الحديث،"
+    ],
+    "publication_location_citation_display": [
+        "al-Qāhirah"
+    ],
+    "publisher_citation_display": [
+        "Dār al-Kitāb al-Ḥadīth"
+    ],
+    "pub_date_display": [
+        "2016"
+    ],
+    "pub_date_start_sort": 2016,
+    "publication_date_citation_display": [
+        "2016"
+    ],
+    "cataloged_tdt": "2016-01-19T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "230 pages ; 20 cm"
+    ],
+    "description_t": [
+        "230 pages ; 20 cm"
+    ],
+    "number_of_pages_citation_display": [
+        "230 pages"
+    ],
+    "notes_display": [
+        "Short stories."
+    ],
+    "language_name_display": [
+        "Arabic"
+    ],
+    "language_facet": [
+        "Arabic"
+    ],
+    "language_iana_s": [
+        "ar"
+    ],
+    "mult_languages_iana_s": [
+        "ar"
+    ],
+    "lc_subject_display": [
+        "Short stories, Arabic—21st century"
+    ],
+    "subject_facet": [
+        "Short stories, Arabic—21st century"
+    ],
+    "lc_subject_facet": [
+        "Short stories, Arabic",
+        "Short stories, Arabic—21st century"
+    ],
+    "isbn_display": [
+        "9789773506827",
+        "9773506827"
+    ],
+    "isbn_s": [
+        "9789773506827"
+    ],
+    "oclc_s": [
+        "932335821"
+    ],
+    "other_version_s": [
+        "9789773506827",
+        "ocn932335821"
+    ],
+    "subject_era_facet": [
+        "21st century"
+    ],
+    "holdings_1display": "{\"22558528920006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"PJ7962.A5495 A95 2016\",\"call_number_browse\":\"PJ7962.A5495 A95 2016\",\"items\":[{\"holding_id\":\"22558528920006421\",\"id\":\"23558528910006421\",\"status_at_load\":\"1\",\"barcode\":\"32101095798938\",\"copy_number\":\"0\"}]}}",
+    "location_code_s": [
+        "recap$pa"
+    ],
+    "location": [
+        "ReCAP"
+    ],
+    "location_display": [
+        "Remote Storage"
+    ],
+    "advanced_location_s": [
+        "recap$pa",
+        "ReCAP"
+    ],
+    "name_title_browse_s": [
+        "Samḥān, Najāt. ʻAwāṭif madfūnah",
+        "سمحان، نجاة،. عواطف مدفونة"
+    ],
+    "call_number_display": [
+        "PJ7962.A5495 A95 2016"
+    ],
+    "call_number_browse_s": [
+        "PJ7962.A5495 A95 2016"
+    ],
+    "call_number_locator_display": [
+        "PJ7962.A5495 A95 2016"
+    ]
+}

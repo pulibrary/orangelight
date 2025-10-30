@@ -32,6 +32,7 @@ describe Requests::FormController, type: :controller, vcr: { cassette_name: 'for
       end
 
       it 'does not set a flash' do
+        stub_catalog_raw bib_id: '9996764833506421'
         stub_scsb_availability(bib_id: "9996764833506421", institution_id: "PUL", barcode: '32101099103457')
         get :generate, params: {
           system_id: '9996764833506421',
@@ -41,6 +42,7 @@ describe Requests::FormController, type: :controller, vcr: { cassette_name: 'for
       end
 
       it 'does not redirect you when multiple aeon records are requested' do
+        stub_catalog_raw bib_id: '9995768803506421'
         get :generate, params: {
           system_id: '9995768803506421',
           mfhd: '2298692650006421'

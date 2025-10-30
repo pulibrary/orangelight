@@ -1,0 +1,174 @@
+{
+    "id": "99123713303506421",
+    "numeric_id_b": true,
+    "author_citation_display": [
+        "Anderson, Sean",
+        "Wilson, Mabel",
+        "Museum of Modern Art (New York, N.Y.)"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"Museum of Modern Art (New York, N.Y.)\"],\"translators\":[],\"editors\":[\"Anderson, Sean\",\"Wilson, Mabel\"],\"compilers\":[]}",
+    "author_s": [
+        "Anderson, Sean, 1972-",
+        "Wilson, Mabel (Mabel O.)",
+        "Museum of Modern Art (New York, N.Y.)"
+    ],
+    "title_display": "Reconstructions : architecture and Blackness in America / edited by Sean Anderson and Mabel O. Wilson.",
+    "title_t": [
+        "Reconstructions : architecture and Blackness in America / edited by Sean Anderson and Mabel O. Wilson."
+    ],
+    "title_citation_display": [
+        "Reconstructions : architecture and Blackness in America"
+    ],
+    "compiled_created_t": [
+        "Reconstructions : architecture and Blackness in America / edited by Sean Anderson and Mabel O. Wilson."
+    ],
+    "pub_created_display": [
+        "New York : The Museum of Modern Art, [2021]",
+        "©2021"
+    ],
+    "pub_created_s": [
+        "New York : The Museum of Modern Art, [2021]",
+        "©2021"
+    ],
+    "pub_citation_display": [
+        "New York: The Museum of Modern Art"
+    ],
+    "publication_location_citation_display": [
+        "New York"
+    ],
+    "publisher_citation_display": [
+        "The Museum of Modern Art"
+    ],
+    "pub_date_display": [
+        "2021"
+    ],
+    "pub_date_start_sort": 2021,
+    "pub_date_end_sort": 2021,
+    "publication_date_citation_display": [
+        "2021"
+    ],
+    "cataloged_tdt": "2021-04-22T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "173 pages : illustrations (some color), maps ; 26 cm"
+    ],
+    "description_t": [
+        "173 pages : illustrations (some color), maps ; 26 cm"
+    ],
+    "number_of_pages_citation_display": [
+        "173 pages"
+    ],
+    "geocode_display": [
+        "United States"
+    ],
+    "summary_note_display": [
+        "\"Reconstructions: Architecture and Blackness in America is an urgent call for architects to accept the challenge of reconceiving and reconstructing our built environment rather than continue giving shape to buildings, infrastructure and urban plans that have, for generations, embodied and sustained anti-Black racism in the United States. The architects, designers, artists and writers who were invited to contribute to this book--and to the exhibition at the Museum of Modern Art for which it serves as a \"field guide\"--reimagine the legacies of race-based dispossession in 10 American cities (Atlanta; Brooklyn, New York; Kinloch, Missouri; Los Angeles; Miami; Nashville; New Orleans; Oakland; Pittsburgh; and Syracuse) and celebrate the ways individuals and communities across the country have mobilized Black cultural spaces, forms and practices as sites of imagination, liberation, resistance, care and refusal. A broad range of essays by the curators and prominent scholars from diverse fields, as well as a portfolio of new photographs by the artist David Hartt, complement this volume's richly illustrated presentations of the architectural projects at the heart of MoMA's groundbreaking exhibition.\"--Back cover.",
+        "\"The Museum of Modern Art announces the fourth installment of the Issues in Contemporary Architecture series, Reconstructions: Architecture and Blackness in America, an investigation into the intersections of architecture, Blackness and anti-Black racism in the American context. On view from February 20 through May 31, 2021, the exhibition and accompanying publication will examine contemporary architecture in the context of how systemic racism has fostered violent histories of discrimination and injustice in the United States. Such conditions have structured and continue to inform the built environment of American cities through public policies, municipal planning, and architecture, with specific repercussions for African American and African diaspora communities. Projects will explore how people have mobilized Black cultural spaces, forms, and practices as sites of imagination, liberation, resistance, and refusal.\"--City Life Org website (viewed on February 18, 2021)"
+    ],
+    "notes_display": [
+        "Published in conjunction with an exhibition of the same name held at The Museum of Modern Art, New York, February 20-May 31, 2021."
+    ],
+    "bib_ref_notes_display": [
+        "Includes bibliographical references and index."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "contents_display": [
+        "Refusal",
+        "Liberation",
+        "Imagination",
+        "Care",
+        "Knowledge."
+    ],
+    "lc_subject_display": [
+        "Architecture and race—United States—Exhibitions",
+        "Racism—United States—History—Exhibitions",
+        "African American architects—Exhibitions",
+        "Museum of Modern Art (New York, N.Y.)"
+    ],
+    "subject_facet": [
+        "Architecture and race—United States—Exhibitions",
+        "Racism—United States—History—Exhibitions",
+        "African American architects—Exhibitions",
+        "Museum of Modern Art (New York, N.Y.)"
+    ],
+    "lc_subject_facet": [
+        "Architecture and race",
+        "Architecture and race—United States",
+        "Architecture and race—United States—Exhibitions",
+        "Racism",
+        "Racism—United States",
+        "Racism—United States—History",
+        "Racism—United States—History—Exhibitions",
+        "African American architects",
+        "African American architects—Exhibitions",
+        "Museum of Modern Art (New York, N.Y.)"
+    ],
+    "related_name_json_1display": "{\"Editor\":[\"Anderson, Sean, 1972-\",\"Wilson, Mabel (Mabel O.)\"],\"Host institution\":[\"Museum of Modern Art (New York, N.Y.)\"]}",
+    "other_title_display": [
+        "Architecture and blackness in America"
+    ],
+    "alt_title_246_display": [
+        "Architecture and blackness in America"
+    ],
+    "isbn_display": [
+        "9781633451148 (paperback)",
+        "1633451143 (paperback)"
+    ],
+    "lccn_display": [
+        "  2020946481"
+    ],
+    "lccn_s": [
+        "2020946481"
+    ],
+    "isbn_s": [
+        "9781633451148"
+    ],
+    "oclc_s": [
+        "1231204986"
+    ],
+    "other_version_s": [
+        "9781633451148",
+        "on1231204986"
+    ],
+    "holdings_1display": "{\"22668310410006421\":{\"location_code\":\"marquand$pj\",\"location\":\"Remote Storage (ReCAP): Marquand Library Use Only\",\"library\":\"Marquand Library\",\"call_number\":\"NA738.N5 R43 2021\",\"call_number_browse\":\"NA738.N5 R43 2021\",\"items\":[{\"holding_id\":\"22668310410006421\",\"id\":\"23668310400006421\",\"status_at_load\":\"1\",\"barcode\":\"32101113034977\",\"copy_number\":\"0\"}]},\"22668310390006421\":{\"location_code\":\"arch$stacks\",\"location\":\"Stacks\",\"library\":\"Architecture Library\",\"call_number\":\"NA738.N5 R43 2021\",\"call_number_browse\":\"NA738.N5 R43 2021\",\"items\":[{\"holding_id\":\"22668310390006421\",\"id\":\"23668310380006421\",\"status_at_load\":\"1\",\"barcode\":\"32101104013527\",\"copy_number\":\"0\"},{\"holding_id\":\"22668310390006421\",\"id\":\"23668310340006421\",\"status_at_load\":\"1\",\"barcode\":\"32101104013535\",\"copy_number\":\"0\"}]}}",
+    "location_code_s": [
+        "marquand$pj",
+        "arch$stacks"
+    ],
+    "location": [
+        "Marquand Library",
+        "Architecture Library"
+    ],
+    "location_display": [
+        "Remote Storage (ReCAP): Marquand Library Use Only",
+        "Stacks"
+    ],
+    "advanced_location_s": [
+        "marquand$pj",
+        "arch$stacks",
+        "Marquand Library",
+        "Architecture Library"
+    ],
+    "call_number_display": [
+        "NA738.N5 R43 2021"
+    ],
+    "call_number_browse_s": [
+        "NA738.N5 R43 2021"
+    ],
+    "call_number_locator_display": [
+        "NA738.N5 R43 2021"
+    ]
+}

@@ -1,0 +1,164 @@
+{
+    "id": "9941150973506421",
+    "numeric_id_b": true,
+    "author_citation_display": [
+        "Zhongguo xin li xue hui"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"Zhongguo xin li xue hui\",\"中国心理学会\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+    "author_s": [
+        "Zhongguo xin li xue hui",
+        "中国心理学会"
+    ],
+    "title_display": "Xin li ke xue = Journal of psychological science / Zhongguo xin li xue hui zhu ban.",
+    "title_vern_display": "心理科学 = Journal of psychological science / 中国心理学会主办.",
+    "title_t": [
+        "Xin li ke xue = Journal of psychological science / Zhongguo xin li xue hui zhu ban."
+    ],
+    "title_citation_display": [
+        "Xin li ke xue = Journal of psychological science",
+        "心理科学 = Journal of psychological science"
+    ],
+    "compiled_created_t": [
+        "Xin li ke xue = Journal of psychological science / Zhongguo xin li xue hui zhu ban.",
+        "心理科学 = Journal of psychological science / 中国心理学会主办."
+    ],
+    "pub_created_vern_display": [
+        "上海 : 《心理科学》编委会,"
+    ],
+    "pub_created_display": [
+        "Shanghai : \"Xin li ke xue\" bian wei hui,",
+        "上海 : 《心理科学》编委会,"
+    ],
+    "pub_created_s": [
+        "Shanghai : \"Xin li ke xue\" bian wei hui,",
+        "上海 : 《心理科学》编委会,"
+    ],
+    "pub_citation_display": [
+        "Shanghai: \"Xin li ke xue\" bian wei hui",
+        "上海: 《心理科学》编委会"
+    ],
+    "publication_location_citation_display": [
+        "Shanghai"
+    ],
+    "publisher_citation_display": [
+        "\"Xin li ke xue\" bian wei hui"
+    ],
+    "pub_date_display": [
+        "1991"
+    ],
+    "pub_date_start_sort": 1991,
+    "pub_date_end_sort": 9999,
+    "publication_date_citation_display": [
+        "1991"
+    ],
+    "cataloged_tdt": "2004-10-18T00:00:00Z",
+    "format": [
+        "Journal"
+    ],
+    "description_display": [
+        "v. : ill. ; 26 cm.",
+        "Began in 1991."
+    ],
+    "description_t": [
+        "v. : ill. ; 26 cm.",
+        "Began in 1991."
+    ],
+    "number_of_pages_citation_display": [
+        "v."
+    ],
+    "continues_display": [
+        "Xin li ke xue tong xun",
+        "心理科学通讯"
+    ],
+    "frequency_display": [
+        "Bimonthly"
+    ],
+    "source_desc_notes_display": [
+        "Description based on: Di 27 juan di 1 qi (2004 nian 1 yue) = zong di 147 qi; title from cover.",
+        "Description based on:第27卷第1期(2004年1月) =总第147期; title from cover."
+    ],
+    "language_display": [
+        "Chinese; abstracts in English; with table of contents also in English."
+    ],
+    "language_name_display": [
+        "Chinese"
+    ],
+    "language_facet": [
+        "Chinese"
+    ],
+    "language_iana_s": [
+        "zh"
+    ],
+    "mult_languages_iana_s": [
+        "zh"
+    ],
+    "lc_subject_display": [
+        "Psychology—Periodicals"
+    ],
+    "subject_facet": [
+        "Psychology—Periodicals",
+        "Periodicals"
+    ],
+    "lc_subject_facet": [
+        "Psychology",
+        "Psychology—Periodicals"
+    ],
+    "lcgft_s": [
+        "Periodicals"
+    ],
+    "lcgft_genre_facet": [
+        "Periodicals"
+    ],
+    "related_name_json_1display": "{\"Related name\":[\"Zhongguo xin li xue hui\",\"中国心理学会\"]}",
+    "other_title_display": [
+        "Journal of psychological science",
+        "Psychological science"
+    ],
+    "alt_title_246_display": [
+        "Journal of psychological science",
+        "Psychological science"
+    ],
+    "issn_display": [
+        "1671-6981"
+    ],
+    "lccn_display": [
+        "   91644657 "
+    ],
+    "lccn_s": [
+        "91644657"
+    ],
+    "issn_s": [
+        "16716981"
+    ],
+    "oclc_s": [
+        "23954760"
+    ],
+    "other_version_s": [
+        "10006648",
+        "16716981",
+        "ocm23954760"
+    ],
+    "location_code_s": [
+        "recap$pa"
+    ],
+    "location": [
+        "ReCAP"
+    ],
+    "location_display": [
+        "Remote Storage"
+    ],
+    "advanced_location_s": [
+        "recap$pa",
+        "ReCAP"
+    ],
+    "call_number_display": [
+        "BF8.C5 H76"
+    ],
+    "call_number_browse_s": [
+        "BF8.C5 H76"
+    ],
+    "call_number_locator_display": [
+        "BF8.C5 H76"
+    ],
+    "holdings_1display": "{\"22492663380006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"BF8.C5 H76\",\"call_number_browse\":\"BF8.C5 H76\",\"items\":[{\"holding_id\":\"22492663380006421\",\"description\":\"2022\",\"id\":\"23994436080006421\",\"status_at_load\":\"1\",\"barcode\":\"32101114082025\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.189-191\",\"id\":\"23492663120006421\",\"status_at_load\":\"1\",\"barcode\":\"32101083342913\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.147-149\",\"id\":\"23492663300006421\",\"status_at_load\":\"1\",\"barcode\":\"32101056667460\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.183-185\",\"id\":\"23492663130006421\",\"status_at_load\":\"1\",\"barcode\":\"32101078140157\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"2022\",\"id\":\"23994436070006421\",\"status_at_load\":\"1\",\"barcode\":\"32101114082017\"},{\"holding_id\":\"22492663380006421\",\"description\":\"2021\",\"id\":\"23994436090006421\",\"status_at_load\":\"1\",\"barcode\":\"32101114082033\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.186-188\",\"id\":\"23492663310006421\",\"status_at_load\":\"1\",\"barcode\":\"32101077677399\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.180-182\",\"id\":\"23492663140006421\",\"status_at_load\":\"1\",\"barcode\":\"32101078140140\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.213-214\",\"id\":\"23492663050006421\",\"status_at_load\":\"1\",\"barcode\":\"32101086735360\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.211-212\",\"id\":\"23492663060006421\",\"status_at_load\":\"1\",\"barcode\":\"32101086734009\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.192-194\",\"id\":\"23492663110006421\",\"status_at_load\":\"1\",\"barcode\":\"32101086336136\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.195-197\",\"id\":\"23492663100006421\",\"status_at_load\":\"1\",\"barcode\":\"32101084857596\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.174-176\",\"id\":\"23492663160006421\",\"status_at_load\":\"1\",\"barcode\":\"32101076574019\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.177-179\",\"id\":\"23492663150006421\",\"status_at_load\":\"1\",\"barcode\":\"32101076574035\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.159-161\",\"id\":\"23492663170006421\",\"status_at_load\":\"1\",\"barcode\":\"32101060520788\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.171-173\",\"id\":\"23492663320006421\",\"status_at_load\":\"1\",\"barcode\":\"32101072389958\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.141-142\",\"id\":\"23492663260006421\",\"status_at_load\":\"1\",\"barcode\":\"32101090103506\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.150-152\",\"id\":\"23492663200006421\",\"status_at_load\":\"1\",\"barcode\":\"32101056734682\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.165-167\",\"id\":\"23492663270006421\",\"status_at_load\":\"1\",\"barcode\":\"32101063678914\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.198-200\",\"id\":\"23492663250006421\",\"status_at_load\":\"1\",\"barcode\":\"32101090103514\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.215-216\",\"id\":\"23492663230006421\",\"status_at_load\":\"1\",\"barcode\":\"32101099680561\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.123-128\",\"id\":\"23492663210006421\",\"status_at_load\":\"1\",\"barcode\":\"32101063679508\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.217-218\",\"id\":\"23492663220006421\",\"status_at_load\":\"1\",\"barcode\":\"32101099680850\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.204-206\",\"id\":\"23492663240006421\",\"status_at_load\":\"1\",\"barcode\":\"32101086658307\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.228-230\",\"id\":\"23492663450006421\",\"status_at_load\":\"1\",\"barcode\":\"32101097833519\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.135-140\",\"id\":\"23492663280006421\",\"status_at_load\":\"1\",\"barcode\":\"32101063678906\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.162-164\",\"id\":\"23492663360006421\",\"status_at_load\":\"1\",\"barcode\":\"32101063089161\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.225-227\",\"id\":\"23492663460006421\",\"status_at_load\":\"1\",\"barcode\":\"32101097833535\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.231-233\",\"id\":\"23492663440006421\",\"status_at_load\":\"1\",\"barcode\":\"32101097833527\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.168-170\",\"id\":\"23492663340006421\",\"status_at_load\":\"1\",\"barcode\":\"32101072389941\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"2020 no. 1-3\",\"id\":\"23492663410006421\",\"status_at_load\":\"1\",\"barcode\":\"32101108316967\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.219-221\",\"id\":\"23492663480006421\",\"status_at_load\":\"1\",\"barcode\":\"32101097833550\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.222-224\",\"id\":\"23492663470006421\",\"status_at_load\":\"1\",\"barcode\":\"32101097833543\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.234-236\",\"id\":\"23492663490006421\",\"status_at_load\":\"1\",\"barcode\":\"32101108316991\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"2019 no. 4-6\",\"id\":\"23492663500006421\",\"status_at_load\":\"1\",\"barcode\":\"32101108316975\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"2019 no. 1-3\",\"id\":\"23492663510006421\",\"status_at_load\":\"1\",\"barcode\":\"32101108316983\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.129-134\",\"id\":\"23492663290006421\",\"status_at_load\":\"1\",\"barcode\":\"32101063678898\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.153-155\",\"id\":\"23492663190006421\",\"status_at_load\":\"1\",\"barcode\":\"32101060515192\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.156-158\",\"id\":\"23492663180006421\",\"status_at_load\":\"1\",\"barcode\":\"32101060515200\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"2020\",\"id\":\"23994436110006421\",\"status_at_load\":\"1\",\"barcode\":\"32101114081993\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.201-203\",\"id\":\"23492663090006421\",\"status_at_load\":\"1\",\"barcode\":\"32101093242368\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"2021\",\"id\":\"23994436100006421\",\"status_at_load\":\"1\",\"barcode\":\"32101114082009\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.209-210\",\"id\":\"23492663070006421\",\"status_at_load\":\"1\",\"barcode\":\"32101081419325\",\"copy_number\":\"1\"},{\"holding_id\":\"22492663380006421\",\"description\":\"no.207-208\",\"id\":\"23492663080006421\",\"status_at_load\":\"1\",\"barcode\":\"32101066176817\",\"copy_number\":\"1\"}],\"location_has\":[\"No. 123 (2000)-no. 142 (2003), no. 147 (2004)-no. 236 (2018); 2019 no. 1-2022 no. 6\",\"LACKS: no. 143-146\"],\"supplements\":[null,null],\"indexes\":[null,null]}}"
+}

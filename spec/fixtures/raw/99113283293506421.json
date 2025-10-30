@@ -1,0 +1,125 @@
+{
+    "id": "99113283293506421",
+    "numeric_id_b": true,
+    "author_citation_display": [
+        "Paulidēs, Leōnidas"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[\"Paulidēs, Leōnidas\"],\"compilers\":[]}",
+    "author_s": [
+        "Paulidēs, Leōnidas, 1890-1957"
+    ],
+    "title_display": "Logotechnia : dekapenthēmero philologiko kai kritiko periodiko.",
+    "title_t": [
+        "Logotechnia : dekapenthēmero philologiko kai kritiko periodiko."
+    ],
+    "title_citation_display": [
+        "Logotechnia : dekapenthēmero philologiko kai kritiko periodiko"
+    ],
+    "compiled_created_t": [
+        "Logotechnia : dekapenthēmero philologiko kai kritiko periodiko."
+    ],
+    "pub_created_display": [
+        "Athēna : Typois \"Nomikēs\" Petrou A. Vergianitou, 1920-"
+    ],
+    "pub_created_s": [
+        "Athēna : Typois \"Nomikēs\" Petrou A. Vergianitou, 1920-"
+    ],
+    "pub_citation_display": [
+        "Athēna: Typois \"Nomikēs\" Petrou A. Vergianitou"
+    ],
+    "publication_location_citation_display": [
+        "Athēna"
+    ],
+    "publisher_citation_display": [
+        "Typois \"Nomikēs\" Petrou A. Vergianitou"
+    ],
+    "pub_date_display": [
+        "1920"
+    ],
+    "pub_date_start_sort": 1920,
+    "pub_date_end_sort": 1999,
+    "publication_date_citation_display": [
+        "1920"
+    ],
+    "cataloged_tdt": "2023-08-02T15:15:54Z",
+    "format": [
+        "Journal"
+    ],
+    "description_display": [
+        "volumes ; 26 cm"
+    ],
+    "description_t": [
+        "volumes ; 26 cm"
+    ],
+    "number_of_pages_citation_display": [
+        "volumes"
+    ],
+    "frequency_display": [
+        "Dekapenthēmerē"
+    ],
+    "notes_display": [
+        "Description based on Tomos 1, teuchos 2 (15 Mar. 1920)."
+    ],
+    "language_name_display": [
+        "Greek, Modern (1453-)"
+    ],
+    "language_facet": [
+        "Greek, Modern (1453- )"
+    ],
+    "language_iana_s": [
+        "el"
+    ],
+    "mult_languages_iana_s": [
+        "el"
+    ],
+    "source_acquisition_display": [
+        "Gift of Kostas and Linda Myrsiades to the Program in Hellenic Studies for the Princeton University Library."
+    ],
+    "lc_subject_display": [
+        "Greek literature, Modern—Periodicals"
+    ],
+    "subject_facet": [
+        "Greek literature, Modern—Periodicals",
+        "Periodicals"
+    ],
+    "lc_subject_facet": [
+        "Greek literature, Modern",
+        "Greek literature, Modern—Periodicals"
+    ],
+    "lcgft_s": [
+        "Periodicals"
+    ],
+    "lcgft_genre_facet": [
+        "Periodicals"
+    ],
+    "related_name_json_1display": "{\"Editor\":[\"Paulidēs, Leōnidas, 1890-1957\"]}",
+    "oclc_s": [
+        "1340478881"
+    ],
+    "other_version_s": [
+        "on1340478881"
+    ],
+    "holdings_1display": "{\"22750642660006421\":{\"location_code\":\"rare$xr\",\"location\":\"Remote Storage (ReCAP): Rare Books. Special Collections Use Only\",\"library\":\"Special Collections\",\"call_number\":\"PA5201 .L633\",\"call_number_browse\":\"PA5201 .L633\",\"items\":[{\"holding_id\":\"22750642660006421\",\"description\":\"t. 1, teuch.1 \",\"id\":\"23988926870006421\",\"status_at_load\":\"1\",\"barcode\":\"32101114817107\"},{\"holding_id\":\"22750642660006421\",\"description\":\"t. 1, teuch. 2\",\"id\":\"23988926860006421\",\"status_at_load\":\"1\",\"barcode\":\"32101114810284\"}],\"location_has\":[\"Tomos 1, teuchos 1-2 (1 Mar.-15 Mar. 1920)\"],\"supplements\":[null],\"indexes\":[null]}}",
+    "location_code_s": [
+        "rare$xr"
+    ],
+    "location": [
+        "Special Collections"
+    ],
+    "location_display": [
+        "Remote Storage (ReCAP): Rare Books. Special Collections Use Only"
+    ],
+    "advanced_location_s": [
+        "rare$xr",
+        "Special Collections"
+    ],
+    "call_number_display": [
+        "PA5201 .L633"
+    ],
+    "call_number_browse_s": [
+        "PA5201 .L633"
+    ],
+    "call_number_locator_display": [
+        "PA5201 .L633"
+    ]
+}

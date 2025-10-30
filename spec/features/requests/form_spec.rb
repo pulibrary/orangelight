@@ -117,6 +117,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
           .with(body: hash_including("Note" => "Loan Request"))
           .to_return(status: 200, body: responses[:note_created], headers: {})
         stub_scsb_availability(bib_id: "9941150973506421", institution_id: "PUL", barcode: '32101099680850', item_availability_status: 'Not Available')
+        stub_catalog_raw bib_id: '9941150973506421'
         visit 'requests/9941150973506421?mfhd=22492663380006421&source=pulsearch'
         expect(page).to have_content 'Unavailable'
         check "requestable_selected_23492663220006421"
@@ -173,6 +174,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'allows CAS patrons to request In-Process items that reside in a PUL library and can only be delivered to that library' do
+        stub_catalog_raw bib_id: '99117665883506421'
         visit "/requests/#{in_process_id}"
         expect(page).to have_content 'In Process'
         expect(page).to have_content 'Pick-up location: East Asian Library'
@@ -182,6 +184,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
       # In-Process -> it's waiting to be cataloged in a PUL library and then shipped to RECAP
       it 'makes sure In-Process ReCAP items with no holding library can be delivered anywhere' do
+        stub_catalog_raw bib_id: '99114026863506421'
         stub_single_holding_location 'recap$pa'
         stub_scsb_availability(bib_id: "99114026863506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
         visit "/requests/#{recap_in_process_id}"
@@ -210,6 +213,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
       # On-order -> it hasn't been delivered to a Princeton library yet.
       it 'allows CAS patrons to request On-Order items' do
+        stub_catalog_raw bib_id: '99103251433506421'
         visit "/requests/#{on_order_id}"
         expect(page).to have_button('Request Selected Items', disabled: false)
         check 'requestable_selected_23480270130006421'
@@ -546,6 +550,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
             .to_return(status: 200, body: responses[:transaction_created], headers: {})
           stub_request(:post, transaction_note_url)
             .to_return(status: 200, body: responses[:note_created], headers: {})
+          stub_catalog_raw bib_id: '9917887963506421'
           visit '/requests/9917887963506421?mfhd=22503918400006421'
           expect(page).to have_content 'Request via Partner Library'
           expect(page).to have_content 'Pick-up location: Firestone Library'
@@ -599,6 +604,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'allows an in process item to be requested' do
+        stub_catalog_raw bib_id: '99117665883506421'
         visit "/requests/#{in_process_id}"
         expect(page).to have_content 'In Process materials are typically available in several business days'
         expect do
@@ -937,6 +943,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       it 'disallows access to request an available ReCAP item.' do
         stub_single_holding_location 'recap$pa'
         stub_scsb_availability(bib_id: "9994933183506421", institution_id: "PUL", barcode: '32101095798938')
+        stub_catalog_raw bib_id: '9994933183506421'
         visit "/requests/#{mms_id}"
         expect(page).not_to have_content 'Electronic Delivery'
         expect(page).not_to have_content 'Physical Item Delivery'
@@ -955,6 +962,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       it 'disallows access for In Process recap items' do
         stub_single_holding_location 'recap$pa'
         stub_scsb_availability bib_id: '99114026863506421', institution_id: 'PUL', barcode: 'fake-barcode'
+        stub_catalog_raw bib_id: '99114026863506421'
         visit "/requests/#{recap_in_process_id}"
         expect(page).not_to have_content 'Electronic Delivery'
         expect(page).not_to have_content 'Physical Item Delivery'
@@ -963,6 +971,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'disallows access for On-Order recap items' do
+        stub_catalog_raw bib_id: '99103251433506421'
         visit "/requests/#{on_order_id}"
         expect(page).not_to have_content 'Electronic Delivery'
         expect(page).not_to have_content 'Physical Item Delivery'
@@ -1001,6 +1010,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       it 'disallows access to request a physical ReCAP item' do
         stub_single_holding_location 'recap$pa'
         stub_scsb_availability(bib_id: "9999443553506421", institution_id: "PUL", barcode: '32101098722844')
+        stub_catalog_raw bib_id: '9999443553506421'
         visit '/requests/9999443553506421?mfhd=22743365320006421'
         expect(page).not_to have_button('Request this Item')
         expect(page).not_to have_content 'Electronic Delivery'
@@ -1103,6 +1113,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'disallows access on missing items' do
+        stub_catalog_raw bib_id: '9917887963506421'
         visit '/requests/9917887963506421?mfhd=22503918400006421'
         expect(page).not_to have_content 'Electronic Delivery'
         expect(page).not_to have_content 'Physical Item Delivery'
@@ -1135,6 +1146,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     it "does not allow physical pickup request On Order PUL ReCAP Item" do
       stub_scsb_availability bib_id: '99129134216906421', institution_id: 'PUL', barcode: 'fake-barcode'
       stub_single_holding_location 'recap$pa'
+      stub_catalog_raw bib_id: '99129134216906421'
       visit '/requests/99129134216906421?aeon=false&mfhd=221002424820006421'
       expect(page).not_to have_content 'Electronic Delivery'
       expect(page).not_to have_content 'Physical Item Delivery'
@@ -1151,6 +1163,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
 
     it "allows a physical pickup request of a - Library In Use - ReCAP Item" do
       stub_scsb_availability(bib_id: "99127133356906421", institution_id: "PUL", barcode: '33333059902417')
+      stub_catalog_raw bib_id: '99127133356906421'
       visit 'requests/99127133356906421?aeon=false&mfhd=22971539920006421'
       expect(page).not_to have_content 'Electronic Delivery'
       expect(page).to have_content 'Available for In Library Use'
