@@ -135,10 +135,6 @@ select::-ms-expand {
   display: none;
 }
 
-.ie9 select + .caret {
-  display: none;
-}
-
 #search_field.form-select {
   @media (min-width: 575px) {
     border-top-right-radius: 0;
