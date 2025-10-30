@@ -1,0 +1,169 @@
+{
+    "id": "9920022063506421",
+    "numeric_id_b": true,
+    "figgy_1display": "[{\"visibility\":{\"value\":\"open\",\"label\":\"open\",\"definition\":\"Open to the world. Anyone can view.\"},\"portion_note\":null,\"iiif_manifest_url\":\"https://figgy.princeton.edu/concern/scanned_resources/8fbf1591-b055-4072-b291-d37a7e9b1f10/manifest\"}]",
+    "author_citation_display": [
+        "Elderkin, G. W.",
+        "Stillwell, Richard",
+        "Waage, Frederick O.",
+        "Waage, Dorothy B.",
+        "Lassus, Jean",
+        "Princeton University"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"Elderkin, G. W.\",\"Stillwell, Richard\",\"Waage, Frederick O.\",\"Waage, Dorothy B.\",\"Lassus, Jean\",\"Princeton University\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+    "author_s": [
+        "Elderkin, G. W. (George Wicker), 1879-1965",
+        "Stillwell, Richard, 1899-1982",
+        "Waage, Frederick O., 1943-",
+        "Waage, Dorothy B.",
+        "Lassus, Jean",
+        "Princeton University. Department of Art and Archaeology"
+    ],
+    "title_display": "Antioch-on-the-Orontes ...",
+    "title_t": [
+        "Antioch-on-the-Orontes ..."
+    ],
+    "title_citation_display": [
+        "Antioch-on-the-Orontes ..."
+    ],
+    "compiled_created_t": [
+        "Antioch-on-the-Orontes ..."
+    ],
+    "pub_created_display": [
+        "Princeton : Pub. for the Committee by the Department of Art and Archeology, 1934-1972."
+    ],
+    "pub_created_s": [
+        "Princeton : Pub. for the Committee by the Department of Art and Archeology, 1934-1972."
+    ],
+    "pub_citation_display": [
+        "Princeton: Pub. for the Committee by the Department of Art and Archeology"
+    ],
+    "publication_location_citation_display": [
+        "Princeton"
+    ],
+    "publisher_citation_display": [
+        "Pub. for the Committee by the Department of Art and Archeology"
+    ],
+    "pub_date_display": [
+        "1934"
+    ],
+    "pub_date_start_sort": 1934,
+    "pub_date_end_sort": 1972,
+    "publication_date_citation_display": [
+        "1934"
+    ],
+    "cataloged_tdt": "2000-06-13T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "5 v. in 6 : ill. ; 35-38 cm."
+    ],
+    "description_t": [
+        "5 v. in 6 : ill. ; 35-38 cm."
+    ],
+    "number_of_pages_citation_display": [
+        "5 v. in 6"
+    ],
+    "series_display": [
+        "Publications of the Committee for the excavation of Antioch and its vicinity"
+    ],
+    "notes_display": [
+        "\"Published for the Committee by the Department of Art and Archaeology of Princeton university.\"",
+        "Princeton copy 1 vol. 4, pt. 2 is a photocopy."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "contents_display": [
+        "Vol. 1. The excavations of 1932 / edited by G.W. Elderkin",
+        "v. 2. The excavations, 1933-1936 / edited by R. Stillwell",
+        "v. 3. The excavations, 1937-1939 / edited by R. Stillwell",
+        "v. 4, pt. 1. Ceramics and Islamic coins / edited by F.O. Waage. - v. 4, pt. 2. Greek, Roman, Byzantine and Crusaders' coins / edited by D.B. Waage",
+        "v. 5. Les portiques d'Antioche / by J. Lassus."
+    ],
+    "lc_subject_display": [
+        "Antioch (Turkey)—Antiquities"
+    ],
+    "subject_facet": [
+        "Antioch (Turkey)—Antiquities"
+    ],
+    "lc_subject_facet": [
+        "Antioch (Turkey)",
+        "Antioch (Turkey)—Antiquities"
+    ],
+    "related_name_json_1display": "{\"Related name\":[\"Elderkin, G. W. (George Wicker), 1879-1965\",\"Stillwell, Richard, 1899-1982\",\"Waage, Frederick O., 1943-\",\"Waage, Dorothy B.\",\"Princeton University. Department of Art and Archaeology\"]}",
+    "contains_1display": "[[\"Lassus, Jean.\",\"Portiques d'Antioche.\"]]",
+    "other_title_display": [
+        "Excavations of 1932.",
+        "Excavations, 1933-1936.",
+        "Excavations, 1937-1939.",
+        "Ceramics and Islamic coins.",
+        "Greek, Roman, Byzantine and Crusaders' coins."
+    ],
+    "lccn_display": [
+        "   35001197 //r49 "
+    ],
+    "lccn_s": [
+        "35001197"
+    ],
+    "oclc_s": [
+        "1437546"
+    ],
+    "other_version_s": [
+        "ocm01437546"
+    ],
+    "location_code_s": [
+        "firestone$stacks",
+        "marquand$stacks",
+        "annex$stacks",
+        "rare$numrf"
+    ],
+    "location": [
+        "Firestone Library",
+        "Marquand Library",
+        "Forrestal Annex",
+        "Special Collections"
+    ],
+    "location_display": [
+        "Stacks",
+        "Remote Storage: Marquand Use Only",
+        "Stacks",
+        "Numismatics Collection Reference"
+    ],
+    "advanced_location_s": [
+        "firestone$stacks",
+        "marquand$stacks",
+        "annex$stacks",
+        "rare$numrf",
+        "Firestone Library",
+        "Marquand Library",
+        "Forrestal Annex",
+        "Special Collections"
+    ],
+    "name_title_browse_s": [
+        "Lassus, Jean. Portiques d'Antioche"
+    ],
+    "call_number_display": [
+        "Oversize N5460 .A63q",
+        "Oversize N5460.A63q"
+    ],
+    "call_number_browse_s": [
+        "N5460 .A63q Oversize",
+        "N5460.A63q Oversize"
+    ],
+    "call_number_locator_display": [
+        "N5460 .A63q",
+        "N5460.A63q"
+    ],
+    "holdings_1display": "{\"22560993150006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"N5460 .A63q Oversize\",\"call_number_browse\":\"N5460 .A63q Oversize\",\"sub_location\":[\"Oversize\"],\"items\":[{\"holding_id\":\"22560993150006421\",\"description\":\"vol.3\",\"id\":\"23560993130006421\",\"status_at_load\":\"1\",\"barcode\":\"32101019552452\",\"copy_number\":\"1\"},{\"holding_id\":\"22560993150006421\",\"description\":\"vol.1\",\"id\":\"23560993140006421\",\"status_at_load\":\"0\",\"barcode\":\"32101019552437\",\"copy_number\":\"1\",\"process_type\":\"LOAN\"},{\"holding_id\":\"22560993150006421\",\"description\":\"vol.2\",\"id\":\"23560993120006421\",\"status_at_load\":\"0\",\"barcode\":\"32101019552445\",\"copy_number\":\"1\",\"process_type\":\"LOAN\"},{\"holding_id\":\"22560993150006421\",\"description\":\"v. 5\",\"id\":\"23560993100006421\",\"status_at_load\":\"0\",\"barcode\":\"32101040741926\",\"copy_number\":\"1\",\"process_type\":\"LOAN\"},{\"holding_id\":\"22560993150006421\",\"description\":\"vol.4, pt.2\",\"id\":\"23560993110006421\",\"status_at_load\":\"1\",\"barcode\":\"32101063047268\",\"copy_number\":\"1\"}],\"location_has\":[\"v. 1-v. 3; v. 4, pt. 2; v. 5\",\"Princeton copy 1\"],\"supplements\":[null,null],\"indexes\":[null,null]},\"22560993060006421\":{\"location_code\":\"marquand$stacks\",\"location\":\"Remote Storage: Marquand Use Only\",\"library\":\"Marquand Library\",\"call_number\":\"N5460 .A63q Oversize\",\"call_number_browse\":\"N5460 .A63q Oversize\",\"sub_location\":[\"Oversize\"],\"items\":[{\"holding_id\":\"22560993060006421\",\"description\":\"vol.3\",\"id\":\"23560993050006421\",\"status_at_load\":\"1\",\"barcode\":\"32101042251031\",\"copy_number\":\"3\"}],\"location_has\":[\"v.3\"],\"supplements\":[null],\"indexes\":[null]},\"22560993090006421\":{\"location_code\":\"annex$stacks\",\"location\":\"Stacks\",\"library\":\"Forrestal Annex\",\"call_number\":\"N5460.A63q Oversize\",\"call_number_browse\":\"N5460.A63q Oversize\",\"sub_location\":[\"Oversize\"],\"items\":[{\"holding_id\":\"22560993090006421\",\"description\":\"v.3\",\"id\":\"23560993070006421\",\"status_at_load\":\"1\",\"barcode\":\"32101035897121\",\"copy_number\":\"1\"},{\"holding_id\":\"22560993090006421\",\"description\":\"v.2\",\"id\":\"23560993080006421\",\"status_at_load\":\"0\",\"barcode\":\"32101034803849\",\"copy_number\":\"1\",\"process_type\":\"MISSING\"}],\"location_has\":[\"Vol. 2-v. 3\"],\"supplements\":[null],\"indexes\":[null]},\"22560993040006421\":{\"location_code\":\"rare$numrf\",\"location\":\"Numismatics Collection Reference\",\"library\":\"Special Collections\",\"call_number\":\"N5460 .A63q Oversize\",\"call_number_browse\":\"N5460 .A63q Oversize\",\"sub_location\":[\"Oversize\"],\"items\":[{\"holding_id\":\"22560993040006421\",\"description\":\"v.4, pt.2\",\"id\":\"23560993030006421\",\"status_at_load\":\"1\",\"barcode\":\"32101037469333\",\"copy_number\":\"1\"},{\"holding_id\":\"22560993040006421\",\"description\":\"v.4, pt.1\",\"id\":\"23560993020006421\",\"status_at_load\":\"1\",\"barcode\":\"32101103281117\",\"copy_number\":\"0\"}],\"location_has\":[\"v.4, pt. 1-2\"],\"supplements\":[null],\"indexes\":[null]},\"22560993190006421\":{\"location_code\":\"marquand$stacks\",\"location\":\"Remote Storage: Marquand Use Only\",\"library\":\"Marquand Library\",\"call_number\":\"N5460 .A63q Oversize\",\"call_number_browse\":\"N5460 .A63q Oversize\",\"sub_location\":[\"Oversize\"],\"items\":[{\"holding_id\":\"22560993190006421\",\"description\":\"v.3\",\"id\":\"23560993170006421\",\"status_at_load\":\"1\",\"barcode\":\"32101060619622\",\"copy_number\":\"2\"},{\"holding_id\":\"22560993190006421\",\"description\":\"v.5\",\"id\":\"23560993180006421\",\"status_at_load\":\"1\",\"barcode\":\"32101025682350\",\"copy_number\":\"2\"},{\"holding_id\":\"22560993190006421\",\"description\":\"vol.4, pt.1\",\"id\":\"23560993160006421\",\"status_at_load\":\"1\",\"barcode\":\"32101089203754\",\"copy_number\":\"2\"}],\"location_has\":[\"v.3 - 4, pt.1 ; 5\"],\"supplements\":[null],\"indexes\":[null]},\"22560993260006421\":{\"location_code\":\"marquand$stacks\",\"location\":\"Remote Storage: Marquand Use Only\",\"library\":\"Marquand Library\",\"call_number\":\"N5460 .A63q Oversize\",\"call_number_browse\":\"N5460 .A63q Oversize\",\"sub_location\":[\"Oversize\"],\"items\":[{\"holding_id\":\"22560993260006421\",\"description\":\"v.4, pt.1\",\"id\":\"23560993220006421\",\"status_at_load\":\"0\",\"barcode\":\"32101025668078\",\"copy_number\":\"1\",\"process_type\":\"MISSING\"},{\"holding_id\":\"22560993260006421\",\"description\":\"v.5\",\"id\":\"23560993200006421\",\"status_at_load\":\"1\",\"barcode\":\"32101026169985\",\"copy_number\":\"1\"},{\"holding_id\":\"22560993260006421\",\"description\":\"v.2\",\"id\":\"23560993240006421\",\"status_at_load\":\"1\",\"barcode\":\"32101025649169\",\"copy_number\":\"1\"},{\"holding_id\":\"22560993260006421\",\"description\":\"v.4, pt.2\",\"id\":\"23560993210006421\",\"status_at_load\":\"1\",\"barcode\":\"32101026132058\",\"copy_number\":\"1\"},{\"holding_id\":\"22560993260006421\",\"description\":\"v.3\",\"id\":\"23560993230006421\",\"status_at_load\":\"1\",\"barcode\":\"32101025649177\",\"copy_number\":\"1\"},{\"holding_id\":\"22560993260006421\",\"description\":\"v.1\",\"id\":\"23560993250006421\",\"status_at_load\":\"1\",\"barcode\":\"32101026173334\",\"copy_number\":\"1\"}],\"location_has\":[\"v.1-3; v.4, pt.1-2; v.5\"],\"supplements\":[null],\"indexes\":[null]}}"
+}

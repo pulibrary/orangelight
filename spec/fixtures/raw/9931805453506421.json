@@ -1,0 +1,60 @@
+{
+    "id": "9931805453506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Ch'oe, T'ae-ho."
+    ],
+    "author_citation_display": [
+        "Ch'oe, T'ae-ho."
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Ch'oe, T'ae-ho.\"}",
+    "author_s": [
+        "Ch'oe, T'ae-ho."
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "Hungbu wa Nolbu",
+    "title_t": [
+        "Hungbu wa Nolbu"
+    ],
+    "title_citation_display": [
+        "Hungbu wa Nolbu"
+    ],
+    "compiled_created_t": [
+        "Hungbu wa Nolbu"
+    ],
+    "cataloged_tdt": "2000-06-13T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "holdings_1display": "{\"eastasian$reserve\":{\"location_code\":\"eastasian$reserve\",\"current_location\":\"Reserve\",\"current_library\":\"East Asian Library\",\"call_number\":\"KOR 101/Kim2\",\"call_number_browse\":\"KOR 101/Kim2\",\"temp_location_code\":\"eastasian$reserve\",\"items\":[{\"holding_id\":\"22705623210006421\",\"id\":\"23705623200006421\",\"status_at_load\":\"1\",\"copy_number\":\"3\"}]}}",
+    "location_code_s": [
+        "eastasian$gest"
+    ],
+    "location": [
+        "East Asian Library"
+    ],
+    "location_display": [
+        "Western Languages"
+    ],
+    "advanced_location_s": [
+        "eastasian$gest",
+        "East Asian Library"
+    ],
+    "name_title_browse_s": [
+        "Ch'oe, T'ae-ho.. Hungbu wa Nolbu"
+    ],
+    "call_number_display": [
+        "KOR 101/Kim2"
+    ],
+    "call_number_browse_s": [
+        "KOR 101/Kim2"
+    ],
+    "call_number_locator_display": [
+        "KOR 101/Kim2"
+    ]
+}

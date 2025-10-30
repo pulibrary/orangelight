@@ -1,0 +1,160 @@
+{
+    "id": "9924784993506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Lathrop, George Parsons, 1851-1898"
+    ],
+    "author_citation_display": [
+        "Lathrop, George Parsons",
+        "Trowbridge, J. T."
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"Trowbridge, J. T.\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Lathrop, George Parsons\"}",
+    "author_s": [
+        "Lathrop, George Parsons, 1851-1898",
+        "Trowbridge, J. T. (John Townsend), 1827-1916"
+    ],
+    "marc_relator_display": [
+        "Editor"
+    ],
+    "title_display": "A masque of poets. Including Guy Vernon, a novelette in verse.",
+    "title_t": [
+        "A masque of poets. Including Guy Vernon, a novelette in verse."
+    ],
+    "title_citation_display": [
+        "A masque of poets. Including Guy Vernon, a novelette in verse"
+    ],
+    "compiled_created_t": [
+        "A masque of poets. Including Guy Vernon, a novelette in verse."
+    ],
+    "edition_display": [
+        "Red line edition."
+    ],
+    "pub_created_display": [
+        "Boston : Roberts Brothers, 1878."
+    ],
+    "pub_created_s": [
+        "Boston : Roberts Brothers, 1878."
+    ],
+    "pub_citation_display": [
+        "Boston: Roberts Brothers"
+    ],
+    "publication_location_citation_display": [
+        "Boston"
+    ],
+    "publisher_citation_display": [
+        "Roberts Brothers"
+    ],
+    "pub_date_display": [
+        "1878"
+    ],
+    "pub_date_start_sort": 1878,
+    "publication_date_citation_display": [
+        "1878"
+    ],
+    "cataloged_tdt": "2000-06-13T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "301, [2] p. : ill. ; 19 cm."
+    ],
+    "description_t": [
+        "301, [2] p. : ill. ; 19 cm."
+    ],
+    "number_of_pages_citation_display": [
+        "301, [2] p."
+    ],
+    "notes_display": [
+        "Some authors (including Thoreau) identified in Mss. in contents.",
+        "Princeton copy 1 black cloth.",
+        "Princeton copy 2 green cloth.",
+        "Princeton copy 3 maroon cloth.",
+        "Princeton copy 4 red cloth.",
+        "\"Success\", by Emily Dickinson, p. 174.",
+        "Contains three poems by Thomas Bailey Aldrich."
+    ],
+    "binding_note_display": [
+        "Princeton copy 7 In slipcase."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "provenance_display": [
+        "Princeton copy 5 contains ms. notes of G.P. Lathrop, giving author of each entry of contents and corrections for his poem \"The bride of war\"."
+    ],
+    "subject_facet": [
+        "Authors' annotations"
+    ],
+    "rbgenr_s": [
+        "Authors' annotations"
+    ],
+    "rbgenr_genre_facet": [
+        "Authors' annotations"
+    ],
+    "contains_1display": "[[\"Trowbridge, J. T. (John Townsend), 1827-1916.\",\"Guy Vernon.\"]]",
+    "oclc_s": [
+        "21983223"
+    ],
+    "other_version_s": [
+        "ocm21983223"
+    ],
+    "holdings_1display": "{\"22708131990006421\":{\"location_code\":\"rare$ex\",\"location\":\"Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"3598.566\",\"call_number_browse\":\"3598.566\",\"location_has\":[\"Princeton copy 5\"],\"supplements\":[null],\"indexes\":[null]},\"22708132030006421\":{\"location_code\":\"rare$ex\",\"location\":\"Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"3715.1.389 1878\",\"call_number_browse\":\"3715.1.389 1878\",\"location_has\":[\"Princeton copy 3\"],\"supplements\":[null],\"indexes\":[null]},\"22708132040006421\":{\"location_code\":\"rare$ex\",\"location\":\"Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"3715.1.389 1878\",\"call_number_browse\":\"3715.1.389 1878\",\"location_has\":[\"Princeton copy 2\"],\"supplements\":[null],\"indexes\":[null]},\"22708131950006421\":{\"location_code\":\"rare$ex\",\"location\":\"Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"3604.1.3564\",\"call_number_browse\":\"3604.1.3564\",\"location_has\":[\"Princeton copy 7\"],\"supplements\":[null],\"indexes\":[null]},\"22708131960006421\":{\"location_code\":\"rare$ex\",\"location\":\"Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"3715.1.389\",\"call_number_browse\":\"3715.1.389\",\"location_has\":[\"Princeton copy 6\"],\"supplements\":[null],\"indexes\":[null]},\"22708132020006421\":{\"location_code\":\"rare$ex\",\"location\":\"Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"3715.1.389 1878\",\"call_number_browse\":\"3715.1.389 1878\",\"location_has\":[\"Princeton copy 4\"],\"supplements\":[null],\"indexes\":[null]},\"22708132050006421\":{\"location_code\":\"rare$ex\",\"location\":\"Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"3715.1.389 1878\",\"call_number_browse\":\"3715.1.389 1878\",\"location_has\":[\"Princeton copy 1\"],\"supplements\":[null],\"indexes\":[null]},\"22708132060006421\":{\"location_code\":\"rare$hsvr\",\"location\":\"Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"American-65 RHT\",\"call_number_browse\":\"American-65 RHT\",\"sub_location\":[\"RHT\"],\"location_has\":[\"Princeton copy 8\"],\"supplements\":[null],\"indexes\":[null]},\"22708132010006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"PS2225 .M3 1878\",\"call_number_browse\":\"PS2225 .M3 1878\",\"items\":[{\"holding_id\":\"22708132010006421\",\"id\":\"23708132000006421\",\"status_at_load\":\"1\",\"barcode\":\"32101105136228\",\"copy_number\":\"1\"}],\"location_has\":[\"Princeton copy 9\"],\"supplements\":[null],\"indexes\":[null]}}",
+    "location_code_s": [
+        "rare$ex",
+        "rare$hsvr",
+        "recap$pa"
+    ],
+    "location": [
+        "Special Collections",
+        "ReCAP"
+    ],
+    "location_display": [
+        "Rare Books",
+        "Rare Books",
+        "Remote Storage"
+    ],
+    "advanced_location_s": [
+        "rare$ex",
+        "rare$hsvr",
+        "recap$pa",
+        "Special Collections",
+        "ReCAP"
+    ],
+    "name_title_browse_s": [
+        "Trowbridge, J. T. (John Townsend), 1827-1916. Guy Vernon",
+        "Lathrop, George Parsons, 1851-1898. A masque of poets"
+    ],
+    "call_number_display": [
+        "3598.566",
+        "3715.1.389 1878",
+        "3604.1.3564",
+        "3715.1.389",
+        "RHT American-65",
+        "PS2225 .M3 1878"
+    ],
+    "call_number_browse_s": [
+        "3598.566",
+        "3715.1.389 1878",
+        "3604.1.3564",
+        "3715.1.389",
+        "American-65 RHT",
+        "PS2225 .M3 1878"
+    ],
+    "call_number_locator_display": [
+        "3598.566",
+        "3715.1.389 1878",
+        "3604.1.3564",
+        "3715.1.389",
+        "American-65",
+        "PS2225 .M3 1878"
+    ]
+}

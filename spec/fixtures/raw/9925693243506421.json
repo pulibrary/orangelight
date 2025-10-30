@@ -1,0 +1,113 @@
+{
+    "id": "9925693243506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Richardson, Samuel, 1689-1761"
+    ],
+    "author_citation_display": [
+        "Richardson, Samuel"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Richardson, Samuel\"}",
+    "author_s": [
+        "Richardson, Samuel, 1689-1761"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "Clarissa Harlowe; or, The history of a young lady. By Samuel Richardson. With thirty-four illustrations reproduced from the engravings by Themas Stothard.",
+    "title_t": [
+        "Clarissa Harlowe; or, The history of a young lady. By Samuel Richardson. With thirty-four illustrations reproduced from the engravings by Themas Stothard."
+    ],
+    "title_citation_display": [
+        "Clarissa Harlowe; or, The history of a young lady"
+    ],
+    "compiled_created_t": [
+        "Clarissa Harlowe; or, The history of a young lady. By Samuel Richardson. With thirty-four illustrations reproduced from the engravings by Themas Stothard."
+    ],
+    "pub_created_display": [
+        "London, Chapman \u0026 Hall ld., 1902."
+    ],
+    "pub_created_s": [
+        "London, Chapman \u0026 Hall ld., 1902."
+    ],
+    "pub_citation_display": [
+        "London: Chapman \u0026 Hall ld."
+    ],
+    "publication_location_citation_display": [
+        "London"
+    ],
+    "publisher_citation_display": [
+        "Chapman \u0026 Hall ld."
+    ],
+    "pub_date_display": [
+        "1902"
+    ],
+    "pub_date_start_sort": 1902,
+    "publication_date_citation_display": [
+        "1902"
+    ],
+    "cataloged_tdt": "2000-06-13T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "9 v. fronts., plates (incl. 1 facsim.) 18 cm."
+    ],
+    "description_t": [
+        "9 v. fronts., plates (incl. 1 facsim.) 18 cm."
+    ],
+    "number_of_pages_citation_display": [
+        "9 v."
+    ],
+    "series_display": [
+        "The novels of Samuel Richardson... With an introduction by Ethel M.M. McKenna. vol. V-XIII"
+    ],
+    "notes_display": [
+        "With reproduction of original title page of v. 1, London, 1748.",
+        "Vol.3 in Photocopy."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "oclc_s": [
+        "5293818"
+    ],
+    "other_version_s": [
+        "ocm05293818"
+    ],
+    "holdings_1display": "{\"22554332290006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"PR3664 .C4 1902\",\"call_number_browse\":\"PR3664 .C4 1902\",\"items\":[{\"holding_id\":\"22554332290006421\",\"description\":\"vol.2\",\"id\":\"23554332270006421\",\"status_at_load\":\"1\",\"barcode\":\"32101003176631\",\"copy_number\":\"0\"},{\"holding_id\":\"22554332290006421\",\"description\":\"vol.3\",\"id\":\"23554332280006421\",\"status_at_load\":\"1\",\"barcode\":\"32101006630972\",\"copy_number\":\"1\"}],\"location_has\":[\"v.2-9\"],\"supplements\":[null],\"indexes\":[null]}}",
+    "location_code_s": [
+        "firestone$stacks"
+    ],
+    "location": [
+        "Firestone Library"
+    ],
+    "location_display": [
+        "Stacks"
+    ],
+    "advanced_location_s": [
+        "firestone$stacks",
+        "Firestone Library"
+    ],
+    "name_title_browse_s": [
+        "Richardson, Samuel, 1689-1761. Clarissa Harlowe"
+    ],
+    "call_number_display": [
+        "PR3664 .C4 1902"
+    ],
+    "call_number_browse_s": [
+        "PR3664 .C4 1902"
+    ],
+    "call_number_locator_display": [
+        "PR3664 .C4 1902"
+    ]
+}

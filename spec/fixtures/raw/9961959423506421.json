@@ -1,0 +1,158 @@
+{
+    "id": "9961959423506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Weir, Maurice D."
+    ],
+    "author_citation_display": [
+        "Weir, Maurice D.",
+        "Hass, Joel",
+        "Thomas, George B."
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"Hass, Joel\",\"Thomas, George B.\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Weir, Maurice D.\"}",
+    "author_s": [
+        "Weir, Maurice D.",
+        "Hass, Joel",
+        "Thomas, George B., Jr. (George Brinton), 1914-2006"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "Thomas' calculus : early transcendentals / based on the original work by George B. Thomas, Jr., as revised by Maurice D. Weir, Joel Hass.",
+    "title_t": [
+        "Thomas' calculus : early transcendentals / based on the original work by George B. Thomas, Jr., as revised by Maurice D. Weir, Joel Hass."
+    ],
+    "title_citation_display": [
+        "Thomas' calculus : early transcendentals"
+    ],
+    "compiled_created_t": [
+        "Thomas' calculus : early transcendentals / based on the original work by George B. Thomas, Jr., as revised by Maurice D. Weir, Joel Hass."
+    ],
+    "edition_display": [
+        "12th ed."
+    ],
+    "pub_created_display": [
+        "Boston : Addison-Wesley, c2010."
+    ],
+    "pub_created_s": [
+        "Boston : Addison-Wesley, c2010."
+    ],
+    "pub_citation_display": [
+        "Boston: Addison-Wesley"
+    ],
+    "publication_location_citation_display": [
+        "Boston"
+    ],
+    "publisher_citation_display": [
+        "Addison-Wesley"
+    ],
+    "pub_date_display": [
+        "2010"
+    ],
+    "pub_date_start_sort": 2010,
+    "publication_date_citation_display": [
+        "2010"
+    ],
+    "cataloged_tdt": "2010-08-04T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "xvi, 1006, [133] p. : ill. (some col.) ; 29 cm."
+    ],
+    "description_t": [
+        "xvi, 1006, [133] p. : ill. (some col.) ; 29 cm."
+    ],
+    "number_of_pages_citation_display": [
+        "xvi, 1006, [133] p."
+    ],
+    "notes_display": [
+        "Includes index."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "lc_subject_display": [
+        "Calculus—Textbooks",
+        "Geometry, Analytic—Textbooks"
+    ],
+    "subject_facet": [
+        "Calculus—Textbooks",
+        "Geometry, Analytic—Textbooks",
+        "Textbooks"
+    ],
+    "lc_subject_facet": [
+        "Calculus",
+        "Calculus—Textbooks",
+        "Geometry, Analytic",
+        "Geometry, Analytic—Textbooks"
+    ],
+    "lcgft_s": [
+        "Textbooks"
+    ],
+    "lcgft_genre_facet": [
+        "Textbooks"
+    ],
+    "related_name_json_1display": "{\"Related name\":[\"Hass, Joel\",\"Thomas, George B., Jr. (George Brinton), 1914-2006\"]}",
+    "other_title_display": [
+        "Calculus"
+    ],
+    "alt_title_246_display": [
+        "Calculus"
+    ],
+    "isbn_display": [
+        "9780321588760",
+        "0321588762"
+    ],
+    "lccn_display": [
+        "  2009023070"
+    ],
+    "lccn_s": [
+        "2009023070"
+    ],
+    "isbn_s": [
+        "9780321588760"
+    ],
+    "oclc_s": [
+        "351312376"
+    ],
+    "other_version_s": [
+        "9780321588760",
+        "ocn351312376"
+    ],
+    "holdings_1display": "{\"22525427880006421\":{\"location_code\":\"lewis$stacks\",\"location\":\"Stacks\",\"library\":\"Lewis Library\",\"call_number\":\"QA303.2 .W45 2010\",\"call_number_browse\":\"QA303.2 .W45 2010\",\"items\":[{\"holding_id\":\"22525427880006421\",\"id\":\"23525427870006421\",\"status_at_load\":\"1\",\"barcode\":\"32101078899646\",\"copy_number\":\"6\"}]},\"22525427960006421\":{\"location_code\":\"lewis$stacks\",\"location\":\"Stacks\",\"library\":\"Lewis Library\",\"call_number\":\"QA303.2 .W45 2010\",\"call_number_browse\":\"QA303.2 .W45 2010\",\"items\":[{\"holding_id\":\"22525427960006421\",\"id\":\"23525427950006421\",\"status_at_load\":\"1\",\"barcode\":\"32101078899638\",\"copy_number\":\"2\"}]},\"22525427900006421\":{\"location_code\":\"lewis$stacks\",\"location\":\"Stacks\",\"library\":\"Lewis Library\",\"call_number\":\"QA303.2 .W45 2010\",\"call_number_browse\":\"QA303.2 .W45 2010\",\"items\":[{\"holding_id\":\"22525427900006421\",\"id\":\"23525427890006421\",\"status_at_load\":\"1\",\"barcode\":\"32101078899604\",\"copy_number\":\"5\"}]},\"22525427860006421\":{\"location_code\":\"lewis$stacks\",\"location\":\"Stacks\",\"library\":\"Lewis Library\",\"call_number\":\"QA303.2 .W45 2010\",\"call_number_browse\":\"QA303.2 .W45 2010\",\"items\":[{\"holding_id\":\"22525427860006421\",\"id\":\"23525427850006421\",\"status_at_load\":\"1\",\"barcode\":\"32101078899422\",\"copy_number\":\"7\"}]},\"22525427920006421\":{\"location_code\":\"lewis$stacks\",\"location\":\"Stacks\",\"library\":\"Lewis Library\",\"call_number\":\"QA303.2 .W45 2010\",\"call_number_browse\":\"QA303.2 .W45 2010\",\"items\":[{\"holding_id\":\"22525427920006421\",\"id\":\"23525427910006421\",\"status_at_load\":\"1\",\"barcode\":\"32101078899653\",\"copy_number\":\"4\"}]},\"22525427980006421\":{\"location_code\":\"lewis$stacks\",\"location\":\"Stacks\",\"library\":\"Lewis Library\",\"call_number\":\"QA303.2 .W45 2010\",\"call_number_browse\":\"QA303.2 .W45 2010\",\"items\":[{\"holding_id\":\"22525427980006421\",\"id\":\"23525427970006421\",\"status_at_load\":\"1\",\"barcode\":\"32101078899620\",\"copy_number\":\"1\"}]},\"22525427940006421\":{\"location_code\":\"lewis$stacks\",\"location\":\"Stacks\",\"library\":\"Lewis Library\",\"call_number\":\"QA303.2 .W45 2010\",\"call_number_browse\":\"QA303.2 .W45 2010\",\"items\":[{\"holding_id\":\"22525427940006421\",\"id\":\"23525427930006421\",\"status_at_load\":\"1\",\"barcode\":\"32101078899661\",\"copy_number\":\"3\"}]}}",
+    "location_code_s": [
+        "lewis$stacks"
+    ],
+    "location": [
+        "Lewis Library"
+    ],
+    "location_display": [
+        "Stacks"
+    ],
+    "advanced_location_s": [
+        "lewis$stacks",
+        "Lewis Library"
+    ],
+    "name_title_browse_s": [
+        "Weir, Maurice D.. Thomas' calculus"
+    ],
+    "call_number_display": [
+        "QA303.2 .W45 2010"
+    ],
+    "call_number_browse_s": [
+        "QA303.2 .W45 2010"
+    ],
+    "call_number_locator_display": [
+        "QA303.2 .W45 2010"
+    ]
+}

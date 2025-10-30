@@ -1,0 +1,130 @@
+{
+    "id": "9947595913506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Cheng, Zhengkui, 1604-1676",
+        "程正揆, 1604-1676"
+    ],
+    "author_citation_display": [
+        "Cheng, Zhengkui",
+        "Chenhuyishi"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"程正揆\",\"Chenhuyishi\",\"陳湖逸士\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Cheng, Zhengkui\"}",
+    "author_s": [
+        "Cheng, Zhengkui, 1604-1676",
+        "程正揆, 1604-1676",
+        "Chenhuyishi",
+        "陳湖逸士"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "Jia shen ji shi : 1 juan / Cheng Zhengkui zhuan ; Chenhuyishi ji.",
+    "title_vern_display": "甲申紀事 : 一卷 / 程正揆撰 ; 陳湖逸士輯.",
+    "title_t": [
+        "Jia shen ji shi : 1 juan / Cheng Zhengkui zhuan ; Chenhuyishi ji."
+    ],
+    "title_citation_display": [
+        "Jia shen ji shi : 1 juan",
+        "甲申紀事 : 一卷"
+    ],
+    "compiled_created_t": [
+        "Jia shen ji shi : 1 juan / Cheng Zhengkui zhuan ; Chenhuyishi ji.",
+        "甲申紀事 : 一卷 / 程正揆撰 ; 陳湖逸士輯."
+    ],
+    "pub_created_display": [
+        "[China : s.n., 18--]"
+    ],
+    "pub_created_s": [
+        "[China : s.n., 18--]"
+    ],
+    "pub_citation_display": [
+        "China: s.n."
+    ],
+    "publication_location_citation_display": [
+        "China"
+    ],
+    "publisher_citation_display": [
+        "s.n."
+    ],
+    "pub_date_display": [
+        "1800"
+    ],
+    "pub_date_start_sort": 1800,
+    "cataloged_tdt": "2021-07-12T13:16:47Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "1 v."
+    ],
+    "description_t": [
+        "1 v."
+    ],
+    "number_of_pages_citation_display": [
+        "1 v."
+    ],
+    "series_display": [
+        "Jing tuo yi shi ; 7",
+        "荊駝逸史 ; 7"
+    ],
+    "more_in_this_series_t": [
+        "Jing tuo yi shi",
+        "荊駝逸史"
+    ],
+    "notes_display": [
+        "On double leaves, oriental style, in case.",
+        "Qing ke ben.",
+        "淸刻本.",
+        "NOT TO CIRCULATE."
+    ],
+    "with_notes_display": [
+        "With: other 3 titles."
+    ],
+    "language_name_display": [
+        "Chinese"
+    ],
+    "language_facet": [
+        "Chinese"
+    ],
+    "language_iana_s": [
+        "zh"
+    ],
+    "mult_languages_iana_s": [
+        "zh"
+    ],
+    "related_name_json_1display": "{\"Related name\":[\"Chenhuyishi\",\"陳湖逸士\"]}",
+    "oclc_s": [
+        "31960590"
+    ],
+    "other_version_s": [
+        "ocm31960590"
+    ],
+    "holdings_1display": "{\"22489764810006421\":{\"location_code\":\"eastasian$pl\",\"location\":\"Remote Storage (ReCAP): East Asian Library Use Only\",\"library\":\"East Asian Library\",\"call_number\":\"B52/140.fehb vol.7\",\"call_number_browse\":\"B52/140.fehb vol.7\",\"location_note\":[\"For circulation status, see record for main title: Jing tuo yi shi (call number: B52/140.fehb)\"]}}",
+    "location_code_s": [
+        "eastasian$pl"
+    ],
+    "location": [
+        "East Asian Library"
+    ],
+    "location_display": [
+        "Remote Storage (ReCAP): East Asian Library Use Only"
+    ],
+    "advanced_location_s": [
+        "eastasian$pl",
+        "East Asian Library"
+    ],
+    "name_title_browse_s": [
+        "Cheng, Zhengkui, 1604-1676. Jia shen ji shi",
+        "程正揆, 1604-1676. 甲申紀事"
+    ],
+    "call_number_display": [
+        "B52/140.fehb vol.7"
+    ],
+    "call_number_browse_s": [
+        "B52/140.fehb vol.7"
+    ],
+    "call_number_locator_display": [
+        "B52/140.fehb vol.7"
+    ]
+}

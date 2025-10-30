@@ -1,0 +1,90 @@
+{
+    "id": "9947589763506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Bianco, Pamela"
+    ],
+    "author_citation_display": [
+        "Bianco, Pamela"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Bianco, Pamela\"}",
+    "author_s": [
+        "Bianco, Pamela"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "[34 drawings to illustrate \"The Adventures of Pink Nose\"].",
+    "title_t": [
+        "[34 drawings to illustrate \"The Adventures of Pink Nose\"]."
+    ],
+    "title_citation_display": [
+        "[34 drawings to illustrate \"The Adventures of Pink Nose\"]."
+    ],
+    "compiled_created_t": [
+        "[34 drawings to illustrate \"The Adventures of Pink Nose\"]."
+    ],
+    "cataloged_tdt": "2021-07-13T04:38:06Z",
+    "format": [
+        "Manuscript",
+        "Book"
+    ],
+    "description_display": [
+        "2 drawings in pencil, the remainder in watercolor, various sizes. Mounted on card, two or three to a sheet. Manila envelope laid in, marked \"Not for sale\". Orange drop-back box, black cloth titling strip on spine."
+    ],
+    "description_t": [
+        "2 drawings in pencil, the remainder in watercolor, various sizes. Mounted on card, two or three to a sheet. Manila envelope laid in, marked \"Not for sale\". Orange drop-back box, black cloth titling strip on spine."
+    ],
+    "number_of_pages_citation_display": [
+        "2 drawings in pencil, the remainder in watercolor, various sizes. Mounted on card, two or three to a sheet. Manila envelope laid in, marked \"Not for sale\". Orange drop-back box, black cloth titling strip on spine"
+    ],
+    "notes_display": [
+        "The note on manila envelope remarks \"32 drawings by Pamela, done when she was from 7 to 9 years old, to illustrate her story, called The Adventures of Pinknose!! all about mice."
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "lc_subject_display": [
+        "Mice—Juvenile fiction"
+    ],
+    "subject_facet": [
+        "Mice—Juvenile fiction",
+        "Juvenilia"
+    ],
+    "lc_subject_facet": [
+        "Mice",
+        "Mice—Juvenile fiction"
+    ],
+    "lcgft_s": [
+        "Juvenilia"
+    ],
+    "lcgft_genre_facet": [
+        "Juvenilia"
+    ],
+    "holdings_1display": "{\"22656885190006421\":{\"location_code\":\"rare$hsvc\",\"location\":\"Cotsen Children's Library\",\"library\":\"Special Collections\",\"call_number\":\"4730 ManuscriptsQ\",\"call_number_browse\":\"4730 ManuscriptsQ\",\"sub_location\":[\"ManuscriptsQ\"]}}",
+    "location_code_s": [
+        "rare$hsvc"
+    ],
+    "location": [
+        "Special Collections"
+    ],
+    "location_display": [
+        "Cotsen Children's Library"
+    ],
+    "advanced_location_s": [
+        "rare$hsvc",
+        "Special Collections"
+    ],
+    "name_title_browse_s": [
+        "Bianco, Pamela. [34 drawings to illustrate \"The Adventures of Pink Nose\"]."
+    ],
+    "call_number_display": [
+        "ManuscriptsQ 4730"
+    ],
+    "call_number_browse_s": [
+        "4730 ManuscriptsQ"
+    ],
+    "call_number_locator_display": [
+        "4730"
+    ]
+}
