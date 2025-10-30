@@ -51,9 +51,7 @@ td {
   }
 
   /* Force table to not be like tables anymore */
-  .browse--call-number,
-  .table.account--fines,
-  .table.account--blocks {
+  .browse--call-number {
     table, thead, tbody, th, td, tr {
       display: block;
     }
@@ -102,8 +100,4 @@ td {
       font-family: Arial, sans-serif;
     }
   }
-}
-
-.renew-items .form-control {
-  max-width: 350px;
 }
