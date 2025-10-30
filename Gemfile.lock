@@ -121,7 +121,7 @@ GEM
       parser (>= 2.4)
       smart_properties
     bigdecimal (4.0.1)
-    blacklight (9.0.0.beta7)
+    blacklight (9.0.0.beta8)
       globalid
       i18n (>= 1.7.0)
       jbuilder (~> 2.7)
@@ -803,7 +803,7 @@ DEPENDENCIES
   babel-transpiler
   bcrypt_pbkdf
   benchmark-ips
-  blacklight (~> 9.0.0.beta7)
+  blacklight (~> 9.0.0.beta8)
   blacklight-hierarchy
   blacklight-marc
   blacklight_dynamic_sitemap
