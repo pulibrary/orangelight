@@ -332,7 +332,7 @@ describe('RequestFormHandler', () => {
     it('should handle network errors', async () => {
       mockFetch.mockRejectedValue(new Error('Network error'));
 
-      vi.spyOn(handler, 'displayGenericError');
+      vi.spyOn(handler, 'consoleError');
 
       // Trigger form submission
       const submitEvent = new Event('submit', {
@@ -344,8 +344,8 @@ describe('RequestFormHandler', () => {
       // Wait for async operations
       await new Promise((resolve) => setTimeout(resolve, 0));
 
-      expect(handler.displayGenericError).toHaveBeenCalledWith(
-        'An error occurred while submitting your request. Please try again.'
+      expect(handler.consoleError).toHaveBeenCalledWith(
+        "There was a problem with this request which Library staff need to investigate. You'll be notified once it's resolved and requested for you."
       );
     });
   });

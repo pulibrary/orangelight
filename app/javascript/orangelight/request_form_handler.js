@@ -88,8 +88,8 @@ class RequestFormHandler {
         throw new Error(`HTTP ${response.status}`);
       }
     } catch (error) {
-      this.displayGenericError(
-        'An error occurred while submitting your request. Please try again.'
+      this.consoleError(
+        "There was a problem with this request which Library staff need to investigate. You'll be notified once it's resolved and requested for you."
       );
     } finally {
       this.resetSubmissionState();
@@ -260,19 +260,8 @@ class RequestFormHandler {
     }
   }
 
-  displayGenericError(message) {
-    const flashContainer = this.getFlashContainer();
-    if (flashContainer) {
-      const errorElement = document.createElement('div');
-      errorElement.classList.add('alert', 'alert-danger');
-      errorElement.textContent = message;
-      const closeBtn = document.createElement('button');
-      closeBtn.className = 'close';
-      closeBtn.setAttribute('data-bs-dismiss', 'alert');
-      closeBtn.innerHTML = '&times;';
-      errorElement.appendChild(closeBtn);
-      flashContainer.appendChild(errorElement);
-    }
+  consoleError(message) {
+    console.log(message);
   }
 
   /**
