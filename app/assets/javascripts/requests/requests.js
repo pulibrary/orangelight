@@ -125,10 +125,21 @@ class RequestManager {
     });
 
     if (anyValidRows) {
-      this.activateRequestButton();
+      if (this.electronicDeliveryTitleProvided()) {
+        this.activateRequestButton();
+      } else {
+        this.deactivateRequestButton();
+      }
     } else {
       this.deactivateRequestButton();
     }
+  }
+
+  electronicDeliveryTitleProvided() {
+    const titleInput = document.querySelector(
+      'input[type=text][id^="requestable__edd_art"]'
+    );
+    return titleInput && titleInput.value.trim() !== '';
   }
 
   requestable(parent) {

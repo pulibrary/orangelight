@@ -195,7 +195,7 @@ describe('RequestManager', () => {
 
       requestManager.checkRows();
 
-      expect(submitButton.disabled).toBe(false);
+      expect(submitButton.disabled).toBe(true);
     });
 
     test('should deactivate button when no rows are requestable', () => {
@@ -204,6 +204,29 @@ describe('RequestManager', () => {
       requestManager.checkRows();
 
       expect(submitButton.disabled).toBe(true);
+    });
+
+    test('should keep request button disabled when digital delivery mode is selected and title is empty, and enable when title is present', () => {
+      const row = document.getElementById('request_1');
+      const checkbox = row.querySelector('input[type=checkbox]');
+      const radios = row.querySelectorAll('input[type=radio]');
+      const eedRadio = radios[1]; // Second radio is EED
+      const titleInput = document.getElementById(
+        'requestable__edd_art_title_1'
+      );
+
+      // Select checkbox and EED radio, but leave title empty
+      checkbox.checked = true;
+      eedRadio.checked = true;
+      titleInput.value = '';
+
+      requestManager.checkRows();
+      expect(submitButton.disabled).toBe(true);
+
+      // Now fill in the title
+      titleInput.value = 'The best book ever';
+      requestManager.checkRows();
+      expect(submitButton.disabled).toBe(false);
     });
   });
 
