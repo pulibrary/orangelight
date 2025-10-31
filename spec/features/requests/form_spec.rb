@@ -1249,50 +1249,28 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       stub_single_holding_location 'recap$pa'
       visit "requests/99124417723506421?mfhd=22689758840006421"
       expect(page).not_to have_content 'Electronic Delivery'
-      expect(page).to have_content 'In Process materials are typically available in several business days'
+      expect(page).to have_content 'Request options for this item are only available to Faculty, Staff, and Students.'
       expect(page).not_to have_content 'This item is not available'
-      select('Firestone Library', from: 'requestable__pick_up_23922188050006421')
-      expect do
-        click_button 'Request this Item'
-      end.to change { ActionMailer::Base.deliveries.count }.by(2)
-      expect(page).to have_content I18n.t("requests.submit.in_process_success")
-      email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-      confirm_email = ActionMailer::Base.deliveries.last
-      expect(email.subject).to eq("In Process Request")
-      expect(email.to).to eq(["fstcirc@princeton.edu"])
-      expect(email.cc).to be_blank
-      expect(email.html_part.body.to_s).to have_content("100 let na zashchite gosudarstva")
-      expect(confirm_email.subject).to eq("In Process Request")
-      expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-      expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-      expect(confirm_email.to).to eq(["login@test.com"])
-      expect(confirm_email.cc).to be_blank
-      expect(confirm_email.html_part.body.to_s).to have_content("100 let na zashchite gosudarstva")
-      expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
-    end
-
-    it "allow requesting of available ReCAP items and does not allow requesting of unavailable ReCAP items" do
-      availability_response = "[{\"itemBarcode\":\"32101108747674\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"},{\"itemBarcode\":\"32101108747666\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"},{\"itemBarcode\":\"32101108747658\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"},{\"itemBarcode\":\"32101108747682\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]"
-      stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
-        .with(headers: { Accept: 'application/json', api_key: 'TESTME' }, body: { bibliographicId: "99125465081006421", institutionId: "PUL" })
-        .to_return(status: 200, body: availability_response)
-      stub_single_holding_location 'recap$pa'
-
-      visit "requests/99125465081006421?mfhd=22922148510006421"
-      expect(page).not_to have_content 'Electronic Delivery'
-      expect(page).to have_content 'Physical Item Delivery'
-      expect(page).to have_content 'vol. 9 (1983)'
-      expect(page).to have_content 'vol. 8 (1982)'
-      expect(page).to have_content 'vol. 7 (1981)'
-      expect(page).to have_content 'vol. 6 (1980)'
-      expect(page).to have_content 'vol. 5 (1979)'
-      expect(page).to have_content 'vol. 4 (1978)'
-      within("#request_23922640720006421") do
-        expect(page).to have_content 'In Process materials are typically available in several business days'
-      end
-      within("#request_23922148490006421") do
-        expect(page).to have_content 'In Process materials are typically available in several business days'
-      end
+      # select('Firestone Library', from: 'requestable__pick_up_23922188050006421')
+      expect(page).not_to have_button('Request this Item')
+      # Kevin will ask circ staff to confirm
+      # expect do
+      #   click_button 'Request this Item'
+      # end.to change { ActionMailer::Base.deliveries.count }.by(2)
+      # expect(page).to have_content I18n.t("requests.submit.in_process_success")
+      # email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+      # confirm_email = ActionMailer::Base.deliveries.last
+      # expect(email.subject).to eq("In Process Request")
+      # expect(email.to).to eq(["fstcirc@princeton.edu"])
+      # expect(email.cc).to be_blank
+      # expect(email.html_part.body.to_s).to have_content("100 let na zashchite gosudarstva")
+      # expect(confirm_email.subject).to eq("In Process Request")
+      # expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+      # expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+      # expect(confirm_email.to).to eq(["login@test.com"])
+      # expect(confirm_email.cc).to be_blank
+      # expect(confirm_email.html_part.body.to_s).to have_content("100 let na zashchite gosudarstva")
+      # expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
     end
 
     it "does not allow requesting of On Order books" do

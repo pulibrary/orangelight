@@ -170,8 +170,7 @@ module Requests
 
       def eligible_for_this_item?
         return false unless eligible_for_library_services?
-
-        patron.core_patron_group? || (patron.alma_provider? && off_site? && (available? || in_process?))
+        patron.core_patron_group? || (patron.affiliate_patron_group? && off_site? && available?)
       end
   end
 end

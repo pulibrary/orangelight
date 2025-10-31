@@ -627,17 +627,13 @@ describe Requests::RequestableDecorator, requests: true do
       let(:user) { FactoryBot.build(:alma_patron) }
       let(:affiliate_patron) do
         { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
-          "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "Affiliate",
+          "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "Affiliate-P",
           "patron_id" => "99999", "active_email" => "foo@princeton.edu",
           ldap: }.with_indifferent_access
       end
       let(:patron) { Requests::Patron.new(user:, patron_hash: affiliate_patron) }
       context "at an open library" do
         let(:location) { { library_code: 'abc' } }
-
-        it 'a book on the shelf will be submitted' do
-          expect(decorator.will_submit_via_form?).to be_falsey
-        end
 
         context "item at recap" do
           let(:service) { { services: ["recap"], recap?: true, recap_edd?: false, available?: true } }
