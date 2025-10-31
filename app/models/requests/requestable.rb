@@ -5,7 +5,7 @@ module Requests
   class Requestable
     attr_reader :bib, :holding, :item, :location, :call_number, :title, :patron, :services
 
-    delegate :illiad_request_url, :illiad_request_parameters, to: :@illiad
+    delegate :illiad_request_url, :illiad_request_parameters, to: :illiad
     delegate :eligible_for_library_services?, to: :@patron
 
     include Requests::Aeon
@@ -24,7 +24,6 @@ module Requests
       @patron = patron
       @call_number = @holding.holding_data['call_number_browse']
       @title = bib[:title_citation_display]&.first
-      @illiad = Requests::Illiad.new(enum: item&.fetch(:enum, nil), chron: item&.fetch(:chron, nil), call_number:)
     end
 
     delegate :pick_up_location_code, :item_type, :enum_value, :cron_value, :item_data?,
@@ -171,6 +170,10 @@ module Requests
     end
 
     private
+
+      def illiad
+        @illiad ||= Requests::Illiad.new(enum: item&.fetch(:enum, nil), chron: item&.fetch(:chron, nil), call_number:)
+      end
 
       # Location data presented as an object, rather than a hash.
       # The goal is to gradually replace all uses of the hash with
