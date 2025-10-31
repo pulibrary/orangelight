@@ -26,24 +26,24 @@ describe('RequestManager - Button Management', () => {
     });
   });
 
-  describe('activateRequestButton', () => {
+  describe('_activateRequestButton', () => {
     test('should enable the submit button when it exists', () => {
       // Initially disabled
       expect(submitButton.disabled).toBe(true);
 
-      requestManager.activateRequestButton();
+      requestManager._activateRequestButton();
 
       expect(submitButton.disabled).toBe(false);
     });
   });
 
-  describe('deactivateRequestButton', () => {
+  describe('_deactivateRequestButton', () => {
     test('should disable the submit button when it exists', () => {
-      // Enable it first
+      // First enable it
       submitButton.disabled = false;
       expect(submitButton.disabled).toBe(false);
 
-      requestManager.deactivateRequestButton();
+      requestManager._deactivateRequestButton();
 
       expect(submitButton.disabled).toBe(true);
     });
@@ -55,15 +55,15 @@ describe('RequestManager - Button Management', () => {
       expect(submitButton.disabled).toBe(true);
 
       // Activate
-      requestManager.activateRequestButton();
+      requestManager._activateRequestButton();
       expect(submitButton.disabled).toBe(false);
 
       // Deactivate
-      requestManager.deactivateRequestButton();
+      requestManager._deactivateRequestButton();
       expect(submitButton.disabled).toBe(true);
 
       // Activate again
-      requestManager.activateRequestButton();
+      requestManager._activateRequestButton();
       expect(submitButton.disabled).toBe(false);
     });
   });
