@@ -19,6 +19,10 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
   before { stub_delivery_locations }
 
   context "with a bad system_id" do
+    before do
+      stub_request(:get, "#{Requests.config[:pulsearch_base]}/catalog/foo/raw")
+        .to_return(status: 404, body: {}.to_json)
+    end
     let(:bad_system_id) { 'foo' }
     let(:params) do
       {
