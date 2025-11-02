@@ -73,7 +73,7 @@ module ApplicationHelper
   # @param [Hash] holding values
   def holding_location(holding)
     location_code = holding.fetch('location_code', '').to_sym
-    resolved_location = Bibdata.holding_locations[location_code]
+    resolved_location = holding_locations[location_code]
     resolved_location ? resolved_location : {}
   end
 
@@ -167,12 +167,17 @@ module ApplicationHelper
   end
 
   def bibdata_location_code_to_sym(value)
-    Bibdata.holding_locations[value.to_sym]
+    holding_locations[value.to_sym]
+  end
+
+  def holding_locations
+    # Memoize, because it takes quite a while to read/parse all the locations from the disk cache
+    @holding_locations ||= Bibdata.holding_locations
   end
 
   def render_location_code(value)
     values = normalize_location_code(value).map do |loc|
-      location = Bibdata.holding_locations[loc.to_sym]
+      location = holding_locations[loc.to_sym]
       location.nil? ? loc : "#{loc}: #{location_full_display(location)}"
     end
     values.one? ? values.first : values
@@ -241,7 +246,7 @@ module ApplicationHelper
   # Returns true for locations with remote storage.
   # Remote storage locations have a value of 'recap_rmt' in Alma.
   def remote_storage?(location_code)
-    Bibdata.holding_locations[location_code]["remote_storage"] == 'recap_rmt'
+    holding_locations[location_code]["remote_storage"] == 'recap_rmt'
   end
 
   # Returns true for locations where the user can walk and fetch an item.
