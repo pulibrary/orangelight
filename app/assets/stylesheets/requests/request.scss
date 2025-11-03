@@ -251,3 +251,11 @@ input[type="radio"] + label {
 #request-submit-wrapper .btn[disabled] {
   pointer-events: none;
 }
+
+#author_citation_display-list {
+  display: inline-block;
+}
+
+#title_citation_display-list {
+  display: inline-block;
+}
