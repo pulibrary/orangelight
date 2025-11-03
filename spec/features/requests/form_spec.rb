@@ -108,7 +108,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
 
     describe 'When visiting an Alma ID as a CAS User' do
       let(:good_response) { file_fixture('../scsb_request_item_response.json') }
-      it 'Shows a ReCAP PUL item that is at "preservation and conservation" as a partner request' do
+      it 'Shows a ReCAP PUL item that is at "preservation and conservation" as a Resource Sharing partner request' do
         stub_single_holding_location 'recap$pa'
         stub_illiad_patron
         stub_request(:post, transaction_url)
