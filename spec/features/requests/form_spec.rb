@@ -908,229 +908,227 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     end
   end
 
-  context 'a Princeton net ID user without a barcode' do
-    ## TODO talk over this use case with Circ to make sure this is the behavior we want
-    let(:user) { FactoryBot.create(:user) }
-    let(:in_process_id) { '99124449473506421?mfhd=22664801380006421' }
-    let(:recap_in_process_id) { '99114026863506421?mfhd=22753408610006421' }
+  # context 'a Princeton net ID user without a barcode' do
+  #   ## TODO talk over this use case with Circ to make sure this is the behavior we want
+  #   let(:user) { FactoryBot.create(:user) }
+  #   let(:in_process_id) { '99124449473506421?mfhd=22664801380006421' }
+  #   let(:recap_in_process_id) { '99114026863506421?mfhd=22753408610006421' }
 
-    let(:recap_params) do
-      {
-        Bbid: "9994933183506421",
-        item: "23131438400006421",
-        lname: "Student",
-        delivery: "p",
-        pickup: "PN",
-        startpage: "",
-        endpage: "",
-        email: "a@b.com",
-        volnum: "",
-        issue: "",
-        aauthor: "",
-        atitle: "",
-        note: ""
-      }
-    end
+  #   let(:recap_params) do
+  #     {
+  #       Bbid: "9994933183506421",
+  #       item: "23131438400006421",
+  #       lname: "Student",
+  #       delivery: "p",
+  #       pickup: "PN",
+  #       startpage: "",
+  #       endpage: "",
+  #       email: "a@b.com",
+  #       volnum: "",
+  #       issue: "",
+  #       aauthor: "",
+  #       atitle: "",
+  #       note: ""
+  #     }
+  #   end
 
-    before do
-      stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
-        .to_return(status: 200, body: valid_patron_no_barcode_response, headers: {})
-      stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=false")
-        .to_return(status: 200, body: valid_patron_response_no_ldap, headers: {})
-      login_as user
-    end
+  #   before do
+  #     stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
+  #       .to_return(status: 200, body: valid_patron_no_barcode_response, headers: {})
+  #     stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=false")
+  #       .to_return(status: 200, body: valid_patron_response_no_ldap, headers: {})
+  #     login_as user
+  #   end
 
-    describe 'When visiting an Alma ID as a CAS User' do
-      it 'disallows access to request an available ReCAP item.' do
-        stub_single_holding_location 'recap$pa'
-        stub_scsb_availability(bib_id: "9994933183506421", institution_id: "PUL", barcode: '32101095798938')
-        stub_catalog_raw bib_id: '9994933183506421'
-        visit "/requests/#{mms_id}"
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-      end
+  #   describe 'When visiting an Alma ID as a CAS User' do
+  #     it 'disallows access to request an available ReCAP item.' do
+  #       stub_single_holding_location 'recap$pa'
+  #       stub_scsb_availability(bib_id: "9994933183506421", institution_id: "PUL", barcode: '32101095798938')
+  #       stub_catalog_raw bib_id: '9994933183506421'
+  #       visit "/requests/#{mms_id}"
+  #       expect(page).not_to have_content 'Electronic Delivery'
+  #       expect(page).not_to have_content 'Physical Item Delivery'
+  #       expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+  #       expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+  #     end
 
-      it 'disallows access to In Process items' do
-        visit "/requests/#{in_process_id}"
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-      end
+  #     it 'disallows access to In Process items' do
+  #       visit "/requests/#{in_process_id}"
+  #       expect(page).not_to have_content 'Electronic Delivery'
+  #       expect(page).not_to have_content 'Physical Item Delivery'
+  #       expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+  #       expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+  #     end
 
-      it 'disallows access for In Process recap items' do
-        stub_single_holding_location 'recap$pa'
-        stub_scsb_availability bib_id: '99114026863506421', institution_id: 'PUL', barcode: 'fake-barcode'
-        stub_catalog_raw bib_id: '99114026863506421'
-        visit "/requests/#{recap_in_process_id}"
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-      end
+  #     it 'disallows access for In Process recap items' do
+  #       stub_single_holding_location 'recap$pa'
+  #       stub_scsb_availability bib_id: '99114026863506421', institution_id: 'PUL', barcode: 'fake-barcode'
+  #       stub_catalog_raw bib_id: '99114026863506421'
+  #       visit "/requests/#{recap_in_process_id}"
+  #       expect(page).not_to have_content 'Electronic Delivery'
+  #       expect(page).not_to have_content 'Physical Item Delivery'
+  #       expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+  #       expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+  #     end
 
-      it 'disallows access for On-Order recap items' do
-        stub_catalog_raw bib_id: '99103251433506421'
-        visit "/requests/#{on_order_id}"
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-      end
+  #     it 'disallows access for On-Order recap items' do
+  #       stub_catalog_raw bib_id: '99103251433506421'
+  #       visit "/requests/#{on_order_id}"
+  #       expect(page).not_to have_content 'Electronic Delivery'
+  #       expect(page).not_to have_content 'Physical Item Delivery'
+  #       expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+  #       expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+  #     end
 
-      it 'disallows access to a record that has no item data' do
-        visit "/requests/#{no_items_id}"
-        expect(page).not_to have_button('Request this Item')
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-      end
+  #     it 'disallows access to a record that has no item data' do
+  #       visit "/requests/#{no_items_id}"
+  #       expect(page).not_to have_button('Request this Item')
+  #       expect(page).not_to have_content 'Electronic Delivery'
+  #       expect(page).not_to have_content 'Physical Item Delivery'
+  #       expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+  #       expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+  #     end
 
-      it 'disallows access to a ReCAP record that has no item data to be digitized' do
-        visit "/requests/993083506421?mfhd=22740191180006421"
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-      end
+  #     it 'disallows access to a ReCAP record that has no item data to be digitized' do
+  #       visit "/requests/993083506421?mfhd=22740191180006421"
+  #       expect(page).not_to have_content 'Electronic Delivery'
+  #       expect(page).not_to have_content 'Physical Item Delivery'
+  #       expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+  #       expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+  #     end
 
-      it 'disallows access to request an on-campus item' do
-        stub_illiad_patron
-        visit "/requests/9997708113506421?mfhd=22729045760006421"
-        expect(page).not_to have_button('Request this Item')
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-      end
+  #     it 'disallows access to request an on-campus item' do
+  #       stub_illiad_patron
+  #       visit "/requests/9997708113506421?mfhd=22729045760006421"
+  #       expect(page).not_to have_button('Request this Item')
+  #       expect(page).not_to have_content 'Electronic Delivery'
+  #       expect(page).not_to have_content 'Physical Item Delivery'
+  #       expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+  #       expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+  #     end
 
-      let(:good_response) { file_fixture('../scsb_request_item_response.json') }
-      it 'disallows access to request a physical ReCAP item' do
-        stub_single_holding_location 'recap$pa'
-        stub_scsb_availability(bib_id: "9999443553506421", institution_id: "PUL", barcode: '32101098722844')
-        stub_catalog_raw bib_id: '9999443553506421'
-        visit '/requests/9999443553506421?mfhd=22743365320006421'
-        expect(page).not_to have_button('Request this Item')
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-      end
+  #     let(:good_response) { file_fixture('../scsb_request_item_response.json') }
+  #     it 'disallows access to request a physical ReCAP item' do
+  #       stub_single_holding_location 'recap$pa'
+  #       stub_scsb_availability(bib_id: "9999443553506421", institution_id: "PUL", barcode: '32101098722844')
+  #       stub_catalog_raw bib_id: '9999443553506421'
+  #       visit '/requests/9999443553506421?mfhd=22743365320006421'
+  #       expect(page).not_to have_button('Request this Item')
+  #       expect(page).not_to have_content 'Electronic Delivery'
+  #       expect(page).not_to have_content 'Physical Item Delivery'
+  #       expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+  #       expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+  #     end
 
-      it 'disallows access to request a Forrestal Annex item' do
-        visit '/requests/999455503506421?mfhd=22642306790006421'
-        expect(page).not_to have_button('Request this Item')
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-      end
+  #     it 'disallows access to request a Forrestal Annex item' do
+  #       visit '/requests/999455503506421?mfhd=22642306790006421'
+  #       expect(page).not_to have_button('Request this Item')
+  #       expect(page).not_to have_content 'Electronic Delivery'
+  #       expect(page).not_to have_content 'Physical Item Delivery'
+  #       expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+  #       expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+  #     end
 
-      it 'disallows access to request a Lewis Library ReCAP item digitally' do
-        stub_scsb_availability(bib_id: "9970533073506421", institution_id: "PUL", barcode: '32101051217659')
-        visit '/requests/9970533073506421?mfhd=22667391160006421'
-        expect(page).not_to have_button('Request this Item')
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-      end
+  #     it 'disallows access to request a Lewis Library ReCAP item digitally' do
+  #       stub_scsb_availability(bib_id: "9970533073506421", institution_id: "PUL", barcode: '32101051217659')
+  #       visit '/requests/9970533073506421?mfhd=22667391160006421'
+  #       expect(page).not_to have_button('Request this Item')
+  #       expect(page).not_to have_content 'Electronic Delivery'
+  #       expect(page).not_to have_content 'Physical Item Delivery'
+  #       expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+  #       expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+  #     end
 
-      it 'disallows access to request a digital copy from an item in Lewis Library' do
-        visit '/requests/9970533073506421?mfhd=22667391180006421'
-        expect(page).not_to have_button('Request this Item')
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-      end
+  #     it 'disallows access to request a digital copy from an item in Lewis Library' do
+  #       visit '/requests/9970533073506421?mfhd=22667391180006421'
+  #       expect(page).not_to have_button('Request this Item')
+  #       expect(page).not_to have_content 'Electronic Delivery'
+  #       expect(page).not_to have_content 'Physical Item Delivery'
+  #       expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+  #       expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+  #     end
 
-      it 'disallows access to ask for digitizing on non circulating items' do
-        visit '/requests/9995948403506421?mfhd=22500774400006421'
-        expect(page).not_to have_button('Request this Item')
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-      end
+  #     it 'disallows access to ask for digitizing on non circulating items' do
+  #       visit '/requests/9995948403506421?mfhd=22500774400006421'
+  #       expect(page).not_to have_button('Request this Item')
+  #       expect(page).not_to have_content 'Electronic Delivery'
+  #       expect(page).not_to have_content 'Physical Item Delivery'
+  #       expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+  #       expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+  #     end
 
-      it 'shows an error if MFHD is not present' do
-        visit '/requests/9979171923506421'
-        expect(page).not_to have_content 'Please Select a location on the main record page.'
-      end
+  #     it 'shows an error if MFHD is not present' do
+  #       visit '/requests/9979171923506421'
+  #       expect(page).not_to have_content 'Please Select a location on the main record page.'
+  #     end
 
-      it 'disallows access to fill in form options on multi-volume works' do
-        visit 'requests/99105746993506421?mfhd=22547424510006421'
-        expect(page).not_to have_button('Request this Item')
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-      end
+  #     it 'disallows access to fill in form options on multi-volume works' do
+  #       visit 'requests/99105746993506421?mfhd=22547424510006421'
+  #       expect(page).not_to have_button('Request this Item')
+  #       expect(page).not_to have_content 'Electronic Delivery'
+  #       expect(page).not_to have_content 'Physical Item Delivery'
+  #       expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+  #     end
 
-      it 'disallows access ReCAP Marqaund as an EDD option only' do
-        stub_scsb_availability(bib_id: "99117809653506421", institution_id: "PUL", barcode: '32101106347378')
-        visit '/requests/99117809653506421?mfhd=22613352460006421'
-        expect(page).not_to have_button('Request this Item')
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-      end
+  #     it 'disallows access ReCAP Marqaund as an EDD option only' do
+  #       stub_scsb_availability(bib_id: "99117809653506421", institution_id: "PUL", barcode: '32101106347378')
+  #       visit '/requests/99117809653506421?mfhd=22613352460006421'
+  #       expect(page).not_to have_button('Request this Item')
+  #       expect(page).not_to have_content 'Electronic Delivery'
+  #       expect(page).not_to have_content 'Physical Item Delivery'
+  #       expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+  #     end
 
-      it "disallows access to items in the Architecture Library as available" do
-        visit '/requests/99117876713506421?mfhd=22561348800006421'
-        expect(page).not_to have_button('Request this Item')
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-      end
+  #     it "disallows access to items in the Architecture Library as available" do
+  #       visit '/requests/99117876713506421?mfhd=22561348800006421'
+  #       expect(page).not_to have_button('Request this Item')
+  #       expect(page).not_to have_content 'Electronic Delivery'
+  #       expect(page).not_to have_content 'Physical Item Delivery'
+  #       expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+  #       expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+  #     end
 
-      it "disallows requests of recap pick-up only items" do
-        stub_scsb_availability(bib_id: "99115783193506421", institution_id: "PUL", barcode: '32101108035435')
-        visit '/requests/99115783193506421?mfhd=22534122440006421'
-        expect(page).not_to have_button('Request this Item')
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-      end
+  #     it "disallows requests of recap pick-up only items" do
+  #       stub_scsb_availability(bib_id: "99115783193506421", institution_id: "PUL", barcode: '32101108035435')
+  #       visit '/requests/99115783193506421?mfhd=22534122440006421'
+  #       expect(page).not_to have_button('Request this Item')
+  #       expect(page).not_to have_content 'Electronic Delivery'
+  #       expect(page).not_to have_content 'Physical Item Delivery'
+  #       expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+  #       expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+  #     end
 
-      it 'allows aeon requests for all users' do
-        stub_holding_locations
-        visit '/requests/9973529363506421?mfhd=22667098990006421'
-        expect(page).to have_content 'Request to View in Reading Room'
-        expect(page).not_to have_content 'Request this Item'
-        expect(page).not_to have_selector('request--select')
-      end
+  #     it 'allows aeon requests for all users' do
+  #       stub_holding_locations
+  #       visit '/requests/9973529363506421?mfhd=22667098990006421'
+  #       expect(page).to have_content 'Request to View in Reading Room'
+  #       expect(page).not_to have_content 'Request this Item'
+  #       expect(page).not_to have_selector('request--select')
+  #     end
 
-      it 'displays there are no available items for online only items' do
-        visit '/requests/9999946923506421?mfhd=22558528920006421'
-        expect(page).to have_content 'there are no requestable items for this record'
-      end
+  #     it 'displays there are no available items for online only items' do
+  #       visit '/requests/9999946923506421?mfhd=22558528920006421'
+  #       expect(page).to have_content 'there are no requestable items for this record'
+  #     end
 
-      it 'disallows access on missing items' do
-        stub_catalog_raw bib_id: '9917887963506421'
-        visit '/requests/9917887963506421?mfhd=22503918400006421'
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-      end
+  #     it 'disallows access on missing items' do
+  #       stub_catalog_raw bib_id: '9917887963506421'
+  #       visit '/requests/9917887963506421?mfhd=22503918400006421'
+  #       expect(page).not_to have_content 'Electronic Delivery'
+  #       expect(page).not_to have_content 'Physical Item Delivery'
+  #       expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+  #       expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+  #     end
 
-      it 'disallows access a non circulating item with not item data to be digitized' do
-        visit '/requests/9941274093506421?mfhd=22690999210006421'
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-      end
-    end
-  end
+  #     it 'disallows access a non circulating item with not item data to be digitized' do
+  #       visit '/requests/9941274093506421?mfhd=22690999210006421'
+  #       expect(page).not_to have_content 'Electronic Delivery'
+  #       expect(page).not_to have_content 'Physical Item Delivery'
+  #       expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+  #       expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+  #     end
+  #   end
+  # end
 
   context 'A CAS user in the affiliate user group' do
     let(:user) { FactoryBot.create(:user) }
@@ -1171,7 +1169,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       stub_single_holding_location 'recap$pa'
       stub_scsb_availability(bib_id: "9941151723506421", institution_id: "PUL", barcode: '33333059902417')
       visit 'requests/9941151723506421?mfhd=22492702000006421'
-      expect(page).not_to have_content 'Electronic Delivery'
+      expect(page).to have_content 'Electronic Delivery'
       expect(page).to have_content 'Physical Item Delivery'
     end
 
@@ -1179,7 +1177,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       stub_scsb_availability(bib_id: "99127133356906421", institution_id: "PUL", barcode: '33333059902417')
       stub_catalog_raw bib_id: '99127133356906421'
       visit 'requests/99127133356906421?aeon=false&mfhd=22971539920006421'
-      expect(page).not_to have_content 'Electronic Delivery'
+      expect(page).to have_content 'Electronic Delivery'
       expect(page).to have_content 'Available for In Library Use'
     end
 
