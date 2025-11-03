@@ -295,3 +295,17 @@ Changes need to be made in 'simple-git-hooks':
   }
   ```
 2. Run `yarn simple-git-hooks` to reconfigure the settings.
+
+## Microbenchmarks
+
+* To run microbenchmarks: `bundle exec rake benchmark`
+* To run a single microbenchmark `bundle exec ruby benchmarks/app/services/bibdata.rb`
+
+Some tips:
+
+* It can be nice to run these in staging or prod, so that they are representative.
+* A nice workflow is:
+  1. run benchmarks with output redirected to a file
+  1. make your change
+  1. run benchmarks with output redirected to a different file
+  1. use a `diff -u` of the files to see if there were any significant changes in the benchmarks
