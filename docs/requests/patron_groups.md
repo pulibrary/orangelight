@@ -33,7 +33,7 @@ We have two groupings of patron types.
 
 * Affiliate
 * Affiliate-P 
-* GUEST
+* GST
 
 ### Affiliate and Guest Patron Services 
 
