@@ -11,7 +11,7 @@ controller.request = ActionDispatch::Request.empty
 view_context = controller.view_context
 
 Benchmark.ips do |benchmark|
-  benchmark.report do
+  benchmark.report 'requests/form/_show_basic_metadata partial' do
     view_context.render partial: 'show_basic_metadata', locals: { document: }
   end
 end

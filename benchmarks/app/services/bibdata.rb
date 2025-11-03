@@ -5,10 +5,8 @@ require_relative '../../benchmark_helpers'
 load_rails_classes
 write_holding_locations_to_rails_cache
 
-view_context = CatalogController.new.view_context
-
 Benchmark.ips do |benchmark|
-  benchmark.report 'ApplicationHelper#render_location_code' do
-    view_context.render_location_code 'rare$ctsn'
+  benchmark.report 'BibdataService::holding_locations - reading from cache' do
+    Bibdata.holding_locations
   end
 end
