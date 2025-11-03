@@ -26,12 +26,12 @@ module Requests
     end
 
     def digitize?
-      return false unless patron.core_patron_group? # only allow digitization for core patron groups
+      return false unless patron.core_patron_group? || patron.affiliate_patron_group?
       eligible_for_library_services? && (item_data? || !circulates?) && (on_shelf_edd? || recap_edd? || marquand_edd?) && !request_status?
     end
 
     def fill_in_digitize?
-      return false unless patron.core_patron_group? # only allow fill in digitization for core patron groups
+      return false unless patron.core_patron_group? || patron.affiliate_patron_group?
       !item_data? || digitize?
     end
 

@@ -648,6 +648,17 @@ describe Requests::RequestableDecorator, requests: true do
           it 'will be submitted' do
             expect(decorator.will_submit_via_form?).to be_truthy
           end
+          it 'can be digitized' do
+            expect(decorator.digitize?).to be_truthy
+          end
+
+          it 'can fill in digitize' do
+            expect(decorator.fill_in_digitize?).to be_truthy
+          end
+
+          it 'can be picked up' do
+            expect(decorator.pick_up?).to be_truthy
+          end
         end
 
         context "no item data" do
