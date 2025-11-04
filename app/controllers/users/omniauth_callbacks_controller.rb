@@ -21,7 +21,7 @@ module Users
       else
         set_flash_message(:error, :failure,
           reason: 'username or password did not match an alma account')
-        redirect_to user_alma_omniauth_authorize_path(origin: omniauth_origin)
+        redirect_to user_session_path(origin: omniauth_origin)
       end
     end
 

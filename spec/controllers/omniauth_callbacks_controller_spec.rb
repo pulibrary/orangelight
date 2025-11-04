@@ -70,7 +70,7 @@ RSpec.describe Users::OmniauthCallbacksController do
         allow(Bibdata).to receive(:get_patron) { {} }
         get :alma, params: { username: user.username, password: '' }
 
-        expect(response).to redirect_to(user_alma_omniauth_authorize_path)
+        expect(response).to redirect_to(user_session_path)
       end
     end
   end
