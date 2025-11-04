@@ -752,12 +752,6 @@ detectors:
     - Bibdata#sorted_locations
     - HoldingRequestsAdapter#doc_holdings_elf
     - HoldingRequestsAdapter#doc_holdings_physical
-  UnusedParameters:
-    exclude:
-    - Requests::RequestMailer#annex_edd_email
-    - Requests::RequestMailer#digitize_email
-    - Requests::RequestMailer#recap_marquand_edd_email
-    - Requests::RequestMailer#recap_marquand_in_library_email
   UtilityFunction:
     exclude:
     - Orangelight::DropdownHelpTextComponent#option_text_and_value

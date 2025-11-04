@@ -65,8 +65,6 @@ module Requests
       confirmation_email(submission:, subject_key: 'requests.annex_in_library.email_subject')
     end
 
-    def annex_edd_email(submission); end
-
     def annex_edd_confirmation(submission)
       confirmation_email(submission:, subject_key: 'requests.recap_edd.email_subject', partial: 'recap_edd_confirmation')
     end
@@ -143,13 +141,9 @@ module Requests
       confirmation_email(submission:, subject_key:)
     end
 
-    def recap_marquand_edd_email(submission); end
-
     def recap_marquand_edd_confirmation(submission)
       confirmation_email(submission:, subject_key: 'requests.recap_edd.email_subject', partial: 'recap_edd_confirmation')
     end
-
-    def recap_marquand_in_library_email(submission); end
 
     def recap_marquand_in_library_confirmation(submission)
       confirmation_email(submission:, subject_key: 'requests.recap_in_library.email_subject')
