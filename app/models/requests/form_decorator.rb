@@ -49,7 +49,6 @@ module Requests
 
     def any_fill_in_eligible?
       return false unless eligible_for_library_services?
-      return false if patron.alma_provider?
 
       fill_in = false
       unless requestable.one? && (requestable.first.services & ["on_order", "online"]).present?
