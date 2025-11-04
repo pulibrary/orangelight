@@ -1,6 +1,6 @@
 # Checking bundle size
 
-A quick way to check the size of our production css and js (not including fonts, print styles, or third-party assets): `SECRET_KEY_BASE=fake RAILS_ENV=production be rake assets:clobber assets:precompile && ls -lh public/assets/application-*`
+A quick way to check the size of our production css and js (not including fonts, print styles, or third-party assets): `SECRET_KEY_BASE=fake RAILS_ENV=production bundle exec rake assets:clobber assets:precompile && ls -lh public/assets/application-*`
 
 The output will end with something like this:
 
