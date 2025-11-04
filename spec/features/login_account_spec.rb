@@ -110,10 +110,13 @@ describe 'Account login' do
       let(:user) { FactoryBot.create(:valid_alma_patron) }
       let(:patron_response) { File.open('spec/fixtures/alma_login_response.json') }
       let(:expected_login_url) { 'https://api-na.hosted.exlibrisgroup.com/almaws/v1/users/Alma%20Patron?op=auth&password=foobarfoo' }
+      let(:invalid_login_url) { 'https://api-na.hosted.exlibrisgroup.com/almaws/v1/users/Alma%20Patron?op=auth&password=wrong' }
 
       before do
         stub_request(:post, expected_login_url)
           .to_return(status: 204)
+        stub_request(:post, invalid_login_url)
+          .to_return(status: 403)
       end
       it 'logs the user in', js: true do
         visit "/catalog/SCSB-2143785"
@@ -125,6 +128,17 @@ describe 'Account login' do
         click_button('Log in')
         expect(WebMock).to have_requested(:post, expected_login_url)
         expect(page).to have_content('Library Material Request')
+      end
+
+      it 'shows an error for an invalid username/password', js: true do
+        visit "/catalog/SCSB-2143785"
+        click_link('Request')
+        expect(page).to have_content('Log in with Alma Account (affiliates)')
+        click_link('Log in with Alma Account (affiliates)')
+        fill_in(id: 'username', with: user.username)
+        fill_in(id: 'password', with: 'wrong')
+        click_button('Log in')
+        expect(page).to have_content('username or password did not match an alma account')
       end
 
       context 'an aeon item' do
