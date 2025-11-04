@@ -222,7 +222,7 @@ GEM
       logger
       msgpack
     datadog-ruby_core_source (3.4.1)
-    date (3.4.1)
+    date (3.5.0)
     deprecation (1.1.0)
       activesupport
     descendants_tracker (0.0.4)
@@ -409,7 +409,8 @@ GEM
     loofah (2.24.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    mail (2.8.1)
+    mail (2.9.0)
+      logger
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
@@ -434,7 +435,7 @@ GEM
       racc (~> 1.7)
     net-http (0.6.0)
       uri
-    net-imap (0.5.9)
+    net-imap (0.5.12)
       date
       net-protocol
     net-ldap (0.19.0)
@@ -708,7 +709,7 @@ GEM
     tilt (2.6.0)
     time (0.4.1)
       date
-    timeout (0.4.3)
+    timeout (0.4.4)
     tins (1.38.0)
       bigdecimal
       sync
