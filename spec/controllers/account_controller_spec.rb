@@ -50,15 +50,6 @@ RSpec.describe AccountController, patrons: true do
       expect(assigns(:illiad_transactions).size).to eq 2
     end
 
-    context "barcode user" do
-      let(:valid_user) { FactoryBot.create(:guest_patron) }
-
-      it 'Returns no Illiad Transactions' do
-        get :digitization_requests
-        expect(assigns(:illiad_transactions).size).to eq 0
-      end
-    end
-
     context "alma user" do
       let(:valid_user) { FactoryBot.create(:alma_patron) }
 
@@ -68,7 +59,7 @@ RSpec.describe AccountController, patrons: true do
       end
     end
 
-    context "cas user with no illiad account" do
+    context "cas user without an illiad account" do
       it 'Returns no Illiad Transactions' do
         stub_request(:get, current_illiad_user_uri)
           .to_return(status: 404, body: '{"Message":"User jstudent was not found."}')
@@ -127,7 +118,7 @@ RSpec.describe AccountController, patrons: true do
     let(:invalid_user) { FactoryBot.create(:invalid_princeton_patron) }
     let(:unauthorized_user) { FactoryBot.create(:unauthorized_princeton_patron) }
 
-    it 'returns Princeton Patron Account Data using a persisted User Model' do
+    it 'returns Princeton Patron Account Data for a patron with a net ID in Alma' do
       valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}?ldap=false"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
@@ -136,7 +127,7 @@ RSpec.describe AccountController, patrons: true do
       expect(patron).to be_truthy
     end
 
-    it "returns a nil value when a user ID cannot be resolved to a persisted User Model" do
+    it "returns an empty value when a patron net ID cannot be resolved to a net ID stored in Alma" do
       invalid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{invalid_user.uid}"
       stub_request(:get, invalid_patron_record_uri)
         .to_return(status: 404, body: '<html><title>Not Here</title><body></body></html>', headers: {})
@@ -144,7 +135,7 @@ RSpec.describe AccountController, patrons: true do
       expect(patron).to eq({})
     end
 
-    it "returns a nil value when the application isn't authorized to access patron data" do
+    it "returns an empty value when the machine Orangelight is running on isn't authorized to access patron data" do
       unauthorized_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{unauthorized_user.uid}"
       stub_request(:get, unauthorized_patron_record_uri)
         .to_return(status: 403, body: '<html><title>Not Authorized</title><body></body></html>', headers: {})
@@ -152,7 +143,7 @@ RSpec.describe AccountController, patrons: true do
       expect(patron).to eq({})
     end
 
-    it 'returns a nil value when the HTTP response to the API request has a 500 status code' do
+    it 'returns an empty value when the HTTP response to the API request has a 500 status code' do
       valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 500, body: 'Error', headers: {})

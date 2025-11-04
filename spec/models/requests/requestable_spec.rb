@@ -809,13 +809,13 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
   end
-  context 'A requestable item from a RBSC holding creates an openurl with volume and call number info' do
+  context 'A requestable item from a Special Collections holding creates an openurl with volume and call number info' do
     let(:user) { FactoryBot.build(:user) }
     let(:request) { FactoryBot.build(:request_aeon_holding_volume_note) }
     let(:requestable) { request.requestable.find { |m| m.holding.mfhd_id == '22563389780006421' } }
 
     describe "#held_at_marquand_library?" do
-      it "is not marquand" do
+      it "is not at Marquand Library" do
         expect(requestable).not_to be_held_at_marquand_library
       end
     end
@@ -826,7 +826,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
   end
-  context 'A SCSB Item from a location with no pick-up restrictions' do
+  context 'A SCSB Item from a location with no pick-up location restrictions' do
     let(:user) { FactoryBot.build(:user) }
     let(:request) { FactoryBot.build(:request_scsb_cu) }
     let(:requestable) { request.requestable.first }
@@ -843,7 +843,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     end
   end
 
-  context 'A SCSB Item from a location with a pick-up and in library use restriction' do
+  context 'A SCSB Item from a location with a pick-up location and an in library use restriction' do
     let(:user) { FactoryBot.build(:user) }
     let(:request) { FactoryBot.build(:request_scsb_ar) }
     let(:requestable) { request.requestable.first }
@@ -876,7 +876,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     end
   end
 
-  context 'A SCSB Item from a location with a pick-up restrictions' do
+  context 'A SCSB Item from a location with a pick-up location restrictions' do
     let(:user) { FactoryBot.build(:user) }
     let(:request) { FactoryBot.build(:request_scsb_mr) }
     let(:requestable) { request.requestable.first }

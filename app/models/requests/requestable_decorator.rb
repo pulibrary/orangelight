@@ -91,17 +91,6 @@ module Requests
       RequestableDecorator.new(fill_in_req, view_context)
     end
 
-    def libcal_url
-      code = if off_site? && !held_at_marquand_library? && location.holding_library.present?
-               location.holding_library[:code]
-             elsif !off_site? || held_at_marquand_library?
-               location.library_code
-             else
-               "firestone"
-             end
-      Libcal.url(code)
-    end
-
     def status_badge
       content_tag(:span, status, class: "availability--label badge #{css_class}") if status
     end

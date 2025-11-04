@@ -15,7 +15,7 @@ describe Requests::Submission, requests: true do
     Requests::Patron.new(user:, patron_hash: valid_patron)
   end
 
-  context 'A valid submission' do
+  context 'A valid request submission' do
     let(:requestable) do
       [
         {
@@ -140,7 +140,7 @@ describe Requests::Submission, requests: true do
     end
   end
 
-  context 'An invalid Submission' do
+  context 'An invalid Request Submission' do
     let(:bib) do
       {
         "id" => ""
@@ -255,7 +255,7 @@ describe Requests::Submission, requests: true do
     end
   end
 
-  context 'Invalid Submissions' do
+  context 'Invalid Request Submissions' do
     let(:bib) do
       {
         "id" => "994952203506421",
@@ -735,7 +735,7 @@ describe Requests::Submission, requests: true do
     end
   end
 
-  describe 'Single Submission for a Print with SCSB Managed data' do
+  describe 'Single Submission for a Physical delivery request with SCSB Managed data' do
     let(:requestable) do
       [
         {
@@ -796,7 +796,7 @@ describe Requests::Submission, requests: true do
     end
   end
 
-  context 'Marquand multiple Items' do
+  context 'A request with multiple Marquand Items' do
     let(:requestable) do
       [
         { "selected" => "false" },
@@ -883,7 +883,7 @@ describe Requests::Submission, requests: true do
     end
   end
 
-  context 'Marquand Item' do
+  context 'A single Marquand Item' do
     let(:requestable) do
       [
         { "selected" => "true", "bibid" => "9956364873506421", "mfhd" => "22587331490006421", "call_number" => "N7668.D6 J64 2008",
@@ -971,7 +971,7 @@ describe Requests::Submission, requests: true do
     end
   end
 
-  describe 'new_from_hash' do
+  describe '#new_from_hash' do
     before do
       user = FactoryBot.create(:user, uid: 'jj')
       user.save

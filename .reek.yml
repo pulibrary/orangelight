@@ -168,7 +168,6 @@ detectors:
     - Requests::Location#sort_pick_ups
     - Requests::Requestable#pick_up_locations
     - Requests::Requestable#scsb_pick_up_override
-    - Requests::RequestableDecorator#libcal_url
     - Requests::SelectedItemsValidator#validate
     - Requests::SelectedItemsValidator#validate_delivery_mode
     - Requests::SelectedItemsValidator#validate_selected

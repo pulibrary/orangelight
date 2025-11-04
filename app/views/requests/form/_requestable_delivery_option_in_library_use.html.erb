@@ -12,7 +12,7 @@
             <div id="fields-print__<%=requestable.preferred_request_id%>_card" class="card card-body bg-light">
               <%= hidden_field_tag "requestable[][pick_up]", "", value: { pick_up: requestable.delivery_location_code, pick_up_location_code: requestable.pick_up_location_code}.to_json, class: 'single-pick-up-hidden' %>
               <%= label_tag "requestable[][pick_up]", "Pick-up location: #{requestable.delivery_location_label}", class: 'single-pick-up' %>
-              <p> <%= t("requests.#{requestable.off_site_location}.in_library_use_msg_html", location_label: requestable.delivery_location_label, libcal_url: requestable.libcal_url) %> </p>
+              <p> <%= t("requests.#{requestable.off_site_location}.in_library_use_msg_html", location_label: requestable.delivery_location_label) %> </p>
             </div>
           </div>
         <% end %>
