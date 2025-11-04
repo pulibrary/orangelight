@@ -755,7 +755,6 @@ detectors:
   UnusedParameters:
     exclude:
     - Requests::RequestMailer#annex_edd_email
-    - Requests::RequestMailer#digitize_email
     - Requests::RequestMailer#recap_marquand_edd_email
     - Requests::RequestMailer#recap_marquand_in_library_email
   UtilityFunction:

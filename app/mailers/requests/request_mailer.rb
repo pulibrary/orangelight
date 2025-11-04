@@ -125,10 +125,6 @@ module Requests
            subject:)
     end
 
-    def digitize_email(submission)
-      # TODO: what should we do here
-    end
-
     def digitize_confirmation(submission)
       confirmation_email(submission:, subject_key: 'requests.digitize.email_subject', from_key: 'requests.digitize.email_from')
     end
