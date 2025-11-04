@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe Orangelight::ConstraintComponent, type: :component do
-  let(:facet_item_presenter) { instance_double(Blacklight::FacetItemPresenter) }
+  let(:facet_item_presenter) { instance_double(Blacklight::ClausePresenter) }
 
   it "can handle the odd format[0]-style params" do
     allow(facet_item_presenter).to receive(:key).and_return('key')

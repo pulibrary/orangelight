@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe IndexTitleComponent, type: :component do
   subject do
-    render_inline described_class.new(document:)
+    render_inline described_class.new(presenter: Blacklight::DocumentPresenter.new(document, instance_double(ActionView::Base, action_name: 'show'), blacklight_config))
   end
   before do
     allow_any_instance_of(Blacklight::Document::BookmarkComponent).to receive(:bookmarked?).and_return(false)
