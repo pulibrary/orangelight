@@ -4,6 +4,7 @@ require 'library_stdnums'
 
 module BlacklightHelper
   include Blacklight::BlacklightHelperBehavior
+
   require './lib/orangelight/string_functions'
 
   def json_field?(field)
@@ -41,8 +42,8 @@ module BlacklightHelper
   # Escape all whitespace characters within Solr queries specifying left anchor query facets
   def escape_left_anchor_query(query)
     query.gsub!(/(\s)/, '\\\\\1')
-    query.gsub!(/(["\{\}\[\]\^\~])/, '\\\\\1')
-    query.gsub!(/[\(\)]/, '')
+    query.gsub!(/(["{}\[\]\^~])/, '\\\\\1')
+    query.gsub!(/[()]/, '')
     query
   end
 

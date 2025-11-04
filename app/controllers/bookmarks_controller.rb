@@ -4,6 +4,7 @@ require 'csv'
 
 class BookmarksController < CatalogController
   include Blacklight::Bookmarks
+
   configure_blacklight do |_config|
     blacklight_config.show.document_actions[:print] =
       {

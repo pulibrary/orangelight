@@ -2,6 +2,7 @@
 class ReportBiasedResultsForm
   include ActiveModel::Model
   include Honeypot
+
   attr_accessor :name, :email, :message, :context
 
   validates :message, presence: true
