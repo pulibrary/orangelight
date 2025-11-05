@@ -6,10 +6,10 @@
     "blacklight-range-limit": "^9.0.0",
     "chart.js": "^4.4.7",
     "graphql": "^16.10.0",
-    "lux-design-system": "^6.10.0",
+    "lux-design-system": "^7.0.0",
     "serialize-javascript": "^6.0.2",
     "unfetch": "^5.0.0",
-    "vue": "^3.4.21"
+    "vue": "^3.5.22"
   },
   "devComments": {
     "jquery": "Keep version in sync with jquery-rails, obtained through bundler"
