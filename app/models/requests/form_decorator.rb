@@ -5,6 +5,7 @@ module Requests
     delegate :patron,
              :ctx, :system_id, :mfhd, :holdings, :default_pick_ups,
              :serial?, :any_loanable_copies?, :requestable?, :thesis?, :numismatics?, :eligible_for_library_services?,
+             :too_many_items?,
              :user_name, :email, # passed to request as login options on the request form
              to: :request
     delegate :content_tag, :hidden_field_tag, :concat, to: :view_context

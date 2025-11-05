@@ -7,6 +7,7 @@ import {
   LuxIconArrowRight,
   LuxIconBase,
   LuxIconSearch,
+  LuxInputMultiselect,
   LuxCard,
   LuxLibraryFooter,
   LuxShowMore,
@@ -34,6 +35,7 @@ export function luxImport() {
         .component('lux-icon-arrow-right', LuxIconArrowRight)
         .component('lux-icon-base', LuxIconBase)
         .component('lux-icon-search', LuxIconSearch)
+        .component('lux-input-multiselect', LuxInputMultiselect)
         .component('lux-library-footer', LuxLibraryFooter)
         .component('lux-card', LuxCard)
         .component('lux-show-more', LuxShowMore)

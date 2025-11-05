@@ -27,7 +27,18 @@
     <tbody>
       <% fill_in_eligible = @request.any_fill_in_eligible? %>
       <% if fill_in_eligible %>
-        <%= render partial: "requestable_fill_in_field", locals: { requestable: requestable_list.last.create_fill_in_requestable, default_pick_ups: default_pick_ups, requestable_list: requestable_list } %>
+      <% if @request.too_many_items? %>
+      This title has <%= @request.request.holdings[@request.request.mfhd]['items'].count %> items. Which would you like to request?
+        <div class="lux">
+        <% items_for_lux = @request.request.holdings[@request.request.mfhd]['items']
+          .sort_by {it['description'].gsub(/\D/, '').to_i}
+          .map { "{label: '#{it['description']}', id: '#{it['id']}'}" }
+          .join(',') %>
+          <lux-input-multiselect :items="[<%= items_for_lux %>]" label="Items to request"/>
+            <%= render partial: "requestable_fill_in_field", locals: { requestable: requestable_list.last.create_fill_in_requestable, default_pick_ups: default_pick_ups, requestable_list: requestable_list } %>
+          <% end %>
+        </div>
+      <% else %>
       <% end %>
       <%= render Requests::RequestableFormOptionComponent.with_collection(requestable_list, mfhd:, default_pick_ups:, form: @request, patron: @patron) %>
     </tbody>
