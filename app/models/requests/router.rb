@@ -47,7 +47,12 @@ module Requests
         [
           ServiceEligibility::ILL.new(requestable:, patron:, any_loanable:),
           ServiceEligibility::OnOrder.new(requestable:, user:),
+<<<<<<< Updated upstream
           ServiceEligibility::Annex.new(requestable:, patron:),
+=======
+          ServiceEligibility::Annex::Pickup.new(requestable:, patron:),
+          ServiceEligibility::Annex::NoItems.new(requestable:, patron:),
+>>>>>>> Stashed changes
           ServiceEligibility::OnShelfDigitize.new(requestable:, patron:),
           ServiceEligibility::OnShelfPickup.new(requestable:, patron:),
           ServiceEligibility::InProcess.new(requestable:, user:),

@@ -53,6 +53,12 @@ en:
       email_subject: "Annex In Library Use Request"
       brief_msg: "Item offsite at Forrestal Annex. Requests for viewing in a library typically take 1-2 business days to process."
       email_conf_msg: "Your request for this item has been received. Once we complete our processing, you'll receive an email stating that the book is available for pick-up."
+    annex_no_items:
+      email: "forranx@princeton.edu"
+      email_subject: "Annex Non-Barcoded Request."
+      brief_msg: "Annex Paging Request, will be delivered to:"
+      email_msg: "A request was made on a record that has no barcoded item data. This is likely a data issue that should be corrected."
+      email_conf_msg: "The following record has been requested:"
     anxadoc:
       email: "docstor@princeton.edu"
     digitize:
