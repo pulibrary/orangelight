@@ -1,0 +1,8 @@
+* RequestsItemSelector: Add a new prop of delivery options (array): [Pickup, Digital]
+* view partial: pass the deliveryOptions prop appropriately
+* RequestsItemSelector: Depending on the options in the deliveryOptions prop, show the radio buttons (pass into the item slot)
+* RequestsItemSelector: Pass the hiddenInput slot (should recreate the hidden_fields_item helper)
+* RequestsItemSelector: Get the styles looking good
+* View partial: make sure the fill-in form AND the new RequestsItemSelector don't both appear
+* Move the logic out of the view partial to a more appropriate (and testable) place
+* See if the spec/views/requests/form/generate.html.erb_spec.rb test is actually useful, if so, maybe push a separate pr?
