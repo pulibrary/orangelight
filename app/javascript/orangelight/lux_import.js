@@ -7,7 +7,6 @@ import {
   LuxIconArrowRight,
   LuxIconBase,
   LuxIconSearch,
-  LuxInputMultiselect,
   LuxCard,
   LuxLibraryFooter,
   LuxShowMore,
@@ -20,6 +19,7 @@ import MultiselectCombobox from './vue_components/multiselect_combobox.vue';
 import BookmarkAllButton from './vue_components/bookmark_all_button.vue';
 import BookmarkButton from './vue_components/bookmark_button.vue';
 import HoldingGroupAvailability from './vue_components/holding_group_availability.vue';
+import RequestsItemSelector from './vue_components/requests_item_selector.vue';
 
 export function luxImport() {
   const app = createApp({});
@@ -35,7 +35,6 @@ export function luxImport() {
         .component('lux-icon-arrow-right', LuxIconArrowRight)
         .component('lux-icon-base', LuxIconBase)
         .component('lux-icon-search', LuxIconSearch)
-        .component('lux-input-multiselect', LuxInputMultiselect)
         .component('lux-library-footer', LuxLibraryFooter)
         .component('lux-card', LuxCard)
         .component('lux-show-more', LuxShowMore)
@@ -46,6 +45,7 @@ export function luxImport() {
         .component('bookmark-all-button', BookmarkAllButton)
         .component('bookmark-button', BookmarkButton)
         .component('holding-group-availability', HoldingGroupAvailability)
+        .component('requests-item-selector', RequestsItemSelector)
         .mount(elements[i]);
     }
     const vueapp = createApp({});

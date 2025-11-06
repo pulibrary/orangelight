@@ -40,7 +40,8 @@ describe('RequestsItemSelector', () => {
     });
 
     // Focus the input so the dropdown is displayed
-    wrapper.find('input').trigger('focus');
+    await wrapper.find('input').trigger('focus');
+    // Wait for it to find its data and re-render
     await nextTick();
 
     const dropdownItems = wrapper
@@ -85,9 +86,7 @@ describe('RequestsItemSelector', () => {
     await flushPromises();
 
     // Focus the input so the dropdown is displayed
-    wrapper.find('input').trigger('focus');
-    await nextTick();
-    console.log(wrapper.vm.currentItems.value, 'is the value in thest');
+    await wrapper.find('input').trigger('focus');
 
     const dropdownItems = wrapper
       .findAll('.lux-autocomplete-result')

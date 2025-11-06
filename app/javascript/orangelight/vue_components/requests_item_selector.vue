@@ -1,12 +1,12 @@
 <template>
   <LuxInputMultiselect
-    :items="currentItems"
+    :asyncLoadItemsFunction="currentItems"
     label="Items to request"
   ></LuxInputMultiselect>
 </template>
 <script setup>
 import { LuxInputMultiselect } from 'lux-design-system';
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 
 const props = defineProps({
   bibdataBase: {
@@ -31,20 +31,19 @@ const itemsFromBibdata = ref([]);
 // Get the most recent item data we have available:
 // If the `fetch` has finished, use that!
 // Otherwise, use the items passed in via the prop
-const currentItems = computed(() => {
+const currentItems = async () => {
   if (itemsFromBibdata.value.length > 0) {
-    return itemsFromBibdata;
+    return itemsFromBibdata.value;
   } else {
-    return props.items;
+    return Promise.resolve(props.items);
   }
-});
+};
 
 const fetchUpdatedAvailability = async () => {
   const response = await fetch(
     `${props.bibdataBase}/bibliographic/${props.recordId}/holdings/${props.mfhdId}/availability.json`
   );
   const rawData = await response.json();
-  console.log('we made it!!');
   itemsFromBibdata.value = rawData.map((item) => {
     return { id: item.id, label: item.description };
   });

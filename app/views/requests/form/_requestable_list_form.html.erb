@@ -34,7 +34,7 @@
           .sort_by {it['description'].gsub(/\D/, '').to_i}
           .map { "{label: '#{it['description']}', id: '#{it['id']}'}" }
           .join(',') %>
-          <lux-input-multiselect :items="[<%= items_for_lux %>]" label="Items to request"/>
+          <requests-item-selector :items="[{id: 'dog', label: 'dog'}]" record-id="<%= @request.request.system_id %>" mfhd-id="<%= @request.request.mfhd %>" bibdata-base="http://localhost:3333"/>
             <%= render partial: "requestable_fill_in_field", locals: { requestable: requestable_list.last.create_fill_in_requestable, default_pick_ups: default_pick_ups, requestable_list: requestable_list } %>
           <% end %>
         </div>
