@@ -219,35 +219,11 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     end
   end
 
-  describe "#hidden_fields_item" do
+  describe "#enum_copy_display" do
     let(:requestable) { instance_double(Requests::RequestableDecorator, stubbed_questions) }
-
-    context "with item location" do
-      let(:stubbed_questions) { { bib: { id: 'abc123' }, item: Requests::Item.new({ 'id' => "aaabbb", 'location' => 'place' }.with_indifferent_access), holding: Requests::Holding.new(mfhd_id: 'mfhd1', holding_data: { key1: 'value1' }), location: { code: 'location_code' }, partner_holding?: false, preferred_request_id: 'aaabbb', item?: true, item_location_code: 'place' } }
-      it 'shows hidden fields' do
-        expect(helper.hidden_fields_item(requestable)).to include '<input type="hidden" name="requestable[][location_code]" id="requestable_location_aaabbb" value="place" autocomplete="off" />'
-      end
-    end
-
-    context "with item barcode" do
-      let(:stubbed_questions) { { bib: { id: 'abc123' }, item: Requests::Item.new({ 'id' => "aaabbb", 'barcode' => '111222333' }.with_indifferent_access), holding: Requests::Holding.new(mfhd_id: 'mfhd1', holding_data: { key1: 'value1' }), location: { code: 'location_code' }, partner_holding?: false, preferred_request_id: 'aaabbb', item?: true, item_location_code: '' } }
-      it 'shows hidden fields' do
-        expect(helper.hidden_fields_item(requestable)).to include '<input type="hidden" name="requestable[][barcode]" id="requestable_barcode_aaabbb" value="111222333" autocomplete="off" />'
-      end
-    end
-
-    context "with item enum" do
-      let(:stubbed_questions) { { bib: { id: 'abc123' }, item: Requests::Item.new({ 'id' => "aaabbb", 'enum_display' => 'vvv' }.with_indifferent_access), holding: Requests::Holding.new(mfhd_id: 'mfhd1', holding_data: { key1: 'value1' }), location: { code: 'location_code' }, partner_holding?: false, preferred_request_id: 'aaabbb', item?: true, item_location_code: '' } }
-      it 'shows hidden fields' do
-        expect(helper.hidden_fields_item(requestable)).to include '<input type="hidden" name="requestable[][enum]" id="requestable_enum_aaabbb" value="vvv" autocomplete="off" />'
-      end
-    end
 
     context "with item enumeration" do
       let(:stubbed_questions) { { bib: { id: 'abc123' }, item: Requests::Item.new({ id: "aaabbb", description: 'v.2 sss', copy_number: '0', enum_display: 'v.2' }.with_indifferent_access), holding: Requests::Holding.new(mfhd_id: 'mfhd1', holding_data: { key1: 'value1' }), location: { code: 'location_code' }, partner_holding?: false, preferred_request_id: 'aaabbb', item?: true, item_location_code: '' } }
-      it 'shows hidden fields' do
-        expect(helper.hidden_fields_item(requestable)).to include '<input type="hidden" name="requestable[][bibid]" id="requestable_bibid_aaabbb" value="abc123" autocomplete="off" />'
-      end
       it 'hides the enum display if the copy number is zero (0)' do
         expect(helper.enum_copy_display(requestable.item)).to eq("v.2 sss")
       end
@@ -255,9 +231,6 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
 
     context "with item description" do
       let(:stubbed_questions) { { bib: { id: 'abc123' }, item: Requests::Item.new({ id: "aaabbb", description: 'v2 sss', copy_number: '0' }.with_indifferent_access), holding: Requests::Holding.new(mfhd_id: 'mfhd1', holding_data: { key1: 'value1' }), location: { code: 'location_code' }, partner_holding?: false, preferred_request_id: 'aaabbb', item?: true, item_location_code: '' } }
-      it 'shows hidden fields' do
-        expect(helper.hidden_fields_item(requestable)).to include '<input type="hidden" name="requestable[][bibid]" id="requestable_bibid_aaabbb" value="abc123" autocomplete="off" />'
-      end
       it 'hides the enum display if the copy number is zero (0)' do
         expect(helper.enum_copy_display(requestable.item)).to eq("v2 sss")
       end
@@ -265,26 +238,8 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
 
     context "with item description and copy" do
       let(:stubbed_questions) { { bib: { id: 'abc123' }, item: Requests::Item.new({ id: "aaabbb", description: 'v2 sss', copy_number: '2' }.with_indifferent_access), holding: Requests::Holding.new(mfhd_id: 'mfhd1', holding_data: { key1: 'value1' }), location: { code: 'location_code' }, partner_holding?: false, preferred_request_id: 'aaabbb', item?: true, item_location_code: '' } }
-      it 'shows hidden fields' do
-        expect(helper.hidden_fields_item(requestable)).to include '<input type="hidden" name="requestable[][bibid]" id="requestable_bibid_aaabbb" value="abc123" autocomplete="off" />'
-      end
       it 'hides the enum display if the copy number is zero (0)' do
         expect(helper.enum_copy_display(requestable.item)).to eq("v2 sss Copy 2")
-      end
-    end
-
-    context "with holding call number" do
-      let(:holding) { Requests::Holding.new(mfhd_id: "1594697", holding_data: { "location" => "Firestone Library", "library" => "Firestone Library", "location_code" => "f", "copy_number" => "0", "call_number" => "6251.9765", "call_number_browse" => "6251.9765" }) }
-      let(:stubbed_questions) { { bib: { id: 'abc123' }, item: Requests::Item.new({ 'id' => "aaabbb" }.with_indifferent_access), holding:, location: { code: 'location_code' }, partner_holding?: false, preferred_request_id: 'aaabbb', item?: true, item_location_code: '' } }
-      it 'shows hidden fields' do
-        expect(helper.hidden_fields_item(requestable)).to include '<input type="hidden" name="requestable[][call_number]" id="requestable_call_number_aaabbb" value="6251.9765" autocomplete="off" />'
-      end
-    end
-
-    context "scsb item" do
-      let(:stubbed_questions) { { bib: { id: 'abc123' }, item: Requests::Item.new({ 'id' => "aaabbb" }.with_indifferent_access), holding: Requests::Holding.new(mfhd_id: 'mfhd1', holding_data: { key1: 'value1' }), location: { code: 'location_code' }, partner_holding?: true, preferred_request_id: 'aaabbb', item?: true, item_location_code: '' } }
-      it 'shows hidden fields' do
-        expect(helper.hidden_fields_item(requestable)).to eq '<input type="hidden" name="requestable[][bibid]" id="requestable_bibid_aaabbb" value="abc123" autocomplete="off" /><input type="hidden" name="requestable[][mfhd]" id="requestable_mfhd_aaabbb" value="mfhd1" autocomplete="off" /><input type="hidden" name="requestable[][location_code]" id="requestable_location_aaabbb" value="" autocomplete="off" /><input type="hidden" name="requestable[][item_id]" id="requestable_item_id_aaabbb" value="aaabbb" autocomplete="off" /><input type="hidden" name="requestable[][copy_number]" id="requestable_copy_number_aaabbb" value="" autocomplete="off" /><input type="hidden" name="requestable[][status]" id="requestable_status_aaabbb" value="" autocomplete="off" /><input type="hidden" name="requestable[][cgd]" id="requestable_cgd_aaabbb" value="" autocomplete="off" /><input type="hidden" name="requestable[][cc]" id="requestable_collection_code_aaabbb" value="" autocomplete="off" /><input type="hidden" name="requestable[][use_statement]" id="requestable_use_statement_aaabbb" value="" autocomplete="off" />'
       end
     end
   end

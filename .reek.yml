@@ -113,9 +113,6 @@ detectors:
     - Requests::ApplicationHelper#current_location_label
     - Requests::ApplicationHelper#display_requestable_list
     - Requests::ApplicationHelper#display_status
-    - Requests::ApplicationHelper#hidden_fields_for_item
-    - Requests::ApplicationHelper#hidden_fields_for_scsb
-    - Requests::ApplicationHelper#hidden_fields_item
     - Requests::ApplicationHelper#hidden_fields_mfhd
     - Requests::ApplicationHelper#hidden_service_options
     - Requests::ApplicationHelper#item_checkbox
@@ -230,9 +227,6 @@ detectors:
     - BlacklightHelper#oclc_resolve
     - CatalogHelper#render_search_to_page_title
     - Requests::ApplicationHelper#display_status
-    - Requests::ApplicationHelper#hidden_fields_for_item
-    - Requests::ApplicationHelper#hidden_fields_for_scsb
-    - Requests::ApplicationHelper#hidden_fields_item
     - Requests::ApplicationHelper#hidden_fields_mfhd
     - Requests::ApplicationHelper#item_checkbox
     - Requests::ApplicationHelper#pick_up_locations
@@ -522,8 +516,6 @@ detectors:
     - BlacklightHelper#oclc_resolve
     - HoldingsHelper#holdings_block
     - Requests::ApplicationHelper#display_status
-    - Requests::ApplicationHelper#hidden_fields_for_item
-    - Requests::ApplicationHelper#hidden_fields_item
     - Requests::ApplicationHelper#hidden_fields_mfhd
     - Requests::RequestHelper#login_url
     - Blacklight::Document::Ris#ris_authors
@@ -638,7 +630,6 @@ detectors:
     - Requests::ApplicationHelper#available_pick_ups
     - Requests::ApplicationHelper#current_location_label
     - Requests::ApplicationHelper#display_requestable_list
-    - Requests::ApplicationHelper#hidden_fields_item
     - Requests::ApplicationHelper#hidden_fields_mfhd
     - Requests::ApplicationHelper#output_request_input
     - Requests::ApplicationHelper#preferred_request_content_tag

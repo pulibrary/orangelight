@@ -143,21 +143,6 @@ module Requests
     end
     # rubocop:enable Rails/OutputSafety
 
-    def hidden_fields_item(requestable)
-      request_id = requestable.preferred_request_id
-      hidden = hidden_field_tag "requestable[][bibid]", "", value: requestable.bib[:id].to_s, id: "requestable_bibid_#{request_id}"
-      hidden += hidden_field_tag "requestable[][mfhd]", "", value: requestable.holding.mfhd_id, id: "requestable_mfhd_#{request_id}"
-      hidden += hidden_field_tag "requestable[][call_number]", "", value: requestable.holding.holding_data['call_number'].to_s, id: "requestable_call_number_#{request_id}" unless requestable.holding.holding_data["call_number"].nil?
-      hidden += hidden_field_tag "requestable[][location_code]", "", value: requestable.item_location_code.to_s, id: "requestable_location_#{request_id}"
-      hidden += if requestable.item?
-                  hidden_fields_for_item(item: requestable.item, preferred_request_id: requestable.preferred_request_id)
-                else
-                  hidden_field_tag("requestable[][item_id]", "", value: requestable.preferred_request_id, id: "requestable_item_id_#{requestable.preferred_request_id}")
-                end
-      hidden += hidden_fields_for_scsb(item: requestable.item) if requestable.partner_holding?
-      hidden
-    end
-
     def suppress_login?(request)
       request.only_aeon?
     end
@@ -401,20 +386,6 @@ module Requests
         # currently for resource sharing items through Illiad we use firestone Library with gfa_pickup of PA
         location = default_pick_ups.find { |location| location[:gfa_pickup] == "PA" }
         [location].compact
-      end
-
-      def hidden_fields_for_item(item:, preferred_request_id:)
-        hidden = hidden_field_tag("requestable[][item_id]", "", value: preferred_request_id.to_s, id: "requestable_item_id_#{preferred_request_id}")
-        hidden += hidden_field_tag("requestable[][barcode]", "", value: item['barcode'].to_s, id: "requestable_barcode_#{preferred_request_id}") unless item["barcode"].nil?
-        hidden += hidden_field_tag("requestable[][enum]", "", value: item.enum_value.to_s, id: "requestable_enum_#{preferred_request_id}") if item.enum_value.present?
-        hidden += hidden_field_tag("requestable[][copy_number]", "", value: item.copy_number.to_s, id: "requestable_copy_number_#{preferred_request_id}")
-        hidden + hidden_field_tag("requestable[][status]", "", value: item['status'].to_s, id: "requestable_status_#{preferred_request_id}")
-      end
-
-      def hidden_fields_for_scsb(item:)
-        hidden = hidden_field_tag("requestable[][cgd]", "", value: item['cgd'].to_s, id: "requestable_cgd_#{item['id']}")
-        hidden += hidden_field_tag("requestable[][cc]", "", value: item['collection_code'].to_s, id: "requestable_collection_code_#{item['id']}")
-        hidden + hidden_field_tag("requestable[][use_statement]", "", value: item['use_statement'].to_s, id: "requestable_use_statement_#{item['id']}")
       end
 
       def single_pickup(is_charged, name, id, location)
