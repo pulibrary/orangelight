@@ -1,0 +1,25 @@
+
+<input type="hidden" name="requestable[][bibid]" value="<%= requestable.bib[:id].to_s %>" id="requestable_bibid_<%= request_id %>" />
+<input type="hidden" name="requestable[][mfhd]" value="<%= requestable.holding.mfhd_id %>" id="requestable_mfhd_<%= request_id %>" />
+<% unless requestable.holding.holding_data["call_number"].nil? -%>
+  <input type="hidden" name="requestable[][call_number]" value="<%= requestable.holding.holding_data['call_number'].to_s %>" id="requestable_call_number_<%= request_id %>" />
+<% end -%>
+<input type="hidden" name="requestable[][location_code]" value="<%= requestable.item_location_code.to_s %>" id="requestable_location_<%= request_id %>" />
+<% if requestable.item? -%>
+  <input type="hidden" name="requestable[][item_id]" value="<%= request_id.to_s %>" id="requestable_item_id_<%= request_id %>" />
+  <% unless barcode.nil? -%>
+    <input type="hidden" name="requestable[][barcode]" value="<%= barcode.to_s %>" id="requestable_barcode_<%= request_id %>" />
+  <% end %>
+  <% if enum_value.present? -%>
+    <input type="hidden" name="requestable[][enum]" value="<%= enum_value %>" id="requestable_enum_<%= request_id %>" />
+  <% end -%>
+  <input type="hidden" name="requestable[][copy_number]" value="<%= item.copy_number.to_s %>" id="requestable_copy_number_<%= request_id %>" />
+  <input type="hidden" name="requestable[][status]" value="<%= item['status'].to_s %>" id="requestable_status_<%= request_id %>" />
+<% else %>
+  <input type="hidden" name="requestable[][item_id]" value="<%= requestable.preferred_request_id %>" id="requestable_item_id_<%= requestable.preferred_request_id %>"
+<% end -%>
+<% if partner_holding? -%>
+  <input type="hidden" name="requestable[][cgd]" value="<%= item['cgd'].to_s %>" id="requestable_cgd_<%= item_id %>" />
+  <input type="hidden" name="requestable[][cc]" value="<%= item['collection_code'].to_s %>" id="requestable_collection_code_<%= item_id %>" />
+  <input type="hidden" name="requestable[][use_statement]" value="<%= item['use_statement'].to_s %>" id="requestable_use_statement_<%= item_id %>" />
+<% end -%>

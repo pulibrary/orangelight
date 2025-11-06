@@ -10,8 +10,8 @@ def write_holding_locations_to_rails_cache
   Rails.cache.write('holding_locations', locations_hash)
 end
 
-def solr_doc_from_fixture_file(_filepath)
-  fixture = JSON.parse(Rails.root.join('spec/fixtures/raw/993569343506421.json').read)
+def solr_doc_from_fixture_file(filepath)
+  fixture = JSON.parse(Rails.root.join(filepath).read)
   SolrDocument.new(fixture)
 end
 

@@ -2,7 +2,7 @@
   <td class='request--select'>
     <%= hidden_field_tag 'requestable[][selected]', false, id: "hidden_selected" %>
     <%= check_box_tag "requestable[][selected]", true, false, class: 'request--select', aria: { label: "Volume not listed"}, id: "requestable_selected" %>
-    <%= hidden_fields_item requestable %>
+    <%= render Requests::ItemHiddenFieldsComponent.new(requestable) %>
   </td>
   <td class='request--options' <%= 'colspan="2"'.html_safe unless table_sorter_present?(requestable_list) %>>
     <fieldset class="mb-3">
