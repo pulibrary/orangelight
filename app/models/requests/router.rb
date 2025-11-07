@@ -52,7 +52,7 @@ module Requests
           ServiceEligibility::Annex::NoItems.new(requestable:, patron:),
           ServiceEligibility::OnShelfDigitize.new(requestable:, patron:),
           ServiceEligibility::OnShelfPickup.new(requestable:, patron:),
-          ServiceEligibility::InProcess.new(requestable:, user:),
+          ServiceEligibility::InProcess.new(requestable:, patron:),
           ServiceEligibility::MarquandInLibrary.new(requestable:, user:),
           ServiceEligibility::MarquandEdd.new(requestable:, user:),
           ServiceEligibility::MarquandPageChargedItem.new(requestable:, user:),
@@ -60,7 +60,7 @@ module Requests
           ServiceEligibility::Recap::InLibrary.new(requestable:, user:),
           ServiceEligibility::Recap::Digitize.new(requestable:, user:),
           ServiceEligibility::Recap::Pickup.new(requestable:, user:),
-          ServiceEligibility::Aeon.new(requestable:)
+          ServiceEligibility::Aeon.new(requestable:, patron:)
         ]
       end
   end

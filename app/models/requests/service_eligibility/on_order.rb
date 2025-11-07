@@ -3,9 +3,9 @@ module Requests
   module ServiceEligibility
     # on_order - material has a status in Alma that indicates it is ordered but has not yet arrived on campus
     class OnOrder
-      def initialize(requestable:, user:)
+      def initialize(requestable:, patron:)
         @requestable = requestable
-        @user = user
+        @patron = patron
       end
 
       def to_s
@@ -27,10 +27,10 @@ module Requests
         end
 
         def user_eligible?
-          user.cas_provider? || user.alma_provider?
+          patron.core_patron_group?
         end
 
-        attr_reader :requestable, :user
+        attr_reader :requestable, :patron
     end
   end
 end

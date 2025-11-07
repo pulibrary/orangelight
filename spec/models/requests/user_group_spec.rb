@@ -85,8 +85,8 @@ end
 RSpec.shared_context 'affiliate and guest patron group' do
   let(:recap_physical_services) { ['recap'] }
   let(:recap_electronic_services) { ['recap_edd'] }
-  let(:annex_physical_services) { ['annex', 'on_shelf_edd'] }
-  let(:annex_electronic_services) { [] }
+  let(:annex_physical_services) { ['annex'] }
+  let(:annex_electronic_services) { ['annex'] }
   let(:on_order_services) { [] }
   let(:in_process_services) { [] }
   let(:on_shelf_services) { [] }
@@ -113,102 +113,66 @@ RSpec.shared_context 'alma user' do
   let(:user) { FactoryBot.create(:alma_patron) }
 end
 
-RSpec.shared_context 'group P' do
-  let(:valid_patron) { { "netid" => "foo", "patron_group" => "P" }.with_indifferent_access }
-end
-
-RSpec.shared_context 'group GRAD' do
-  let(:valid_patron) { { "netid" => "foo", "patron_group" => "GRAD" }.with_indifferent_access }
-end
-
-RSpec.shared_context 'group REG' do
-  let(:valid_patron) { { "netid" => "foo", "patron_group" => "REG" }.with_indifferent_access }
-end
-
-RSpec.shared_context 'group SENR' do
-  let(:valid_patron) { { "netid" => "foo", "patron_group" => "SENR" }.with_indifferent_access }
-end
-
-RSpec.shared_context 'group UGRD' do
-  let(:valid_patron) { { "netid" => "foo", "patron_group" => "UGRD" }.with_indifferent_access }
-end
-
-RSpec.shared_context 'group SUM' do
-  let(:valid_patron) { { "netid" => "foo", "patron_group" => "SUM" }.with_indifferent_access }
-end
-
-RSpec.shared_context 'group Affiliate' do
-  let(:valid_patron) { { "netid" => "foo", "patron_group" => "Affiliate" }.with_indifferent_access }
-end
-
-RSpec.shared_context 'group Affiliate-P' do
-  let(:valid_patron) { { "netid" => "foo", "patron_group" => "Affiliate-P" }.with_indifferent_access }
-end
-
-RSpec.shared_context 'group GST' do
-  let(:valid_patron) { { "netid" => "foo", "patron_group" => "GST" }.with_indifferent_access }
-end
-
 RSpec.describe Requests::Router do
   context 'with a user in group P' do
+    let(:valid_patron) { { "netid" => "foo", "patron_group" => "P" }.with_indifferent_access }
     include_context 'cas user'
-    include_context 'group P'
     include_context 'shared patron setup'
     include_context 'core patron group'
     it_behaves_like 'shared request type tests'
   end
   context 'with a user in group GRAD' do
+    let(:valid_patron) { { "netid" => "foo", "patron_group" => "GRAD" }.with_indifferent_access }
     include_context 'cas user'
-    include_context 'group GRAD'
     include_context 'shared patron setup'
     include_context 'core patron group'
     it_behaves_like 'shared request type tests'
   end
   context 'with a user in group REG' do
+    let(:valid_patron) { { "netid" => "foo", "patron_group" => "REG" }.with_indifferent_access }
     include_context 'cas user'
-    include_context 'group REG'
     include_context 'shared patron setup'
     include_context 'core patron group'
     it_behaves_like 'shared request type tests'
   end
   context 'with a user in group SENR' do
+    let(:valid_patron) { { "netid" => "foo", "patron_group" => "SENR" }.with_indifferent_access }
     include_context 'cas user'
-    include_context 'group SENR'
     include_context 'shared patron setup'
     include_context 'core patron group'
     it_behaves_like 'shared request type tests'
   end
   context 'with a user in group UGRD' do
+    let(:valid_patron) { { "netid" => "foo", "patron_group" => "UGRD" }.with_indifferent_access }
     include_context 'cas user'
-    include_context 'group UGRD'
     include_context 'shared patron setup'
     include_context 'core patron group'
     it_behaves_like 'shared request type tests'
   end
   context 'with a user in group SUM' do
+    let(:valid_patron) { { "netid" => "foo", "patron_group" => "SUM" }.with_indifferent_access }
     include_context 'cas user'
-    include_context 'group SUM'
     include_context 'shared patron setup'
     include_context 'core patron group'
     it_behaves_like 'shared request type tests'
   end
   context 'with a user in group Affiliate' do
+    let(:valid_patron) { { "netid" => "foo", "patron_group" => "Affiliate" }.with_indifferent_access }
     include_context 'alma user'
-    include_context 'group Affiliate'
     include_context 'shared patron setup'
     include_context 'affiliate and guest patron group'
     it_behaves_like 'shared request type tests'
   end
   context 'with a user in group Affiliate-P' do
+    let(:valid_patron) { { "netid" => "foo", "patron_group" => "Affiliate-P" }.with_indifferent_access }
     include_context 'alma user'
-    include_context 'group Affiliate-P'
     include_context 'shared patron setup'
     include_context 'affiliate and guest patron group'
     it_behaves_like 'shared request type tests'
   end
   context 'with a user in group GST' do
+    let(:valid_patron) { { "netid" => "foo", "patron_group" => "GST" }.with_indifferent_access }
     include_context 'alma user'
-    include_context 'group GST'
     include_context 'shared patron setup'
     include_context 'affiliate and guest patron group'
     it_behaves_like 'shared request type tests'

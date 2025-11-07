@@ -35,7 +35,7 @@ module Requests
           end
 
           def allowed_patron_groups
-            @allowed_patron_groups ||= %w[P REG GRAD SENR UGRD]
+            @allowed_patron_groups ||= %w[P REG GRAD SENR UGRD SUM]
           end
 
           attr_reader :requestable, :user, :any_loanable, :patron
