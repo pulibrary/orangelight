@@ -54,7 +54,8 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
           recap?: false, recap_pf?: false, held_at_marquand_library?: false,
           item_data?: false, recap_edd?: false, scsb_in_library_use?: false, item:,
           library_code: 'ABC', eligible_for_library_services?: true,
-          marquand_item?: false }
+          marquand_item?: false,
+          circulates?: false }
       end
       let(:requestable) { instance_double(Requests::Requestable, stubbed_questions) }
 
@@ -103,6 +104,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
       context "annex" do
         before do
           stubbed_questions[:annex?] = true
+          stubbed_questions[:item_data?] = true
         end
         it "returns annex in the services if the item circulate" do
           stubbed_questions[:circulates?] = true
@@ -111,6 +113,14 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
         it "returns annex in the services if the item does not circulate" do
           stubbed_questions[:circulates?] = false
           expect(router.calculate_services).to eq(['annex', 'on_shelf_edd'])
+        end
+        context "no items" do
+          before do
+            stubbed_questions[:item_data?] = false
+          end
+          it "returns annex_no_items and on_shelf_edd in the services" do
+            expect(router.calculate_services).to eq(['annex_no_items', 'on_shelf_edd'])
+          end
         end
       end
 

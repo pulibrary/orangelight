@@ -57,7 +57,7 @@ en:
       email: "forranx@princeton.edu"
       email_subject: "Annex Non-Barcoded Request."
       brief_msg: "Annex Paging Request, will be delivered to:"
-      email_msg: "A request was made on a record that has no barcoded item data. This is likely a data issue that should be corrected."
+      email_msg: "A request was made for an item that has no barcode. This is likely a data issue that should be reviewed."
       email_conf_msg: "The following record has been requested:"
     anxadoc:
       email: "docstor@princeton.edu"
