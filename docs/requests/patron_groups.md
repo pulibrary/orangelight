@@ -7,6 +7,10 @@ We have two groupings of patron types.
 * "core" patrons, patrons who are full-time members of the Princeton Community members who have access to all our request services. 
 * "affiliate" and "guest" patrons, patrons who have been sponsored for access to selective services through their local institutions connection to Princeton or by their connection to a full-time member of the Princeton Community. "Guest" patrons have purchased borrowing services from the library.
 
+## Service Types Open to All Users
+
+* Reading Room Request (request supervised use materials for viewing in one of our Special Collections Reading Rooms via our Aeon Reading Room Management application)
+
 ## Core Alma Patron Groups
 
 * P Faculty & Professional
@@ -18,16 +22,15 @@ We have two groupings of patron types.
 
 ### Core request services
 
-* Recap Physical Delivery Request (Offsite Materials)
-* Recap Electronic Delivery Request (scan a selection shelved at ReCAP on demand)
-* Annex Physical Delivery Request (Offsite Materials)
-* Annex Electronic Delivery Request (scan a selection shelved at Annex on demand)
-* On Order Requests (Items in the Alma "Acquisition" Process Type. These are items ordered for our shelves but have not yet arrived.)
-* In Process Requests (Items in the Alma "In Process" Process Type and the Alma Work Order Type "Acquisitions and Cataloging". Items that are here on campus but are not yet prepared for final shelving."
+* Recap Physical Delivery Request (Offsite Materials stored at our ReCAP Facility)
+* Recap Electronic Delivery Request (scan a selection shelved at ReCAP on demand via the ReCAP SCSB Application)
+* Annex Physical Delivery Request (Offsite Materials stored at our Forrestal Annex Building)
+* Annex Electronic Delivery Request (scan a selection shelved at our Forrestal Annex Building on demand via our ILLiad Document Delivery application)
+* On Order Requests (Request Items in the Alma "Acquisition" Process Type. These are items ordered for our shelves but have not yet arrived.)
+* In Process Requests (Request Items in the Alma "In Process" Process Type and the Alma Work Order Type "Acquisitions and Cataloging". Items that are here on campus but are not yet prepared for final shelving.
 * Pick-up Service (request an item for pick-up that is shelved at a campus library)
-* Digitization Request (scan a selection from an item shelved on campus on demand)
-* Resource Sharing Services (Request an item from another library via Borrow Direct or InterLibrary Loan (Illiad))
-* Reading Room Request (request supervised use materials for viewing in a Special Collections Reading Room)
+* On Campus Material Electronic Digitization Request (scan a selection from an item shelved on campus on demand via our ILLiad Document Delivery application)
+* Resource Sharing Services (Request an item from another library via our InterLibrary Loan application (Illiad))
 
 ## Alma Affiliate and Guest Patron Groups
 
@@ -37,6 +40,6 @@ We have two groupings of patron types.
 
 ### Affiliate and Guest Patron Services 
 
-* Recap Physical Delivery Request (Offsite Materials)
-* Recap Electronic Delivery Request (scan a selection shelved at ReCAP on demand)
-* Annex Physical Delivery Request (Offsite Materials)
+* Recap Physical Delivery Request (Offsite Materials stored at our ReCAP Facility)
+* Recap Electronic Delivery Request (scan a selection shelved at ReCAP on demand via the ReCAP SCSB Application)
+* Annex Physical Delivery Request (Offsite Materials stored at our Forrestal Annex Building)
