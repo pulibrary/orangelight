@@ -3,11 +3,11 @@ require 'rails_helper'
 
 RSpec.describe Requests::ServiceEligibility::Recap::Digitize, requests: true do
   describe '#eligible?' do
-  let(:user) { FactoryBot.create(:user) }
-  let(:valid_patron) { { "netid" => "foo", "patron_group" => "P" }.with_indifferent_access }
-  let(:patron) do
-    Requests::Patron.new(user:, patron_hash: valid_patron)
-  end
+    let(:user) { FactoryBot.create(:user) }
+    let(:valid_patron) { { "netid" => "foo", "patron_group" => "P" }.with_indifferent_access }
+    let(:patron) do
+      Requests::Patron.new(user:, patron_hash: valid_patron)
+    end
     it 'returns true if all criteria are met' do
       requestable = instance_double(Requests::Requestable)
       allow(requestable).to receive_messages(
