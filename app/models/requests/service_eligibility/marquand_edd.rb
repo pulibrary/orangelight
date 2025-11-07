@@ -2,9 +2,9 @@
 module Requests
   module ServiceEligibility
     class MarquandEdd
-      def initialize(requestable:, user:)
+      def initialize(requestable:, patron:)
         @requestable = requestable
-        @user = user
+        @patron = patron
       end
 
       def to_s
@@ -12,13 +12,13 @@ module Requests
       end
 
       def eligible?
-        requestable_eligible? && user_eligible?
+        requestable_eligible? && patron_group_eligible?
       end
 
     private
 
-      def user_eligible?
-        user.cas_provider? || user.alma_provider?
+      def patron_group_eligible?
+        patron.core_patron_group?
       end
 
       def requestable_eligible?

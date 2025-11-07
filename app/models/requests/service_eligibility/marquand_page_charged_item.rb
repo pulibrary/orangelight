@@ -6,13 +6,13 @@ module Requests
     # carrel.  The materials in the other user's carrel are charged (checked out),
     # so this service is only possible for charged materials.
     class MarquandPageChargedItem
-      def initialize(requestable:, user:)
+      def initialize(requestable:, patron:)
         @requestable = requestable
-        @user = user
+        @patron = patron
       end
 
       def eligible?
-        correct_status? && correct_location? && user_eligible?
+        correct_status? && correct_location? && patron_group_eligible?
       end
 
       def to_s
@@ -29,11 +29,11 @@ module Requests
               requestable.held_at_marquand_library?
             end
 
-            def user_eligible?
-              user.cas_provider? || user.alma_provider?
+            def patron_group_eligible?
+              patron.core_patron_group?
             end
 
-            attr_reader :requestable, :user
+            attr_reader :requestable, :patron
     end
   end
 end

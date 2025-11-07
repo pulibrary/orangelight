@@ -13,17 +13,13 @@ module Requests
       end
 
       def eligible?
-        requestable_eligible? && user_eligible?
+        requestable_eligible? && patron_group_eligible?
       end
 
         protected
 
           def requestable_eligible?
             raise "Please implement requestable_eligible? in the subclass"
-          end
-
-          def user_eligible?
-            provider_eligible? && patron_group_eligible?
           end
 
           def on_shelf_eligible?
@@ -33,10 +29,6 @@ module Requests
               requestable.alma_managed? &&
               !(requestable.recap? || requestable.recap_pf?) &&
               !requestable.held_at_marquand_library?
-          end
-
-          def provider_eligible?
-            user.cas_provider? || user.alma_provider?
           end
 
           def patron_group_eligible?
