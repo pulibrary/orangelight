@@ -18,7 +18,7 @@ module Requests
     private
 
       def user_eligible?
-        patron.core_patron_group?
+        patron.core_patron_group? && !patron.guest?
       end
 
       def requestable_eligible?

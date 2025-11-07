@@ -2,6 +2,11 @@
 require 'rails_helper'
 
 RSpec.describe Requests::ServiceEligibility::MarquandEdd, requests: true do
+  let(:user) { FactoryBot.create(:user) }
+  let(:valid_patron) { { "netid" => "foo", "patron_group" => "P" }.with_indifferent_access }
+  let(:patron) do
+    Requests::Patron.new(user:, patron_hash: valid_patron)
+  end
   describe '#eligible?' do
     it 'returns true if all criteria are met' do
       requestable = instance_double(Requests::Requestable)
@@ -16,7 +21,7 @@ RSpec.describe Requests::ServiceEligibility::MarquandEdd, requests: true do
           recap?: false,
           recap_pf?: false
         )
-      eligibility = described_class.new(requestable:, user: FactoryBot.create(:user))
+      eligibility = described_class.new(requestable:, patron:)
 
       expect(eligibility.eligible?).to be(true)
     end

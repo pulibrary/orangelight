@@ -15,7 +15,7 @@ module Requests
       end
 
       def eligible?
-        requestable_eligible? && patron_group_eligible?
+        requestable_eligible? && patron_group_eligible? && !patron.guest?
       end
 
         private
@@ -26,11 +26,7 @@ module Requests
           end
 
           def patron_group_eligible?
-            allowed_patron_groups.include?(patron.patron_group)
-          end
-
-          def allowed_patron_groups
-            @allowed_patron_groups ||= %w[P REG GRAD SENR UGRD SUM]
+            patron.core_patron_group?
           end
 
           attr_reader :requestable, :any_loanable, :patron

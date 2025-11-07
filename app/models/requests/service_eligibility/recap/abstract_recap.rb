@@ -20,7 +20,7 @@ module Requests
           end
 
           def user_eligible?
-            patron.core_patron_group? || patron.affiliate_patron_group?
+            (patron.core_patron_group? || patron.affiliate_patron_group?) && !patron.guest?
           end
 
           attr_reader :requestable, :patron

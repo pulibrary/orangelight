@@ -14,8 +14,8 @@ module Requests
       end
 
       def eligible?
-        return false unless patron_group_eligible?
-        requestable.aeon? || !(requestable.alma_managed? || requestable.partner_holding?)
+        return false unless patron_group_eligible? || patron.guest?
+        (requestable.aeon? || !(requestable.alma_managed? || requestable.partner_holding?))
       end
 
       def patron_group_eligible?

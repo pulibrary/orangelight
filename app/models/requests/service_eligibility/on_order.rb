@@ -13,7 +13,7 @@ module Requests
       end
 
       def eligible?
-        requestable_eligible? && user_eligible?
+        requestable_eligible? && patron_group_eligible? && !patron.guest?
       end
 
       private
@@ -26,7 +26,7 @@ module Requests
             requestable.on_order?
         end
 
-        def user_eligible?
+        def patron_group_eligible?
           patron.core_patron_group?
         end
 

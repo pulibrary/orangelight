@@ -12,7 +12,7 @@ module Requests
       end
 
       def eligible?
-        requestable_eligible? && patron_group_eligible?
+        requestable_eligible? && patron_group_eligible? && !patron.guest?
       end
 
     private
@@ -31,7 +31,7 @@ module Requests
           (requestable.alma_managed? || requestable.partner_holding?) &&
           !requestable.aeon?
       end
-      attr_reader :requestable, :user
+      attr_reader :requestable, :patron
     end
   end
 end

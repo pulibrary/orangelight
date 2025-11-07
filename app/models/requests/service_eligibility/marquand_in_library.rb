@@ -12,7 +12,7 @@ module Requests
       end
 
       def eligible?
-        requestable_eligible? && patron_group_eligible?
+        requestable_eligible? && patron_group_eligible? && !patron.guest?
       end
 
     private

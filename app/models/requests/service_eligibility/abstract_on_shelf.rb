@@ -32,7 +32,7 @@ module Requests
           end
 
           def patron_group_eligible?
-            allowed_patron_groups.include?(patron.patron_group)
+            allowed_patron_groups.include?(patron.patron_group) && !patron.guest?
           end
 
           def allowed_patron_groups

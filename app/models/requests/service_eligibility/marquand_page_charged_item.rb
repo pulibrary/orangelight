@@ -12,7 +12,7 @@ module Requests
       end
 
       def eligible?
-        correct_status? && correct_location? && patron_group_eligible?
+        correct_status? && correct_location? && patron_group_eligible? && !patron.guest?
       end
 
       def to_s
