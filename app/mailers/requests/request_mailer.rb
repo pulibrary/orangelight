@@ -119,7 +119,7 @@ module Requests
     def annex_no_items_confirmation(submission)
       @submission = Submission.new_from_hash submission
       destination_email = @submission.email
-      subject = I18n.t('requests.annex_no_items.email_subject')
+      subject = I18n.t('requests.annex.email_subject')
       mail(to: destination_email,
            from: I18n.t('requests.default.email_from'),
            subject:)
