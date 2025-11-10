@@ -10,10 +10,20 @@ module Requests
       record.errors.add(:items, { "empty_set" => { 'text' => 'Please Select an Item to Request!', 'type' => 'options' } }) unless record.items.size >= 1 && !record.items.any? { |item| defined? item.selected }
       record.items.each do |selected|
         validate_selected(record, selected)
+        validate_user_supplied_enum_for_print(record, selected)
       end
     end
 
     private
+
+      # :reek:UtilityFunction
+      def validate_user_supplied_enum_for_print(record, selected)
+        item_id = selected['item_id']
+        delivery_type = selected["delivery_mode_#{item_id}"]
+        # Only validate if user_supplied_enum field exists and print type is selected
+        return unless selected.key?('user_supplied_enum') && selected['selected'] == 'true' && delivery_type == 'print' && selected['user_supplied_enum'].to_s.strip.blank?
+        record.errors.add(:items, 'Please specify the volume/part/issue information for your request.')
+      end
 
       def validate_selected(record, selected)
         return unless selected['selected'] == 'true'
