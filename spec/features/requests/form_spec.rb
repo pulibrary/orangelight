@@ -571,37 +571,110 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
           expect(confirm_email.html_part.body.to_s).to have_content("Trump : the art of the comeback")
         end
       end
+      context 'Annex with item data' do
+        it 'an Annex item with user supplied information creates Annex emails' do
+          patron = instance_double(Requests::Patron, core_patron_group?: true, affiliate_patron_group?: false)
+          allow(patron).to receive(:user).and_return(user)
+          allow(patron).to receive(:errors).and_return([])
+          allow(patron).to receive(:guest?).and_return(false)
+          allow(patron).to receive(:eligible_for_library_services?).and_return(true)
+          allow(patron).to receive(:last_name).and_return('Cute')
+          allow(patron).to receive(:first_name).and_return('Aspen')
+          item_double = instance_double(Requests::Item, temp_loc_other_than_resource_sharing?: false)
+          holding_double = instance_double(Requests::Holding, mfhd_id: 'mfhd123')
+          requestable = instance_double(Requests::Requestable,
+                                        holding: holding_double,
+                                        bib: { id: 'bibid123' },
+                                        id: 'requestable_id',
+                                        item: item_double,
+                                        title: 'Trump : the art of the comeback',
+                                        location: { code: 'annex', label: 'Annex' },
+                                        call_number: 'ANNEX 1234',
+                                        services: [],
+                                        eligible_for_library_services?: true,
+                                        annex?: true,
+                                        item_data?: true,
+                                        charged?: false,
+                                        aeon?: false,
+                                        in_process?: false,
+                                        on_order?: false,
+                                        alma_managed?: true,
+                                        recap?: false,
+                                        recap_pf?: false,
+                                        held_at_marquand_library?: false,
+                                        use_statement: nil,
+                                        item_type_non_circulate?: false,
+                                        partner_holding?: false,
+                                        pick_up_location_code: 'firestone',
+                                        item_type: 'book',
+                                        enum_value: nil,
+                                        cron_value: nil,
+                                        temp_loc_other_than_resource_sharing?: false,
+                                        on_reserve?: false,
+                                        enumerated?: false,
+                                        collection_code: nil,
+                                        status: 'Available',
+                                        status_label: 'Available',
+                                        barcode?: true,
+                                        barcode: '123456789',
+                                        preservation_conservation?: false,
+                                        ask_me?: false,
+                                        aeon_request_url: nil,
+                                        holding_library_in_library_only?: false,
+                                        holding_library: nil,
+                                        circulates?: true,
+                                        recap_edd?: false,
+                                        item_location_code: nil,
+                                        item?: true,
+                                        use_restriction?: false,
+                                        library_code: 'annex',
+                                        illiad_request_parameters: nil,
+                                        location_label: 'Annex',
+                                        patron: patron,
+                                        ill_eligible?: false,
+                                        scsb_in_library_use?: false,
+                                        pick_up_locations: ['firestone'],
+                                        on_shelf?: true,
+                                        illiad_request_url: nil,
+                                        available?: true,
+                                        cul_avery?: false,
+                                        cul_music?: false)
+          # rubocop:disable RSpec/AnyInstance
+          allow_any_instance_of(Requests::Router).to receive(:eligibility_checks).and_return([
+                                                                                               Requests::ServiceEligibility::Annex::Pickup.new(requestable: requestable, patron: patron)
+                                                                                             ])
+          # rubocop:enable RSpec/AnyInstance
+          visit '/requests/9922868943506421?mfhd=22692156940006421'
 
-      it 'an Annex item with user supplied information creates Annex emails' do
-        visit '/requests/9922868943506421?mfhd=22692156940006421'
-        expect(page).to have_field 'requestable_selected', disabled: false
-        expect(page).to have_field 'requestable_user_supplied_enum_22692156940006421'
-        within('#request_user_supplied_22692156940006421') do
-          check('requestable_selected', exact: true)
-          fill_in 'requestable_user_supplied_enum_22692156940006421', with: 'test'
+          expect(page).to have_field 'requestable_selected', disabled: false
+          expect(page).to have_field 'requestable_user_supplied_enum_22692156940006421'
+          within('#request_user_supplied_22692156940006421') do
+            check('requestable_selected', exact: true)
+            fill_in 'requestable_user_supplied_enum_22692156940006421', with: 'test'
+          end
+          expect(page).to have_content 'Physical Item Delivery'
+          choose 'requestable__delivery_mode_22692156940006421_print'
+          select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_22692156940006421')
+          expect do
+            click_button 'Request Selected Items'
+          end.to change { ActionMailer::Base.deliveries.count }.by(2)
+          expect(page).to have_content I18n.t('requests.submit.annex_success')
+          email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+          confirm_email = ActionMailer::Base.deliveries.last
+          expect(email.subject).to eq("Annex Request")
+          expect(email.to).to eq(["forranx@princeton.edu"])
+          expect(email.cc).to be_blank
+          expect(email.html_part.body.to_s).to have_content("Birth control news")
+          expect(email.html_part.body.to_s).to have_content("test")
+          expect(email.text_part.body.to_s).to have_content("test")
+          expect(confirm_email.subject).to eq("Annex Request")
+          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+          expect(confirm_email.to).to eq(["a@b.com"])
+          expect(confirm_email.cc).to be_blank
+          expect(confirm_email.html_part.body.to_s).to have_content("Birth control news")
+          expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
         end
-        expect(page).to have_content 'Physical Item Delivery'
-        choose 'requestable__delivery_mode_22692156940006421_print'
-        select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_22692156940006421')
-        expect do
-          click_button 'Request Selected Items'
-        end.to change { ActionMailer::Base.deliveries.count }.by(2)
-        expect(page).to have_content I18n.t('requests.submit.annex_success')
-        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-        confirm_email = ActionMailer::Base.deliveries.last
-        expect(email.subject).to eq("Annex Request")
-        expect(email.to).to eq(["forranx@princeton.edu"])
-        expect(email.cc).to be_blank
-        expect(email.html_part.body.to_s).to have_content("Birth control news")
-        expect(email.html_part.body.to_s).to have_content("test")
-        expect(email.text_part.body.to_s).to have_content("test")
-        expect(confirm_email.subject).to eq("Annex Request")
-        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.to).to eq(["a@b.com"])
-        expect(confirm_email.cc).to be_blank
-        expect(confirm_email.html_part.body.to_s).to have_content("Birth control news")
-        expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
       end
 
       it 'allows an in process item to be requested' do
@@ -875,6 +948,34 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
           expect(page).to have_content 'Your request was submitted'
         end
       end
+    end
+
+    it 'Request a Forrestal Annex with no items will email annex' do
+      stub_alma_hold_success('9941347943506421', '22560381400006421', '23560381360006421', '960594184')
+      visit 'requests/9941347943506421?mfhd=22560381400006421'
+      expect(page).to have_content "Er ru ting Qun fang pu : [san shi juan]"
+      check('requestable_selected_23560381360006421')
+      choose('requestable__delivery_mode_23560381360006421_in_library')
+      select 'Firestone Library', from: 'requestable__pick_up_23560381360006421'
+      expect do
+        click_button 'Request Selected Items'
+      end.to change { ActionMailer::Base.deliveries.count }.by(2)
+      expect(page).to have_content I18n.t("requests.submit.annex_in_library_success")
+      email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+      confirm_email = ActionMailer::Base.deliveries.last
+      expect(email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
+      expect(email.to).to eq(["forranx@princeton.edu"])
+      expect(email.cc).to be_blank
+      expect(email.html_part.body.to_s).to have_content("Er ru ting Qun fang pu : [san shi juan]")
+      expect(email.html_part.body.to_s).to have_content("vol.9-16")
+      expect(email.text_part.body.to_s).to have_content("vol.9-16")
+      expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
+      expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+      expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+      expect(confirm_email.to).to eq(["a@b.com"])
+      expect(confirm_email.cc).to be_blank
+      expect(confirm_email.html_part.body.to_s).to have_content("Er ru ting Qun fang pu : [san shi juan]")
+      expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
     end
 
     it 'Handles a bad mfhd without system error' do

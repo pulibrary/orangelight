@@ -133,10 +133,18 @@ module Requests
         end
       end
 
+      # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+      # Annex records with no barcoded items have an annex_edd type if edd is selected - This is an Illiad request
+      # Recap records with no barcoded items have a recap_no_item type - In this case we email
+      # the recapproblems@princeton.edu - The recap system will not accept items with no barcode.
       def categorize_by_delivery_and_location(item)
         library_code = item["library_code"]
         if recap_no_items?(item)
           item["type"] = "recap_no_items"
+        elsif annex_no_items?(item) && edd?(item)
+          item["type"] = "annex_edd"
+        elsif annex_no_items?(item)
+          item["type"] = "annex_no_items"
         elsif print?(item) && library_code == 'annex'
           item["type"] = "annex"
         elsif off_site?(library_code)
@@ -153,6 +161,7 @@ module Requests
         end
         item
       end
+      # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
       def in_library?(item)
         delivery_mode = delivery_mode(item)
@@ -161,6 +170,11 @@ module Requests
 
       def recap_no_items?(item)
         item["library_code"] == 'recap' && (item["type"] == "digitize_fill_in" || item["type"] == "recap_no_items")
+      end
+
+      # :reek:UtilityFunction
+      def annex_no_items?(item)
+        item["library_code"] == 'annex' && item["type"] == "annex_no_items"
       end
 
       def off_site?(library_code)

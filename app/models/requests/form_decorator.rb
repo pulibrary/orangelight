@@ -115,7 +115,7 @@ module Requests
     private
 
       def fill_in_services
-        ["annex", "recap_no_items", "on_shelf"]
+        ["annex", "annex_no_items", "recap_no_items", "on_shelf"]
       end
 
       def any_circulate?

@@ -16,6 +16,7 @@ module Requests
     # Current Service Types Assigned
     # :aeon - material is stored in a location where it can be requested via Aeon
     # :annex - material is stored in an Annex location
+    # :annex_no_items - material is stored in an Annex location with no item record data
     # :on_shelf - material is stored in a campus library location
     # :on_shelf_edd - material is in a campus library location that is eligible for digitization
     # :on_order - material has a status in Alma that indicates it is ordered but has not yet arrived on campus
@@ -47,7 +48,8 @@ module Requests
         [
           ServiceEligibility::ILL.new(requestable:, patron:, any_loanable:),
           ServiceEligibility::OnOrder.new(requestable:, user:),
-          ServiceEligibility::Annex.new(requestable:, patron:),
+          ServiceEligibility::Annex::Pickup.new(requestable:, patron:),
+          ServiceEligibility::Annex::NoItems.new(requestable:, patron:),
           ServiceEligibility::OnShelfDigitize.new(requestable:, patron:),
           ServiceEligibility::OnShelfPickup.new(requestable:, patron:),
           ServiceEligibility::InProcess.new(requestable:, user:),

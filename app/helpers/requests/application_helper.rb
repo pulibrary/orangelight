@@ -41,7 +41,6 @@ module Requests
       return hidden_service_options_fill_in(requestable) if fill_in
       hidden = output_request_input(requestable)
       return hidden if hidden.present?
-
       if requestable.services.include? 'recap'
         recap_print_only_input requestable
       else
@@ -61,7 +60,9 @@ module Requests
 
     # only requestable services that support "user-supplied volume info"
     def hidden_service_options_fill_in(requestable)
-      if requestable.annex?
+      if requestable.services.include? 'annex_no_items'
+        request_input('annex_no_items')
+      elsif requestable.annex?
         request_input('annex')
       elsif requestable.services.include? 'recap_no_items'
         request_input('recap_no_items')
@@ -186,7 +187,7 @@ module Requests
     end
 
     def submitable_services
-      ['on_shelf', 'in_process', 'on_order', 'annex', 'recap', 'recap_edd', 'paging', 'recap_no_items', 'ppl', 'lewis']
+      ['on_shelf', 'in_process', 'on_order', 'annex', 'annex_no_items', 'recap', 'recap_edd', 'paging', 'recap_no_items', 'ppl', 'lewis']
     end
 
     def submit_message(requestable_list)
@@ -346,7 +347,6 @@ module Requests
           if requestable.ill_eligible?
             concat content_tag(:li, sanitize(I18n.t("requests.ill.brief_msg")), class: "service-item")
           else
-            # there are no instances where more than one actual service is available to an item, so we are going to take the first service that is not edd
             filtered_services = if requestable.services.size == 1 && requestable.services.first.include?("edd")
                                   requestable.services
                                 else

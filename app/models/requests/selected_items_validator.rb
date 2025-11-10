@@ -24,6 +24,8 @@ module Requests
           validate_ill_on_shelf(record, selected, pick_up_phrase: 'delivery of your borrow direct item', action_phrase: 'requested via Borrow Direct')
         when 'recap_no_items'
           validate_recap_no_items(record, selected)
+        when 'annex_no_items'
+          validate_annex_no_items(record, selected)
         when 'recap', 'recap_edd', 'recap_in_library', 'marquand_in_library', 'recap_marquand_edd', 'recap_marquand_in_library'
           validate_offsite(record, selected)
         when 'on_shelf'
@@ -55,6 +57,13 @@ module Requests
         return if selected['pick_up'].present? || selected['edd_art_title'].present?
 
         record.errors.add(:items, { selected['mfhd'] => { 'text' => 'Please select a pick-up location for your selected ReCAP item', 'type' => 'pick_up' } })
+      end
+
+      # :reek:UtilityFunction
+      def validate_annex_no_items(record, selected)
+        return if selected['pick_up'].present? || selected['edd_art_title'].present?
+
+        record.errors.add(:items, { selected['mfhd'] => { 'text' => 'Please select a pick-up location for your selected Annex item', 'type' => 'pick_up' } })
       end
 
       def validate_offsite(record, selected)
