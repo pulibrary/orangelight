@@ -24,9 +24,9 @@ FactoryBot.define do
 
     # for patrons without a net ID
     factory :guest_patron do
-      provider { 'alma' }
+      provider { 'guest' }
       sequence(:uid) { srand.to_s[2..15] }
-      sequence(:username) { "Student" }
+      sequence(:username) { "iamaguest" }
     end
 
     factory :alma_patron do
