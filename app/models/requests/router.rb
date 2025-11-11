@@ -44,7 +44,7 @@ module Requests
       def eligibility_checks
         [
           ServiceEligibility::ILL.new(requestable:, patron:, any_loanable:),
-          ServiceEligibility::OnOrder.new(requestable:, user:),
+          ServiceEligibility::OnOrder.new(requestable:, patron:),
           ServiceEligibility::Annex::Pickup.new(requestable:, patron:),
           ServiceEligibility::Annex::NoItems.new(requestable:, patron:),
           ServiceEligibility::OnShelfDigitize.new(requestable:, patron:),

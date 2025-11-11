@@ -33,11 +33,18 @@ RSpec.shared_examples 'shared request type tests' do
   it 'with an annex physical delivery request' do
     stubbed_questions[:annex?] = true
     stubbed_questions[:circulates?] = true
+    stubbed_questions[:item_data?] = true
     expect(router.calculate_services).to eq(annex_physical_services)
+  end
+  it 'with an annex physical delivery request with no item data' do
+    stubbed_questions[:annex?] = true
+    stubbed_questions[:circulates?] = true
+    expect(router.calculate_services).to eq(annex_no_item_services)
   end
   it 'with an annex electronic delivery request' do
     stubbed_questions[:annex?] = true
     stubbed_questions[:circulates?] = false
+    stubbed_questions[:item_data?] = true
     expect(router.calculate_services).to eq(annex_electronic_services)
   end
   it 'with an on order request' do
@@ -71,6 +78,7 @@ RSpec.shared_context 'core patron group' do
   let(:recap_electronic_services) { ['recap_edd'] }
   # Should we expect this to include 'on_shelf_edd' since annex items are not considered 'on_shelf'?
   let(:annex_physical_services) { ['annex', 'on_shelf_edd'] }
+  let(:annex_no_item_services) { ['annex_no_items', 'on_shelf_edd'] }
   # Should not have 'anex' since it does not circulate
   let(:annex_electronic_services) { ['annex', 'on_shelf_edd'] }
   let(:on_order_services) { ['on_order'] }
@@ -86,6 +94,7 @@ RSpec.shared_context 'affiliate and guest patron group' do
   let(:recap_physical_services) { ['recap'] }
   let(:recap_electronic_services) { ['recap_edd'] }
   let(:annex_physical_services) { ['annex'] }
+  let(:annex_no_item_services) { ['annex_no_items'] }
   let(:annex_electronic_services) { ['annex'] }
   let(:on_order_services) { [] }
   let(:in_process_services) { [] }
