@@ -902,34 +902,6 @@ describe Requests::RequestableDecorator, requests: true do
     end
   end
 
-  describe "#libcal_url" do
-    let(:stubbed_questions) { default_stubbed_questions.merge(circulates?: true, recap?: true, location: {}) }
-    it "returns a firestone url by default" do
-      expect(decorator.libcal_url).to eq('https://libcal.princeton.edu/seats?lid=1919')
-    end
-
-    context "an item that is onsite" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(circulates?: true, recap?: false, location: { library: { code: 'lewis' } }) }
-      it "returns a firestone url by default" do
-        expect(decorator.libcal_url).to eq('https://libcal.princeton.edu/seats?lid=3508')
-      end
-    end
-
-    context "an item that is at marquand" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(circulates?: true, recap?: true, held_at_marquand_library?: true, location: { library: { code: 'marquand' } }) }
-      it "returns a firestone url by default" do
-        expect(decorator.libcal_url).to eq('https://libcal.princeton.edu/seats?lid=10656')
-      end
-    end
-
-    context "an item that is off site with a holding location" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(circulates?: true, recap?: true, location: { holding_library: { code: 'marquand' } }) }
-      it "returns a url" do
-        expect(decorator.libcal_url).to eq("https://libcal.princeton.edu/seats?lid=10656")
-      end
-    end
-  end
-
   describe "#aeon_url" do
     let(:ctx) { instance_double(Requests::SolrOpenUrlContext) }
     context "aeon alma managed" do

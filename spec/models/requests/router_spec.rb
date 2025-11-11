@@ -2,7 +2,7 @@
 require 'rails_helper'
 
 describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :none }, requests: true do
-  context "A Princeton Community User has signed in" do
+  context "A Princeton Faculty Patron Group User has signed in" do
     let(:user) { FactoryBot.create(:user) }
     let(:valid_patron) { { "netid" => "foo", "patron_group" => "P" }.with_indifferent_access }
     let(:patron) do
@@ -30,7 +30,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
     let(:requestable) { request_scsb.requestable.first }
     let(:router) { described_class.new(requestable:, patron:) }
 
-    describe "SCSB item that is charged" do
+    describe "Request Options for SCSB item that is not available" do
       before do
         stub_catalog_raw(bib_id: params[:system_id], type: 'scsb')
         stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
@@ -40,12 +40,12 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
         stub_single_holding_location 'scsbcul'
       end
 
-      it "has ILL but not Recall as a request service option" do
+      it "has ILL as a request service option" do
         expect(router.calculate_services.include?('ill')).to be_truthy
       end
     end
 
-    describe "calculate_services" do
+    describe "#calculate_services" do
       let(:item) { {} }
       let(:stubbed_questions) do
         { alma_managed?: true, in_process?: false,
@@ -63,13 +63,13 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
         before do
           stubbed_questions[:in_process?] = true
         end
-        it "returns in_process in the services" do
+        it "returns in_process as option in the services" do
           expect(router.calculate_services).to eq(['in_process'])
         end
         context "unauthorized user" do
           let(:user) { FactoryBot.build(:unauthenticated_patron) }
 
-          it "returns nothing in the services" do
+          it "returns an empty services list" do
             expect(router.calculate_services).to eq([])
           end
         end
@@ -86,7 +86,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
         context "unauthorized user" do
           let(:user) { FactoryBot.build(:unauthenticated_patron) }
 
-          it "returns nothing in the services" do
+          it "returns an empty services list" do
             expect(router.calculate_services).to eq([])
           end
         end

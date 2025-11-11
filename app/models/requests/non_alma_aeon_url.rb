@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 module Requests
-  # Create a URL that creates an aeon request
+  # Create a URL that creates an aeon request for a SC item not managed in Alma
   class NonAlmaAeonUrl < AeonUrl
     private
 

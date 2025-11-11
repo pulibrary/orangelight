@@ -2,6 +2,8 @@
 
 require 'rails_helper'
 
+## We use these features in Aeon, but no longer use ILLiad OpenURLs
+
 describe Requests::Illiad, requests: true do
   let(:document) { SolrDocument.new(id: '9988805493506421', oclc_s: ['871228508']) }
   let(:ctx) { Requests::SolrOpenUrlContext.new(solr_doc: document).ctx }

@@ -16,6 +16,7 @@ module Requests
     # Current Service Types Assigned
     # :aeon - material is stored in a location where it can be requested via Aeon
     # :annex - material is stored in an Annex location
+    # :annex_edd - material is stored in an Annex location that is eligible for digitization
     # :annex_no_items - material is stored in an Annex location with no item record data
     # :on_shelf - material is stored in a campus library location
     # :on_shelf_edd - material is in a campus library location that is eligible for digitization

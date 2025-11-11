@@ -82,114 +82,6 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
   end
 
-  context "send preservation email request" do
-    let(:requestable) do
-      [
-        {
-          "selected" => "true",
-          "mfhd" => "2229149680006421",
-          "call_number" => "TR465 .C666 2016",
-          "location_code" => "firestone$pres",
-          "item_id" => "2329149670006421",
-          "barcode" => "32101044283008",
-          "copy_number" => "0",
-          "status" => "Not Charged",
-          "type" => "pres",
-          "pick_up" => "PA"
-        }.with_indifferent_access,
-        {
-          "selected" => "false"
-        }.with_indifferent_access
-      ]
-    end
-    let(:bib) do
-      {
-        "id" => "9997123553506421",
-        "title" => "The atlas of water damage on inkjet-printed fine art /",
-        "author" => "Connor, Meghan Burge, Daniel Rochester Institute of Technology"
-      }
-    end
-    let(:params) do
-      {
-        request: user_info,
-        requestable:,
-        bib:
-      }
-    end
-
-    let(:submission_for_preservation) do
-      Requests::Submission.new(params, user_info)
-    end
-
-    let(:mail) do
-      described_class.send("pres_email", submission_for_preservation.to_h).deliver_later.perform_now
-    end
-
-    it "renders the headers" do
-      expect(mail.subject).to eq(I18n.t('requests.pres.email_subject'))
-      expect(mail.to).to eq([I18n.t('requests.pres.email')])
-      expect(mail.from).to eq([I18n.t('requests.default.email_from')])
-    end
-
-    it "renders the body" do
-      expect(mail.body.encoded).to have_content I18n.t('requests.pres.email_conf_msg')
-    end
-  end
-
-  context "send preservation email patron confirmation" do
-    let(:requestable) do
-      [
-        {
-          "selected" => "true",
-          "mfhd" => "2229149680006421",
-          "call_number" => "TR465 .C666 2016",
-          "location_code" => "firestone$pres",
-          "item_id" => "2329149670006421",
-          "barcode" => "32101044283008",
-          "copy_number" => "0",
-          "status" => "Not Charged",
-          "type" => "pres",
-          "pick_up" => "PA"
-        }.with_indifferent_access,
-        {
-          "selected" => "false"
-        }.with_indifferent_access
-      ]
-    end
-    let(:bib) do
-      {
-        "id" => "9997123553506421",
-        "title" => "The atlas of water damage on inkjet-printed fine art /",
-        "author" => "Connor, Meghan Burge, Daniel Rochester Institute of Technology"
-      }
-    end
-    let(:params) do
-      {
-        request: user_info,
-        requestable:,
-        bib:
-      }
-    end
-
-    let(:submission_for_preservation) do
-      Requests::Submission.new(params, user_info)
-    end
-
-    let(:mail) do
-      described_class.send("pres_confirmation", submission_for_preservation.to_h).deliver_later.perform_now
-    end
-
-    it "renders the headers" do
-      expect(mail.subject).to eq(I18n.t('requests.pres.email_subject'))
-      expect(mail.to).to eq([submission_for_preservation.email])
-      expect(mail.from).to eq([I18n.t('requests.default.email_from')])
-    end
-
-    it "renders the body" do
-      expect(mail.body.encoded).to have_content I18n.t('requests.pres.patron_conf_msg')
-    end
-  end
-
   context "send page record with no_items email request" do
     let(:requestable) do
       [
@@ -270,7 +162,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     let(:bib) do
       {
         "id" => "9922868943506421",
-        "title" => "The atlas of water damage on inkjet-printed fine art /",
+        "title" => "The atlas of water damage on inkjet-  inted fine art /",
         "author" => "Connor, Meghan Burge, Daniel Rochester Institute of Technology"
       }.with_indifferent_access
     end

@@ -27,7 +27,7 @@ RSpec.describe Requests::ServiceEligibility::InProcess, requests: true do
     end
 
     context 'with an alma authenticated user' do
-      let(:user) { FactoryBot.create(:guest_patron) }
+      let(:user) { FactoryBot.create(:alma_patron) }
 
       it 'returns true' do
         expect(user.guest?).to be false

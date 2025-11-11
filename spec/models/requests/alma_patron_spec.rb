@@ -23,14 +23,14 @@ RSpec.describe Requests::AlmaPatron, requests: true, patrons: true do
       end
     end
     context 'with multiple barcodes' do
-      it 'creates an access patron with the active barcode' do
+      it 'creates a valid GST patron with the active barcode' do
         patron = described_class.new(uid:)
         expect(patron.patron_hash[:barcode]).to eq('77777777')
         expect(alma_stub).to have_been_requested.once
       end
     end
 
-    it 'has a patron_group' do
+    it 'has an affiliate patron_group value' do
       patron = described_class.new(uid:)
       expect(patron.patron_hash[:patron_group]).to eq('GST')
     end
