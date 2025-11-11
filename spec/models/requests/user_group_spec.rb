@@ -101,7 +101,7 @@ RSpec.shared_context 'affiliate and guest patron group' do
   let(:on_shelf_services) { [] }
   let(:digitization_services) { [] }
   let(:resource_sharing_services) { [] }
-  let(:reading_room_services) { [] }
+  let(:reading_room_services) { ['aeon'] }
 end
 
 RSpec.shared_context 'shared patron setup' do
