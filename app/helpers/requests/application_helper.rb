@@ -30,7 +30,7 @@ module Requests
 
     # :reek:FeatureEnvy
     def show_service_options(requestable, _mfhd_id)
-      if requestable.charged? && !requestable.aeon? && !requestable.ask_me?
+      if requestable.charged? && !requestable.aeon?
         render partial: 'checked_out_options', locals: { requestable: }
       else
         display_requestable_list(requestable)
@@ -178,7 +178,7 @@ module Requests
       return true if @user.blank? || @user.guest
       return unsubmittable? requestable_list unless requestable_list.size == 1
       # temporary changes issue 438 do not disable the button for circulating items
-      # requestable_list.first.services.empty? || requestable_list.first.on_reserve? || (requestable_list.first.services.include? 'on_shelf') || requestable_list.first.ask_me?
+      # requestable_list.first.services.empty? || requestable_list.first.on_reserve? || (requestable_list.first.services.include? 'on_shelf')
       requestable_list.first.services.empty? || requestable_list.first.on_reserve?
     end
 

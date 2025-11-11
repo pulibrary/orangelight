@@ -30,7 +30,6 @@ module Requests
     # :marquand_in_library - marquand item in a location that can be paged to marquand
     # :marquand_edd - marquand item in a location that is permitted to be scanned
     # :marquand_page_charged_item - a Marquand item that is charged (checked out) to somebody else's carrel, but marquand staff can retrieve it for you
-    # :ask_me - catchall service if the item isn't eligible for anything else.
 
     def routed_request
       requestable.replace_existing_services calculate_services
@@ -59,7 +58,6 @@ module Requests
           ServiceEligibility::MarquandPageChargedItem.new(requestable:, user:),
           ServiceEligibility::Recap::NoItems.new(requestable:, user:),
           ServiceEligibility::Recap::InLibrary.new(requestable:, user:),
-          ServiceEligibility::Recap::AskMe.new(requestable:, user:),
           ServiceEligibility::Recap::Digitize.new(requestable:, user:),
           ServiceEligibility::Recap::Pickup.new(requestable:, user:),
           ServiceEligibility::Aeon.new(requestable:)

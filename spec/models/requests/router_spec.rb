@@ -145,7 +145,6 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
           stubbed_questions[:item_data?] = true
           stubbed_questions[:recap_edd?] = true
           stubbed_questions[:holding_library_in_library_only?] = false
-          stubbed_questions[:ask_me?] = true
           stubbed_questions[:circulates?] = true
           stubbed_questions[:recap_pf?] = false
         end
@@ -198,18 +197,6 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
         end
 
         context "scsb_in_library MR collection" do
-          let(:item) { { collection_code: 'MR' } }
-          before do
-            stubbed_questions[:scsb_in_library_use?] = true
-            stubbed_questions[:recap_edd?] = false
-            stubbed_questions[:eligible_for_library_services?] = false
-          end
-          it "returns ask_me in the services" do
-            expect(router.calculate_services).to eq(["ask_me"])
-          end
-        end
-
-        context "scsb_in_library MR collection campus authorized" do
           let(:item) { { collection_code: 'MR' } }
           before do
             stubbed_questions[:scsb_in_library_use?] = true
