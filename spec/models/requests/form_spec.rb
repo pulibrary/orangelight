@@ -106,22 +106,6 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       end
     end
 
-    ## We don't do illiad option URL requests any longer.
-    # describe "#ctx" do
-    #   it "produces an ILLiad flavored openurl" do
-    #     expect(request_with_holding_item.ctx).to be_an_instance_of(OpenURL::ContextObject)
-    #     expect(request_with_holding_item.ctx.to_hash).to include(
-    #       "rft.au" => "McNeur, Catherine",
-    #       "rft.btitle" => "Taming Manhattan : environmental battles in the antebellum city",
-    #       "rft.date" => "2014",
-    #       "rft.genre" => "book",
-    #       "rft.isbn" => "9780674725096",
-    #       "rft.pub" => "Cambridge, Massachusetts: Harvard University Press",
-    #       "rft.title" => "Taming Manhattan : environmental battles in the antebellum city"
-    #     )
-    #   end
-    # end
-
     describe "#requestable" do
       it "has a list of requestable objects" do
         expect(request_with_holding_item.requestable).to be_truthy
@@ -745,24 +729,6 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       end
     end
   end
-
-  ## Another defunct spec
-  # context 'When a barcode only user visits the site' do
-  #   let(:params) do
-  #     {
-  #       system_id: '994955013506421',
-  #       mfhd: '22644665360006421',
-  #       patron_request:
-  #     }
-  #   end
-  #   let(:request) { described_class.new(**params) }
-  #   before { stub_catalog_raw bib_id: params[:system_id] }
-  #   describe '#requestable' do
-  #     it "has an requestable items" do
-  #       expect(request.requestable.size).to be >= 1
-  #     end
-  #   end
-  # end
 
   context "When passed mfhd param" do
     let(:params) do
