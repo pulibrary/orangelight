@@ -37,38 +37,6 @@ describe Requests::FormDecorator, requests: true do
     end
   end
 
-  ### Start Defunct - asked circ if this valid
-  # describe "#patron_message" do
-  #   context "student ldap status" do
-  #     let(:ldap) { { status: 'student', pustatus: "undergraduate" } }
-  #     it 'does not show a message' do
-  #       expect(decorator.patron_message).to be_blank
-  #     end
-  #   end
-
-  #   context "staff ldap status" do
-  #     let(:ldap) { { status: 'staff' } }
-  #     it 'does not show a message' do
-  #       expect(decorator.patron_message).to eq ""
-  #     end
-  #   end
-
-  #   context "faculty ldap status" do
-  #     let(:ldap) { { status: 'faculty' } }
-  #     it 'does not show a message' do
-  #       expect(decorator.patron_message).to eq ""
-  #     end
-  #   end
-
-  #   context 'user not yet logged in' do
-  #     let(:user) { FactoryBot.build(:user, guest: true, uid: nil) }
-  #     let(:patron) { Requests::Patron.new(user:, patron_hash: HashWithIndifferentAccess.new) }
-  #     it 'does not show a message' do
-  #       expect(decorator.patron_message).to eq ""
-  #     end
-  #   end
-  # end
-  ### END Defunct
   describe "#hidden_fields" do
     let(:hidden_field_metadata) do
       { title: 'title', author: 'author', isbn: 'isbn', date: '1Q84' }
