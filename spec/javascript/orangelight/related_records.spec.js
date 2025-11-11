@@ -2,7 +2,7 @@ import RelatedRecordsDisplayer from '../../../app/javascript/orangelight/related
 import { promises as fs } from 'fs';
 
 describe('RelatedRecords', function () {
-    afterEach(vi.clearAllMocks);
+  afterEach(vi.clearAllMocks);
 
   test('on button press', async () => {
     document.body.innerHTML =
@@ -31,5 +31,27 @@ describe('RelatedRecords', function () {
       '<i class="pe-none toggle"></i> Show fewer related records'
     );
     expect(button.getAttribute('aria-expanded')).toBe('true');
+  });
+  describe('fetchData()', () => {
+    test('it uses the X-CSRF token in the request', async () => {
+      document.body.innerHTML = '<meta name="csrf-token" content="my-token" />';
+      global.fetch = vi.fn(() => Promise.resolve(new Response('[]')));
+
+      await RelatedRecordsDisplayer.fetchData('my_field', '123');
+
+      expect(global.fetch).toHaveBeenCalledWith(
+        '/catalog/123/linked_records/my_field',
+        { headers: { 'X-CSRF-Token': 'my-token' }, method: 'POST' }
+      );
+    });
+    test('it does not fail if the meta tag is missing for some reason', async () => {
+      document.body.innerHTML =
+        '<meta name="some-other-meta" content="some-other-content" />';
+      global.fetch = vi.fn(() => Promise.resolve(new Response('[]')));
+
+      expect(
+        async () => await RelatedRecordsDisplayer.fetchData('my_field', '123')
+      ).not.toThrowError();
+    });
   });
 });
