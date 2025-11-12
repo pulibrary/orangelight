@@ -89,45 +89,85 @@ class CollapseManager {
 }
 
 class RequestManager {
+  _showTitleValidationError(titleInput, errorMsgId) {
+    let errorElem = document.getElementById(errorMsgId);
+    if (!errorElem) {
+      errorElem = document.createElement('div');
+      errorElem.id = errorMsgId;
+      errorElem.className = 'validation-error';
+      errorElem.textContent = 'Title is required.';
+      titleInput.parentNode.appendChild(errorElem);
+    }
+    titleInput.classList.add('is-invalid');
+  }
+  _eddTitleIsPresent(row) {
+    const titleInput = row.querySelector(
+      'input[type=text][id^="requestable__edd_art_title_"]'
+    );
+    return titleInput && titleInput.value.trim() !== '';
+  }
   constructor() {
     this.submitButton = document.getElementById('request-submit-button');
     this.init();
   }
 
   init() {
-    this.checkRows();
+    this._checkRows();
     this.bindEvents();
     this.initializeDataTable();
   }
 
   // Request button enable/disable logic
-  activateRequestButton() {
+  _activateRequestButton() {
     if (this.submitButton) {
       this.submitButton.disabled = false;
     }
   }
 
-  deactivateRequestButton() {
+  _deactivateRequestButton() {
     if (this.submitButton) {
       this.submitButton.disabled = true;
     }
   }
 
   // Row validation logic
-  checkRows() {
+  _checkRows() {
     const rows = document.querySelectorAll('tr[id^=request_]');
     let anyValidRows = false;
 
-    rows.forEach((row) => {
+    for (const row of rows) {
       if (this.requestable(row)) {
+        if (this.isEed(row)) {
+          const titleInput = row.querySelector(
+            'input[type=text][id^="requestable__edd_art_title_"]'
+          );
+          const errorMsgId = titleInput ? titleInput.id + '_error' : null;
+          const errorElem = errorMsgId
+            ? document.getElementById(errorMsgId)
+            : null;
+          if (!this._eddTitleIsPresent(row)) {
+            this._deactivateRequestButton();
+            // Show validation error if not present
+            if (titleInput) {
+              this._showTitleValidationError(titleInput, errorMsgId);
+            }
+            return;
+          } else {
+            // Remove validation error if present
+            if (errorElem) {
+              errorElem.remove();
+              titleInput.classList.remove('is-invalid');
+            }
+          }
+        }
         anyValidRows = true;
       }
-    });
+    }
 
     if (anyValidRows) {
-      this.activateRequestButton();
+      this._activateRequestButton();
     } else {
-      this.deactivateRequestButton();
+      this._deactivateRequestButton();
     }
   }
 
@@ -195,28 +235,52 @@ class RequestManager {
   }
 
   // Bootstrap collapse integration
-  handleDeliveryModeChange(event) {
+  _handleDeliveryModeChange(event) {
     const target = event.target;
 
     // Use CollapseManager to handle all collapse logic
     CollapseManager.handleDeliveryModeChange(target);
 
+    // Show validation error if EED selected and title is empty
+    const row = target.closest('tr');
+    if (this.isEed(row)) {
+      const titleInput = row.querySelector(
+        'input[type=text][id^="requestable__edd_art_title_"]'
+      );
+      if (titleInput && titleInput.value.trim() === '') {
+        const errorMsgId = titleInput.id + '_error';
+        const errorElem = document.getElementById(errorMsgId);
+        this._showTitleValidationError(titleInput, errorMsgId);
+      }
+    }
+
     // Re-validate the form after the change
-    this.checkRows();
+    this._checkRows();
   }
 
   // EDD title input handler
-  handleEddTitleInput(event) {
-    if (event.target.value === '') {
-      this.deactivateRequestButton();
+  _handleEddTitleInput(event) {
+    const input = event.target;
+    const value = input.value.trim();
+    const errorMsgId = input.id + '_error';
+
+    // Remove any previous error
+    const errorElem = document.getElementById(errorMsgId);
+    if (errorElem) errorElem.remove();
+
+    if (value === '') {
+      this._deactivateRequestButton();
+      // Show error message
+      this._showTitleValidationError(input, errorMsgId);
     } else {
-      this.checkRows();
+      this._checkRows();
+      input.classList.remove('is-invalid');
     }
   }
 
   // Pickup change handler
   handlePickupChange() {
-    this.checkRows();
+    this._checkRows();
   }
 
   // Checkbox change handler
@@ -228,7 +292,7 @@ class RequestManager {
       row.classList.toggle('selected', checkbox.checked);
     }
 
-    this.checkRows();
+    this._checkRows();
   }
 
   // DataTable initialization
@@ -255,7 +319,7 @@ class RequestManager {
     );
     deliveryModeRadios.forEach((radio) => {
       radio.addEventListener('change', (event) =>
-        this.handleDeliveryModeChange(event)
+        this._handleDeliveryModeChange(event)
       );
     });
 
@@ -265,7 +329,7 @@ class RequestManager {
     );
     eddTitleInputs.forEach((input) => {
       input.addEventListener('input', (event) =>
-        this.handleEddTitleInput(event)
+        this._handleEddTitleInput(event)
       );
     });
 

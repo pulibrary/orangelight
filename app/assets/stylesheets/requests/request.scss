@@ -259,3 +259,8 @@ input[type="radio"] + label {
 #title_citation_display-list {
   display: inline-block;
 }
+
+// This is used in electronic delivery title validation
+.is-invalid {
+  border-color: var(--color-red);
+}

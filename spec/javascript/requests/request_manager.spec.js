@@ -1,9 +1,9 @@
 import '../../../app/assets/javascripts/requests/requests.js';
 import { describe, test, expect, beforeEach, afterEach, vi } from 'vitest';
 
-// Access RequestManager, CollapseManager from global scope
+// Access RequestManager from global scope
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis
-const { RequestManager, CollapseManager } = globalThis;
+const { RequestManager } = globalThis;
 
 describe('RequestManager', () => {
   let requestManager, submitButton;
@@ -21,6 +21,7 @@ describe('RequestManager', () => {
             </select>
             <input type="radio" name="requestable[][delivery_mode]" data-target="#fields-print" />
             <input type="radio" name="requestable[][delivery_mode]" data-target="#fields-eed" />
+            <input type="text" id="requestable__edd_art_title_1" />
           </td>
         </tr>
         <tr id="request_2">
@@ -29,7 +30,6 @@ describe('RequestManager', () => {
           </td>
         </tr>
       </table>
-      <input type="text" id="requestable__edd_art_title_1" />
       <div id="fields-print" class="collapse"></div>
       <div id="fields-eed" class="collapse"></div>
       <table class="tablesorter"></table>
@@ -53,7 +53,7 @@ describe('RequestManager', () => {
     test('should activate request button', () => {
       expect(submitButton.disabled).toBe(true);
 
-      requestManager.activateRequestButton();
+      requestManager._activateRequestButton();
 
       expect(submitButton.disabled).toBe(false);
     });
@@ -61,7 +61,7 @@ describe('RequestManager', () => {
     test('should deactivate request button', () => {
       submitButton.disabled = false;
 
-      requestManager.deactivateRequestButton();
+      requestManager._deactivateRequestButton();
 
       expect(submitButton.disabled).toBe(true);
     });
@@ -182,51 +182,95 @@ describe('RequestManager', () => {
     });
   });
 
-  describe('checkRows functionality', () => {
-    test('should activate button when at least one row is requestable', () => {
+  describe('_checkRows functionality', () => {
+    test('should activate button when at least one row is requestable and not EED mode', () => {
       const row = document.getElementById('request_1');
       const checkbox = row.querySelector('input[type=checkbox]');
-      const radio = row.querySelector('input[type=radio]');
+      const radios = row.querySelectorAll('input[type=radio]');
+      const printRadio = radios[0]; // First radio is print
       const select = row.querySelector('select');
 
       checkbox.checked = true;
-      radio.checked = true;
+      printRadio.checked = true;
       select.selectedIndex = 1;
 
-      requestManager.checkRows();
-
+      requestManager._checkRows();
       expect(submitButton.disabled).toBe(false);
     });
 
     test('should deactivate button when no rows are requestable', () => {
       // All checkboxes unchecked by default
 
-      requestManager.checkRows();
+      requestManager._checkRows();
 
       expect(submitButton.disabled).toBe(true);
+    });
+
+    test('should keep request button disabled when EED mode is selected and title is empty, and enable when title is present', () => {
+      const row = document.getElementById('request_1');
+      const checkbox = row.querySelector('input[type=checkbox]');
+      const radios = row.querySelectorAll('input[type=radio]');
+      const eedRadio = radios[1];
+      const titleInput = document.getElementById(
+        'requestable__edd_art_title_1'
+      );
+
+      expect(row).not.toBeNull();
+      expect(checkbox).not.toBeNull();
+      expect(eedRadio).not.toBeNull();
+      expect(titleInput).not.toBeNull();
+
+      checkbox.checked = true;
+      eedRadio.checked = true;
+      eedRadio.setAttribute('data-target', '#fields-eed');
+      titleInput.value = '';
+
+      requestManager._checkRows();
+      expect(submitButton.disabled).toBe(true);
+      // Should show validation error
+      const errorElem = document.getElementById(
+        'requestable__edd_art_title_1_error'
+      );
+      expect(errorElem).not.toBeNull();
+      expect(errorElem.textContent).toContain('Title is required');
+
+      titleInput.value = 'The best book ever';
+      requestManager._checkRows();
+      expect(submitButton.disabled).toBe(false);
+      // Validation error should be removed
+      const errorElemAfter = document.getElementById(
+        'requestable__edd_art_title_1_error'
+      );
+      expect(errorElemAfter).toBeNull();
     });
   });
 
   describe('event handlers', () => {
-    test('handleEddTitleInput should deactivate button when input is empty', () => {
-      const mockEvent = { target: { value: '' } };
+    test('_handleEddTitleInput should deactivate button when input is empty', () => {
+      const titleInput = document.getElementById(
+        'requestable__edd_art_title_1'
+      );
+      titleInput.value = '';
 
-      requestManager.handleEddTitleInput(mockEvent);
+      requestManager._handleEddTitleInput({ target: titleInput });
 
       expect(submitButton.disabled).toBe(true);
     });
 
-    test('handleEddTitleInput should check rows when input has value', () => {
-      const mockEvent = { target: { value: 'Article Title' } };
-      const checkRowsSpy = vi.spyOn(requestManager, 'checkRows');
+    test('_handleEddTitleInput should check rows when input has value', () => {
+      const titleInput = document.getElementById(
+        'requestable__edd_art_title_1'
+      );
+      titleInput.value = 'Article Title';
+      const checkRowsSpy = vi.spyOn(requestManager, '_checkRows');
 
-      requestManager.handleEddTitleInput(mockEvent);
+      requestManager._handleEddTitleInput({ target: titleInput });
 
       expect(checkRowsSpy).toHaveBeenCalled();
     });
 
     test('handlePickupChange should check rows', () => {
-      const checkRowsSpy = vi.spyOn(requestManager, 'checkRows');
+      const checkRowsSpy = vi.spyOn(requestManager, '_checkRows');
 
       requestManager.handlePickupChange();
 
@@ -239,7 +283,7 @@ describe('RequestManager', () => {
       checkbox.checked = true;
 
       const mockEvent = { target: checkbox };
-      const checkRowsSpy = vi.spyOn(requestManager, 'checkRows');
+      const checkRowsSpy = vi.spyOn(requestManager, '_checkRows');
 
       requestManager.handleCheckboxChange(mockEvent);
 
