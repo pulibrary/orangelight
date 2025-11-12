@@ -1,4 +1,3 @@
-import { insert_online_link } from './insert_online_link.es6';
 import StatusDisplay from './status_display.js';
 
 export default class AvailabilityUpdater {
