@@ -72,7 +72,7 @@ export default class OrangelightUiLoader {
       monograms.renderMonogram();
     }
 
-    $('.document-viewers').each(async (_, element) => {
+    this.#documentViewers().forEach(async (element) => {
       const viewerSet = FiggyManifestManager.buildViewers(element);
       await viewerSet.render();
       const google_books_snippets = new GoogleBooksSnippets();
@@ -83,5 +83,9 @@ export default class OrangelightUiLoader {
 
   setup_book_covers() {
     new BookCoverManager();
+  }
+
+  #documentViewers() {
+    return document.querySelectorAll('.document-viewers');
   }
 }
