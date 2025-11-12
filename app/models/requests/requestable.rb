@@ -133,10 +133,6 @@ module Requests
       location_object.holding_library&.dig(:code) || library_code
     end
 
-    def ask_me?
-      services.include?('ask_me')
-    end
-
     def item_location_code
       item&.location || location_object.code
     end

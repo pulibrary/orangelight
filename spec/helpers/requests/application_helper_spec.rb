@@ -197,7 +197,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     end
 
     context "lewis library charged" do
-      let(:stubbed_questions) { { charged?: true, aeon?: false, on_shelf?: false, ask_me?: false } }
+      let(:stubbed_questions) { { charged?: true, aeon?: false, on_shelf?: false } }
       it 'a message for lewis charged' do
         expect(helper).to receive(:render).with(partial: 'checked_out_options', locals: { requestable: }).and_return('partial rendered')
         expect(helper.show_service_options(requestable, 'acb')).to eq "partial rendered"
@@ -207,7 +207,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     context "on shelf" do
       let(:stubbed_questions) do
         { services: ['on_shelf'], charged?: false, aeon?: false,
-          alma_managed?: false, ask_me?: false, on_shelf?: true, ill_eligible?: false,
+          alma_managed?: false, on_shelf?: true, ill_eligible?: false,
           location: { library: { label: 'abc' } } }
       end
       it 'a link to a map' do

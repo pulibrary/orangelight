@@ -13,7 +13,6 @@ non_requestable_message
 only_aeon?
 patron_message
 single_item_request?
-ask_me?
 item_location_code
 pick_up_locations
 urls
