@@ -4,8 +4,9 @@ module Requests
     # This class is responsible for determining if a specific
     # resource can be requested via Aeon
     class Aeon
-      def initialize(requestable:)
+      def initialize(requestable:, patron:)
         @requestable = requestable
+        @patron = patron
       end
 
       def to_s
@@ -16,9 +17,17 @@ module Requests
         requestable.aeon? || !(requestable.alma_managed? || requestable.partner_holding?)
       end
 
+      def patron_group_eligible?
+        allowed_patron_groups.include?(patron.patron_group)
+      end
+
+      def allowed_patron_groups
+        @allowed_patron_groups ||= %w[P REG GRAD SENR UGRD SUM]
+      end
+
     private
 
-      attr_reader :requestable
+      attr_reader :requestable, :patron
     end
   end
 end

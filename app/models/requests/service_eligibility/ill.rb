@@ -6,7 +6,6 @@ module Requests
     class ILL
       def initialize(requestable:, patron:, any_loanable:)
         @requestable = requestable
-        @user = patron.user
         @any_loanable = any_loanable
         @patron = patron
       end
@@ -16,7 +15,7 @@ module Requests
       end
 
       def eligible?
-        requestable_eligible? && user_eligible? && patron_group_eligible?
+        requestable_eligible? && patron_group_eligible? && !patron.guest?
       end
 
         private
@@ -26,19 +25,11 @@ module Requests
               (!any_loanable || requestable.enumerated? || requestable.preservation_conservation?)
           end
 
-          def user_eligible?
-            user.cas_provider? || user.alma_provider?
-          end
-
           def patron_group_eligible?
-            allowed_patron_groups.include?(patron.patron_group)
+            patron.core_patron_group?
           end
 
-          def allowed_patron_groups
-            @allowed_patron_groups ||= %w[P REG GRAD SENR UGRD]
-          end
-
-          attr_reader :requestable, :user, :any_loanable, :patron
+          attr_reader :requestable, :any_loanable, :patron
     end
   end
 end

@@ -4,9 +4,9 @@ module Requests
     module Recap
       # Abstract class for other recap classes to inherit from
       class AbstractRecap
-        def initialize(requestable:, user:)
+        def initialize(requestable:, patron:)
           @requestable = requestable
-          @user = user
+          @patron = patron
         end
 
         def to_s
@@ -20,10 +20,10 @@ module Requests
           end
 
           def user_eligible?
-            user.cas_provider? || user.alma_provider?
+            (patron.core_patron_group? || patron.affiliate_patron_group?) && !patron.guest?
           end
 
-          attr_reader :requestable, :user
+          attr_reader :requestable, :patron
       end
     end
   end

@@ -2,9 +2,9 @@
 module Requests
   module ServiceEligibility
     class InProcess
-      def initialize(requestable:, user:)
+      def initialize(requestable:, patron:)
         @requestable = requestable
-        @user = user
+        @patron = patron
       end
 
       def to_s
@@ -18,13 +18,13 @@ module Requests
     private
 
       def user_eligible?
-        user.cas_provider? || user.alma_provider?
+        patron.core_patron_group? && !patron.guest?
       end
 
       def requestable_eligible?
         !requestable.aeon? && !requestable.charged? && requestable.in_process?
       end
-      attr_reader :requestable, :user
+      attr_reader :requestable, :patron
     end
   end
 end

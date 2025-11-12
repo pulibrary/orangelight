@@ -2,13 +2,10 @@
 module Requests
   # This class assigns "services" a given requestable object is available through
   class Router
-    attr_reader :user, :patron, :any_loanable, :requestable
-
-    delegate :cas_provider?, :alma_provider?, to: :user
+    attr_reader :patron, :any_loanable, :requestable
 
     def initialize(requestable:, any_loanable: false, patron: nil)
       @requestable = requestable
-      @user = patron.user
       @patron = patron
       @any_loanable = any_loanable
     end
@@ -47,20 +44,20 @@ module Requests
       def eligibility_checks
         [
           ServiceEligibility::ILL.new(requestable:, patron:, any_loanable:),
-          ServiceEligibility::OnOrder.new(requestable:, user:),
+          ServiceEligibility::OnOrder.new(requestable:, patron:),
           ServiceEligibility::Annex::Pickup.new(requestable:, patron:),
           ServiceEligibility::Annex::NoItems.new(requestable:, patron:),
           ServiceEligibility::OnShelfDigitize.new(requestable:, patron:),
           ServiceEligibility::OnShelfPickup.new(requestable:, patron:),
-          ServiceEligibility::InProcess.new(requestable:, user:),
-          ServiceEligibility::MarquandInLibrary.new(requestable:, user:),
-          ServiceEligibility::MarquandEdd.new(requestable:, user:),
-          ServiceEligibility::MarquandPageChargedItem.new(requestable:, user:),
-          ServiceEligibility::Recap::NoItems.new(requestable:, user:),
-          ServiceEligibility::Recap::InLibrary.new(requestable:, user:),
-          ServiceEligibility::Recap::Digitize.new(requestable:, user:),
-          ServiceEligibility::Recap::Pickup.new(requestable:, user:),
-          ServiceEligibility::Aeon.new(requestable:)
+          ServiceEligibility::InProcess.new(requestable:, patron:),
+          ServiceEligibility::MarquandInLibrary.new(requestable:, patron:),
+          ServiceEligibility::MarquandEdd.new(requestable:, patron:),
+          ServiceEligibility::MarquandPageChargedItem.new(requestable:, patron:),
+          ServiceEligibility::Recap::NoItems.new(requestable:, patron:),
+          ServiceEligibility::Recap::InLibrary.new(requestable:, patron:),
+          ServiceEligibility::Recap::Digitize.new(requestable:, patron:),
+          ServiceEligibility::Recap::Pickup.new(requestable:, patron:),
+          ServiceEligibility::Aeon.new(requestable:, patron:)
         ]
       end
   end

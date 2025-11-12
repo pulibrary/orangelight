@@ -19,7 +19,7 @@ module Requests
             requestable.item_data? &&
               !requestable.recap_pf? &&
               !requestable.holding_library_in_library_only? &&
-              !(!requestable.circulates? && !requestable.recap_edd?) &&
+              requestable.circulates? &&
               !(requestable.scsb_in_library_use? && requestable.item[:collection_code] != "MR") &&
               !requestable.charged?
           end
