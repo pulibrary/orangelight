@@ -55,7 +55,6 @@ module Requests
           ServiceEligibility::MarquandPageChargedItem.new(requestable:, patron:),
           ServiceEligibility::Recap::NoItems.new(requestable:, patron:),
           ServiceEligibility::Recap::InLibrary.new(requestable:, patron:),
-          ServiceEligibility::Recap::AskMe.new(requestable:, patron:),
           ServiceEligibility::Recap::Digitize.new(requestable:, patron:),
           ServiceEligibility::Recap::Pickup.new(requestable:, patron:),
           ServiceEligibility::Aeon.new(requestable:, patron:)
