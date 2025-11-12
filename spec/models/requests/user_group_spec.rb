@@ -15,7 +15,6 @@ RSpec.shared_examples 'shared request type tests' do
     stubbed_questions[:recap?] = true
     stubbed_questions[:item_data?] = true
     stubbed_questions[:holding_library_in_library_only?] = false
-    stubbed_questions[:ask_me?] = true
     stubbed_questions[:circulates?] = true
     stubbed_questions[:recap_pf?] = false
     expect(router.calculate_services).to eq(recap_physical_services)
@@ -25,7 +24,6 @@ RSpec.shared_examples 'shared request type tests' do
     stubbed_questions[:item_data?] = true
     stubbed_questions[:recap_edd?] = true
     stubbed_questions[:holding_library_in_library_only?] = false
-    stubbed_questions[:ask_me?] = true
     stubbed_questions[:circulates?] = false
     stubbed_questions[:recap_pf?] = false
     expect(router.calculate_services).to eq(recap_electronic_services)
