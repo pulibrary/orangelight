@@ -5,7 +5,6 @@ import GoogleBooksSnippets from '../orangelight/google_books_snippets.es6';
 import RelatedRecordsDisplayer from '../orangelight/related_records.es6';
 import DisplayMoreFieldComponent from '../../components/display_more_field_component.es6';
 import { handleBtnKeyDown } from './accessible_facets';
-import MultiselectCombobox from './multiselect_combobox.es6';
 
 export default class OrangelightUiLoader {
   run() {
