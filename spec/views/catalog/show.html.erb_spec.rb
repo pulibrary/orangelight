@@ -8,21 +8,21 @@ RSpec.describe 'catalog/show' do
   end
 
   context 'when entries describe a scanned resource published using an ARK', js: true do
-    xit 'renders a viewer' do
+    xit 'renders a viewer', :viewer do
       visit '/catalog/9946093213506421'
       expect(page).to have_selector('div#viewer-container')
     end
   end
 
   context 'when entries describe a scanned map published using an ARK', js: true do
-    xit 'renders a viewer' do
+    xit 'renders a viewer', :viewer do
       visit 'catalog/9961093233506421'
       expect(page).to have_selector('div#viewer-container')
     end
   end
 
   context 'when entries describe resources published using multiple ARKs', js: true do
-    xit 'renders multiple viewers' do
+    xit 'renders multiple viewers', :viewer do
       visit '/catalog/9970446223506421'
       expect(page).to have_selector('div#viewer-container')
       expect(page).to have_selector('div#viewer-container_1')
@@ -30,13 +30,13 @@ RSpec.describe 'catalog/show' do
   end
 
   context 'when entries describe a set of scanned maps published using ARKs', js: true do
-    xit 'will display only one viewer for the entire set' do
+    xit 'will display only one viewer for the entire set', :viewer do
       visit '/catalog/9968683243506421'
       expect(page).to have_selector('div#viewer-container')
     end
   end
 
-  xit 'renders the thumbnail using the IIIF Manifest' do
+  xit 'renders the thumbnail using the IIIF Manifest', :viewer do
     visit "catalog/9946093213506421"
     expect(page).to have_selector("#.document-thumbnail.has-viewer-link", wait: 60)
 
@@ -49,7 +49,7 @@ RSpec.describe 'catalog/show' do
   end
 
   context 'when entries describe a coin', js: true do
-    xit 'will render a viewer when coins are in figgy production' do
+    xit 'will render a viewer when coins are in figgy production', :viewer do
       visit 'catalog/coin-2'
       expect(page).to have_selector('div#viewer-container')
     end

@@ -63,7 +63,7 @@ describe 'robot user-agents' do
   end
 
   context 'when visiting a show page' do
-    it 'does not show a viewer' do
+    it 'does not show a viewer', :viewer do
       get '/catalog/99125203099306421',
           headers: { "HTTP_USER_AGENT" => GOOGLEBOT_USER_AGENT }
       expect(response.body).not_to include('class="document-viewers"')

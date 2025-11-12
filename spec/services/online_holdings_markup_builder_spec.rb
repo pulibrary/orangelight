@@ -73,7 +73,7 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
       end
     end
 
-    context 'with a link to the IIIF Viewer' do
+    context 'with a link to the IIIF Viewer', :viewer do
       let(:link_markup) { described_class.electronic_access_link('https://pulsearch.princeton.edu/catalog/4609321#view', ['arks.princeton.edu']) }
 
       it 'generates electronic access links for a catalog record which link to the IIIF Viewer' do
@@ -84,7 +84,7 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
         expect(link.text).to include 'Digital content'
       end
     end
-    context "with a labeled link to the IIIF viewer" do
+    context "with a labeled link to the IIIF viewer", :viewer do
       let(:link_markup) { described_class.electronic_access_link('https://pulsearch.princeton.edu/catalog/4609321#view', ['Selected images']) }
       it 'generates electronic access links for a catalog record which link to the IIIF Viewer' do
         parsed = Nokogiri::HTML link_markup
