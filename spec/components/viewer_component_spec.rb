@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe ViewerComponent, type: :component do
+RSpec.describe ViewerComponent, :viewer, type: :component do
   let(:manifest_paths_json) do
     {
       'iiif_manifest_paths' => {
