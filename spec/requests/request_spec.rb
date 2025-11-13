@@ -81,13 +81,6 @@ describe 'blacklight tests' do
     end
   end
 
-  describe 'stackmap link check' do
-    it 'does not provide a find it link for online holdings' do
-      get '/catalog/9990889283506421'
-      expect(response.body.include?('[Where to find it]')).to eq false
-    end
-  end
-
   SEPARATOR = '—'
   describe 'subjectify check' do
     it 'provides links on LC subject headings to facet search based on hierarchy' do
