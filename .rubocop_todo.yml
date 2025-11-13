@@ -50,7 +50,6 @@ Layout/EmptyLinesAroundAttributeAccessor:
     - 'app/checks/aeon_status.rb'
     - 'app/checks/illiad_status.rb'
     - 'app/checks/scsb_status.rb'
-    - 'app/checks/stackmap_status.rb'
     - 'app/forms/feedback_form.rb'
     - 'app/models/requests/form_decorator.rb'
     - 'app/models/requests/full_patron.rb'
@@ -279,7 +278,6 @@ Naming/MethodParameterName:
     - 'app/models/requests/illiad.rb'
     - 'app/processors/orangelight/link_to_facet_processor.rb'
     - 'app/services/faceted_query_service.rb'
-    - 'app/services/stackmap_service.rb'
     - 'lib/orangelight/browse_lists/call_number_csv.rb'
     - 'app/helpers/application_helper.rb'
 
@@ -422,7 +420,6 @@ RSpec/BeNil:
     - 'spec/requests/features_spec.rb'
     - 'spec/services/bibdata_spec.rb'
     - 'spec/services/decorator_service_spec.rb'
-    - 'spec/services/stackmap_service_spec.rb'
     - 'spec/views/catalog/index_spec.rb'
 
 # Offense count: 1
@@ -667,7 +664,6 @@ RSpec/PendingWithoutReason:
     - 'spec/system/catalog_show_spec.rb'
     - 'spec/system/searching_spec.rb'
     - 'spec/views/catalog/show.html.erb_spec.rb'
-    - 'spec/system/stackmap_spec.rb'
 
 # Offense count: 178
 # This cop supports unsafe autocorrection (--autocorrect-all).

@@ -20,10 +20,6 @@ RSpec.describe "Health Check", type: :request do
   let(:aeon_stub) do
     stub_request(:get, aeon_url).to_return(body: "1.5.2.0", status: 200)
   end
-  let(:stackmap_url) { "https://www.stackmapintegration.com/princeton-blacklight/StackMap.min.js" }
-  let(:stackmap_stub) do
-    stub_request(:head, stackmap_url).to_return(status: 200)
-  end
   let(:scsb_url) { "https://scsb.recaplib.org:9093" }
   let(:scsb_stub) do
     stub_request(:get, scsb_url).to_return(status: 200)
@@ -33,7 +29,6 @@ RSpec.describe "Health Check", type: :request do
     bibdata_stub
     illiad_stub
     aeon_stub
-    stackmap_stub
     scsb_stub
   end
   describe "GET /health" do

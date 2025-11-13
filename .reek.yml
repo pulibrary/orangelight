@@ -207,7 +207,6 @@ detectors:
     - OnlineHoldingsMarkupBuilder#self.electronic_portfolio_markup
     - OnlineHoldingsMarkupBuilder#self.urlify
     - Requests::BibdataService#self.delivery_locations
-    - StackmapService::Url#url
   FeatureEnvy:
     exclude:
     - Orangelight::ConstraintsComponent#guided_search_value
@@ -542,8 +541,6 @@ detectors:
     - HoldingRequestsAdapter#shelving_title?
     - LinkedDocumentResolver::LinkedDocuments#response
     - Requests::BibdataService#self.delivery_locations
-    - StackmapService::Url#location_label
-    - StackmapService::Url#valid?
   RepeatedConditional:
     exclude:
     - ContactController

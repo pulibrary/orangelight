@@ -255,8 +255,6 @@ module ApplicationHelper
     return false if remote_storage?(location_code)
     return false if (location_code || "").start_with?("plasma$", "marquand$")
 
-    return false if StackmapService::Url.missing_stackmap_reserves.include?(location_code)
-
     true
   end
 

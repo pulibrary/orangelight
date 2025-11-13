@@ -195,24 +195,6 @@ footer,
   display: none;
 }
 
-#stackmap-modal .modal-header {
-  border: 0;
-
-  button {
-    display: none;
-  }
-
-  .modal-title {
-    font-size: 16pt;
-  }
-}
-
-#stackmap-modal iframe {
-  width: 100vh;
-  height: 100vh;
-  border: 0;
-}
-
 .dl-horizontal .other-views,
 .dl-horizontal .classic-views {
   display: none;
