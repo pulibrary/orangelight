@@ -1,3 +1,4 @@
+import { error } from 'console';
 import updater from '../../../app/javascript/orangelight/availability.es6';
 import { promises as fs } from 'fs';
 
@@ -734,6 +735,94 @@ describe('AvailabilityUpdater', function () {
         '.holding-status[data-temp-location-code="RES_SHARE$IN_RS_REQ"] span'
       ).textContent
     ).toBe('Request');
+  });
+
+  // new spec - remove comment after finishing #3913
+  test('request_availability uses fetch and calls process_results_list on success', async () => {
+    document.body.innerHTML =
+      '<div class="documents-list">' +
+      '<li data-availability-record="true" data-record-id="99131592119006421"></li>' +
+      '<li data-availability-record="true" data-record-id="99131494079906421"></li>' +
+      '<li data-availability-record="true" data-record-id="99129167963206421"></li>' +
+      '</div>';
+    const mockJson = {
+      '99131592119006421': {
+        '221083207360006421': {
+          on_reserve: 'N',
+          location: 'firestone$stacks',
+          label: 'Firestone Library - Stacks',
+          status_label: 'Available',
+          copy_number: null,
+          temp_location: false,
+          id: '221083207360006421',
+        },
+      },
+      '99131494079906421': {
+        '221067103950006421': {
+          on_reserve: 'N',
+          location: 'marquand$pj',
+          label:
+            'Marquand Library - Remote Storage (ReCAP): Marquand Library Use Only',
+          status_label: 'Unavailable',
+          copy_number: null,
+          temp_location: false,
+          id: '221067103950006421',
+        },
+      },
+      '99129167963206421': {
+        '221005134130006421': {
+          on_reserve: 'N',
+          location: 'marquand$pj',
+          label:
+            'Marquand Library - Remote Storage (ReCAP): Marquand Library Use Only',
+          status_label: 'Unavailable',
+          copy_number: null,
+          temp_location: false,
+          id: '221005134130006421',
+        },
+      },
+    };
+    const mockResponse = {
+      ok: true,
+      status: 200,
+      json: vi.fn().mockResolvedValue(mockJson),
+    };
+    const fetchSpy = vi.spyOn(global, 'fetch').mockResolvedValue(mockResponse);
+    const processSpy = vi.spyOn(updater.prototype, 'process_results_list');
+    const u = new updater();
+    u.bibdata_base_url = 'http://mock_url';
+    await u.request_availability();
+    await new Promise(setImmediate); // all microtasks execute before continuing
+
+    expect(fetchSpy).toHaveBeenCalled();
+    expect(processSpy).toHaveBeenCalledWith(mockJson);
+
+    fetchSpy.mockRestore();
+    processSpy.mockRestore();
+  });
+
+  // new spec - remove comment after finishing #3913
+  test('request_availability logs error on fetch failure', async () => {
+    const bib_id = '123456789';
+    document.body.innerHTML = `<div class="documents-list">
+        <li data-availability-record="true" data-record-id="${bib_id}"></li>
+      </div>`;
+    const fetchSpy = vi
+      .spyOn(global, 'fetch')
+      .mockRejectedValue(new Error('Network error'));
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const u = new updater();
+
+    await u.request_availability();
+    await new Promise(setImmediate); // all microtasks execute before continuing
+
+    expect(fetchSpy).toHaveBeenCalled();
+    expect(errorSpy).toHaveBeenCalledWith(
+      expect.stringContaining('Failed to retrieve availability data for batch.')
+    );
+
+    fetchSpy.mockRestore();
+    errorSpy.mockRestore();
   });
 });
 

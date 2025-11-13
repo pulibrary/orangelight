@@ -36,17 +36,28 @@ export default class AvailabilityUpdater {
       );
 
       for (let i = 0; i < batches.length; i++) {
-        const batch_url = `${this.bibdata_base_url}/bibliographic/availability.json?bib_ids=${batches[i].join()}`;
-        console.log(`batch: ${i}, url: ${batch_url}`);
-        $.getJSON(batch_url, this.process_results_list).fail(
-          (jqXHR, _textStatus, errorThrown) => {
-            // Log that there were problems fetching a batch. Unfortunately we don't know exactly
-            // which batch so we cannot include that information.
+        let batch_ids = batches[i].join(',');
+        let batch_url =
+          this.bibdata_base_url +
+          '/bibliographic/availability.json?bib_ids=' +
+          batch_ids;
+        console.log('batch: ' + i + ', url: ' + batch_url);
+        fetch(batch_url)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`HTTP status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            this.process_results_list(data);
+          })
+
+          .catch((error) => {
             console.error(
-              `Failed to retrieve availability data for batch. HTTP status: ${jqXHR.status}: ${errorThrown}`
+              `Failed to retrieve availability data for batch. ${error}`
             );
-          }
-        );
+          });
       }
 
       // a show page
