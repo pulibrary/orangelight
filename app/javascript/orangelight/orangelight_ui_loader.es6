@@ -50,9 +50,11 @@ export default class OrangelightUiLoader {
   }
 
   setup_viewers() {
-    const $elements = $('.document-thumbnail[data-bib-id]');
-    if ($elements.length > 0) {
-      const thumbnails = FiggyManifestManager.buildThumbnailSet($elements);
+    const elements = document.querySelectorAll(
+      '.document-thumbnail[data-bib-id]'
+    );
+    if (elements.length > 0) {
+      const thumbnails = FiggyManifestManager.buildThumbnailSet(elements);
       thumbnails.render();
     }
 
