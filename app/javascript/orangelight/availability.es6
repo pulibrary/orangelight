@@ -67,37 +67,57 @@ export default class AvailabilityUpdater {
       this.host_id = $('#main-content').data('host-id') || '';
       if (this.id.match(/^SCSB-\d+/)) {
         url = `${this.availability_url}?scsb_id=${this.id.replace(/^SCSB-/, '')}`;
-        return $.getJSON(url, this.process_scsb_single).fail(
-          (jqXHR, textStatus, errorThrown) => {
-            return console.error(
-              `Failed to retrieve availability data for the SCSB record ${this.id}: ${errorThrown}`
-            );
-          }
-        );
-      } else {
-        return $.getJSON(
-          this.availability_url_show(),
-          this.process_single
-        ).fail((jqXHR, textStatus, errorThrown) => {
-          if (jqXHR.status == 429) {
-            if (allowRetry) {
-              console.log(`Retrying availability for record ${this.id}`);
-              window.setTimeout(() => {
-                this.update_availability_retrying(searchResults);
-                this.request_availability(false);
-              }, 1500);
-            } else {
-              console.error(
-                `Failed to retrieve availability data for the bib (retry). Record ${this.id}: ${errorThrown}`
-              );
-              this.update_availability_undetermined(searchResults);
+        fetch(url)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`HTTP status: ${response.status}`);
             }
-            return;
-          }
-          return console.error(
-            `Failed to retrieve availability data for the bib. record ${this.id}: ${errorThrown}`
-          );
-        });
+            return response.json();
+          })
+          .then((data) => {
+            this.process_scsb_single(data);
+          })
+          .catch((error) => {
+            console.error(
+              `Failed to retrieve availability data for the SCSB record ${this.id}: ${error}`
+            );
+          });
+      } else {
+        url = this.availability_url_show();
+        fetch(url)
+          .then((response) => {
+            if (response.status === 429) {
+              if (allowRetry) {
+                console.log(`Retrying availability for record ${this.id}`);
+                window.setTimeout(() => {
+                  this.update_availability_retrying(searchResults);
+                  this.request_availability(false);
+                }, 1500);
+                return;
+              } else {
+                console.error(
+                  `Failed to retrieve availability data for the bib (retry). Record ${this.id}: HTTP status 429`
+                );
+                this.update_availability_undetermined(searchResults);
+                return;
+              }
+            }
+            if (!response.ok) {
+              throw new Error(`HTTP status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            console.log('hhhhh');
+            if (data) {
+              this.process_single(data);
+            }
+          })
+          .catch((error) => {
+            console.error(
+              `Failed to retrieve availability data for the bib. record ${this.id}: ${error.message}`
+            );
+          });
       }
     }
   }
