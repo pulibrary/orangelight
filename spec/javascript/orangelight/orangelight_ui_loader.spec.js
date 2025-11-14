@@ -43,11 +43,9 @@ describe('OrangelightUiLoader', function () {
   test("Doesn't call Figgy if there's no IDs to call", () => {
     document.body.innerHTML = '';
     const spy = vi.spyOn(FiggyManifestManager, 'buildThumbnailSet');
-    const spy2 = vi.spyOn(FiggyManifestManager, 'buildMonogramThumbnails');
     const l = new loader();
     l.setup_viewers();
     expect(spy).toHaveBeenCalledTimes(0);
-    expect(spy2).toHaveBeenCalledTimes(0);
   });
 
   test('If there is an ID, It calls Figgy to build a thumbnailSet', async () => {

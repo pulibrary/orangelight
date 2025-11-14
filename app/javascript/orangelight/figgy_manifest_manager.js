@@ -17,7 +17,6 @@ function wrapWithViewerLink($element) {
   $element.wrap('<a href="#viewer-container"></a>');
   $element.append('<span class="visually-hidden">Go to viewer</span>');
 }
-import loadResourcesByFiggyIds from './load-resources-by-figgy-ids';
 import loadResourcesByOrangelightId from './load-resources-by-orangelight-id';
 import loadResourcesByOrangelightIds from './load-resources-by-orangelight-ids';
 import { insert_online_link } from './insert_online_link.es6';
@@ -294,14 +293,6 @@ class FiggyManifestManager {
     return new FiggyThumbnailSet(
       $elements,
       loadResourcesByOrangelightIds,
-      window.jQuery
-    );
-  }
-  // See: https://github.com/pulibrary/orangelight/issues/2967
-  static buildMonogramThumbnails($monogramIds) {
-    return new FiggyThumbnailSet(
-      $monogramIds,
-      loadResourcesByFiggyIds,
       window.jQuery
     );
   }
