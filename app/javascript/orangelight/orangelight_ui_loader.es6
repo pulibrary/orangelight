@@ -65,12 +65,6 @@ export default class OrangelightUiLoader {
       const thumbnails = FiggyManifestManager.buildThumbnailSet($elements);
       thumbnails.render();
     }
-    const $monogramIds = $('p[data-monogram-id]');
-    if ($monogramIds.length > 0) {
-      const monograms =
-        FiggyManifestManager.buildMonogramThumbnails($monogramIds);
-      monograms.renderMonogram();
-    }
 
     this.#documentViewers().forEach(async (element) => {
       const viewerSet = FiggyManifestManager.buildViewers(element);
