@@ -824,6 +824,121 @@ describe('AvailabilityUpdater', function () {
     fetchSpy.mockRestore();
     errorSpy.mockRestore();
   });
+
+  // new spec - remove comment after finishing #3913
+  test('request_availability uses fetch for Available SCSB record and calls process_scsb_single on success', async () => {
+    window.location = { pathname: '/catalog/SCSB-15084779' };
+
+    document.body.innerHTML = `
+      <div id="main-content" data-host-id="">
+        <table>
+          <tr>
+            <td class="holding-status" data-availability-record="true" data-record-id="SCSB-15084779" data-holding-id="16169462" data-scsb-barcode="CU29420407" data-aeon="false">
+              <span class="availability-icon lux-text-style"></span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    `;
+
+    const mockJson = {
+      CU29420407: {
+        itemBarcode: 'CU29420407',
+        itemAvailabilityStatus: 'Available',
+        errorMessage: null,
+        collectionGroupDesignation: 'Shared',
+      },
+      CU29420156: {
+        itemBarcode: 'CU29420156',
+        itemAvailabilityStatus: 'Available',
+        errorMessage: null,
+        collectionGroupDesignation: 'Shared',
+      },
+    };
+
+    const mockResponse = {
+      ok: true,
+      status: 200,
+      json: vi.fn().mockResolvedValue(mockJson),
+    };
+
+    const fetchSpy = vi.spyOn(global, 'fetch').mockResolvedValue(mockResponse);
+    const processSpy = vi.spyOn(updater.prototype, 'process_scsb_single');
+
+    const u = new updater();
+    u.availability_url = 'http://mock_url/availability';
+
+    await u.request_availability(true);
+    await new Promise(setImmediate); // all microtasks execute before continuing
+
+    expect(fetchSpy).toHaveBeenCalledWith(
+      'http://mock_url/availability?scsb_id=15084779'
+    );
+    expect(processSpy).toHaveBeenCalledWith(mockJson);
+    const holding_status =
+      document.getElementsByClassName('availability-icon')[0];
+    expect(holding_status.classList.contains('lux-text-style')).toBe(true);
+    expect(holding_status.classList.contains('green')).toBe(true);
+    expect(holding_status.textContent).toBe('Available');
+
+    fetchSpy.mockRestore();
+    processSpy.mockRestore();
+  });
+  test('request_availability uses fetch for available NON SCSB record and calls process_single on success', async () => {
+    window.location = { pathname: '/catalog/9932127373506421' };
+
+    document.body.innerHTML = `
+      <div id="main-content" data-host-id="">
+        <table>
+          <td class="holding-status" data-availability-record="true" data-record-id="9932127373506421" data-holding-id="22514272140006421" data-temp-location-code="true">
+            <span class="availability-icon"></span>
+          </td>
+        </table>
+      </div>
+    `;
+
+    const mockJson = {
+      '9932127373506421': {
+        '22514272140006421': {
+          on_reserve: 'N',
+          location: 'annex$stacks',
+          label: 'Forrestal Annex - Stacks',
+          status_label: 'Available',
+          copy_number: null,
+          temp_location: false,
+          id: '22514272140006421',
+        },
+      },
+    };
+
+    const mockResponse = {
+      ok: true,
+      status: 200,
+      json: vi.fn().mockResolvedValue(mockJson),
+    };
+
+    const fetchSpy = vi.spyOn(global, 'fetch').mockResolvedValue(mockResponse);
+    const processSpy = vi.spyOn(updater.prototype, 'process_single');
+
+    const u = new updater();
+    u.bibdata_base_url = 'http://mock_url';
+
+    await u.request_availability(true);
+    await new Promise(setImmediate); // all microtasks execute before continuing
+
+    expect(fetchSpy).toHaveBeenCalledWith(
+      'http://mock_url/bibliographic/availability.json?deep=true&bib_ids=9932127373506421'
+    );
+    expect(processSpy).toHaveBeenCalledWith(mockJson);
+    const holding_status =
+      document.getElementsByClassName('availability-icon')[0];
+    expect(holding_status.classList.contains('lux-text-style')).toBe(true);
+    expect(holding_status.classList.contains('green')).toBe(true);
+    expect(holding_status.textContent).toBe('Available');
+
+    fetchSpy.mockRestore();
+    processSpy.mockRestore();
+  });
 });
 
 describe('getLibraryName', () => {
