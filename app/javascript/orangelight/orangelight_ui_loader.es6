@@ -11,19 +11,9 @@ export default class OrangelightUiLoader {
     this.setup_availability();
     this.setup_linked_records();
     this.setup_show_more_fields();
-    this.setup_modal_focus();
     this.setup_viewers();
     this.setup_book_covers();
     handleBtnKeyDown();
-  }
-
-  setup_modal_focus() {
-    $('body').on('shown.bs.modal', (event) => {
-      $(event.target)
-        .find('input[type!="hidden"],textarea:enabled')
-        .first()
-        .focus();
-    });
   }
 
   setup_availability() {
