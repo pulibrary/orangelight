@@ -289,9 +289,9 @@ class FiggyThumbnailSet {
 }
 
 class FiggyManifestManager {
-  static buildThumbnailSet($elements) {
+  static buildThumbnailSet(elements) {
     return new FiggyThumbnailSet(
-      $elements,
+      window.jQuery(elements),
       loadResourcesByOrangelightIds,
       window.jQuery
     );
