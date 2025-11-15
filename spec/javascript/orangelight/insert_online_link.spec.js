@@ -11,6 +11,7 @@ describe('insert_online_link', function () {
 
     const onlineDiv = document.getElementsByClassName('availability--online');
     expect(onlineDiv.length).toEqual(1);
+    expect(onlineDiv[0].textContent).toContain('Available Online');
   });
 
   test("insert_online_header() doesn't add a new one when there was already a header", () => {
