@@ -3,7 +3,9 @@
   <% component.with_label do %>
     <%= label %>
   <% end %>
-  <% component.with_value do %>
-    <%= subjectify %>
+  <% render_field_values.each_with_index do |value, index| %>
+    <% component.with_value(value:, index:) do %>
+      <%= subjectify %>
+    <% end %>
   <% end %>
 <% end %>
