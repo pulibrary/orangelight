@@ -56,11 +56,6 @@ RSpec.describe 'catalog/show' do
   end
 
   context 'for coins with monograms' do
-    xit 'will render a monogram thumbnail with figgy production coins', js: true do
-      visit 'catalog/coin-1167'
-      expect(page).to have_selector('div#view') # REVIEW: the monogram spec. The viewer has div#viewer-container
-    end
-
     it 'displays each monogram label with link to search' do
       visit 'catalog/coin-1167'
       expect(page).to have_link('Archaic Monogram', href: '/?f[issue_monogram_title_s][]=Archaic+Monogram')
