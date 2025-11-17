@@ -25,55 +25,70 @@ $(function () {
     $(this).closest('tr').toggleClass('info', this.checked);
   });
 
-  $('#search_field').on('change', function (e) {
-    $('#q').attr('placeholder', $(this).find(':selected').data('placeholder'));
-  });
-
-  $('.document-thumbnail').click(function (e) {
-    var target = $('#viewer-container');
-    if (target.length) {
-      e.preventDefault();
-      $('html, body').stop().animate(
-        {
-          scrollTop: target.offset().top,
-        },
-        800
+  // set placeholder on search type change
+  const searchField = document.getElementById('search_field');
+  searchField.onchange = function () {
+    document
+      .getElementById('q')
+      .setAttribute(
+        'placeholder',
+        this.options[this.selectedIndex].getAttribute('data-placeholder')
       );
-    }
-  });
+  };
 
-  $('.facet-select').one('click', function (e) {
-    if ($('#q').val()) {
-      var query = encodeURIComponent($('#q').val());
-      var queryDict = {};
-      this.href
-        .substr(1)
-        .split('&')
-        .forEach(function (item) {
-          queryDict[item.split('=')[0]] = item.split('=')[1];
-        });
-      if (query != queryDict['q']) {
-        if (queryDict['q'] == null) {
-          this.href = this.href + '&q=' + query;
-        } else {
-          this.href = this.href.replace('&q=' + queryDict['q'], '&q=' + query);
+  // short pause before jumpping to viewer if present
+  document
+    .getElementsByClassName('document-thumbnail')[0]
+    .addEventListener('click', function (e) {
+      var target = document.getElementById('viewer-container');
+      if (window.location.hash === '#viewer-container') {
+        var target = document.getElementById('viewer-container');
+        if (target) {
+          e.preventDefault();
+          setTimeout(function () {
+            window.scrollTo({
+              top: target.offsetTop,
+              behavior: 'smooth',
+            });
+          }, 800);
         }
       }
-      if ($('#search_field').val() != queryDict['search_field']) {
-        if (queryDict['search_field'] == null) {
-          this.href = this.href + '&search_field=' + $('#search_field').val();
-        } else {
-          this.href = this.href.replace(
-            '&search_field=' + queryDict['search_field'],
-            '&search_field=' + $('#search_field').val()
-          );
-        }
-      }
-    }
-  });
-  $('.clickable-row').on('click', function () {
-    window.location = $(this).data('href');
-  });
+    });
+
+  // preserve search query and search field on facet click
+
+  // $('.facet-select').one('click', function (e) {
+  //   if ($('#q').val()) {
+  //     var query = encodeURIComponent($('#q').val());
+  //     var queryDict = {};
+  //     this.href
+  //       .substr(1)
+  //       .split('&')
+  //       .forEach(function (item) {
+  //         queryDict[item.split('=')[0]] = item.split('=')[1];
+  //       });
+  //     if (query != queryDict['q']) {
+  //       if (queryDict['q'] == null) {
+  //         this.href = this.href + '&q=' + query;
+  //       } else {
+  //         this.href = this.href.replace('&q=' + queryDict['q'], '&q=' + query);
+  //       }
+  //     }
+  //     if ($('#search_field').val() != queryDict['search_field']) {
+  //       if (queryDict['search_field'] == null) {
+  //         this.href = this.href + '&search_field=' + $('#search_field').val();
+  //       } else {
+  //         this.href = this.href.replace(
+  //           '&search_field=' + queryDict['search_field'],
+  //           '&search_field=' + $('#search_field').val()
+  //         );
+  //       }
+  //     }
+  //   }
+  // });
+  // $('.clickable-row').on('click', function () {
+  //   window.location = $(this).data('href');
+  // });
 
   window.addEventListener('beforeprint', () => {
     document.querySelectorAll('details').forEach((element) => {
