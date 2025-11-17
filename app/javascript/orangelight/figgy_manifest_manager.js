@@ -12,10 +12,17 @@ function isRecordPagePath() {
 }
 
 // Helper to wrap thumbnail element with viewer link and accessibility span
-function wrapWithViewerLink($element) {
-  $element.addClass('has-viewer-link');
-  $element.wrap('<a href="#viewer-container"></a>');
-  $element.append('<span class="visually-hidden">Go to viewer</span>');
+function wrapWithViewerLink(element) {
+  element.classList.add('has-viewer-link');
+  const link = document.createElement('a');
+  link.setAttribute('href', '#viewer-container');
+  element.parentNode.appendChild(link);
+  link.appendChild(element);
+
+  const linkText = document.createElement('span');
+  linkText.classList.add('visually-hidden');
+  linkText.textContent = 'Go to viewer';
+  element.appendChild(linkText);
 }
 import loadResourcesByOrangelightId from './load-resources-by-orangelight-id';
 import loadResourcesByOrangelightIds from './load-resources-by-orangelight-ids';
@@ -257,19 +264,18 @@ class FiggyThumbnailSet {
 
   async render() {
     await this.fetchResources();
-    this.$elements.map((idx, element) => {
-      const $element = this.jQuery(element);
-      const bibId = $element.data('bib-id');
+    this.elements.map((idx, element) => {
+      const bibId = element.dataset.bibId;
       const $thumbnailElement = this.constructThumbnailElement(bibId);
 
       if (!$thumbnailElement) {
         return;
       }
-      $element.empty();
+      element.innerHTML = '';
       if (isRecordPagePath()) {
-        wrapWithViewerLink($element);
+        wrapWithViewerLink(element);
       }
-      $element.append($thumbnailElement);
+      element.appendChild($thumbnailElement.get(0));
     });
   }
 
