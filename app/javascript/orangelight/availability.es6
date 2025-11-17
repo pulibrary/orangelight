@@ -142,20 +142,32 @@ export default class AvailabilityUpdater {
   }
 
   scsb_search_availability() {
-    if ($('.documents-list').length > 0) {
+    const documents_list = document.querySelectorAll('.documents-list');
+    if (documents_list.length > 0) {
       const barcodes = this.scsb_barcodes();
       if (barcodes.length < 1) {
         return;
       }
-      const params = $.param({ barcodes });
+      const params = new URLSearchParams();
+      barcodes.forEach((barcode) => params.append('barcodes[]', barcode));
       const url = `${this.availability_url}?${params}`;
-      return $.getJSON(url, this.process_barcodes).fail(
-        (jqXHR, textStatus, errorThrown) => {
-          return console.error(
-            `Failed to retrieve availability data for the SCSB barcodes ${barcodes.join(', ')}: ${errorThrown}`
+      return fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          return this.process_barcodes(data);
+        })
+        .catch((error) => {
+          console.error(
+            `Failed to retrieve availability data for the SCSB barcodes ${barcodes.join(
+              ', '
+            )}: ${error.message}`
           );
-        }
-      );
+        });
     }
   }
 
