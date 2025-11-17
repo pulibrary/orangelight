@@ -824,6 +824,398 @@ describe('AvailabilityUpdater', function () {
     fetchSpy.mockRestore();
     errorSpy.mockRestore();
   });
+
+  // new spec - remove comment after finishing #3913
+  test('request_availability uses fetch for Available SCSB record and calls process_scsb_single on success', async () => {
+    window.location = { pathname: '/catalog/SCSB-15084779' };
+
+    document.body.innerHTML = `
+      <div id="main-content" data-host-id="">
+        <table>
+          <tr>
+            <td class="holding-status" data-availability-record="true" data-record-id="SCSB-15084779" data-holding-id="16169462" data-scsb-barcode="CU29420407" data-aeon="false">
+              <span class="availability-icon lux-text-style"></span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    `;
+
+    const mockJson = {
+      CU29420407: {
+        itemBarcode: 'CU29420407',
+        itemAvailabilityStatus: 'Available',
+        errorMessage: null,
+        collectionGroupDesignation: 'Shared',
+      },
+      CU29420156: {
+        itemBarcode: 'CU29420156',
+        itemAvailabilityStatus: 'Available',
+        errorMessage: null,
+        collectionGroupDesignation: 'Shared',
+      },
+    };
+
+    const mockResponse = {
+      ok: true,
+      status: 200,
+      json: vi.fn().mockResolvedValue(mockJson),
+    };
+
+    const fetchSpy = vi.spyOn(global, 'fetch').mockResolvedValue(mockResponse);
+    const processSpy = vi.spyOn(updater.prototype, 'process_scsb_single');
+
+    const u = new updater();
+    u.availability_url = 'http://mock_url/availability';
+
+    await u.request_availability(true);
+    await new Promise(setImmediate); // all microtasks execute before continuing
+
+    expect(fetchSpy).toHaveBeenCalledWith(
+      'http://mock_url/availability?scsb_id=15084779'
+    );
+    expect(processSpy).toHaveBeenCalledWith(mockJson);
+    const holding_status =
+      document.getElementsByClassName('availability-icon')[0];
+    expect(holding_status.classList.contains('lux-text-style')).toBe(true);
+    expect(holding_status.classList.contains('green')).toBe(true);
+    expect(holding_status.textContent).toBe('Available');
+
+    fetchSpy.mockRestore();
+    processSpy.mockRestore();
+  });
+  test('request_availability uses fetch for available NON SCSB record and calls process_single on success', async () => {
+    window.location = { pathname: '/catalog/9932127373506421' };
+
+    document.body.innerHTML = `
+      <div id="main-content" data-host-id="">
+        <table>
+          <td class="holding-status" data-availability-record="true" data-record-id="9932127373506421" data-holding-id="22514272140006421" data-temp-location-code="true">
+            <span class="availability-icon"></span>
+          </td>
+        </table>
+      </div>
+    `;
+
+    const mockJson = {
+      '9932127373506421': {
+        '22514272140006421': {
+          on_reserve: 'N',
+          location: 'annex$stacks',
+          label: 'Forrestal Annex - Stacks',
+          status_label: 'Available',
+          copy_number: null,
+          temp_location: false,
+          id: '22514272140006421',
+        },
+      },
+    };
+
+    const mockResponse = {
+      ok: true,
+      status: 200,
+      json: vi.fn().mockResolvedValue(mockJson),
+    };
+
+    const fetchSpy = vi.spyOn(global, 'fetch').mockResolvedValue(mockResponse);
+    const processSpy = vi.spyOn(updater.prototype, 'process_single');
+
+    const u = new updater();
+    u.bibdata_base_url = 'http://mock_url';
+
+    await u.request_availability(true);
+    await new Promise(setImmediate); // all microtasks execute before continuing
+
+    expect(fetchSpy).toHaveBeenCalledWith(
+      'http://mock_url/bibliographic/availability.json?deep=true&bib_ids=9932127373506421'
+    );
+    expect(processSpy).toHaveBeenCalledWith(mockJson);
+    const holding_status =
+      document.getElementsByClassName('availability-icon')[0];
+    expect(holding_status.classList.contains('lux-text-style')).toBe(true);
+    expect(holding_status.classList.contains('green')).toBe(true);
+    expect(holding_status.textContent).toBe('Available');
+
+    fetchSpy.mockRestore();
+    processSpy.mockRestore();
+  });
+});
+
+describe('request_search_results_availability', () => {
+  test('processes multiple bib IDs in batches for search results', async () => {
+    document.body.innerHTML = `
+        <div class="documents-list">
+          <li data-availability-record="true" data-record-id="99131592119006421"></li>
+          <li data-availability-record="true" data-record-id="99131494079906421"></li>
+          <li data-availability-record="true" data-record-id="99129167963206421"></li>
+        </div>
+      `;
+
+    const mockJson = {
+      '99131592119006421': {
+        '221083207360006421': { status_label: 'Available' },
+      },
+      '99131494079906421': {
+        '221067103950006421': { status_label: 'Unavailable' },
+      },
+      '99129167963206421': {
+        '221005134130006421': { status_label: 'Available' },
+      },
+    };
+
+    const mockResponse = {
+      ok: true,
+      status: 200,
+      json: vi.fn().mockResolvedValue(mockJson),
+    };
+
+    const fetchSpy = vi.spyOn(global, 'fetch').mockResolvedValue(mockResponse);
+    const processSpy = vi.spyOn(updater.prototype, 'process_results_list');
+
+    const u = new updater();
+    u.bibdata_base_url = 'http://mock_url';
+
+    u.request_search_results_availability();
+    await new Promise(setImmediate);
+
+    expect(fetchSpy).toHaveBeenCalledWith(
+      'http://mock_url/bibliographic/availability.json?bib_ids=99131592119006421,99131494079906421,99129167963206421'
+    );
+    expect(processSpy).toHaveBeenCalledWith(mockJson);
+
+    fetchSpy.mockRestore();
+    processSpy.mockRestore();
+  });
+
+  test('returns early when no bib IDs are found', () => {
+    document.body.innerHTML = '<div class="documents-list"></div>';
+
+    const fetchSpy = vi.spyOn(global, 'fetch');
+    const u = new updater();
+
+    u.request_search_results_availability();
+
+    expect(fetchSpy).not.toHaveBeenCalled();
+    fetchSpy.mockRestore();
+  });
+});
+
+describe('request_show_page_availability', () => {
+  test('calls request_scsb_single_availability for SCSB records', () => {
+    window.location = { pathname: '/catalog/SCSB-15084779' };
+    document.body.innerHTML = `
+        <div id="main-content" data-host-id="">
+          <div data-availability-record="true" data-record-id="SCSB-15084779"></div>
+        </div>
+      `;
+
+    const scsbSpy = vi
+      .spyOn(updater.prototype, 'request_scsb_single_availability')
+      .mockImplementation(() => {});
+    const regularSpy = vi
+      .spyOn(updater.prototype, 'request_regular_availability')
+      .mockImplementation(() => {});
+
+    const u = new updater();
+    u.request_show_page_availability(true);
+
+    expect(scsbSpy).toHaveBeenCalled();
+    expect(regularSpy).not.toHaveBeenCalled();
+    expect(u.id).toBe('SCSB-15084779');
+
+    scsbSpy.mockRestore();
+    regularSpy.mockRestore();
+  });
+
+  test('calls request_regular_availability for non-SCSB records', () => {
+    window.location = { pathname: '/catalog/9932127373506421' };
+    document.body.innerHTML = `
+        <div id="main-content" data-host-id="">
+          <div data-availability-record="true" data-record-id="9932127373506421"></div>
+        </div>
+      `;
+
+    const scsbSpy = vi
+      .spyOn(updater.prototype, 'request_scsb_single_availability')
+      .mockImplementation(() => {});
+    const regularSpy = vi
+      .spyOn(updater.prototype, 'request_regular_availability')
+      .mockImplementation(() => {});
+
+    const u = new updater();
+    u.request_show_page_availability(false);
+
+    expect(scsbSpy).not.toHaveBeenCalled();
+    expect(regularSpy).toHaveBeenCalledWith(false);
+    expect(u.id).toBe('9932127373506421');
+
+    scsbSpy.mockRestore();
+    regularSpy.mockRestore();
+  });
+});
+
+describe('request_scsb_single_availability', () => {
+  test('makes fetch request with correct SCSB URL and processes response', async () => {
+    const mockJson = {
+      CU29420407: {
+        itemBarcode: 'CU29420407',
+        itemAvailabilityStatus: 'Available',
+        errorMessage: null,
+        collectionGroupDesignation: 'Shared',
+      },
+    };
+
+    const mockResponse = {
+      ok: true,
+      status: 200,
+      json: vi.fn().mockResolvedValue(mockJson),
+    };
+
+    const fetchSpy = vi.spyOn(global, 'fetch').mockResolvedValue(mockResponse);
+    const processSpy = vi.spyOn(updater.prototype, 'process_scsb_single');
+    const consoleLogSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
+
+    const u = new updater();
+    u.availability_url = 'http://mock_url/availability';
+    u.id = 'SCSB-15084779';
+
+    u.request_scsb_single_availability();
+    await new Promise(setImmediate);
+
+    expect(fetchSpy).toHaveBeenCalledWith(
+      'http://mock_url/availability?scsb_id=15084779'
+    );
+    expect(processSpy).toHaveBeenCalledWith(mockJson);
+
+    fetchSpy.mockRestore();
+    processSpy.mockRestore();
+    consoleLogSpy.mockRestore();
+  });
+
+  test('handles fetch errors properly', async () => {
+    const fetchSpy = vi
+      .spyOn(global, 'fetch')
+      .mockRejectedValue(new Error('Network error'));
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+
+    const u = new updater();
+    u.availability_url = 'http://mock_url/availability';
+    u.id = 'SCSB-15084779';
+
+    u.request_scsb_single_availability();
+    await new Promise(setImmediate);
+
+    expect(fetchSpy).toHaveBeenCalled();
+    expect(errorSpy).toHaveBeenCalledWith(
+      expect.stringContaining(
+        'Failed to retrieve availability data for the SCSB record SCSB-15084779'
+      )
+    );
+
+    fetchSpy.mockRestore();
+    errorSpy.mockRestore();
+  });
+});
+
+describe('request_regular_availability', () => {
+  test('makes fetch request with bibliographic URL and processes response', async () => {
+    const mockJson = {
+      '9932127373506421': {
+        '22514272140006421': {
+          status_label: 'Available',
+          location: 'firestone$stacks',
+        },
+      },
+    };
+
+    const mockResponse = {
+      ok: true,
+      status: 200,
+      json: vi.fn().mockResolvedValue(mockJson),
+    };
+
+    const fetchSpy = vi.spyOn(global, 'fetch').mockResolvedValue(mockResponse);
+    const processSpy = vi.spyOn(updater.prototype, 'process_single');
+    const u = new updater();
+    u.bibdata_base_url = 'http://mock_url';
+    u.id = '9932127373506421';
+    u.host_id = '';
+
+    u.request_regular_availability(true);
+    await new Promise(setImmediate);
+
+    expect(fetchSpy).toHaveBeenCalledWith(
+      'http://mock_url/bibliographic/availability.json?deep=true&bib_ids=9932127373506421'
+    );
+    expect(processSpy).toHaveBeenCalledWith(mockJson);
+
+    fetchSpy.mockRestore();
+    processSpy.mockRestore();
+  });
+
+  test('handles 429 status with retry logic', async () => {
+    const mockResponse = {
+      status: 429,
+      ok: false,
+    };
+
+    const fetchSpy = vi.spyOn(global, 'fetch').mockResolvedValue(mockResponse);
+    const consoleLogSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
+    const setTimeoutSpy = vi
+      .spyOn(window, 'setTimeout')
+      .mockImplementation(() => {});
+
+    const u = new updater();
+    u.bibdata_base_url = 'http://mock_url';
+    u.id = '9932127373506421';
+    u.host_id = '';
+
+    u.request_regular_availability(true); // allowRetry = true
+    await new Promise(setImmediate);
+
+    expect(fetchSpy).toHaveBeenCalled();
+    expect(consoleLogSpy).toHaveBeenCalledWith(
+      'Retrying availability for record 9932127373506421'
+    );
+    expect(setTimeoutSpy).toHaveBeenCalled();
+
+    fetchSpy.mockRestore();
+    consoleLogSpy.mockRestore();
+    setTimeoutSpy.mockRestore();
+  });
+
+  test('handles 429 status without retry when allowRetry is false', async () => {
+    const mockResponse = {
+      status: 429,
+      ok: false,
+    };
+
+    const fetchSpy = vi.spyOn(global, 'fetch').mockResolvedValue(mockResponse);
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const undeterminedSpy = vi
+      .spyOn(updater.prototype, 'update_availability_undetermined')
+      .mockImplementation(() => {});
+
+    const u = new updater();
+    u.bibdata_base_url = 'http://mock_url';
+    u.id = '9932127373506421';
+    u.host_id = '';
+
+    u.request_regular_availability(false); // allowRetry = false
+    await new Promise(setImmediate);
+
+    expect(fetchSpy).toHaveBeenCalled();
+    expect(errorSpy).toHaveBeenCalledWith(
+      expect.stringContaining(
+        'Failed to retrieve availability data for the bib (retry). Record 9932127373506421: HTTP status 429'
+      )
+    );
+    expect(undeterminedSpy).toHaveBeenCalledWith(false);
+
+    fetchSpy.mockRestore();
+    errorSpy.mockRestore();
+    undeterminedSpy.mockRestore();
+  });
 });
 
 describe('getLibraryName', () => {
