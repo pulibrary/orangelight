@@ -25,12 +25,18 @@ describe('isRecordPagePath', () => {
 
 describe('wrapWithViewerLink', () => {
   it('wraps element with viewer link and adds accessibility span', () => {
-    const $element = window.jQuery('<div></div>');
-    wrapWithViewerLink($element);
-    expect($element.hasClass('has-viewer-link')).toBe(true);
-    expect($element.parent('a').attr('href')).toBe('#viewer-container');
-    expect($element.find('span.visually-hidden').length).toBe(1);
-    expect($element.find('span.visually-hidden').text()).toBe('Go to viewer');
+    document.body.innerHTML = '<div id="wrap-me"></div>';
+    const element = document.getElementById('wrap-me');
+    wrapWithViewerLink(element);
+    expect(element.classList.contains('has-viewer-link')).toBe(true);
+    expect(element.parentElement.nodeName).toEqual('A');
+    expect(element.parentElement.getAttribute('href')).toBe(
+      '#viewer-container'
+    );
+    expect(element.querySelectorAll('span.visually-hidden').length).toBe(1);
+    expect(element.querySelector('span.visually-hidden').textContent).toBe(
+      'Go to viewer'
+    );
   });
 });
 
