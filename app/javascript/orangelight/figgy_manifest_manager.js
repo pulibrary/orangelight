@@ -36,20 +36,6 @@ class FiggyViewer {
     this.manifestUrl = manifestUrl;
   }
 
-  getAvailabilityElement() {
-    let elements = document.querySelectorAll(
-      '#availability > div.location--panel.location--online > div > div.panel-body > div'
-    );
-    if (elements.length < 1) {
-      elements = document.querySelectorAll(
-        '#availability > div.location--panel.location--online > div > div.panel-body > div > ul > div.electronic-access'
-      );
-    }
-    // This assumes that the first element is the link
-    const element = elements[0];
-    return element;
-  }
-
   buildViewerId() {
     return this.idx == 0 ? 'viewer-container' : `viewer-container_${this.idx}`;
   }
@@ -215,28 +201,6 @@ class FiggyThumbnailSet {
     return this.resources;
   }
 
-  async fetchMonogramResources() {
-    this.ids = this.$elements.map((idx, element) =>
-      this.jQuery(element).data('monogram-id').toString()
-    );
-    const variables = { ids: this.ids.toArray() };
-    this.thumbnails = {};
-    const data = await this.query.call(this, variables.ids);
-    if (!data) {
-      return null;
-    }
-
-    const resources = data.resourcesByFiggyIds;
-    this.resources = resources;
-
-    // Cache the thumbnail URLs
-    for (const resource of this.resources) {
-      const id = resource.id;
-      this.thumbnails[id] = resource.thumbnail;
-    }
-    return this.resources;
-  }
-
   constructThumbnailElement(bibId) {
     const thumbnail = this.thumbnails[bibId];
 
@@ -246,18 +210,6 @@ class FiggyThumbnailSet {
 
     const $element = this.jQuery(
       `<img alt="" src="${thumbnail.iiifServiceUrl}/square/225,/0/default.jpg">`
-    );
-    return $element;
-  }
-
-  constructMonogramThumbnailElement(figgyId) {
-    const thumbnail = this.thumbnails[figgyId];
-    if (!thumbnail) {
-      return null;
-    }
-
-    const $element = this.jQuery(
-      `<img alt="" src="${thumbnail.iiifServiceUrl}/full/225,/0/default.jpg">`
     );
     return $element;
   }
@@ -276,20 +228,6 @@ class FiggyThumbnailSet {
         wrapWithViewerLink(element);
       }
       element.appendChild($thumbnailElement.get(0));
-    });
-  }
-
-  async renderMonogram() {
-    await this.fetchMonogramResources();
-    this.$elements.map((idx, element) => {
-      const $element = this.jQuery(element);
-      const monogramId = $element.data('monogram-id');
-      const $thumbnailElement =
-        this.constructMonogramThumbnailElement(monogramId);
-      if (!$thumbnailElement) {
-        return;
-      }
-      $element.after($thumbnailElement);
     });
   }
 }
