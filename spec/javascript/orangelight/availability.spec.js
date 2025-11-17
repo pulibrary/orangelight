@@ -945,21 +945,56 @@ describe('request_search_results_availability', () => {
   test('processes multiple bib IDs in batches for search results', async () => {
     document.body.innerHTML = `
         <div class="documents-list">
-          <li data-availability-record="true" data-record-id="99131592119006421"></li>
-          <li data-availability-record="true" data-record-id="99131494079906421"></li>
-          <li data-availability-record="true" data-record-id="99129167963206421"></li>
+          <div class="holdings-card">
+          <a href="/catalog/99125410673606421"><article id="" class="lux-card medium holding-status" data-availability-record="true" data-record-id="99125410673606421" data-holding-id="22905775240006421" data-aeon="false" data-bound-with="false">
+          <div class="library-location" data-location="true" data-record-id="99125410673606421" data-holding-id="22905775240006421">
+          <div class="results_location row"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" class="location-pin-icon"><path d="M9.5,1.8"
+     stroke-width="2" fill="none">
+     </path><circle r="2" fill="none" stroke-width="1.5" cx="10" cy="7.8"></circle></svg><span class="search-result-library-name">Firestone Library</span></div>
+     <div class="call-number">PN1995<wbr>.25 <wbr>.C87 2021</div></div><span class="lux-text-style strong"></span></article></a><a href="/catalog/99125410673606421"><article id="" class="lux-card medium holding-status" data-availability-record="true" data-record-id="99125410673606421" data-holding-id="22909226080006421" data-aeon="false" data-bound-with="false">
+     <div class="library-location" data-location="true" data-record-id="99125410673606421" data-holding-id="22909226080006421">
+     <div class="results_location row"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" class="location-pin-icon"><path d="M9.5,1.8"
+     stroke-width="2" fill="none"></path><circle r="2" fill="none" stroke-width="1.5" cx="10" cy="7.8"></circle></svg><span class="search-result-library-name">Marquand Library</span></div>
+     <div class="call-number">PN1995<wbr>.25 <wbr>.C87 2021</div></div><span class="lux-text-style strong"></span></article></a></div>
+         <div class="holdings-card">
+         <a href="/catalog/9949378963506421"><article id="" class="lux-card medium holding-status" data-availability-record="true" data-record-id="9949378963506421" data-holding-id="22738013960006421" data-aeon="false" data-bound-with="false">
+         <div class="library-location" data-location="true" data-record-id="9949378963506421" data-holding-id="22738013960006421">
+         <div class="results_location row"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" class="location-pin-icon"><path d="M9.5,1.8"
+     stroke-width="2" fill="none"></path><circle r="2" fill="none" stroke-width="1.5" cx="10" cy="7.8"></circle></svg><span class="search-result-library-name">Firestone Library</span></div><div class="call-number">PN1995<wbr>.25 <wbr>.C87 2021</div></div><span class="lux-text-style strong"></span></article></a>
         </div>
       `;
 
     const mockJson = {
-      '99131592119006421': {
-        '221083207360006421': { status_label: 'Available' },
+      '99125410673606421': {
+        '22905775240006421': {
+          on_reserve: 'N',
+          location: 'firestone$stacks',
+          label: 'Firestone Library - Stacks',
+          status_label: 'Available',
+          copy_number: null,
+          temp_location: false,
+          id: '22905775240006421',
+        },
+        '22909226080006421': {
+          on_reserve: 'N',
+          location: 'marquand$stacks',
+          label: 'Marquand Library - Remote Storage: Marquand Use Only',
+          status_label: 'Available',
+          copy_number: null,
+          temp_location: false,
+          id: '22909226080006421',
+        },
       },
-      '99131494079906421': {
-        '221067103950006421': { status_label: 'Unavailable' },
-      },
-      '99129167963206421': {
-        '221005134130006421': { status_label: 'Available' },
+      '9949378963506421': {
+        '22738013960006421': {
+          on_reserve: 'N',
+          location: 'firestone$stacks',
+          label: 'Firestone Library - Stacks',
+          status_label: 'Available',
+          copy_number: null,
+          temp_location: false,
+          id: '22738013960006421',
+        },
       },
     };
 
@@ -979,7 +1014,7 @@ describe('request_search_results_availability', () => {
     await new Promise(setImmediate);
 
     expect(fetchSpy).toHaveBeenCalledWith(
-      'http://mock_url/bibliographic/availability.json?bib_ids=99131592119006421,99131494079906421,99129167963206421'
+      'http://mock_url/bibliographic/availability.json?bib_ids=99125410673606421,9949378963506421'
     );
     expect(processSpy).toHaveBeenCalledWith(mockJson);
 

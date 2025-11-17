@@ -368,13 +368,15 @@ export default class AvailabilityUpdater {
   }
 
   record_ids() {
-    return Array.from(
+    const ids = Array.from(
       document.querySelectorAll(
         "*[data-availability-record='true'][data-record-id]"
       )
     ).map(function (node) {
       return node.getAttribute('data-record-id');
     });
+
+    return [...new Set(ids)];
   }
 
   ids_to_batches(ids, batch_size) {
