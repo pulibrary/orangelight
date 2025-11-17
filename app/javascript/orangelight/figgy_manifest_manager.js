@@ -1,3 +1,5 @@
+import { Option } from './option.es6';
+
 // Checks if the current path is a valid record page (catalog/ID)
 // Matches catalog/ followed by:
 // - starts with 99 and ends with 3506421 (Alma)
@@ -205,29 +207,29 @@ class FiggyThumbnailSet {
     const thumbnail = this.thumbnails[bibId];
 
     if (!thumbnail) {
-      return null;
+      return Option.None();
     }
 
-    const $element = this.jQuery(
-      `<img alt="" src="${thumbnail.iiifServiceUrl}/square/225,/0/default.jpg">`
+    const image = document.createElement('img');
+    image.setAttribute('alt', '');
+    image.setAttribute(
+      'src',
+      `${thumbnail.iiifServiceUrl}/square/225,/0/default.jpg`
     );
-    return $element;
+    return Option.Some(image);
   }
 
   async render() {
     await this.fetchResources();
     this.elements.map((idx, element) => {
       const bibId = element.dataset.bibId;
-      const $thumbnailElement = this.constructThumbnailElement(bibId);
-
-      if (!$thumbnailElement) {
-        return;
-      }
-      element.innerHTML = '';
-      if (isRecordPagePath()) {
-        wrapWithViewerLink(element);
-      }
-      element.appendChild($thumbnailElement.get(0));
+      this.constructThumbnailElement(bibId).map((thumbnailElement) => {
+        element.innerHTML = '';
+        if (isRecordPagePath()) {
+          wrapWithViewerLink(element);
+        }
+        element.appendChild(thumbnailElement);
+      });
     });
   }
 }
