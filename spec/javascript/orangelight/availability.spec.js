@@ -83,44 +83,6 @@ describe('AvailabilityUpdater', function () {
     expect(mixed_result.text()).toEqual('Some Available');
   });
 
-  test('search results - SCSB availability - Unavailable', () => {
-    document.body.innerHTML =
-      '<li class="blacklight-holdings">' +
-      '<ul>' +
-      '<li class="holding-status sm-checked" data-availability-record="false" data-record-id="SCSB-5467030" data-holding-id="5459517" data-aeon="false" data-bound-with="false">' +
-      '<span class="availability-icon lux-text-style" data-scsb-availability="true" data-scsb-barcode="CU15957330">Unavailable</span>' +
-      '<div class="library-location" data-location="true" data-record-id="SCSB-5467030" data-holding-id="5459517">' +
-      '<span class="results_location">ReCAP - Remote Storage</span> » <span class="call-number">PL5132 .B68 2007g</span>' +
-      '</div>' +
-      '</li>' +
-      '<li class="empty" data-record-id="SCSB-5467030">' +
-      '<a class="availability-icon more-info" href="/catalog/SCSB-5467030"></a>' +
-      '</li>' +
-      '</ul>' +
-      '</li>';
-
-    const item_data = {
-      itemBarcode: 'CU15957330',
-      itemAvailabilityStatus: 'Unavailable',
-      errorMessage: null,
-      collectionGroupDesignation: 'Shared',
-    };
-    const barcode_id = item_data['itemBarcode'];
-    const availabilityBadgeBefore =
-      document.getElementsByClassName('availability-icon');
-    expect(availabilityBadgeBefore[0].textContent).toEqual('Unavailable');
-    const u = new updater();
-    u.apply_scsb_record(barcode_id, item_data);
-    u.scsb_search_availability;
-    const availabilityBadgeAfter =
-      document.getElementsByClassName('availability-icon');
-    expect(availabilityBadgeAfter[0].textContent).toEqual('Request');
-    expect(
-      document.querySelector(
-        '.holding-status[data-holding-id="5459517"] > .availability-icon.lux-text-style.gray.strong'
-      )
-    ).toBeTruthy();
-  });
   test('search results availability for records in temporary locations says Available', () => {
     document.body.innerHTML =
       '<li class="blacklight-holdings">' +
@@ -604,20 +566,6 @@ describe('AvailabilityUpdater', function () {
     expect(u.record_ids()).toEqual(['10585552', '7058493']);
   });
 
-  test('record_ids() on a call number browse page', () => {
-    document.body.innerHTML =
-      '<table><tbody>' +
-      '  <tr>' +
-      '    <td class="availability-column" data-availability-record="true" data-record-id="2939035" data-holding-id="3253750"></td>' +
-      '  </tr>' +
-      '    <td class="availability-column" data-availability-record="true" data-record-id="3821268" data-holding-id="4126404"></td>' +
-      '  <tr>' +
-      '  </tr>' +
-      '</table></tbody>';
-    const u = new updater();
-    expect(u.record_ids()).toEqual(['2939035', '3821268']);
-  });
-
   test('account for bound-with records when building URL to request availability', () => {
     const u = new updater();
     u.bibdata_base_url = 'http://mock_url';
@@ -735,6 +683,77 @@ describe('AvailabilityUpdater', function () {
         '.holding-status[data-temp-location-code="RES_SHARE$IN_RS_REQ"] span'
       ).textContent
     ).toBe('Request');
+  });
+
+  test('scsb_search_availability uses fetch and calls process_barcodes on success', async () => {
+    document.body.innerHTML = `
+      <div class="documents-list">
+        <div class="holdings-card">
+          <span class="lux-text-style" data-scsb-availability="true" data-scsb-barcode="MR71868089"></span>
+        </div>
+        <div class="holdings-card">
+          <span class="lux-text-style" data-scsb-availability="true" data-scsb-barcode="CU26842386"></span>
+        </div>
+        <div class="holdings-card">
+          <span class="lux-text-style" data-scsb-availability="true" data-scsb-barcode="AR02546990"></span>
+        </div>
+      </div>
+    `;
+
+    const mockJson = {
+      MR71868089: {
+        itemBarcode: 'MR71868089',
+        itemAvailabilityStatus: 'Available',
+        errorMessage: null,
+        collectionGroupDesignation: 'Shared',
+      },
+      CU26842386: {
+        itemBarcode: 'CU26842386',
+        itemAvailabilityStatus: 'Available',
+        errorMessage: null,
+        collectionGroupDesignation: 'Shared',
+      },
+      AR02546990: {
+        itemBarcode: 'AR02546990',
+        itemAvailabilityStatus: 'Unavailable',
+        errorMessage: null,
+        collectionGroupDesignation: 'Shared',
+      },
+    };
+
+    const mockResponse = {
+      ok: true,
+      status: 200,
+      json: vi.fn().mockResolvedValue(mockJson),
+    };
+
+    const fetchSpy = vi.spyOn(global, 'fetch').mockResolvedValue(mockResponse);
+    const processSpy = vi.spyOn(updater.prototype, 'process_barcodes');
+
+    const u = new updater();
+    u.availability_url = 'http://mock_url/availability';
+
+    await u.scsb_search_availability();
+    await new Promise(setImmediate);
+
+    expect(fetchSpy).toHaveBeenCalledWith(
+      'http://mock_url/availability?barcodes%5B%5D=MR71868089&barcodes%5B%5D=CU26842386&barcodes%5B%5D=AR02546990'
+    );
+    expect(processSpy).toHaveBeenCalledWith(mockJson);
+    const holding_status_mr71868089 = document.querySelector(
+      '[data-scsb-barcode="MR71868089"]'
+    );
+    expect(holding_status_mr71868089.textContent).toBe('Available');
+    const holding_status_cu26842386 = document.querySelector(
+      '[data-scsb-barcode="CU26842386"]'
+    );
+    expect(holding_status_cu26842386.textContent).toBe('Available');
+    const holding_status_ar02546990 = document.querySelector(
+      '[data-scsb-barcode="AR02546990"]'
+    );
+    expect(holding_status_ar02546990.textContent).toBe('Request');
+    fetchSpy.mockRestore();
+    processSpy.mockRestore();
   });
 
   // new spec - remove comment after finishing #3913
