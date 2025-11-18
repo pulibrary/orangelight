@@ -182,7 +182,7 @@ jobs:
     steps:
       - attach_workspace:
           at: '~/orangelight'
-      - setup-bundler-and-node
+      - ruby/install-deps
       - run: bundle exec rubocop
   erblint:
     executor: basic-executor
