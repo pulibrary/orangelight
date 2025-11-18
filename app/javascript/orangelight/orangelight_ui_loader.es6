@@ -68,7 +68,7 @@ export default class OrangelightUiLoader {
   }
 
   setup_book_covers() {
-    new BookCoverManager();
+    new BookCoverManager().addCoverImages();
   }
 
   #documentViewers() {

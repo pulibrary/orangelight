@@ -1,3 +1,5 @@
+import { cleanJson } from './clean_json.es6';
+
 export default class BookCoverManager {
   constructor() {
     this.google_url =
@@ -6,14 +8,9 @@ export default class BookCoverManager {
       isbn: 'isbn',
       oclc: 'http://purl.org/library/oclcnum',
     };
-    this.find_book_covers();
   }
 
-  find_book_covers() {
-    return this.get_number();
-  }
-
-  get_number() {
+  async addCoverImages() {
     var all_identifiers = [];
     Object.entries(this.identifiers).forEach(([identifier_type, field]) => {
       var ids = this.find_identifiers(identifier_type, field);
@@ -23,13 +20,15 @@ export default class BookCoverManager {
         });
       }
     });
-    this.fetch_identifiers(all_identifiers);
+    await this.fetch_identifiers(all_identifiers);
     return true;
   }
 
-  fetch_identifiers(ids) {
+  async fetch_identifiers(ids) {
     const url = `${this.google_url}${ids.join(',')}`;
-    $.getJSON(url).done(this.process_results);
+    const response = await fetch(url);
+    const body = await response.text();
+    this.process_results(cleanJson(body));
   }
 
   process_results(data) {
