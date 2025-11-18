@@ -249,15 +249,6 @@ module ApplicationHelper
     holding_locations[location_code]["remote_storage"] == 'recap_rmt'
   end
 
-  # Returns true for locations where the user can walk and fetch an item.
-  # Currently this logic is duplicated in Javascript code in availability.es6
-  def find_it_location?(location_code)
-    return false if remote_storage?(location_code)
-    return false if (location_code || "").start_with?("plasma$", "marquand$")
-
-    true
-  end
-
   # Testing this feature with Voice Over - reading the Web content
   # If language defaults to english 'en' when no language_iana_primary_s exists then:
   # for cyrilic: for example russian, voice over will read each character as: cyrilic <character1>, cyrilic <character2>
