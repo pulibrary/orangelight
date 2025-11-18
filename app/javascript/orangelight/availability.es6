@@ -560,12 +560,4 @@ export default class AvailabilityUpdater {
     }
     return library_name;
   }
-
-  /* Currently this logic is duplicated in Ruby code in application_helper.rb (ApplicationHelper::find_it_location) */
-  find_it_location(location) {
-    if (location.startsWith('plasma$') || location.startsWith('marquand$')) {
-      return false;
-    }
-    return true;
-  }
 }
