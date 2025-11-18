@@ -146,8 +146,7 @@ describe('RelatedRecords', function () {
     const viewerSet = new FiggyViewerSet(
       viewerWrapperElement,
       queryFunction,
-      '9968683243506421',
-      null
+      '9968683243506421'
     );
     await viewerSet.render();
     expect(viewerWrapperElement.getElementsByTagName('iframe')).toHaveLength(1);
@@ -225,8 +224,7 @@ describe('RelatedRecords', function () {
     const viewerSet = new FiggyViewerSet(
       viewerWrapperElement,
       queryFunction,
-      '9950403683506421',
-      null
+      '9950403683506421'
     );
     await viewerSet.render();
     expect(viewerWrapperElement.getElementsByTagName('iframe')).toHaveLength(2);
@@ -269,8 +267,7 @@ describe('RelatedRecords', function () {
     const viewerSet = new FiggyViewerSet(
       viewerWrapperElement,
       queryFunction,
-      'dsp01wd3760321',
-      null
+      'dsp01wd3760321'
     );
     await viewerSet.render();
     expect(queryFunction).toHaveBeenCalledTimes(1);
@@ -312,8 +309,7 @@ describe('RelatedRecords', function () {
     const viewerSet = new FiggyViewerSet(
       viewerWrapperElement,
       queryFunction2,
-      'dsp01wd3760321',
-      null
+      'dsp01wd3760321'
     );
     await viewerSet.render();
     expect(queryFunction2).toHaveBeenCalledTimes(1);
