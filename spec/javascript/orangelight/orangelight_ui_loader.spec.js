@@ -27,8 +27,10 @@ describe('OrangelightUiLoader', function () {
   });
 
   test('if there is an ID, it calls figgy to build a viewer', async () => {
-    const element =
-      "<div id='view' class='document-viewers' data-bib-id='9946093213506422'>";
+    const element = document.createElement('div');
+    element.setAttribute('id', 'view');
+    element.setAttribute('class', 'document-viewers');
+    element.setAttribute('data-bib-id', '9946093213506422');
     vi.spyOn(FiggyManifestManager, 'buildViewers');
     await FiggyManifestManager.buildViewers(element);
     const l = new loader();

@@ -80,11 +80,10 @@ class FiggyViewer {
   }
 }
 class FiggyViewerSet {
-  constructor(element, query, variables, jQuery) {
+  constructor(element, query, variables) {
     this.element = element;
     this.query = query;
     this.variables = variables;
-    this.jQuery = jQuery;
   }
 
   async fetchResources() {
@@ -173,19 +172,15 @@ class FiggyViewerSet {
 
 // Queries for resources using multiple bib. IDs
 class FiggyThumbnailSet {
-  constructor(elements, query, jQuery) {
-    this.elements = elements;
-    this.$elements = jQuery(elements);
+  constructor(elements, query) {
+    this.elements = Array.from(elements);
     this.query = query;
-    this.jQuery = jQuery;
   }
 
   async fetchResources() {
-    this.bibIds = this.$elements.map((idx, element) =>
-      this.jQuery(element).data('bib-id').toString()
-    );
+    this.bibIds = this.elements.map((element) => element.dataset.bibId);
 
-    const variables = { bibIds: this.bibIds.toArray() };
+    const variables = { bibIds: this.bibIds };
     this.thumbnails = {};
     const data = await this.query.call(this, variables.bibIds);
     if (!data) {
@@ -221,7 +216,7 @@ class FiggyThumbnailSet {
 
   async render() {
     await this.fetchResources();
-    this.elements.map((idx, element) => {
+    this.elements.map((element) => {
       const bibId = element.dataset.bibId;
       this.constructThumbnailElement(bibId).map((thumbnailElement) => {
         element.innerHTML = '';
@@ -236,22 +231,16 @@ class FiggyThumbnailSet {
 
 class FiggyManifestManager {
   static buildThumbnailSet(elements) {
-    return new FiggyThumbnailSet(
-      window.jQuery(elements),
-      loadResourcesByOrangelightIds,
-      window.jQuery
-    );
+    return new FiggyThumbnailSet(elements, loadResourcesByOrangelightIds);
   }
 
   // Build multiple viewers
   static buildViewers(element) {
-    const $element = window.jQuery(element);
-    const bibId = $element.data('bib-id');
+    const bibId = element.dataset.bibId;
     return new FiggyViewerSet(
       element,
       loadResourcesByOrangelightId,
-      bibId.toString(),
-      window.jQuery
+      bibId.toString()
     );
   }
 }
