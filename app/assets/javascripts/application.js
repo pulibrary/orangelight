@@ -19,8 +19,6 @@
 // Required by Blacklight
 //= require blacklight/blacklight
 //= require babel/polyfill
-//
-//= require ./orangelight.js
 
 // Wait for the modal to open
 document.addEventListener('show.blacklight.blacklight-modal', function () {
