@@ -1,26 +1,4 @@
 $(function () {
-  //link highlighting of hierarchy
-  $('.search-subject, .search-name-title, .search-title').hover(
-    function () {
-      $(this).prevAll().addClass('field-hierarchy');
-    },
-    function () {
-      $(this).prevAll().removeClass('field-hierarchy');
-    }
-  );
-
-  // availability toggle journal current issues
-  $('#availability').on('click', '.trigger', function (event) {
-    event.preventDefault();
-    $(this)
-      .siblings('.journal-current-issues')
-      .children()
-      .toggleClass('all-issues');
-    $(this).text(function (i, toggle) {
-      return toggle === 'More' ? 'Less' : 'More';
-    });
-  });
-
   //Select all items in specific account table to be checked or unchecked
   $('body').on('change', "[id^='select-all']", function (e) {
     if (this.checked) {
@@ -47,34 +25,8 @@ $(function () {
     $(this).closest('tr').toggleClass('info', this.checked);
   });
 
-  // Auto dismiss alert-info and alert-success
-  setTimeout(function () {
-    $('.flash_messages .alert-info, .flash_messages .alert-success').fadeOut(
-      'slow',
-      function () {
-        $(
-          '.flash_messages .alert-info, .flash_messages .alert-success'
-        ).remove();
-      }
-    );
-  }, 5000);
-
   $('#search_field').on('change', function (e) {
     $('#q').attr('placeholder', $(this).find(':selected').data('placeholder'));
-  });
-
-  // Back to top button appears on scroll
-  $(window).scroll(function () {
-    if ($(this).scrollTop() > 100) {
-      $('.back-to-top').fadeIn();
-    } else {
-      $('.back-to-top').fadeOut();
-    }
-  });
-
-  $('.back-to-top').click(function () {
-    $('html, body').animate({ scrollTop: 0 }, 800);
-    return false;
   });
 
   $('.document-thumbnail').click(function (e) {
@@ -134,33 +86,6 @@ $(function () {
     document.querySelectorAll('details').forEach((element) => {
       if (!element.hasAttribute('opened')) element.removeAttribute('open');
       element.removeAttribute('opened');
-    });
-  });
-
-  $(document).ready(function () {
-    $('.document-metadata').each(function () {
-      let justify = 'ltr';
-      const deepElements = [];
-
-      function findDeepElements(node) {
-        if (node.children.length === 0) {
-          deepElements.push(node);
-          if (node.dir === 'rtl') {
-            justify = 'rtl';
-          }
-          return;
-        }
-
-        for (const child of node.children) {
-          findDeepElements(child);
-        }
-      }
-
-      findDeepElements(this); // Start recursion at .document-metadata
-
-      for (const element of deepElements) {
-        element.setAttribute('dir', justify);
-      }
     });
   });
 });
