@@ -33,14 +33,10 @@ export default class BookCoverManager {
       oclc: 'http://purl.org/library/oclcnum',
     };
     this.requestFn = requestFn || requestJsonP;
-    this.find_book_covers();
+    this.#sendBookCoversRequest();
   }
 
-  find_book_covers() {
-    return this.get_number();
-  }
-
-  get_number() {
+  #sendBookCoversRequest() {
     var all_identifiers = [];
     Object.entries(this.identifiers).forEach(([identifier_type, field]) => {
       var ids = this.find_identifiers(identifier_type, field);
