@@ -69,6 +69,19 @@ RSpec.shared_examples 'shared request type tests' do
     stubbed_questions[:aeon?] = true
     expect(router.calculate_services).to eq(reading_room_services)
   end
+
+  it 'with a marquand in library use request' do
+    stubbed_questions[:held_at_marquand_library?] = true
+    stubbed_questions[:marquand_item?] = true
+    expect(router.calculate_services).to eq(marquand_in_library_services)
+  end
+
+  it 'with a marquand in library use page charged item request' do
+    stubbed_questions[:held_at_marquand_library?] = true
+    stubbed_questions[:marquand_item?] = true
+    stubbed_questions[:charged?] = true
+    expect(router.calculate_services).to eq(marquand_page_charged_item_services)
+  end
 end
 
 RSpec.shared_context 'core patron group' do
@@ -86,6 +99,8 @@ RSpec.shared_context 'core patron group' do
   let(:digitization_services) { ['on_shelf_edd', 'on_shelf'] }
   let(:resource_sharing_services) { ['ill'] }
   let(:reading_room_services) { ['aeon'] }
+  let(:marquand_in_library_services) { ['marquand_in_library', 'marquand_edd'] }
+  let(:marquand_page_charged_item_services) { ['marquand_page_charged_item'] }
 end
 
 RSpec.shared_context 'affiliate and guest patron group' do
@@ -100,6 +115,8 @@ RSpec.shared_context 'affiliate and guest patron group' do
   let(:digitization_services) { [] }
   let(:resource_sharing_services) { [] }
   let(:reading_room_services) { ['aeon'] }
+  let(:marquand_in_library_services) { ['marquand_in_library'] }
+  let(:marquand_page_charged_item_services) { ['marquand_page_charged_item'] }
 end
 
 RSpec.shared_context 'shared patron setup' do
