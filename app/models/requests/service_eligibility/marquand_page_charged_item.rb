@@ -30,7 +30,7 @@ module Requests
             end
 
             def patron_group_eligible?
-              patron.core_patron_group?
+              patron.core_patron_group? || patron.affiliate_patron_group?
             end
 
             attr_reader :requestable, :patron

@@ -18,7 +18,7 @@ module Requests
     private
 
       def patron_group_eligible?
-        patron.core_patron_group?
+        patron.core_patron_group? || patron.affiliate_patron_group?
       end
 
       def requestable_eligible?
