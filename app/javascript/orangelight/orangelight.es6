@@ -33,7 +33,6 @@ export function orangelight() {
     }
   });
 
-  // short pause before jumping to viewer if present
   const thumbnail = document.getElementsByClassName('document-thumbnail')[0];
   thumbnail?.addEventListener('click', function (e) {
     var target = document.getElementById('viewer-container');
@@ -41,6 +40,7 @@ export function orangelight() {
       var target = document.getElementById('viewer-container');
       if (target) {
         e.preventDefault();
+        // short pause before jumping to viewer if present
         setTimeout(function () {
           window.scrollTo({
             top: target.offsetTop,
