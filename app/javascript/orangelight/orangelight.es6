@@ -76,11 +76,14 @@ export function orangelight() {
       const searchField = document.getElementById('search_field');
       if (searchField.value != queryDict['search_field']) {
         if (queryDict['search_field'] == null) {
-          target.href = target.href + '&search_field=' + searchField.value;
+          target.href =
+            target.href +
+            '&search_field=' +
+            encodeURIComponent(searchField.value);
         } else {
           target.href = target.href.replace(
             '&search_field=' + queryDict['search_field'],
-            '&search_field=' + searchField.value
+            '&search_field=' + encodeURIComponent(searchField.value)
           );
         }
       }
