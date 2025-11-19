@@ -1,4 +1,4 @@
-import { describe } from 'vitest';
+import { describe, vi } from 'vitest';
 import BookCoverManager from '../../../app/javascript/orangelight/book_covers.es6';
 
 describe('BookCoverManager', () => {
@@ -43,6 +43,20 @@ describe('BookCoverManager', () => {
     const image = document.querySelector('img');
     expect(image.getAttribute('src')).toEqual(
       'https://books.google.com/books/content?id=I9gLAQAAMAAJ&printsec=frontcover&img=1&zoom=1'
+    );
+  });
+
+  it('makes the appropriate JSON-P request', () => {
+    const jsonPSpy = vi.fn();
+    window.document.body.innerHTML = `<span vocab="http://id.loc.gov/vocabulary/identifiers/">
+    <meta property="isbn" itemprop="isbn" content="9789592750111">
+</span>
+<div class="document-thumbnail" data-isbn="[&quot;9789592750111&quot;]"><div class="default"></div></div>`;
+
+    new BookCoverManager(jsonPSpy);
+
+    expect(jsonPSpy).toHaveBeenCalledWith(
+      'https://books.google.com/books?callback=addBookCoversToDom&jscmd=viewapi&bibkeys=isbn:9789592750111'
     );
   });
 });
