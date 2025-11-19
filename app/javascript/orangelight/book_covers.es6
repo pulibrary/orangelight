@@ -37,34 +37,37 @@ export default class BookCoverManager {
   }
 
   #sendBookCoversRequest() {
-    var all_identifiers = [];
-    Object.entries(this.identifiers).forEach(([identifier_type, field]) => {
-      var ids = this.find_identifiers(identifier_type, field);
-      if (ids) {
-        ids.forEach((id) => {
-          all_identifiers.push(id);
-        });
-      }
-    });
-    this.fetch_identifiers(all_identifiers);
+    const allIdentifiers = Object.entries(this.identifiers).reduce(
+      (accumulator, identiferData) => {
+        const [identifierType, property] = identiferData;
+        return accumulator.concat(
+          this.#identifiersFromDom(identifierType, property)
+        );
+      },
+      []
+    );
+    this.#request(allIdentifiers);
     return true;
   }
 
-  fetch_identifiers(ids) {
+  #request(ids) {
     const url = `${this.google_url}${ids.join(',')}`;
     this.requestFn(url);
   }
 
-  find_identifiers(identifier_type, property) {
-    const id = $(`meta[property='${property}']`);
-    const ids = id
-      .map(
-        (i, x) =>
-          `${$(x)
-            .prop('content')
-            .replace(/[^0-9]/g, '')}`
-      )
-      .toArray();
-    return ids.map((x) => `${identifier_type}:${x}`);
+  // Get identifiers that we can send to Google Books
+  // The identifiers are in these formats:
+  // <meta property="isbn" itemprop="isbn" content="9782490952229">
+  // <meta property="http://purl.org/library/oclcnum" content="1299297250">
+  // We want them to be in the formats:
+  // isbn:9782490952229 and oclc:1299297250
+  #identifiersFromDom(identifierType, property) {
+    const identifierElements = document.querySelectorAll(
+      `meta[property='${property}']`
+    );
+    return Array.from(identifierElements).map(
+      (element) =>
+        `${identifierType}:${element.getAttribute('content').replace(/[^0-9]/g, '')}`
+    );
   }
 }
