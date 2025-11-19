@@ -2,46 +2,46 @@ import StatusDisplay from '../../../app/javascript/orangelight/status_display.js
 
 describe('StatusDisplay', () => {
   let statusDisplay;
-  let $el;
+  let element;
 
   beforeEach(() => {
     statusDisplay = new StatusDisplay();
     document.body.innerHTML = '<span id="test"></span>';
-    $el = $('#test');
+    element = document.getElementById('test');
   });
 
   test('setAvailableStatus sets text and classes', () => {
-    statusDisplay.setAvailableStatus($el);
-    expect($el.text()).toBe('Available');
-    expect($el.hasClass('green')).toBe(true);
-    expect($el.hasClass('strong')).toBe(true);
+    statusDisplay.setAvailableStatus(element);
+    expect(element.textContent).toBe('Available');
+    expect(element.classList.contains('green')).toBe(true);
+    expect(element.classList.contains('strong')).toBe(true);
   });
 
   test('setOnSiteAccessStatus sets text and classes', () => {
-    statusDisplay.setOnSiteAccessStatus($el);
-    expect($el.text()).toBe('On-site access');
-    expect($el.hasClass('green')).toBe(true);
-    expect($el.hasClass('strong')).toBe(true);
+    statusDisplay.setOnSiteAccessStatus(element);
+    expect(element.textContent).toBe('On-site access');
+    expect(element.classList.contains('green')).toBe(true);
+    expect(element.classList.contains('strong')).toBe(true);
   });
 
   test('setUnavailableStatus sets text and classes', () => {
-    statusDisplay.setUnavailableStatus($el);
-    expect($el.text()).toBe('Unavailable');
-    expect($el.hasClass('red')).toBe(true);
-    expect($el.hasClass('strong')).toBe(true);
+    statusDisplay.setUnavailableStatus(element);
+    expect(element.textContent).toBe('Unavailable');
+    expect(element.classList.contains('red')).toBe(true);
+    expect(element.classList.contains('strong')).toBe(true);
   });
 
   test('setRequestStatus sets text and classes', () => {
-    statusDisplay.setRequestStatus($el);
-    expect($el.text()).toBe('Request');
-    expect($el.hasClass('gray')).toBe(true);
-    expect($el.hasClass('strong')).toBe(true);
+    statusDisplay.setRequestStatus(element);
+    expect(element.textContent).toBe('Request');
+    expect(element.classList.contains('gray')).toBe(true);
+    expect(element.classList.contains('strong')).toBe(true);
   });
 
   test('setAskStaffStatus sets text and classes', () => {
-    statusDisplay.setAskStaffStatus($el);
-    expect($el.text()).toBe('Ask Staff');
-    expect($el.hasClass('gray')).toBe(true);
-    expect($el.hasClass('strong')).toBe(true);
+    statusDisplay.setAskStaffStatus(element);
+    expect(element.textContent).toBe('Ask Staff');
+    expect(element.classList.contains('gray')).toBe(true);
+    expect(element.classList.contains('strong')).toBe(true);
   });
 });

@@ -63,24 +63,28 @@ describe('AvailabilityUpdater', function () {
     bibdata_response = JSON.parse(bibdata_response);
     u.process_results_list(bibdata_response);
 
-    const available_result = $(
+    const available_result = document.querySelector(
       `*[data-record-id="${avail_id}"] .lux-text-style`
     );
 
-    expect(available_result.hasClass('green strong')).toBe(true);
-    expect(available_result.text()).toEqual('Available');
+    expect(available_result.classList.contains('green')).toBe(true);
+    expect(available_result.classList.contains('strong')).toBe(true);
+    expect(available_result.textContent).toEqual('Available');
 
-    const unavailable_result = $(
+    const unavailable_result = document.querySelector(
       `*[data-record-id="${unavail_id}"] .lux-text-style`
     );
 
-    expect(unavailable_result.hasClass('gray')).toBe(true);
-    expect(unavailable_result.text()).toEqual('Request');
+    expect(unavailable_result.classList.contains('gray')).toBe(true);
+    expect(unavailable_result.textContent).toEqual('Request');
 
-    const mixed_result = $(`*[data-record-id="${mixed_id}"] .lux-text-style`);
+    const mixed_result = document.querySelector(
+      `*[data-record-id="${mixed_id}"] .lux-text-style`
+    );
 
-    expect(mixed_result.hasClass('green strong')).toBe(true);
-    expect(mixed_result.text()).toEqual('Some Available');
+    expect(mixed_result.classList.contains('green')).toBe(true);
+    expect(mixed_result.classList.contains('strong')).toBe(true);
+    expect(mixed_result.textContent).toEqual('Some Available');
   });
 
   test('search results availability for records in temporary locations says Available', () => {
@@ -452,7 +456,7 @@ describe('AvailabilityUpdater', function () {
     const u = new updater();
     u.id = '99124187703506421';
     expect(av_element[0].textContent).not.toContain('Request');
-    u.apply_availability_label(av_element, holding_data, false);
+    u.apply_availability_label(av_element[0], holding_data, false);
     expect(av_element[0].textContent).toContain('Ask Staff');
     expect(
       document.querySelector(
@@ -494,7 +498,7 @@ describe('AvailabilityUpdater', function () {
     const holding_data =
       res_share_response['99118399983506421']['RES_SHARE$IN_RS_REQ'];
     expect(element[0].textContent).not.toContain('Unavailable');
-    u.apply_availability_label(element, holding_data, false);
+    u.apply_availability_label(element[0], holding_data, false);
     expect(element[0].textContent).toContain('Unavailable');
     expect(
       document.querySelector(
@@ -609,7 +613,7 @@ describe('AvailabilityUpdater', function () {
     );
     const holding_data =
       res_share_response['99118399983506421']['RES_SHARE$IN_RS_REQ'];
-    u.apply_availability_label(element, holding_data, false);
+    u.apply_availability_label(element[0], holding_data, false);
     u.update_single(res_share_response, u.id);
     expect(
       document.querySelector(
@@ -669,7 +673,7 @@ describe('AvailabilityUpdater', function () {
     );
     const holding_data =
       res_share_response['99125535710106421']['RES_SHARE$IN_RS_REQ'];
-    u.apply_availability_label(element, holding_data, false);
+    u.apply_availability_label(element[0], holding_data, false);
     u.process_result(u.id, res_share_response['99125535710106421']);
     expect(
       document
