@@ -545,13 +545,6 @@ export default class AvailabilityUpdater {
     }
   }
 
-  title_case(str) {
-    return (
-      str[0].toUpperCase() +
-      str.slice(1, +(str.length - 1) + 1 || undefined).toLowerCase()
-    );
-  }
-
   // Set status for specific Marquand locations and location RES_SHARE$IN_RS_REQ
   checkSpecialLocation(location, availability_element, searchResults) {
     // record page -> searchResults == false
