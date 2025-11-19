@@ -87,13 +87,13 @@ describe('GoogleBooksSnippets', function () {
       'utf8'
     );
     json_response = JSON.parse(json_response);
-    $.getJSON = vi.fn().mockImplementation(() => {
-      return { promise: () => Promise.resolve(json_response) };
+    const mockJsonP = vi.fn(() => {
+      window.addGoogleBooksSnippetsToDom(json_response);
     });
     const expectedUrl =
       'https://www.google.com/books/edition/_/5FTiCgAAQBAJ?hl=en&gbpv=1&pg=PP1';
 
-    await google_books_snippets.insert_snippet();
+    await google_books_snippets.insert_snippet(mockJsonP);
 
     const li_elements = document.getElementsByTagName('li');
     expect(li_elements.length).toEqual(1);
