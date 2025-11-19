@@ -1,41 +1,49 @@
 export default class StatusDisplay {
   setAvailableStatus(element) {
-    element.text('Available').addClass('green strong');
+    element.textContent = 'Available';
+    element.classList.add('green', 'strong');
     return element;
   }
 
   setSomeAvailableStatus(element) {
-    element.text('Some Available').addClass('green strong');
+    element.textContent = 'Some Available';
+    element.classList.add('green', 'strong');
     return element;
   }
 
   setOnSiteAccessStatus(element) {
-    element.text('On-site access').addClass('green strong');
+    element.textContent = 'On-site access';
+    element.classList.add('green', 'strong');
     return element;
   }
 
   setUnavailableStatus(element) {
-    element.text('Unavailable').addClass('red strong');
+    element.textContent = 'Unavailable';
+    element.classList.add('red', 'strong');
     return element;
   }
 
   setRequestStatus(element) {
-    element.text('Request').addClass('gray strong');
+    element.textContent = 'Request';
+    element.classList.add('gray', 'strong');
     return element;
   }
 
   setAskStaffStatus(element) {
-    element.text('Ask Staff').addClass('gray strong');
+    element.textContent = 'Ask Staff';
+    element.classList.add('gray', 'strong');
     return element;
   }
 
   setUndeterminedStatus(element) {
-    element.text('Undetermined').addClass('gray strong');
+    element.textContent = 'Undetermined';
+    element.classList.add('gray', 'strong');
     return element;
   }
 
   setLoadingStatus(element) {
-    element.text('Loading...').addClass('gray strong');
+    element.textContent = 'Loading...';
+    element.classList.add('gray', 'strong');
     return element;
   }
 }
