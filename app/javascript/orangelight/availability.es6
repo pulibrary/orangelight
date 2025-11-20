@@ -69,9 +69,17 @@ export default class AvailabilityUpdater {
   request_show_page_availability(allowRetry) {
     this.id = window.location.pathname.split('/').pop();
     const mainContent = document.getElementById('main-content');
-    this.host_id = mainContent
+    const hostIdAttr = mainContent
       ? mainContent.getAttribute('data-host-id') || ''
       : '';
+
+    if (hostIdAttr && hostIdAttr.startsWith('[') && hostIdAttr.endsWith(']')) {
+      const parsed = JSON.parse(hostIdAttr);
+
+      this.host_id = Array.isArray(parsed) ? parsed.join(',') : hostIdAttr;
+    } else {
+      this.host_id = hostIdAttr;
+    }
 
     if (this.id.match(/^SCSB-\d+/)) {
       this.request_scsb_single_availability();
@@ -141,7 +149,10 @@ export default class AvailabilityUpdater {
   availability_url_show() {
     let url = `${this.bibdata_base_url}/bibliographic/availability.json?deep=true&bib_ids=${this.id}`;
     if (this.host_id.length > 0) {
-      url += `,${this.host_id}`;
+      const hostIds = Array.isArray(this.host_id)
+        ? this.host_id.join(',')
+        : this.host_id;
+      url += `,${hostIds}`;
     }
     return url;
   }
@@ -269,7 +280,10 @@ export default class AvailabilityUpdater {
     // problematic availability response behavior for constituent record page with host records.
     // It treats host records as holdings of the constituent record. see: https://github.com/pulibrary/bibdata/issues/1739
     if (this.host_id.length > 0) {
-      this.host_id.forEach((mms_id) => {
+      const hostIds = Array.isArray(this.host_id)
+        ? this.host_id
+        : [this.host_id];
+      hostIds.forEach((mms_id) => {
         this.update_single(holding_records, mms_id);
       });
     }
