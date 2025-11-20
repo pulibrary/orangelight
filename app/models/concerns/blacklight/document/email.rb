@@ -5,6 +5,7 @@ module Blacklight
   module Document
     module Email
       include ActionView::Helpers::UrlHelper
+
       # Return a text string that will be the body of the email
       def to_email_text
         body = []
