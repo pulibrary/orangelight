@@ -3,6 +3,7 @@ module Orangelight
   # For reference notes that end with a url convert the note into link
   class ReferenceNoteUrlProcessor < Blacklight::Rendering::AbstractStep
     include ActionView::Helpers::UrlHelper
+
     def render
       return next_step(values) unless config.references_url
       values.map! do |reference|

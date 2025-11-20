@@ -2,6 +2,7 @@
 
 class EventHandler
   include Sneakers::Worker
+
   from_queue :"catalog_#{Rails.env}"
 
   def work(msg)
