@@ -1,5 +1,7 @@
 export function orangelight() {
   // set placeholder on search type change
+  // we set the event listener on the header because the listener
+  // isn't setting correctly when applied to the select.
   document.querySelector('header').addEventListener('change', () => {
     const q = document.getElementById('q');
     const searchField = document.getElementById('search_field');
