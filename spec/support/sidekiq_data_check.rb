@@ -5,6 +5,7 @@
 # See https://github.com/sidekiq/sidekiq/wiki/Best-Practices#1-make-your-job-parameters-small-and-simple
 class SidekiqDataCheck
   include Sidekiq::JobUtil
+
   def initialize(data_to_check)
     @data_to_check = { "args" => data_to_check }
   end

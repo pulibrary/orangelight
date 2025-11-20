@@ -10,7 +10,6 @@ module Requests::Submissions
                          marquand_edd: { cited_pages: 'Marquand EDD', note: 'Digitization Request Marquand Item' } }
     end
 
-    # rubocop:disable Naming/PredicateMethod
     def handle
       params = @service_types[service_type.to_sym]
       items = @submission.filter_items_by_service(service_type)
@@ -23,7 +22,6 @@ module Requests::Submissions
       end
       return false if @errors.present?
     end
-    # rubocop:enable Naming/PredicateMethod
 
     def submitted
       @sent

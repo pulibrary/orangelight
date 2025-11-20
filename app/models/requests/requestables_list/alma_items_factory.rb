@@ -5,6 +5,7 @@ module Requests
     # (which will have a MFHD).  This includes Princeton-owned titles that are at ReCAP.
     class AlmaItemsFactory
       include Bibdata
+
       # :reek:LongParameterList
       # rubocop:disable Metrics/ParameterLists
       def initialize(document:, holdings:, items:, location:, mfhd:, patron:)

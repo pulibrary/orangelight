@@ -21,7 +21,7 @@ module StringFunctions
       return str unless str
 
       # trailing: comma, slash, semicolon, colon (possibly preceded and followed by whitespace)
-      str = str.sub(%r{ *[ ,\/;:] *\Z}, '')
+      str = str.sub(%r{ *[ ,/;:] *\Z}, '')
 
       # trailing period if it is preceded by at least three letters
       # (possibly preceded and followed by whitespace)
