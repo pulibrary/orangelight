@@ -1,4 +1,10 @@
 {
+  "cce25a4616a109eb91f65653f5cb8b13_0": {
+    "author": "Ryan Laddusaw",
+    "comment": "Not a security sensitive comparison",
+    "false_positive": true,
+    "ignored_at": "2025-11-19T17:14:11Z"
+  },
   "e6daaadb5fe7040a3df7cd70536b299b_0": {
     "author": "Max Kadel",
     "comment": "Not using user input to create a path, passing it in as a parameter to another method.",
