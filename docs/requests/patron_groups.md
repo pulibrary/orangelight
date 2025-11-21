@@ -31,6 +31,8 @@ We have two groupings of patron types.
 * Pick-up Service (request an item for pick-up that is shelved at a campus library)
 * On Campus Material Electronic Digitization Request (scan a selection from an item shelved on campus on demand via our ILLiad Document Delivery application)
 * Resource Sharing Services (Request an item from another library via our InterLibrary Loan application (Illiad))
+* Marquand Physical Delivery Request for In Library Use Materials (Request a Marquand Item stored on Campus for use at Marquand Library in Firestone)
+* Marquand Charged Item Physical Delivery Request for In Library Use Materails (Request a Charged Item from the Marquand Collections for use at Marquand Library in Firestone)
 
 ## Alma Affiliate and Guest Patron Groups
 
@@ -43,3 +45,5 @@ We have two groupings of patron types.
 * Recap Physical Delivery Request (Offsite Materials stored at our ReCAP Facility)
 * Recap Electronic Delivery Request (scan a selection shelved at ReCAP on demand via the ReCAP SCSB Application)
 * Annex Physical Delivery Request (Offsite Materials stored at our Forrestal Annex Building)
+* Marquand Physical Delivery Request for In Library Use Materials (Request a Marquand Item stored on Campus for use at Marquand Library in Firestone)
+* Marquand Charged Item Physical Delivery Request for In Library Use Materails (Request a Charged Item from the Marquand Collections for use at Marquand Library in Firestone)
