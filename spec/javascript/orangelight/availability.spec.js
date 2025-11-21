@@ -347,38 +347,83 @@ describe('AvailabilityUpdater', function () {
     expect(badge_second.textContent).toEqual('Available');
   });
 
-  test('record show page for a bound-with record', () => {
-    document.body.innerHTML =
-      '<table><tr>' +
-      '<td class="holding-status" data-availability-record="true" data-record-id="99124994093506421" data-holding-id="22488152160006421" data-aeon="false">' +
-      '<div class="lux-text-style"></div>' +
-      '</td>' +
-      '</tr></table>';
+  test('record show page for a bound-with record', async () => {
+    document.body.innerHTML = `
+    <td class="holding-status" data-availability-record="true" data-record-id="993594213506421" data-holding-id="22499061940006421" data-temp-location-code="true">
+      <span class="availability-icon"></span>
+    </td>
+    <td class="holding-status" data-availability-record="true" data-record-id="99125489791206421" data-holding-id="22927372900006421" data-aeon="true" data-temp-location-code="true">
+      <span class="availability-icon"></span>
+    </td>
+    `;
+
     const holding_records = {
-      '9929455793506421': {},
-      '99124994093506421': {
-        '22488152160006421': {
+      993594213506421: {
+        '22499061940006421': {
           on_reserve: 'N',
-          location: 'recap$pa',
-          label: 'ReCAP - ReCAP - rcppa RECAP',
+          location: 'firestone$stacks',
+          label: 'Firestone Library - Stacks',
           status_label: 'Available',
           copy_number: null,
           temp_location: false,
-          id: '22488152160006421',
+          id: '22499061940006421',
+        },
+        '22927372900006421': {
+          on_reserve: 'N',
+          location: 'rare$ex',
+          label: 'Special Collections - Rare Books',
+          status_label: 'On-site Access',
+          copy_number: null,
+          temp_location: false,
+          id: '22927372900006421',
+        },
+      },
+      '99125489791206421': {
+        '22927372900006421': {
+          on_reserve: 'N',
+          location: 'rare$ex',
+          label: 'Special Collections - Rare Books',
+          status_label: 'On-site Access',
+          copy_number: null,
+          temp_location: false,
+          id: '22927372900006421',
         },
       },
     };
 
+    const mockResponse = {
+      ok: true,
+      status: 200,
+      json: vi.fn().mockResolvedValue(holding_records),
+    };
+
+    const fetchSpy = vi.spyOn(global, 'fetch').mockResolvedValue(mockResponse);
+    const processSpy = vi.spyOn(updater.prototype, 'process_single');
+
     const u = new updater();
-    u.id = '9929455793506421'; // constituent record
-    u.host_id = ['99124994093506421']; // host mms_id
-    u.mms_id = u.host_id[0]; //
+    u.bibdata_base_url = 'http://mock_url';
+    u.id = '993594213506421'; // constituent record
+    u.host_id = '99125489791206421'; // host mms_id
+    u.mms_id = u.host_id;
 
     const update_single = vi.spyOn(u, 'update_single');
+
+    // Simulate the request that would be made for bound-with records
+    u.request_regular_availability(true);
+    await new Promise(setImmediate);
+
+    expect(fetchSpy).toHaveBeenCalledWith(
+      'http://mock_url/bibliographic/availability.json?deep=true&bib_ids=993594213506421,99125489791206421'
+    );
+    expect(processSpy).toHaveBeenCalledWith(holding_records);
+
     u.process_single(holding_records);
 
     expect(update_single).toHaveBeenCalledWith(holding_records, u.id);
     expect(update_single).toHaveBeenCalledWith(holding_records, u.mms_id);
+
+    fetchSpy.mockRestore();
+    processSpy.mockRestore();
     update_single.mockRestore();
   });
 
