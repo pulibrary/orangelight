@@ -20,7 +20,7 @@ export default class AvailabilityShow extends AvailabilityBase {
   constructor() {
     super();
     this.id = '';
-    this.host_id = [];
+    this.host_ids = [];
 
     this.process_single = this.process_single.bind(this);
     this.update_single = this.update_single.bind(this);
@@ -34,10 +34,10 @@ export default class AvailabilityShow extends AvailabilityBase {
   // the record id is 9923427953506421
   availability_url_show() {
     let url = `${this.bibdata_base_url}/bibliographic/availability.json?deep=true&bib_ids=${this.id}`;
-    if (this.host_id.length > 0) {
-      const hostIds = Array.isArray(this.host_id)
-        ? this.host_id.join(',')
-        : this.host_id;
+    if (this.host_ids.length > 0) {
+      const hostIds = Array.isArray(this.host_ids)
+        ? this.host_ids.join(',')
+        : this.host_ids;
       url += `,${hostIds}`;
     }
     return url;
@@ -55,9 +55,9 @@ export default class AvailabilityShow extends AvailabilityBase {
       : '';
     if (hostIdAttr && hostIdAttr.startsWith('[') && hostIdAttr.endsWith(']')) {
       const parsed = JSON.parse(hostIdAttr);
-      this.host_id = Array.isArray(parsed) ? parsed : [hostIdAttr];
+      this.host_ids = Array.isArray(parsed) ? parsed : [hostIdAttr];
     } else {
-      this.host_id = hostIdAttr ? [hostIdAttr] : [];
+      this.host_ids = hostIdAttr ? [hostIdAttr] : [];
     }
     if (this.id.match(/^SCSB-\d+/)) {
       this.request_scsb_single_availability();
@@ -69,14 +69,14 @@ export default class AvailabilityShow extends AvailabilityBase {
   // process_single() is used in the Show page and typically `holding_records` only has the
   // information for a single bib since we are on the Show page. But occasionally the record
   // that we are showing is bound with another (host) record and in those instances
-  // `holding_records` has data for two or more bibs: `this.id`, `this.host_id`.
+  // `holding_records` has data for two or more bibs: `this.id`, `this.host_ids`.
   process_single(holding_records) {
     this.update_single(holding_records, this.id);
     // Availability response in bibdata should be refactored not to include the host holdings under the mms_id of the record page.
     // problematic availability response behavior for constituent record page with host records.
     // It treats host records as holdings of the constituent record. see: https://github.com/pulibrary/bibdata/issues/1739
-    if (this.host_id.length > 0) {
-      this.host_id.forEach((mms_id) => {
+    if (this.host_ids.length > 0) {
+      this.host_ids.forEach((mms_id) => {
         this.update_single(holding_records, mms_id);
       });
     }
