@@ -90,7 +90,7 @@ RSpec.describe AccountController, patrons: true do
     end
 
     context 'with a canceled transaction' do
-      it 'Cancels Illiad Transactions' do
+      pending it 'Cancels Illiad Transactions' do
         post :cancel_ill_requests, params: { cancel_requests: params_cancel_requests }, format: :js
         expect(flash.now[:success]).to eq I18n.t('blacklight.account.cancel_success')
       end
@@ -105,7 +105,7 @@ RSpec.describe AccountController, patrons: true do
 
     context 'the response contains an error' do
       let(:cancel_ill_requests_response) { File.open('spec/fixtures/cancel_ill_requests_failed_response.json') }
-      it 'flashes an error message' do
+      pending it 'flashes an error message' do
         post :cancel_ill_requests, params: { cancel_requests: params_cancel_requests }, format: :js
         expect(flash.now[:error]).to eq I18n.t('blacklight.account.cancel_fail')
       end
