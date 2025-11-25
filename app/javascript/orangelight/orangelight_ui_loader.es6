@@ -1,4 +1,3 @@
-import AvailabilityUpdater from '../orangelight/availability.es6';
 import BookCoverManager from '../orangelight/book_covers.es6';
 import { FiggyManifestManager } from '../orangelight/figgy_manifest_manager';
 import GoogleBooksSnippets from '../orangelight/google_books_snippets.es6';
@@ -9,19 +8,12 @@ import { orangelight } from './orangelight.es6';
 
 export default class OrangelightUiLoader {
   run() {
-    this.setup_availability();
     this.setup_linked_records();
     this.setup_show_more_fields();
     this.setup_viewers();
     this.setup_book_covers();
     handleBtnKeyDown();
     orangelight();
-  }
-
-  setup_availability() {
-    const au2 = new AvailabilityUpdater();
-    au2.request_availability(true);
-    au2.scsb_search_availability();
   }
 
   setup_linked_records() {
