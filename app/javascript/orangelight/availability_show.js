@@ -20,7 +20,7 @@ export default class AvailabilityShow extends AvailabilityBase {
   constructor() {
     super();
     this.id = '';
-    this.host_id = '';
+    this.host_id = [];
 
     this.process_single = this.process_single.bind(this);
     this.update_single = this.update_single.bind(this);
@@ -55,9 +55,9 @@ export default class AvailabilityShow extends AvailabilityBase {
       : '';
     if (hostIdAttr && hostIdAttr.startsWith('[') && hostIdAttr.endsWith(']')) {
       const parsed = JSON.parse(hostIdAttr);
-      this.host_id = Array.isArray(parsed) ? parsed.join(',') : hostIdAttr;
+      this.host_id = Array.isArray(parsed) ? parsed : [hostIdAttr];
     } else {
-      this.host_id = hostIdAttr;
+      this.host_id = hostIdAttr ? [hostIdAttr] : [];
     }
     if (this.id.match(/^SCSB-\d+/)) {
       this.request_scsb_single_availability();
@@ -76,10 +76,7 @@ export default class AvailabilityShow extends AvailabilityBase {
     // problematic availability response behavior for constituent record page with host records.
     // It treats host records as holdings of the constituent record. see: https://github.com/pulibrary/bibdata/issues/1739
     if (this.host_id.length > 0) {
-      const hostIds = Array.isArray(this.host_id)
-        ? this.host_id
-        : [this.host_id];
-      hostIds.forEach((mms_id) => {
+      this.host_id.forEach((mms_id) => {
         this.update_single(holding_records, mms_id);
       });
     }

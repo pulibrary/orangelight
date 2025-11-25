@@ -38,7 +38,7 @@ describe('AvailabilityShow', function () {
     );
     expect(availabilityShow.status_display).toBeDefined();
     expect(availabilityShow.id).toBe('');
-    expect(availabilityShow.host_id).toBe('');
+    expect(availabilityShow.host_id).toEqual([]);
   });
 
   describe('request_availability', () => {
@@ -563,50 +563,89 @@ describe('AvailabilityShow', function () {
     expect(holding_status.textContent).toBe('Unavailable');
   });
 
-  test('record show page for a bound-with record', async () => {
+  test('record show page for a bound-with record with two host ids', async () => {
     document.body.innerHTML = `
-    <div id="main-content" data-host-id="99125489791206421">
+    <div id="main-content" data-host-id='["99125489925606421","99125489799906421"]'>
         <table>
-        <td class="holding-status" data-availability-record="true" data-record-id="993594213506421" data-holding-id="22499061940006421" data-temp-location-code="true">
+        // holding status for host_id 99125489925606421
+        <td class="holding-status" data-availability-record="true" data-record-id="99125489925606421" data-holding-id="22927374020006421" data-aeon="true" data-temp-location-code="false">
           <span class="availability-icon"></span>
         </td>
-        <td class="holding-status" data-availability-record="true" data-record-id="99125489791206421" data-holding-id="22927372900006421" data-aeon="true" data-temp-location-code="true">
+        // holding status for host_id 99125489799906421
+        <td class="holding-status" data-availability-record="true" data-record-id="99125489799906421" data-holding-id="22927344410006421" data-aeon="true" data-temp-location-code="true">
           <span class="availability-icon"></span>
+        </td>
+        // holding status for main record 99576993506421
+        <td class="holding-status" data-availability-record="true" data-record-id="99576993506421" data-holding-id="22589637990006421" data-temp-location-code="true">
+          <span class="availability-icon lux-text-style green strong">Available</span>
+        </td>
+        <td class="holding-status" data-availability-record="true" data-record-id="99576993506421" data-holding-id="22589637250006421" data-temp-location-code="true">
+          <span class="availability-icon lux-text-style green strong">Available</span>
         </td>
         </table>
     </div>
     `;
 
     const holding_records = {
-      993594213506421: {
-        '22499061940006421': {
+      99576993506421: {
+        22589637990006421: {
           on_reserve: 'N',
-          location: 'firestone$stacks',
-          label: 'Firestone Library - Stacks',
+          location: 'marquand$pj',
+          label:
+            'Marquand Library - Remote Storage (ReCAP): Marquand Library Use Only',
           status_label: 'Available',
           copy_number: null,
           temp_location: false,
-          id: '22499061940006421',
+          id: '22589637990006421',
         },
-        '22927372900006421': {
+        22589637250006421: {
+          on_reserve: 'N',
+          location: 'recap$pa',
+          label: 'ReCAP - Remote Storage',
+          status_label: 'Available',
+          copy_number: null,
+          temp_location: false,
+          id: '22589637250006421',
+        },
+        22927344410006421: {
           on_reserve: 'N',
           location: 'rare$ex',
           label: 'Special Collections - Rare Books',
           status_label: 'On-site Access',
           copy_number: null,
           temp_location: false,
-          id: '22927372900006421',
+          id: '22927344410006421',
+        },
+        22927374020006421: {
+          on_reserve: 'N',
+          location: 'rare$ex',
+          label: 'Special Collections - Rare Books',
+          status_label: 'On-site Access',
+          copy_number: null,
+          temp_location: false,
+          id: '22927374020006421',
         },
       },
-      '99125489791206421': {
-        '22927372900006421': {
+      99125489925606421: {
+        22927374020006421: {
           on_reserve: 'N',
           location: 'rare$ex',
           label: 'Special Collections - Rare Books',
           status_label: 'On-site Access',
           copy_number: null,
           temp_location: false,
-          id: '22927372900006421',
+          id: '22927374020006421',
+        },
+      },
+      99125489799906421: {
+        22927344410006421: {
+          on_reserve: 'N',
+          location: 'rare$ex',
+          label: 'Special Collections - Rare Books',
+          status_label: 'On-site Access',
+          copy_number: null,
+          temp_location: false,
+          id: '22927344410006421',
         },
       },
     };
@@ -621,31 +660,32 @@ describe('AvailabilityShow', function () {
     const processSpy = vi.spyOn(availabilityShow, 'process_single');
 
     availabilityShow.bibdata_base_url = 'http://mock_url';
-    availabilityShow.id = '993594213506421'; // constituent record
-    availabilityShow.host_id = '99125489791206421'; // host mms_id
-    availabilityShow.mms_id = availabilityShow.host_id;
+    window.location.pathname = '/catalog/99576993506421';
 
     const update_single = vi.spyOn(availabilityShow, 'update_single');
 
     // request that would be made for bound-with records
-    availabilityShow.request_show_availability(true);
+    availabilityShow.request_show_page_availability(true);
     await new Promise(setImmediate);
 
     expect(fetchSpy).toHaveBeenCalledWith(
-      'http://mock_url/bibliographic/availability.json?deep=true&bib_ids=993594213506421,99125489791206421'
+      'http://mock_url/bibliographic/availability.json?deep=true&bib_ids=99576993506421,99125489925606421,99125489799906421'
     );
     expect(fetchSpy).toHaveBeenCalledTimes(1);
     expect(processSpy).toHaveBeenCalledWith(holding_records);
 
-    availabilityShow.process_single(holding_records);
-
+    expect(update_single).toHaveBeenCalledTimes(3);
     expect(update_single).toHaveBeenCalledWith(
       holding_records,
-      availabilityShow.id
+      '99576993506421'
     );
     expect(update_single).toHaveBeenCalledWith(
       holding_records,
-      availabilityShow.mms_id
+      '99125489925606421'
+    );
+    expect(update_single).toHaveBeenCalledWith(
+      holding_records,
+      '99125489799906421'
     );
 
     fetchSpy.mockRestore();
