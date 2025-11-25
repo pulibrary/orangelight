@@ -38,4 +38,10 @@ describe('OrangelightUiLoader', function () {
     // It calls Figgy once.
     expect(FiggyManifestManager.buildViewers).toHaveBeenCalledTimes(1);
   });
+
+  test('it makes the fadeout() function available globally', () => {
+    expect(window.fadeout).toBeUndefined();
+    new loader().run();
+    expect(window.fadeout).toBeDefined();
+  });
 });

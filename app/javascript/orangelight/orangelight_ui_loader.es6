@@ -5,6 +5,7 @@ import RelatedRecordsDisplayer from '../orangelight/related_records.es6';
 import DisplayMoreFieldComponent from '../../components/display_more_field_component.es6';
 import { handleBtnKeyDown } from './accessible_facets';
 import { orangelight } from './orangelight.es6';
+import { fadeout } from './fadeout';
 
 export default class OrangelightUiLoader {
   run() {
@@ -14,6 +15,7 @@ export default class OrangelightUiLoader {
     this.setup_book_covers();
     handleBtnKeyDown();
     orangelight();
+    this.setup_fadeout();
   }
 
   setup_linked_records() {
@@ -63,6 +65,10 @@ export default class OrangelightUiLoader {
 
   setup_book_covers() {
     new BookCoverManager();
+  }
+
+  setup_fadeout() {
+    window.fadeout = fadeout;
   }
 
   #documentViewers() {
