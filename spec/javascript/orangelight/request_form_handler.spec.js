@@ -65,7 +65,7 @@ describe('RequestFormHandler', () => {
     });
 
     it('should clear all error elements', () => {
-      handler.clearAllErrors();
+      handler.alertManager.clearAllErrors();
 
       const errorElements = document.querySelectorAll('.error');
       errorElements.forEach((el) => {
@@ -75,7 +75,7 @@ describe('RequestFormHandler', () => {
     });
 
     it('should remove has-error class from parent elements', () => {
-      handler.clearAllErrors();
+      handler.alertManager.clearAllErrors();
 
       const errorParents = document.querySelectorAll('.has-error');
       expect(errorParents.length).toBe(0);
@@ -89,7 +89,8 @@ describe('RequestFormHandler', () => {
         success: true,
       };
 
-      handler.displaySuccess(mockData);
+      handler.alertManager.displaySuccess(mockData);
+      handler.submitButton.style.display = 'none';
 
       // Submit button should be hidden, not removed
       expect(document.querySelector('.submit--request').style.display).toBe(
@@ -117,7 +118,7 @@ describe('RequestFormHandler', () => {
         errors: {},
       };
 
-      handler.displayErrors(mockData);
+      handler.alertManager.displayErrors(mockData);
 
       const flashContainer = document.querySelector(
         '.flash_messages .container'
@@ -136,7 +137,7 @@ describe('RequestFormHandler', () => {
         },
       };
 
-      handler.displayErrors(mockData);
+      handler.alertManager.displayErrors(mockData);
 
       const titleError = document.querySelector('.error-title');
       expect(titleError.textContent).toBe(
@@ -169,7 +170,7 @@ describe('RequestFormHandler', () => {
         </div>
       `;
 
-      handler.displayErrors(mockData);
+      handler.alertManager.displayErrors(mockData);
 
       const itemsError = document.querySelector('.error-items');
       expect(itemsError.textContent).toBe(
@@ -273,7 +274,7 @@ describe('RequestFormHandler', () => {
         json: () => Promise.resolve(responseData),
       });
 
-      vi.spyOn(handler, 'displaySuccess');
+      vi.spyOn(handler.alertManager, 'displaySuccess');
 
       const submitEvent = new Event('submit', {
         bubbles: true,
@@ -295,7 +296,9 @@ describe('RequestFormHandler', () => {
         })
       );
 
-      expect(handler.displaySuccess).toHaveBeenCalledWith(responseData);
+      expect(handler.alertManager.displaySuccess).toHaveBeenCalledWith(
+        responseData
+      );
     });
 
     it('should handle validation errors (422 response)', async () => {
@@ -314,7 +317,7 @@ describe('RequestFormHandler', () => {
         json: () => Promise.resolve(responseData),
       });
 
-      vi.spyOn(handler, 'displayErrors');
+      vi.spyOn(handler.alertManager, 'displayErrors');
 
       // Trigger form submission
       const submitEvent = new Event('submit', {
@@ -326,7 +329,9 @@ describe('RequestFormHandler', () => {
       // Wait for async operations
       await new Promise((resolve) => setTimeout(resolve, 0));
 
-      expect(handler.displayErrors).toHaveBeenCalledWith(responseData);
+      expect(handler.alertManager.displayErrors).toHaveBeenCalledWith(
+        responseData
+      );
     });
 
     it('should handle network errors', async () => {

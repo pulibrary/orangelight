@@ -1,4 +1,15 @@
-document.querySelector('.flash_messages').innerHTML = "<%= escape_javascript(render :partial=>'shared/flash_msg', layout: 'shared/flash_messages') %>";
+import AlertManager from './alert_manager';
+const data = {
+  message: "<%= @message %>",
+  success: "<%= @success %>",
+};
+const alertManager = new AlertManager();
+
+if (data.success) {
+  alertManager.displaySuccess(data);
+} else {
+  alertManager.displayErrors(data);
+}
 
 <% unless @account.nil? %>
   document.getElementById('ill-request-cancel').innerHTML = "<%= escape_javascript(render :partial=>'ill_request_items') %>";
