@@ -32,7 +32,7 @@ RSpec.describe 'with an active ill/digitization request', type: :system, js: tru
                  })
   end
   it 'shows an alert on success' do
-    pending("WIP")
+    # pending("WIP")
     visit '/account/digitization_requests/'
     check('cancel-1094508')
     click_button 'Cancel requests'

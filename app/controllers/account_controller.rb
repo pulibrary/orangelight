@@ -26,7 +26,7 @@ class AccountController < ApplicationController
         format.js { flash.now[:error] = I18n.t('blacklight.account.cancel_no_items') }
       elsif cancel_ill_success?(response)
         @message = I18n.t('blacklight.account.cancel_success')
-        @success = true
+        @success = "true"
         format.js
       else
         @message = I18n.t('blacklight.account.cancel_fail')
