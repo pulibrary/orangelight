@@ -92,7 +92,11 @@ export default class AvailabilityShow extends AvailabilityBase {
           id,
           holding_id
         );
-        this.#updateHoldingLocation(label, availability_element);
+        this.#updateHoldingLocation(
+          label,
+          availability_element,
+          holding_records[id]
+        );
         this.apply_availability_label(availability_element, availability_info);
       }
       return result;
@@ -274,17 +278,49 @@ export default class AvailabilityShow extends AvailabilityBase {
     );
   }
 
-  #updateHoldingLocation(label, availability_element) {
+  #updateHoldingLocation(label, availability_element, all_holdings) {
     if (label && availability_element) {
       const detailsElement = availability_element.closest('details');
       if (detailsElement) {
-        const holding_location = detailsElement.querySelector(
-          'summary div.side-by-side span.text'
+        const holdingsInGroup = detailsElement.querySelectorAll(
+          '[data-availability-record="true"]'
         );
-        if (holding_location) {
-          holding_location.textContent = label;
+
+        // Update the group label if:
+        // 1. There's only one holding in the details group, OR
+        // 2. All holdings in this group have the same label from bibdata availability response
+        const shouldUpdate =
+          holdingsInGroup.length === 1 ||
+          this.#allHoldingsHaveSameLabel(holdingsInGroup, all_holdings);
+
+        if (shouldUpdate) {
+          const holding_location = detailsElement.querySelector(
+            'summary div.side-by-side span.text'
+          );
+          if (holding_location) {
+            holding_location.textContent = label;
+          }
         }
       }
     }
+  }
+
+  #allHoldingsHaveSameLabel(holdingsInGroup, all_holdings) {
+    if (holdingsInGroup.length <= 1) {
+      return false;
+    }
+
+    const holdingIdsInGroup = Array.from(holdingsInGroup).map((el) =>
+      el.getAttribute('data-holding-id')
+    );
+
+    const labelsInGroup = holdingIdsInGroup
+      .map((holdingId) => all_holdings[holdingId]?.label)
+      .filter((holding_label) => holding_label !== undefined);
+
+    return (
+      labelsInGroup.length > 0 &&
+      labelsInGroup.every((label) => label === labelsInGroup[0])
+    );
   }
 }

@@ -1,4 +1,4 @@
-import { test } from 'vitest';
+import { describe, test } from 'vitest';
 import AvailabilityShow from '../../../app/javascript/orangelight/availability_show.js';
 
 global.console = {
@@ -694,8 +694,9 @@ describe('AvailabilityShow', function () {
     processSpy.mockRestore();
     update_single.mockRestore();
   });
-  test('it updates holding location label correctly', async () => {
-    document.body.innerHTML = `
+  describe('Holding location group label updates', () => {
+    test('it updates holding location group label when it has only one holding and it has changed in Alma', async () => {
+      document.body.innerHTML = `
       <div id="main-content" data-host-id="">
       <div class="availability--physical">
       <h3>Copies in the Library</h3>
@@ -777,64 +778,239 @@ describe('AvailabilityShow', function () {
 </div>
     `;
 
-    const holding_records = {
-      '99125410673606421': {
-        '22909336080006421': {
-          on_reserve: 'Y',
-          location: 'firestone$res24hr',
-          label: 'Firestone Library - Circulation Desk (24 Hour Reserve)',
-          status_label: 'Available',
-          copy_number: null,
-          temp_location: false,
-          id: '22909336080006421',
+      const holding_records = {
+        '99125410673606421': {
+          '22909336080006421': {
+            on_reserve: 'Y',
+            location: 'firestone$res24hr',
+            label: 'Firestone Library - Circulation Desk (24 Hour Reserve)',
+            status_label: 'Available',
+            copy_number: null,
+            temp_location: false,
+            id: '22909336080006421',
+          },
+          '22909226080006421': {
+            on_reserve: 'N',
+            location: 'marquand$stacks',
+            label: 'Marquand Library - Remote Storage: Marquand Use Only',
+            status_label: 'Unavailable',
+            copy_number: null,
+            temp_location: false,
+            id: '22909226080006421',
+          },
         },
-        '22909226080006421': {
-          on_reserve: 'N',
-          location: 'marquand$stacks',
-          label: 'Marquand Library - Remote Storage: Marquand Use Only',
-          status_label: 'Unavailable',
-          copy_number: null,
-          temp_location: false,
-          id: '22909226080006421',
+      };
+
+      const mockResponse = {
+        ok: true,
+        status: 200,
+        json: vi.fn().mockResolvedValue(holding_records),
+      };
+
+      const fetchSpy = vi
+        .spyOn(global, 'fetch')
+        .mockResolvedValue(mockResponse);
+      const processSpy = vi.spyOn(availabilityShow, 'process_single');
+
+      availabilityShow.bibdata_base_url = 'http://mock_url';
+      window.location.pathname = '/catalog/99125410673606421';
+
+      availabilityShow.request_show_page_availability(true);
+      await new Promise(setImmediate);
+
+      expect(fetchSpy).toHaveBeenCalledWith(
+        'http://mock_url/bibliographic/availability.json?deep=true&bib_ids=99125410673606421'
+      );
+      expect(fetchSpy).toHaveBeenCalledTimes(1);
+      expect(processSpy).toHaveBeenCalledWith(holding_records);
+
+      const locationTextFirestone = document.querySelectorAll(
+        '.side-by-side .text'
+      )[0];
+      expect(locationTextFirestone.textContent).toBe(
+        'Firestone Library - Circulation Desk (24 Hour Reserve)'
+      );
+      const locationTextMarquand = document.querySelectorAll(
+        '.side-by-side .text'
+      )[1];
+      expect(locationTextMarquand.textContent).toBe(
+        'Marquand Library - Remote Storage: Marquand Use Only'
+      );
+
+      fetchSpy.mockRestore();
+      processSpy.mockRestore();
+    });
+    test('it will not update holding location group label when it has more than one holdings and only one of them has changed in Alma', async () => {
+      document.body.innerHTML = `
+      <div id="main-content" data-host-id="">
+      <div class="availability--physical">
+      <h3>Copies in the Library</h3>
+      <details>
+        <summary class="lux" data-v-app=""><div class="side-by-side"><span class="text">Firestone Library - Stacks</span>
+        <span class="when-closed"><span><!----></span></span></div><div><span class="when-closed"><div data-v-c60fd5b0="" class="lux-icon">
+        </div></span><span class="when-open">
+        <div data-v-c60fd5b0="" class="lux-icon"></div></span></div>
+        </summary>
+        <div class="detailed-content">
+          <table class="availability-table" aria-label="Library locations availability">
+            <thead class="visually-hidden">
+              <tr>
+                <th>Call Number</th>
+                <th>Status</th>
+                <th class="location-services">Location Service</th>
+              </tr>
+            </thead>
+              <tbody><tr class="holding-block">
+          <td class="call-number-details">
+        <div>
+        <span class="call-number">PN1995.25 .C87 2021</span>
+        <a href="/browse/call_numbers?q=PN1995.25+.C87+2021" class="browse-cn" data-original-title="Browse: PN1995.25 .C87 2021">
+          <span class="link-text">Call no. browse</span>
+        </a>
+      </div>
+            <div class="holding-details lux" data-v-app=""><ul class="item-status" data-record-id="99125410673606421" data-holding-id="22909336080006421"></ul></div>
+          </td>
+            <td class="holding-status" data-availability-record="true" data-record-id="99125410673606421" data-holding-id="22909336080006421" data-temp-location-code="true">
+        <span class="availability-icon"></span>
+      </td>
+          <td class="libmap-services">
+          <div class="libmap-button libmaps-proc" data-title="Artists' Film / David Curtis" data-location="Firestone Library" data-collection="Stacks" data-callnumber="PN1995.25 .C87 2021">
+          <div class="springy-button-div"><a class="springy-button" target="_blank" href="https://libcal.princeton.edu/libmaps/catalog/full?call=PN1995.25+.C87+2021&amp;location=Firestone+Library&amp;collection=Stacks&amp;title=Artists%27+Film+%2F+David+Curtis"><svg xmlns="http://www.w3.org/2000/svg" class="springy-icon" viewBox="796 796 200 200"><path d="M970.13z"></path></svg>Find on Shelf</a></div></div>
+      </td> 
+          <td class="location-services service-conditional" data-open="true" data-requestable="true" data-aeon="false" data-holding-id="22905775240006421">
+        <a class="request btn btn-sm btn-primary" href="/requests/99125410673606421?aeon=false&amp;mfhd=22905775240006421&amp;open_holdings=Firestone+Library+-+Stacks">Request</a>
+
+      </td>
+      </tr>
+
+        </tbody></table>
+      </div>
+    </details>
+    <details>
+      <summary class="lux" data-v-app=""><div class="side-by-side"><span class="text">Marquand Library - Remote Storage: Marquand Use Only</span><span class="when-closed"><span><!----></span></span></div><div><span class="when-closed"><div data-v-c60fd5b0="" class="lux-icon"><svg data-v-c60fd5b0="" xmlns="http://www.w3.org/2000/svg" width="20" height="20" color="currentColor" viewBox="0 0 24 24" overflow="visible" aria-labelledby="" aria-hidden="true" role="img"><!----><!----><g data-v-c60fd5b0="" fill="currentColor"><g transform="translate(1.2, 0)"><path stroke="currentColor" stroke-width="3" d="M5.5"></path></g></g></svg></div></span>
+      <span class="when-open"><div data-v-c60fd5b0="" class="lux-icon"><svg data-v-c60fd5b0="" xmlns="http://www.w3.org/2000/svg" width="20" height="20" color="currentColor" viewBox="0 0 24 24" overflow="visible" aria-labelledby="" aria-hidden="true" role="img"><!----><!----><g data-v-c60fd5b0="" fill="currentColor"><g><path stroke="currentColor" stroke-width="3" d="M12"></path></g></g></svg>
+                  </div></span></div>
+                  </summary>
+      <div class="detailed-content">
+        <table class="availability-table" aria-label="Library locations availability">
+          <thead class="visually-hidden">
+            <tr>
+              <th>Call Number</th>
+              <th>Status</th>
+              <th class="location-services">Location Service</th>
+            </tr>
+          </thead>
+            <tbody>
+            <tr class="holding-block">
+        <td class="call-number-details"
+      <span class="call-number">PN1995.25 .C87 2021</span>
+      <a href="/browse/call_numbers?q=PN1995.25+.C87+2021" class="browse-cn" data-original-title="Browse: PN1995.25 .C87 2021">
+        <span class="link-text">Call no. browse</span>
+      </a>
+    </div>
+          <div class="holding-details lux" data-v-app=""><ul class="item-status" data-record-id="99125410673606421" data-holding-id="22909226080006421"></ul></div>
+        </td>
+          <td class="holding-status" data-availability-record="true" data-record-id="99125410673606421" data-holding-id="22909226080006421" data-temp-location-code="true">
+      <span class="availability-icon"></span>
+    </td>
+        <td class="location-services service-conditional" data-open="false" data-requestable="true" data-aeon="false" data-holding-id="22909226080006421">
+          <a class="request btn btn-sm btn-primary" href="/requests/99125410673606421?aeon=false&amp;mfhd=22909226080006421&amp;open_holdings=Marquand+Library+-+Remote+Storage%3A+Marquand+Use+Only">Request</a>
+        </td>
+        </tr>
+        
+        <tr class="holding-block">
+        <td class="call-number-details"
+      <span class="call-number">PN1995.25 .C87 2021</span>
+      <a href="/browse/call_numbers?q=PN1995.25+.C87+2021" class="browse-cn" data-original-title="Browse: PN1995.25 .C87 2021">
+        <span class="link-text">Call no. browse</span>
+      </a>
+    </div>
+          <div class="holding-details lux" data-v-app=""><ul class="item-status" data-record-id="99125410673606421" data-holding-id="22579865170006421"></ul></div>
+        </td>
+          <td class="holding-status" data-availability-record="true" data-record-id="99125410673606421" data-holding-id="22579865170006421" data-temp-location-code="true">
+      <span class="availability-icon"></span>
+    </td>
+        <td class="location-services service-conditional" data-open="false" data-requestable="true" data-aeon="false" data-holding-id="22579865170006421">
+          <a class="request btn btn-sm btn-primary" href="/requests/99125410673606421?aeon=false&amp;mfhd=22579865170006421&amp;open_holdings=Marquand+Library+-+Remote+Storage%3A+Marquand+Use+Only">Request</a>
+        </td>
+        </tr>
+        </tbody></table>
+      </div>
+    </details> 
+  </div>
+</div>
+    `;
+
+      const holding_records = {
+        '99125410673606421': {
+          '22909336080006421': {
+            on_reserve: 'Y',
+            location: 'firestone$stacks',
+            label: 'Firestone Library - Stacks',
+            status_label: 'Available',
+            copy_number: null,
+            temp_location: false,
+            id: '22909336080006421',
+          },
+          '22909226080006421': {
+            on_reserve: 'N',
+            location: 'marquand$stacks',
+            label: 'Marquand Library - Remote Storage: Marquand Use Only',
+            status_label: 'Unavailable',
+            copy_number: null,
+            temp_location: false,
+            id: '22909226080006421',
+          },
+          '22579865170006421': {
+            on_reserve: 'N',
+            location: 'commons$stacks',
+            label: 'Commons Library',
+            status_label: 'Available',
+            copy_number: null,
+            temp_location: false,
+            id: '22579865170006421',
+          },
         },
-      },
-    };
+      };
 
-    const mockResponse = {
-      ok: true,
-      status: 200,
-      json: vi.fn().mockResolvedValue(holding_records),
-    };
+      const mockResponse = {
+        ok: true,
+        status: 200,
+        json: vi.fn().mockResolvedValue(holding_records),
+      };
 
-    const fetchSpy = vi.spyOn(global, 'fetch').mockResolvedValue(mockResponse);
-    const processSpy = vi.spyOn(availabilityShow, 'process_single');
+      const fetchSpy = vi
+        .spyOn(global, 'fetch')
+        .mockResolvedValue(mockResponse);
+      const processSpy = vi.spyOn(availabilityShow, 'process_single');
 
-    availabilityShow.bibdata_base_url = 'http://mock_url';
-    window.location.pathname = '/catalog/99125410673606421';
+      availabilityShow.bibdata_base_url = 'http://mock_url';
+      window.location.pathname = '/catalog/99125410673606421';
 
-    availabilityShow.request_show_page_availability(true);
-    await new Promise(setImmediate);
+      availabilityShow.request_show_page_availability(true);
+      await new Promise(setImmediate);
 
-    expect(fetchSpy).toHaveBeenCalledWith(
-      'http://mock_url/bibliographic/availability.json?deep=true&bib_ids=99125410673606421'
-    );
-    expect(fetchSpy).toHaveBeenCalledTimes(1);
-    expect(processSpy).toHaveBeenCalledWith(holding_records);
+      expect(fetchSpy).toHaveBeenCalledWith(
+        'http://mock_url/bibliographic/availability.json?deep=true&bib_ids=99125410673606421'
+      );
+      expect(fetchSpy).toHaveBeenCalledTimes(1);
+      expect(processSpy).toHaveBeenCalledWith(holding_records);
 
-    const locationTextFirestone = document.querySelectorAll(
-      '.side-by-side .text'
-    )[0];
-    expect(locationTextFirestone.textContent).toBe(
-      'Firestone Library - Circulation Desk (24 Hour Reserve)'
-    );
-    const locationTextMarquand = document.querySelectorAll(
-      '.side-by-side .text'
-    )[1];
-    expect(locationTextMarquand.textContent).toBe(
-      'Marquand Library - Remote Storage: Marquand Use Only'
-    );
+      const locationTextFirestone = document.querySelectorAll(
+        '.side-by-side .text'
+      )[0];
+      expect(locationTextFirestone.textContent).toBe(
+        'Firestone Library - Stacks'
+      );
+      const locationTextMarquand = document.querySelectorAll(
+        '.side-by-side .text'
+      )[1];
+      expect(locationTextMarquand.textContent).toBe(
+        'Marquand Library - Remote Storage: Marquand Use Only'
+      );
 
-    fetchSpy.mockRestore();
-    processSpy.mockRestore();
+      fetchSpy.mockRestore();
+      processSpy.mockRestore();
+    });
   });
 });
