@@ -9,10 +9,10 @@ RSpec.describe 'with an active ill/digitization request', type: :system, js: tru
   let(:valid_user) { FactoryBot.create(:valid_princeton_patron) }
   let(:cancel_ill_requests_response) { File.open('spec/fixtures/cancel_ill_requests_response.json') }
   let(:cancel_ill_requests_uri) { "#{Requests.config[:illiad_api_base]}/ILLiadWebPlatform/transaction/1094508/route" }
-before do
+  before do
     login_as valid_user
     current_ill_requests_uri = "#{Requests.config[:illiad_api_base]}/ILLiadWebPlatform/Transaction/UserRequests/jstudent?$filter=" \
-      "ProcessType%20eq%20'Borrowing'%20and%20TransactionStatus%20ne%20'Request%20Finished'%20and%20not%20startswith%28TransactionStatus,'Cancelled'%29"
+                               "ProcessType%20eq%20'Borrowing'%20and%20TransactionStatus%20ne%20'Request%20Finished'%20and%20not%20startswith%28TransactionStatus,'Cancelled'%29"
     stub_request(:get, current_ill_requests_uri)
       .to_return(status: 200, body: outstanding_ill_requests_response, headers: {
                    'Accept' => 'application/json',
@@ -24,14 +24,15 @@ before do
     valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}?ldap=false"
     stub_request(:get, valid_patron_record_uri)
       .to_return(status: 200, body: valid_patron_response, headers: {})
-          stub_request(:put, cancel_ill_requests_uri)
-        .with(body: "{\"Status\":\"Cancelled by Customer\"}")
-        .to_return(status: 200, body: cancel_ill_requests_response, headers: {
-                     'Content-Type' => 'application/json',
-                     'Apikey' => 'TESTME'
-                   })
+    stub_request(:put, cancel_ill_requests_uri)
+      .with(body: "{\"Status\":\"Cancelled by Customer\"}")
+      .to_return(status: 200, body: cancel_ill_requests_response, headers: {
+                   'Content-Type' => 'application/json',
+                   'Apikey' => 'TESTME'
+                 })
   end
-  pending it 'shows an alert on success' do
+  it 'shows an alert on success' do
+    pending("WIP")
     visit '/account/digitization_requests/'
     check('cancel-1094508')
     click_button 'Cancel requests'
