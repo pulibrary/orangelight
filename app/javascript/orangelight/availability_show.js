@@ -88,21 +88,16 @@ export default class AvailabilityShow extends AvailabilityBase {
       for (const holding_id in holding_records[id]) {
         const availability_info = holding_records[id][holding_id];
         const { label } = holding_records[id][holding_id];
-
         const availability_element = this.#getAvailabilityElementForHolding(
           id,
           holding_id
         );
-        if (label) {
-          const holding_location = document.querySelector(
-            `*[data-location='true'][data-holding-id='${holding_id}']`
-          );
-          if (holding_location) {
-            holding_location.textContent = label;
-          }
-        }
+        this.#updateHoldingLocation(
+          label,
+          availability_element,
+          holding_records[id]
+        );
         this.apply_availability_label(availability_element, availability_info);
-        // result.push(this.#update_request_button(holding_id));
       }
       return result;
     })();
@@ -226,12 +221,6 @@ export default class AvailabilityShow extends AvailabilityBase {
     this.status_display.setUndeterminedStatus(show_availability_display);
   }
 
-  // #update_request_button(holding_id) {
-  //   const location_services_element = document.querySelector(
-  //     `.location-services[data-holding-id='${holding_id}'] a`
-  //   );
-  // }
-
   #getAvailabilityElementForHolding(id, holding_id) {
     if (holding_id === 'RES_SHARE$IN_RS_REQ') {
       return this.#getResShareAvailabilityElement(id);
@@ -286,6 +275,52 @@ export default class AvailabilityShow extends AvailabilityBase {
   #getScsbAeonElement(barcode) {
     return document.querySelector(
       `*[data-availability-record='true'][data-record-id='${this.id}'][data-scsb-barcode='${barcode}']`
+    );
+  }
+
+  #updateHoldingLocation(label, availability_element, all_holdings) {
+    if (label && availability_element) {
+      const detailsElement = availability_element.closest('details');
+      if (detailsElement) {
+        const holdingsInGroup = detailsElement.querySelectorAll(
+          '[data-availability-record="true"]'
+        );
+
+        // Update the group label if:
+        // 1. There's only one holding in the details group, OR
+        // 2. All holdings in this group have the same label from bibdata availability response
+        const shouldUpdate =
+          holdingsInGroup.length === 1 ||
+          this.#allHoldingsHaveSameLabel(holdingsInGroup, all_holdings);
+
+        if (shouldUpdate) {
+          const holding_location = detailsElement.querySelector(
+            'summary div.side-by-side span.text'
+          );
+          if (holding_location) {
+            holding_location.textContent = label;
+          }
+        }
+      }
+    }
+  }
+
+  #allHoldingsHaveSameLabel(holdingsInGroup, all_holdings) {
+    if (holdingsInGroup.length <= 1) {
+      return false;
+    }
+
+    const holdingIdsInGroup = Array.from(holdingsInGroup).map((el) =>
+      el.getAttribute('data-holding-id')
+    );
+
+    const labelsInGroup = holdingIdsInGroup
+      .map((holdingId) => all_holdings[holdingId]?.label)
+      .filter((holding_label) => holding_label !== undefined);
+
+    return (
+      labelsInGroup.length > 0 &&
+      labelsInGroup.every((label) => label === labelsInGroup[0])
     );
   }
 }

@@ -36,7 +36,7 @@ describe 'Feedback Form', type: :feature, js: true, libanswers: true do
         fill_in 'feedback_form_email', with: 'foo@university.edu'
         fill_in 'feedback_form_message', with: 'awesome site'
         click_button 'Send'
-        expect(page).to have_content(I18n.t('blacklight.feedback.error'))
+        expect(page).to have_content('This field can\'t be blank')
         expect(page).to have_selector('.has-error')
       end
     end

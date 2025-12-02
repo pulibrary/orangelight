@@ -1,16 +1,6 @@
-$(".flash_messages").html("<%= escape_javascript(render :partial=>'shared/flash_msg', layout: 'shared/flash_messages') %>");
-
-setTimeout(function() {
-  $(".flash_messages .alert-info, .flash_messages .alert-success").fadeOut('slow', function(){
-    $(".flash_messages .alert-info, .flash_messages .alert-success").remove();
-  });
-}, 3000);
-
 <% if !@feedback_form.errors.full_messages.empty? %>
-  $("#new_feedback_form").replaceWith("<%= escape_javascript(render 'form') %>");
-  $(".error").each(function( index ) {
-    $(this).parent().addClass('has-error');
-  });
+  document.querySelector('#new_feedback_form').innerHTML = "<%= escape_javascript(render 'form') %>";
+  document.querySelectorAll('.error').forEach(element => element.parentElement.classList.add('has-error'));
 <% else %>
-  $("#new_feedback_form").replaceWith("<%= escape_javascript(render 'return') %>");
+  document.querySelector('#new_feedback_form').innerHTML = "<%= escape_javascript(render 'return') %>";
 <% end %>
