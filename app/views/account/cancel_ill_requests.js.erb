@@ -6,7 +6,8 @@ const data = {
 if (data.success) {
   globalThis.alertManager.displaySuccess(data);
 } else {
-  globalThis.alertManager.displayErrors(data);
+  data.errors = "<%= @message %>";
+  globalThis.alertManager.displayErrors(null, data);
 }
 
 <% unless @account.nil? %>

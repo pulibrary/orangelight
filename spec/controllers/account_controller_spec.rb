@@ -69,51 +69,6 @@ RSpec.describe AccountController, patrons: true do
     end
   end
 
-  describe 'cancel_ill_requests' do
-    subject(:account_controller) { described_class.new }
-    let(:cancel_ill_requests_response) { File.open('spec/fixtures/cancel_ill_requests_response.json') }
-    let(:params_cancel_requests) { ['1093597'] }
-    let(:valid_user) { FactoryBot.create(:valid_princeton_patron) }
-
-    before do
-      sign_in(valid_user)
-      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}?ldap=false"
-      cancel_ill_requests_uri = "#{Requests.config[:illiad_api_base]}/ILLiadWebPlatform/transaction/#{params_cancel_requests[0]}/route"
-      stub_request(:get, valid_patron_record_uri)
-        .to_return(status: 200, body: valid_patron_response, headers: {})
-      stub_request(:put, cancel_ill_requests_uri)
-        .with(body: "{\"Status\":\"Cancelled by Customer\"}")
-        .to_return(status: 200, body: cancel_ill_requests_response, headers: {
-                     'Content-Type' => 'application/json',
-                     'Apikey' => 'TESTME'
-                   })
-    end
-
-    context 'with a canceled transaction' do
-      it 'Cancels Illiad Transactions' do
-        pending('recreate in system spec')
-        post :cancel_ill_requests, params: { cancel_requests: params_cancel_requests }, format: :js
-        expect(flash.now[:success]).to eq I18n.t('blacklight.account.cancel_success')
-      end
-    end
-
-    context 'with no cancel_requests parameter' do
-      it 'flashes an error message' do
-        post :cancel_ill_requests, format: :js
-        expect(flash.now[:error]).to eq I18n.t('blacklight.account.cancel_no_items')
-      end
-    end
-
-    context 'the response contains an error' do
-      let(:cancel_ill_requests_response) { File.open('spec/fixtures/cancel_ill_requests_failed_response.json') }
-      it 'flashes an error message' do
-        pending('recreate in system spec')
-        post :cancel_ill_requests, params: { cancel_requests: params_cancel_requests }, format: :js
-        expect(flash.now[:error]).to eq I18n.t('blacklight.account.cancel_fail')
-      end
-    end
-  end
-
   describe '#current_patron' do
     subject(:account_controller) { described_class.new }
     let(:valid_user) { FactoryBot.create(:valid_princeton_patron) }

@@ -23,7 +23,9 @@ class AccountController < ApplicationController
     illiad_patron_client(@patron)
     respond_to do |format|
       if params[:cancel_requests].nil?
-        format.js { flash.now[:error] = I18n.t('blacklight.account.cancel_no_items') }
+        @message = I18n.t('blacklight.account.cancel_no_items')
+        @success = false
+        format.js
       elsif cancel_ill_success?(response)
         @message = I18n.t('blacklight.account.cancel_success')
         @success = "true"
