@@ -1,11 +1,15 @@
-$(".flash_messages").html("<%= escape_javascript(render :partial=>'shared/flash_msg', layout: 'shared/flash_messages') %>");
+const data = {
+  message: "<%= @message %>",
+  success: "<%= @success %>",
+};
 
-setTimeout(function() {
-  $(".flash_messages .alert-info, .flash_messages .alert-success").fadeOut('slow', function(){
-    $(".flash_messages .alert-info, .flash_messages .alert-success").remove();
-  });
-}, 3000);
+if (data.success) {
+  globalThis.alertManager.displaySuccess(data);
+} else {
+  data.errors = "<%= @message %>";
+  globalThis.alertManager.displayErrors(null, data);
+}
 
 <% unless @account.nil? %>
-$("#ill-request-cancel").replaceWith("<%= escape_javascript(render :partial=>'ill_request_items') %>");
+  document.getElementById('ill-request-cancel').innerHTML = "<%= escape_javascript(render :partial=>'ill_request_items') %>";
 <% end %>

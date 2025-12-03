@@ -548,6 +548,7 @@ detectors:
     - Requests::RequestableDecorator
   TooManyInstanceVariables:
     exclude:
+    - AccountController
     - MultiselectComboboxComponent
     - CatalogController
     - FeedbackController
