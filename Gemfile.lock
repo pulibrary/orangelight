@@ -772,7 +772,7 @@ GEM
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    whenever (1.0.0)
+    whenever (1.1.1)
       chronic (>= 0.6.3)
     xml-simple (1.1.9)
       rexml
