@@ -23,7 +23,7 @@
     "eslint": "^9.11.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.5.4",
-    "globals": "^15.9.0",
+    "globals": "^16.5.0",
     "jquery": "^3.7.0",
     "jsdom": "^26.0.0",
     "lint-staged": "^16.2.7",
