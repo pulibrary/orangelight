@@ -959,10 +959,10 @@ base64-js@^1.3.1:
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.5.1.tgz#1b1b440160a5bf7ad40b650f095963481903930a"
   integrity sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==
 
-blacklight-range-limit@^9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/blacklight-range-limit/-/blacklight-range-limit-9.0.0.tgz#89e1e7d36cef7fef205d0266fa0591006801f05d"
-  integrity sha512-Qr+3Rr0jOeoSNN5kN3fmZYqggAgpPpu3LX7HAHkCtrkHG5gPKqV+TK8BLvila9zueAs77dbWV7AmucZEvE+IBg==
+blacklight-range-limit@^9.2.0:
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/blacklight-range-limit/-/blacklight-range-limit-9.2.0.tgz#9314f36c185d7e8b79564dea480420e31e3d3bd0"
+  integrity sha512-DLhS9JUnmpSZy+8nX5u5jfFBobPeoYwBDjcSQnuzD9/0DkO8FrIj8YDmOn9emeitvgbHfoqEYElPWamuzdirrg==
   dependencies:
     chart.js "^ 4.4.1"
 
