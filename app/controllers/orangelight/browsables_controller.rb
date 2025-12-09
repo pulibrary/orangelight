@@ -253,6 +253,6 @@ class Orangelight::BrowsablesController < ApplicationController
 
     # Never trust parameters from the scary internet; run the params we receive through an allowlist
     def orangelight_browsable_params
-      params.require(:orangelight_browsable).permit(:model, :id)
+      params.expect(orangelight_browsable: %i[model id])
     end
 end
