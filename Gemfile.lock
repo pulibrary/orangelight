@@ -121,7 +121,7 @@ GEM
       parser (>= 2.4)
       smart_properties
     bigdecimal (3.3.1)
-    blacklight (9.0.0.beta8)
+    blacklight (9.0.0)
       globalid
       i18n (>= 1.7.0)
       jbuilder (~> 2.7)
@@ -130,12 +130,12 @@ GEM
       rails (>= 7.0, < 9)
       view_component (>= 3.0, < 5.0)
       zeitwerk
-    blacklight-hierarchy (6.6.0)
-      blacklight (>= 7.18, < 9)
+    blacklight-hierarchy (6.9.0)
+      blacklight (>= 7.18, < 10)
       deprecation
       rails (>= 7.1, < 9)
-    blacklight-marc (8.1.4)
-      blacklight (>= 7.11, < 9)
+    blacklight-marc (9.0.0)
+      blacklight (>= 7.11, < 10)
       library_stdnums
       marc (>= 0.4.3, < 2.0)
       marc-fastxmlwriter
@@ -144,9 +144,9 @@ GEM
     blacklight_dynamic_sitemap (1.0.0)
       blacklight (> 7.0)
       rails
-    blacklight_range_limit (9.0.0)
-      blacklight (>= 7.25.2, < 9)
-      view_component (>= 2.54, < 4)
+    blacklight_range_limit (9.2.0)
+      blacklight (>= 7.25.2, < 10)
+      view_component (>= 2.54, < 5)
     bootstrap (5.3.5)
       popper_js (>= 2.11.8, < 3)
     builder (3.3.0)
@@ -218,10 +218,10 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    datadog (2.17.0)
+    datadog (2.21.0)
       datadog-ruby_core_source (~> 3.4, >= 3.4.1)
       libdatadog (~> 18.1.0.1.0)
-      libddwaf (~> 1.22.0.0.2)
+      libddwaf (~> 1.24.1.2.1)
       logger
       msgpack
     datadog-ruby_core_source (3.4.1)
@@ -389,13 +389,11 @@ GEM
     libdatadog (18.1.0.1.0)
     libdatadog (18.1.0.1.0-aarch64-linux)
     libdatadog (18.1.0.1.0-x86_64-linux)
-    libddwaf (1.22.0.0.2)
+    libddwaf (1.24.1.2.1)
       ffi (~> 1.0)
-    libddwaf (1.22.0.0.2-aarch64-linux)
+    libddwaf (1.24.1.2.1-aarch64-linux)
       ffi (~> 1.0)
-    libddwaf (1.22.0.0.2-x86_64-linux)
-      ffi (~> 1.0)
-    libddwaf (1.22.0.0.2-x86_64-linux-musl)
+    libddwaf (1.24.1.2.1-x86_64-linux)
       ffi (~> 1.0)
     library_stdnums (1.6.0)
     lint_roller (1.1.0)
@@ -796,11 +794,11 @@ DEPENDENCIES
   babel-transpiler
   bcrypt_pbkdf
   benchmark-ips
-  blacklight (~> 9.0.0.beta8)
+  blacklight (~> 9.0.0)
   blacklight-hierarchy
-  blacklight-marc (~> 8.1)
+  blacklight-marc
   blacklight_dynamic_sitemap
-  blacklight_range_limit (~> 9.0.0)
+  blacklight_range_limit
   bootstrap (~> 5.3.0)
   byebug
   capistrano (~> 3.4)
