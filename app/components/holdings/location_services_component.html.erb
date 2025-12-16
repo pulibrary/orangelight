@@ -1,5 +1,5 @@
 <td class="location-services <%= show_request %>"
   data-open="<%= open_location? %>" data-requestable="<%= requestable_location? %>"
   data-aeon="<%= aeon_location? %>" data-holding-id="<%= holding_id %>">
-  <%= render button_component %>
+  <%= render button_component if button_component %>
 </td>

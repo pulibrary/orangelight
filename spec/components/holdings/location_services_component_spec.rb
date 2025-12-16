@@ -379,6 +379,63 @@ RSpec.describe Holdings::LocationServicesComponent, type: :component do
     end
   end
 
+  describe 'when the location is Marquand Special Collections' do
+    let(:holding_id) { 'marquand$fbx' }
+    let(:location_rules) do
+      {
+        'label': "Remote Storage (ReCAP): Marquand Library Use Only Rare Books",
+        'code': "marquand$pz",
+        'aeon_location': true,
+        'recap_electronic_delivery_location': false,
+        'open': false,
+        'requestable': true,
+        'always_requestable': true,
+        'circulates': false,
+        'remote_storage': "recap_rmt",
+        'fulfillment_unit': "Closed",
+        'url': "https://bibdata.princeton.edu/locations/holding_locations/marquand$pz.json",
+        'library': { 'label': "Marquand Library", 'code': "marquand", 'order': 0 },
+        'holding_library': { 'label': "Marquand Library", 'code': "marquand", 'order': 0 }
+      }
+    end
+    let(:holding) do
+      {
+        'location_code': "marquand$pz",
+        'location': "Remote Storage (ReCAP): Marquand Library Use Only Rare Books",
+        'library': "Marquand Library",
+        'call_number': "NE1321.5 .B25313 2025",
+        'call_number_browse': "NE1321.5 .B25313 2025",
+        'items': [{ 'holding_id': "221067105550006421",
+                    'id': "231067105540006421",
+                    'status_at_load': "0" }],
+        'mms_id': "99131494087106421"
+      }.with_indifferent_access
+    end
+    before do
+      allow(adapter).to receive(:document).and_return(document)
+    end
+    context 'when FlipFlop feature hide_marquand_special_collections_request_button is on' do
+      before do
+        allow(Flipflop).to receive(:hide_marquand_special_collections_request_button?).and_return(true)
+      end
+
+      it 'does not render a request button' do
+        expect(rendered.to_s).to include '<td class="location-services service-always-requestable"'
+        expect(rendered.to_s).not_to include "Request"
+      end
+    end
+    context 'when FlipFlop feature hide_marquand_special_collections_request_button is off' do
+      before do
+        allow(Flipflop).to receive(:hide_marquand_special_collections_request_button?).and_return(false)
+      end
+
+      it 'renders a request button' do
+        expect(rendered.to_s).to include '<td class="location-services service-always-requestable"'
+        expect(rendered.to_s).to include "Reading Room Request"
+      end
+    end
+  end
+
   describe 'td css classes' do
     let(:css_class) { rendered.css('td').attribute('class').value }
     let(:holding_id) { '9990928273506421' }
