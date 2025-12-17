@@ -29,6 +29,7 @@ class Holdings::LocationServicesComponent < ViewComponent::Base
       # :reek:TooManyStatements
       def button_component
         return nil if Flipflop.hide_marquand_special_collections_request_button? && marquand_special_collections?
+        return nil if Flipflop.hide_marquand_non_rare_request_button? && marquand_non_rare?
         if holding_id == 'thesis' || numismatics?
           AeonRequestButtonComponent.new(document:, holding: holding_hash, url_class: Requests::NonAlmaAeonUrl)
         elsif items && items.length > 1
@@ -86,6 +87,10 @@ class Holdings::LocationServicesComponent < ViewComponent::Base
 
       def marquand_special_collections?
         location_rules && location_rules[:code].end_with?('$t', '$x', '$rrx', '$pz', '$fbx', '$ebx')
+      end
+
+      def marquand_non_rare?
+        location_rules && location_rules[:code].end_with?('$fesrf', '$ltop', '$mic', '$ms', '$msref', '$pj', '$pv', '$ref', '$pjm', '$res', '$rp', '$saf', '$stacks', '$tech', '$wr')
       end
 
       # Example of a temporary holding, in this case holding_id is : firestone$res3hr
