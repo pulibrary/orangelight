@@ -9,9 +9,6 @@ describe('AvailabilityUpdater', function () {
   beforeEach(() => {
     document.body.innerHTML = '';
     vi.clearAllMocks();
-
-    AvailabilityShow.mockClear();
-    AvailabilitySearchResults.mockClear();
   });
 
   afterEach(() => {
@@ -27,7 +24,9 @@ describe('AvailabilityUpdater', function () {
         request_availability: vi.fn(),
         scsb_search_availability: vi.fn(),
       };
-      AvailabilitySearchResults.mockImplementation(() => mockSearchResults);
+      AvailabilitySearchResults.mockImplementation(function () {
+        return mockSearchResults;
+      });
 
       const updater = new AvailabilityUpdater();
 
@@ -47,7 +46,9 @@ describe('AvailabilityUpdater', function () {
       const mockShow = {
         request_availability: vi.fn(),
       };
-      AvailabilityShow.mockImplementation(() => mockShow);
+      AvailabilityShow.mockImplementation(function () {
+        return mockShow;
+      });
 
       const updater = new AvailabilityUpdater();
 
@@ -76,7 +77,9 @@ describe('AvailabilityUpdater', function () {
         request_availability: vi.fn(),
         scsb_search_availability: vi.fn(),
       };
-      AvailabilitySearchResults.mockImplementation(() => mockSearchResults);
+      AvailabilitySearchResults.mockImplementation(function () {
+        return mockSearchResults;
+      });
 
       new AvailabilityUpdater();
 
@@ -95,7 +98,9 @@ describe('AvailabilityUpdater', function () {
       const mockShow = {
         request_availability: vi.fn(),
       };
-      AvailabilityShow.mockImplementation(() => mockShow);
+      AvailabilityShow.mockImplementation(function () {
+        return mockShow;
+      });
 
       new AvailabilityUpdater();
 
@@ -112,7 +117,9 @@ describe('AvailabilityUpdater', function () {
         request_availability: vi.fn(),
         scsb_search_availability: vi.fn(),
       };
-      AvailabilitySearchResults.mockImplementation(() => mockSearchResults);
+      AvailabilitySearchResults.mockImplementation(function () {
+        return mockSearchResults;
+      });
 
       const updater = new AvailabilityUpdater();
 
@@ -127,7 +134,9 @@ describe('AvailabilityUpdater', function () {
       const mockShow = {
         request_availability: vi.fn(),
       };
-      AvailabilityShow.mockImplementation(() => mockShow);
+      AvailabilityShow.mockImplementation(function () {
+        return mockShow;
+      });
 
       const updater = new AvailabilityUpdater();
 
