@@ -27,7 +27,7 @@
     "jquery": "^3.7.0",
     "jsdom": "^26.0.0",
     "lint-staged": "^16.2.7",
-    "prettier": "^3.3.3",
+    "prettier": "^3.7.4",
     "simple-git-hooks": "^2.13.1",
     "stylelint": "^16.26.1",
     "stylelint-config-standard-scss": "^13.1.0",
