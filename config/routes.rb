@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   concern :exportable, Blacklight::Routes::Exportable.new
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
 
-  resource :catalog, only: [:index], path: '/catalog', controller: 'catalog' do
+  resource :catalog, only: [], as: 'catalog', path: '/catalog', controller: 'catalog' do
     concerns :searchable
     concerns :range_searchable
   end
