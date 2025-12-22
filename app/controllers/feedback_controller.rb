@@ -40,7 +40,7 @@ class FeedbackController < ApplicationController
     end
 
     def feedback_form_params
-      params.require(:feedback_form).permit(:name, :email, :message, :current_url, :feedback_desc)
+      params.expect(feedback_form: %i[name email message current_url feedback_desc])
     end
 
     def build_ask_a_question_form
@@ -51,7 +51,7 @@ class FeedbackController < ApplicationController
     end
 
     def question_form_params
-      params.require(:ask_a_question_form).permit(:id, :title)
+      params.expect(ask_a_question_form: %i[id title])
     end
 
     def build_suggest_correction_form
@@ -62,7 +62,7 @@ class FeedbackController < ApplicationController
     end
 
     def suggest_correction_form_params
-      params.require(:suggest_correction_form).permit(:id, :title)
+      params.expect(suggest_correction_form: %i[id title])
     end
 
     def build_report_biased_results_form
@@ -72,7 +72,7 @@ class FeedbackController < ApplicationController
     end
 
     def biased_results_params
-      params.require(:report_biased_results_form).permit(:context)
+      params.expect(report_biased_results_form: [:context])
     end
 
     def search_results_url(biased_params)

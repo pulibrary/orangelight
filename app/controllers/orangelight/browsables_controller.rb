@@ -79,7 +79,7 @@ class Orangelight::BrowsablesController < ApplicationController
       return if query_param.nil?
       # 'subject_facet' is the default vocabulary type if there is no vocabulary type specified
       search_result = if vocabulary_search_on_facet == 'subject_facet'
-                        model_param.where('sort <= ?', search_term).order('sort').last
+                        model_param.where('sort <= ?', search_term).order(:sort).last
                       else
                         model_param.where(sort: search_term).where(vocabulary: vocabulary_search_on_facet).first
                       end
@@ -253,6 +253,6 @@ class Orangelight::BrowsablesController < ApplicationController
 
     # Never trust parameters from the scary internet; run the params we receive through an allowlist
     def orangelight_browsable_params
-      params.require(:orangelight_browsable).permit(:model, :id)
+      params.expect(orangelight_browsable: %i[model id])
     end
 end
