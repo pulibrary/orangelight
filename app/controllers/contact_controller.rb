@@ -7,7 +7,7 @@ class ContactController < ApplicationController
 
       render "question_success"
     else
-      render partial: "catalog/ask_a_question_form", locals: { form: @form }, status: :unprocessable_entity
+      render partial: "catalog/ask_a_question_form", locals: { form: @form }, status: :unprocessable_content
     end
   end
 
@@ -18,7 +18,7 @@ class ContactController < ApplicationController
 
       render "suggestion_success"
     else
-      render partial: "catalog/suggest_correction_form", locals: { form: @form }, status: :unprocessable_entity
+      render partial: "catalog/suggest_correction_form", locals: { form: @form }, status: :unprocessable_content
     end
   end
 
@@ -29,7 +29,7 @@ class ContactController < ApplicationController
 
       render "report_biased_results_success"
     else
-      render partial: "catalog/report_biased_results_form", locals: { form: @form }, status: :unprocessable_entity
+      render partial: "catalog/report_biased_results_form", locals: { form: @form }, status: :unprocessable_content
     end
   end
 

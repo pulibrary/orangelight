@@ -180,7 +180,7 @@ class SolrDocument
   end
 
   def host_id
-    self["contained_in_s"].reject(&:empty?) if self["contained_in_s"].present?
+    self["contained_in_s"].presence&.reject(&:empty?)
   end
 
   def bound_with?
@@ -225,7 +225,7 @@ class SolrDocument
 
     holdings.each do |k, _val|
       # append the solr document id in each holding
-      holdings[k].merge!("mms_id" => solr_document_id) if holdings[k].present?
+      holdings[k].presence&.merge!("mms_id" => solr_document_id)
     end
     return holdings if host_id.blank?
     # Append the host_id in the host_holdings
