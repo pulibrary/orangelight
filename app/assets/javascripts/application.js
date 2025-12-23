@@ -22,8 +22,47 @@
 
 // Wait for the modal to open
 document.addEventListener('show.blacklight.blacklight-modal', function () {
-  // Wait for the form to be submitted successfully
-  $('.modal_form').on('ajax:success', function () {
-    Blacklight.Modal.hide();
+  // Attach a vanilla submit handler to modal forms that submits via fetch
+  // and hides the Blacklight modal on a successful response. We mark forms
+  // that we've attached to so we don't double-bind when the modal reopens.
+  document.querySelectorAll('.modal_form').forEach(function (form) {
+    if (form.dataset.vanillaHandlerAdded) return;
+    form.dataset.vanillaHandlerAdded = 'true';
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var action = form.getAttribute('action') || window.location.href;
+      var method = (form.getAttribute('method') || 'GET').toUpperCase();
+      var fetchOptions = { method: method, credentials: 'same-origin' };
+
+      var formData = new FormData(form);
+
+      if (method === 'GET') {
+        // Append form data to query string for GET
+        var params = new URLSearchParams(formData);
+        action += (action.indexOf('?') === -1 ? '?' : '&') + params.toString();
+      } else {
+        fetchOptions.body = formData;
+      }
+
+      fetch(action, fetchOptions)
+        .then(function (response) {
+          if (response.ok) {
+            Blacklight.Modal.hide();
+          } else {
+            return response.text().then(function (body) {
+              console.error(
+                'Modal form submission failed',
+                response.status,
+                body
+              );
+            });
+          }
+        })
+        .catch(function (err) {
+          console.error('Modal form submission error', err);
+        });
+    });
   });
 });
