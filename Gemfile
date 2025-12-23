@@ -31,8 +31,7 @@ gem 'faraday-cookie_jar'
 gem "ffi", force_ruby_platform: true
 gem 'flipflop'
 gem 'global'
-# Pinning to 12.4.0 due to Rails 7.1 compatibility issue in 12.4.1
-gem 'health-monitor-rails', '12.4.0'
+gem 'health-monitor-rails', '12.9.0'
 # Static pages
 gem 'high_voltage'
 gem 'honeybadger'
