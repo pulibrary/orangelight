@@ -67,12 +67,16 @@ class FeedbackController < ApplicationController
 
     def build_report_biased_results_form
       @biased_results_form = ReportBiasedResultsForm.new(
-        biased_results_params
+        context: biased_results_params['context']
       )
     end
 
     def biased_results_params
       params.require(:report_biased_results_form).permit(:context)
+    end
+
+    def search_results_url(biased_params)
+      search_catalog_url(q: biased_params['q'])
     end
 
     def page_url(params)
