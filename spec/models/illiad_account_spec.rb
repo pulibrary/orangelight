@@ -7,11 +7,14 @@ require './lib/orangelight/illiad_account.rb'
 
 RSpec.describe Orangelight::IlliadAccount, patrons: true do
   context 'A valid Princeton User' do
-    sample_patron = { 'barcode' => '2232323232323',
-                      'last_name' => 'smith',
-                      'patron_id' => '777777',
-                      'netid' => 'jstudent' }
     subject(:client) { described_class.new(sample_patron) }
+    let(:sample_patron) do
+      { 'barcode' => '2232323232323',
+        'last_name' => 'smith',
+        'patron_id' => '777777',
+        'netid' => 'jstudent' }
+    end
+
     let(:verify_user_response) { File.open('spec/fixtures/ill_verify_user_response.json') }
     let(:verify_user_uri) { "#{Requests.config[:illiad_api_base]}/ILLiadWebPlatform/Users/#{sample_patron['netid']}" }
 

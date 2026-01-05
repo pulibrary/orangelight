@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 class Orangelight::SearchBarComponent < Blacklight::SearchBarComponent
   def search_fields
+    # rubocop:disable Layout/IndentationWidth
     @search_fields ||= blacklight_config.search_fields.values
                                         .reject { |field_def| field_def&.include_in_simple_select == false }
                                         .collect do |field_def|
@@ -8,6 +9,7 @@ class Orangelight::SearchBarComponent < Blacklight::SearchBarComponent
        field_def.key,
        { 'data-placeholder' => field_def.placeholder_text }]
     end
+    # rubocop:enable Layout/IndentationWidth
   end
 
   def before_render
