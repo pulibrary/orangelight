@@ -13,7 +13,7 @@ gem 'blacklight_dynamic_sitemap'
 gem 'blacklight-hierarchy'
 gem 'blacklight-marc', '~>8.1'
 # slider limit support
-gem 'blacklight_range_limit', '~> 9.0.0'
+gem 'blacklight_range_limit', '~> 9.2.0'
 gem 'bootstrap', '~> 5.3.0'
 gem 'dartsass-sprockets'
 gem 'psych'

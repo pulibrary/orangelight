@@ -144,9 +144,9 @@ GEM
     blacklight_dynamic_sitemap (1.0.0)
       blacklight (> 7.0)
       rails
-    blacklight_range_limit (9.0.0)
-      blacklight (>= 7.25.2, < 9)
-      view_component (>= 2.54, < 4)
+    blacklight_range_limit (9.2.0)
+      blacklight (>= 7.25.2, < 10)
+      view_component (>= 2.54, < 5)
     bootstrap (5.3.5)
       popper_js (>= 2.11.8, < 3)
     builder (3.3.0)
@@ -799,7 +799,7 @@ DEPENDENCIES
   blacklight-hierarchy
   blacklight-marc (~> 8.1)
   blacklight_dynamic_sitemap
-  blacklight_range_limit (~> 9.0.0)
+  blacklight_range_limit (~> 9.2.0)
   bootstrap (~> 5.3.0)
   byebug
   capistrano (~> 3.4)
