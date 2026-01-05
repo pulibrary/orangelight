@@ -849,7 +849,7 @@ DEPENDENCIES
   puma (~> 7.1)
   rack-attack
   rack-mini-profiler
-  rails (~> 8.1.1)
+  rails (~> 8.1)
   rails-controller-testing
   rake
   redis
