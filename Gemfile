@@ -2,7 +2,7 @@
 
 source 'https://gem.coop'
 
-gem 'rails', '~> 8.1.1'
+gem 'rails', '~> 8.1'
 
 gem 'alma'
 gem 'babel-transpiler'
