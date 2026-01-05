@@ -1,5 +1,4 @@
 import AvailabilitySearchResults from '../../../app/javascript/orangelight/availability_search_results.js';
-import { promises as fs } from 'fs';
 
 global.console = {
   log: vi.fn(),
