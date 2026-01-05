@@ -91,7 +91,7 @@ gem 'yard'
 
 group :development do
   gem 'benchmark-ips'
-  gem 'capistrano', '~> 3.4', require: false
+  gem 'capistrano', '~> 3.20', require: false
   gem 'capistrano-passenger'
   gem 'capistrano-rails'
   gem 'reek'
