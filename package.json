@@ -7,7 +7,7 @@
     "chart.js": "^4.5.1",
     "graphql": "^16.12.0",
     "lux-design-system": "^7.3.1",
-    "serialize-javascript": "^6.0.2",
+    "serialize-javascript": "^7.0.2",
     "unfetch": "^5.0.0",
     "vue": "^3.5.26"
   },
