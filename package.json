@@ -9,7 +9,7 @@
     "lux-design-system": "^7.3.1",
     "serialize-javascript": "^6.0.2",
     "unfetch": "^5.0.0",
-    "vue": "^3.5.22"
+    "vue": "^3.5.26"
   },
   "devComments": {
     "jquery": "Keep version in sync with jquery-rails, obtained through bundler"
