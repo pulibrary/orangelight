@@ -42,7 +42,7 @@ RSpec.describe Orangelight::FacetFieldCheckboxesComponent, type: :component do
       expect(
         render_inline(described_class.new(facet_field:)).to_s
       ).to include(
-        '{"value":"b","selected":true,"label":"b  (33)"}'
+        '{"value":"b","selected":true,"label":"b  (33)"}'.gsub('"', '&quot;')
       )
     end
   end
@@ -52,12 +52,12 @@ RSpec.describe Orangelight::FacetFieldCheckboxesComponent, type: :component do
       expect(
         render_inline(described_class.new(facet_field:)).to_s
       ).to include(
-        '{"value":"b","selected":true,"label":"b  (33)"}'
+        '{"value":"b","selected":true,"label":"b  (33)"}'.gsub('"', '&quot;')
       )
       expect(
         render_inline(described_class.new(facet_field:)).to_s
       ).to include(
-        '{"value":"c","selected":true,"label":"c  (3)"}'
+        '{"value":"c","selected":true,"label":"c  (3)"}'.gsub('"', '&quot;')
       )
     end
   end
