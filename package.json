@@ -15,7 +15,7 @@
     "jquery": "Keep version in sync with jquery-rails, obtained through bundler"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/eslintrc": "^3.3.3",
     "@eslint/js": "^9.39.2",
     "@stylistic/eslint-plugin": "^5.6.1",
     "@vitejs/plugin-vue": "^6.0.3",
