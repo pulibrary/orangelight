@@ -7,11 +7,14 @@ require './lib/orangelight/illiad_account.rb'
 
 RSpec.describe Orangelight::IlliadPatronClient, patrons: true do
   context 'A valid Princeton User' do
-    sample_patron = { 'barcode' => '2232323232323',
-                      'last_name' => 'smith',
-                      'patron_id' => '777777',
-                      'netid' => 'jstudent' }
     subject(:client) { described_class.new(sample_patron) }
+    let(:sample_patron) do
+      { 'barcode' => '2232323232323',
+        'last_name' => 'smith',
+        'patron_id' => '777777',
+        'netid' => 'jstudent' }
+    end
+
     let(:cancel_ill_requests_response) { File.open('spec/fixtures/cancel_ill_requests_response.json') }
     let(:outstanding_ill_requests_response) { File.open('spec/fixtures/outstanding_ill_requests_response.json') }
     let(:params_cancel_requests) { ['1093597'] }
