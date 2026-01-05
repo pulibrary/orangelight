@@ -11,7 +11,7 @@ module Blacklight::Document::ChicagoNotesBibliography
   end
 
   def export_as_chicago_notes_bibliography
-    cp = CiteProc::Processor.new style: 'chicago-note-bibliography', format: 'html'
+    cp = CiteProc::Processor.new style: 'chicago-notes-bibliography', format: 'html'
     item = CiteProc::Item.new(properties)
     cp.import(item)
     cp.render(:bibliography, id:).first
