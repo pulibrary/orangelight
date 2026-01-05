@@ -130,8 +130,8 @@ GEM
       rails (>= 6.1, < 9)
       view_component (>= 2.74, < 5)
       zeitwerk
-    blacklight-hierarchy (6.6.0)
-      blacklight (>= 7.18, < 9)
+    blacklight-hierarchy (6.9.0)
+      blacklight (>= 7.18, < 10)
       deprecation
       rails (>= 7.1, < 9)
     blacklight-marc (8.2.0)
