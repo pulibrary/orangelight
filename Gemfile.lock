@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/ViewComponent/view_component.git
+  revision: 03ecf5829d4d7bcc8a4519a96695aad41d8a5da1
+  specs:
+    view_component (4.1.1)
+      actionview (>= 7.1.0)
+      activesupport (>= 7.1.0)
+      concurrent-ruby (~> 1)
+
+GIT
   remote: https://github.com/pulibrary/stringex.git
   revision: 7aa133c5cfdbd4e13c0eeee27b0c61958229b57d
   branch: main
@@ -426,7 +435,6 @@ GEM
     marcel (1.1.0)
     matrix (0.4.3)
     memory_profiler (1.1.0)
-    method_source (1.1.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
     minitest (6.0.1)
@@ -746,10 +754,6 @@ GEM
     useragent (0.16.11)
     vcr (6.3.1)
       base64
-    view_component (3.24.0)
-      activesupport (>= 5.2.0, < 8.2)
-      concurrent-ruby (~> 1)
-      method_source (~> 1.0)
     virtus (2.0.0)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
@@ -877,7 +881,7 @@ DEPENDENCIES
   stringex!
   terser
   vcr
-  view_component
+  view_component!
   vite_rails
   voight_kampff
   webmock

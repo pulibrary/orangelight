@@ -3,6 +3,8 @@
 require "rails_helper"
 
 class MyTestingComponent < ViewComponent::Base
+  def initialize(field:, layout:); end
+
   def call
     'Rendering content from the component'
   end
