@@ -11,7 +11,7 @@ gem 'bcrypt_pbkdf'
 gem 'blacklight', '~> 8.12'
 gem 'blacklight_dynamic_sitemap'
 gem 'blacklight-hierarchy'
-gem 'blacklight-marc', '~>8.1'
+gem 'blacklight-marc'
 # slider limit support
 gem 'blacklight_range_limit', '~> 9.2.0'
 gem 'bootstrap', '~> 5.3.0'

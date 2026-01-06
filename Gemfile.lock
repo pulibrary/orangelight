@@ -143,8 +143,8 @@ GEM
       blacklight (>= 7.18, < 10)
       deprecation
       rails (>= 7.1, < 9)
-    blacklight-marc (8.2.0)
-      blacklight (>= 7.11, < 9)
+    blacklight-marc (9.0.0)
+      blacklight (>= 7.11, < 10)
       library_stdnums
       marc (>= 0.4.3, < 2.0)
       marc-fastxmlwriter
@@ -313,7 +313,7 @@ GEM
       http-cookie (>= 1.0.0)
     faraday-net_http (3.4.2)
       net-http (~> 0.5)
-    ffi (1.17.2)
+    ffi (1.17.3)
     ffi-compiler (1.3.2)
       ffi (>= 1.15.5)
       rake
@@ -806,7 +806,7 @@ DEPENDENCIES
   benchmark-ips
   blacklight (~> 8.12)
   blacklight-hierarchy
-  blacklight-marc (~> 8.1)
+  blacklight-marc
   blacklight_dynamic_sitemap
   blacklight_range_limit (~> 9.2.0)
   bootstrap (~> 5.3.0)
