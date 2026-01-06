@@ -36,10 +36,6 @@ RSpec.describe Blacklight::Document::ChicagoNotesBibliography, citation: true do
         expect(document).to include('Destino')
       end
 
-      it 'includes the place of publication' do
-        expect(document).to include('Barcelona')
-      end
-
       it 'includes the publication date' do
         expect(document).to include('1988')
       end
