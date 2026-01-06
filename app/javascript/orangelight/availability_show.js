@@ -92,11 +92,13 @@ export default class AvailabilityShow extends AvailabilityBase {
           id,
           holding_id
         );
-        this.#updateHoldingLocation(
-          label,
-          availability_element,
-          holding_records[id]
-        );
+        if (holding_id !== 'RES_SHARE$IN_RS_REQ') {
+          this.#updateHoldingLocation(
+            label,
+            availability_element,
+            holding_records[id]
+          );
+        }
         this.apply_availability_label(availability_element, availability_info);
       }
       return result;

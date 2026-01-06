@@ -304,6 +304,8 @@ export default class AvailabilitySearchResults extends AvailabilityBase {
   }
 
   #getAvailabilityElement(record_id, holding_id) {
+    // The following query selector will not return for temporary RES_SHARE$IN_RS_REQ.
+    // This is the desired behavior for this temporary location.
     return document.querySelector(
       `*[data-availability-record='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .lux-text-style`
     );

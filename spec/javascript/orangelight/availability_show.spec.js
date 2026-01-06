@@ -1,4 +1,4 @@
-import { describe, test } from 'vitest';
+import { describe, expect, test } from 'vitest';
 import AvailabilityShow from '../../../app/javascript/orangelight/availability_show.js';
 
 global.console = {
@@ -238,6 +238,63 @@ describe('AvailabilityShow', function () {
       expect(applySpy).toHaveBeenCalled();
       expect(applySpy).toHaveBeenCalledTimes(1);
     });
+  });
+
+  test('it does not override the label when the temporary location is RES_SHARE$IN_RS_REQ', () => {
+    const recordId = '99131390231506421';
+    const holdingRecords = {
+      '99131390231506421': {
+        RES_SHARE$IN_RS_REQ: {
+          on_reserve: 'N',
+          location: 'RES_SHARE$IN_RS_REQ',
+          label: 'Resource Sharing Library - Lending Resource Sharing Requests',
+          status_label: 'Unavailable',
+          copy_number: null,
+          temp_location: true,
+          id: 'RES_SHARE$IN_RS_REQ',
+        },
+      },
+    };
+    document.body.innerHTML = `
+      <div id="main-content" data-host-id="">
+        <details>
+        <summary class="lux" data-v-app="">
+        <div class="side-by-side">
+        <span class="text">Firestone Library - Stacks</span>
+        <span class="when-closed"><span>
+        <span class="lux-badge lux-badge-gray">Request</span>
+        </span>
+        </span></div>
+        <table>
+        <td class="holding-status" data-availability-record="true" data-record-id="99131390231506421" data-holding-id="221044292940006421" data-temp-location-code="RES_SHARE$IN_RS_REQ">
+          <span class="availability-icon lux-text-style"></span>
+        </td>
+        </table>
+        </summary>
+        </details>
+      </div>
+      `;
+
+    const applySpy = vi.spyOn(availabilityShow, 'apply_availability_label');
+
+    availabilityShow.update_single(holdingRecords, recordId);
+
+    expect(applySpy).toHaveBeenCalled();
+    expect(applySpy).toHaveBeenCalledTimes(1);
+
+    const availabilityElement = document.querySelector('.availability-icon');
+    expect(availabilityElement.classList.contains('red')).toBe(true);
+    expect(availabilityElement.classList.contains('strong')).toBe(true);
+    expect(availabilityElement.textContent).toBe('Unavailable');
+
+    const detailsElement = availabilityElement.closest('details');
+    const holding_location = detailsElement.querySelector(
+      'summary div.side-by-side span.text'
+    );
+    expect(holding_location.textContent).toBe('Firestone Library - Stacks');
+    expect(holding_location.textContent).not.toBe(
+      'Resource Sharing Library - Lending Resource Sharing Requests'
+    );
   });
 
   describe('process_scsb_single', () => {
