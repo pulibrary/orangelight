@@ -119,11 +119,104 @@ describe('AvailabilitySearchResults', function () {
     searchResults.process_result(record_id, holding_records);
 
     const availability_display = document.querySelector(
-      `*[data-record-id="${record_id}"] .lux-text-style`
+      `*[data-availability-record='true'][data-record-id='${record_id}'][data-holding-id='engineer$res'] span.lux-text-style`
     );
     expect(availability_display.classList.contains('green')).toBe(true);
     expect(availability_display.classList.contains('strong')).toBe(true);
     expect(availability_display.textContent).toEqual('Available');
+  });
+
+  test('process_result handles temporary RES_SHARE$IN_RS_REQ location correctly', () => {
+    const record_id = '99131390231506421';
+    document.body.innerHTML = `
+      <article id="" class="lux-card medium holding-status" data-availability-record="true" data-record-id="99131390231506421" data-holding-id="221044292940006421" data-temp-location-code="RES_SHARE$IN_RS_REQ" data-aeon="false" data-bound-with="false">
+      <div class="library-location" data-location="true" data-record-id="99131390231506421" data-holding-id="221044292940006421">
+      <div class="results_location row"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" class="location-pin-icon"><path d="M9.5,1.8" stroke-width="2" fill="none"></path><circle r="2" fill="none" stroke-width="1.5" cx="10" cy="7.8"></circle></svg>
+      <span class="search-result-library-name">Firestone Library</span>
+      </div>
+      <div class="call-number">HF1455 <wbr>.F47 2025</div></div><span class="lux-text-style"></span>
+      </article>
+    `;
+
+    const holding_records = {
+      RES_SHARE$IN_RS_REQ: {
+        on_reserve: 'N',
+        location: 'RES_SHARE$IN_RS_REQ',
+        label: 'Resource Sharing Library - Lending Resource Sharing Requests',
+        status_label: 'Unavailable',
+        copy_number: null,
+        temp_location: true,
+        id: 'RES_SHARE$IN_RS_REQ',
+      },
+    };
+
+    searchResults.process_result(record_id, holding_records);
+
+    const availability_display = document.querySelector(
+      `*[data-availability-record='true'][data-record-id='${record_id}'][data-temp-location-code='RES_SHARE$IN_RS_REQ'] span.lux-text-style`
+    );
+    expect(availability_display.classList.contains('gray')).toBe(true);
+    expect(availability_display.classList.contains('strong')).toBe(true);
+    expect(availability_display.textContent).toEqual('Request');
+  });
+
+  test('process_result handles temporary and non temporary locations on the same record', () => {
+    const record_id = '99131688668106421';
+    document.body.innerHTML = `
+    <a href="/catalog/99131688668106421">
+    <article id="" class="lux-card medium holding-status" data-availability-record="true" data-record-id="99131688668106421" data-holding-id="221095863350006421" data-aeon="false" data-bound-with="false">
+    <div class="library-location" data-location="true" data-record-id="99131688668106421" data-holding-id="221095863350006421">
+    <div class="results_location row"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" class="location-pin-icon"><path d="M9.5,1.8" stroke-width="2" fill="none"></path><circle r="2" fill="none" stroke-width="1.5" cx="10" cy="7.8"></circle></svg><span class="search-result-library-name">Firestone Library</span></div><div class="call-number">NA2543<wbr>.S6 S53 2025</div></div>
+    <span class="lux-text-style"></span>
+    </article></a><a href="/catalog/99131688668106421">
+    <article id="" class="lux-card medium holding-status" data-availability-record="true" data-record-id="99131688668106421" data-holding-id="arch$fac" data-temp-location-code="arch$fac" data-aeon="false" data-bound-with="false">
+    <div class="library-location" data-location="true" data-record-id="99131688668106421" data-holding-id="arch$fac">
+    <div class="results_location row"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" class="location-pin-icon"><path d="M9.5,1.8" stroke-width="2" fill="none"></path><circle r="2" fill="none" stroke-width="1.5" cx="10" cy="7.8"></circle></svg><span class="search-result-library-name">Architecture Library</span></div>
+    <div class="call-number">NA2543<wbr>.S6 S53 2025q Oversize</div>
+    </div>
+    <span class="lux-text-style"></span>
+    </article></a>
+    `;
+
+    const holding_records = {
+      arch$fac: {
+        on_reserve: 'N',
+        location: 'arch$fac',
+        label:
+          'Architecture Library - School of Architecture Faculty Publications',
+        status_label: 'Available',
+        copy_number: null,
+        temp_location: true,
+        id: 'arch$fac',
+      },
+      '221095863350006421': {
+        on_reserve: 'N',
+        location: 'firestone$fac',
+        label: 'Firestone Library - Faculty Publications',
+        status_label: 'Unavailable',
+        copy_number: null,
+        temp_location: false,
+        id: '221095863350006421',
+      },
+    };
+
+    searchResults.process_result(record_id, holding_records);
+
+    const availability_display_temp = document.querySelector(
+      `*[data-availability-record='true'][data-record-id='${record_id}'][data-holding-id='arch$fac'] span.lux-text-style`
+    );
+    expect(availability_display_temp.classList.contains('green')).toBe(true);
+    expect(availability_display_temp.classList.contains('strong')).toBe(true);
+    expect(availability_display_temp.textContent).toEqual('Available');
+
+    const availability_display_non_temp = document.querySelector(
+      `*[data-availability-record='true'][data-record-id='${record_id}'][data-holding-id='221095863350006421'] span.lux-text-style`
+    );
+    expect(availability_display_non_temp.classList.contains('gray')).toBe(true);
+    expect(availability_display_non_temp.classList.contains('strong')).toBe(
+      true
+    );
+    expect(availability_display_non_temp.textContent).toEqual('Request');
   });
 
   test('request_search_results_availability handles fetch errors', async () => {

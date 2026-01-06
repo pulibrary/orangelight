@@ -18,7 +18,6 @@ export default class AvailabilityBase {
       'marquand$ref',
       'marquand$ph',
       'marquand$fesrf',
-      'RES_SHARE$IN_RS_REQ',
     ];
 
     if (availability_element) {
