@@ -11,7 +11,6 @@
       'marquand$ref',
       'marquand$ph',
       'marquand$fesrf',
-      'RES_SHARE$IN_RS_REQ' 
 */
 import AvailabilityBase from './availability_base.js';
 
@@ -55,13 +54,15 @@ export default class AvailabilitySearchResults extends AvailabilityBase {
 
   process_result(record_id, holding_records) {
     for (const holding_id in holding_records) {
-      if (this.#isTempLocation(record_id, holding_id)) {
-        return true;
-      }
       const availability_info = holding_records[holding_id];
-      const { label, location } = availability_info;
-      this.#updateLibraryName(record_id, holding_id, label, location);
-      this.#updateAvailabilityLabel(record_id, holding_id, availability_info);
+      const { label, location, temp_location } = availability_info;
+
+      if (this.#isTempLocation(holding_id, temp_location)) {
+        this.#updateTemporaryLocationAvailability(record_id, holding_id);
+      } else {
+        this.#updateLibraryName(record_id, holding_id, label, location);
+        this.#updateAvailabilityLabel(record_id, holding_id, availability_info);
+      }
     }
     // Bibdata does not know about bound-with records and therefore we don't get availability
     // information for holdings coming from the host record.
@@ -72,8 +73,27 @@ export default class AvailabilitySearchResults extends AvailabilityBase {
     boundWithDisplays.forEach((display) => {
       this.status_display.setAvailableStatus(display);
     });
-
     return true;
+  }
+
+  #updateTemporaryLocationAvailability(record_id, holding_id) {
+    // We assume that items in temp locations are always available
+    // except RES_SHARE$IN_RS_REQ which is unavailable.
+    const availability_display_element = document.querySelector(
+      `*[data-availability-record='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] span.lux-text-style`
+    );
+    const availability_display_element_res_share = document.querySelector(
+      `*[data-availability-record='true'][data-record-id='${record_id}'][data-temp-location-code='RES_SHARE$IN_RS_REQ'] span.lux-text-style`
+    );
+    if (holding_id !== 'RES_SHARE$IN_RS_REQ') {
+      return this.status_display.setAvailableStatus(
+        availability_display_element
+      );
+    } else {
+      return this.status_display.setRequestStatus(
+        availability_display_element_res_share
+      );
+    }
   }
 
   request_search_results_availability() {
@@ -250,13 +270,12 @@ export default class AvailabilitySearchResults extends AvailabilityBase {
     });
   }
 
-  #isTempLocation(record_id, holding_id) {
+  #isTempLocation(holding_id, temp_location) {
+    if (temp_location !== undefined) {
+      return temp_location;
+    }
+    // Fallback to pattern matching for backwards compatibility
     if (holding_id.match(/[a-zA-Z]\$[a-zA-Z]/)) {
-      // We assume that items in temp locations are available.
-      const availability_display = document.querySelector(
-        `*[data-availability-record='true'][data-record-id='${record_id}'] span.lux-text-style`
-      );
-      this.status_display.setAvailableStatus(availability_display);
       return true;
     }
     return false;
