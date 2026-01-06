@@ -31,6 +31,7 @@ class CatalogController < ApplicationController
   configure_blacklight do |config|
     # config.add_field_configuration_to_solr_request!
     config.raw_endpoint.enabled = true
+    config.advanced_search.enabled = false
 
     config.json_solr_path = 'advanced'
 
