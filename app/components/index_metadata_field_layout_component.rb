@@ -5,5 +5,5 @@ class IndexMetadataFieldLayoutComponent < ViewComponent::Base
   def initialize(field: nil); end
 
   renders_one :label
-  renders_many :values
+  renders_many :values, ->(index:, value: nil) { value }
 end
