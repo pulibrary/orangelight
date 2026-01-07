@@ -3,7 +3,6 @@
     <%= label %>
   <% end %>
   <% render_field_values.each_with_index do |value, index| %>
-    <% byebug %>
     <% component.with_value(value: value, index: index) do %>
       <%= @field.render %>
       <% if show_button? %>
