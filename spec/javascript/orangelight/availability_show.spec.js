@@ -411,32 +411,12 @@ describe('AvailabilityShow', function () {
 
     test('handle_availability_status sets Ask Staff for marquand locations', () => {
       const element = document.createElement('span');
-      const specialStatusLocations = ['marquand$stacks'];
 
-      availabilityShow.handle_availability_status(
-        'marquand$stacks',
-        element,
-        specialStatusLocations
-      );
+      availabilityShow.handle_availability_status('marquand$stacks', element);
 
       expect(element.classList.contains('gray')).toBe(true);
       expect(element.classList.contains('strong')).toBe(true);
       expect(element.textContent).toBe('Ask Staff');
-    });
-
-    test('handle_availability_status sets Unavailable for non-marquand locations', () => {
-      const element = document.createElement('span');
-      const specialStatusLocations = ['RES_SHARE$IN_RS_REQ'];
-
-      availabilityShow.handle_availability_status(
-        'RES_SHARE$IN_RS_REQ',
-        element,
-        specialStatusLocations
-      );
-
-      expect(element.classList.contains('red')).toBe(true);
-      expect(element.classList.contains('strong')).toBe(true);
-      expect(element.textContent).toBe('Unavailable');
     });
   });
 
