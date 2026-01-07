@@ -5,12 +5,6 @@
   unavailable -> Request
   available -> Available
   some available -> Available
-  specialStatusLocations -> Request 
-      'marquand$stacks',
-      'marquand$pj',
-      'marquand$ref',
-      'marquand$ph',
-      'marquand$fesrf',
 */
 import AvailabilityBase from './availability_base.js';
 
@@ -163,11 +157,7 @@ export default class AvailabilitySearchResults extends AvailabilityBase {
     }
   }
 
-  handle_availability_status(
-    location,
-    availability_element,
-    specialStatusLocations
-  ) {
+  handle_availability_status(location, availability_element) {
     this.status_display.setRequestStatus(availability_element);
   }
 

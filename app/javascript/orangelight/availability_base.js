@@ -12,24 +12,13 @@ export default class AvailabilityBase {
       availability_element.classList.add('lux-text-style');
     }
     const { status_label, location } = availability_info;
-    const specialStatusLocations = [
-      'marquand$stacks',
-      'marquand$pj',
-      'marquand$ref',
-      'marquand$ph',
-      'marquand$fesrf',
-    ];
 
     if (availability_element) {
       availability_element.textContent = status_label;
     }
 
     if (status_label.toLowerCase() === 'unavailable') {
-      this.handle_availability_status(
-        location,
-        availability_element,
-        specialStatusLocations
-      );
+      this.handle_availability_status(location, availability_element);
     } else if (status_label.toLowerCase() === 'available') {
       this.status_display.setAvailableStatus(availability_element);
     } else if (status_label.toLowerCase() === 'some available') {
@@ -48,11 +37,7 @@ export default class AvailabilityBase {
     throw new Error('handleOnSiteAccessStatus must be implemented by subclass');
   }
 
-  handle_availability_status(
-    location,
-    availability_element,
-    specialStatusLocations
-  ) {
+  handle_availability_status(location, availability_element) {
     throw new Error(
       'handle_availability_status must be implemented by subclass'
     );

@@ -6,12 +6,8 @@
   'RES_SHARE$IN_RS_REQ' -> Unavailable
   available -> Available
   some available -> Some Available
-  Locations with special status-> Ask Staff 
-      'marquand$stacks',
-      'marquand$pj',
-      'marquand$ref',
-      'marquand$ph',
-      'marquand$fesrf',
+  Everything that has a bibdata status Unavailable and is in
+    marquand$* location -> Ask Staff
 */
 
 import AvailabilityBase from './availability_base.js';
