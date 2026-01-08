@@ -378,113 +378,171 @@ RSpec.describe Holdings::LocationServicesComponent, type: :component do
       expect(rendered.to_s).to include 'href="/requests/9960861053506421?aeon=false&amp;mfhd=22753114530006421"'
     end
   end
-
-  describe 'when the location is Marquand Special Collections' do
-    let(:holding_id) { '221067105550006421' }
-    let(:location_rules) do
-      {
-        'label': "Remote Storage (ReCAP): Marquand Library Use Only Rare Books",
-        'code': "marquand$pz",
-        'aeon_location': true,
-        'recap_electronic_delivery_location': false,
-        'open': false,
-        'requestable': true,
-        'always_requestable': true,
-        'circulates': false,
-        'remote_storage': "recap_rmt",
-        'fulfillment_unit': "Closed",
-        'url': "https://bibdata.princeton.edu/locations/holding_locations/marquand$pz.json",
-        'library': { 'label': "Marquand Library", 'code': "marquand", 'order': 0 },
-        'holding_library': { 'label': "Marquand Library", 'code': "marquand", 'order': 0 }
-      }
-    end
-    let(:holding) do
-      {
-        'location_code': "marquand$pz",
-        'location': "Remote Storage (ReCAP): Marquand Library Use Only Rare Books",
-        'library': "Marquand Library",
-        'call_number': "NE1321.5 .B25313 2025",
-        'call_number_browse': "NE1321.5 .B25313 2025",
-        'items': [{ 'holding_id': "221067105550006421",
-                    'id': "231067105540006421",
-                    'status_at_load': "0" }],
-        'mms_id': "99131494087106421"
-      }.with_indifferent_access
-    end
-    before do
-      allow(adapter).to receive(:document).and_return(document)
-    end
-    context 'when FlipFlop feature hide_marquand_special_collections_request_button is on' do
+  context "describe Request and Reading room button" do
+    describe 'when the location is Firestone stacks' do
+      let(:holding_id) { '221067105550006421' }
+      let(:location_rules) do
+        {
+          'label': "Stacks",
+          'code': "firestone$stacks",
+          'aeon_location': false,
+          'recap_electronic_delivery_location': false,
+          'open': true,
+          'requestable': true,
+          'always_requestable': false,
+          'circulates': true,
+          'remote_storage': "",
+          'fulfillment_unit': "General",
+          'url': "https://bibdata.princeton.edu/locations/holding_locations/firestone$stacks.json",
+          'library': { 'label': "Firestone Library", 'code': "firestone", 'order': 0 },
+          'holding_library': nil
+        }
+      end
+      let(:holding) do
+        {
+          'location_code': "firestone$stacks",
+          'location': "Stacks",
+          'library': "Firestone Library",
+          'call_number': "NE1321.5 .B25313 2025",
+          'call_number_browse': "NE1321.5 .B25313 2025",
+          'items': [{ 'holding_id': "221067105550006421",
+                      'id': "231067105540006421",
+                      'status_at_load': "0" }],
+          'mms_id': "99125410673606421"
+        }.with_indifferent_access
+      end
       before do
-        allow(Flipflop).to receive(:hide_marquand_special_collections_request_button?).and_return(true)
+        allow(adapter).to receive(:document).and_return(document)
       end
+      context 'when FlipFlop feature hide_marquand_non_rare_request_button is on' do
+        before do
+          allow(Flipflop).to receive(:hide_marquand_non_rare_request_button?).and_return(true)
+        end
 
-      it 'does not render a request button' do
-        expect(rendered.to_s).to include '<td class="location-services service-always-requestable"'
-        expect(rendered.to_s).not_to include "Reading Room Request"
+        it 'renders a request button' do
+          expect(rendered.to_s).to include '<td class="location-services service-conditional"'
+          expect(rendered.to_s).to include "Request"
+        end
+      end
+      context 'when FlipFlop feature hide_marquand_non_rare_request_button is off' do
+        before do
+          allow(Flipflop).to receive(:hide_marquand_non_rare_request_button?).and_return(false)
+        end
+
+        it 'renders a request button' do
+          expect(rendered.to_s).to include '<td class="location-services service-conditional"'
+          expect(rendered.to_s).to include "Request"
+        end
       end
     end
-    context 'when FlipFlop feature hide_marquand_special_collections_request_button is off' do
+
+    describe 'when the location is Marquand Special Collections' do
+      let(:holding_id) { '221067105550006421' }
+      let(:location_rules) do
+        {
+          'label': "Remote Storage (ReCAP): Marquand Library Use Only Rare Books",
+          'code': "marquand$pz",
+          'aeon_location': true,
+          'recap_electronic_delivery_location': false,
+          'open': false,
+          'requestable': true,
+          'always_requestable': true,
+          'circulates': false,
+          'remote_storage': "recap_rmt",
+          'fulfillment_unit': "Closed",
+          'url': "https://bibdata.princeton.edu/locations/holding_locations/marquand$pz.json",
+          'library': { 'label': "Marquand Library", 'code': "marquand", 'order': 0 },
+          'holding_library': { 'label': "Marquand Library", 'code': "marquand", 'order': 0 }
+        }
+      end
+      let(:holding) do
+        {
+          'location_code': "marquand$pz",
+          'location': "Remote Storage (ReCAP): Marquand Library Use Only Rare Books",
+          'library': "Marquand Library",
+          'call_number': "NE1321.5 .B25313 2025",
+          'call_number_browse': "NE1321.5 .B25313 2025",
+          'items': [{ 'holding_id': "221067105550006421",
+                      'id': "231067105540006421",
+                      'status_at_load': "0" }],
+          'mms_id': "99131494087106421"
+        }.with_indifferent_access
+      end
       before do
-        allow(Flipflop).to receive(:hide_marquand_special_collections_request_button?).and_return(false)
+        allow(adapter).to receive(:document).and_return(document)
       end
+      context 'when FlipFlop feature hide_marquand_special_collections_request_button is on' do
+        before do
+          allow(Flipflop).to receive(:hide_marquand_special_collections_request_button?).and_return(true)
+        end
 
-      it 'renders a request button' do
-        expect(rendered.to_s).to include '<td class="location-services service-always-requestable"'
-        expect(rendered.to_s).to include "Reading Room Request"
+        it 'does not render a request button' do
+          expect(rendered.to_s).to include '<td class="location-services service-always-requestable"'
+          expect(rendered.to_s).not_to include "Reading Room Request"
+        end
+      end
+      context 'when FlipFlop feature hide_marquand_special_collections_request_button is off' do
+        before do
+          allow(Flipflop).to receive(:hide_marquand_special_collections_request_button?).and_return(false)
+        end
+
+        it 'renders a request button' do
+          expect(rendered.to_s).to include '<td class="location-services service-always-requestable"'
+          expect(rendered.to_s).to include "Reading Room Request"
+        end
       end
     end
-  end
 
-  describe 'when the location is Marquand non rare' do
-    let(:holding_id) { '22729708660006421' }
-    let(:location_rules) do
-      { 'label': "Tang Reading Room Remote Storage: Marquand Use Only",
-        'code': "marquand$fesrf",
-        'aeon_location': false,
-        'recap_electronic_delivery_location': false, 'open': false,
-        'requestable': true,
-        'always_requestable': true,
-        'circulates': false,
-        'remote_storage': "", 'fulfillment_unit': "Closed",
-        'url': "https://bibdata.princeton.edu/locations/holding_locations/marquand$fesrf.json",
-        'library': { 'label': "Marquand Library", 'code': "marquand", 'order': 0 },
-        'holding_library': nil }
-    end
-    let(:holding) do
-      { 'location_code': "marquand$fesrf",
-        'location': "Tang Reading Room Remote Storage: Marquand Use Only",
-        'library': "Marquand Library",
-        'call_number': "ND1042 .C485 2013q Oversize",
-        'call_number_browse': "ND1042 .C485 2013q Oversize", 'sub_location': ["Oversize"],
-        'items': [{ 'holding_id': "22729708660006421", 'description': "vol.6",
-                    'id': "23729708570006421", 'status_at_load': "0",
-                    'barcode': "32101108680719", 'copy_number': "0" }],
-        'location_has': ["Vol. 1-v. 6"],
-        'supplements': [nil], 'indexes': [nil],
-        'mms_id': "9975702033506421" }.with_indifferent_access
-    end
-    before do
-      allow(adapter).to receive(:document).and_return(document)
-    end
-    context 'when FlipFlop feature hide_marquand_non_rare_request_button is on' do
+    describe 'when the location is Marquand non rare' do
+      let(:holding_id) { '22729708660006421' }
+      let(:location_rules) do
+        { 'label': "Tang Reading Room Remote Storage: Marquand Use Only",
+          'code': "marquand$fesrf",
+          'aeon_location': false,
+          'recap_electronic_delivery_location': false, 'open': false,
+          'requestable': true,
+          'always_requestable': true,
+          'circulates': false,
+          'remote_storage': "", 'fulfillment_unit': "Closed",
+          'url': "https://bibdata.princeton.edu/locations/holding_locations/marquand$fesrf.json",
+          'library': { 'label': "Marquand Library", 'code': "marquand", 'order': 0 },
+          'holding_library': nil }
+      end
+      let(:holding) do
+        { 'location_code': "marquand$fesrf",
+          'location': "Tang Reading Room Remote Storage: Marquand Use Only",
+          'library': "Marquand Library",
+          'call_number': "ND1042 .C485 2013q Oversize",
+          'call_number_browse': "ND1042 .C485 2013q Oversize", 'sub_location': ["Oversize"],
+          'items': [{ 'holding_id': "22729708660006421", 'description': "vol.6",
+                      'id': "23729708570006421", 'status_at_load': "0",
+                      'barcode': "32101108680719", 'copy_number': "0" }],
+          'location_has': ["Vol. 1-v. 6"],
+          'supplements': [nil], 'indexes': [nil],
+          'mms_id': "9975702033506421" }.with_indifferent_access
+      end
       before do
-        allow(Flipflop).to receive(:hide_marquand_non_rare_request_button?).and_return(true)
+        allow(adapter).to receive(:document).and_return(document)
       end
+      context 'when FlipFlop feature hide_marquand_non_rare_request_button is on' do
+        before do
+          allow(Flipflop).to receive(:hide_marquand_non_rare_request_button?).and_return(true)
+        end
 
-      it 'does not render a request button' do
-        expect(rendered.to_s).to include '<td class="location-services service-conditional"'
-        expect(rendered.to_s).not_to include "Request"
+        it 'does not render a request button' do
+          expect(rendered.to_s).to include '<td class="location-services service-conditional"'
+          expect(rendered.to_s).not_to include "Request"
+        end
       end
-    end
-    context 'when FlipFlop feature hide_marquand_non_rare_request_button is off' do
-      before do
-        allow(Flipflop).to receive(:hide_marquand_non_rare_request_button?).and_return(false)
-      end
+      context 'when FlipFlop feature hide_marquand_non_rare_request_button is off' do
+        before do
+          allow(Flipflop).to receive(:hide_marquand_non_rare_request_button?).and_return(false)
+        end
 
-      it 'renders a request button' do
-        expect(rendered.to_s).to include '<td class="location-services service-conditional"'
-        expect(rendered.to_s).to include "Request"
+        it 'renders a request button' do
+          expect(rendered.to_s).to include '<td class="location-services service-conditional"'
+          expect(rendered.to_s).to include "Request"
+        end
       end
     end
   end
@@ -534,8 +592,7 @@ RSpec.describe Holdings::LocationServicesComponent, type: :component do
             'code': 'rare',
             'order': 2
           },
-          'holding_library': nil,
-          'hours_location': nil
+          'holding_library': nil
         }.with_indifferent_access
       end
 
@@ -566,8 +623,7 @@ RSpec.describe Holdings::LocationServicesComponent, type: :component do
             'code': 'annex',
             'order': 0
           },
-          'holding_library': nil,
-          'hours_location': nil
+          'holding_library': nil
         }.with_indifferent_access
       end
 
@@ -599,8 +655,7 @@ RSpec.describe Holdings::LocationServicesComponent, type: :component do
             'code': 'recap',
             'order': 3
           },
-          'holding_library': nil,
-          'hours_location': nil
+          'holding_library': nil
         }.with_indifferent_access
       end
 
@@ -614,24 +669,20 @@ RSpec.describe Holdings::LocationServicesComponent, type: :component do
       let(:location_rules) do
         {
           'label': 'Sylvia Beach Collection',
-          'code': 'beac',
+          'code': 'rare$beac',
           'aeon_location': true,
           'recap_electronic_delivery_location': false,
           'open': false,
           'requestable': false,
           'always_requestable': true,
           'circulates': false,
-          'url': 'https://bibdata.princeton.edu/locations/holding_locations/beac.json',
+          'url': 'https://bibdata.princeton.edu/locations/holding_locations/rare$beac.json',
           'library': {
-            'label': 'Rare Books and Special Collections',
+            'label': 'Special Collections',
             'code': 'rare',
             'order': 2
           },
-          'holding_library': nil,
-          'hours_location': {
-            'label': 'Firestone Library - Rare Books and Special Collections',
-            'code': 'rbsc'
-          }
+          'holding_library': nil
         }.with_indifferent_access
       end
 
