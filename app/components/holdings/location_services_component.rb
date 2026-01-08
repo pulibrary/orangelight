@@ -86,7 +86,8 @@ class Holdings::LocationServicesComponent < ViewComponent::Base
       end
 
       def marquand_special_collections?
-        location_rules && location_rules[:code].end_with?('$t', '$x', '$rrx', '$pz', '$fbx', '$ebx')
+        marquand_special_collections_codes = %w[marquand$t marquand$x marquand$rrx marquand$pz marquand$fbx marquand$ebx]
+        location_rules && marquand_special_collections_codes.include?(location_rules[:code])
       end
 
       def marquand_non_rare?
