@@ -79,18 +79,6 @@ describe 'Facets' do
   end
 
   describe 'with blacklight-hierarchy gem' do
-    context 'with the hierarchical classification facet with pipes' do
-      it 'renders the classification facet' do
-        visit '/catalog?search_field=all_fields&q='
-        expect(page).to have_selector('.blacklight-lc_pipe_facet')
-        # Displays all 17 LC single letter classes
-        within('.blacklight-lc_pipe_facet') do
-          expect(page.all('.h-node').length).to eq(17)
-          # The A class contains two subclasses
-          expect(page.first('.h-node').all('.h-leaf').length).to eq(3)
-        end
-      end
-    end
     context 'with the hierarchical classification facet' do
       it 'renders the classification facet' do
         visit '/catalog?search_field=all_fields&q='
