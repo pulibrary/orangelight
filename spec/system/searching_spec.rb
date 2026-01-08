@@ -225,26 +225,6 @@ describe 'Searching', type: :system, js: false do
     expect(page).to have_content('Limit your search')
   end
 
-  context 'When the search result form is on' do
-    before do
-      allow(Flipflop).to receive(:search_result_form?).and_return(true)
-    end
-    it 'displays a banner' do
-      visit '/catalog?search_field=all_fields&q=cats'
-      expect(page).to have_content('We are working to address bias')
-    end
-  end
-
-  context 'When the search result form is off' do
-    before do
-      allow(Flipflop).to receive(:search_result_form?).and_return(false)
-    end
-    it 'does not display a banner' do
-      visit '/catalog?search_field=all_fields&q=cats'
-      expect(page).not_to have_content('We are working to address bias')
-    end
-  end
-
   context 'with facets from the advanced search form', advanced_search: true, js: true do
     it 'keeps the facets when editing the search' do
       visit '/advanced'

@@ -8,8 +8,6 @@ defaults: &defaults
     queue_id: <%= ENV['ASK_A_QUESTION_QUEUE_ID'] %>
   suggest_correction_form:
     queue_id: <%= ENV['SUGGEST_CORRECTION_QUEUE_ID'] %>
-  report_biased_results_form:
-    to: <%= ENV['OL_BIASED_RESULTS_TO'] %>
   redis:
     host: 'localhost'
     port: '6379'
@@ -35,8 +33,6 @@ development:
     db: 'orangelight_dev'
   suggest_correction_form:
     queue_id: <%= ENV['SUGGEST_CORRECTION_QUEUE_ID'] %>
-  report_biased_results_form:
-    to: 'test-biased-results@princeton.edu'
   browse_lists:
     csv_length: 224
 test:
@@ -51,8 +47,6 @@ test:
     db: 'orangelight_test'
   suggest_correction_form:
     queue_id: 3456
-  report_biased_results_form:
-    to: 'test-biased-results@princeton.edu'
   libanswers:
     client_id: ABC
     client_secret: '12345'
