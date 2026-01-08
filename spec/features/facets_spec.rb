@@ -80,9 +80,6 @@ describe 'Facets' do
 
   describe 'with blacklight-hierarchy gem' do
     context 'with the hierarchical classification facet with pipes' do
-      before do
-        allow(Flipflop).to receive(:blacklight_hierarchy_facet?).and_return(false)
-      end
       it 'renders the classification facet' do
         visit '/catalog?search_field=all_fields&q='
         expect(page).to have_selector('.blacklight-lc_pipe_facet')
@@ -95,9 +92,6 @@ describe 'Facets' do
       end
     end
     context 'with the hierarchical classification facet' do
-      before do
-        allow(Flipflop).to receive(:blacklight_hierarchy_facet?).and_return(true)
-      end
       it 'renders the classification facet' do
         visit '/catalog?search_field=all_fields&q='
         expect(page).to have_selector('.blacklight-lc_facet')
@@ -109,25 +103,7 @@ describe 'Facets' do
         end
       end
     end
-    context 'with the hierarchical place of publication facet with pipes' do
-      before do
-        allow(Flipflop).to receive(:blacklight_hierarchy_publication_facet?).and_return(false)
-      end
-      it 'renders the place of publication facet' do
-        visit '/catalog?search_field=all_fields&q='
-        expect(page).to have_selector('.blacklight-publication_place_hierarchical_pipe_facet')
-        # Displays all 3 place of publication classes
-        within('.blacklight-publication_place_hierarchical_pipe_facet') do
-          expect(page.all('.h-node').length).to eq(3)
-          # The A class contains two subclasses
-          expect(page.all('.h-node')[2].all('.h-leaf').length).to eq(7)
-        end
-      end
-    end
     context 'with the hierarchical place of publication facet' do
-      before do
-        allow(Flipflop).to receive(:blacklight_hierarchy_publication_facet?).and_return(true)
-      end
       it 'renders the place of publication facet' do
         visit '/catalog?search_field=all_fields&q='
         expect(page).to have_selector('.blacklight-publication_place_hierarchical_facet')

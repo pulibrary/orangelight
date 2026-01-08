@@ -37,14 +37,6 @@ Flipflop.configure do
       description: "When on / true, a banner will be present to take the user to the search result form"
   end
 
-  feature :blacklight_hierarchy_facet,
-  default: true,
-  description: "When on / true, use the colon delimited field to display the classification facet, when off / false use the pipe delimited field"
-
-  feature :blacklight_hierarchy_publication_facet,
-  default: true,
-  description: "When on / true, use the colon delimited field to display the place of publication facet, when off / false use the pipe delimited field"
-
   feature :hide_marquand_special_collections_request_button,
   default: false,
   description: "When on / true, it hides the request button for Marquand Special Collections 'marquand$t','marquand$x','marquand$rrx', 'marquand$pz', 'marquand$fbx', 'marquand$ebx'."
