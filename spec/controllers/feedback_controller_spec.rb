@@ -9,15 +9,4 @@ RSpec.describe FeedbackController, type: :controller do
       expect(response).to be_successful
     end
   end
-
-  describe "#report_biased_results" do
-    it "routes to the Report Biased Results form" do
-      get :report_biased_results, params: {
-        report_biased_results_form: {
-          context: "http://example.com/?q=cats"
-        }
-      }
-      expect(response).to be_successful
-    end
-  end
 end

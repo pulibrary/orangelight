@@ -17,10 +17,6 @@ detectors:
     - FeedbackForm#message
     - FeedbackForm#name
     - FeedbackForm#request
-    - ReportBiasedResultsForm#context
-    - ReportBiasedResultsForm#email
-    - ReportBiasedResultsForm#message
-    - ReportBiasedResultsForm#name
     - SuggestCorrectionForm#context
     - SuggestCorrectionForm#email
     - SuggestCorrectionForm#message
@@ -298,7 +294,6 @@ detectors:
     - SessionsController
     - Users::OmniauthCallbacksController
     - AskAQuestionForm
-    - ReportBiasedResultsForm
     - SuggestCorrectionForm
     - ContactMailer
     - Requests::RequestMailer
@@ -356,7 +351,6 @@ detectors:
     - Users::OmniauthCallbacksController
     - AskAQuestionForm
     - FeedbackForm
-    - ReportBiasedResultsForm
     - SuggestCorrectionForm
     - ApplicationHelper
     - BlacklightHelper
@@ -760,7 +754,6 @@ detectors:
     - Orangelight::BrowsablesController#validate_rpp
     - Requests::FormController#sanitize
     - FeedbackForm#error_message
-    - ReportBiasedResultsForm#routed_mail_to
     - ApplicationHelper#aeon_location?
     - ApplicationHelper#alma_library_display
     - ApplicationHelper#alma_location_display

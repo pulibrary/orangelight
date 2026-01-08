@@ -7,7 +7,6 @@ class FeedbackController < ApplicationController
   before_action :build_feedback_form, only: [:create]
   before_action :build_ask_a_question_form, only: [:ask_a_question]
   before_action :build_suggest_correction_form, only: [:suggest_correction]
-  before_action :build_report_biased_results_form, only: [:report_biased_results]
 
   def new
     @feedback_form = FeedbackForm.new if @feedback_form.nil?
@@ -28,8 +27,6 @@ class FeedbackController < ApplicationController
   def ask_a_question; end
 
   def suggest_correction; end
-
-  def report_biased_results; end
 
   protected
 
@@ -63,20 +60,6 @@ class FeedbackController < ApplicationController
 
     def suggest_correction_form_params
       params.expect(suggest_correction_form: %i[id title])
-    end
-
-    def build_report_biased_results_form
-      @biased_results_form = ReportBiasedResultsForm.new(
-        context: biased_results_params['context']
-      )
-    end
-
-    def biased_results_params
-      params.expect(report_biased_results_form: [:context])
-    end
-
-    def search_results_url(biased_params)
-      search_catalog_url(q: biased_params['q'])
     end
 
     def page_url(params)

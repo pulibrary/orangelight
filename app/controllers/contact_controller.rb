@@ -22,17 +22,6 @@ class ContactController < ApplicationController
     end
   end
 
-  def report_biased_results
-    @form = ReportBiasedResultsForm.new(report_biased_results_params)
-    if @form.valid? && @form.submit
-      flash[:success] = 'Your report has been submitted'
-
-      render "report_biased_results_success"
-    else
-      render partial: "catalog/report_biased_results_form", locals: { form: @form }, status: :unprocessable_content
-    end
-  end
-
   private
 
     def question_params
@@ -41,9 +30,5 @@ class ContactController < ApplicationController
 
     def suggestion_params
       params[:suggest_correction_form].permit!
-    end
-
-    def report_biased_results_params
-      params[:report_biased_results_form].permit!
     end
 end

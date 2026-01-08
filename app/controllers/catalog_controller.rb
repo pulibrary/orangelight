@@ -806,10 +806,6 @@ class CatalogController < ApplicationController
     end
   end
 
-  def report_biased_results_form; end
-
-  def biased_results_submit; end
-
   def advanced_search
     if no_search_yet?
       @response = empty_solr_response(empty_advanced_search_raw_response)

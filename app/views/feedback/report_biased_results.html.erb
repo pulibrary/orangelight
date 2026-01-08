@@ -1,8 +1,0 @@
-<%= render Blacklight::System::ModalComponent.new do |component| %>
-  <% component.with_title { t('blacklight.report_biased_results.form.title') } %>
-  <% component.with_body do %>
-    <%= render partial: "catalog/report_biased_results_form",
-        locals: { form: @biased_results_form }
-    %>
-  <% end %>
-<% end %>
