@@ -25,17 +25,6 @@ describe "accessibility", type: :feature, js: true do
         .according_to(:wcag2a, :wcag2aa, :wcag21a, :wcag21aa)
     end
   end
-  context 'search results page' do
-    before do
-      allow(Flipflop).to receive(:highlighting?).and_return(true)
-    end
-
-    it 'complies with wcag2aa wcag21aa' do
-      visit '/catalog?q=black+teenagers'
-      expect(page).to be_axe_clean
-        .according_to(:wcag2a, :wcag2aa, :wcag21a, :wcag21aa)
-    end
-  end
   context "browse list page" do
     it 'complies with wcag2aa wcag21aa next button' do
       # Issue: https://github.com/pulibrary/orangelight/issues/4837

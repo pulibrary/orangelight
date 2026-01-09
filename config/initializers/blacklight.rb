@@ -9,7 +9,5 @@ ActiveSupport::Reloader.to_prepare do
                                                 Orangelight::ReferenceNoteUrlProcessor,
                                                 Orangelight::SeriesLinkProcessor,
                                                 Blacklight::Rendering::Microdata,
-                                                Orangelight::SubjectsOrNotesProcessor,
-                                                Orangelight::HighlightProcessor,
                                                 Orangelight::JoinProcessor]
 end

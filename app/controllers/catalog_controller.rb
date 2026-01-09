@@ -257,7 +257,7 @@ class CatalogController < ApplicationController
     #   output for bento search. If you need to add a field to JSON display
     #   (catalog.json), add it here!
     config.add_index_field 'series_display', label: 'Series', helper_method: :series_results
-    config.add_index_field 'author_display', label: 'Author/Artist', browse_link: :name, presenter: Orangelight::HighlightPresenter
+    config.add_index_field 'author_display', label: 'Author/Artist', browse_link: :name
     config.add_index_field 'pub_created_display', label: 'Published/Created'
     config.add_index_field 'format', label: 'Format', component: FormatBadgeFieldComponent
     config.add_index_field 'holdings_1display', if: :json_request?
@@ -265,22 +265,22 @@ class CatalogController < ApplicationController
     config.add_index_field 'isbn_t', if: :json_request?
     config.add_index_field 'score', if: :json_request?
     config.add_index_field 'marc_relator_display', if: :json_request?
-    config.add_index_field 'title_display', if: :json_request?, presenter: Orangelight::HighlightPresenter
-    config.add_index_field 'title_vern_display', if: :json_request?, presenter: Orangelight::HighlightPresenter
+    config.add_index_field 'title_display', if: :json_request?
+    config.add_index_field 'title_vern_display', if: :json_request?
     config.add_index_field 'isbn_s', if: :json_request?
     config.add_index_field 'oclc_s', if: :json_request?
     config.add_index_field 'lccn_s', if: :json_request?
     config.add_index_field 'electronic_access_1display', if: :json_request?
     config.add_index_field 'cataloged_tdt', if: :json_request?
     config.add_index_field 'electronic_portfolio_s', if: :json_request?
-    config.add_index_field 'lc_subject_display', label: 'Subjects', browse_link: :name, presenter: Orangelight::HighlightPresenter
-    config.add_index_field 'siku_subject_display', if: false, presenter: Orangelight::HighlightPresenter
-    config.add_index_field 'homoit_subject_display', if: false, presenter: Orangelight::HighlightPresenter
-    config.add_index_field 'lcgft_s', if: false, presenter: Orangelight::HighlightPresenter
-    config.add_index_field 'homoit_genre_s', if: false, presenter: Orangelight::HighlightPresenter
-    config.add_index_field 'rbgenr_s', if: false, presenter: Orangelight::HighlightPresenter
-    config.add_index_field 'aat_s', if: false, presenter: Orangelight::HighlightPresenter
-    config.add_index_field 'notes_display', label: 'Notes', presenter: Orangelight::HighlightPresenter
+    config.add_index_field 'lc_subject_display', label: 'Subjects', browse_link: :name
+    config.add_index_field 'siku_subject_display', if: false
+    config.add_index_field 'homoit_subject_display', if: false
+    config.add_index_field 'lcgft_s', if: false
+    config.add_index_field 'homoit_genre_s', if: false
+    config.add_index_field 'rbgenr_s', if: false
+    config.add_index_field 'aat_s', if: false
+    config.add_index_field 'notes_display', label: 'Notes'
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
