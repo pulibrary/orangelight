@@ -129,7 +129,6 @@ describe 'blacklight tests' do
   describe 'dir tag check' do
     before do
       stub_holding_locations
-      allow(Flipflop).to receive(:highlighting?).and_return(false)
     end
 
     it 'adds rtl dir for title and author field in search results' do
@@ -335,7 +334,6 @@ describe 'blacklight tests' do
   describe 'escaping search/browse link urls', browse: true do
     before do
       stub_holding_locations
-      allow(Flipflop).to receive(:highlighting?).and_return(false)
     end
 
     it 'search result name facet/browse urls' do

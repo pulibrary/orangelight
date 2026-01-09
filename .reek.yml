@@ -307,7 +307,6 @@ detectors:
     - Requests::Submissions::HoldItem
     - Requests::Submissions::Illiad
     - Requests::Submissions::Recap
-    - Orangelight::HighlightPresenter
     - LinkedDocumentResolver::LinkedDocuments
   IrresponsibleModule:
     exclude:
@@ -412,9 +411,7 @@ detectors:
     - SolrDocument
     - User
     - Orangelight::ClausePresenter
-    - Orangelight::HighlightPresenter
     - Orangelight::BrowseLinkProcessor
-    - Orangelight::HighlightProcessor
     - Orangelight::JoinProcessor
     - Orangelight::LinkToFacetProcessor
     - Orangelight::LinkToSearchValueProcessor
