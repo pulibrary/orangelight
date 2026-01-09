@@ -22,6 +22,13 @@
   background: var(--color-grayscale-light);
 }
 
+.when-closed .lux-badge {
+  height: 1.5rem;
+  font-size: .55rem;
+  padding: 0.8rem 0.5rem;
+  letter-spacing: 0.02rem;
+}
+
 .lux {
   // We use Libre Franklin since it is a variable font and is a new
   // recommendation from the Communications Office.  Once Lux includes
