@@ -129,7 +129,7 @@ GEM
       erubi (~> 1.4)
       parser (>= 2.4)
       smart_properties
-    bigdecimal (3.3.1)
+    bigdecimal (4.0.1)
     blacklight (8.12.3)
       globalid
       i18n (>= 1.7.0)
@@ -277,8 +277,8 @@ GEM
       dry-logic (~> 1.5)
       dry-types (~> 1.8)
       zeitwerk (~> 2.6)
-    dry-types (1.8.3)
-      bigdecimal (~> 3.0)
+    dry-types (1.9.0)
+      bigdecimal (>= 3.0)
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.0)
       dry-inflector (~> 1.0)
@@ -678,7 +678,7 @@ GEM
       rack (>= 3.1.0)
       redis-client (>= 0.23.2)
     sigdump (0.2.5)
-    simple_form (5.4.0)
+    simple_form (5.4.1)
       actionpack (>= 7.0)
       activemodel (>= 7.0)
     simplecov (0.22.0)
