@@ -46,4 +46,9 @@ describe 'Zotero Support via Context Objects', zotero: true do
     expect(key).to eq "UR"
     expect(value).to eq "http://www.loc.gov/catdir/description/cam051/2004018645.html"
   end
+
+  it 'has a RIS export link with correct text' do
+    visit '/catalog/9990315453506421'
+    expect(page).to have_css('li.ris a.dropdown-item', text: 'RIS format (e.g. Zotero)')
+  end
 end
