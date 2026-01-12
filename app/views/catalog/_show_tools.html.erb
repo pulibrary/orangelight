@@ -22,7 +22,7 @@
             <%= link_to "RefWorks", refworks_export_url({url: polymorphic_url(search_state.url_for_document(@document), format: :refworks_marc_txt, only_path: false)}), rel: 'nofollow', class: "icon-external dropdown-item", :target => "_blank"  %>
           </li>
           <li class="ris">
-          <%= link_to 'RIS', solr_document_path(@document, :format => 'ris'), rel: 'nofollow', class: "icon-external dropdown-item" %>
+          <%= link_to 'RIS format (e.g. Zotero)', solr_document_path(@document, :format => 'ris'), rel: 'nofollow', class: "icon-external dropdown-item" %>
           </li>
         <% end %>
         <li class="print">
