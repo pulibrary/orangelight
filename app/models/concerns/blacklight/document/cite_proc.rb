@@ -23,7 +23,6 @@ module Blacklight::Document::CiteProc
     end
 
     def cite_proc_authors
-      byebug
       @cite_proc_authors ||= cleaned_authors&.map do |author|
         if author.include?(', ')
           family, given = author.split(', ')
