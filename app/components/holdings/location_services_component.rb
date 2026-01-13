@@ -115,11 +115,11 @@ class Holdings::LocationServicesComponent < ViewComponent::Base
       end
 
       def cul_avery?
-        items.first["collection_code"] == "AR"
+        items&.first&.[]("collection_code") == "AR"
       end
 
       def hl_art?
-        items.first["collection_code"] == "FL"
+        items&.first&.[]("collection_code") == "FL"
       end
 
       # The full holding hash, with the holding_id as the key
