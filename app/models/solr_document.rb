@@ -6,6 +6,7 @@ class SolrDocument
   include Orangelight::Document::Export
   include Orangelight::Document::Alma
   include Orangelight::Document::Scsb
+  include Orangelight::Document::Dspace
   include Orangelight::Document::StandardNumbers
 
   # Explicitly required for sneakers
