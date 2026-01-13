@@ -92,7 +92,7 @@ class Holdings::LocationServicesComponent < ViewComponent::Base
 
       def marquand_non_rare?
         non_rare_codes = %w[marquand$fesrf marquand$ltop marquand$mic marquand$ms marquand$msref marquand$pj marquand$pv marquand$ref marquand$pjm marquand$res marquand$rp marquand$saf marquand$stacks marquand$tech marquand$wr]
-        location_rules && non_rare_codes.include?(location_rules[:code])
+        (location_rules && non_rare_codes.include?(location_rules[:code])) || cul_avery? || hl_art?
       end
 
       # Example of a temporary holding, in this case holding_id is : firestone$res3hr
@@ -112,6 +112,14 @@ class Holdings::LocationServicesComponent < ViewComponent::Base
 
       def document
         adapter.document
+      end
+
+      def cul_avery?
+        items.first["collection_code"] == "AR"
+      end
+
+      def hl_art?
+        items.first["collection_code"] == "FL"
       end
 
       # The full holding hash, with the holding_id as the key
