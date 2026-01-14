@@ -545,6 +545,90 @@ RSpec.describe Holdings::LocationServicesComponent, type: :component do
         end
       end
     end
+
+    describe 'when the location is SCSB CUL and collection_code AR' do
+      let(:holding_id) { '15118806' }
+      let(:location_rules) do
+        {
+          'label': "Remote Storage",
+          'code': "scsbcul",
+          'aeon_location': false,
+          'recap_electronic_delivery_location': true,
+          'open': false,
+          'requestable': true,
+          'always_requestable': false,
+          'circulates': true,
+          'remote_storage': "recap_rmt",
+          'fulfillment_unit': nil,
+          'library': {
+            'label': "ReCAP",
+            'code': "recap",
+            'order': 0
+          },
+          'holding_library': nil,
+          'delivery_locations': [
+            {
+              'label': "Firestone Circulation Desk",
+              'address': "One Washington Rd. Princeton, NJ 08544",
+              'phone_number': "609 258-2345",
+              'contact_email': "fstcirc@princton.edu",
+              'gfa_pickup': "QX",
+              'staff_only': false,
+              'pickup_location': false,
+              'digital_location': false,
+              'library': {
+                'label': "Firestone Library",
+                'code': "firestone",
+                'order': 0
+              }
+            }
+          ]
+        }
+      end
+      let(:holding) do
+        {
+          'location_code': "scsbcul",
+          'location': "Remote Storage",
+          'library': "ReCAP",
+          'call_number': "F3601.3 .P476 2021g",
+          'call_number_browse': "F3601.3 .P476 2021g",
+          'items': [
+            {
+              'holding_id': "15118806",
+              'id': "21607905",
+              'status_at_load': "Available",
+              'barcode': "AR02932911",
+              'copy_number': "1",
+              'use_statement': "In Library Use",
+              'storage_location': "RECAP",
+              'cgd': "Shared",
+              'collection_code': "AR"
+            }
+          ]
+        }.with_indifferent_access
+      end
+      before do
+        allow(adapter).to receive(:document).and_return(document)
+      end
+      context 'when FlipFlop feature hide_marquand_non_rare_request_button is on' do
+        before do
+          allow(Flipflop).to receive(:hide_marquand_non_rare_request_button?).and_return(true)
+        end
+
+        it 'does not render a request button' do
+          expect(rendered.to_s).not_to include "Request"
+        end
+      end
+      context 'when FlipFlop feature hide_marquand_non_rare_request_button is off' do
+        before do
+          allow(Flipflop).to receive(:hide_marquand_non_rare_request_button?).and_return(false)
+        end
+
+        it 'renders a request button' do
+          expect(rendered.to_s).to include "Request"
+        end
+      end
+    end
   end
 
   describe 'td css classes' do
