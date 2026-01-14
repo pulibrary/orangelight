@@ -41,9 +41,9 @@ describe 'Tools links', js: true do
       visit  '/catalog/dsp017s75dc44p'
     end
 
-    it 'does not have cite, RefWorks, or EndNote links' do
+    it 'does have cite link but not RefWorks or EndNote links' do
       within '#main-container' do
-        expect(page).not_to have_link('Cite')
+        expect(page).to have_link('Cite')
       end
 
       within '.search-widgets li.dropdown' do
