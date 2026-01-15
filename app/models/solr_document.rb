@@ -246,6 +246,28 @@ class SolrDocument
     @holdings_1display ||= JSON.parse(self[:holdings_1display] || '{}', symbolize_names: true)
   end
 
+  # Check if SCSB MARCXML is present by fetching from Solr
+  # @return [Boolean]
+  def scsb_marcxml?
+    return false unless scsb_record?
+
+    marcxml_field.present?
+  end
+
+  # Fetch the marcxml field from Solr for this document
+  # @return [String, nil]
+  def marcxml_field
+    @marcxml_field ||= begin
+      params = { q: "id:#{RSolr.solr_escape(id)}", fl: 'marcxml' }
+      response = Blacklight.default_index.connection.get('select', params: params)
+      docs = response['response']['docs']
+      docs&.first&.fetch('marcxml', nil)
+    rescue StandardError => e
+      Rails.logger.error("Failed to fetch marcxml field for ID #{id}: #{e}")
+      nil
+    end
+  end
+
   private
 
     def electronic_access_uris

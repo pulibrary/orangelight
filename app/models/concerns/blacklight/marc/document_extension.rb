@@ -2,6 +2,7 @@
 
 require 'marc'
 require 'openurl/context_object'
+require 'rsolr'
 
 # rubocop:disable Metrics/ModuleLength
 module Blacklight
@@ -168,12 +169,36 @@ module Blacklight
           def marc_record_from_marcxml
             id = fetch(_marc_source_field)
 
-            response = Faraday.get("#{Requests.config['bibdata_base']}/bibliographic/#{id}")
-            @can_retry = response.status == 429
-            response_stream = StringIO.new(response.body)
+            if scsb_record?
+              marcxml_record_scsb(marcxml_field)
+            else
+              response = Faraday.get("#{Requests.config['bibdata_base']}/bibliographic/#{id}")
+              @can_retry = response.status == 429
+              response_stream = StringIO.new(response.body)
+              marc_reader = ::MARC::XMLReader.new(response_stream)
+              marc_records = marc_reader.to_a
+              marc_records.first
+            end
+          end
+
+          def marcxml_record_scsb(marcxml_field)
+            return nil unless marcxml_field
+
+            decompressed_marcxml = decompress_marcxml(marcxml_field)
+            response_stream = StringIO.new(decompressed_marcxml)
             marc_reader = ::MARC::XMLReader.new(response_stream)
             marc_records = marc_reader.to_a
             marc_records.first
+          end
+
+          # @param [String] compressed_data The compressed MARCXML data
+          # @return [String] The decompressed MARCXML string
+          def decompress_marcxml(compressed_data)
+            decoded = Base64.strict_decode64(compressed_data)
+            Zlib::GzipReader.new(StringIO.new(decoded)).read
+          rescue StandardError => e
+            Rails.logger.error("Failed to decompress MARCXML: #{e}")
+            compressed_data
           end
 
           def _marc_helper

@@ -219,4 +219,35 @@ RSpec.describe 'catalog/show' do
       end
     end
   end
+  describe "staff view link" do
+    context 'with an Alma record' do
+      it 'displays the librarian view link' do
+        visit 'catalog/99126846939806421'
+        expect(page).to have_link('Staff view', href: /staff_view/)
+        expect(page).to have_selector('#staffLink')
+      end
+    end
+    context 'with a SCSB record that has marcxml' do
+      it 'displays the librarian view link' do
+        # rubocop:disable RSpec/AnyInstance
+        allow_any_instance_of(SolrDocument).to receive(:marcxml_field).and_return('<record>data</record>')
+        # rubocop:enable RSpec/AnyInstance
+
+        visit 'catalog/SCSB-10966202'
+        expect(page).to have_link('Staff view', href: /staff_view/)
+        expect(page).to have_selector('#staffLink')
+      end
+    end
+    context 'with a SCSB record without marcxml' do
+      it 'does not display the librarian view link' do
+        # rubocop:disable RSpec/AnyInstance
+        allow_any_instance_of(SolrDocument).to receive(:marcxml_field).and_return(nil)
+        # rubocop:enable RSpec/AnyInstance
+
+        visit 'catalog/SCSB-10966202'
+        expect(page).not_to have_link('Staff view', href: /staff_view/)
+        expect(page).not_to have_selector('#staffLink')
+      end
+    end
+  end
 end
