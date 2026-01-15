@@ -43,6 +43,7 @@ module Requests
       JSON.parse(data)
     end
 
+    # :reek:TooManyStatements
     # :reek:UtilityFunction
     def build_pick_ups
       pick_up_locations = []
