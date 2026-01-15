@@ -1,0 +1,51 @@
+@import "variables/colors";
+
+.need-help-container {
+    background-color: $light-gray;
+    border-radius: 8px;
+    font-family: Libre Franklin, sans-serif;
+    margin: 30px;
+    width: 90%;
+}
+.need-help-row {
+    padding: 30px;
+}
+
+.need-help-label {
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: 0%;
+}
+
+.ask-a-question, .suggest-correction {
+    font-size: 18px;
+    font-weight: 500;
+    color: $black;
+    display: inline-block;
+    position: relative;
+    width: fit-content;
+    padding: 0;
+    margin-bottom: 16px;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.ask-a-question::after, .suggest-correction::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: $orange;
+    transform-origin: bottom left;
+    transition: transform 0.3s ease-out;
+}
+
+.ask-a-question:hover::after, .suggest-correction:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+    width: wrap-content;
+}
