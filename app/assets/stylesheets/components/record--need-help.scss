@@ -1,11 +1,13 @@
 @import "variables/colors";
 
 .need-help-container {
-    background-color: $light-gray;
+    background-color: var(--color-gray-10);
     border-radius: 8px;
+    border: 1px solid var(--color-grayscale-light);
     font-family: Libre Franklin, sans-serif;
-    margin: 30px;
-    width: 90%;
+    padding: 0;
+    margin: 30px 0 0 0;
+    // width: 90%;
 }
 .need-help-row {
     padding: 30px;
@@ -19,7 +21,7 @@
 
 .ask-a-question, .suggest-correction {
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
     color: $black;
     display: inline-block;
     position: relative;
@@ -36,7 +38,7 @@
     position: absolute;
     width: 100%;
     transform: scaleX(0);
-    height: 2px;
+    height: 3px;
     bottom: 0;
     left: 0;
     background-color: $orange;
