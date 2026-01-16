@@ -230,7 +230,7 @@ RSpec.describe 'catalog/show' do
     context 'with a SCSB record that has marcxml' do
       it 'displays the librarian view link' do
         # rubocop:disable RSpec/AnyInstance
-        allow_any_instance_of(SolrDocument).to receive(:marcxml_field).and_return('<record>data</record>')
+        allow_any_instance_of(SolrDocument).to receive(:marcxml_field).and_return('H4sIAMhEaGkAA71W3U7bMBh9Fd8ZJEj8EycOSyOxMg0k9iNgQtqdk5jWw42rJB0w7XKPt4faF0pRVYIpXKyRGis59nfOiX3srNGlayp0')
         # rubocop:enable RSpec/AnyInstance
 
         visit 'catalog/SCSB-10966202'

@@ -166,6 +166,7 @@ module Blacklight
 
           # Construct a MARC::Record using MARC-XML data retrieved over the HTTP
           # @return [MARC::Record]
+          # :reek:TooManyStatements
           def marc_record_from_marcxml
             id = fetch(_marc_source_field)
 
@@ -181,6 +182,7 @@ module Blacklight
             end
           end
 
+          # :reek:TooManyStatements
           def marcxml_record_scsb(marcxml_field)
             return nil unless marcxml_field
 
@@ -193,6 +195,8 @@ module Blacklight
 
           # @param [String] compressed_data The compressed MARCXML data
           # @return [String] The decompressed MARCXML string
+          # :reek:UncommunicativeVariableName
+          # :reek:UtilityFunction
           def decompress_marcxml(compressed_data)
             decoded = Base64.strict_decode64(compressed_data)
             Zlib::GzipReader.new(StringIO.new(decoded)).read
