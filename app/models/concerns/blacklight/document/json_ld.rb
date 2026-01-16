@@ -136,7 +136,7 @@ module Blacklight::Document::JsonLd
   end
 
   def abstract
-    (self['summary_note_display'] || []).first
+    (self['summary_note_display'] || []).join(',')
   end
 
   # Numbers from the Digital Cicognara Library (DCL)

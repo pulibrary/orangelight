@@ -88,7 +88,7 @@ RSpec.describe Blacklight::Document::JsonLd do
     context 'with a special collections codex' do
       let(:id) { '9952615993506421' }
       it 'creates a jsonld document' do
-        expect(doc['abstract']).to include('an abridgment of part 3 of Miftāḥ al-ʻulūm')
+        expect(doc['abstract']).to include('an abridgment of part 3 of Miftāḥ al-ʻulūm', 'line or a double red line', 'Red brown leather doublure with a gilt fillet border and a central interlace')
       end
     end
 
