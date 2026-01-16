@@ -29,7 +29,6 @@
 @use 'components/footer';
 @use 'components/header';
 @use 'components/nav--accounts';
-@use 'components/nav--harmful-content';
 @use 'components/pagination';
 @use 'components/record';
 @use 'components/release-notes';
@@ -66,6 +65,7 @@
 @import 'components/lists'; // needs to override some styles in bootstrap
 @import 'components/overrides';
 @import 'components/record--descriptions'; // needs to override some styles in bootstrap
+@import 'components/record--need-help.scss'; // needs to override some styles in blacklight);
 @import 'components/record--sidebar'; // needs to override some styles in blacklight
 @import 'components/record--subject';  // depends on shade-color mixin from bootstrap
 @import 'components/request'; // needs to override some styles in bootstrap
