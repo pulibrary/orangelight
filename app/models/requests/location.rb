@@ -88,7 +88,7 @@ module Requests
     end
 
     def self.valid_recap_annex_pickup?(location_hash)
-      ['PA', 'PF', 'PJ', 'PK', 'PL', 'PM', 'PT', 'PW', 'QA', 'QC', 'QL', 'QP', 'QT', 'QX'].include?(location_hash[:gfa_pickup])
+      ['PA', 'PB', 'PF', 'PJ', 'PK', 'PL', 'PM', 'PT', 'PW', 'QA', 'QC', 'QL', 'QP', 'QT', 'QX'].include?(location_hash[:gfa_pickup])
     end
 
     ## Accepts an array of location hashes and sorts them according to our quirks
@@ -112,7 +112,7 @@ module Requests
     # :reek:TooManyStatements
     # :reek:DuplicateMethodCall
     def self.sort_pick_up_locations(locations)
-      # staff only locations go at the bottom of the list, the rest sort by label
+      # staff only locations go to the bottom of the list, the rest sort by label
       public_locations = locations.reject { |loc| (loc[:staff_only] || loc["staff_only"]) == true }
       public_locations.sort_by! { |loc| loc[:label] || loc["label"] }
 
