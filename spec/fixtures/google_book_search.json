@@ -4,7 +4,7 @@
         "info_url": "https://books.google.com/books?id=5FTiCgAAQBAJ&source=gbs_ViewAPI",
         "preview_url": "https://books.google.com/books?id=5FTiCgAAQBAJ&printsec=frontcover&source=gbs_ViewAPI",
         "thumbnail_url": "https://books.google.com/books/content?id=5FTiCgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl",
-        "preview": "partial",
+        "preview": "full",
         "embeddable": true,
         "can_download_pdf": false,
         "can_download_epub": false,

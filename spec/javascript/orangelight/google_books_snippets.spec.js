@@ -76,7 +76,7 @@ describe('GoogleBooksSnippets', function () {
     expect(li_elements.length).toEqual(0);
   });
 
-  test('insert_snippet adds the google book link to available content', async () => {
+  test('insert_snippet adds the google book link to available full text content', async () => {
     document.body.innerHTML =
       '<div class="wrapper"><div class="availability--online"><ul></ul></div><div class="availability--physical"></div></div>' +
       '<meta property="isbn" itemprop="isbn" content="9780618643103">' +
@@ -99,7 +99,7 @@ describe('GoogleBooksSnippets', function () {
     expect(li_elements.length).toEqual(1);
     const list_item = li_elements.item(0);
     expect(
-      list_item.textContent.startsWith('Google Books (Partial View)')
+      list_item.textContent.startsWith('Google Books (Full View)')
     ).toEqual(true);
     const anchor = list_item.getElementsByTagName('a').item(0);
     expect(anchor.getAttribute('href')).toEqual(expectedUrl);
