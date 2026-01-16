@@ -1,10 +1,10 @@
 <div class="container-fluid need-help-container" role="region" aria-label="Need Help">
     <div class="row need-help-row">
-        <div class="column col-md-4">
+        <div class="column col-md-4 col-sm-12">
             <div class="need-help-label">Need Help?</div>
         </div>
-        <div class="column col-md-4">
-            <div class="row">
+        <div class="column col-md-4 col-sm-12 need-help-links">
+            <div class="row links-row">
                 <%= link_to(
                     'Ask a Question',
                     {
@@ -20,7 +20,7 @@
                     data: { blacklight_modal: 'trigger' }
                     ) %>
             </div>
-            <div class="row">
+            <div class="row links-row">
                 <%= link_to(
                     'Suggest a Correction',
                     {
