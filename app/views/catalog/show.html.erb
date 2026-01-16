@@ -91,7 +91,7 @@
 
     </script>
     <%= render 'show_main_content' %>
-    <% if @document.alma_record? %>
+    <% if @document.alma_record? || (@document.scsb_record? && @document.scsb_marcxml?) %>
       <dl class="dl-horizontal dl-invert">
         <dt class="other-views">Other views</dt>
         <dd class="classic-views">
