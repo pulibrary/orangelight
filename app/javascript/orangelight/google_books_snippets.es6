@@ -6,7 +6,7 @@ import { requestJsonP } from './json_p.es6';
 window.addGoogleBooksSnippetsToDom = (response) => {
   for (const key in response) {
     const result = response[key];
-    if (result.preview === 'partial' || result.preview === 'full') {
+    if (result.preview === 'full') {
       const previewString =
         result.preview.charAt(0).toUpperCase() + result.preview.slice(1);
       const url = new URL(result.preview_url);
