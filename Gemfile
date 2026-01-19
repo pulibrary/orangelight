@@ -14,7 +14,7 @@ gem 'blacklight-hierarchy'
 gem 'blacklight-marc'
 # slider limit support
 gem 'blacklight_range_limit', '~> 9.2.0'
-gem 'bootstrap', '~> 5.3.0'
+gem 'bootstrap', '~> 5.3.8'
 gem 'dartsass-sprockets'
 gem 'psych'
 # support for non-marc citations (e.g. SCSB records)
