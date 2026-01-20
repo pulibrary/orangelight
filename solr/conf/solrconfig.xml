@@ -300,6 +300,7 @@
         local_subject_unstem_search^2.2
         homoit_subject_unstem_search^2.2
         cjk_subject^2.2
+        icpsr_subject_unstem_search
       </str>
       <str name="subject_pf">
         subject_topic_unstem_search^550
