@@ -1,24 +1,10 @@
 {
-  "id": "dsp019c67wp402",
-  "title_t": [
-    "Beaumains"
+  "advanced_location_s": [
+    "mudd$stacks",
+    "Mudd Manuscript Library"
   ],
-  "title_citation_display": [
-    "Beaumains"
-  ],
-  "title_display": "Beaumains",
-  "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/dsp019c67wp402\":[\"DataSpace\",\"Citation only\"]}",
-  "restrictions_note_display": [
-    "This thesis can be viewed in person at the \u003ca href=http://mudd.princeton.edu\u003eMudd Manuscript Library\u003c/a\u003e.  \nTo order a copy complete the \u003ca href=\"http://rbsc.princeton.edu/senior-thesis-order-form\" target=\"_blank\"\u003eSenior Thesis Request Form\u003c/a\u003e.  \nFor more information contact \u003ca href=mailto:mudd@princeton.edu\u003emudd@princeton.edu\u003c/a\u003e."
-  ],
-  "call_number_display": [
-    "AC102 24981"
-  ],
-  "call_number_browse_s": [
-    "AC102 24981"
-  ],
-  "language_facet": [
-    "English"
+  "advisor_display": [
+    "Anderson, Sarah"
   ],
   "author_display": [
     "Sobieski, Robert Yan"
@@ -29,8 +15,14 @@
     "Sobel, Anne",
     "Princeton University. Department of English"
   ],
-  "advisor_display": [
-    "Anderson, Sarah"
+  "call_number_browse_s": [
+    "AC102 24981"
+  ],
+  "call_number_display": [
+    "AC102 24981"
+  ],
+  "class_year_s": [
+    "2010"
   ],
   "contributor_display": [
     "Sobel, Anne"
@@ -41,6 +33,18 @@
   "description_display": [
     "129 Pages"
   ],
+  "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/dsp019c67wp402\":[\"Thesis Central\",\"Citation only\"]}",
+  "format": [
+    "Senior thesis"
+  ],
+  "holdings_1display": "{\"thesis\":{\"location\":\"Mudd Manuscript Library\",\"library\":\"Mudd Manuscript Library\",\"location_code\":\"mudd$stacks\",\"call_number\":\"AC102 24981\",\"call_number_browse\":\"AC102 24981\",\"dspace\":true}}",
+  "id": "dsp019c67wp402",
+  "language_facet": [
+    "English"
+  ],
+  "language_name_display": [
+    "English"
+  ],
   "location": [
     "Mudd Manuscript Library"
   ],
@@ -50,20 +54,13 @@
   "location_code_s": [
     "mudd$stacks"
   ],
-  "advanced_location_s": [
-    "mudd$stacks",
-    "Mudd Manuscript Library"
-  ],
-  "holdings_1display": "{\"thesis\":{\"location\":\"Mudd Manuscript Library\",\"library\":\"Mudd Manuscript Library\",\"location_code\":\"mudd$stacks\",\"call_number\":\"AC102 24981\",\"call_number_browse\":\"AC102 24981\",\"dspace\":true}}",
-  "class_year_s": [
-    "2010"
-  ],
-  "pub_date_start_sort": 2010,
   "pub_date_end_sort": 2010,
-  "format": [
-    "Senior thesis"
+  "pub_date_start_sort": 2010,
+  "title_citation_display": [
+    "Beaumains"
   ],
-  "hashed_id_s": [
-    "cec8fdbe71dfe3dd"
+  "title_display": "Beaumains",
+  "title_t": [
+    "Beaumains"
   ]
 }
