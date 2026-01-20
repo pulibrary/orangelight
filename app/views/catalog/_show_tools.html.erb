@@ -25,6 +25,11 @@
           <%= link_to 'RIS format (e.g. Zotero)', solr_document_path(@document, :format => 'ris'), rel: 'nofollow', class: "icon-external dropdown-item" %>
           </li>
         <% end %>
+        <% if @document.scsb_record? && @document.scsb_marcxml? %>  
+          <li class="ris">
+          <%= link_to 'RIS format (e.g. Zotero)', solr_document_path(@document, :format => 'ris'), rel: 'nofollow', class: "icon-external dropdown-item" %>
+          </li>
+        <% end %>
         <li class="print">
           <a href="javascript:if(window.print)window.print()" class="dropdown-item"><span class="icon-print" aria-hidden="true"></span>Printer</a>
         </li>
