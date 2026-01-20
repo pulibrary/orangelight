@@ -31,14 +31,14 @@ describe('HoldingGroupAvailability', () => {
     });
   });
 
-  describe('when the group has a single holding and it is On-site Access', () => {
+  describe('when the group has a single holding and it is On-site access', () => {
     beforeEach(() => {
       document = new JSDOM(`
             <details>
               <div id="vue-mount"></div>
               <table>
                 <tr class="holding-block">
-                  <span class="availability-icon">On-site Access</span>
+                  <span class="availability-icon">On-site access</span>
                 </tr>
               </table>
             </details>`).window.document;

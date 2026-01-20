@@ -44,7 +44,7 @@ function summary() {
   );
   if (
     availabilityLabels.every((label) =>
-      ['Available', 'On-site Access'].includes(label.trim())
+      ['Available', 'On-site access'].includes(label.trim())
     )
   ) {
     return 'Available';
