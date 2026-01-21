@@ -79,37 +79,71 @@ RSpec.describe SolrDocument do
   end
 
   describe '#export_as_refworks_marc_txt' do
-    let(:bibid) { '9965749873506421' }
-    let(:properties) do
-      {
-        'id' => bibid
-      }
-    end
-    let(:marc_xml) { File.read(File.join(File.dirname(__FILE__), '..', 'fixtures', 'bibdata', "#{bibid}.xml")) }
-    let(:refworks_txt) do
-      "LEADER 00468cam a22001455a 4500001    6574987\n005    20110919084640.0\n008    110602s2011    nju           000 0 eng  \n040    NjP |cNjP\n100 1  Velez, Carlos.\n245 10 Searching for a modern aesthetic : |bfrom furniture to design / |cCarlos Velez.\n260     |c2011\n300    139 p. : |bill. ; |c29 x 23 cm.\n500    Advisor(s): Spyridon Papapetros, Lucia Allais\n502    Thesis (Senior)--Princeton University, 2011.\n852 8   |06536318 |brcppw |hSen. Th. 2011 Vel |xtr fr uesla\n959    2011-06-02 09:01:58 -0500\n"
-    end
+    context 'with an alma record' do
+      let(:bibid) { '9965749873506421' }
+      let(:properties) do
+        {
+          'id' => bibid
+        }
+      end
+      let(:marc_xml) { File.read(File.join(File.dirname(__FILE__), '..', 'fixtures', 'bibdata', "#{bibid}.xml")) }
+      let(:refworks_txt) do
+        "LEADER 00468cam a22001455a 4500001    6574987\n005    20110919084640.0\n008    110602s2011    nju           000 0 eng  \n040    NjP |cNjP\n100 1  Velez, Carlos.\n245 10 Searching for a modern aesthetic : |bfrom furniture to design / |cCarlos Velez.\n260     |c2011\n300    139 p. : |bill. ; |c29 x 23 cm.\n500    Advisor(s): Spyridon Papapetros, Lucia Allais\n502    Thesis (Senior)--Princeton University, 2011.\n852 8   |06536318 |brcppw |hSen. Th. 2011 Vel |xtr fr uesla\n959    2011-06-02 09:01:58 -0500\n"
+      end
 
-    before do
-      stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/#{bibid}").to_return(
-        status: 200,
-        body: marc_xml
-      )
-    end
-
-    it 'generates the refworks record' do
-      expect(solr_document.export_as_refworks_marc_txt).to eq(refworks_txt)
-    end
-
-    context 'when the remote MARC record cannot be retrieved' do
       before do
         stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/#{bibid}").to_return(
-          status: 500,
-          body: ''
+          status: 200,
+          body: marc_xml
         )
       end
-      it 'returns an empty String' do
-        expect(solr_document.export_as_refworks_marc_txt).to eq('')
+
+      it 'generates the refworks record' do
+        expect(solr_document.export_as_refworks_marc_txt).to eq(refworks_txt)
+      end
+
+      context 'when the remote MARC record cannot be retrieved' do
+        before do
+          stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/#{bibid}").to_return(
+            status: 500,
+            body: ''
+          )
+        end
+        it 'returns an empty String' do
+          expect(solr_document.export_as_refworks_marc_txt).to eq('')
+        end
+      end
+    end
+
+    context 'with a SCSB record' do
+      let(:bibid) { 'SCSB_11759184' }
+      let(:properties) do
+        {
+          'id' => 'SCSB-11759184'
+        }
+      end
+      let(:scsb_fixture) { JSON.parse(File.read(File.join(File.dirname(__FILE__), '..', 'fixtures', 'raw', 'scsb', "#{bibid}.json"))) }
+      let(:compressed_marcxml) { scsb_fixture['marcxml'] }
+      let(:refworks_txt) do
+        "LEADER 00448nam a2200157Iu 4500001    SCSB-11759184\n005    20020606093309.7\n008    930520s1978    gr a     b    000|0 greod\n009    990030569940203941\n035    (OCoLC)28160025 |z(OCoLC)1008381501\n050  4 ND603.T72 |bT73 1978x\n245 00 Tsarouchēs.\n260    Athēna : |bEkdosē Zygos, |c1978.\n300    126 p. : |ball ill. ; |c21 cm.\n504    Includes bibliographical references (p. 120-126).\n600 10 Tsarouchēs, Giannēs\n700 1  Tsarouchēs, Giannēs\n583 1  committed to retain |c20181001 |din perpetuity |fReCAP Shared Collection |5HUL |8221865298890003941\n852 0   |cHD |hND603.T72 |iT73 1978x |012577432 |bscsbhl\n876     |01257743218359341 |jAvailable |kWID |p32044099117160 |xShared |zHW |lHD\n"
+      end
+      let(:solr_response) do
+        {
+          'response' => {
+            'docs' => [
+              { 'marcxml' => compressed_marcxml }
+            ]
+          }
+        }
+      end
+
+      before do
+        allow(Blacklight.default_index.connection).to receive(:get).and_call_original
+        allow(Blacklight.default_index.connection).to receive(:get).with('select', params: { q: 'id:SCSB\\-11759184', fl: 'marcxml' }).and_return(solr_response)
+      end
+
+      it 'generates the refworks record' do
+        expect(solr_document.export_as_refworks_marc_txt).to eq(refworks_txt)
       end
     end
   end
@@ -410,12 +444,26 @@ RSpec.describe SolrDocument do
     context 'with a SCSB record' do
       let(:properties) do
         {
-          'id' => 'SCSB-6593031'
+          'id' => 'SCSB-11759184'
+        }
+      end
+      let(:solr_response) do
+        {
+          'response' => {
+            'docs' => [
+              { 'marcxml' => 'H4sIAMhEaGkAA71W3U7bMBh9Fd8ZJEj8EycOSyOxMg0k9iNgQtqdk5jWw42rJB0w7XKPt4faF0pRVYIpXKyRGis59nfOiX3srNGlayp0' }
+            ]
+          }
         }
       end
 
-      it 'does not include voyager-only formats' do
-        expect(solr_document.export_formats).not_to have_key :endnote
+      before do
+        allow(Blacklight.default_index.connection).to receive(:get).and_call_original
+        allow(Blacklight.default_index.connection).to receive(:get).with('select', params: { q: 'id:SCSB\\-11759184', fl: 'marcxml' }).and_return(solr_response)
+      end
+
+      it 'includes scsb formats' do
+        expect(solr_document.export_formats).to have_key :endnote
       end
     end
   end
