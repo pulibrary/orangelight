@@ -22,6 +22,17 @@ class ContactController < ApplicationController
     end
   end
 
+  def missing_item
+    @form = MissingItemForm.new(missing_item_params)
+    if @form.valid? && @form.submit
+      flash[:success] = 'Your feedback has been submitted'
+
+      render "missing_item_success"
+    else
+      render partial: "catalog/missing_item_form", locals: { form: @form }, status: :unprocessable_content
+    end
+  end
+
   private
 
     def question_params
@@ -30,5 +41,9 @@ class ContactController < ApplicationController
 
     def suggestion_params
       params[:suggest_correction_form].permit!
+    end
+
+    def missing_item_params
+      params[:missing_item_form].permit!
     end
 end
