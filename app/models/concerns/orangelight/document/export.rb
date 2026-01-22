@@ -19,7 +19,7 @@ module Orangelight
         end
 
         def formats_to_exclude
-          return [] if alma?
+          return [] if alma? || scsb?
           formats
         end
 
@@ -34,6 +34,10 @@ module Orangelight
           return false if fetch(:id, '').start_with?('SCSB')
           return false if %w[thesis numismatics visuals].include? holding_id
           true
+        end
+
+        def scsb?
+          fetch(:id, '').start_with?('SCSB') && scsb_marcxml?
         end
     end
   end
