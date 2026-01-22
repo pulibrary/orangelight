@@ -56,6 +56,7 @@ gem 'net-pop', require: false
 gem 'net-smtp', require: false
 # Authenticate using CAS
 gem 'omniauth-cas'
+gem 'openssl'
 gem 'omniauth-rails_csrf_protection'
 gem 'openurl', '~> 1.0'
 # Use postgresql as the database for Active Record

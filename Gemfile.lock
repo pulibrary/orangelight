@@ -489,6 +489,7 @@ GEM
       stringio
       time
       uri
+    openssl (4.0.0)
     openurl (1.0.0)
       marc
       scrub_rb (~> 1.0)
@@ -851,6 +852,7 @@ DEPENDENCIES
   net-smtp
   omniauth-cas
   omniauth-rails_csrf_protection
+  openssl
   openurl (~> 1.0)
   pg
   psych
