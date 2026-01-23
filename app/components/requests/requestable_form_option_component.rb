@@ -36,7 +36,7 @@ module Requests
             'requestable_form_digitize_and_pick_up'
           elsif pick_up?
             'requestable_form_pick_up'
-          elsif digitize? && in_library_use_required?
+          elsif digitize? && in_library_use_required? && !requestable.held_at_marquand_library?
             'requestable_form_digitize_and_in_library_use'
           elsif digitize?
             'requestable_form_digitize'

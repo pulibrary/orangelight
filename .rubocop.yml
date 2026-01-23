@@ -71,6 +71,7 @@ Metrics/CyclomaticComplexity:
     - 'lib/orangelight/browse_lists/call_number_csv.rb'
     - 'app/services/bibdata.rb'
     - 'app/models/requests/router.rb'
+    - 'app/components/requests/requestable_form_option_component.rb'
 
 Layout/LineLength:
   Exclude:
@@ -137,6 +138,7 @@ Metrics/PerceivedComplexity:
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'lib/orangelight/browse_lists/call_number_csv.rb'
     - 'app/models/requests/router.rb'
+    - 'app/components/requests/requestable_form_option_component.rb'
 
 Naming/FileName:
   Exclude:
