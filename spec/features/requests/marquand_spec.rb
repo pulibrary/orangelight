@@ -109,7 +109,7 @@ describe 'requests for Marquand items', type: :feature, requests: true do
         expect(page).to have_content I18n.t('requests.recap_edd.brief_msg')
         expect(page).to have_content 'Electronic Delivery'
         expect(page).to have_content 'Available for In Library Use'
-        expect(page).to have_content 'Pick-up location: Marquand Library at Firestone'
+        expect(page).to have_content 'Pick-up location: Marquand Library'
         expect(page).not_to have_content 'Physical Item Delivery'
         expect(page).to have_content 'Article/Chapter Title (Required)'
       end
@@ -152,7 +152,7 @@ describe 'requests for Marquand items', type: :feature, requests: true do
         end
         it 'allows a user to request the item' do
           visit("requests/#{bib_id}?mfhd=#{holding_id}")
-          expect(page).to have_content 'Pick-up location: Marquand Library at Firestone'
+          expect(page).to have_content 'Pick-up location: Marquand Library'
           expect(page).to have_content 'On Order books have not yet been received. Place a request to be notified when this item has arrived and is ready for your pick-up.'
           check "requestable_selected_#{item_id}"
           click_button 'Request this Item'
@@ -211,7 +211,7 @@ describe 'requests for Marquand items', type: :feature, requests: true do
         end
       end
     end
-    context 'with an In Library Use item' do
+    context 'With an item onsite at Marquand' do
       let(:catalog_raw) do
         { id: bib_id, holdings_1display:, title_citation_display: ["La Mirada : looking at photography in Latin America today"] }.to_json
       end
@@ -219,29 +219,29 @@ describe 'requests for Marquand items', type: :feature, requests: true do
         stub_alma_hold_success(bib_id, holding_id, item_id, user.uid)
       end
 
-      it 'places a hold in Alma and sends emails to marquand offsite' do
+      it 'cannot place a hold in Alma and sends emails to marquand offsite' do
         visit("requests/#{bib_id}?mfhd=#{holding_id}")
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'Available for In Library Use'
+        # expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).not_to have_content 'Available for In Library Use'
         expect(page).to have_content 'Electronic Delivery'
         expect(page).not_to have_link('make an appointment')
-        choose("requestable__delivery_mode_#{item_id}_in_library") # chooses 'in library' radio button
-        expect(page).to have_content('Marquand Library at Firestone')
-        expect do
-          click_button 'Request this Item'
-        end.to change { ActionMailer::Base.deliveries.count }.by(2)
-        confirm_email = ActionMailer::Base.deliveries.last
-        expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
-        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.html_part.body.to_s).to have_content("you will receive an email when the book is available for consultation")
-        expect(confirm_email.html_part.body.to_s).not_to have_content("Pick-up By")
-        expect(confirm_email.html_part.body.to_s).to have_content("La Mirada : looking at photography in Latin America today")
-        marquand_email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-        expect(marquand_email.subject).to eq("Patron Initiated Catalog Request In Library")
-        expect(marquand_email.html_part.body.to_s).to have_content("La Mirada : looking at photography in Latin America today")
-        expect(marquand_email.to).to eq(["marquandoffsite@princeton.edu"])
-        expect(marquand_email.cc).to be_blank
+        # keep this commented in case we restore this service - 01-23-2026
+        # choose("requestable__delivery_mode_#{item_id}_in_library") # chooses 'in library' radio button
+        # expect do
+        #   click_button 'Request this Item'
+        # end.to change { ActionMailer::Base.deliveries.count }.by(2)
+        # confirm_email = ActionMailer::Base.deliveries.last
+        # expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
+        # expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        # expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        # expect(confirm_email.html_part.body.to_s).to have_content("you will receive an email when the book is available for consultation")
+        # expect(confirm_email.html_part.body.to_s).not_to have_content("Pick-up By")
+        # expect(confirm_email.html_part.body.to_s).to have_content("La Mirada : looking at photography in Latin America today")
+        # marquand_email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+        # expect(marquand_email.subject).to eq("Patron Initiated Catalog Request In Library")
+        # expect(marquand_email.html_part.body.to_s).to have_content("La Mirada : looking at photography in Latin America today")
+        # expect(marquand_email.to).to eq(["marquandoffsite@princeton.edu"])
+        # expect(marquand_email.cc).to be_blank
       end
     end
   end
