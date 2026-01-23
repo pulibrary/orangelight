@@ -464,6 +464,7 @@ RSpec.describe SolrDocument do
 
       it 'includes scsb formats' do
         expect(solr_document.export_formats).to have_key :endnote
+        expect(solr_document.export_formats).to have_key :refworks_marc_txt
       end
     end
   end
