@@ -115,7 +115,7 @@ module Requests
     def delivery_location_label
       if requestable.held_at_marquand_library? ||
          (recap? && (requestable.holding_library == "marquand" || requestable.cul_avery? || requestable.hl_art?))
-        "Marquand Library at Firestone"
+        "Marquand Library"
       elsif requestable.cul_music?
         "Mendel Music Library"
       else

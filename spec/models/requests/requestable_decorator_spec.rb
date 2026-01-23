@@ -1005,7 +1005,7 @@ describe Requests::RequestableDecorator, requests: true do
     context "at marquand" do
       let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: true, location: { delivery_locations: [{ gfa_pickup: 'PJ', label: 'abc' }] }) }
       it 'shows the marquand name' do
-        expect(decorator.delivery_location_label).to eq('Marquand Library at Firestone')
+        expect(decorator.delivery_location_label).to eq('Marquand Library')
       end
     end
 

@@ -810,7 +810,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(page).not_to have_content 'Physical Item Delivery'
         expect(page).not_to have_content 'Electronic Delivery'
         expect(page).to have_content 'Available for In Library Use'
-        expect(page).to have_content('Pick-up location: Marquand Library at Firestone')
+        expect(page).to have_content('Pick-up location: Marquand Library')
         expect(page).to have_content 'ReCAP N5230.M62 R39 2014'
       end
 

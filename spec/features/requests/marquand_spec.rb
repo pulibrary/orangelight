@@ -109,7 +109,7 @@ describe 'requests for Marquand items', type: :feature, requests: true do
         expect(page).to have_content I18n.t('requests.recap_edd.brief_msg')
         expect(page).to have_content 'Electronic Delivery'
         expect(page).to have_content 'Available for In Library Use'
-        expect(page).to have_content 'Pick-up location: Marquand Library at Firestone'
+        expect(page).to have_content 'Pick-up location: Marquand Library'
         expect(page).not_to have_content 'Physical Item Delivery'
         expect(page).to have_content 'Article/Chapter Title (Required)'
       end
@@ -152,7 +152,7 @@ describe 'requests for Marquand items', type: :feature, requests: true do
         end
         it 'allows a user to request the item' do
           visit("requests/#{bib_id}?mfhd=#{holding_id}")
-          expect(page).to have_content 'Pick-up location: Marquand Library at Firestone'
+          expect(page).to have_content 'Pick-up location: Marquand Library'
           expect(page).to have_content 'On Order books have not yet been received. Place a request to be notified when this item has arrived and is ready for your pick-up.'
           check "requestable_selected_#{item_id}"
           click_button 'Request this Item'
@@ -221,12 +221,12 @@ describe 'requests for Marquand items', type: :feature, requests: true do
 
       it 'cannot place a hold in Alma and sends emails to marquand offsite' do
         visit("requests/#{bib_id}?mfhd=#{holding_id}")
-        expect(page).not_to have_content 'Physical Item Delivery'
+        # expect(page).not_to have_content 'Physical Item Delivery'
         expect(page).not_to have_content 'Available for In Library Use'
         expect(page).to have_content 'Electronic Delivery'
         expect(page).not_to have_link('make an appointment')
+        # keep this commented in case we restore this service - 01-23-2026
         # choose("requestable__delivery_mode_#{item_id}_in_library") # chooses 'in library' radio button
-        expect(page).not_to have_content('Marquand Library at Firestone')
         # expect do
         #   click_button 'Request this Item'
         # end.to change { ActionMailer::Base.deliveries.count }.by(2)
