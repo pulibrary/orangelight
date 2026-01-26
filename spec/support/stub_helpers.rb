@@ -72,5 +72,5 @@ def stub_failed_libanswers_api
   stub_request(:post, 'https://faq.library.princeton.edu/api/1.1/ticket/create')
     .to_return(status: 500, body: '', headers: {})
   stub_request(:post, 'https://faq.library.princeton.edu/api/1.1/oauth/token')
-    .to_return(status: 200, body: '{"access_token":"fake-token","expires_in":604800}', headers: { 'Content-Type' => 'application/json' })
+    .to_return(status: 200, body: '{"access_token":"abcdef1234567890abcdef1234567890abcdef12","expires_in":604800}', headers: { 'Content-Type' => 'application/json' })
 end
