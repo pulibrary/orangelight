@@ -16,8 +16,12 @@ class FeedbackController < ApplicationController
   def create
     respond_to do |format|
       if @feedback_form.valid?
-        @feedback_form.deliver
-        format.js { flash.now[:notice] = I18n.t('blacklight.feedback.success') }
+        result = @feedback_form.deliver
+        if result == false
+          format.js { flash.now[:error] = @feedback_form.ticket_submission_error_message }
+        else
+          format.js { flash.now[:notice] = I18n.t('blacklight.feedback.success') }
+        end
       else
         format.js { flash.now[:error] = @feedback_form.error_message }
       end

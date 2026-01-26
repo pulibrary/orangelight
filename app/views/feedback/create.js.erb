@@ -1,5 +1,12 @@
 <% if !@feedback_form.errors.full_messages.empty? %>
-  document.querySelector('#new_feedback_form').innerHTML = "<%= escape_javascript(render 'form') %>";
+  var feedbackFormContainer = document.querySelector('#new_feedback_form');
+  var errorMsg = "<%= j(flash[:error]) %>";
+  var formHtml = "<%= escape_javascript(render 'form') %>";
+  if (errorMsg) {
+    feedbackFormContainer.innerHTML = '<div class="alert alert-danger" role="alert">' + errorMsg + '</div>' + formHtml;
+  } else {
+    feedbackFormContainer.innerHTML = formHtml;
+  }
   document.querySelectorAll('.error').forEach(element => element.parentElement.classList.add('has-error'));
 <% else %>
   document.querySelector('#new_feedback_form').innerHTML = "<%= escape_javascript(render 'return') %>";
