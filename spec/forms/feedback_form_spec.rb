@@ -60,6 +60,24 @@ RSpec.describe FeedbackForm do
       'pemail=test@test.org',
              headers: { Authorization: 'Bearer abcdef1234567890abcdef1234567890abcdef12' })
     end
+
+    it "adds an error if ticket creation fails" do
+      stub_failed_libanswers_api
+      form = described_class.new({
+                                   email: 'aspenchor@test.org',
+                                   name: 'Aspen Chor',
+                                   message: 'This should fail.'
+                                 })
+
+      result = form.deliver
+      expect(result).to be(false)
+      expect(form.errors[:base]).to include(I18n.t('blacklight.feedback.ticket_submission_error'))
+      expect(WebMock).to have_requested(
+        :post,
+        'https://faq.library.princeton.edu/api/1.1/ticket/create'
+      ).with(body: /This should fail/,
+             headers: { Authorization: 'Bearer abcdef1234567890abcdef1234567890abcdef12' })
+    end
   end
 
   describe 'user_agent' do

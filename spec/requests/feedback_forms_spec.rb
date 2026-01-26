@@ -16,6 +16,20 @@ RSpec.describe "feedback forms", type: :request, libanswers: true do
       expect(response).to be_successful
       expect(flash.notice).to eq('Your comments have been submitted')
     end
+
+    it 'renders the ticket submission error message when ticket creation fails' do
+      stub_failed_libanswers_api
+
+      post '/feedback.js', params: {
+        controller: "FeedbackController",
+        action: "create",
+        feedback_form: {
+          name: "TestUser", email: "test@test-domain.org", message: "Why?"
+        }
+      }
+      expect(response).to be_successful
+      expect(flash[:error]).to eq(I18n.t('blacklight.feedback.ticket_submission_error'))
+    end
   end
   context 'ask a question feedback form' do
     it 'adds a flash message on success' do

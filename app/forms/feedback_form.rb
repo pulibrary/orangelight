@@ -7,14 +7,24 @@ class FeedbackForm
   attr_accessor :name, :email, :message, :current_url, :request
   validates :name, :email, :message, presence: true
   validates :email, email: true
-
+  # :reek:TooManyStatements
   def deliver
     return if spam?
     return unless valid?
 
-    FeedbackFormSubmission.new(
-      message:, patron_name: name, patron_email: email, user_agent:, current_url:
+    response = FeedbackFormSubmission.new(
+      message:,
+      patron_name: name,
+      patron_email: email,
+      user_agent:,
+      current_url:
     ).send_to_libanswers
+
+    unless response.is_a?(Net::HTTPSuccess)
+      errors.add(:base, ticket_submission_error_message)
+      return false
+    end
+    true
   end
 
   def headers
@@ -28,6 +38,11 @@ class FeedbackForm
 
   def error_message
     I18n.t(:'blacklight.feedback.error').to_s
+  end
+
+  # :reek:UtilityFunction
+  def ticket_submission_error_message
+    I18n.t(:'blacklight.feedback.ticket_submission_error').to_s
   end
 
   def remote_ip
