@@ -14,7 +14,7 @@
         <li class="email">
           <%= link_to "Email", email_solr_document_path(:id => @document), {:id => 'emailLink', :data => {:blacklight_modal => "trigger"}, class: "icon-email dropdown-item", rel: 'nofollow'} %>
         </li>
-        <% if @document.alma_record? %>
+        <% if @document.alma_record? || (@document.scsb_record? && @document.scsb_marcxml?)%>
           <li class="endnote">
             <%= link_to "EndNote", solr_document_path(@document, :format => 'endnote'), rel: 'nofollow', class: "icon-external dropdown-item" %>
           </li>
@@ -23,14 +23,6 @@
           </li>
           <li class="ris">
           <%= link_to 'RIS format (e.g. Zotero)', solr_document_path(@document, :format => 'ris'), rel: 'nofollow', class: "icon-external dropdown-item" %>
-          </li>
-        <% end %>
-        <% if @document.scsb_record? && @document.scsb_marcxml? %>  
-          <li class="ris">
-          <%= link_to 'RIS format (e.g. Zotero)', solr_document_path(@document, :format => 'ris'), rel: 'nofollow', class: "icon-external dropdown-item" %>
-          </li>
-          <li class="refworks">
-            <%= link_to "RefWorks", refworks_export_url({url: polymorphic_url(search_state.url_for_document(@document), format: :refworks_marc_txt, only_path: false)}), rel: 'nofollow', class: "icon-external dropdown-item", :target => "_blank"  %>
           </li>
         <% end %>
         <li class="print">
