@@ -7,7 +7,7 @@ class FeedbackForm
   attr_accessor :name, :email, :message, :current_url, :request
   validates :name, :email, :message, presence: true
   validates :email, email: true
-
+  # :reek:TooManyStatements
   def deliver
     return if spam?
     return unless valid?
@@ -40,6 +40,7 @@ class FeedbackForm
     I18n.t(:'blacklight.feedback.error').to_s
   end
 
+  # :reek:UtilityFunction
   def ticket_submission_error_message
     I18n.t(:'blacklight.feedback.ticket_submission_error').to_s
   end
