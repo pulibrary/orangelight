@@ -7,10 +7,10 @@ module BookmarksHelper
 
   def sort_by_most_recently_bookmarked(documents, user)
     if params[:sort] == 'score desc' && bookmarks?
-      bookmarks = user.bookmarks.order(updated_at: :desc)
-      bookmark_ids = bookmarks.collect { |bookmark| bookmark.document_id.to_s }
-      solr_docs = documents.map { |doc| [doc.id, doc] }.to_h
-      bookmark_ids.map { |id| solr_docs[id] }.compact
+      solr_docs = documents.index_by(&:id)
+      user.bookmarks.order(updated_at: :desc)
+          .collect { |bookmark| bookmark.document_id.to_s }
+          .filter_map { |id| solr_docs[id] }
     else
       documents
     end
