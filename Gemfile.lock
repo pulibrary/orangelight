@@ -1,13 +1,4 @@
 GIT
-  remote: https://github.com/ViewComponent/view_component.git
-  revision: 03ecf5829d4d7bcc8a4519a96695aad41d8a5da1
-  specs:
-    view_component (4.1.1)
-      actionview (>= 7.1.0)
-      activesupport (>= 7.1.0)
-      concurrent-ruby (~> 1)
-
-GIT
   remote: https://github.com/pulibrary/stringex.git
   revision: 7aa133c5cfdbd4e13c0eeee27b0c61958229b57d
   branch: main
@@ -508,7 +499,7 @@ GEM
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.8.0)
+    prism (1.9.0)
     psych (5.3.1)
       date
       stringio
@@ -755,6 +746,10 @@ GEM
     uri (1.1.1)
     useragent (0.16.11)
     vcr (6.4.0)
+    view_component (4.2.0)
+      actionview (>= 7.1.0)
+      activesupport (>= 7.1.0)
+      concurrent-ruby (~> 1)
     virtus (2.0.0)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
@@ -883,7 +878,7 @@ DEPENDENCIES
   stringex!
   terser
   vcr
-  view_component!
+  view_component
   vite_rails
   voight_kampff
   webmock
