@@ -17,8 +17,9 @@ class RecordFeedbackFormSubmission
   def send_to_libanswers
     http = Net::HTTP.new uri.host, uri.port
     http.use_ssl = true
-    request = Net::HTTP::Post.new(uri.path, { 
-      'Content-Type' => 'application/x-www-form-urlencoded', 'Authorization' => "Bearer #{token}" })
+    request = Net::HTTP::Post.new(uri.path, {
+                                    'Content-Type' => 'application/x-www-form-urlencoded', 'Authorization' => "Bearer #{token}"
+                                  })
     request.set_form_data(data)
     http.request(request)
   end

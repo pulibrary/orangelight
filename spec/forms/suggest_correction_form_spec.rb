@@ -48,12 +48,12 @@ RSpec.describe SuggestCorrectionForm, libanswers: true do
       "pname=Test&"\
       "pemail=test%40test.org",
              headers: {
-              Authorization: 'Bearer abcdef1234567890abcdef1234567890abcdef12',
-              'Content-Type': 'application/x-www-form-urlencoded',
-              Accept: '*/*',
-              'Accept-Encoding': 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-              'User-Agent': 'Ruby'
-            })
+               Authorization: 'Bearer abcdef1234567890abcdef1234567890abcdef12',
+               'Content-Type': 'application/x-www-form-urlencoded',
+               Accept: '*/*',
+               'Accept-Encoding': 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+               'User-Agent': 'Ruby'
+             })
     end
   end
 
