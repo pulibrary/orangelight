@@ -1,0 +1,8 @@
+<%= render Blacklight::System::ModalComponent.new do |component| %>
+  <% component.with_title { t('blacklight.missing_item.form.title') } %>
+  <% component.with_body do %>
+    <%= render partial: "catalog/missing_item_form",
+        locals: { form: @missing_item_form }
+    %>  
+  <% end %>
+<% end %>

@@ -36,6 +36,22 @@
                     data: { blacklight_modal: 'trigger' }
                     ) %>
             </div>
+            <div class="row links-row">
+                <%= link_to(
+                    'Report a Missing Item',
+                    {
+                    controller: "feedback",
+                    action: "missing_item",
+                    missing_item_form: { 
+                        id: @document,
+                        title: @document['title_display']
+                    }
+                    },
+                    title: "Report a Missing Item",
+                    class: "missing-item",
+                    data: { blacklight_modal: 'trigger' }
+                    ) %>
+            </div>
         </div>
     </div>
 </div>

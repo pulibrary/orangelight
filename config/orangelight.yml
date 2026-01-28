@@ -8,6 +8,8 @@ defaults: &defaults
     queue_id: <%= ENV['ASK_A_QUESTION_QUEUE_ID'] %>
   suggest_correction_form:
     queue_id: <%= ENV['SUGGEST_CORRECTION_QUEUE_ID'] %>
+  missing_item_form:
+    queue_id: <%= ENV['MISSING_ITEM_QUEUE_ID'] %>
   redis:
     host: 'localhost'
     port: '6379'
@@ -33,6 +35,8 @@ development:
     db: 'orangelight_dev'
   suggest_correction_form:
     queue_id: <%= ENV['SUGGEST_CORRECTION_QUEUE_ID'] %>
+  missing_item_form:
+    queue_id: <%= ENV['MISSING_ITEM_QUEUE_ID'] %>
   browse_lists:
     csv_length: 224
 test:
@@ -41,6 +45,8 @@ test:
     queue_id: 1234
   ask_a_question_form:
     queue_id: 5678
+  missing_item_form:
+    queue_id: 7385
   redis:
     host: <%= ENV['lando_orangelight_redis_conn_host'] %>
     port: <%= ENV['lando_orangelight_redis_conn_port'] %>

@@ -28,7 +28,7 @@
     font-size: 23px;
 }
 
-.ask-a-question, .suggest-correction {
+.ask-a-question, .suggest-correction, .missing-item {
     font-size: 15px;
     font-weight: 600;
     color: $black;
@@ -42,7 +42,7 @@
     }
 }
 
-.ask-a-question::after, .suggest-correction::after {
+.ask-a-question::after, .suggest-correction::after, .missing-item::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -55,7 +55,7 @@
     transition: transform 0.3s ease-out;
 }
 
-.ask-a-question:hover::after, .suggest-correction:hover::after {
+.ask-a-question:hover::after, .suggest-correction:hover::after, .missing-item:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
     width: wrap-content;

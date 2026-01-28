@@ -95,6 +95,9 @@ en:
     suggest_correction:
       form:
         title: 'Suggest a Correction'
+    missing_item:
+      form:
+        title: 'Report a Missing Item'
     email:
       form:
         title: 'Email the catalog record and (optional) message.'
