@@ -17,18 +17,15 @@ class RecordFeedbackFormSubmission
   def send_to_libanswers
     http = Net::HTTP.new uri.host, uri.port
     http.use_ssl = true
-    request = Net::HTTP::Post.new(uri.path, { 'Content-Type' => 'application/x-www-form-urlencoded', 'Authorization' => "Bearer #{token}" })
-    request.set_form_data(body)
+    request = Net::HTTP::Post.new(uri.path, { 
+      'Content-Type' => 'application/x-www-form-urlencoded', 'Authorization' => "Bearer #{token}" })
+    request.set_form_data(data)
     http.request(request)
   end
 
     private
 
       attr_reader :patron_name, :patron_email, :context, :title, :quid
-
-      def body
-        @body ||= data.map { |k, v| [k, v.to_s] }.to_h
-      end
 
       def data
         {
