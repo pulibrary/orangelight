@@ -17,11 +17,11 @@ RSpec.describe RecordFeedbackFormSubmission, libanswers: true do
     expect(WebMock).to have_requested(
         :post,
         'https://faq.library.princeton.edu/api/1.1/ticket/create'
-      ).with(body: 'quid=9012&'\
-      'pquestion=[Possible Harmful Language] Some old book&'\
-      "pdetails=This terminology needs some updates please!\n\nSent from https://catalog.princeton.edu/catalog/12345 via LibAnswers API&"\
-      'pname=Miles Morales&'\
-      'pemail=spiderman@example.com',
+      ).with(body: "quid=9012&"\
+      "pquestion=%5BPossible+Harmful+Language%5D+Some+old+book&"\
+      "pdetails=This+terminology+needs+some+updates+please%21%0A%0ASent+from+https%3A%2F%2Fcatalog.princeton.edu%2Fcatalog%2F12345+via+LibAnswers+API&"\
+      "pname=Miles+Morales&"\
+      "pemail=spiderman%40example.com",
              headers: { Authorization: 'Bearer abcdef1234567890abcdef1234567890abcdef12' })
   end
   it 'has a configurable queue id' do
@@ -35,11 +35,11 @@ RSpec.describe RecordFeedbackFormSubmission, libanswers: true do
     expect(WebMock).to have_requested(
         :post,
         'https://faq.library.princeton.edu/api/1.1/ticket/create'
-      ).with(body: 'quid=12345&'\
-      'pquestion=&'\
-      "pdetails=\n\nSent via LibAnswers API&"\
-      'pname=&'\
-      'pemail=',
+      ).with(body: "quid=12345&"\
+      "pquestion=&"\
+      "pdetails=%0A%0ASent+via+LibAnswers+API&"\
+      "pname=&"\
+      "pemail=",
              headers: { Authorization: 'Bearer abcdef1234567890abcdef1234567890abcdef12' })
   end
 end
