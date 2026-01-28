@@ -6,7 +6,6 @@ export default defineConfig({
     include: ['spec/javascript/**/*.spec.js'],
     globals: true,
     environment: 'jsdom',
-    setupFiles: ['source/setup-jest.js'],
   },
   plugins: [vue()],
   define: {
