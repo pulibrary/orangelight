@@ -35,11 +35,11 @@ RSpec.describe AskAQuestionForm, libanswers: true do
       expect(WebMock).to have_requested(
         :post,
         'https://faq.library.princeton.edu/api/1.1/ticket/create'
-      ).with(body: 'quid=5678&'\
-      'pquestion=[Catalog] Example Record&'\
-      "pdetails=Why is the thumbnail wrong?\n\nSent from http://example.com/catalog/1 via LibAnswers API&"\
-      'pname=Test&'\
-      'pemail=test@test.org',
+      ).with(body: "quid=5678&"\
+      "pquestion=%5BCatalog%5D+Example+Record&"\
+      "pdetails=Why+is+the+thumbnail+wrong%3F%0A%0ASent+from+http%3A%2F%2Fexample.com%2Fcatalog%2F1+via+LibAnswers+API&"\
+      "pname=Test&"\
+      "pemail=test%40test.org",
              headers: { Authorization: 'Bearer abcdef1234567890abcdef1234567890abcdef12' })
     end
   end
