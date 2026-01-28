@@ -15,7 +15,11 @@ class RecordFeedbackFormSubmission
   # rubocop:enable Metrics/ParameterLists
 
   def send_to_libanswers
-    Net::HTTP.post uri, body, { Authorization: "Bearer #{token}" }
+    http = Net::HTTP.new uri.host, uri.port
+    http.use_ssl = true
+    request = Net::HTTP::Post.new(uri.path, { 'Content-Type' => 'application/x-www-form-urlencoded', 'Authorization' => "Bearer #{token}" })
+    request.set_form_data(body)
+    http.request(request)
   end
 
     private
@@ -23,7 +27,7 @@ class RecordFeedbackFormSubmission
       attr_reader :patron_name, :patron_email, :context, :title, :quid
 
       def body
-        @body ||= data.to_a.map { |entry| "#{entry[0]}=#{entry[1]}" }.join('&')
+        @body ||= data.map { |k, v| [k, v.to_s] }.to_h
       end
 
       def data
