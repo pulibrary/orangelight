@@ -17,11 +17,11 @@ RSpec.describe FeedbackFormSubmission, libanswers: true do
         :post,
         'https://faq.library.princeton.edu/api/1.1/ticket/create'
       ).with(body: 'quid=1234&'\
-      'pquestion=Princeton University Library Catalog Feedback Form&'\
-      "pdetails=I have some thoughts about the catalog\n\nSent from https://catalog.princeton.edu/catalog/12345 via LibAnswers API&"\
-      'pname=Miles Morales&'\
-      'pemail=spiderman@example.com&'\
-      'ua=Mozilla/5.0 (Android 4.4; Mobile; rv:41.0) Gecko/41.0 Firefox/41.0',
+      'pquestion=Princeton+University+Library+Catalog+Feedback+Form&'\
+      "pdetails=I+have+some+thoughts+about+the+catalog%0A%0ASent+from+https%3A%2F%2Fcatalog.princeton.edu%2Fcatalog%2F12345+via+LibAnswers+API&"\
+      'pname=Miles+Morales&'\
+      'pemail=spiderman%40example.com&'\
+      'ua=Mozilla%2F5.0+%28Android+4.4%3B+Mobile%3B+rv%3A41.0%29+Gecko%2F41.0+Firefox%2F41.0',
              headers: { Authorization: 'Bearer abcdef1234567890abcdef1234567890abcdef12' })
   end
 end
