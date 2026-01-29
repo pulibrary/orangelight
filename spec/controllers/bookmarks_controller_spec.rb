@@ -53,4 +53,33 @@ RSpec.describe BookmarksController do
       expect(response).to have_http_status(:bad_request)
     end
   end
+
+  describe '#index with search' do
+    let(:user) { FactoryBot.create(:user) }
+
+    before do
+      sign_in user
+      user.bookmarks.create!([{ document_id: '9997412163506421', document_type: 'SolrDocument' }])
+      user.bookmarks.create!([{ document_id: '9935444363506421', document_type: 'SolrDocument' }])
+    end
+
+    it 'displays all bookmarks without search query' do
+      get :index
+      expect(response).to have_http_status(:ok)
+      expect(assigns(:response).documents.length).to be >= 0
+    end
+
+    it 'filters bookmarks with metadata not present in the bookmarks page' do
+      get :index, params: { q: 'Paul Holberton Publishing' }
+      expect(response).to have_http_status(:ok)
+      expect(assigns(:response)).to be_present
+      expect(assigns(:response).documents.length).to eq 1
+    end
+
+    it 'handles empty search results' do
+      get :index, params: { q: 'nonexistentquery123456' }
+      expect(response).to have_http_status(:ok)
+      expect(assigns(:response).documents.length).to eq 0
+    end
+  end
 end

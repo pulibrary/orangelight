@@ -7,14 +7,21 @@
 
   <h2 class='section-heading'><%= t('blacklight.bookmarks.need_login') %></h2>
 
-<%- elsif @response.documents.blank? -%>
+<%- elsif @response.documents.blank? && params[:q].blank? -%>
 
   <h3 class='section-heading'><%= t('blacklight.bookmarks.no_bookmarks') %></h3>
 <% else %>
-  <%= render 'sort_and_per_page' %>
-  <h2 class='section-heading visually-hidden'><%= t('blacklight.bookmarks.list_title') %></h2>
-  <%= render_document_index @response.documents %>
-  <%= render 'results_pagination' %>
+  <%= render 'bookmarks_search_form' %>
+  <%- if @response.documents.blank? %>
+    <div class="alert alert-info">
+      No bookmarks found matching "<%= params[:q] %>". <% if params[:q].present? %><%= link_to "Clear search", bookmarks_path %><% end %>
+    </div>
+  <% else %>
+    <%= render 'sort_and_per_page' %>
+    <h2 class='section-heading visually-hidden'><%= t('blacklight.bookmarks.list_title') %></h2>
+    <%= render_document_index @response.documents %>
+    <%= render 'results_pagination' %>
+  <% end %>
 <% end %>
 </div>
 
