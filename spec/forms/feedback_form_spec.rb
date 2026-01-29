@@ -53,12 +53,18 @@ RSpec.describe FeedbackForm do
       expect(WebMock).to have_requested(
         :post,
         'https://faq.library.princeton.edu/api/1.1/ticket/create'
-      ).with(body: 'quid=1234&'\
-      'pquestion=Princeton University Library Catalog Feedback Form&'\
-      "pdetails=Good job on the catalog!\n\nSent via LibAnswers API&"\
-      'pname=A Nice Tester&'\
-      'pemail=test@test.org',
-             headers: { Authorization: 'Bearer abcdef1234567890abcdef1234567890abcdef12' })
+      ).with(body: "quid=1234&"\
+      "pquestion=Princeton+University+Library+Catalog+Feedback+Form&"\
+      "pdetails=Good+job+on+the+catalog%21%0A%0ASent+via+LibAnswers+API&"\
+      "pname=A+Nice+Tester&"\
+      "pemail=test%40test.org",
+             headers: {
+               Authorization: 'Bearer abcdef1234567890abcdef1234567890abcdef12',
+               'Content-Type': 'application/x-www-form-urlencoded',
+               Accept: '*/*',
+               'Accept-Encoding': 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+               'User-Agent': 'Ruby'
+             })
     end
 
     it "adds an error if ticket creation fails" do
@@ -75,7 +81,11 @@ RSpec.describe FeedbackForm do
       expect(WebMock).to have_requested(
         :post,
         'https://faq.library.princeton.edu/api/1.1/ticket/create'
-      ).with(body: /This should fail/,
+      ).with(body: "quid=1234&"\
+        "pquestion=Princeton+University+Library+Catalog+Feedback+Form&"\
+        "pdetails=This+should+fail.%0A%0ASent+via+LibAnswers+API"\
+        "&pname=Aspen+Chor&"\
+        "pemail=aspenchor%40test.org",
              headers: { Authorization: 'Bearer abcdef1234567890abcdef1234567890abcdef12' })
     end
   end
