@@ -35,11 +35,11 @@ RSpec.describe MissingItemForm, libanswers: true do
       expect(WebMock).to have_requested(
         :post,
         'https://faq.library.princeton.edu/api/1.1/ticket/create'
-      ).with(body: "quid=7385&"\
-      "pquestion=%5BCatalog%5D+Example+Record&"\
-      "pdetails=I+can%27t+find+this+book%21%0A%0ASent+from+http%3A%2F%2Fexample.com%2Fcatalog%2F1+via+LibAnswers+API&"\
-      "pname=Test&"\
-      "pemail=test%40test.org",
+      ).with(body: "quid=7385&" \
+                   "pquestion=%5BCatalog%5D+Example+Record&" \
+                   "pdetails=I+can%27t+find+this+book%21%0A%0ASent+from+http%3A%2F%2Fexample.com%2Fcatalog%2F1+via+LibAnswers+API&" \
+                   "pname=Test&" \
+                   "pemail=test%40test.org",
              headers: { Authorization: 'Bearer abcdef1234567890abcdef1234567890abcdef12' })
     end
   end
