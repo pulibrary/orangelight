@@ -17,6 +17,11 @@ detectors:
     - FeedbackForm#message
     - FeedbackForm#name
     - FeedbackForm#request
+    - MissingItemForm#context
+    - MissingItemForm#email
+    - MissingItemForm#message
+    - MissingItemForm#name
+    - MissingItemForm#title
     - SuggestCorrectionForm#context
     - SuggestCorrectionForm#email
     - SuggestCorrectionForm#message
@@ -296,6 +301,7 @@ detectors:
     - AskAQuestionForm
     - SuggestCorrectionForm
     - ContactMailer
+    - MissingItemForm
     - Requests::RequestMailer
     - Blacklight::Marc::BookCtxBuilder
     - Requests::Form
@@ -322,6 +328,7 @@ detectors:
     - IndexMetadataComponent
     - IndexMetadataFieldLayoutComponent
     - IndexTitleComponent
+    - MissingItemForm
     - MultiselectComboboxComponent
     - NumismaticsSearchFormComponent
     - Orangelight::AdvancedSearchFormComponent

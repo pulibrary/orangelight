@@ -7,6 +7,7 @@ class FeedbackController < ApplicationController
   before_action :build_feedback_form, only: [:create]
   before_action :build_ask_a_question_form, only: [:ask_a_question]
   before_action :build_suggest_correction_form, only: [:suggest_correction]
+  before_action :build_missing_item_form, only: [:missing_item]
 
   def new
     @feedback_form = FeedbackForm.new if @feedback_form.nil?
@@ -31,6 +32,8 @@ class FeedbackController < ApplicationController
   def ask_a_question; end
 
   def suggest_correction; end
+
+  def missing_item; end
 
   protected
 
@@ -64,6 +67,17 @@ class FeedbackController < ApplicationController
 
     def suggest_correction_form_params
       params.expect(suggest_correction_form: %i[id title])
+    end
+
+    def build_missing_item_form
+      @missing_item_form = MissingItemForm.new(
+        context: page_url(missing_item_form_params),
+        title: missing_item_form_params['title']
+      )
+    end
+
+    def missing_item_form_params
+      params.expect(missing_item_form: %i[id title])
     end
 
     def page_url(params)

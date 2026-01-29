@@ -104,6 +104,10 @@ Rails.application.routes.draw do
   get '/suggest_correction', to: 'feedback#suggest_correction'
   post '/contact/suggestion', to: 'contact#suggestion'
 
+  # For "Missing Item" form"
+  get '/missing_item', to: 'feedback#missing_item'
+  post '/contact/missing_item', to: 'contact#missing_item'
+
   # For "Report Harmful Language" form
   get "/report_harmful_language", to: "feedback#report_harmful_language"
   post "/contact/report_harmful_language", to: "contact#report_harmful_language"
