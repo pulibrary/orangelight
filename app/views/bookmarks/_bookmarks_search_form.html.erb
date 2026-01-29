@@ -1,0 +1,23 @@
+<div class="bookmarks-search-form mb-3">
+  <%= form_with url: bookmarks_path, method: :get, local: true, class: 'form-inline d-flex gap-2' do |f| %>
+    <%= hidden_field_tag :search_field, 'all_fields' %>
+    <div class="input-group flex-grow-1">
+      <%= f.label :q, "Search bookmarks", class: 'visually-hidden' %>
+      <%= f.search_field :q, value: params[:q], 
+                         class: 'form-control', 
+                         placeholder: 'Search bookmarks ...',
+                         'aria-label': 'Search bookmarks' %>
+      <button type="submit" class="btn btn-primary">
+        <span class="visually-hidden">Search</span>
+        <span class="lux" aria-hidden="true">
+          <lux-icon-base icon-name="search">
+            <lux-icon-search class="lux-icon lux-icon-search"></lux-icon-search>
+          </lux-icon-base>
+        </span>
+      </button>
+    </div>
+    <% if params[:q].present? %>
+      <%= link_to "Clear", bookmarks_path, class: 'btn btn-outline-secondary' %>
+    <% end %>
+  <% end %>
+</div>

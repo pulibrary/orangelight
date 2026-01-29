@@ -14,6 +14,26 @@ class BookmarksController < CatalogController
       }
   end
 
+  # :reek:TooManyStatements
+  # :reek:DuplicateMethodCall
+  def index
+    @bookmarks = token_or_current_or_guest_user.bookmarks
+    bookmark_ids = @bookmarks.collect { |bookmark| bookmark.document_id.to_s }
+
+    if bookmark_ids.present?
+      params[:f] ||= {}
+      params[:f][:id] = bookmark_ids
+      @response, = search_service.search_results
+    else
+      @response = Blacklight::Solr::Response.new({ response: { numFound: 0, start: 0, docs: [] } }, {})
+    end
+
+    respond_to do |format|
+      format.html {}
+      format.json { render json: render_search_results_as_json }
+    end
+  end
+
   def print
     fetch_bookmarked_documents
     @url_gen_params = {}
