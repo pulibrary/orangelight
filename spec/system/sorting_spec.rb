@@ -13,7 +13,7 @@ describe 'sorting', type: :system, js: false do
     it 'includes relevance' do
       visit '/catalog?search_field=all_fields&q=engineering'
       sort_dropdown = page.find("#sort-dropdown")
-      expect(sort_dropdown.text).to eq("Sort by relevance\nrelevance year (newest first) year (oldest first) author title date cataloged")
+      expect(sort_dropdown.text).to eq("Sort by recently bookmarked\nrelevance\nrelevance year (newest first) year (oldest first) author title date cataloged")
       sort_dropdown.click
       within('#sort-dropdown') do
         expect(page).to have_link('relevance')
@@ -31,7 +31,7 @@ describe 'sorting', type: :system, js: false do
 
     it 'includes library' do
       sort_dropdown = page.find("#sort-dropdown")
-      expect(sort_dropdown.text).to eq("Sort by relevance\nrelevance library year (newest first) year (oldest first) author title date cataloged")
+      expect(sort_dropdown.text).to eq("Sort by recently bookmarked\nrelevance\nrelevance library year (newest first) year (oldest first) author title date cataloged")
       sort_dropdown.click
       within('#sort-dropdown') do
         expect(page).to have_link('relevance')
