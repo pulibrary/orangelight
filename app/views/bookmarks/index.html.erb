@@ -14,7 +14,9 @@
   <%= render 'sort_and_per_page' %>
   <h2 class='section-heading visually-hidden'><%= t('blacklight.bookmarks.list_title') %></h2>
   <%= render_document_index @response.documents %>
-  <%= render 'results_pagination' %>
+  <div class="page-links mt-5">
+    <%= render :partial => "paginate_compact", :object => @response if show_pagination? %>
+  </div>
 <% end %>
 </div>
 
