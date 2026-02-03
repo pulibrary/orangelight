@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-# rubocop:disable Metrics/BlockLength
 describe 'request form', vcr: { cassette_name: 'form_features', record: :none }, type: :feature, requests: true do
   include ActiveJob::TestHelper
 
@@ -1443,4 +1442,3 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     end
   end
 end
-# rubocop:enable Metrics/BlockLength

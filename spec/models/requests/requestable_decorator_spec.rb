@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-# rubocop:disable Metrics/BlockLength
 describe Requests::RequestableDecorator, requests: true do
   include ActionView::TestCase::Behavior
 
@@ -1114,4 +1113,3 @@ describe Requests::RequestableDecorator, requests: true do
     end
   end
 end
-# rubocop:enable Metrics/BlockLength

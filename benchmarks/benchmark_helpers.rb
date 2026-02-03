@@ -21,7 +21,5 @@ def print_allocations(benchmark_name)
   yield
   objects_after = ObjectSpace.each_object.count
   GC.enable
-  # rubocop:disable Rails/Output
   puts "#{benchmark_name}: #{objects_after - objects_before} objects allocated\n"
-  # rubocop:enable Rails/Output
 end
