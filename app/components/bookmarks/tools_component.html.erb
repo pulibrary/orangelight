@@ -1,0 +1,11 @@
+<div class="bookmarksTools">
+  <% actions.each do |action| %>
+    <%= render Blacklight::Document::ActionComponent.new(
+        document: nil,
+        action:,
+        options:,
+        url_opts:,
+        link_classes: 'btn btn-outline-primary'
+    ) %>
+  <% end %>
+</div>

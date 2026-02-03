@@ -1,6 +1,6 @@
 <div id="sortAndPerPage" class="clearfix">
   <div class="search-widgets float-end">
-    <%= render partial: 'tools', locals: { document_list: @document_list } %>
+    <%= render Bookmarks::ToolsComponent.new(documents: @document_list, url_opts: Blacklight::Parameters.sanitize(params.to_unsafe_h)) %>
     <%= render partial: 'sort_widget' %>
     <%= render partial: 'per_page_widget' %>
   </div>
