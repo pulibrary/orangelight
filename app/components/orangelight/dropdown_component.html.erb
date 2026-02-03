@@ -1,0 +1,10 @@
+<div id="export_tools" class="btn-group">
+  <button class="btn btn-default dropdown-toggle" type="button" data-bs-toggle="dropdown">
+    <%= label %>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <% actions.each do |action| %>
+        <%= render partial: action.partial, locals: { action: action } %>
+    <% end %>
+  </ul>
+</div>
