@@ -8,13 +8,8 @@
     </div>
   </div>
   <div class="search-widgets float-end">
-    <% if bookmarks? %>
-      <%= render partial: 'tools', locals: { document_list: @document_list } %>
-    <% end %>
     <%= render partial: 'sort_widget' %>
     <%= render partial: 'per_page_widget' %>
-    <% unless bookmarks? %>
-      <%= render partial: 'bookmark_all' %>
-    <% end %>
+    <%= render partial: 'bookmark_all' %>
   </div>
 </div>
