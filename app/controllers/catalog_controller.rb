@@ -73,6 +73,10 @@ class CatalogController < ApplicationController
     #   :q => query
     # }
 
+    def render_bookmarks?
+      controller_path == 'bookmarks'
+    end
+
     config.add_show_tools_partial(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
     config.add_show_tools_partial(:email, callback: :email_action, validator: :validate_email_params)
     config.add_show_tools_partial(:sms, if: :render_sms_action?, callback: :sms_action, validator: :validate_sms_params)
@@ -80,6 +84,7 @@ class CatalogController < ApplicationController
 
     config.navbar.partials.delete(:search_history)
     config.add_nav_action(:bookmark, partial: 'blacklight/nav/bookmark')
+    config.add_nav_action(:clear_bookmarks, partial: 'blacklight/nav/clear_bookmarks', if: :render_bookmarks?)
 
     # solr field configuration for search results/index views
     config.index.title_field = 'title_display'

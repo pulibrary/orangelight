@@ -35,7 +35,7 @@ en:
       cancel_no_items: 'No requests selected for cancellation.'
     bookmarks:
       clear:
-        action_title: 'Clear bookmarks'
+        action_title: 'Clear Bookmarks'
     feedback:
       success: 'Your comments have been submitted'
       error: 'Please fill in the required form values.'
