@@ -33,7 +33,7 @@
         <%= text_area_tag :message, params[:message], class: 'form-control' %>
       </div>
     </div>
-
+    <%= hidden_field_tag :q, params[:q] if params[:q].present? %>
     <% @documents.each do |doc| %>
       <%=hidden_field_tag "id[]", doc.id %>
     <% end %>
