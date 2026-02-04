@@ -12,9 +12,9 @@ class Bookmarks::ToolsComponent < ViewComponent::Base
       # :reek:UtilityFunction
       def actions
         [
-          Blacklight::Configuration::ToolConfig.new(callback: :email_action, validator: :validate_email_params, partial: "document_action", name: :email, key: :email),
-          Blacklight::Configuration::ToolConfig.new(modal: false, partial: "document_action", name: :print, key: :print),
-          Blacklight::Configuration::ToolConfig.new(modal: false, partial: "document_action", name: :csv, key: :csv, path: :csv_bookmarks_path, label: 'CSV')
+          Blacklight::Configuration::ToolConfig.new(callback: :email_action, validator: :validate_email_params, partial: "document_action", name: :email, key: :email, path: email_bookmarks_path, label: 'Email'),
+          Blacklight::Configuration::ToolConfig.new(modal: false, partial: "document_action", name: :print, key: :print, path: print_bookmarks_path),
+          Blacklight::Configuration::ToolConfig.new(modal: false, partial: "document_action", name: :csv, key: :csv, path: csv_bookmarks_path, label: 'CSV')
         ]
       end
 

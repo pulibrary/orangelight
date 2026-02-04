@@ -1,0 +1,7 @@
+<li>
+  <% if action.label == 'Email' %>
+    <%= link_to(action.label || action.name.to_s.titleize, action.path, class: 'dropdown-item', data: { blacklight_modal: 'trigger' }) %>
+  <% else %>
+    <%= link_to(action.label || action.name.to_s.titleize, action.path, class: 'dropdown-item') %>
+  <% end %>
+</li>
