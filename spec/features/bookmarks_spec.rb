@@ -4,9 +4,9 @@ require 'rails_helper'
 
 RSpec.describe 'bookmarks' do
   describe 'action buttons' do
-    it 'has a clear bookmarks button' do
+    it 'has a clear bookmarks link' do
       visit '/bookmarks'
-      expect(page).to have_link("Clear bookmarks")
+      expect(page).to have_link("Clear Bookmarks")
     end
   end
 
