@@ -80,6 +80,7 @@ class CatalogController < ApplicationController
 
     config.navbar.partials.delete(:search_history)
     config.add_nav_action(:bookmark, partial: 'blacklight/nav/bookmark')
+    config.add_nav_action(:clear_bookmarks, partial: 'blacklight/nav/clear_bookmarks', if: :render_bookmarks?)
 
     # solr field configuration for search results/index views
     config.index.title_field = 'title_display'
