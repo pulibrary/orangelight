@@ -58,9 +58,9 @@ class ApplicationController < ActionController::Base
     Rails.env.production? || Rails.env.staging? ? { protocol: 'https' } : {}
   end
 
-    def render_bookmarks?
-      controller_path == 'bookmarks'
-    end
+  def render_bookmarks?
+    controller_path == 'bookmarks'
+  end
 
   private
 
