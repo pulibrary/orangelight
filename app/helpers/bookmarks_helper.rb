@@ -18,11 +18,10 @@ module BookmarksHelper
 
   private
 
-  def update_blank_sort_param
-    if params[:sort].blank?
+    def update_blank_sort_param
+      return if params[:sort].present?
       # make sure the recently bookmarked sort doesn't get used as the default and
       # force the recently bookmarked sort when viewing bookmarks without a sort param
       params[:sort] = bookmarks? ? 'score desc' : 'score desc, pub_date_start_sort desc, title_sort asc'
     end
-  end
 end
