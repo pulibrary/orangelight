@@ -1,28 +1,34 @@
 <%= render 'shared/start_over_row' %>
 <div id="content" class="col-md-12">
-<h1 class='page-heading'><%= t('blacklight.bookmarks.title') %></h1>
-<%= render 'account/login_links', feature_page: "bookmarks" %>
-<%- if current_or_guest_user.blank? -%>
+  <h1 class='page-heading'><%= t('blacklight.bookmarks.title') %></h1>
+  <%= render 'account/login_links', feature_page: "bookmarks" %>
+  <% if current_or_guest_user.blank? %>
 
-  <h2 class='section-heading'><%= t('blacklight.bookmarks.need_login') %></h2>
+    <h2 class='section-heading'><%= t('blacklight.bookmarks.need_login') %></h2>
 
-<%- elsif @response.documents.blank? && params[:q].blank? -%>
+  <% elsif @response.documents.blank? && params[:q].blank? %>
 
-  <h3 class='section-heading'><%= t('blacklight.bookmarks.no_bookmarks') %></h3>
-<% else %>
-  <%= render 'bookmarks_search_form' %>
-  <%- if @response.documents.blank? %>
-    <div class="alert alert-info">
-      No bookmarks found matching "<%= params[:q] %>".
-    </div>
+    <h3 class='section-heading'><%= t('blacklight.bookmarks.no_bookmarks') %></h3>
   <% else %>
-    <%= render 'sort_and_per_page' %>
-    <h2 class='section-heading visually-hidden'><%= t('blacklight.bookmarks.list_title') %></h2>
-    <%= render_document_index @response.documents %>
-    <div class="page-links mt-5">
-    <%= render :partial => "paginate_compact", :object => @response if show_pagination? %>
+    <div class="row align-items-center mb-3">
+      <div class="col-md-4">
+        <%= render 'bookmarks_search_form' %>
+      </div>
+      <div class="col-md-4 offset-md-4">
+        <%= render 'sort_and_per_page' %>
+      </div>
     </div>
+    <% if @response.documents.blank? %>
+      <div class="alert alert-info">
+        No bookmarks found matching "<%= params[:q] %>".
+      </div>
+    <% else %>
+      <h2 class='section-heading visually-hidden'><%= t('blacklight.bookmarks.list_title') %></h2>
+      <%= render_document_index @response.documents %>
+      <div class="page-links mt-5">
+        <%= render :partial => "paginate_compact", :object => @response if show_pagination? %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
 </div>
 
