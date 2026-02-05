@@ -14,9 +14,11 @@
       <div class="col-md-4">
         <%= render 'bookmarks_search_form' %>
       </div>
-      <div class="col-md-4 offset-md-4">
-        <%= render 'sort_and_per_page' %>
-      </div>
+      <% unless @response.documents.blank? %>
+        <div class="col-md-4 offset-md-4">
+          <%= render 'sort_and_per_page' %>
+        </div>
+      <% end %>
     </div>
     <% if @response.documents.blank? %>
       <div class="alert alert-info">
