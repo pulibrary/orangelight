@@ -1,0 +1,25 @@
+.bookmarks-search-form {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.bookmarks-search-form > form .btn-primary {
+    height: 38px;
+    min-width: 38px;
+    padding: 6px 6px;
+    font-size: 1rem;
+}
+
+.bookmarks-search-form .form-inline {
+  width: 100%;
+}
+
+.bookmarks-search-form .input-group #q {
+  border-top-left-radius: 0.3rem;
+  border-bottom-left-radius: 0.3rem;
+}
+
+.bookmarks-search-form input.form-control {
+  height: 38px;
+  font-size: 1rem;
+}
