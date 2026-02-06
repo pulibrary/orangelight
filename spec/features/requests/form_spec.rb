@@ -1233,10 +1233,17 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     before do
       stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
         .to_return(status: 200, body: affiliate_patron_response, headers: {})
+      stub_catalog_raw(bib_id: '9997371413506421')
+      stub_holding_locations
+      stub_availability_by_holding_id(bib_id: '9997371413506421', holding_id: '22613310220006421')
       login_as user
     end
     it 'displays the correct message when requesting a Firestone stacks item' do
       visit 'requests/9912636153506421?mfhd=22557213410006421'
+      expect(page).to have_content('Request options for this item are only available to Faculty, Staff, and Students.')
+    end
+    it 'displays the correct message when requesting a marquand$stacks item' do
+      visit 'requests/9997371413506421?mfhd=22613310220006421'
       expect(page).to have_content('Request options for this item are only available to Faculty, Staff, and Students.')
     end
   end
