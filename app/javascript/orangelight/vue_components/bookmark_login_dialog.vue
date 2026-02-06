@@ -16,15 +16,33 @@
       </div>
       <h3>Library Account Holders</h3>
       <p>
-        To save bookmarks for future sessions, please
-        <LuxHyperlink :href="loginUrl">log in</LuxHyperlink>
-        using your library account.
+        To save bookmarks for future sessions, please log in using your library
+        account.
       </p>
       <h3>Guests</h3>
       <p>
         Bookmarks are unable to be saved for future sessions. You can export
         your bookmarks to a citation manager each session.
       </p>
+    </div>
+    <div class="border">
+      <div class="login-button-container float-end">
+        <LuxInputButton
+          type="button"
+          variation="outline"
+          currentColor="black"
+          @button-clicked="close"
+          >Cancel</LuxInputButton
+        >
+        <LuxInputButton
+          type="button"
+          variation="solid"
+          currentColor="white"
+          @button-clicked="login"
+          class="log-in-button"
+          >Log In</LuxInputButton
+        >
+      </div>
     </div>
   </dialog>
 </template>
@@ -42,4 +60,21 @@ const dialog = useTemplateRef('dialog');
 function close() {
   dialog.value.close();
 }
+
+function login() {
+  window.location.href = props.loginUrl;
+}
 </script>
+<style scoped>
+.log-in-button {
+  margin-right: 20px;
+}
+.login-button-container {
+  margin-bottom: 14px;
+  padding-top: 10px;
+}
+.dialog-content {
+  margin: 0 20px;
+  border-top: 1px dotted var(--bs-border-color);
+}
+</style>
