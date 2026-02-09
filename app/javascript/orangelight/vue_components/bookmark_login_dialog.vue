@@ -20,29 +20,27 @@
         account.
       </p>
       <h3>Guests</h3>
-      <p>
+      <p class="final-text">
         Bookmarks are unable to be saved for future sessions. You can export
         your bookmarks to a citation manager each session.
       </p>
     </div>
-    <div class="border">
-      <div class="login-button-container float-end">
-        <LuxInputButton
-          type="button"
-          variation="outline"
-          currentColor="black"
-          @button-clicked="close"
-          >Cancel</LuxInputButton
-        >
-        <LuxInputButton
-          type="button"
-          variation="solid"
-          currentColor="white"
-          @button-clicked="login"
-          class="log-in-button"
-          >Log In</LuxInputButton
-        >
-      </div>
+    <div class="login-button-container float-end">
+      <LuxInputButton
+        type="button"
+        variation="outline"
+        currentColor="black"
+        @button-clicked="close"
+        >Cancel</LuxInputButton
+      >
+      <LuxInputButton
+        type="button"
+        variation="solid"
+        currentColor="white"
+        @button-clicked="login"
+        class="log-in-button"
+        >Log In</LuxInputButton
+      >
     </div>
   </dialog>
 </template>
@@ -75,6 +73,11 @@ function login() {
 }
 .dialog-content {
   margin: 0 20px;
-  border-top: 1px dotted var(--bs-border-color);
+  /* border-top: 1px dotted var(--bs-border-color); */
+}
+.final-text {
+  padding-bottom: 20px;
+  margin-bottom: 0;
+  border-bottom: 1px dotted var(--bs-border-color);
 }
 </style>
