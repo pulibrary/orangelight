@@ -335,7 +335,7 @@ GEM
     health-monitor-rails (12.9.0)
       railties (>= 6.1)
     high_voltage (5.0.0)
-    honeybadger (6.2.1)
+    honeybadger (6.3.0)
       logger
       ostruct
     http (5.3.1)
