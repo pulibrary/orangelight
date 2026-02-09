@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'csv'
-
+# :reek:TooManyInstanceVariables
 class BookmarksController < CatalogController
   include Blacklight::Bookmarks
 
@@ -36,7 +36,6 @@ class BookmarksController < CatalogController
 
   def print
     fetch_bookmarked_documents
-    @url_gen_params = {}
     render('orangelight/record_mailer/email_record', formats: [:text])
   end
 
@@ -53,9 +52,24 @@ class BookmarksController < CatalogController
 
   private
 
+    # :reek:TooManyStatements
     def fetch_bookmarked_documents
-      bookmark_ids = token_or_current_or_guest_user.bookmarks.collect { |bookmark| bookmark.document_id.to_s }
-      @documents = search_service.fetch(bookmark_ids, rows: bookmark_ids.length, fl: '*')
+      bookmarks = token_or_current_or_guest_user.bookmarks
+      bookmark_ids = bookmarks.collect { |bookmark| bookmark.document_id.to_s }
+      bookmark_count = bookmark_ids.length
+      search_params = params.to_unsafe_h
+      search_params[:f] = { id: bookmark_ids }
+      search_params[:rows] = bookmark_count
+      q_param = search_params[:q]
+      has_query = q_param.present?
+
+      if has_query
+        @filtered_bookmark_ids = solr_filtered_bookmark_ids(q_param, bookmark_ids, bookmark_count)
+        @documents = fetch_documents(@filtered_bookmark_ids)
+      else
+        @filtered_bookmark_ids = bookmark_ids
+        @documents = fetch_documents(bookmark_ids)
+      end
     end
 
     # byte-order-mark declaring our output as UTF-8 (required for non-ASCII to be handled by Excel)
@@ -105,5 +119,22 @@ class BookmarksController < CatalogController
       values = arr || ['', '']
       values << '' if values.length == 1
       values.map { |v| v.chomp(' /') }
+    end
+
+    # :reek:UtilityFunction
+    def solr_filtered_bookmark_ids(q_param, bookmark_ids, bookmark_count)
+      solr = Blacklight.default_index.connection
+      solr_params = {
+        q: q_param.presence || '*:*',
+        fq: ["id:(#{bookmark_ids.join(' ')})"],
+        fl: 'id',
+        rows: bookmark_count
+      }
+      response = solr.get 'select', params: solr_params
+      response['response']['docs'].pluck('id')
+    end
+
+    def fetch_documents(ids)
+      search_service.fetch(ids, rows: ids.length, fl: '*')
     end
 end

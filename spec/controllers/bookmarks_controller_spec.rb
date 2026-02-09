@@ -3,6 +3,38 @@
 require 'rails_helper'
 
 RSpec.describe BookmarksController do
+  describe '#print with query filter' do
+    let(:user) { FactoryBot.create(:user) }
+    before do
+      sign_in user
+      user.bookmarks.create!([{ document_id: '9997412163506421', document_type: 'SolrDocument' }])
+      user.bookmarks.create!([{ document_id: '9935444363506421', document_type: 'SolrDocument' }])
+    end
+
+    it 'renders only filtered bookmarks in print' do
+      get :print, params: { q: 'Cornelis, Bart' }
+      expect(assigns(:documents).length).to eq 1
+      expect(assigns(:documents).first.id).to eq '9997412163506421'
+      expect(response).to render_template 'record_mailer/email_record'
+    end
+  end
+
+  describe '#csv with query filter' do
+    let(:user) { FactoryBot.create(:user) }
+    before do
+      sign_in user
+      user.bookmarks.create!([{ document_id: '9997412163506421', document_type: 'SolrDocument' }])
+      user.bookmarks.create!([{ document_id: '9935444363506421', document_type: 'SolrDocument' }])
+    end
+
+    it 'renders only filtered bookmarks in csv' do
+      get :csv, params: { q: 'Cornelis, Bart' }
+      body = response.body
+      expect(assigns(:documents).length).to eq 1
+      expect(body).to include('9997412163506421')
+      expect(body).not_to include('9935444363506421')
+    end
+  end
   describe '#print' do
     let(:user) { FactoryBot.create(:user) }
 
@@ -39,7 +71,6 @@ RSpec.describe BookmarksController do
       data2.each do |value|
         expect(body).to include(value)
       end
-
       expect(body).not_to include(bad_value)
     end
   end
