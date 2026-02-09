@@ -9,13 +9,11 @@ describe 'sorting', type: :system, js: false do
     stub_holding_locations
   end
 
-  context 'the catalog page' do
+  context 'the catalog page', js: true do
     it 'includes relevance' do
       visit '/catalog?search_field=all_fields&q=engineering'
       sort_dropdown = page.find("#sort-dropdown")
-      # this shouldn't include 'recently bookmarked' but voiceover interprets it correctly
-      # and everything seems to work as expected
-      expect(sort_dropdown.text).to eq("Sort by recently bookmarked\nrelevance year (newest first) year (oldest first) author title date cataloged")
+      expect(sort_dropdown.text).to eq("Sort by relevance")
       sort_dropdown.click
       within('#sort-dropdown') do
         expect(page).to have_link('relevance')
