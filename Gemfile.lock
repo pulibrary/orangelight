@@ -92,12 +92,12 @@ GEM
       xml-simple
     amq-protocol (2.3.4)
     ast (2.4.3)
-    axe-core-api (4.11.0)
+    axe-core-api (4.11.1)
       dumb_delegator
       ostruct
       virtus
-    axe-core-rspec (4.11.0)
-      axe-core-api (= 4.11.0)
+    axe-core-rspec (4.11.1)
+      axe-core-api (= 4.11.1)
       dumb_delegator
       ostruct
       virtus
