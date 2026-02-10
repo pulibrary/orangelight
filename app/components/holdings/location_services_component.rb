@@ -34,7 +34,7 @@ class Holdings::LocationServicesComponent < ViewComponent::Base
           AeonRequestButtonComponent.new(document:, holding: holding_hash, url_class: Requests::NonAlmaAeonUrl)
         elsif items && items.length > 1
           RequestButtonComponent.new(doc_id:, holding_id:, location: location_rules, open_holdings:)
-        elsif aeon_location?
+        elsif aeon_location? || (scsb_location? && scsb_supervised_items?)
           AeonRequestButtonComponent.new(document:, holding: holding_hash)
         elsif scsb_location?
           RequestButtonComponent.new(doc_id:, location: location_rules, holding:, open_holdings:)
@@ -129,5 +129,10 @@ class Holdings::LocationServicesComponent < ViewComponent::Base
 
       def items
         holding['items']
+      end
+
+      def scsb_supervised_items?
+        return false unless items
+        items.all? { |item| item['use_statement']&.casecmp('supervised use')&.zero? }
       end
 end
