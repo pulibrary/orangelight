@@ -201,11 +201,11 @@ RSpec.describe Holdings::LocationServicesComponent, type: :component do
       expect(rendered.to_s).to include 'data-requestable="true"'
       expect(rendered.to_s).to include 'data-holding-id="6670178"'
       expect(rendered.to_s).to include '<a '
-      expect(rendered.to_s).not_to include 'title="Request to view in Reading Room"'
+      expect(rendered.to_s).to include "Reading Room Request"
       # The general scsbnypl location is *not* an aeon location, but if the holding use_statement is "Supervised Use",
       # it goes through aeon.
       expect(rendered.to_s).to include 'data-aeon="false"'
-      expect(rendered.to_s).to include 'href="/requests/SCSB-6593031?aeon=true"'
+      expect(rendered.to_s).to include 'href="https://princeton.aeon.atlas-sys.com/logon?Action=10'
     end
   end
 
