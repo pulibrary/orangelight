@@ -1,0 +1,159 @@
+{
+	"id": "9997371413506421",
+	"numeric_id_b": true,
+	"author_citation_display": [
+		"Garimorth-Foray, Julia",
+		"Bauerfeind, Bettina",
+		"Virey-Wallon, Aude",
+		"Modersohn-Becker, Paula",
+		"Musée d'art moderne de la ville de Paris"
+	],
+	"author_roles_1display": "{\"secondary_authors\":[\"Bauerfeind, Bettina\",\"Modersohn-Becker, Paula\",\"Musée d'art moderne de la ville de Paris\"],\"translators\":[\"Virey-Wallon, Aude\"],\"editors\":[\"Garimorth-Foray, Julia\"],\"compilers\":[]}",
+	"author_s": [
+		"Garimorth-Foray, Julia",
+		"Bauerfeind, Bettina",
+		"Virey-Wallon, Aude",
+		"Modersohn-Becker, Paula, 1876-1907",
+		"Musée d'art moderne de la ville de Paris"
+	],
+	"uniform_title_s": [
+		"Paula Modersohn-Becker (Association Paris musées)"
+	],
+	"title_display": "Paula Modersohn-Becker / ouvrage sous la direction de Julia Garimorth ; rédaction des notices, Bettina Bauerfeind [and 8 others] ; traduction de l'allemand par Aude Virey-Wallon.",
+	"title_t": [
+		"Paula Modersohn-Becker / ouvrage sous la direction de Julia Garimorth ; rédaction des notices, Bettina Bauerfeind [and 8 others] ; traduction de l'allemand par Aude Virey-Wallon."
+	],
+	"title_citation_display": [
+		"Paula Modersohn-Becker"
+	],
+	"compiled_created_t": [
+		"Paula Modersohn-Becker / ouvrage sous la direction de Julia Garimorth ; rédaction des notices, Bettina Bauerfeind [and 8 others] ; traduction de l'allemand par Aude Virey-Wallon."
+	],
+	"pub_created_display": [
+		"Paris : Paris-Musées, [2016]",
+		"©2016"
+	],
+	"pub_created_s": [
+		"Paris : Paris-Musées, [2016]",
+		"©2016"
+	],
+	"pub_citation_display": [
+		"Paris: Paris-Musées"
+	],
+	"publication_location_citation_display": [
+		"Paris"
+	],
+	"publisher_citation_display": [
+		"Paris-Musées"
+	],
+	"pub_date_display": [
+		"2016"
+	],
+	"pub_date_start_sort": 2016,
+	"pub_date_end_sort": 2016,
+	"publication_date_citation_display": [
+		"2016"
+	],
+	"cataloged_tdt": "2016-07-28T00:00:00Z",
+	"format": [
+		"Book"
+	],
+	"description_display": [
+		"253 pages : illustrations (chiefly color) ; 32 cm"
+	],
+	"description_t": [
+		"253 pages : illustrations (chiefly color) ; 32 cm"
+	],
+	"number_of_pages_citation_display": [
+		"253 pages"
+	],
+	"notes_display": [
+		"Published on the occasion of the exhibition \"Paula Modersohn-Becker - L'intensité d'un regard\" held at the Musée d'art moderne de la ville de Paris, April 8-August 21, 2016."
+	],
+	"bib_ref_notes_display": [
+		"Includes bibliographical references (pages 252-253)."
+	],
+	"language_display": [
+		"In French; text by Rainer Maria Rlike in German and French."
+	],
+	"language_name_display": [
+		"French",
+		"German"
+	],
+	"language_facet": [
+		"French",
+		"German"
+	],
+	"language_iana_s": [
+		"fr"
+	],
+	"mult_languages_iana_s": [
+		"fr",
+		"de"
+	],
+	"contents_display": [
+		"Paula Modersohn-Becker tout entière / Julia Garimorth",
+		"\"La grande simplicité de la forme\": la modernité de Paula Modersohn-Becker / Uwe M. Schneede",
+		"Simplicité et grâce: un récit d'autoformation / Maria Stavrinaki",
+		"Paula Modersohn-Bekcer, en effets / Élisabeth Lebovici",
+		"Paul Modersohn-Becker et Rainer Maria Rilke, une amitié d'artistes / Rainer Stamm",
+		"Requiem für eine Freundin = Requiem pour une amie / Rainer Maria Rilke",
+		"Paula et les objets / Maria Darrieussecq",
+		"Biographie / Wolfgang Werner",
+		"Œuvres exposées."
+	],
+	"lc_subject_display": [
+		"Modersohn-Becker, Paula 1876-1907—Exhibitions"
+	],
+	"subject_facet": [
+		"Modersohn-Becker, Paula 1876-1907—Exhibitions"
+	],
+	"lc_subject_facet": [
+		"Modersohn-Becker, Paula 1876-1907",
+		"Modersohn-Becker, Paula 1876-1907—Exhibitions"
+	],
+	"related_name_json_1display": "{\"Author\":[\"Garimorth-Foray, Julia\",\"Bauerfeind, Bettina\"],\"Editor\":[\"Garimorth-Foray, Julia\"],\"Translator\":[\"Virey-Wallon, Aude\"],\"Host institution\":[\"Musée d'art moderne de la ville de Paris\"]}",
+	"contains_1display": "[[\"Modersohn-Becker, Paula, 1876-1907.\",\"Paintings.\",\"Selections\"]]",
+	"isbn_display": [
+		"9782759603220 ((hbk.))",
+		"2759603229 ((hbk.))"
+	],
+	"isbn_s": [
+		"9782759603220"
+	],
+	"oclc_s": [
+		"946102575"
+	],
+	"other_version_s": [
+		"9782759603220",
+		"ocn946102575"
+	],
+	"holdings_1display": "{\"22613310220006421\":{\"location_code\":\"marquand$stacks\",\"location\":\"Marquand Use Only\",\"library\":\"Marquand Library\",\"call_number\":\"ND588.M58 A4 2016q Oversize\",\"call_number_browse\":\"ND588.M58 A4 2016q Oversize\",\"sub_location\":[\"Oversize\"],\"items\":[{\"holding_id\":\"22613310220006421\",\"id\":\"23613310210006421\",\"status_at_load\":\"1\",\"barcode\":\"32101098489626\",\"copy_number\":\"0\"}]}}",
+	"location_code_s": [
+		"marquand$stacks"
+	],
+	"location": [
+		"Marquand Library"
+	],
+	"location_display": [
+		"Marquand Use Only"
+	],
+	"advanced_location_s": [
+		"marquand$stacks",
+		"Marquand Library"
+	],
+	"name_title_browse_s": [
+		"Modersohn-Becker, Paula, 1876-1907. Paintings",
+		"Modersohn-Becker, Paula, 1876-1907. Paintings. Selections"
+	],
+	"uniform_title_1display": "[[\"Paula Modersohn-Becker (Association Paris musées)\"]]",
+	"call_number_display": [
+		"Oversize ND588.M58 A4 2016q"
+	],
+	"call_number_browse_s": [
+		"ND588.M58 A4 2016q Oversize"
+	],
+	"call_number_locator_display": [
+		"ND588.M58 A4 2016q"
+	]
+}

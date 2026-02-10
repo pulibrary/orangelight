@@ -8,15 +8,15 @@
     "graphql": "^16.12.0",
     "lux-design-system": "^7.3.1",
     "serialize-javascript": "^7.0.2",
-    "vue": "^3.5.27"
+    "vue": "^3.5.28"
   },
   "devComments": {
     "jquery": "Keep version in sync with jquery-rails, obtained through bundler"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.3",
-    "@eslint/js": "^9.39.2",
-    "@stylistic/eslint-plugin": "^5.7.1",
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.8.0",
     "@vitejs/plugin-vue": "^6.0.4",
     "@vue/test-utils": "2.4.6",
     "eslint": "^9.39.2",

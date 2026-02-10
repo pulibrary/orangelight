@@ -115,7 +115,7 @@ RSpec.shared_context 'affiliate and guest patron group' do
   let(:digitization_services) { [] }
   let(:resource_sharing_services) { [] }
   let(:reading_room_services) { ['aeon'] }
-  let(:marquand_in_library_services) { ['marquand_in_library'] }
+  let(:marquand_in_library_services) { [] }
   let(:marquand_page_charged_item_services) { ['marquand_page_charged_item'] }
 end
 
