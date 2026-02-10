@@ -4,7 +4,7 @@ export default class BookmarksSort {
   }
 
   update_sort_text() {
-    if (!this.on_bookmarks_page()) {
+    if (this.on_catalog_search_page()) {
       const sort = document.querySelector('#sort-dropdown').childNodes[1];
       if (sort.textContent.includes('recently bookmarked')) {
         sort.textContent = '\n      Sort by  \n  relevance';
@@ -12,7 +12,7 @@ export default class BookmarksSort {
     }
   }
 
-  on_bookmarks_page() {
-    return window.location.pathname.includes('/bookmarks');
+  on_catalog_search_page() {
+    return window.location.pathname.includes('/catalog');
   }
 }
