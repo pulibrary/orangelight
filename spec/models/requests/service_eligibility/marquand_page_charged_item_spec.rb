@@ -11,7 +11,7 @@ RSpec.describe Requests::ServiceEligibility::MarquandPageChargedItem, :requests 
     it 'returns true if all criteria are met' do
       requestable = instance_double(Requests::Requestable)
       allow(requestable).to receive_messages(
-        held_at_marquand_library?: true,
+        marquand_library?: true,
         alma_managed?: true,
         aeon?: false,
         charged?: true,
@@ -27,7 +27,7 @@ RSpec.describe Requests::ServiceEligibility::MarquandPageChargedItem, :requests 
     it 'does not consider in_process items eligible' do
       requestable = instance_double(Requests::Requestable)
       allow(requestable).to receive_messages(
-        held_at_marquand_library?: true,
+        marquand_library?: true,
         alma_managed?: true,
         aeon?: false,
         charged?: false,
@@ -43,7 +43,7 @@ RSpec.describe Requests::ServiceEligibility::MarquandPageChargedItem, :requests 
     it 'does not consider on_order items eligible' do
       requestable = instance_double(Requests::Requestable)
       allow(requestable).to receive_messages(
-        held_at_marquand_library?: true,
+        marquand_library?: true,
         alma_managed?: true,
         aeon?: false,
         charged?: false,
@@ -59,7 +59,7 @@ RSpec.describe Requests::ServiceEligibility::MarquandPageChargedItem, :requests 
     it 'does not consider non-Marquand items eligible' do
       requestable = instance_double(Requests::Requestable)
       allow(requestable).to receive_messages(
-        held_at_marquand_library?: false,
+        marquand_library?: false,
         alma_managed?: true,
         aeon?: false,
         charged?: true,
@@ -75,7 +75,7 @@ RSpec.describe Requests::ServiceEligibility::MarquandPageChargedItem, :requests 
     it 'does not consider non-charged items eligible' do
       requestable = instance_double(Requests::Requestable)
       allow(requestable).to receive_messages(
-        held_at_marquand_library?: true,
+        marquand_library?: true,
         alma_managed?: true,
         aeon?: false,
         charged?: false,
