@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FormatFacetItemComponent < Blacklight::FacetItemComponent
+class FormatFacetItemComponent < Blacklight::Facets::ItemComponent
   def render_facet_value(...)
     render_icon + super
   end

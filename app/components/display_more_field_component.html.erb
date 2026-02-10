@@ -2,17 +2,19 @@
   <% component.with_label do %>
     <%= label %>
   <% end %>
-  <% component.with_value do %>
-    <%= @field.render %>
-    <% if show_button? %>
-      <button class="show-more btn btn-sm btn-link"
-        aria-expanded="false" aria-controls="<%= @field.key %>-list"
-        data-maximum-default-values="<%= @field.field_config.maxInitialDisplay %>"
-        data-show-more-text="<%= show_more_text %>"
-        data-show-less-text="<%= t('blacklight.show_page.display_less', field: @field.label) %>">
-        <i class="pe-none toggle collapsed"></i>
-        <%= show_more_text %>
-      </button>
+  <% render_field_values.each_with_index do |value, index| %>
+    <% component.with_value(value: value, index: index) do %>
+      <%= @field.render %>
+      <% if show_button? %>
+        <button class="show-more btn btn-sm btn-link"
+          aria-expanded="false" aria-controls="<%= @field.key %>-list"
+          data-maximum-default-values="<%= @field.field_config.maxInitialDisplay %>"
+          data-show-more-text="<%= show_more_text %>"
+          data-show-less-text="<%= t('blacklight.show_page.display_less', field: @field.label) %>">
+          <i class="pe-none toggle collapsed"></i>
+          <%= show_more_text %>
+        </button>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

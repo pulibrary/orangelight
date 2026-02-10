@@ -5,5 +5,7 @@ class IndexMetadataFieldLayoutComponent < ViewComponent::Base
   def initialize(field: nil); end
 
   renders_one :label
-  renders_many :values
+  # rubocop:disable Lint/UnusedBlockArgument -- index: is in the API provided by stock blacklight, we should keep the same API here
+  renders_many :values, ->(index:, value: nil) { value }
+  # rubocop:enable Lint/UnusedBlockArgument
 end

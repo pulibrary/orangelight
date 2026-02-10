@@ -20,7 +20,7 @@ RSpec.describe IndexDocumentComponent, type: :component do
     presenter = Blacklight::DocumentPresenter.new(document, instance_double(ActionView::Base, action_name: 'show'), blacklight_config)
     allow(presenter).to receive(:fields).and_return([])
     allow(document).to receive(:export_as_openurl_ctx_kev).and_return 'ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.issn=1045-4438'
-    render_inline(described_class.new(document:, presenter:))
+    render_inline(described_class.new(document: presenter))
   end
   it 'puts everything into an article tag' do
     expect(subject.elements.first.name).to eq('article')
