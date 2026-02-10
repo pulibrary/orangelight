@@ -60,16 +60,16 @@ describe 'requests for Marquand items', type: :feature, requests: true do
       clear_enqueued_jobs
     end
 
-    context 'with an unavailable item' do
-      let(:availability) { [{ status_label: 'Unavailable', location: location_code }].to_json }
+    context 'with an unavailable item on loan' do
+      before do
+        stub_availability_by_holding_id(bib_id: '99131744670106421', holding_id: '221101269790006421')
+        stub_catalog_raw(bib_id: '99131744670106421')
+      end
 
       it 'does not give the option for ILL' do
-        visit("requests/#{bib_id}?aeon=false&mfhd=#{holding_id}")
+        visit("requests/99131744670106421?aeon=false&mfhd=221101269790006421")
         expect(page).not_to have_content('Request via Partner Library')
         expect(page).to have_content('Email marquand@princeton.edu for access')
-        expect(catalog_raw_stub).to have_been_requested
-        expect(availability_stub).to have_been_requested
-        expect(holding_location_stub).to have_been_requested
       end
     end
     context 'with a SCSB item' do

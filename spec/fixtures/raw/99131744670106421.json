@@ -1,0 +1,160 @@
+{
+  "id": "99131744670106421",
+  "numeric_id_b": true,
+  "author_citation_display": [
+    "Gortzak, Roos",
+    "Cotton, Michelle",
+    "Taft, Catherine"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Gortzak, Roos\",\"Cotton, Michelle\",\"Taft, Catherine\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+    "Gortzak, Roos",
+    "Cotton, Michelle",
+    "Taft, Catherine"
+  ],
+  "title_display": "Amanda Ross-Ho : grand gestures / [Curated by Roos Gortzak and Michelle Cotton]",
+  "title_t": [
+    "Amanda Ross-Ho : grand gestures / [Curated by Roos Gortzak and Michelle Cotton]"
+  ],
+  "title_citation_display": [
+    "Amanda Ross-Ho : grand gestures"
+  ],
+  "compiled_created_t": [
+    "Amanda Ross-Ho : grand gestures / [Curated by Roos Gortzak and Michelle Cotton]"
+  ],
+  "pub_created_display": [
+    "Los Angeles : Inventory Press, [2025]"
+  ],
+  "pub_created_s": [
+    "Los Angeles : Inventory Press, [2025]"
+  ],
+  "pub_citation_display": [
+    "Los Angeles: Inventory Press"
+  ],
+  "publication_location_citation_display": [
+    "Los Angeles"
+  ],
+  "publisher_citation_display": [
+    "Inventory Press"
+  ],
+  "pub_date_display": [
+    "2025"
+  ],
+  "pub_date_start_sort": 2025,
+  "publication_date_citation_display": [
+    "2025"
+  ],
+  "cataloged_tdt": "2026-01-27T19:29:49Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "620 pages : illustrations (chiefly color) ; 25 cm"
+  ],
+  "description_t": [
+    "620 pages : illustrations (chiefly color) ; 25 cm"
+  ],
+  "number_of_pages_citation_display": [
+    "620 pages"
+  ],
+  "notes_display": [
+    "\"Published in conjuction with Amanda Ross-Ho's solo exhibition UNTITLED PERIOD PIECE, Vleeshal, September 25-December 11, 2016.\" -- Copyright page"
+  ],
+  "bib_ref_notes_display": [
+    "Includes bibliographical references (pages 601-614)."
+  ],
+  "language_name_display": [
+    "English"
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "mult_languages_iana_s": [
+    "en"
+  ],
+  "contents_display": [
+    "Quantum scrambling: on the art of Amanda Ross-Ho / Catherine Taft",
+    "Backward and Foreword / Roos Gortzak and Amanda Ross-Ho",
+    "2012",
+    "2013",
+    "2014",
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022 2023",
+    "Works",
+    "Exhibitions"
+  ],
+  "lc_subject_display": [
+    "Ross-Ho, Amanda 1975-—Exhibitions",
+    "Ross-Ho, Amanda 1975-—Interviews",
+    "Sculptors—United States—21st century",
+    "Women artists—United States—21st century"
+  ],
+  "subject_facet": [
+    "Ross-Ho, Amanda 1975-—Exhibitions",
+    "Ross-Ho, Amanda 1975-—Interviews",
+    "Sculptors—United States—21st century",
+    "Women artists—United States—21st century"
+  ],
+  "lc_subject_facet": [
+    "Ross-Ho, Amanda 1975-",
+    "Ross-Ho, Amanda 1975-—Exhibitions",
+    "Ross-Ho, Amanda 1975-—Interviews",
+    "Sculptors",
+    "Sculptors—United States",
+    "Sculptors—United States—21st century",
+    "Women artists",
+    "Women artists—United States",
+    "Women artists—United States—21st century"
+  ],
+  "related_name_json_1display": "{\"Author\":[\"Gortzak, Roos\",\"Taft, Catherine\"],\"Curator of exhibit\":[\"Gortzak, Roos\",\"Cotton, Michelle\"]}",
+  "isbn_display": [
+    "1941753892 ((hardcover))",
+    "9781941753897 ((hardcover))"
+  ],
+  "isbn_s": [
+    "9781941753897"
+  ],
+  "oclc_s": [
+    "1514891903"
+  ],
+  "other_version_s": [
+    "9781941753897",
+    "on1514891903"
+  ],
+  "subject_era_facet": [
+    "21st century",
+    "21e siècle"
+  ],
+  "holdings_1display": "{\"221101269790006421\":{\"location_code\":\"marquand$stacks\",\"location\":\"Stacks: Marquand Use Only\",\"library\":\"Marquand Library\",\"call_number\":\"N6537.R587 A4 2025\",\"call_number_browse\":\"N6537.R587 A4 2025\",\"items\":[{\"holding_id\":\"221101269790006421\",\"id\":\"231101269780006421\",\"status_at_load\":\"0\",\"barcode\":\"32101125239101\",\"process_type\":\"LOAN\"}]}}",
+  "location_code_s": [
+    "marquand$stacks"
+  ],
+  "location": [
+    "Marquand Library"
+  ],
+  "location_display": [
+    "Stacks: Marquand Use Only"
+  ],
+  "advanced_location_s": [
+    "marquand$stacks",
+    "Marquand Library"
+  ],
+  "call_number_display": [
+    "N6537.R587 A4 2025"
+  ],
+  "call_number_browse_s": [
+    "N6537.R587 A4 2025"
+  ],
+  "call_number_locator_display": [
+    "N6537.R587 A4 2025"
+  ]
+}

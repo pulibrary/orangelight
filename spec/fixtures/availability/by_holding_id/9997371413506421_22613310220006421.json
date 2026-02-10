@@ -1,0 +1,22 @@
+[
+	{
+		"barcode": "32101098489626",
+		"id": "23613310210006421",
+		"holding_id": "22613310220006421",
+		"copy_number": "0",
+		"status": "Available",
+		"status_label": "Item in place",
+		"status_source": "base_status",
+		"process_type": null,
+		"on_reserve": "N",
+		"item_type": "Closed",
+		"pickup_location_id": "marquand",
+		"pickup_location_code": "marquand",
+		"location": "marquand$stacks",
+		"label": "Marquand Library - Stacks: Marquand Use Only",
+		"description": "",
+		"enum_display": "",
+		"chron_display": "",
+		"in_temp_library": false
+	}
+]
