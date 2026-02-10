@@ -6,7 +6,7 @@ RSpec.shared_examples 'shared request type tests' do
     { alma_managed?: true, in_process?: false,
       charged?: false, on_order?: false, aeon?: false,
       annex?: false,
-      recap?: false, recap_pf?: false, held_at_marquand_library?: false,
+      recap?: false, recap_pf?: false, held_at_marquand_library?: false, marquand_library?: false,
       item_data?: false, recap_edd?: false, scsb_in_library_use?: false, item:,
       library_code: 'ABC', eligible_for_library_services?: true,
       marquand_item?: false }
@@ -77,7 +77,7 @@ RSpec.shared_examples 'shared request type tests' do
   end
 
   it 'with a marquand in library use page charged item request' do
-    stubbed_questions[:held_at_marquand_library?] = true
+    stubbed_questions[:marquand_library?] = true
     stubbed_questions[:marquand_item?] = true
     stubbed_questions[:charged?] = true
     expect(router.calculate_services).to eq(marquand_page_charged_item_services)

@@ -26,7 +26,7 @@ module Requests
             end
 
             def correct_location?
-              requestable.held_at_marquand_library?
+              requestable.marquand_library?
             end
 
             def patron_group_eligible?
