@@ -66,7 +66,7 @@ function login() {
 <style scoped>
 .log-in-button {
   margin-right: 20px;
-  border: 0.125rem solid rgb(44, 110, 175);
+  border: 0.125rem solid var(--color-bleu-de-france);
 }
 .login-button-container {
   margin-bottom: 14px;
