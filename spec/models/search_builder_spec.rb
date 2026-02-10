@@ -252,4 +252,19 @@ RSpec.describe SearchBuilder do
       expect(query['json']['query']['bool']['must'][0][:edismax][:query]).to eq 'China and Angola: a marriage of convenience'
     end
   end
+  describe 'defType' do
+    let(:blacklight_config) { CatalogController.blacklight_config }
+      it 'does not add a defType' do
+    # Stock blacklight adds defType=lucene, which causes empty results
+    solr_params = {
+      "fq" => ["{!tag=pub_date_start_sort_single}pub_date_start_sort:[-91 TO 1030]", "{!term f=issue_denomination_s}1/2 Penny"],
+      "facet" => true, "facet.field" => ["lc_subject_facet"],
+      "clause" => {"1" => {"field" => "all_fields", "query" => ""}}
+    }
+    expect(
+      described_class.new(scope).with(solr_params).to_hash
+    ).not_to have_key :defType
+  end
+  end
+
 end

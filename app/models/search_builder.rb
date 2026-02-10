@@ -5,6 +5,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   include BlacklightRangeLimit::RangeLimitBuilder
   include BlacklightHelper
 
+  default_processor_chain.delete(:add_facets_for_advanced_search_form)
   default_processor_chain.unshift(:conditionally_configure_json_query_dsl)
 
   self.default_processor_chain += %i[parslet_trick cleanup_boolean_operators
@@ -12,7 +13,7 @@ class SearchBuilder < Blacklight::SearchBuilder
                                      only_home_facets prepare_left_anchor_search
                                      series_title_results pul_holdings html_facets
                                      numismatics_advanced
-                                     adjust_mm remove_unneeded_facets]
+                                     adjust_mm remove_unneeded_facets remove_deftype]
 
   # mutate the solr_parameters to remove words that are
   # boolean operators, but not intended as such.
@@ -99,6 +100,12 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   def wildcard_char_strip(solr_parameters)
     transform_queries!(solr_parameters) { |query| query.delete('?') }
+  end
+
+  def remove_deftype(solr_parameters)
+    # Inlcuding a defType=lucene, as stock blacklight does, can cause our facet-only
+    # advanced search results to be empty
+    solr_parameters.delete('defType')
   end
 
   private
