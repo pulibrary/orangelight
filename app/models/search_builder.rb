@@ -102,6 +102,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     transform_queries!(solr_parameters) { |query| query.delete('?') }
   end
 
+  # :reek:UtilityFunction
   def remove_deftype(solr_parameters)
     # Inlcuding a defType=lucene, as stock blacklight does, can cause our facet-only
     # advanced search results to be empty
