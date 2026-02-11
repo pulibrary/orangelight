@@ -4,8 +4,9 @@ export default class BookmarksSort {
   }
 
   update_sort_text() {
-    if (this.on_catalog_search_page()) {
-      const sort = document.querySelector('#sort-dropdown').childNodes[1];
+    const dropdown = document.querySelector('#sort-dropdown');
+    if (this.on_catalog_search_page() && dropdown) {
+      const sort = dropdown.childNodes[1];
       if (sort.textContent.includes('recently bookmarked')) {
         sort.textContent = '\n      Sort by  \n  relevance';
       }
