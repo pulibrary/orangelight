@@ -141,6 +141,10 @@ module Requests
       library_code == 'marquand' && !recap?
     end
 
+    def marquand_library?
+      library_code == 'marquand'
+    end
+
     def marquand_item?
       holding_library == 'marquand'
     end

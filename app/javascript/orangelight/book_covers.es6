@@ -18,8 +18,10 @@ window.addBookCoversToDom = (data) => {
       const newThumbnail = document.createElement('img');
       newThumbnail.setAttribute('alt', '');
       newThumbnail.setAttribute('src', thumbnailUrl);
-      thumbnailElement.childNodes.forEach((element) => element.remove());
-      thumbnailElement.appendChild(newThumbnail);
+      if (thumbnailElement) {
+        thumbnailElement.childNodes.forEach((element) => element.remove());
+        thumbnailElement.appendChild(newThumbnail);
+      }
     }
   });
 };
