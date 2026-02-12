@@ -33,13 +33,11 @@
         @button-clicked="close"
         >Cancel</LuxInputButton
       >
-      <LuxInputButton
-        type="button"
-        variation="solid"
-        currentColor="white"
-        @button-clicked="login"
+      <LuxHyperlink
+        variation="button solid"
+        :href="loginUrl"
         class="log-in-button"
-        >Log In</LuxInputButton
+        >Log In</LuxHyperlink
       >
     </div>
   </dialog>
@@ -58,13 +56,9 @@ const dialog = useTemplateRef('dialog');
 function close() {
   dialog.value.close();
 }
-
-function login() {
-  window.location.href = props.loginUrl;
-}
 </script>
 <style scoped>
-.log-in-button {
+.login-button-container a.lux-link.log-in-button {
   margin-right: 20px;
   border: 0.125rem solid var(--color-bleu-de-france);
 }
@@ -74,7 +68,6 @@ function login() {
 }
 .dialog-content {
   margin: 0 20px;
-  /* border-top: 1px dotted var(--bs-border-color); */
 }
 .final-text {
   padding-bottom: 20px;
