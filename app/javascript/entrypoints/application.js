@@ -14,4 +14,5 @@ Blacklight.onLoad(() => {
 
 BlacklightRangeLimit.init({ onLoadHandler: Blacklight.onLoad });
 
+window.luxImport = luxImport;
 luxImport();
