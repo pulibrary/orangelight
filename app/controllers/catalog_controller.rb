@@ -819,14 +819,13 @@ class CatalogController < ApplicationController
     end
   end
 
-  def sort_by_most_recently_bookmarked(documents, user)
-    if params[:sort] == 'score desc' && bookmarks? && user
-      user.bookmarks.order(updated_at: :desc)
-          .collect { |bookmark| bookmark.document_id.to_s }
-          .filter_map { |id| documents.index_by(&:id)[id] }
-    else
-      documents
-    end
+  def update_blank_sort_param
+    return if params[:sort].present?
+    params[:sort] = if controller_path == 'bookmarks'
+                    'score desc'
+                    else
+                    'score desc, pub_date_start_sort desc, title_sort asc'
+                    end
   end
 
   private
@@ -916,17 +915,4 @@ class CatalogController < ApplicationController
     def solrize_boolean_params
       @search_state = search_state.reset(AdvancedBooleanOperators.new(search_state.params).for_boolqparser)
     end
-
-    def bookmarks?
-      params[:controller] == 'bookmarks'
-    end
-
-    def update_blank_sort_param
-      return if params[:sort].present?
-      if bookmarks?
-        params[:sort] = 'score desc'
-      else
-        params[:sort] = 'score desc, pub_date_start_sort desc, title_sort asc'
-    end
-  end
 end
