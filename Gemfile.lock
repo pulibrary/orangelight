@@ -485,7 +485,7 @@ GEM
       stringio
       time
       uri
-    openssl (4.0.0)
+    openssl (4.0.1)
     openurl (1.0.0)
       marc
       scrub_rb (~> 1.0)
