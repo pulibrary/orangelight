@@ -11,6 +11,7 @@ class CatalogController < ApplicationController
 
   before_action :redirect_browse
   before_action :deny_excessive_paging
+  before_action :update_blank_sort_param
 
   rescue_from Blacklight::Exceptions::RecordNotFound do
     alma_id = "99#{params[:id]}3506421"
@@ -818,6 +819,16 @@ class CatalogController < ApplicationController
     end
   end
 
+  def sort_by_most_recently_bookmarked(documents, user)
+    if params[:sort] == 'score desc' && bookmarks? && user
+      user.bookmarks.order(updated_at: :desc)
+          .collect { |bookmark| bookmark.document_id.to_s }
+          .filter_map { |id| documents.index_by(&:id)[id] }
+    else
+      documents
+    end
+  end
+
   private
 
     def json_request?
@@ -905,4 +916,17 @@ class CatalogController < ApplicationController
     def solrize_boolean_params
       @search_state = search_state.reset(AdvancedBooleanOperators.new(search_state.params).for_boolqparser)
     end
+
+    def bookmarks?
+      params[:controller] == 'bookmarks'
+    end
+
+    def update_blank_sort_param
+      return if params[:sort].present?
+      if bookmarks?
+        params[:sort] = 'score desc'
+      else
+        params[:sort] = 'score desc, pub_date_start_sort desc, title_sort asc'
+    end
+  end
 end
