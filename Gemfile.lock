@@ -711,7 +711,7 @@ GEM
       net-sftp (>= 2.1.2)
       net-ssh (>= 2.8.0)
       ostruct
-    stackprof (0.2.27)
+    stackprof (0.2.28)
     string_rtl (0.2.0)
     stringio (3.2.0)
     sync (0.5.0)
