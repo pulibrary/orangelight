@@ -28,6 +28,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
   let(:invalid_patron_response) { file_fixture('../bibdata_not_found_patron_response.json') }
   let(:valid_patron_response_no_ldap) { file_fixture('../bibdata_patron_response_no_ldap.json') }
   let(:affiliate_patron_response) { file_fixture('../bibdata_patron_affiliate_response.json') }
+  let(:access_patron_response) { file_fixture('../bibdata_patron_access_group_response.json') }
 
   let(:responses) do
     {
@@ -1225,6 +1226,25 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
         expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
       end
+    end
+  end
+
+  context 'A CAS user in the ACCESS user group' do
+    let(:user) { FactoryBot.create(:user) }
+    before do
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
+        .to_return(status: 200, body: access_patron_response, headers: {})
+      stub_catalog_raw(bib_id: '9997371413506421')
+      stub_holding_locations
+      stub_availability_by_holding_id(bib_id: '9997371413506421', holding_id: '22613310220006421')
+      login_as user
+    end
+    it "allows a physical pickup request of ReCAP Item" do
+      stub_single_holding_location 'recap$pa'
+      stub_scsb_availability(bib_id: "9941151723506421", institution_id: "PUL", barcode: '33333059902417')
+      visit 'requests/9941151723506421?mfhd=22492702000006421'
+      expect(page).to have_content 'Electronic Delivery'
+      expect(page).to have_content 'Physical Item Delivery'
     end
   end
 
