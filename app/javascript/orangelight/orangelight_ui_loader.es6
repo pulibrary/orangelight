@@ -3,7 +3,6 @@ import { FiggyManifestManager } from '../orangelight/figgy_manifest_manager';
 import GoogleBooksSnippets from '../orangelight/google_books_snippets.es6';
 import RelatedRecordsDisplayer from '../orangelight/related_records.es6';
 import DisplayMoreFieldComponent from '../../components/display_more_field_component.es6';
-import BookmarksSort from './bookmarks_sort.es6';
 import { handleBtnKeyDown } from './accessible_facets';
 import { orangelight } from './orangelight.es6';
 import AlertManager from './alert_manager';
@@ -14,7 +13,6 @@ export default class OrangelightUiLoader {
     this.setup_show_more_fields();
     this.setup_viewers();
     this.setup_book_covers();
-    this.setup_bookmarks_sort();
     handleBtnKeyDown();
     orangelight();
     globalThis.alertManager = new AlertManager();
@@ -67,10 +65,6 @@ export default class OrangelightUiLoader {
 
   setup_book_covers() {
     new BookCoverManager();
-  }
-
-  setup_bookmarks_sort() {
-    new BookmarksSort();
   }
 
   #documentViewers() {
