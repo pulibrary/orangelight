@@ -451,7 +451,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(email.to).to eq(["fstpage@princeton.edu"])
         expect(email.cc).to be_nil
         expect(email.html_part.body.to_s).to have_content("ABC ZZZ")
-        expect(confirm_email.subject).to eq("On Shelf Request for Firestone Library")
+        expect(confirm_email.subject).to eq("On Shelf Request (FIRESTONE$STACKS) R131.A1 M38")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.to).to eq(["a@b.com"])
