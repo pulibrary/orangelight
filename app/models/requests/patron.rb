@@ -52,7 +52,7 @@ module Requests
     end
 
     def affiliate_patron_group?
-      provider = %w[Affiliate-P Affiliate GST]
+      provider = %w[ACCESS Affiliate-P Affiliate GST]
       provider.include?(patron_group)
     end
 

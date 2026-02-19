@@ -201,4 +201,11 @@ RSpec.describe Requests::Router do
     include_context 'affiliate and guest patron group'
     it_behaves_like 'shared request type tests'
   end
+  context 'with a user in group ACCESS' do
+    let(:valid_patron) { { "netid" => "foo", "patron_group" => "ACCESS" }.with_indifferent_access }
+    include_context 'alma user'
+    include_context 'shared patron setup'
+    include_context 'affiliate and guest patron group'
+    it_behaves_like 'shared request type tests'
+  end
 end
