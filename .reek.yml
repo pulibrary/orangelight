@@ -126,7 +126,7 @@ detectors:
     - Requests::RequestHelper#login_url
     - Requests::RequestHelper#pul_patron_name
     - Requests::RequestMailer#on_shelf_email
-    - Requests::RequestMailer#paging_pick_ups
+    - Requests::RequestMailer#on_shelf_pick_ups
     - Blacklight::Document::Email#add_online_text
     - Blacklight::Document::JsonLd#data
     - Blacklight::Document::JsonLd#date
