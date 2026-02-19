@@ -31,27 +31,6 @@ FactoryBot.define do
     initialize_with { new(system_id:, mfhd:, patron_request:) }
   end
 
-  factory :request_paging_available, class: 'Requests::Form' do
-    system_id { '9960093633506421' }
-    mfhd { '2272418840006421' }
-    patron_request { Thread.new { FactoryBot.build(:patron) } }
-    initialize_with { new(system_id:, mfhd:, patron_request:) }
-  end
-
-  factory :request_paging_available_barcode_patron, class: 'Requests::Form' do
-    system_id { '9960093633506421' }
-    mfhd { '2272418840006421' }
-    patron_request { Thread.new { FactoryBot.build(:patron) } }
-    initialize_with { new(system_id:, mfhd:, patron_request:) }
-  end
-
-  factory :request_paging_available_unauthenticated_patron, class: 'Requests::Form' do
-    system_id { '9960093633506421' }
-    mfhd { '2272418840006421' }
-    patron_request { Thread.new { FactoryBot.build(:patron) } }
-    initialize_with { new(system_id:, mfhd:, patron_request:) }
-  end
-
   # missing item
   factory :request_missing_item, class: 'Requests::Form' do
     system_id { '9915486663506421' }

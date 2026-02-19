@@ -50,7 +50,7 @@ module Requests
 
     def output_request_input(requestable)
       output = ""
-      ['annex', 'pres', 'ppl', 'lewis', 'paging', 'on_order', 'on_shelf'].each do |type|
+      ['annex', 'pres', 'ppl', 'lewis', 'on_order', 'on_shelf'].each do |type|
         next unless requestable.services.include?(type)
         output = request_input(type)
         break
@@ -67,7 +67,7 @@ module Requests
       elsif requestable.services.include? 'recap_no_items'
         request_input('recap_no_items')
       else
-        request_input('paging')
+        request_input('on_shelf')
       end
     end
 
@@ -187,7 +187,7 @@ module Requests
     end
 
     def submitable_services
-      ['on_shelf', 'in_process', 'on_order', 'annex', 'annex_no_items', 'recap', 'recap_edd', 'paging', 'recap_no_items', 'ppl', 'lewis']
+      ['on_shelf', 'in_process', 'on_order', 'annex', 'annex_no_items', 'recap', 'recap_edd', 'recap_no_items', 'ppl', 'lewis']
     end
 
     def submit_message(requestable_list)

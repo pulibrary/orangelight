@@ -19,7 +19,7 @@ end
 
 # Preview all emails at http://localhost:3000/rails/mailers/request_mailer
 class RequestMailerPreview < ActionMailer::Preview
-  # Preview this email at http://localhost:3000/rails/mailers/request_mailer/pagingabc
+  # Preview this email at http://localhost:3000/rails/mailers/request_mailer/on_shelf_email
   def on_shelf_email
     user_info = {
       "first_name" => "Foo Request",
@@ -327,92 +327,6 @@ class RequestMailerPreview < ActionMailer::Preview
       }
     patron = preview_patron(user_info)
     Requests::RequestMailer.on_order_email(Requests::Submission.new(params, patron).to_h)
-  end
-
-  def paging_email
-    user_info = {
-      "first_name" => "Foo Request",
-      "last_name" => "Request",
-      "user_barcode" => "22101007797777",
-      "email" => "foo@princeton.edu",
-      "source" => "pulsearch"
-    }
-    requestable =
-      [
-        {
-          "selected" => "true",
-          "mfhd" => "9533612",
-          "call_number" => "TR465 .C666 2016",
-          "location_code" => "pres",
-          "item_id" => "3059236",
-          "barcode" => "32101044283008",
-          "copy_number" => "0",
-          "status" => "Not Charged",
-          "type" => "pres",
-          "pick_up" => "PA"
-        }.with_indifferent_access,
-        {
-          "selected" => "false"
-        }.with_indifferent_access
-      ]
-
-    bib =
-      {
-        "id" => "9712355",
-        "title" => "The atlas of water damage on inkjet-printed fine art /",
-        "author" => "Connor, Meghan Burge, Daniel Rochester Institute of Technology"
-      }
-    params =
-      {
-        request: user_info,
-        requestable:,
-        bib:
-      }
-    patron = preview_patron(user_info)
-    Requests::RequestMailer.paging_email(Requests::Submission.new(params, patron).to_h)
-  end
-
-  def paging_confirmation
-    user_info = {
-      "first_name" => "Foo Request",
-      "last_name" => "Request",
-      "user_barcode" => "22101007797777",
-      "email" => "foo@princeton.edu",
-      "source" => "pulsearch"
-    }
-    requestable =
-      [
-        {
-          "selected" => "true",
-          "mfhd" => "9533612",
-          "call_number" => "TR465 .C666 2016",
-          "location_code" => "pres",
-          "item_id" => "3059236",
-          "barcode" => "32101044283008",
-          "copy_number" => "0",
-          "status" => "Not Charged",
-          "type" => "pres",
-          "pick_up" => "PA"
-        }.with_indifferent_access,
-        {
-          "selected" => "false"
-        }.with_indifferent_access
-      ]
-
-    bib =
-      {
-        "id" => "9712355",
-        "title" => "The atlas of water damage on inkjet-printed fine art /",
-        "author" => "Connor, Meghan Burge, Daniel Rochester Institute of Technology"
-      }
-    params =
-      {
-        request: user_info,
-        requestable:,
-        bib:
-      }
-    patron = preview_patron(user_info)
-    Requests::RequestMailer.paging_confirmation(Requests::Submission.new(params, patron).to_h)
   end
 
   def ppl_confirmation

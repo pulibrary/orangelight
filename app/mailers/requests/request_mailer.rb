@@ -8,27 +8,7 @@ module Requests
     def digitize_fill_in_confirmation(submission)
       @submission = Submission.new_from_hash submission
       @delivery_mode = "edd"
-      subject = I18n.t('requests.paging.email_subject', pick_up_location: "Digitization")
-      destination_email = @submission.email
-      mail(to: destination_email,
-           from: I18n.t('requests.default.email_from'),
-           subject:)
-    end
-
-    def paging_email(submission)
-      @submission = Submission.new_from_hash submission
-      pick_ups = paging_pick_ups(submission: @submission)
-      subject = I18n.t('requests.paging.email_subject', pick_up_location: pick_ups.join(", "))
-      destination_email = "fstpage@princeton.edu"
-      mail(to: destination_email,
-           from: I18n.t('requests.default.email_from'),
-           subject:)
-    end
-
-    def paging_confirmation(submission)
-      @submission = Submission.new_from_hash submission
-      pick_ups = paging_pick_ups(submission: @submission)
-      subject = I18n.t('requests.paging.email_subject', pick_up_location: pick_ups.join(", "))
+      subject = I18n.t('requests.on_shelf.email_subject', pick_up_location: "Digitization")
       destination_email = @submission.email
       mail(to: destination_email,
            from: I18n.t('requests.default.email_from'),
@@ -243,7 +223,7 @@ module Requests
              subject: I18n.t(subject_key))
       end
 
-      def paging_pick_ups(submission:)
+      def on_shelf_pick_ups(submission:)
         @delivery_mode = submission.items[0]["delivery_mode_#{submission.items[0]['mfhd']}"]
         if @delivery_mode == "edd"
           ["Digitization"]

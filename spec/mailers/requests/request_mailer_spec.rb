@@ -82,7 +82,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
   end
 
-  context "send page record with no_items email request" do
+  context "send on shelf record with no_items email request" do
     let(:requestable) do
       [
         {
@@ -91,7 +91,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
           "location_code" => "rcppa",
           "item_id" => "10139326",
           "status" => "Not Charged",
-          "type" => "paging",
+          "type" => "on_shelf",
           "pick_up" => "PN"
         }.with_indifferent_access,
         {
@@ -119,25 +119,25 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
 
     let(:mail) do
-      described_class.send("paging_email", submission_for_no_items.to_h).deliver_later.perform_now
+      described_class.send("on_shelf_email", submission_for_no_items.to_h).deliver_later.perform_now
     end
 
     let(:confirmation) do
-      described_class.send("paging_confirmation", submission_for_no_items.to_h).deliver_later.perform_now
+      described_class.send("on_shelf_confirmation", submission_for_no_items.to_h).deliver_later.perform_now
     end
 
     it "renders the headers" do
-      expect(mail.subject).to eq("Paging Request for Lewis Library")
+      expect(mail.subject).to eq("On Shelf Request for Lewis Library")
       expect(mail.to).to eq(["fstpage@princeton.edu"])
       expect(mail.from).to eq([I18n.t('requests.default.email_from')])
-      expect(mail.body.encoded).to have_content I18n.t('requests.paging.email_conf_msg')
+      expect(mail.body.encoded).to have_content I18n.t('requests.on_shelf.email_conf_msg')
     end
 
     it "renders the confirmation" do
-      expect(confirmation.subject).to eq("Paging Request for Lewis Library")
+      expect(confirmation.subject).to eq("On Shelf Request for Lewis Library")
       expect(confirmation.to).to eq([submission_for_no_items.email])
       expect(confirmation.from).to eq([I18n.t('requests.default.email_from')])
-      expect(confirmation.body.encoded).to have_content(I18n.t('requests.paging.email_conf_msg'))
+      expect(confirmation.body.encoded).to have_content(I18n.t('requests.on_shelf.email_conf_msg'))
     end
   end
 

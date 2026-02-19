@@ -26,8 +26,6 @@ en:
       annex_in_library_success: "Request submitted. See confirmation email with details about when your item(s) will be available to view."
       marquand_edd_success: "Request submitted. See confirmation email with details about when your scan(s) will be available."
       marquand_in_library_success: "Request submitted. See confirmation email with details about when your item(s) will be available to view."
-      paging_success: "Item has been requested for pick-up"
-      # temporary changes issue 438
       on_shelf_success: "Item has been requested for pick-up"
       trace_success: "Item is now being traced."
       error: "We were unable to process your request. Correct the highlighted errors."
@@ -55,7 +53,7 @@ en:
     annex_no_items:
       email: "forranx@princeton.edu"
       email_subject: "Annex Non-Barcoded Request."
-      brief_msg: "Annex Paging Request, will be delivered to:"
+      brief_msg: "Annex On Shelf Request, will be delivered to:"
       email_msg: "A request was made for an item that has no barcode. This is likely a data issue that should be reviewed."
       email_conf_msg: "The following record has been requested:"
     anxadoc:
@@ -85,7 +83,7 @@ en:
       # temporary changes issue 438
       # brief_msg: "Item on Shelf. Consult shelf location map."
       email: "fstpage@princeton.edu"
-      email_subject: "On the Shelf Paging Request"
+      email_subject: "On Shelf Request"
       email_subject_patron: "Pick-up Request"
       brief_msg: "Requests for pick-up typically take 2 business days to process."
       email_conf_msg: "Your request for this item has been received. Once we complete our processing, you'll receive an email stating that the book is available for pick-up. Please note that if you need this item quickly, you can retrieve the book from the stacks and bring it to circulation to check out."
@@ -97,16 +95,6 @@ en:
       email_conf_msg: "On Order books have not yet been received by the library. You have placed a request to be notified when this item has arrived."
       patron_conf_msg: "On Order books have not yet been received by the library. You have placed a request to be notified when this item has arrived."
       access_msg: 'Access Users are not eligible for On Order requests.'
-    paging:
-      email_subject: "Paging Request for %{pick_up_location}"
-      status: "Items requested (online, via email, or in person) anytime before 3:00pm (weekdays) will be available for you to pick up at Circulation no later than 5:00pm the same day (and often much sooner)."
-      message: "If you have not picked up a requested book by the end of the same day, you will receive an email reminder that your book is available for you at Circulation."
-      # brief_msg: "Paging Request, will be delivered to Firestone Circulation."
-      brief_msg: "Paging Request, will be delivered to:"
-      success: "Request submitted. Please visit Firsestone Circulation at the next scheduled paging delivery time."
-      # temporary changes issue 438
-      #email_conf_msg: "Items requested anytime before 3:00pm (weekdays) will be available for you to pick up at Circulation no later than 5:00pm the same day (and often much sooner)."
-      email_conf_msg: "Your request for this item has been received. Once we complete our processing, you'll receive an email stating that the book is available for pick-up. Please note that if you need this item quickly, you can retrieve the book from the stacks and bring it to circulation to check out."
     recap_marquand:
       email_destination: 'marquandoffsite@princeton.edu'
       email_subject: "Patron Initiated Catalog Request - ReCAP"
@@ -137,7 +125,7 @@ en:
       email: "recapproblems@princeton.edu"
       email_subject: "ReCAP Non-Barcoded Request."
       # brief_msg: "Please select the delivery location for this off-site ReCAP request."
-      brief_msg: "ReCAP Paging Request, will be delivered to:"
+      brief_msg: "ReCAP On Shelf Request, will be delivered to:"
       email_msg: "A request was made on a record that has no barcoded item data. This is likely a data issue that should be corrected."
       email_conf_msg: "The following record has been requested:"
     bd:
