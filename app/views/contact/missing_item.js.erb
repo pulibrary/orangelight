@@ -1,0 +1,3 @@
+$(".flash_messages .container").html("<%= j(render partial: '/shared/flash_msg') %>");
+$(".modal").modal("hide");
+if (luxImport) { luxImport(); }
