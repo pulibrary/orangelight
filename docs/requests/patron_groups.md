@@ -36,6 +36,7 @@ We have two groupings of patron types.
 
 ## Alma Affiliate and Guest Patron Groups
 
+* ACCESS
 * Affiliate
 * Affiliate-P 
 * GST

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe AskAQuestionForm, libanswers: true do
+RSpec.describe AskAQuestionForm, libanswers: true, js: true do
   context 'when a robot fills in the hidden honeypot field' do
     before do
       visit '/ask_a_question?ask_a_question_form%5Bid%5D=99101035463506421&ask_a_question_form%5Btitle%5D=Age+of+empires+%3A+art+of+the+Qin+and+Han+dynasties+%2F+Zhixin+Jason+Sun+%3B+with+contributions+by+I-tien+Hsing%2C+Cary+Y.+Liu%2C+Pengliang+Lu%2C+Lillian+Lan-ying+Tseng%2C+Yang+Hong%2C+Robin+D.+S.+Yates%2C+Zhonglin+Yukina+Zhang.'

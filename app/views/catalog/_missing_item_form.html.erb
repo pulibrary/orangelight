@@ -16,7 +16,10 @@
     <%= f.input_field :message, as: :text, style: "width: 100%" %><br>
     <%= f.input :context, as: :hidden %>
     <%= f.input :title, as: :hidden %>
-    <%= f.input :feedback_desc, as: :hidden %>
+    <div class="visually-hidden">
+      <%= f.label :feedback_desc %>
+      <%= f.input_field :feedback_desc %>
+    </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bl-dismiss="modal">Cancel</button>
       <%= f.submit "Send", class: "btn btn-primary", id: 'submit-question' %>

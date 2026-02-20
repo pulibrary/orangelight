@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe SuggestCorrectionForm, libanswers: true do
+RSpec.describe SuggestCorrectionForm, libanswers: true, js: true do
   context 'when a robot fills in the hidden honeypot field' do
     before do
       visit '/suggest_correction?suggest_correction_form[id]=99105509673506421&suggest_correction_form[title]=Princeton+international.'

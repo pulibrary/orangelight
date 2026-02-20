@@ -39,10 +39,10 @@ RSpec.describe "feedback forms", type: :request, libanswers: true do
         action: "question",
         ask_a_question_form: {
           name: "TestUser", email: "test@test-domain.org", message: "Why?"
-        }
+        }, format: :js
       }
       expect(response).to be_successful
-      expect(flash[:success]).to eq('Your question has been submitted')
+      expect(flash.now[:success]).to eq('Your question has been submitted')
     end
   end
 end

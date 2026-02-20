@@ -43,17 +43,17 @@ module Requests
     end
 
     def patron_group
-      patron_hash[:patron_group]
+      patron_hash[:patron_group]&.downcase
     end
 
     def core_patron_group?
-      core_patron_groups = %w[P REG GRAD SENR UGRD SUM]
+      core_patron_groups = %w[p reg grad senr ugrd sum]
       core_patron_groups.include?(patron_group)
     end
 
     def affiliate_patron_group?
-      provider = %w[Affiliate-P Affiliate GST]
-      provider.include?(patron_group)
+      affiliate_patron_groups = %w[access affiliate-p affiliate gst]
+      affiliate_patron_groups.include?(patron_group)
     end
 
     def university_id
