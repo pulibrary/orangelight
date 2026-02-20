@@ -269,7 +269,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(email.cc).to be_blank
         expect(email.html_part.body.to_s).to have_content("John Webster; a critical study")
         expect(email.html_part.body.to_s).not_to have_content("9912636153506421") # does not show detailed metadata
-        expect(confirm_email.subject).to eq("On Shelf Request for Firestone Library")
+        expect(confirm_email.subject).to eq("Firestone Library On Shelf Request")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.to).to eq(["a@b.com"])
@@ -413,7 +413,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(email.to).to eq(["lewislib@princeton.edu"])
         expect(email.cc).to be_nil
         expect(email.html_part.body.to_s).to have_content("The decomposition of global conformal invariants")
-        expect(confirm_email.subject).to eq("Lewis Library Pick-up Request")
+        expect(confirm_email.subject).to eq("Lewis Library On Shelf Request")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.to).to eq(["a@b.com"])
@@ -451,7 +451,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(email.to).to eq(["fstpage@princeton.edu"])
         expect(email.cc).to be_nil
         expect(email.html_part.body.to_s).to have_content("ABC ZZZ")
-        expect(confirm_email.subject).to eq("On Shelf Request for Firestone Library")
+        expect(confirm_email.subject).to eq("Firestone Library On Shelf Request")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.to).to eq(["a@b.com"])
@@ -506,7 +506,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         confirm_email = ActionMailer::Base.deliveries.last
         expect(email.subject).to eq("On Shelf Request (ARCH$STACKS) NA1585.A23 S7 2020")
         expect(email.html_part.body.to_s).to have_content("Abdelhalim Ibrahim Abdelhalim : an architecture of collective memory")
-        expect(confirm_email.subject).to eq("Architecture Library Pick-up Request")
+        expect(confirm_email.subject).to eq("Architecture Library On Shelf Request")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.html_part.body.to_s).to have_content("Your request for this item has been received. Once we complete our processing, you'll receive an email stating that the book is available for pick-up. Please note that if you need this item quickly, you can retrieve the book from the stacks and bring it to circulation to check out.")
@@ -838,7 +838,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(email.html_part.body.to_s).to have_content("Han'guk hyŏndaesa sanch'aek. No Mu-hyŏn sidae ŭi myŏngam")
         expect(email.html_part.body.to_s).to have_content("vol.5")
         expect(email.text_part.body.to_s).to have_content("vol.5")
-        expect(confirm_email.subject).to eq("East Asian Library Pick-up Request")
+        expect(confirm_email.subject).to eq("East Asian Library On Shelf Request")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.to).to eq(["a@b.com"])

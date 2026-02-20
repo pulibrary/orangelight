@@ -84,7 +84,7 @@ en:
       # brief_msg: "Item on Shelf. Consult shelf location map."
       email: "fstpage@princeton.edu"
       email_subject: "On Shelf Request"
-      email_subject_patron: "Pick-up Request"
+      email_subject_patron: "On Shelf Request"
       brief_msg: "Requests for pick-up typically take 2 business days to process."
       email_conf_msg: "Your request for this item has been received. Once we complete our processing, you'll receive an email stating that the book is available for pick-up. Please note that if you need this item quickly, you can retrieve the book from the stacks and bring it to circulation to check out."
       access_msg: 'Access Users must obtain a pass to enter the Library.'
