@@ -12,6 +12,19 @@ RSpec.describe Requests::ServiceEligibility::ILL, requests: true do
           alma_managed?: true,
           aeon?: false,
           charged?: true,
+          marquand_item?: false,
+          requested?: false
+        )
+
+      expect(eligibility.eligible?).to be(true)
+    end
+
+    it 'returns true if the item is requested' do
+      allow(requestable).to receive_messages(
+          aeon?: false,
+          alma_managed?: true,
+          charged?: false,
+          requested?: true,
           marquand_item?: false
         )
 
@@ -23,6 +36,7 @@ RSpec.describe Requests::ServiceEligibility::ILL, requests: true do
           aeon?: true,
           alma_managed?: true,
           charged?: true,
+          requested?: false,
           marquand_item?: false
         )
 
@@ -37,6 +51,7 @@ RSpec.describe Requests::ServiceEligibility::ILL, requests: true do
           alma_managed?: true,
           aeon?: false,
           charged?: true,
+          requested?: true,
           marquand_item?: false
         )
 
@@ -50,6 +65,7 @@ RSpec.describe Requests::ServiceEligibility::ILL, requests: true do
             alma_managed?: true,
             aeon?: false,
             charged?: true,
+            requested?: false,
             marquand_item?: true
           )
 
