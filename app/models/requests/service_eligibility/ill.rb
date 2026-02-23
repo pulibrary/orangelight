@@ -21,7 +21,7 @@ module Requests
         private
 
           def requestable_eligible?
-            !requestable.aeon? && requestable.charged? && !requestable.marquand_item? &&
+            !requestable.aeon? && (requestable.charged? || requestable.requested?) && !requestable.marquand_item? &&
               (!any_loanable || requestable.enumerated? || requestable.preservation_conservation?)
           end
 
