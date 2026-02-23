@@ -43,7 +43,6 @@ en:
       confirmation: 'Thank you for your comments. They are helpful as we work to improve this Library service.'
       ticket_submission_error: 'The feedback form is encountering a processing error related to your submission. For assistance, please reach out via email at ereference@princeton.edu.'
     holdings:
-      paging_request: 'Paging request only'
       linked: 'Other versions'
       online: 'Available Online'
       print: 'Copies in the Library'

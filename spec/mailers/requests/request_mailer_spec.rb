@@ -82,65 +82,6 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
   end
 
-  context "send page record with no_items email request" do
-    let(:requestable) do
-      [
-        {
-          "selected" => "true",
-          "mfhd" => "9929080",
-          "location_code" => "rcppa",
-          "item_id" => "10139326",
-          "status" => "Not Charged",
-          "type" => "paging",
-          "pick_up" => "PN"
-        }.with_indifferent_access,
-        {
-          "selected" => "false"
-        }.with_indifferent_access
-      ]
-    end
-    let(:bib) do
-      {
-        "id" => "10139326",
-        "title" => "Abhath fi al-tasawwuf wa al-turuq al-sufiyah: al-zawayah wa al-marja'iyah al-diniyah..",
-        "author" => "Jab al-Khayr, Sa'id"
-      }.with_indifferent_access
-    end
-    let(:params) do
-      {
-        request: user_info,
-        requestable:,
-        bib:
-      }
-    end
-
-    let(:submission_for_no_items) do
-      Requests::Submission.new(params, user_info)
-    end
-
-    let(:mail) do
-      described_class.send("paging_email", submission_for_no_items.to_h).deliver_later.perform_now
-    end
-
-    let(:confirmation) do
-      described_class.send("paging_confirmation", submission_for_no_items.to_h).deliver_later.perform_now
-    end
-
-    it "renders the headers" do
-      expect(mail.subject).to eq("Paging Request for Lewis Library")
-      expect(mail.to).to eq(["fstpage@princeton.edu"])
-      expect(mail.from).to eq([I18n.t('requests.default.email_from')])
-      expect(mail.body.encoded).to have_content I18n.t('requests.paging.email_conf_msg')
-    end
-
-    it "renders the confirmation" do
-      expect(confirmation.subject).to eq("Paging Request for Lewis Library")
-      expect(confirmation.to).to eq([submission_for_no_items.email])
-      expect(confirmation.from).to eq([I18n.t('requests.default.email_from')])
-      expect(confirmation.body.encoded).to have_content(I18n.t('requests.paging.email_conf_msg'))
-    end
-  end
-
   context "send annex email request" do
     let(:requestable) do
       [
