@@ -50,6 +50,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
       let(:stubbed_questions) do
         { alma_managed?: true, in_process?: false,
           charged?: false, on_order?: false, aeon?: false,
+          requested?: false,
           annex?: false,
           recap?: false, recap_pf?: false, held_at_marquand_library?: false, marquand_library?: false,
           item_data?: false, recap_edd?: false, scsb_in_library_use?: false, item:,
@@ -211,6 +212,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
       context "ill enumerate item" do
         before do
           stubbed_questions[:charged?] = true
+          stubbed_questions[:requested?] = false
           stubbed_questions[:enumerated?] = true
           stubbed_questions[:marquand_item?] = false
         end
@@ -235,6 +237,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
           stubbed_questions[:marquand_item?] = true
           stubbed_questions[:marquand_library?] = true
           stubbed_questions[:charged?] = true
+          stubbed_questions[:requested?] = false
         end
         it "returns marquand_page_charged_item in the services" do
           expect(router.calculate_services).to eq(['marquand_page_charged_item'])

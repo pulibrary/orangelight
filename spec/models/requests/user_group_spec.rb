@@ -5,6 +5,7 @@ RSpec.shared_examples 'shared request type tests' do
   let(:stubbed_questions) do
     { alma_managed?: true, in_process?: false,
       charged?: false, on_order?: false, aeon?: false,
+      requested?: false,
       annex?: false,
       recap?: false, recap_pf?: false, held_at_marquand_library?: false, marquand_library?: false,
       item_data?: false, recap_edd?: false, scsb_in_library_use?: false, item:,
