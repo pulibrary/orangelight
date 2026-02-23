@@ -17,6 +17,7 @@ module Requests
     def items_by_mfhd(system_id, mfhd_id)
       response = bibdata_conn.get "/bibliographic/#{system_id}/holdings/#{mfhd_id}/availability.json"
       parse_response(response)
+      # [{"barcode" => "32101098997032", "id" => "23664271880006421", "holding_id" => "22664271890006421", "copy_number" => "0", "status" => "Available", "status_label" => "Item in place", "status_source" => "base_status", "process_type" => nil, "on_reserve" => "N", "item_type" => "Gen", "pickup_location_id" => "firestone", "pickup_location_code" => "firestone", "location" => "firestone$stacks", "label" => "Firestone Library - Stacks", "description" => "", "enum_display" => "", "chron_display" => "", "requested" => false, "in_temp_library" => false}]
     end
 
     def get_location_data(location_code)

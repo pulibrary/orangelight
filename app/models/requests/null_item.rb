@@ -79,6 +79,10 @@ module Requests
       false
     end
 
+    def requested?
+      false
+    end
+
     def status_label
       ''
     end
