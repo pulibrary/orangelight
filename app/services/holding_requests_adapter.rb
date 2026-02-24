@@ -75,7 +75,7 @@ class HoldingRequestsAdapter
   # @return [Array<String>]
   def restrictions
     doc_holdings_physical.each_value.map { |holding| restrictions_for_holding(holding) }
-                         .flatten.compact.uniq
+                                    .flatten.compact.uniq
   end
 
   # Determine whether or not the catalog record is for a periodical
