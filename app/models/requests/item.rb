@@ -82,6 +82,10 @@ module Requests
       unavailable_statuses.include?(status_label)
     end
 
+    def requested?
+      self[:requested] == true
+    end
+
     def status
       # SCSB still returns a status of "Not Available", which we should change to "Unavailable"
       return self[:status] if self[:status].present? && self[:status] != "Not Available"
