@@ -5,6 +5,8 @@ require 'csv'
 class BookmarksController < CatalogController
   include Blacklight::Bookmarks
 
+  before_action :update_blank_sort_param
+
   configure_blacklight do |_config|
     blacklight_config.show.document_actions[:print] =
       {
@@ -48,6 +50,15 @@ class BookmarksController < CatalogController
   def csv
     fetch_bookmarked_documents
     send_data csv_output, type: 'text/csv', filename: "bookmarks-#{Time.zone.today}.csv"
+  end
+
+  def update_blank_sort_param
+    return if params[:sort].present?
+    params[:sort] = if controller_path == 'bookmarks'
+                    'score desc'
+                    else
+                    'score desc, pub_date_start_sort desc, title_sort asc'
+                    end
   end
 
   private
