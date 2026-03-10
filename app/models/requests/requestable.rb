@@ -28,7 +28,7 @@ module Requests
 
     delegate :pick_up_location_code, :item_type, :enum_value, :cron_value, :item_data?,
              :temp_loc_other_than_resource_sharing?, :on_reserve?, :enumerated?, :item_type_non_circulate?, :partner_holding?,
-             :id, :use_statement, :collection_code, :charged?, :status, :status_label, :barcode?, :barcode, :preservation_conservation?, to: :item
+             :id, :use_statement, :collection_code, :charged?, :status, :status_label, :barcode?, :barcode, :preservation_conservation?, :requested?, to: :item
 
     delegate :annex?, :location_label, to: :location_object
 
