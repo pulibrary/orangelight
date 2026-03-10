@@ -5,14 +5,11 @@ require './lib/orangelight/illiad_account'
 module Requests
   # Creates patron for Illiad requests
   class IlliadPatron < IlliadClient
-    attr_reader :netid, :patron_id, :patron, :attributes
+    attr_reader :patron
 
     def initialize(patron)
       super()
       @patron = patron
-      @patron_id = patron.patron_id
-      @netid = patron.netid
-      @attributes = illiad_patron_attributes
     end
 
     def illiad_patron
@@ -27,21 +24,33 @@ module Requests
       patron_response
     end
 
-    private
+    # These attributes are used to create a new ILLiad account for a user who
+    # does not have one yet.
+    def attributes
+      @attributes ||= if status.blank? || illiad_status.blank?
+                        {}
+                      else
+                        {
+                          "Username" => netid, "ExternalUserId" => netid, "FirstName" => patron.first_name,
+                          "LastName" => patron.last_name, "LoanDeliveryMethod" => "Hold for Pickup", "NotificationMethod" => "Electronic",
+                          "EmailAddress" => patron.active_email, "DeliveryMethod" => "Hold for Pickup",
+                          "Phone" => patron.telephone, "Status" => illiad_status, "Number" => patron.university_id,
+                          "AuthType" => "Default", "NVTGC" => "ILL", "Department" => department, "Web" => true,
+                          "Address" => addresses&.shift, "Address2" => addresses&.join(', '), "City" => "Princeton", "State" => "NJ",
+                          "Zip" => "08544", "SSN" => patron.barcode, "Cleared" => "Yes", "Site" => "Firestone"
+                        }
+                      end
+    end
 
-      def illiad_patron_attributes
-        return {} if status.blank?
-        return {} if illiad_status.blank?
-        {
-          "Username" => netid, "ExternalUserId" => netid, "FirstName" => patron.first_name,
-          "LastName" => patron.last_name, "LoanDeliveryMethod" => "Hold for Pickup", "NotificationMethod" => "Electronic",
-          "EmailAddress" => patron.active_email, "DeliveryMethod" => "Hold for Pickup",
-          "Phone" => patron.telephone, "Status" => illiad_status, "Number" => patron.university_id,
-          "AuthType" => "Default", "NVTGC" => "ILL", "Department" => department, "Web" => true,
-          "Address" => addresses&.shift, "Address2" => addresses&.join(', '), "City" => "Princeton", "State" => "NJ",
-          "Zip" => "08544", "SSN" => patron.barcode, "Cleared" => "Yes", "Site" => "Firestone"
-        }
-      end
+    def netid
+      @netid ||= patron.netid
+    end
+
+    def patron_id
+      @patron_id ||= patron.patron_id
+    end
+
+    private
 
       def addresses
         @addresses ||= patron.address&.split('$')
