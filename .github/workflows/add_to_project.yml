@@ -1,0 +1,17 @@
+name: Adds all maintenance issues to DACS maintenance board
+on:
+  issues:
+    types:
+      - opened
+      - labeled
+
+jobs:
+  add-to-project:
+    name: Add issue to project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/add-to-project@1.0.2
+        with:
+          project-url: https://github.com/orgs/pulibrary/projects/55
+          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
+          labeled: maintenance
