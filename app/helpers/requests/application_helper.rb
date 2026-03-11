@@ -77,24 +77,13 @@ module Requests
       end
     end
 
-    # rubocop:disable Style/NumericPredicate
     def enum_copy_display(item)
       return "" if item.blank?
       [item.description, item.copy_value].join(" ").strip
     end
-    # rubocop:enable Style/NumericPredicate
 
     def request_input(type)
       hidden_field_tag "requestable[][type]", "", value: type
-    end
-
-    def gfa_lookup(lib_code)
-      if lib_code == "firestone"
-        "PA"
-      else
-        lib = Requests::BibdataService.delivery_locations.select { |_key, hash| hash["library"]["code"] == lib_code }
-        lib.keys.first.to_s
-      end
     end
 
     def pick_up_classlist(requestable, collapse)
@@ -105,17 +94,17 @@ module Requests
 
     # move this to requestable object
     # Default pick-ups should be available
-    def pick_up_choices(requestable, default_pick_ups, collapse = false)
+    def pick_up_choices(form:, requestable:, collapse: false)
       content_tag(:div, id: "fields-print__#{requestable.preferred_request_id}", class: pick_up_classlist(requestable, collapse)) do
-        preferred_request_content_tag(requestable, requestable.pick_up_locations || default_pick_ups)
+        preferred_request_content_tag(requestable:, form:)
       end
     end
 
     # :reek:NilCheck
-    def preferred_request_content_tag(requestable, default_pick_ups)
+    def preferred_request_content_tag(requestable:, form:)
       (show_pick_up_service_options(requestable, nil) || "".html_safe) +
         content_tag(:div, id: "fields-print__#{requestable.preferred_request_id}_card", class: "card card-body bg-light") do
-          locs = pick_up_locations(requestable, default_pick_ups)
+          locs = Requests::PickUpLocations::PickUpLocationsFactory.new(form:, requestable:).call
 
           name = 'requestable[][pick_up]'
           id = "requestable__pick_up_#{requestable.preferred_request_id}"
@@ -249,13 +238,6 @@ module Requests
       end
     end
 
-    def self.recap_annex_available_pick_ups(requestable, default_pick_ups)
-      locations = requestable.pick_up_locations || default_pick_ups
-      pick_ups = locations.select { |loc| Requests::Location.valid_recap_annex_pickup?(loc) }
-      pick_ups << default_pick_ups[0] if pick_ups.empty?
-      pick_ups
-    end
-
     private
 
       def custom_pickup_prompt(requestable, locs)
@@ -367,25 +349,6 @@ module Requests
         content_tag(:div) do
           display_requestable_list(requestable)
         end
-      end
-
-      def pick_up_locations(requestable, default_pick_ups)
-        # we don't want to change the ill_eligible rules
-        return ill_eligible_pick_up_location(default_pick_ups) if requestable.ill_eligible?
-        return Requests::ApplicationHelper.recap_annex_available_pick_ups(requestable, default_pick_ups) if requestable.recap? || requestable.annex?
-        return default_pick_ups if requestable.location&.standard_circ_location?
-        if requestable.delivery_location_label.present?
-          [{ label: requestable.delivery_location_label, gfa_pickup: requestable.delivery_location_code, pick_up_location_code: requestable.pick_up_location_code, staff_only: false }]
-        else
-          [{ label: requestable.location.library_label, gfa_pickup: gfa_lookup(requestable.location.library_code), staff_only: false }]
-        end
-      end
-
-      # :reek:UtilityFunction
-      def ill_eligible_pick_up_location(default_pick_ups)
-        # currently for resource sharing items through Illiad we use firestone Library with gfa_pickup of PA
-        location = default_pick_ups.find { |location| location[:gfa_pickup] == "PA" }
-        [location].compact
       end
 
       def single_pickup(is_charged, name, id, location)

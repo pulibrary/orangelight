@@ -3,7 +3,7 @@
         <%= radio_button_tag "requestable[][delivery_mode_#{requestable.preferred_request_id}]", 'in_library', selected, data: { target: "#fields-print__#{requestable.preferred_request_id}" }, 'aria-controls' => "fields-print__#{requestable.preferred_request_id}", class: 'control-label' %>
         <%= label_tag "requestable[][delivery_mode_#{requestable.preferred_request_id}_in_library]", I18n.t("requests.#{requestable.off_site_location}_in_library.delivery_label"), class: 'control-label', id: "requestable__type_#{requestable.off_site_location}_label_#{requestable.preferred_request_id}" %>
         <% if requestable.annex? %>
-          <%= pick_up_choices requestable, default_pick_ups, !selected %>
+          <%= pick_up_choices(form:, requestable:, collapse: !selected) %>
         <% else %>
             <div id="fields-print__<%=requestable.preferred_request_id%>" class="<%= pick_up_classlist(requestable, !selected) %>" >
             <ul class="service-list">

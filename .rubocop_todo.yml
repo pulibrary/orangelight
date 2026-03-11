@@ -204,7 +204,6 @@ Lint/RaiseException:
 # This cop supports safe autocorrection (--autocorrect).
 Lint/RedundantCopDisableDirective:
   Exclude:
-    - 'app/helpers/requests/application_helper.rb'
     - 'spec/mailers/requests/request_mailer_spec.rb'
 
 # Offense count: 1
@@ -305,12 +304,6 @@ Naming/VariableNumber:
     - 'spec/helpers/series_results_spec.rb'
     - 'spec/models/orangelight/call_number_spec.rb'
     - 'spec/models/solr_document_spec.rb'
-
-# Offense count: 1
-# Configuration parameters: MinSize.
-Performance/CollectionLiteralInLoop:
-  Exclude:
-    - 'app/helpers/requests/application_helper.rb'
 
 # Offense count: 1
 # This cop supports unsafe autocorrection (--autocorrect-all).
@@ -1022,7 +1015,6 @@ Style/HashEachMethods:
 # SupportedShorthandSyntax: always, never, either, consistent, either_consistent
 Style/HashSyntax:
   Exclude:
-    - 'app/helpers/requests/application_helper.rb'
     - 'app/views/catalog/_document_default.atom.builder'
     - 'spec/requests/application_spec.rb'
 
@@ -1084,7 +1076,6 @@ Style/NegatedIfElseCondition:
 # AllowedMethods: respond_to_missing?
 Style/OptionalBooleanParameter:
   Exclude:
-    - 'app/helpers/requests/application_helper.rb'
     - 'app/models/concerns/blacklight/document/json_ld.rb'
 
 # Offense count: 145

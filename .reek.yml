@@ -117,7 +117,6 @@ detectors:
     - Requests::ApplicationHelper#hidden_fields_mfhd
     - Requests::ApplicationHelper#hidden_service_options
     - Requests::ApplicationHelper#item_checkbox
-    - Requests::ApplicationHelper#pick_up_locations
     - Requests::ApplicationHelper#preferred_request_content_tag
     - Requests::ApplicationHelper#show_service_options
     - Requests::ApplicationHelper#submit_button_disabled?
@@ -167,8 +166,6 @@ detectors:
     - Requests::Item#copy_value
     - Requests::Item#status
     - Requests::Location#sort_pick_ups
-    - Requests::Requestable#pick_up_locations
-    - Requests::Requestable#scsb_pick_up_override
     - Requests::SelectedItemsValidator#validate
     - Requests::SelectedItemsValidator#validate_delivery_mode
     - Requests::SelectedItemsValidator#validate_selected
@@ -228,7 +225,6 @@ detectors:
     - Requests::ApplicationHelper#display_status
     - Requests::ApplicationHelper#hidden_fields_mfhd
     - Requests::ApplicationHelper#item_checkbox
-    - Requests::ApplicationHelper#pick_up_locations
     - Requests::ApplicationHelper#single_pickup
     - Requests::ApplicationHelper#system_status_label
     - Blacklight::Document::DublinCore#export_as_oai_dc_xml
@@ -785,7 +781,6 @@ detectors:
     - Requests::ApplicationHelper#display_label
     - Requests::ApplicationHelper#enum_copy_display
     - Requests::ApplicationHelper#format_label
-    - Requests::ApplicationHelper#gfa_lookup
     - Requests::ApplicationHelper#guest_user_error?
     - Requests::ApplicationHelper#pick_up_classlist
     - Requests::ApplicationHelper#submit_message

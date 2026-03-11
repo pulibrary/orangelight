@@ -2,6 +2,8 @@
 require "rails_helper"
 
 RSpec.describe Requests::RequestableFormOptionComponent, :requests, type: :component do
+  before { stub_delivery_locations }
+
   it 'offers both a digitize and pick up option if both are eligible' do
     with_controller_class Requests::FormController do
       mfhd = '22701449030006421'
@@ -15,7 +17,7 @@ RSpec.describe Requests::RequestableFormOptionComponent, :requests, type: :compo
         preferred_request_id: '23701449010006421', bib: bib, holding: holding, item_location_code: 'firestone$stacks',
         item?: true, item:, partner_holding?: false, status_badge:, use_restriction?: false, holding_library: 'firestone',
         services: ['on_shelf_edd', 'on_shelf'], fill_in_pick_up?: true,
-        pick_up_locations: [{ "label" => "Firestone Library" }], on_shelf?: true,
+        on_shelf?: true,
         ill_eligible?: false, location: Requests::Location.new({ 'code' => 'firestone$stacks', 'fulfillment_unit' => 'General' }), charged?: false,
         off_site_location: 'firestone', enum_value: '', cron_value: '', illiad_request_parameters: {},
         location_label: 'Firestone Library - Stacks', call_number: 'Q125 .S35 2007', patron_should_contact_marquand?: false,
@@ -23,7 +25,7 @@ RSpec.describe Requests::RequestableFormOptionComponent, :requests, type: :compo
       )
       default_pick_ups = [{ label: "Firestone Library", gfa_pickup: "PF", pick_up_location_code: "firestone", staff_only: false }]
       form = double Requests::Form
-      allow(form).to receive_messages ctx: OpenURL::ContextObject.new, single_item_request?: true
+      allow(form).to receive_messages ctx: OpenURL::ContextObject.new, single_item_request?: true, default_pick_ups: default_pick_ups
       patron = double Requests::Patron
 
       component = described_class.new(requestable:, mfhd:, default_pick_ups:, form:, patron:)

@@ -11,6 +11,8 @@ module Requests
       @bibdata_location = {}.with_indifferent_access
     end
 
+    delegate :[], to: :to_h
+
     def code
       return nil if bibdata_location.blank?
       bibdata_location['code']
