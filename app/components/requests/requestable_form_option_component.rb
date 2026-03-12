@@ -50,7 +50,7 @@ module Requests
         end
 
         def locals
-          { requestable: requestable, mfhd: mfhd, default_pick_ups: default_pick_ups, request_context: form.ctx, single_item_request: form.single_item_request? }
+          { requestable: requestable, mfhd: mfhd, default_pick_ups: default_pick_ups, request_context: form.ctx, single_item_request: form.single_item_request?, form: }
         end
 
         attr_reader :requestable, :mfhd, :default_pick_ups, :form, :patron

@@ -8,7 +8,7 @@
     <% end %>
     <%= hidden_field_tag "requestable[][type]", "", value: requestable.services.first %>
     <% if requestable.on_order? || requestable.in_process? %>
-      <%= pick_up_choices requestable, default_pick_ups %>
+      <%= pick_up_choices(form:, requestable:, collapse: false) %>
     <% else %>
       <%= show_service_options requestable, mfhd %>
     <% end %>

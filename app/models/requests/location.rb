@@ -11,6 +11,8 @@ module Requests
       @bibdata_location = {}.with_indifferent_access
     end
 
+    delegate :[], to: :to_h
+
     def code
       return nil if bibdata_location.blank?
       bibdata_location['code']
@@ -85,10 +87,6 @@ module Requests
       return false if code.blank?
 
       code.start_with?("arch$", "eastasian$", "engineer$", "firestone$", "plasma$", "lewis", "mendel$", "stokes$") && fulfillment_unit == 'General'
-    end
-
-    def self.valid_recap_annex_pickup?(location_hash)
-      ['PA', 'PB', 'PF', 'PJ', 'PK', 'PL', 'PM', 'PT', 'PW', 'QA', 'QC', 'QL', 'QP', 'QT', 'QX'].include?(location_hash[:gfa_pickup])
     end
 
     ## Accepts an array of location hashes and sorts them according to our quirks

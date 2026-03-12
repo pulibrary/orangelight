@@ -1,0 +1,35 @@
+{
+    "label": "East Asian Library (Gest) Rare Books",
+    "code": "rare$crare",
+    "aeon_location": true,
+    "recap_electronic_delivery_location": false,
+    "open": true,
+    "requestable": true,
+    "always_requestable": true,
+    "circulates": false,
+    "remote_storage": "",
+    "fulfillment_unit": "Closed",
+    "library": {
+        "label": "Special Collections",
+        "code": "rare",
+        "order": 0
+    },
+    "holding_library": null,
+    "delivery_locations": [
+        {
+            "label": "East Asian Library",
+            "address": "Frist Campus Center, Room 317 Princeton, NJ 08544",
+            "phone_number": "609-258-3182",
+            "contact_email": "gestcirc@princeton.edu",
+            "gfa_pickup": "PL",
+            "staff_only": false,
+            "pickup_location": true,
+            "digital_location": true,
+            "library": {
+                "label": "East Asian Library",
+                "code": "eastasian",
+                "order": 0
+            }
+        }
+    ]
+}

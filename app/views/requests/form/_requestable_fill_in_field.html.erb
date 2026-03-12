@@ -21,7 +21,7 @@
     <% selected = !(requestable.fill_in_pick_up? && requestable.fill_in_digitize?) %>
     <% collapse = selected ? "" : "collapse"%>
     <% if requestable.fill_in_pick_up? %>
-      <%= render partial: 'requestable_delivery_option_pick_up', locals: { requestable: requestable, mfhd: @mfhd, default_pick_ups: default_pick_ups, request_context: @request.ctx, selected: selected, fill_in: true } %>
+      <%= render partial: 'requestable_delivery_option_pick_up', locals: { requestable: requestable, mfhd: @mfhd, default_pick_ups: default_pick_ups, request_context: @request.ctx, selected: selected, fill_in: true, form: @request } %>
     <% end %>
     <% if requestable.fill_in_digitize? %>
       <%= render partial: 'requestable_delivery_option_digitize', locals: { requestable: requestable, request_context: @request.ctx, collapse: collapse, selected: selected, type: 'digitize_fill_in', fill_in: true } %>

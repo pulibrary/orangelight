@@ -44,12 +44,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
 
-    describe '#pick_up_locations' do
-      it 'has pickup locations' do
-        expect(requestable.pick_up_locations).to eq([{ "label" => "Firestone Library", "address" => "One Washington Rd. Princeton, NJ 08544", "phone_number" => "609-258-1470", "contact_email" => "fstcirc@princeton.edu", "gfa_pickup" => "PA", "staff_only" => false, "pickup_location" => true, "digital_location" => true, "library" => { "label" => "Firestone Library", "code" => "firestone", "order" => 0 }, "pick_up_location_code" => "firestone" }])
-      end
-    end
-
     describe "#held_at_marquand_library?" do
       it "is not marquand" do
         expect(requestable).not_to be_held_at_marquand_library
@@ -83,12 +77,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
 
-    describe '#pick_up_locations' do
-      it 'has pickup locations' do
-        expect(requestable.first.pick_up_locations).to eq([{ "label" => "Lewis Library", "address" => "Washington Road and Ivy Lane Princeton, NJ 08544", "phone_number" => "609-258-6004", "contact_email" => "lewislib@princeton.edu", "gfa_pickup" => "PN", "staff_only" => false, "pickup_location" => true, "digital_location" => true, "library" => { "label" => "Lewis Library", "code" => "lewis", "order" => 0 }, "pick_up_location_code" => "lewis" }])
-      end
-    end
-
     describe "#held_at_marquand_library?" do
       it "is not marquand" do
         expect(requestable.first).not_to be_held_at_marquand_library
@@ -115,12 +103,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe '#location_label' do
       it 'has a location label' do
         expect(requestable_on_hold.location_label).to eq('Firestone Library - Stacks')
-      end
-    end
-
-    describe '#pick_up_locations' do
-      it 'has pickup locations' do
-        expect(requestable_on_hold.pick_up_locations).to eq([{ "label" => "Firestone Library", "address" => "One Washington Rd. Princeton, NJ 08544", "phone_number" => "609-258-1470", "contact_email" => "fstcirc@princeton.edu", "gfa_pickup" => "PA", "staff_only" => false, "pickup_location" => true, "digital_location" => true, "library" => { "label" => "Firestone Library", "code" => "firestone", "order" => 0 }, "pick_up_location_code" => "firestone" }])
       end
     end
 
@@ -176,12 +158,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
 
-    describe '#pick_up_locations' do
-      it 'has pickup locations' do
-        expect(requestable.pick_up_locations).to eq([{ "label" => "Firestone Library", "address" => "One Washington Rd. Princeton, NJ 08544", "phone_number" => "609-258-1470", "contact_email" => "fstcirc@princeton.edu", "gfa_pickup" => "PA", "staff_only" => false, "pickup_location" => true, "digital_location" => true, "library" => { "label" => "Firestone Library", "code" => "firestone", "order" => 0 }, "pick_up_location_code" => "firestone" }])
-      end
-    end
-
     describe "#held_at_marquand_library?" do
       it "is not marquand" do
         expect(requestable).not_to be_held_at_marquand_library
@@ -217,12 +193,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
 
-    describe '#pick_up_locations' do
-      it 'has pickup locations' do
-        expect(requestable.pick_up_locations).to eq([{ "label" => "East Asian Library", "address" => "Frist Campus Center, Room 317 Princeton, NJ 08544", "phone_number" => "609-258-3182", "contact_email" => "gestcirc@princeton.edu", "gfa_pickup" => "PL", "staff_only" => false, "pickup_location" => true, "digital_location" => true, "library" => { "label" => "East Asian Library", "code" => "eastasian", "order" => 0 }, "pick_up_location_code" => "eastasian" }])
-      end
-    end
-
     describe "#held_at_marquand_library?" do
       it "is not marquand" do
         expect(requestable).not_to be_held_at_marquand_library
@@ -253,12 +223,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
 
-    describe '#pick_up_locations' do
-      it 'has pickup locations' do
-        expect(requestable.pick_up_locations).to eq([{ "label" => "Special Collections", "address" => "One Washington Rd. Princeton, NJ 08544", "phone_number" => "609-258-1470", "contact_email" => "rbsc@princeton.edu", "gfa_pickup" => "PG", "staff_only" => false, "pickup_location" => false, "digital_location" => true, "library" => { "label" => "Firestone Library", "code" => "firestone", "order" => 0 }, "pick_up_location_code" => "firestone" }])
-      end
-    end
-
     describe "#held_at_marquand_library?" do
       it "is not marquand" do
         expect(requestable).not_to be_held_at_marquand_library
@@ -282,12 +246,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe '#location_label' do
       it 'has a location label' do
         expect(requestable.location_label).to eq('Special Collections - Rare Books')
-      end
-    end
-
-    describe '#pick_up_locations' do
-      it 'has pickup locations' do
-        expect(requestable.pick_up_locations).to eq([{ "label" => "Special Collections", "address" => "One Washington Rd. Princeton, NJ 08544", "phone_number" => "609-258-1470", "contact_email" => "rbsc@princeton.edu", "gfa_pickup" => "PG", "staff_only" => false, "pickup_location" => false, "digital_location" => true, "library" => { "label" => "Firestone Library", "code" => "firestone", "order" => 0 }, "pick_up_location_code" => "firestone" }])
       end
     end
 
@@ -323,12 +281,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe '#location_label' do
       it 'has a location label' do
         expect(requestable.location_label).to eq('Special Collections - Rare Books')
-      end
-    end
-
-    describe '#pick_up_locations' do
-      it 'has pickup locations' do
-        expect(requestable.pick_up_locations).to eq([{ "label" => "Special Collections", "address" => "One Washington Rd. Princeton, NJ 08544", "phone_number" => "609-258-1470", "contact_email" => "rbsc@princeton.edu", "gfa_pickup" => "PG", "staff_only" => false, "pickup_location" => false, "digital_location" => true, "library" => { "label" => "Firestone Library", "code" => "firestone", "order" => 0 }, "pick_up_location_code" => "firestone" }])
       end
     end
 
@@ -378,12 +330,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe '#location_label' do
       it 'has a location label' do
         expect(requestable.location_label).to eq('Marquand Library - Remote Storage (ReCAP): Marquand Library Use Only Rare Books')
-      end
-    end
-
-    describe '#pick_up_locations' do
-      it 'has pickup locations' do
-        expect(requestable.pick_up_locations).to eq([{ "label" => "Marquand Library of Art and Archaeology", "address" => "McCormick Hall Princeton, NJ 08544", "phone_number" => "609-258-5863", "contact_email" => "marquand@princeton.edu", "gfa_pickup" => "PJ", "staff_only" => false, "pickup_location" => true, "digital_location" => true, "library" => { "label" => "Marquand Library", "code" => "marquand", "order" => 0 }, "pick_up_location_code" => "marquand" }])
       end
     end
 
@@ -455,12 +401,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
 
-    describe '#pick_up_locations' do
-      it 'has pickup locations' do
-        expect(requestable.pick_up_locations).to be_nil
-      end
-    end
-
     describe "#held_at_marquand_library?" do
       it "is not marquand" do
         expect(requestable).not_to be_held_at_marquand_library
@@ -520,12 +460,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
 
-    describe '#pick_up_locations' do
-      it 'has pickup locations' do
-        expect(requestable.pick_up_locations).to eq([{ "label" => "Special Collections", "address" => "One Washington Rd. Princeton, NJ 08544", "phone_number" => "609-258-1470", "contact_email" => "rbsc@princeton.edu", "gfa_pickup" => "PG", "staff_only" => false, "pickup_location" => false, "digital_location" => true, "library" => { "label" => "Firestone Library", "code" => "firestone", "order" => 0 }, "pick_up_location_code" => "firestone" }])
-      end
-    end
-
     describe "#held_at_marquand_library?" do
       it "is not marquand" do
         expect(requestable).not_to be_held_at_marquand_library
@@ -558,12 +492,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
 
-    describe '#pick_up_locations' do
-      it 'has pickup locations' do
-        expect(requestable.pick_up_locations).to be_nil
-      end
-    end
-
     describe "#held_at_marquand_library?" do
       it "is not marquand" do
         expect(requestable).not_to be_held_at_marquand_library
@@ -593,12 +521,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe '#location_label' do
       it 'has a location label' do
         expect(requestable.location_label).to eq('Firestone Library - Classics Collection')
-      end
-    end
-
-    describe '#pick_up_locations' do
-      it 'has pickup locations' do
-        expect(requestable.pick_up_locations).to be_nil
       end
     end
 
@@ -826,22 +748,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
   end
-  context 'A SCSB Item from a location with no pick-up location restrictions' do
-    let(:user) { FactoryBot.build(:user) }
-    let(:request) { FactoryBot.build(:request_scsb_cu) }
-    let(:requestable) { request.requestable.first }
-    before do
-      stub_single_holding_location 'scsbcul'
-      stub_scsb_availability bib_id: '5586863', institution_id: 'CUL', barcode: 'CU11418427'
-    end
-    describe '#pick_up_locations' do
-      it 'has a single pick-up location' do
-        stub_catalog_raw(bib_id: 'SCSB-5235419', type: 'scsb')
-        expect(requestable.pick_up_locations.size).to eq(1)
-        expect(requestable.pick_up_locations.first[:gfa_pickup]).to eq('QX')
-      end
-    end
-  end
 
   context 'A SCSB Item from a location with a pick-up location and an in library use restriction' do
     let(:user) { FactoryBot.build(:user) }
@@ -853,14 +759,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .to_return(status: 200, body: "[{\"itemBarcode\":\"AR65651294\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]")
       stub_single_holding_location 'scsbcul'
-    end
-
-    describe '#pick_up_locations' do
-      it 'has a single pick-up location' do
-        expect(requestable.pick_up_locations.size).to eq(1)
-        expect(requestable.pick_up_locations.first[:gfa_pickup]).to eq('PJ')
-        expect(requestable.item["use_statement"]).to eq('In Library Use')
-      end
     end
 
     describe "#available?" do
@@ -888,14 +786,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       stub_single_holding_location 'scsbcul'
     end
 
-    describe '#pick_up_locations' do
-      it 'has a single pick-up location' do
-        expect(requestable.pick_up_locations.size).to eq(1)
-        expect(requestable.pick_up_locations.first[:gfa_pickup]).to eq('PK')
-        expect(requestable.pick_up_locations.first[:label]).to eq('Mendel Music Library')
-      end
-    end
-
     describe "#available?" do
       it "is available" do
         expect(requestable).to be_available
@@ -921,12 +811,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         .to_return(status: 200, body: "[{\"itemBarcode\":\"32101092097763\",\"itemAvailabilityStatus\":\"Not available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]")
     end
 
-    describe '#pick_up_locations' do
-      it 'has no pick-up location' do
-        expect(requestable.pick_up_locations).to be_blank
-      end
-    end
-
     describe "#available?" do
       it "is not available" do
         expect(requestable).not_to be_available
@@ -936,21 +820,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe "#cul_music?" do
       it 'is not an Music Library Item' do
         expect(requestable).not_to be_cul_music
-      end
-    end
-  end
-
-  context 'A ReCAP Harvard Item' do
-    let(:user) { FactoryBot.build(:user) }
-    let(:request) { FactoryBot.build(:request_scsb_hl) }
-    let(:requestable) { request.requestable.first }
-    describe '#pick_up_locations' do
-      it 'has a single pick-up location' do
-        stub_catalog_raw(bib_id: 'SCSB-10966202', type: 'scsb')
-        stub_scsb_availability(bib_id: "990081790140203941", institution_id: "HL", barcode: 'HXSS9U')
-        expect(requestable.pick_up_locations.size).to eq(1)
-        expect(requestable.pick_up_locations.first[:gfa_pickup]).to eq('QX')
-        expect(requestable).to be_recap_edd
       end
     end
   end

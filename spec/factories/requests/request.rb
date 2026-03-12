@@ -158,13 +158,6 @@ FactoryBot.define do
     initialize_with { new(system_id:, mfhd:, patron_request:) }
   end
 
-  factory :request_scsb_cu, class: 'Requests::Form' do
-    system_id { 'SCSB-5235419' }
-    mfhd { nil }
-    patron_request { Thread.new { FactoryBot.build(:patron) } }
-    initialize_with { new(system_id:, mfhd:, patron_request:) }
-  end
-
   # use_statement: "In Library Use"
   factory :request_scsb_ar, class: 'Requests::Form' do
     system_id { 'SCSB-2650865' }

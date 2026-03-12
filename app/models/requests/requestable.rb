@@ -99,26 +99,6 @@ module Requests
       bib[:id].to_i.positive?
     end
 
-    def pick_up_locations
-      return nil if location[:delivery_locations].empty?
-      if partner_holding?
-        scsb_pick_up_override(item[:collection_code])
-      else
-        location[:delivery_locations]
-      end
-    end
-
-    # override the default delivery location for SCSB at certain collection codes
-    def scsb_pick_up_override(collection_code)
-      if ['AR', 'FL'].include? collection_code
-        [Requests::BibdataService.delivery_locations[:PJ]]
-      elsif collection_code == 'MR'
-        [Requests::BibdataService.delivery_locations[:PK]]
-      else
-        location[:delivery_locations]
-      end
-    end
-
     def scsb_in_library_use?
       return false unless item?
       partner_holding? && (item[:use_statement] == "In Library Use" || collection_code == 'FL')
