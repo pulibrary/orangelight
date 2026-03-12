@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe Requests::PickUpLocations::AnnexPickUpLocations do
+RSpec.describe Requests::PickUpLocations::AnnexPickUpLocations, :requests do
   it 'filters out invalid pickup locations' do
     form = instance_double(Requests::Form, default_pick_ups: [{ label: 'Stokes Library', gfa_pickup: 'PM' }])
     custom_locations = [

@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory do
+RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory, :requests do
   before { stub_delivery_locations }
   it 'returns pickup locations for on-shelf Firestone title' do
-    location = single_holding_data_from_fixture('firestone$stacks')
+    location = Requests::Location.new single_holding_data_from_fixture('firestone$stacks')
     form = instance_double(Requests::Form)
-    requestable = instance_double(Requests::Requestable, partner_holding?: false, location:, ill_eligible?: false)
+    requestable = instance_double(Requests::Requestable, partner_holding?: false, location:, ill_eligible?: false, annex?: false, recap?: false)
     factory = described_class.new(form:, requestable:)
 
     expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
@@ -20,9 +20,9 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory do
   end
 
   it 'returns pickup locations for on-shelf East Asian rare book' do
-    location = single_holding_data_from_fixture('rare$crare')
+    location = Requests::Location.new single_holding_data_from_fixture('rare$crare')
     form = instance_double(Requests::Form)
-    requestable = instance_double(Requests::Requestable, partner_holding?: false, location:, ill_eligible?: false)
+    requestable = instance_double(Requests::RequestableDecorator, partner_holding?: false, location:, ill_eligible?: false, annex?: false, recap?: false, delivery_location_code: 'PL', pick_up_location_code: 'PL', delivery_location_label: 'East Asian Library')
     factory = described_class.new(form:, requestable:)
 
     expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
@@ -31,9 +31,9 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory do
   end
 
   it 'returns pickup locations for a marquand$pz book' do
-    location = single_holding_data_from_fixture('marquand$pz')
+    location = Requests::Location.new single_holding_data_from_fixture('marquand$pz')
     form = instance_double(Requests::Form)
-    requestable = instance_double(Requests::Requestable, partner_holding?: false, location:, ill_eligible?: false)
+    requestable = instance_double(Requests::RequestableDecorator, partner_holding?: false, location:, ill_eligible?: false, annex?: false, recap?: false, delivery_location_code: 'PJ', pick_up_location_code: 'PJ', delivery_location_label: 'Marquand Library of Art and Archaeology')
     factory = described_class.new(form:, requestable:)
 
     expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
@@ -41,33 +41,11 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory do
                                                           ])
   end
 
-  it 'returns default pickups for a location without delivery locations' do
-    location = single_holding_data_from_fixture('rare$thx')
-    form = instance_double(Requests::Form, default_pick_ups: [{ label: 'I Am Default', gfa_pickup: 'DF' }])
-    requestable = instance_double(Requests::Requestable, partner_holding?: false, location:, ill_eligible?: false)
-    factory = described_class.new(form:, requestable:)
-
-    expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
-                                                            ["I Am Default", "DF"]
-                                                          ])
-  end
-
-  it 'returns default pickups for a in item that is being shared with another institution' do
-    location = single_holding_data_from_fixture('RES_SHARE$OUT_RS_REQ')
-    form = instance_double(Requests::Form, default_pick_ups: [{ label: 'I Am Default', gfa_pickup: 'DF' }])
-    requestable = instance_double(Requests::Requestable, partner_holding?: false, location:, ill_eligible?: false)
-    factory = described_class.new(form:, requestable:)
-
-    expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
-                                                            ["I Am Default", "DF"]
-                                                          ])
-  end
-
   it 'returns a single pickup location for SCSB partner with no restrictions' do
     location = single_holding_data_from_fixture('scsbcul')
     item = { collection_code: 'CU' }.with_indifferent_access
     form = instance_double(Requests::Form)
-    requestable = instance_double(Requests::Requestable, partner_holding?: true, item:, location:, ill_eligible?: false)
+    requestable = instance_double(Requests::Requestable, partner_holding?: true, item:, location:, ill_eligible?: false, annex?: false, recap?: true)
     factory = described_class.new(form:, requestable:)
 
     expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
@@ -79,7 +57,7 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory do
     location = single_holding_data_from_fixture('scsbcul')
     item = { collection_code: 'AR' }.with_indifferent_access
     form = instance_double(Requests::Form)
-    requestable = instance_double(Requests::Requestable, partner_holding?: true, item:, location:, ill_eligible?: false)
+    requestable = instance_double(Requests::Requestable, partner_holding?: true, item:, location:, ill_eligible?: false, annex?: false, recap?: true)
     factory = described_class.new(form:, requestable:)
 
     expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
@@ -91,7 +69,7 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory do
     location = single_holding_data_from_fixture('scsbcul')
     item = { collection_code: 'MR' }.with_indifferent_access
     form = instance_double(Requests::Form)
-    requestable = instance_double(Requests::Requestable, partner_holding?: true, item:, location:, ill_eligible?: false)
+    requestable = instance_double(Requests::Requestable, partner_holding?: true, item:, location:, ill_eligible?: false, annex?: false, recap?: true)
     factory = described_class.new(form:, requestable:)
 
     expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
@@ -102,7 +80,7 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory do
   it 'returns a single pickup location (Firestone) for Interlibrary loans' do
     location = single_holding_data_from_fixture('firestone$stacks')
     form = instance_double(Requests::Form)
-    requestable = instance_double(Requests::Requestable, partner_holding?: false, location:, ill_eligible?: true)
+    requestable = instance_double(Requests::Requestable, partner_holding?: false, location:, ill_eligible?: true, annex?: false, recap?: false)
     factory = described_class.new(form:, requestable:)
 
     expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
