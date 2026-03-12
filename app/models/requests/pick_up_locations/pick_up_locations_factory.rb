@@ -25,7 +25,7 @@ module Requests
           elsif ill_eligible?
             ILLPickUpLocations
           elsif partner_holding?
-            ScsbPickUpLocations
+            PartnerPickUpLocations
           elsif non_standard_circ_location? && !recap?
             NonStandardCircLocationPickUpLocations
           else

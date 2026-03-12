@@ -10,7 +10,7 @@ module Requests
       end
 
       def call
-        pick_ups = all_delivery_locations.select { |loc| Requests::Location.valid_recap_annex_pickup?(loc) }
+        pick_ups = all_delivery_locations.select { |loc| valid_annex_pickup?(loc) }
         pick_ups << default_pick_ups[0] if pick_ups.empty?
         pick_ups
       end
@@ -28,6 +28,13 @@ module Requests
         else
           default_pick_ups
         end
+      end
+
+      # :reek:UtilityFunction
+      def valid_annex_pickup?(location_hash)
+        # This excludes PQ (Plasma) and PH (Mudd), which are not valid but are currently listed as pickup locations
+        # in bibdata holding_locations.json
+        ['PA', 'PB', 'PF', 'PJ', 'PK', 'PL', 'PM', 'PT', 'PW', 'QA', 'QC', 'QL', 'QP', 'QT', 'QX'].include?(location_hash[:gfa_pickup])
       end
 
       def delivery_locations
