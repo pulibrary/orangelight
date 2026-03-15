@@ -821,6 +821,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'Request an enumerated on campus item correctly' do
+        stub_illiad_patron
         stub_alma_hold_success('9973397793506421', '22541187250006421', '23541187200006421', '960594184')
         visit '/requests/9973397793506421?mfhd=22541187250006421'
         expect(page).to have_content "Han'guk hyŏndaesa sanch'aek"
@@ -982,6 +983,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     end
 
     it 'has firestone as the resource sharing delivery location' do
+      stub_illiad_patron
       visit 'requests/99123713303506421?mfhd=22668310350006421'
       expect(page).to have_content 'Reconstructions : architecture and Blackness in America'
       expect(page).to have_content 'Request via Partner Library'

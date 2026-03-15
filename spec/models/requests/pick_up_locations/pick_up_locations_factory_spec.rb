@@ -79,7 +79,7 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory, :requests do
 
   it 'returns a single pickup location (Firestone) for Interlibrary loans' do
     location = single_holding_data_from_fixture('firestone$stacks')
-    form = instance_double(Requests::Form)
+    form = instance_double(Requests::Form, illiad_account: { Site: 'Firestone' })
     requestable = instance_double(Requests::Requestable, partner_holding?: false, location:, ill_eligible?: true, annex?: false, recap?: false)
     factory = described_class.new(form:, requestable:)
 

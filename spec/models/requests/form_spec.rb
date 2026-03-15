@@ -887,4 +887,26 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       end
     end
   end
+  describe '#illiad_account' do
+    it 'returns a hash with symbol keys' do
+      stub_catalog_raw bib_id: '9960102253506421'
+      stub_single_holding_location 'engineer$stacks'
+      stub_availability_by_holding_id bib_id: '9960102253506421', holding_id: '22548491940006421'
+      illiad_account_class = Struct.new('FakeIlliadAccount', :patron) do
+        def illiad_patron_response
+          Faraday::Response.new({ body: '{"UserName": "jstudent","ExternalUserId": "jstudent","LastName": "student","FirstName": "j","Site":"Firestone"}' })
+        end
+      end
+      form = described_class.new(
+        system_id: '9960102253506421',
+        mfhd: '22548491940006421',
+        patron_request:,
+        illiad_account_class:
+      )
+
+      expect(form.illiad_account).to eq({
+                                          UserName: 'jstudent', ExternalUserId: 'jstudent', LastName: 'student', FirstName: 'j', Site: 'Firestone'
+                                        })
+    end
+  end
 end

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../../../lib/orangelight/illiad_account'
+
 module Requests
   # This class is responsible for assembling the data to display the Requests form
   class Form
@@ -14,7 +16,7 @@ module Requests
     # @option opts [String] :system_id A bib record id or a special collection ID value
     # @option opts [Fixnum] :mfhd alma holding id
     # @option opts [Thread] :patron_request a Thread that will resolve to a Patron object when #value is called
-    def initialize(system_id:, mfhd:, patron_request: nil)
+    def initialize(system_id:, mfhd:, patron_request: nil, illiad_account_class: Orangelight::IlliadAccount)
       @system_id = system_id
       @holdings = JSON.parse(doc[:holdings_1display] || '{}')
       # scsb items are the only ones that come in without a MFHD parameter from the catalog now
@@ -26,6 +28,7 @@ module Requests
       @pick_ups = build_pick_ups
       @requestable_unrouted = requestables_list.to_a
       @requestable = route_requests(@requestable_unrouted)
+      @illiad_account_class = illiad_account_class
     end
 
     delegate :user, to: :patron
@@ -76,13 +79,17 @@ module Requests
       @doc ||= SolrDocument.new(solr_doc(system_id))
     end
 
+    def illiad_account
+      @illiad_account ||= JSON.parse(illiad_account_class.new(patron.to_h).illiad_patron_response.body, symbolize_keys: true)
+    end
+
     def patron
       @patron ||= patron_request.value
     end
 
     private
 
-      attr_reader :patron_request
+      attr_reader :illiad_account_class, :patron_request
 
       def load_bibdata_location
         return if location_code.blank?
