@@ -41,7 +41,7 @@ en:
       error: 'Please fill in the required form values.'
       return: 'Back to the previous page.'
       confirmation: 'Thank you for your comments. They are helpful as we work to improve this Library service.'
-      ticket_submission_error: 'The feedback form is encountering a processing error related to your submission. For assistance, please reach out via email at ereference@princeton.edu.'
+      ticket_submission_error: 'The feedback form is currently having an issue processing your message, please reach out to ereference@princeton.edu via email for help.'
     holdings:
       linked: 'Other versions'
       online: 'Available Online'
@@ -91,12 +91,15 @@ en:
     ask_a_question:
       form:
         title: 'Ask a Question'
+        ticket_submission_error: 'The feedback form is currently having an issue processing your message, please reach out to ereference@princeton.edu via email for help.'
     suggest_correction:
       form:
         title: 'Suggest a Correction'
+        ticket_submission_error: 'The feedback form is currently having an issue processing your message, please reach out to ereference@princeton.edu via email for help.'
     missing_item:
       form:
         title: 'Report a Missing Item'
+        ticket_submission_error: 'The feedback form is currently having an issue processing your message, please reach out to ereference@princeton.edu via email for help.'
     email:
       form:
         title: 'Email the catalog record and (optional) message.'
