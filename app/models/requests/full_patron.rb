@@ -4,7 +4,7 @@ module Requests
   class FullPatron
     attr_reader :patron_hash
     def initialize(user: nil)
-      @patron_hash = ::Bibdata.get_patron(user, ldap: true)
+      @patron_hash = ::Bibdata.get_patron(user, ldap: false)
     end
   end
 end
