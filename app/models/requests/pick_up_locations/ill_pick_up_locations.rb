@@ -5,33 +5,47 @@ module Requests
     # a user can pick up a resource that Princeton will request on their
     # behalf from another library via ILLiad
     class ILLPickUpLocations
-      def initialize(form:, requestable:)
+      def initialize(form:, requestable:, bibdata_service_class: BibdataService)
         @form = form
         @requestable = requestable
+        @bibdata_service_class = bibdata_service_class
       end
 
       def call
-        firestone = all_delivery_locations.find { |location| location[:gfa_pickup] == "PA" }
-        [firestone].compact
+        [all_delivery_locations[delivery_location_code]]
       end
 
       private
 
-        attr_reader :form, :requestable
+        attr_reader :bibdata_service_class, :form, :requestable
 
-        delegate :default_pick_ups, to: :form
-        delegate :location, to: :requestable
+        delegate :illiad_account, to: :form
 
         def all_delivery_locations
-          if delivery_locations&.any?
-            delivery_locations
+          @all_delivery_locations ||= bibdata_service_class.delivery_locations
+        end
+
+        def delivery_location_code
+          return default_code unless illiad_account
+          case illiad_account[:Site]
+          in 'Architecture'
+            'PW'
+          in 'East Asian'
+            'PL'
+          in 'Engineering'
+            'PT'
+          in 'Music'
+            'PK'
+          in 'Stokes'
+            'PM'
           else
-            default_pick_ups
+            default_code
           end
         end
 
-        def delivery_locations
-          location[:delivery_locations]
+        def default_code
+          # default to PA: Firestone
+          'PA'
         end
     end
   end

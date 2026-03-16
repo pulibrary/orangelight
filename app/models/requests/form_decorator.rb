@@ -3,7 +3,7 @@ module Requests
   # This class is responsible for generating the visual aspects of the Request object for the form
   class FormDecorator
     delegate :patron,
-             :ctx, :system_id, :mfhd, :holdings, :default_pick_ups,
+             :ctx, :system_id, :mfhd, :holdings, :default_pick_ups, :illiad_account,
              :serial?, :any_loanable_copies?, :requestable?, :thesis?, :numismatics?, :eligible_for_library_services?,
              :user_name, :email, # passed to request as login options on the request form
              to: :request

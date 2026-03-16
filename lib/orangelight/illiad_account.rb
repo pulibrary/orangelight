@@ -2,6 +2,7 @@
 
 require 'faraday'
 require 'faraday-cookie_jar'
+require_relative 'illiad_patron_client'
 module Orangelight
   # This class is responsible for retrieving information about an existing Interlibrary Loan account in ILLiad
   class IlliadAccount
