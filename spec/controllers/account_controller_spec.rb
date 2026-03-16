@@ -85,27 +85,30 @@ RSpec.describe AccountController, patrons: true do
     end
 
     it "returns an empty value when a patron net ID cannot be resolved to a net ID stored in Alma" do
-      invalid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{invalid_user.uid}"
-      stub_request(:get, invalid_patron_record_uri)
-        .to_return(status: 404, body: '<html><title>Not Here</title><body></body></html>', headers: {})
+      invalid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{invalid_user.uid}?ldap=false"
+      bibdata_req = stub_request(:get, invalid_patron_record_uri)
+                    .to_return(status: 404, body: '<html><title>Not Here</title><body></body></html>', headers: {})
       patron = account_controller.send(:current_patron, invalid_user)
       expect(patron).to eq({})
+      expect(bibdata_req).to have_been_requested
     end
 
     it "returns an empty value when the machine Orangelight is running on isn't authorized to access patron data" do
-      unauthorized_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{unauthorized_user.uid}"
-      stub_request(:get, unauthorized_patron_record_uri)
-        .to_return(status: 403, body: '<html><title>Not Authorized</title><body></body></html>', headers: {})
+      unauthorized_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{unauthorized_user.uid}?ldap=false"
+      bibdata_req = stub_request(:get, unauthorized_patron_record_uri)
+                    .to_return(status: 403, body: '<html><title>Not Authorized</title><body></body></html>', headers: {})
       patron = account_controller.send(:current_patron, unauthorized_user)
       expect(patron).to eq({})
+      expect(bibdata_req).to have_been_requested
     end
 
     it 'returns an empty value when the HTTP response to the API request has a 500 status code' do
-      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}"
-      stub_request(:get, valid_patron_record_uri)
-        .to_return(status: 500, body: 'Error', headers: {})
+      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}?ldap=false"
+      bibdata_req = stub_request(:get, valid_patron_record_uri)
+                    .to_return(status: 500, body: 'Error', headers: {})
       patron = account_controller.send(:current_patron, valid_user)
       expect(patron).to eq({})
+      expect(bibdata_req).to have_been_requested
     end
   end
 end
