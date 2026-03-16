@@ -9,11 +9,11 @@ class ContactController < ApplicationController
       if @form.valid? && @form.submit
         flash_now_success('Your question has been submitted')
       else
-        flash_now_error('There was a problem submitting your question')
+        flash_now_error(t('blacklight.ask_a_question.form.ticket_submission_error'))
       end
-    rescue StandardError => e
-      flash_now_error('There was a problem submitting your question')
-      Rails.logger.error("AskAQuestion submission failed: #{e.class} - #{e.message}")
+    rescue StandardError
+      flash_now_error(t('blacklight.ask_a_question.form.ticket_submission_error'))
+      Rails.logger.error(t('blacklight.ask_a_question.form.ticket_submission_error'))
     end
     respond_to do |format|
       format.js
@@ -29,11 +29,11 @@ class ContactController < ApplicationController
       if @form.valid? && @form.submit
         flash_now_success('Your suggestion has been submitted')
       else
-        flash_now_error('There was a problem submitting your suggestion')
+        flash_now_error(t('blacklight.suggest_correction.form.ticket_submission_error'))
       end
-    rescue StandardError => e
-      flash_now_error('There was a problem submitting your suggestion')
-      Rails.logger.error("SuggestCorrection submission failed: #{e.class} - #{e.message}")
+    rescue StandardError
+      flash_now_error(t('blacklight.suggest_correction.form.ticket_submission_error'))
+      Rails.logger.error(t('blacklight.suggest_correction.form.ticket_submission_error'))
     end
     respond_to do |format|
       format.js
@@ -49,11 +49,11 @@ class ContactController < ApplicationController
       if @form.valid? && @form.submit
         flash_now_success('Your missing item report has been submitted')
       else
-        flash_now_error('There was a problem submitting your missing item report')
+        flash_now_error(t('blacklight.missing_item.form.ticket_submission_error'))
       end
-    rescue StandardError => e
-      flash_now_error('There was a problem submitting your missing item report')
-      Rails.logger.error("MissingItem submission failed: #{e.class} - #{e.message}")
+    rescue StandardError
+      flash_now_error(t('blacklight.missing_item.form.ticket_submission_error'))
+      Rails.logger.error(t('blacklight.missing_item.form.ticket_submission_error'))
     end
     respond_to do |format|
       format.js

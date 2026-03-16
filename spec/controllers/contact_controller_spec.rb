@@ -37,7 +37,7 @@ RSpec.describe ContactController, type: :controller do
       }, format: :js
 
       expect(response).to be_successful
-      expect(flash.now[:error]).to eq('There was a problem submitting your question')
+      expect(flash.now[:error]).to eq(I18n.t('blacklight.ask_a_question.form.ticket_submission_error'))
     end
   end
   describe "#missing_item" do
@@ -72,7 +72,7 @@ RSpec.describe ContactController, type: :controller do
       }, format: :js
 
       expect(response).to be_successful
-      expect(flash.now[:error]).to eq('There was a problem submitting your missing item report')
+      expect(flash.now[:error]).to eq(I18n.t('blacklight.missing_item.form.ticket_submission_error'))
     end
   end
   describe "#suggestion" do
@@ -107,7 +107,7 @@ RSpec.describe ContactController, type: :controller do
       }, format: :js
 
       expect(response).to be_successful
-      expect(flash.now[:error]).to eq('There was a problem submitting your suggestion')
+      expect(flash.now[:error]).to eq(I18n.t('blacklight.suggest_correction.form.ticket_submission_error'))
     end
   end
 end
