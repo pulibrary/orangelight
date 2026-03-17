@@ -327,6 +327,7 @@
         isbn_s,
         oclc_s,
         lccn_s,
+        marcxml,
         holdings_1display,
         electronic_access_1display,
         electronic_portfolio_s,
