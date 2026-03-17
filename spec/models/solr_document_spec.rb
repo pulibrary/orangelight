@@ -119,7 +119,7 @@ RSpec.describe SolrDocument do
       let(:bibid) { 'SCSB_11759184' }
       let(:properties) do
         {
-          'id' => 'SCSB-11759184'
+          'id' => 'SCSB-11759184', 'marcxml' => compressed_marcxml
         }
       end
       let(:scsb_fixture) { JSON.parse(File.read(File.join(File.dirname(__FILE__), '..', 'fixtures', 'raw', 'scsb', "#{bibid}.json"))) }
@@ -444,7 +444,7 @@ RSpec.describe SolrDocument do
     context 'with a SCSB record' do
       let(:properties) do
         {
-          'id' => 'SCSB-11759184'
+          'id' => 'SCSB-11759184', 'marcxml' => 'H4sIAMhEaGkAA71W3U7bMBh9Fd8ZJEj8EycOSyOxMg0k9iNgQtqdk5jWw42rJB0w7XKPt4faF0pRVYIpXKyRGis59nfOiX3srNGlayp0'
         }
       end
       let(:solr_response) do

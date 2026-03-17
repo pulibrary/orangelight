@@ -4,6 +4,9 @@ require 'rails_helper'
 
 RSpec.describe "catalog/librarian_view.html.erb" do
   context "when given an Alma marc source with AVA fields" do
+    before do
+      assign(:document, SolrDocument.new(id: "9922486553506421"))
+    end
     it "displays the AVA fields" do
       allow(view).to receive(:params).and_return(id: "9922486553506421")
       stub_request(:get, "https://bibdata-staging.lib.princeton.edu/bibliographic/9922486553506421")

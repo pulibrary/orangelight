@@ -255,18 +255,8 @@ class SolrDocument
 
   # Fetch the marcxml field from Solr for this document
   # @return [String, nil]
-  # :reek:TooManyStatements
-  # :reek:UncommunicativeVariableName
   def marcxml_field
-    @marcxml_field ||= begin
-      params = { q: "id:#{RSolr.solr_escape(id)}", fl: 'marcxml' }
-      response = Blacklight.default_index.connection.get('select', params: params)
-      docs = response['response']['docs']
-      docs&.first&.fetch('marcxml', nil)
-    rescue StandardError => e
-      Rails.logger.error("Failed to fetch marcxml field for ID #{id}: #{e}")
-      nil
-    end
+    self['marcxml']
   end
 
   private
