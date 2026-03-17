@@ -11,6 +11,7 @@ class CatalogController < ApplicationController
 
   before_action :redirect_browse
   before_action :deny_excessive_paging
+  before_action :update_blank_sort_param
 
   rescue_from Blacklight::Exceptions::RecordNotFound do
     alma_id = "99#{params[:id]}3506421"
@@ -708,6 +709,9 @@ class CatalogController < ApplicationController
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
+    config.add_sort_field 'score desc', label: 'recently bookmarked', if: lambda { |controller, _config|
+      controller.controller_path == 'bookmarks'
+    }
     config.add_sort_field 'score desc, pub_date_start_sort desc, title_sort asc', label: 'relevance'
     config.add_sort_field 'location asc, advanced_location_s asc, call_number_browse_s asc', label: 'library',
                                                                                              if: lambda { |controller, _config|
@@ -813,6 +817,15 @@ class CatalogController < ApplicationController
     else
       super
     end
+  end
+
+  def update_blank_sort_param
+    return if params[:sort].present?
+    params[:sort] = if controller_path == 'bookmarks'
+                    'score desc'
+                    else
+                    'score desc, pub_date_start_sort desc, title_sort asc'
+                    end
   end
 
   private
