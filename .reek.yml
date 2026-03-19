@@ -189,7 +189,6 @@ detectors:
     - User#self.from_alma
     - User#self.from_cas
     - Orangelight::BrowseLinkProcessor#add_links_to
-    - Orangelight::JoinProcessor#css_class
     - Orangelight::LinkToSearchValueProcessor#render
     - Orangelight::ReferenceNoteUrlProcessor#render
     - Orangelight::SeriesLinkProcessor#render
@@ -415,7 +414,6 @@ detectors:
     - User
     - Orangelight::ClausePresenter
     - Orangelight::BrowseLinkProcessor
-    - Orangelight::JoinProcessor
     - Orangelight::LinkToFacetProcessor
     - Orangelight::LinkToSearchValueProcessor
     - Orangelight::MarkAsSafeProcessor
@@ -676,7 +674,6 @@ detectors:
     - SolrDocument#holdings_with_host_id
     - SolrDocument#related_bibs_iiif_manifest
     - User#self.from_cas
-    - Orangelight::JoinProcessor#render
     - Orangelight::ReferenceNoteUrlProcessor#render
     - Orangelight::SubjectsOrNotesProcessor#render
     - Bibdata#api_request_patron
@@ -828,7 +825,6 @@ detectors:
     - SolrDocument#clean_ids
     - SolrDocument#doc_by_id
     - SolrDocument#ensure_voyager_to_alma_id
-    - Orangelight::JoinProcessor#direction
     - DBMigrateUppercaseUsernames#find_uppercase_users
     - EventProcessor::Processor#index
     - HoldingRequestsAdapter#call_number

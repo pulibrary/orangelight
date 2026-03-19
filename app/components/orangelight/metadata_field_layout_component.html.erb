@@ -1,0 +1,6 @@
+<dt class="blacklight-<%= @key %> <%= @label_class %>"><%= label %></dt>
+<% if values.many? %>
+    <ul><% values.each do |v| %><%= v %><% end %></ul>
+<% else %>
+    <%= values.first %>
+<% end %>

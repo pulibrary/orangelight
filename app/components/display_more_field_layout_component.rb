@@ -1,0 +1,2 @@
+class DisplayMoreFieldLayoutComponent < Blacklight::MetadataFieldLayoutComponent
+end
