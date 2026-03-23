@@ -6,11 +6,13 @@
     <% if render_top_field? document, field_name %>
       <% field_presenter = Blacklight::FieldPresenter.new(doc_presenter.view_context, document, field) %>
       <% if field_name == 'author_display' && document['marc_relator_display'] %>
-        <dt class="blacklight-<%= field_name.parameterize %>"><%= document['marc_relator_display'].first %></dt>
-        <dd class="blacklight-<%= field_name.parameterize %>"><%= field_presenter.render %></dd>
+        <%= render(Orangelight::MetadataFieldComponent.new(field: field_presenter,
+              show: true,
+              labeler: ->(_show, _field) { document['marc_relator_display'].first },
+              should_render: ->(_field) { true } )) %>
       <%# author is default if no marc relator, default for other fields -%>
       <% else %>
-        <%= render(AlwaysShowMetadataFieldComponent.new(field: field_presenter, show: true)) %>
+        <%= render(Orangelight::MetadataFieldComponent.new(field: field_presenter, show: true, should_render: ->(_field) { true })) %>
       <% end %>
     <% end %>
   <% end %>
