@@ -34,6 +34,7 @@ class CatalogController < ApplicationController
     config.advanced_search.enabled = false
 
     config.json_solr_path = 'advanced'
+    config.fetch_many_documents_path = 'advanced'
 
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
