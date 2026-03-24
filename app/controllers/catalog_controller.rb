@@ -31,8 +31,10 @@ class CatalogController < ApplicationController
   configure_blacklight do |config|
     # config.add_field_configuration_to_solr_request!
     config.raw_endpoint.enabled = true
+    config.advanced_search.enabled = false
 
     config.json_solr_path = 'advanced'
+    config.fetch_many_documents_path = 'advanced'
 
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new

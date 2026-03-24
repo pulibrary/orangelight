@@ -275,7 +275,6 @@ detectors:
   InstanceVariableAssumption:
     exclude:
     - CoinDescriptionComponent
-    - DisplayMoreFieldComponent
     - FormatFacetItemComponent
     - IndexTitleComponent
     - NumismaticsSearchFormComponent
@@ -317,7 +316,6 @@ detectors:
     - IlliadStatus
     - ScsbStatus
     - BookmarkButtonComponent
-    - DisplayMoreFieldComponent
     - FormatFacetItemComponent
     - IndexDocumentComponent
     - IndexMetadataComponent

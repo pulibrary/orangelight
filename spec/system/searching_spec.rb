@@ -211,7 +211,6 @@ describe 'Searching', type: :system, js: false do
       end
       page.click_button('Search')
       page.click_link('Edit search')
-      expect(page).to have_content('Within search')
       field_value = page.find_field('format').value
       expect(field_value).to include('Audio')
     end

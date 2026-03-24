@@ -208,7 +208,6 @@ describe 'advanced searching', advanced_search: true do
       click_button 'Search'
       expect(page).to have_content('Seeking sanctuary')
       click_link('Edit search')
-      expect(page).to have_content('Keyword:gay')
       fill_in('clause_0_query', with: 'dance', fill_options: { clear: :backspace })
       click_button 'Search'
       expect(page).not_to have_content('Seeking sanctuary')
