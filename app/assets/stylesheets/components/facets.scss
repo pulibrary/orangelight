@@ -84,11 +84,6 @@ ul.facet-values {
   -moz-hyphens: none;
 }
 
-.facets-heading {
-  margin-top: 0;
-  font-size: 18px;
-}
-
 .pivot-facet .facet-label {
   display: inline;
   padding-left: 0;
@@ -135,12 +130,6 @@ ul.facet-values {
     padding: 1em 0;
   }
 
-  #facets .facets-heading {
-    font-size: 1.6em;
-    margin: 0;
-    padding: 0.15em;
-  }
-
   .facets-toggle {
     margin: 0;
     background: $gray;
@@ -168,10 +157,6 @@ ul.facet-values {
 a.more_facets_link {
   font-size: 0.95em;
   line-height: 1.4em;
-}
-
-.facets .facets-heading {
-  margin: 1em 0 0.5em;
 }
 
 .facet-limit {
