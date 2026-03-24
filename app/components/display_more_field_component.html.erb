@@ -3,8 +3,8 @@
     <%= label %>
   <% end %>
   <% render_field_values.each_with_index do |value, index| %>
-    <% component.with_value(value: value, index: index) do %>
-      <%= @field.render %>
+    <%= component.with_value(index:) do %>
+      <%= value %>
       <% if show_button? %>
         <button class="show-more btn btn-sm btn-link"
           aria-expanded="false" aria-controls="<%= @field.key %>-list"
