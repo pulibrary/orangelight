@@ -19,18 +19,6 @@ RSpec.describe Requests::ServiceEligibility::ILL, requests: true do
       expect(eligibility.eligible?).to be(true)
     end
 
-    it 'returns true if the item is requested' do
-      allow(requestable).to receive_messages(
-          aeon?: false,
-          alma_managed?: true,
-          charged?: false,
-          requested?: true,
-          marquand_item?: false
-        )
-
-      expect(eligibility.eligible?).to be(true)
-    end
-
     it 'returns false if it is an aeon resource' do
       allow(requestable).to receive_messages(
           aeon?: true,
@@ -51,7 +39,7 @@ RSpec.describe Requests::ServiceEligibility::ILL, requests: true do
           alma_managed?: true,
           aeon?: false,
           charged?: true,
-          requested?: true,
+          requested?: false,
           marquand_item?: false
         )
 

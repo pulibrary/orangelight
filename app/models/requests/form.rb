@@ -44,7 +44,7 @@ module Requests
     # Does this request object have any available copies?
     def any_loanable_copies?
       requestable_unrouted.any? do |requestable|
-        !(requestable.requested? || requestable.charged? || (requestable.aeon? || !requestable.circulates? || requestable.partner_holding? || requestable.on_reserve?))
+        !(requestable.charged? || (requestable.aeon? || !requestable.circulates? || requestable.partner_holding? || requestable.on_reserve?))
       end
     end
 
