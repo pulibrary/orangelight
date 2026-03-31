@@ -31,7 +31,7 @@ class RecordFeedbackFormSubmission
       def data
         {
           quid:,
-          pquestion: title,
+          pquestion: truncate_title(title),
           pdetails: message,
           pname: patron_name,
           pemail: patron_email
@@ -51,5 +51,9 @@ class RecordFeedbackFormSubmission
       def token
         @token ||= OAuthToken.find_or_create_by({ service: 'libanswers',
                                                   endpoint: 'https://faq.library.princeton.edu/api/1.1/oauth/token' }).token
+      end
+
+      def truncate_title(title)
+        title.truncate(150, omission: "...", separator: " ")
       end
 end
