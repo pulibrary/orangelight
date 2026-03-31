@@ -31,7 +31,7 @@ class RecordFeedbackFormSubmission
       def data
         {
           quid:,
-          pquestion: title,
+          pquestion: title.truncate(150, omission: "...", separator: " "),
           pdetails: message,
           pname: patron_name,
           pemail: patron_email

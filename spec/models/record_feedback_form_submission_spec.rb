@@ -42,4 +42,28 @@ RSpec.describe RecordFeedbackFormSubmission, libanswers: true do
       "pemail=",
              headers: { Authorization: 'Bearer abcdef1234567890abcdef1234567890abcdef12' })
   end
+  it 'truncates the pquestion field to 150 characters' do
+    stub_libanswers_api
+
+    long_title = 'ABCDEF ' * 50
+
+    described_class.new(
+        message: 'Feedback message',
+        patron_name: 'Test User',
+        patron_email: 'test@example.com',
+        title: long_title,
+        context: 'https://catalog.princeton.edu/catalog/12345',
+        quid: 12_345
+      ).send_to_libanswers
+
+    expect(WebMock).to have_requested(
+        :post,
+        'https://faq.library.princeton.edu/api/1.1/ticket/create'
+      ).with(body: "quid=12345&"\
+      "pquestion=#{CGI.escape("#{'ABCDEF ' * 20}ABCDEF...")}&"\
+      "pdetails=Feedback+message%0A%0ASent+from+https%3A%2F%2Fcatalog.princeton.edu%2Fcatalog%2F12345+via+LibAnswers+API&"\
+      "pname=Test+User&"\
+      "pemail=test%40example.com",
+             headers: { Authorization: 'Bearer abcdef1234567890abcdef1234567890abcdef12' })
+  end
 end
