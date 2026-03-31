@@ -60,11 +60,10 @@ RSpec.describe RecordFeedbackFormSubmission, libanswers: true do
         :post,
         'https://faq.library.princeton.edu/api/1.1/ticket/create'
       ).with(body: "quid=12345&"\
-      "pquestion=#{CGI.escape('ABCDEF ' * 20 + 'ABCDEF...')}&"\
+      "pquestion=#{CGI.escape("#{'ABCDEF ' * 20}ABCDEF...")}&"\
       "pdetails=Feedback+message%0A%0ASent+from+https%3A%2F%2Fcatalog.princeton.edu%2Fcatalog%2F12345+via+LibAnswers+API&"\
       "pname=Test+User&"\
       "pemail=test%40example.com",
              headers: { Authorization: 'Bearer abcdef1234567890abcdef1234567890abcdef12' })
   end
-
 end
