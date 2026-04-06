@@ -90,7 +90,7 @@ GEM
       activesupport
       httparty
       xml-simple
-    amq-protocol (2.5.1)
+    amq-protocol (2.7.0)
     ast (2.4.3)
     axe-core-api (4.11.1)
       dumb_delegator
@@ -382,8 +382,8 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    kicks (3.2.0)
-      bunny (~> 2.19)
+    kicks (3.3.0)
+      bunny (~> 2.24)
       concurrent-ruby (~> 1.0)
       rake (>= 12.3, < 14.0)
       serverengine (~> 2.1)
@@ -690,9 +690,8 @@ GEM
     singleton (0.3.0)
     slop (4.10.1)
     smart_properties (1.17.0)
-    sorted_set (1.0.3)
+    sorted_set (1.1.0)
       rbtree
-      set (~> 1.0)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
       logger
