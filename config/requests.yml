@@ -6,7 +6,7 @@ defaults: &defaults
   pulsearch_base: https://catalog.princeton.edu
   aeon_base: https://princeton.aeon.atlas-sys.com/logon
   gfa_base: http://libweb5.princeton.edu/ReCAPNoUI/Default.aspx
-  ill_base: https://princeton.illiad.oclc.org/illiad/illiad.dll/OpenURL
+  ill_base: https://princeton.illiad.oclc.org/illiad/OpenURL
   scsb_base: https://scsb.recaplib.org:9093
   illiad_api_key: <%= ENV['ILLIAD_API_KEY'] %>
   illiad_api_base: <%= ENV['ILLIAD_API_BASE_URL'] %>
