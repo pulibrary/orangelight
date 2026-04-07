@@ -7,8 +7,8 @@ Status](https://coveralls.io/repos/github/pulibrary/orangelight/badge.svg?branch
 Versions:
 
 * Ruby: 3.4.1
-* Rails: 7.2
-* Blacklight: 8.8
+* Rails: 8.1.3
+* Blacklight: 9.0
 
 ## Development pre-requisites
 * In order to run locally, you must have Lando installed for your system - see https://docs.lando.dev/getting-started/installation.html.
