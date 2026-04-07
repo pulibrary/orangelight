@@ -6,7 +6,7 @@ defaults: &defaults
   pulsearch_base: https://catalog.princeton.edu
   aeon_base: https://princeton.aeon.atlas-sys.com/logon
   gfa_base: http://libweb5.princeton.edu/ReCAPNoUI/Default.aspx
-  ill_base: https://lib-illiad.princeton.edu/illiad/illiad.dll/OpenURL
+  ill_base: https://princeton.illiad.oclc.org/illiad/OpenURL
   scsb_base: https://scsb.recaplib.org:9093
   illiad_api_key: <%= ENV['ILLIAD_API_KEY'] %>
   illiad_api_base: <%= ENV['ILLIAD_API_BASE_URL'] %>
@@ -25,7 +25,7 @@ test:
   <<: *defaults
   bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.lib.princeton.edu" %>
   illiad_api_key: 'TESTME'
-  illiad_api_base: <%= ENV['ILLIAD_API_BASE_URL'] || "https://lib-illiad.princeton.edu" %>
+  illiad_api_base: <%= ENV['ILLIAD_API_BASE_URL'] || "https://princeton.illiad.oclc.org" %>
 production:
   <<: *defaults
 staging:

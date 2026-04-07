@@ -17,8 +17,8 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
   let(:mutiple_items) { '9979171923506421' }
   let(:the_senses) { '9951680203506421' }
 
-  let(:transaction_url) { "https://lib-illiad.princeton.edu/ILLiadWebPlatform/transaction" }
-  let(:transaction_note_url) { "https://lib-illiad.princeton.edu/ILLiadWebPlatform/transaction/1093806/notes" }
+  let(:transaction_url) { "https://princeton.illiad.oclc.org/ILLiadWebPlatform/transaction" }
+  let(:transaction_note_url) { "https://princeton.illiad.oclc.org/ILLiadWebPlatform/transaction/1093806/notes" }
 
   let(:valid_patron_response) { file_fixture('../bibdata_patron_response.json') }
   let(:valid_patron_no_barcode_response) { file_fixture('../bibdata_patron_no_barcode_response.json') }
