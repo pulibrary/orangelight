@@ -12,7 +12,7 @@ RSpec.describe "Health Check", type: :request do
   let(:bibdata_stub) do
     stub_request(:get, bibdata_url).to_return(body: File.open('spec/fixtures/bibdata/health.json'))
   end
-  let(:illiad_url) { "https://lib-illiad.princeton.edu/IlliadWebPlatform/SystemInfo/PlatformVersion" }
+  let(:illiad_url) { "https://princeton.illiad.oclc.org/IlliadWebPlatform/SystemInfo/PlatformVersion" }
   let(:illiad_stub) do
     stub_request(:get, illiad_url).to_return(body: "ILLiad Platform Version: 9.2.2.0", status: 200)
   end

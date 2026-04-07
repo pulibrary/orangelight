@@ -5519,7 +5519,7 @@ http_interactions:
   recorded_at: Tue, 12 Apr 2022 20:48:23 GMT
 - request:
     method: post
-    uri: https://lib-illiad.princeton.edu/ILLiadWebPlatform/transaction
+    uri: https://princeton.illiad.oclc.org/ILLiadWebPlatform/transaction
     body:
       encoding: UTF-8
       string: '{"Username":"jstudent","TransactionStatus":"Awaiting Article Express

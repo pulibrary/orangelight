@@ -62,7 +62,7 @@ en:
       email_from: "ilsborr@princeton.edu"
       email_subject: "Electronic Document Delivery Request Confirmation"
       brief_msg: Request an article or book chapter. They will be delivered as a PDF file in 1-2 business days. Please use the title field to indicate the article or chapter you wish to obtain. Use the notes field for additional comments or instructions. The Library complies with all applicable copyright laws.
-      email_conf_msg: 'Electronic document delivery requests typically take 1-2 business days to process. You will receive an email including a link where you can download your scanned section in the that timeframe. If there is a problem fulfilling your request a member of our Library Staff will contact you. For more detailed information please login to your <a href="https://lib-illiad.princeton.edu/illiad/illiad.dll">Illiad Account</a>. (Note: Your username and password is the same as the CAS)'
+      email_conf_msg: 'Electronic document delivery requests typically take 1-2 business days to process. You will receive an email including a link where you can download your scanned section in the that timeframe. If there is a problem fulfilling your request a member of our Library Staff will contact you. For more detailed information please login to your <a href="https://princeton.illiad.oclc.org/illiad/illiad.dll">Illiad Account</a>. (Note: Your username and password is the same as the CAS)'
       access_msg: 'Access Users are not eligible for Electronic Delivery Services requests.'
       invalid_patron:
         email: "docdel@princeton.edu"
