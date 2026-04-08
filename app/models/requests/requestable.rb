@@ -177,7 +177,7 @@ module Requests
       end
 
       def in_process_statuses
-        ["Acquisitions and Cataloging", "In Process"]
+        ["Acquisitions and Cataloging", "In Process", "Firestone Circulation"]
       end
   end
 end
