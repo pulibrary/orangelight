@@ -35,6 +35,6 @@ class Holdings::PhysicalHoldingComponent < ViewComponent::Base
     end
 
     def libmap_libraries
-      ["Firestone Library"]
+      ["Firestone Library", "Marquand Library"]
     end
 end
