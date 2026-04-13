@@ -1,0 +1,23 @@
+[
+  {
+    "barcode": "32101009400266",
+    "id": "23495908760006421",
+    "holding_id": "22495908770006421",
+    "copy_number": "2",
+    "status": "Unavailable",
+    "status_label": "Unavailable",
+    "status_source": "process_type",
+    "process_type": "MISSING",
+    "on_reserve": "N",
+    "item_type": "Gen",
+    "pickup_location_id": "lewis",
+    "pickup_location_code": "lewis",
+    "location": "lewis$stacks",
+    "label": "Lewis Library - Stacks",
+    "description": "",
+    "enum_display": "",
+    "chron_display": "",
+    "requested": false,
+    "in_temp_library": false
+  }
+]

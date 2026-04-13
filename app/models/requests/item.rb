@@ -141,10 +141,7 @@ module Requests
 
       def unavailable_statuses
         scsb = ['Not Available', "Item Barcode doesn't exist in SCSB database."]
-        alma = ['Unavailable', 'Claimed Returned', 'Lost', 'Hold Shelf', 'Transit', 'Missing', 'Resource Sharing Request',
-                'Lost Resource Sharing Item', 'Requested', 'In Transit to Remote Storage', 'Lost and paid',
-                'Loan', 'Technical - Migration', 'Preservation and Conservation',
-                'Collection Development Office', 'Holdings Management']
+        alma = ['Unavailable']
         scsb + alma
       end
   end

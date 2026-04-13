@@ -476,8 +476,7 @@ http_interactions:
       - Phusion Passenger(R) 6.0.9
     body:
       encoding: UTF-8
-      string: '[{"barcode":"32101032361436","id":"23503918390006421","holding_id":"22503918400006421","copy_number":"1","status":"Not
-        Available","status_label":"Lost","status_source":"process_type","process_type":"LOST_LOAN","on_reserve":"N","item_type":"Gen","pickup_location_id":"firestone","pickup_location_code":"firestone","location":"firestone$stacks","label":"Firestone
+      string: '[{"barcode":"32101032361436","id":"23503918390006421","holding_id":"22503918400006421","copy_number":"1","status":"Unavailable","status_label":"Unavailable","status_source":"process_type","process_type":"LOST_LOAN","on_reserve":"N","item_type":"Gen","pickup_location_id":"firestone","pickup_location_code":"firestone","location":"firestone$stacks","label":"Firestone
         Library - Stacks","description":"","enum_display":"","chron_display":"","in_temp_library":false}]'
   recorded_at: Fri, 06 Aug 2021 12:03:39 GMT
 - request:
@@ -8120,8 +8119,7 @@ http_interactions:
       - Phusion Passenger(R) 6.0.10
     body:
       encoding: UTF-8
-      string: '[{"barcode":"32101104013535","id":"23668310340006421","holding_id":"22668310350006421","copy_number":"0","status":"Not
-        Available","status_label":"Loan","status_source":"process_type","process_type":"LOAN","on_reserve":"N","item_type":"Gen","pickup_location_id":"arch","pickup_location_code":"arch","location":"arch$ref","label":"Architecture
+      string: '[{"barcode":"32101104013535","id":"23668310340006421","holding_id":"22668310350006421","copy_number":"0","status":"Unavailable","status_label":"Unavailable","status_source":"process_type","process_type":"LOAN","on_reserve":"N","item_type":"Gen","pickup_location_id":"arch","pickup_location_code":"arch","location":"arch$ref","label":"Architecture
         Library - Reference","description":"","enum_display":"","chron_display":"","in_temp_library":false}]'
   recorded_at: Thu, 05 May 2022 19:10:49 GMT
 - request:
@@ -8226,7 +8224,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '[{"barcode":"32101095817076","id":"23696270540006421","holding_id":"22696270550006421","copy_number":"1","status":"Not
-        Available","status_label":"Resource Sharing Request","status_source":"process_type","process_type":"ILL","on_reserve":"N","item_type":"Gen","pickup_location_id":"RES_SHARE","pickup_location_code":"RES_SHARE","location":"RES_SHARE$IN_RS_REQ","label":"Resource
+        Available","status_label":"Unavailable","status_source":"process_type","process_type":"ILL","on_reserve":"N","item_type":"Gen","pickup_location_id":"RES_SHARE","pickup_location_code":"RES_SHARE","location":"RES_SHARE$IN_RS_REQ","label":"Resource
         Sharing Library - Lending Resource Sharing Requests","description":"","enum_display":"","chron_display":"","in_temp_library":true,"temp_library_code":"RES_SHARE","temp_library_label":"Resource
         Sharing Library - Lending Resource Sharing Requests","temp_location_code":"RES_SHARE$IN_RS_REQ","temp_location_label":"Resource
         Sharing Library - Lending Resource Sharing Requests"}]'

@@ -1,0 +1,166 @@
+{
+  "id": "99131764845106421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Dorschel, Robert"
+  ],
+  "author_citation_display": [
+    "Dorschel, Robert"
+  ],
+  "author_roles_1display": "{\"primary_author\":\"Dorschel, Robert\",\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+    "Dorschel, Robert"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "The social codes of tech workers : class identity in digital capitalism / Robert Dorschel.",
+  "title_t": [
+    ""
+  ],
+  "title_citation_display": [
+    "The social codes of tech workers : class identity in digital capitalism"
+  ],
+  "pub_created_display": [
+    "Cambridge, Massachusetts : The MIT Press, [2025]"
+  ],
+  "pub_created_s": [
+    "Cambridge, Massachusetts : The MIT Press, [2025]"
+  ],
+  "pub_citation_display": [
+    "Cambridge, Massachusetts: The MIT Press"
+  ],
+  "publication_location_citation_display": [
+    "Cambridge, Massachusetts"
+  ],
+  "publisher_citation_display": [
+    "The MIT Press"
+  ],
+  "pub_date_display": [
+    "2025"
+  ],
+  "pub_date_start_sort": 2025,
+  "publication_date_citation_display": [
+    "2025"
+  ],
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "xx, 225 pages ; 23 cm."
+  ],
+  "description_t": [
+    "xx, 225 pages ; 23 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "xx, 225 pages"
+  ],
+  "geocode_display": [
+    "Germany",
+    "United States"
+  ],
+  "series_display": [
+    "Labor and technology"
+  ],
+  "more_in_this_series_t": [
+    "Labor and technology"
+  ],
+  "related_record_info_display": [
+    "Online version:"
+  ],
+  "summary_note_display": [
+    "\"Analysis of the contemporary tech workers situated between billionaire owners and precarious gig workers. This group, the author argues, is largely neglected in controversies over \"Big Tech\" or \"digital capitalism\" but plays a crucial role its everyday operation\"-- Provided by publisher."
+  ],
+  "bib_ref_notes_display": [
+    "Includes bibliographical references and index."
+  ],
+  "language_name_display": [
+    "English"
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "mult_languages_iana_s": [
+    "en"
+  ],
+  "contents_display": [
+    "The return of social critique",
+    "Hybrid professional roles",
+    "Lifestyles",
+    "Contradictory class formation",
+    "Contours of a new spirit of capitalism",
+    "Glitches in the class matrix."
+  ],
+  "lc_subject_display": [
+    "High technology industries—United States—Employees—Social conditions",
+    "High technology industries—Germany—Employees—Social conditions",
+    "High technology industries—United States—Employees—Economic conditions",
+    "High technology industries—Germany—Employees—Economic conditions"
+  ],
+  "subject_facet": [
+    "High technology industries—United States—Employees—Social conditions",
+    "High technology industries—Germany—Employees—Social conditions",
+    "High technology industries—United States—Employees—Economic conditions",
+    "High technology industries—Germany—Employees—Economic conditions"
+  ],
+  "lc_subject_facet": [
+    "High technology industries",
+    "High technology industries—United States",
+    "High technology industries—United States—Employees",
+    "High technology industries—United States—Employees—Social conditions",
+    "High technology industries—Germany",
+    "High technology industries—Germany—Employees",
+    "High technology industries—Germany—Employees—Social conditions",
+    "High technology industries—United States—Employees—Economic conditions",
+    "High technology industries—Germany—Employees—Economic conditions"
+  ],
+  "isbn_display": [
+    "9780262553537 (paperback)",
+    "0262553538 (paperback)"
+  ],
+  "lccn_display": [
+    "  2025017042"
+  ],
+  "lccn_s": [
+    "2025017042"
+  ],
+  "isbn_s": [
+    "9780262553537"
+  ],
+  "oclc_s": [
+    "1534213270"
+  ],
+  "other_version_s": [
+    "9780262553537",
+    "9780262384940",
+    "9780262384957",
+    "on1534213270",
+    "BIB2025017043"
+  ],
+  "holdings_1display": "{\"221103654730006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"HD8039.H54 D67 2025\",\"call_number_browse\":\"HD8039.H54 D67 2025\",\"items\":[{\"holding_id\":\"221103654730006421\",\"id\":\"231103654720006421\",\"status_at_load\":\"0\",\"barcode\":\"32101114341314\",\"process_type\":\"WORK_ORDER_DEPARTMENT\"}]}}",
+  "location_code_s": [
+    "firestone$stacks"
+  ],
+  "location": [
+    "Firestone Library"
+  ],
+  "location_display": [
+    "Stacks"
+  ],
+  "advanced_location_s": [
+    "firestone$stacks",
+    "Firestone Library"
+  ],
+  "name_title_browse_s": [
+    "Dorschel, Robert. The social codes of tech workers"
+  ],
+  "call_number_display": [
+    "HD8039.H54 D67 2025"
+  ],
+  "call_number_browse_s": [
+    "HD8039.H54 D67 2025"
+  ]
+}

@@ -1,0 +1,124 @@
+{
+    "id": "9915486663506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Broecker, Wallace S., 1931-"
+    ],
+    "author_citation_display": [
+        "Broecker, Wallace S."
+    ],
+    "author_roles_1display": "{\"primary_author\":\"Broecker, Wallace S.\",\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+    "author_s": [
+        "Broecker, Wallace S., 1931-"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "Chemical oceanography [by] Wallace S. Broecker. Under the general editorship of Kenneth S. Deffeyes.",
+    "title_t": [
+        ""
+    ],
+    "title_citation_display": [
+        "Chemical oceanography"
+    ],
+    "pub_created_display": [
+        "New York, Harcourt Brace Jovanovich [1974]"
+    ],
+    "pub_created_s": [
+        "New York, Harcourt Brace Jovanovich [1974]"
+    ],
+    "pub_citation_display": [
+        "New York: Harcourt Brace Jovanovich"
+    ],
+    "publication_location_citation_display": [
+        "New York"
+    ],
+    "publisher_citation_display": [
+        "Harcourt Brace Jovanovich"
+    ],
+    "pub_date_display": [
+        "1974"
+    ],
+    "pub_date_start_sort": 1974,
+    "publication_date_citation_display": [
+        "1974"
+    ],
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "x, 214 p. illus. 24 cm."
+    ],
+    "description_t": [
+        "x, 214 p. illus. 24 cm."
+    ],
+    "number_of_pages_citation_display": [
+        "x, 214 p."
+    ],
+    "bib_ref_notes_display": [
+        "Includes bibliographical references."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "lc_subject_display": [
+        "Chemical oceanography"
+    ],
+    "subject_facet": [
+        "Chemical oceanography"
+    ],
+    "lc_subject_facet": [
+        "Chemical oceanography"
+    ],
+    "isbn_display": [
+        "0155064371"
+    ],
+    "lccn_display": [
+        "   74001519  "
+    ],
+    "lccn_s": [
+        "74001519"
+    ],
+    "isbn_s": [
+        "9780155064379"
+    ],
+    "oclc_s": [
+        "983935"
+    ],
+    "other_version_s": [
+        "9780155064379",
+        "ocm00983935"
+    ],
+    "holdings_1display": "{\"22495908770006421\":{\"location_code\":\"lewis$stacks\",\"location\":\"Stacks\",\"library\":\"Lewis Library\",\"call_number\":\"GC98.B76\",\"call_number_browse\":\"GC98.B76\",\"items\":[{\"holding_id\":\"22495908770006421\",\"id\":\"23495908760006421\",\"status_at_load\":\"0\",\"barcode\":\"32101009400266\",\"copy_number\":\"2\"}]},\"22495908750006421\":{\"location_code\":\"lewis$stacks\",\"location\":\"Stacks\",\"library\":\"Lewis Library\",\"call_number\":\"GC98.B76\",\"call_number_browse\":\"GC98.B76\",\"items\":[{\"holding_id\":\"22495908750006421\",\"id\":\"23495908740006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010100947\",\"copy_number\":\"3\"}]},\"22495908730006421\":{\"location_code\":\"lewis$stacks\",\"location\":\"Stacks\",\"library\":\"Lewis Library\",\"call_number\":\"GC98.B76\",\"call_number_browse\":\"GC98.B76\",\"items\":[{\"holding_id\":\"22495908730006421\",\"id\":\"23495908720006421\",\"status_at_load\":\"1\",\"barcode\":\"32101011081369\",\"copy_number\":\"4\"}]}}",
+    "location_code_s": [
+        "lewis$stacks"
+    ],
+    "location": [
+        "Lewis Library"
+    ],
+    "location_display": [
+        "Stacks"
+    ],
+    "advanced_location_s": [
+        "lewis$stacks",
+        "Lewis Library"
+    ],
+    "name_title_browse_s": [
+        "Broecker, Wallace S., 1931-. Chemical oceanography"
+    ],
+    "call_number_display": [
+        "GC98.B76"
+    ],
+    "call_number_browse_s": [
+        "GC98.B76"
+    ]
+}

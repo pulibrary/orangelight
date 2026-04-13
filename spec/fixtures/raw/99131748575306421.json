@@ -1,0 +1,149 @@
+{
+  "id": "99131748575306421",
+  "numeric_id_b": true,
+  "author_citation_display": [
+    "Baumgarten, Stefan",
+    "Tieber, Michael"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Baumgarten, Stefan\",\"Tieber, Michael\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+    "Baumgarten, Stefan",
+    "Tieber, Michael"
+  ],
+  "title_display": "The Routledge handbook of translation technology and society / edited by Stefan Baumgarten and Michael Tieber.",
+  "title_t": [
+    ""
+  ],
+  "title_citation_display": [
+    "The Routledge handbook of translation technology and society"
+  ],
+  "pub_created_display": [
+    "Abingdon, Oxon ; New York, NY : Routledge, 2025."
+  ],
+  "pub_created_s": [
+    "Abingdon, Oxon ; New York, NY : Routledge, 2025."
+  ],
+  "pub_citation_display": [
+    "Abingdon, Oxon: Routledge"
+  ],
+  "publication_location_citation_display": [
+    "Abingdon, Oxon"
+  ],
+  "publisher_citation_display": [
+    "Routledge"
+  ],
+  "pub_date_display": [
+    "2025"
+  ],
+  "pub_date_start_sort": 2025,
+  "publication_date_citation_display": [
+    "2025"
+  ],
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "468 pages : illustrations (black and white) ; 25 cm."
+  ],
+  "description_t": [
+    "468 pages : illustrations (black and white) ; 25 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "468 pages"
+  ],
+  "series_display": [
+    "Routledge handbooks in translation and interpreting studies"
+  ],
+  "related_record_info_display": [
+    "Online version",
+    "ebook version :"
+  ],
+  "summary_note_display": [
+    "\"The Routledge Handbook of Translation Technology and Society offers the first comprehensive and critical exploration of translation technologies in the context of globalised multilingual societies within an increasingly AI-dominated world. This handbook calls for a fundamental rethinking of traditional approaches to translation, examining the ethical, ideological, socioeconomic, and environmental implications of digital tools and practices, such as professional AI-driven translation, 'everyday' machine translation, crowdsourcing translation, or platform-based translation work. It provides deep insights into pressing issues such as the commodification of language, inclusivity in so called low-resource languages, data colonialism, and labour exploitation. By questioning conventional science narratives and advocating for sustainable, inclusive, and equitable applications of translation technologies, this handbook empowers readers to engage critically with current trends and challenges in the digital age. Readers will benefit from an interdisciplinary approach that combines novel theoretical foundations with empirical research and practical case studies. It serves as a foundational reference and a springboard for (critical) future research in an evolving - sociotechnical - translation ecosystem where the blurring boundaries between human and machinic agents foster new modes of translator-machine interaction. This handbook is an essential resource for academics, researchers, and professionals in translation studies, digital humanities, science and technology studies, or (digital) discourse studies\"-- Provided by publisher."
+  ],
+  "bib_ref_notes_display": [
+    "Includes bibliographical references and index."
+  ],
+  "language_name_display": [
+    "English"
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "mult_languages_iana_s": [
+    "en"
+  ],
+  "lc_subject_display": [
+    "Translating and interpreting—Technological innovations",
+    "Translating and interpreting—Social aspects"
+  ],
+  "subject_facet": [
+    "Translating and interpreting—Technological innovations",
+    "Translating and interpreting—Social aspects",
+    "Essays"
+  ],
+  "lc_subject_facet": [
+    "Translating and interpreting",
+    "Translating and interpreting—Technological innovations",
+    "Translating and interpreting—Social aspects"
+  ],
+  "lcgft_s": [
+    "Essays"
+  ],
+  "lcgft_genre_facet": [
+    "Essays"
+  ],
+  "related_name_json_1display": "{\"Editor\":[\"Baumgarten, Stefan\",\"Tieber, Michael\"],\"\":[\"Baumgarten, Stefan\",\"Tieber, Michael\"]}",
+  "isbn_display": [
+    "9781032221427 (hardback)",
+    "1032221429",
+    "9781032221434 (paperback)",
+    "1032221437"
+  ],
+  "lccn_display": [
+    "  2025000357"
+  ],
+  "standard_no_1display": "{\"Other standard number\":[\"CIPO000238171\"]}",
+  "lccn_s": [
+    "2025000357"
+  ],
+  "isbn_s": [
+    "9781032221427",
+    "9781032221434"
+  ],
+  "oclc_s": [
+    "1481601811"
+  ],
+  "other_version_s": [
+    "9781032221427",
+    "9781032221434",
+    "9781003271314",
+    "9781040362365",
+    "9781040362334",
+    "on1481601811",
+    "BIB2025000358"
+  ],
+  "holdings_1display": "{\"221108140040006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"P306.97.T73 R696 2025\",\"call_number_browse\":\"P306.97.T73 R696 2025\",\"items\":[{\"holding_id\":\"221108140040006421\",\"id\":\"231108140030006421\",\"status_at_load\":\"0\",\"barcode\":\"32101124165133\",\"process_type\":\"HOLDSHELF\"}]}}",
+  "location_code_s": [
+    "firestone$stacks"
+  ],
+  "location": [
+    "Firestone Library"
+  ],
+  "location_display": [
+    "Stacks"
+  ],
+  "advanced_location_s": [
+    "firestone$stacks",
+    "Firestone Library"
+  ],
+  "call_number_display": [
+    "P306.97.T73 R696 2025"
+  ],
+  "call_number_browse_s": [
+    "P306.97.T73 R696 2025"
+  ]
+}
