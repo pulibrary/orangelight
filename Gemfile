@@ -60,7 +60,7 @@ gem 'omniauth-rails_csrf_protection'
 gem 'openurl', '~> 1.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
-gem 'puma', '~> 7.2'
+gem 'puma', '~> 8.0'
 # For limiting request rates
 gem 'rack-attack'
 # For profiling

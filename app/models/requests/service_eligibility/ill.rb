@@ -22,7 +22,7 @@ module Requests
 
           def requestable_eligible?
             !requestable.aeon? && requestable.charged? && !requestable.marquand_item? &&
-              (!any_loanable || requestable.enumerated? || requestable.preservation_conservation?)
+              (!any_loanable || requestable.enumerated?)
           end
 
           def patron_group_eligible?

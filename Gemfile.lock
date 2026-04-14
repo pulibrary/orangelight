@@ -82,7 +82,7 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
-    addressable (2.8.9)
+    addressable (2.9.0)
       public_suffix (>= 2.0.2, < 8.0)
     airbrussh (1.6.0)
       sshkit (>= 1.6.1, != 1.7.0)
@@ -335,7 +335,7 @@ GEM
     health-monitor-rails (12.9.0)
       railties (>= 6.1)
     high_voltage (5.0.0)
-    honeybadger (6.5.4)
+    honeybadger (6.5.5)
       logger
       ostruct
     http (5.3.1)
@@ -509,7 +509,7 @@ GEM
       date
       stringio
     public_suffix (7.0.5)
-    puma (7.2.0)
+    puma (8.0.0)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.2.6)
@@ -660,7 +660,7 @@ GEM
       sass-embedded (~> 1.80)
     scrub_rb (1.0.1)
     securerandom (0.4.1)
-    selenium-webdriver (4.41.0)
+    selenium-webdriver (4.43.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -791,7 +791,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yajl-ruby (1.4.3)
-    yard (0.9.38)
+    yard (0.9.40)
     yell (2.2.2)
     zeitwerk (2.7.5)
 
@@ -860,7 +860,7 @@ DEPENDENCIES
   openurl (~> 1.0)
   pg
   psych
-  puma (~> 7.2)
+  puma (~> 8.0)
   rack-attack
   rack-mini-profiler
   rails (~> 8.1)
