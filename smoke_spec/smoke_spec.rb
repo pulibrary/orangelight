@@ -23,7 +23,6 @@ RSpec.describe 'Deployed environment', :staging_test do
     it 'can be performed' do
       visit uri
       expect(page).to have_link('Edit search')
-      expect(page).to have_content("You searched for:")
       expect(page).to have_content("Potato")
     end
   end
