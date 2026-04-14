@@ -196,14 +196,13 @@ module Blacklight::Document::JsonLd
   end
 
   def genre
-    return [
+    [
       self['lcgft_genre_facet'],
       self['rbgenr_genre_facet'],
       self['aat_genre_facet'],
       self['homoit_genre_facet']
-    ].find(&:any?)
+    ].find(&:present?)
   end
-
 
   def default_host
     @default_host ||= "#{ENV['APPLICATION_HOST_PROTOCOL'] || 'http'}://#{ENV['APPLICATION_HOST'] || 'localhost:3000'}" || 'http://localhost'
