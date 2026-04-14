@@ -39,6 +39,26 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     end
   end
 
+  context "Unavailable east asian item with empty enum and description string data" do
+    before do
+      stub_single_holding_location('eastasian$hy')
+
+      stub_availability_by_holding_id(bib_id: '9942430233506421', holding_id: '22600149340006421')
+      stub_catalog_raw(bib_id: '9942430233506421')
+    end
+    let(:params) do
+      {
+        system_id: '9942430233506421',
+        mfhd: '22600149340006421',
+        patron_request:
+      }
+    end
+    let(:request_with_bad_east_asian_data) { described_class.new(**params) }
+    it 'goes to illiad' do
+      expect(request_with_bad_east_asian_data.requestable[1].services.include?('ill')).to be_truthy
+    end
+  end
+
   context "a holding with multiple items, some of which are on reserve" do
     let(:user) { FactoryBot.create(:user) }
 

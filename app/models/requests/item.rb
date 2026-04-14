@@ -54,10 +54,6 @@ module Requests
       self[:on_reserve] == 'Y'
     end
 
-    def preservation_conservation?
-      status_label == "Preservation and Conservation"
-    end
-
     def enumerated?
       enum_value.present?
     end
@@ -128,11 +124,13 @@ module Requests
     private
 
       def short_description_from_alma_availability_call
-        self[:enum_display]
+        self_enum = self[:enum_display]
+        self_enum.presence
       end
 
       def long_description
-        self[:description]
+        self_description = self[:description]
+        self_description.presence
       end
 
       def available_statuses
