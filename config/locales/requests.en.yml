@@ -20,7 +20,6 @@ en:
       digitize_success: "Request submitted to Illiad. You can view the status of your request on your account page.  See confirmation email with details about when your item(s) will be available."
       recap_no_items_success: "Request submitted to ReCAP, our offsite storage facility. See confirmation email with details about when your item(s) will be available."
       interlibrary_loan_success: "Your request was submitted. Our library staff will review the request and contact you with any questions or updates."
-      on_order_success: "Request submitted. See confirmation email with details about when your item(s) will be available."
       in_process_success: "Request submitted. See confirmation email with details about when your item(s) will be available."
       annex_success: "Request submitted. See confirmation email with details about when your item(s) will be available."
       annex_in_library_success: "Request submitted. See confirmation email with details about when your item(s) will be available to view."
@@ -88,13 +87,6 @@ en:
       brief_msg: "Requests for pick-up typically take 2 business days to process."
       email_conf_msg: "Your request for this item has been received. Once we complete our processing, you'll receive an email stating that the book is available for pick-up. Please note that if you need this item quickly, you can retrieve the book from the stacks and bring it to circulation to check out."
       access_msg: 'Access Users must obtain a pass to enter the Library.'
-    on_order:
-      email: "fstcirc@princeton.edu"
-      email_subject: "On Order Request"
-      brief_msg: "On Order books have not yet been received. Place a request to be notified when this item has arrived and is ready for your pick-up."
-      email_conf_msg: "On Order books have not yet been received by the library. You have placed a request to be notified when this item has arrived."
-      patron_conf_msg: "On Order books have not yet been received by the library. You have placed a request to be notified when this item has arrived."
-      access_msg: 'Access Users are not eligible for On Order requests.'
     recap_marquand:
       email_destination: 'marquandoffsite@princeton.edu'
       email_subject: "Patron Initiated Catalog Request - ReCAP"

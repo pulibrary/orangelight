@@ -9,7 +9,6 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
   let(:in_process_id) { '99117665883506421?mfhd=22707341710006421' }
   # going to need to review this with Mark to see if this example is good
   let(:recap_in_process_id) { '99114026863506421?mfhd=22753408610006421' }
-  let(:on_order_id) { '99103251433506421?mfhd=22480270140006421' }
   let(:no_items_id) { '9941274093506421?mfhd=22690999210006421' }
   let(:on_shelf_no_items_id) { '993083506421?mfhd=22740191170006421' }
   let(:temp_item_id) { '4815239' }
@@ -210,30 +209,6 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(confirm_email.to).to eq(["a@b.com"])
         expect(confirm_email.cc).to be_blank
         expect(confirm_email.html_part.body.to_s).to have_content("Konteneryzacja w PRL")
-        expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
-      end
-      # On-order -> it hasn't been delivered to a Princeton library yet.
-      it 'allows CAS patrons to request On-Order items' do
-        stub_catalog_raw bib_id: '99103251433506421'
-        visit "/requests/#{on_order_id}"
-        expect(page).to have_button('Request Selected Items', disabled: false)
-        check 'requestable_selected_23480270130006421'
-        expect do
-          click_button 'Request Selected Items'
-        end.to change { ActionMailer::Base.deliveries.count }.by(2)
-        expect(page).to have_content I18n.t("requests.submit.on_order_success")
-        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-        confirm_email = ActionMailer::Base.deliveries.last
-        expect(email.subject).to eq("On Order Request")
-        expect(email.to).to eq(["fstcirc@princeton.edu"])
-        expect(email.cc).to be_blank
-        expect(email.html_part.body.to_s).to have_content("Jahrbuch Praktische Philosophie in globaler Perspektive = Yearbook practical philosophy in a global perspective")
-        expect(confirm_email.subject).to eq("On Order Request")
-        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.to).to eq(["a@b.com"])
-        expect(confirm_email.cc).to be_blank
-        expect(confirm_email.html_part.body.to_s).to have_content("Jahrbuch Praktische Philosophie in globaler Perspektive = Yearbook practical philosophy in a global perspective")
         expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
       end
       # This is an example item that was in incorrect state.
@@ -597,7 +572,6 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
                                         charged?: false,
                                         aeon?: false,
                                         in_process?: false,
-                                        on_order?: false,
                                         alma_managed?: true,
                                         recap?: false,
                                         recap_pf?: false,
@@ -763,29 +737,13 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(confirm_email.html_part.body.to_s).to have_content("955-1968 : gli artisti italiani alle Documenta di Kassel")
       end
 
-      it 'Shows a PUL ReCAP item that has not made it to ReCAP yet as available for On Order request' do
+      it 'Shows a PUL ReCAP item that has not made it to ReCAP available for a Resource Sharing Request' do
         stub_single_holding_location 'recap$pa'
+        stub_illiad_patron
         stub_scsb_availability(bib_id: "99123340993506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
         visit '/requests/99123340993506421?mfhd=22569931350006421'
         expect(page).to have_content 'Unavailable'
-        select('Firestone Library', from: 'requestable__pick_up_23896622240006421')
-        expect do
-          click_button 'Request this Item'
-        end.to change { ActionMailer::Base.deliveries.count }.by(2)
-        expect(page).to have_content I18n.t("requests.submit.in_process_success")
-        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-        confirm_email = ActionMailer::Base.deliveries.last
-        expect(email.subject).to eq("On Order Request")
-        expect(email.to).to eq(["fstcirc@princeton.edu"])
-        expect(email.cc).to be_blank
-        expect(email.html_part.body.to_s).to have_content("Ḍaḥāyā al-zawāj")
-        expect(confirm_email.subject).to eq("On Order Request")
-        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.to).to eq(["a@b.com"])
-        expect(confirm_email.cc).to be_blank
-        expect(confirm_email.html_part.body.to_s).to have_content("Ḍaḥāyā al-zawāj")
-        expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
+        expect(page).to have_content 'Request via Partner Library'
       end
 
       it "Delivers ReCAP Partner in library use music items only to Mendel Music Library" do
@@ -810,13 +768,6 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(page).to have_content 'Available for In Library Use'
         expect(page).to have_content('Pick-up location: Marquand Library')
         expect(page).to have_content 'ReCAP N5230.M62 R39 2014'
-      end
-
-      it "Allows On Order Princeton ReCAP Items to be Requested" do
-        stub_single_holding_location 'recap$pa'
-        stub_scsb_availability(bib_id: "99125378834306421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
-        visit '/requests/99125378834306421?mfhd=22897184810006421'
-        expect(page).to have_content 'On Order books have not yet been received. Place a request to be notified when this item has arrived and is ready for your pick-up.'
       end
 
       it 'Request an enumerated on campus item correctly' do
@@ -1070,15 +1021,6 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
       end
 
-      it 'disallows access for On-Order recap items' do
-        stub_catalog_raw bib_id: '99103251433506421'
-        visit "/requests/#{on_order_id}"
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-      end
-
       it 'disallows access to a record that has no item data' do
         visit "/requests/#{no_items_id}"
         expect(page).not_to have_button('Request this Item')
@@ -1280,16 +1222,6 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       login_as user
     end
 
-    it "does not allow physical pickup request On Order PUL ReCAP Item" do
-      stub_scsb_availability bib_id: '99129134216906421', institution_id: 'PUL', barcode: 'fake-barcode'
-      stub_single_holding_location 'recap$pa'
-      stub_catalog_raw bib_id: '99129134216906421'
-      visit '/requests/99129134216906421?aeon=false&mfhd=221002424820006421'
-      expect(page).not_to have_content 'Electronic Delivery'
-      expect(page).not_to have_content 'Physical Item Delivery'
-      expect(page).to have_content 'This item is not available'
-    end
-
     it "allows a physical pickup request of ReCAP Item" do
       stub_single_holding_location 'recap$pa'
       stub_scsb_availability(bib_id: "9941151723506421", institution_id: "PUL", barcode: '33333059902417')
@@ -1394,11 +1326,6 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       # expect(confirm_email.cc).to be_blank
       # expect(confirm_email.html_part.body.to_s).to have_content("100 let na zashchite gosudarstva")
       # expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
-    end
-
-    it "does not allow requesting of On Order books" do
-      visit "requests/99125492003506421?mfhd=22927395910006421"
-      expect(page).to have_content 'This item is not available'
     end
   end
   context 'when a holding has items on and off reserve' do

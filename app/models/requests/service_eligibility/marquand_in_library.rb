@@ -25,7 +25,6 @@ module Requests
         requestable.held_at_marquand_library? &&
           !(requestable.recap? || requestable.recap_pf?) &&
           !requestable.annex? &&
-          !requestable.on_order? &&
           !requestable.in_process? &&
           !requestable.charged? &&
           (requestable.alma_managed? || requestable.partner_holding?) &&

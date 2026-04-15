@@ -75,15 +75,6 @@ module Requests
            subject:)
     end
 
-    def on_order_email(submission)
-      destination_key = 'requests.default.email_destination'
-      request_email(submission:, subject_key: 'requests.on_order.email_subject', destination_key:)
-    end
-
-    def on_order_confirmation(submission)
-      confirmation_email(submission:, subject_key: 'requests.on_order.email_subject')
-    end
-
     def in_process_email(submission)
       destination_key = 'requests.default.email_destination'
       request_email(submission:, subject_key: 'requests.in_process.email_subject', destination_key:)

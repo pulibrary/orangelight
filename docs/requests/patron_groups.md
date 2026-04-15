@@ -26,7 +26,6 @@ We have two groupings of patron types.
 * Recap Electronic Delivery Request (scan a selection shelved at ReCAP on demand via the ReCAP SCSB Application)
 * Annex Physical Delivery Request (Offsite Materials stored at our Forrestal Annex Building)
 * Annex Electronic Delivery Request (scan a selection shelved at our Forrestal Annex Building on demand via our ILLiad Document Delivery application)
-* On Order Requests (Request Items in the Alma "Acquisition" Process Type. These are items ordered for our shelves but have not yet arrived.)
 * In Process Requests (Request Items in the Alma "In Process" Process Type and the Alma Work Order Type "Acquisitions and Cataloging". Items that are here on campus but are not yet prepared for final shelving.
 * Pick-up Service (request an item for pick-up that is shelved at a campus library)
 * On Campus Material Electronic Digitization Request (scan a selection from an item shelved on campus on demand via our ILLiad Document Delivery application)

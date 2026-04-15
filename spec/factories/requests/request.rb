@@ -9,14 +9,6 @@ FactoryBot.define do
     initialize_with { new(system_id:, mfhd:, patron_request:) }
   end
 
-  #  I think this is a problem record
-  factory :request_on_order, class: 'Requests::Form' do
-    system_id { '9939075533506421' }
-    mfhd { '22675089420006421' }
-    patron_request { Thread.new { FactoryBot.build(:patron) } }
-    initialize_with { new(system_id:, mfhd:, patron_request:) }
-  end
-
   factory :request_thesis, class: 'Requests::Form' do
     system_id { "dsp019c67wp402" }
     mfhd { 'thesis' }

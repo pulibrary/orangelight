@@ -22,7 +22,7 @@ module Requests
           private
 
             def correct_status?
-              requestable.charged? && !requestable.in_process? && !requestable.on_order?
+              requestable.charged? && !requestable.in_process?
             end
 
             def correct_location?

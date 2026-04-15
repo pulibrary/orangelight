@@ -91,32 +91,25 @@ describe Requests::FormDecorator, requests: true do
         expect(decorator.any_fill_in_eligible?).to be_truthy
       end
     end
-
-    context "on_order services" do
-      let(:stubbed_questions) { { services: ['on_order'] } }
-      it "identifies any mfhds that require fill in option" do
-        expect(decorator.any_fill_in_eligible?).to be_falsey
-      end
-    end
   end
 
   describe "#any_will_submit_via_form?" do
     context "recap services" do
-      let(:stubbed_questions) { { services: ['recap', 'recap_edd'], patron:, will_submit_via_form?: true, item_data?: true, recap_edd?: true, scsb_in_library_use?: false, on_order?: false, in_process?: false, aeon?: false, ill_eligible?: false, eligible_for_library_services?: true } }
+      let(:stubbed_questions) { { services: ['recap', 'recap_edd'], patron:, will_submit_via_form?: true, item_data?: true, recap_edd?: true, scsb_in_library_use?: false, in_process?: false, aeon?: false, ill_eligible?: false, eligible_for_library_services?: true } }
       it "identifies any mfhds that require fill in option" do
         expect(decorator.any_will_submit_via_form?).to be_truthy
       end
     end
 
     context "on_shelf services with no item data and circulates" do
-      let(:stubbed_questions) { { services: ['on_shelf'], patron:, item_data?: false, circulates?: true, scsb_in_library_use?: false, on_order?: false, in_process?: false, aeon?: false, ill_eligible?: false, recap?: false, annex?: false, held_at_marquand_library?: false, library_code: 'abc', eligible_for_library_services?: true } }
+      let(:stubbed_questions) { { services: ['on_shelf'], patron:, item_data?: false, circulates?: true, scsb_in_library_use?: false, in_process?: false, aeon?: false, ill_eligible?: false, recap?: false, annex?: false, held_at_marquand_library?: false, library_code: 'abc', eligible_for_library_services?: true } }
       it "submits via form" do
         expect(decorator.any_will_submit_via_form?).to be_truthy
       end
     end
 
     context "on_shelf services with no item data and circulates" do
-      let(:stubbed_questions) { { services: ['on_shelf'], patron:, item_data?: false, circulates?: false, recap_edd?: false, scsb_in_library_use?: false, on_order?: false, in_process?: false, aeon?: false, ill_eligible?: false, recap?: false, annex?: false, held_at_marquand_library?: false, eligible_for_library_services?: true } }
+      let(:stubbed_questions) { { services: ['on_shelf'], patron:, item_data?: false, circulates?: false, recap_edd?: false, scsb_in_library_use?: false, in_process?: false, aeon?: false, ill_eligible?: false, recap?: false, annex?: false, held_at_marquand_library?: false, eligible_for_library_services?: true } }
       it "does not submit via form" do
         expect(decorator.any_will_submit_via_form?).to be_falsey
       end

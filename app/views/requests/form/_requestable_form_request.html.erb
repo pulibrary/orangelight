@@ -7,7 +7,7 @@
       <span class="ill-data" data-ill-url="<%= requestable.illiad_request_url(request_context) %>"></span>
     <% end %>
     <%= hidden_field_tag "requestable[][type]", "", value: requestable.services.first %>
-    <% if requestable.on_order? || requestable.in_process? %>
+    <% if requestable.in_process? %>
       <%= pick_up_choices(form:, requestable:, collapse: false) %>
     <% else %>
       <%= show_service_options requestable, mfhd %>

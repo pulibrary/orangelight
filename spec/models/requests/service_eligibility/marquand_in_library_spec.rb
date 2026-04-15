@@ -16,7 +16,6 @@ RSpec.describe Requests::ServiceEligibility::MarquandInLibrary, requests: true d
           aeon?: false,
           charged?: false,
           in_process?: false,
-          on_order?: false,
           annex?: false,
           recap?: false,
           recap_pf?: false
