@@ -34,7 +34,6 @@ module Blacklight::Document::JsonLd
     metadata['local_identifier'] = local_identifier if local_identifier
     metadata['location'] = location if location
     metadata['electronic_locations'] = electronic_links if electronic_links.present?
-    metadata['genre'] = genre if genre.present?
 
     metadata
   end
@@ -51,6 +50,7 @@ module Blacklight::Document::JsonLd
       notes_display: 'description',
       pub_created_display: 'publisher',
       lc_subject_display: 'subject',
+      jsonld_genre_display: 'genre',
       coverage_display: 'coverage',
       title_sort: 'title_sort',
       alt_title_246_display: 'alternative',
@@ -193,15 +193,6 @@ module Blacklight::Document::JsonLd
         }
       end
     end
-  end
-
-  def genre
-    [
-      self['lcgft_genre_facet'],
-      self['rbgenr_genre_facet'],
-      self['aat_genre_facet'],
-      self['homoit_genre_facet']
-    ].find(&:present?)
   end
 
   def default_host
