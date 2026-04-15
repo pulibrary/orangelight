@@ -1,0 +1,23 @@
+[
+  {
+    "barcode": "32101114341314",
+    "id": "231103654720006421",
+    "holding_id": "221103654730006421",
+    "copy_number": "",
+    "status": "Unavailable",
+    "status_label": "Unavailable",
+    "status_source": "process_type",
+    "process_type": "WORK_ORDER_DEPARTMENT",
+    "on_reserve": "N",
+    "item_type": "Gen",
+    "pickup_location_id": "firestone",
+    "pickup_location_code": "firestone",
+    "location": "firestone$stacks",
+    "label": "Firestone Library - Stacks",
+    "description": "",
+    "enum_display": "",
+    "chron_display": "",
+    "requested": true,
+    "in_temp_library": false
+  }
+]

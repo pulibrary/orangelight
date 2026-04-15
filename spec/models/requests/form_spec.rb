@@ -433,6 +433,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     before do
       stub_single_holding_location 'firestone$stacks'
       stub_catalog_raw bib_id: params[:system_id]
+      stub_availability_by_holding_id(bib_id: '9920022063506421', holding_id: '22560993150006421')
     end
 
     describe "#requestable" do
@@ -441,7 +442,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       end
 
       it "shows missing items as eligible for ill" do
-        expect(request_with_missing.requestable[2].services.include?('ill')).to be_truthy
+        expect(request_with_missing.requestable[3].services.include?('ill')).to be_truthy
       end
 
       it "is enumerated" do
@@ -472,7 +473,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     end
   end
 
-  context "Holding with item in preservation and conservation" do
+  context "Holding with item in process type Transit" do
     let(:params) do
       {
         system_id: '9942430233506421',
@@ -481,7 +482,11 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       }
     end
     let(:request_preservation) { described_class.new(**params) }
-    before { stub_catalog_raw bib_id: params[:system_id] }
+    before do
+      stub_single_holding_location 'eastasian$hy'
+      stub_catalog_raw bib_id: params[:system_id]
+      stub_availability_by_holding_id(bib_id: '9942430233506421', holding_id: '22600149340006421')
+    end
     describe "#requestable" do
       it "shows items as eligible for illiad" do
         expect(request_preservation.requestable[1].services.include?('ill')).to be_truthy
