@@ -34,7 +34,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
                end
              else
                link_text = new_tab_icon(texts.first)
-               link_to(link_text, EzProxyService.ez_proxy_url(url), target: '_blank', rel: 'noopener', class: 'electronic-access-link')
+               link_to(link_text, url.to_s, target: '_blank', rel: 'noopener', class: 'electronic-access-link')
              end
     markup
   end

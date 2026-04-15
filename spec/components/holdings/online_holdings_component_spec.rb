@@ -15,10 +15,10 @@ RSpec.describe Holdings::OnlineHoldingsComponent, type: :component do
     expect(rendered.css('.online-holdings-list')).not_to be_empty
   end
 
-  it 'Converts links to EZProxy links where appropriate' do
+  it 'No longer converts links to EZProxy links' do
     document = SolrDocument.new({ electronic_access_1display: '{"http://gateway.proquest.com/long-path-etc":["Link 1","Other info:"]}' })
     rendered = render_inline(described_class.new(document:))
-    expect(rendered.css('online-options')[0].attributes['link-json'].value).to include("https://login.ezproxy.princeton.edu/login?url=http://gateway.proquest.com/long-path-etc")
+    expect(rendered.css('online-options')[0].attributes['link-json'].value).not_to include("login.ezproxy")
   end
 
   it 'does not render an online availability lux-text-style for items with finding aids' do
