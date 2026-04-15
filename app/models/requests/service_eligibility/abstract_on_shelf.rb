@@ -25,7 +25,6 @@ module Requests
           def on_shelf_eligible?
             !requestable.aeon? && !requestable.charged? &&
               !requestable.in_process? &&
-              !requestable.on_order? &&
               requestable.alma_managed? &&
               !(requestable.recap? || requestable.recap_pf?) &&
               !requestable.held_at_marquand_library?

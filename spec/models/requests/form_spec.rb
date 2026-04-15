@@ -371,56 +371,6 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     end
   end
 
-  context "When passed an ID for an On Order Title" do
-    let(:params) do
-      {
-        system_id: '99103251433506421',
-        mfhd: '22480270140006421',
-        patron_request:
-      }
-    end
-    let(:request_with_on_order) { described_class.new(**params) }
-    let(:firestone_circ) do
-      { label: "Firestone Library", gfa_pickup: "PA", pick_up_location_code: "firestone", staff_only: false }
-    end
-    let(:architecture) do
-      { label: "Architecture Library", gfa_pickup: "PW", pick_up_location_code: "arch", staff_only: false }
-    end
-    let(:eastasian) do
-      { label: "East Asian Library", gfa_pickup: "PL", pick_up_location_code: "eastasian", staff_only: false }
-    end
-    before do
-      stub_catalog_raw bib_id: params[:system_id]
-      stub_single_holding_location 'firestone$stacks'
-    end
-
-    describe "#requestable" do
-      it "has requestable items" do
-        expect(request_with_on_order.requestable.size).to be >= 1
-      end
-
-      it "has a requestable with 'on order' service" do
-        expect(request_with_on_order.requestable.last.services.include?('on_order')).to be_truthy
-      end
-
-      it "has a requestable on order item" do
-        expect(request_with_on_order.requestable.last.alma_managed?).to eq(true)
-      end
-
-      it "provides a list of the default pick-up locations" do
-        expect(request_with_on_order.default_pick_ups).to be_truthy
-        expect(request_with_on_order.default_pick_ups).to be_an(Array)
-        expect(request_with_on_order.default_pick_ups.size).to be > 1
-        expect(request_with_on_order.default_pick_ups.include?(firestone_circ)).to be_truthy
-      end
-
-      it "lists locations in an alphabetical order" do
-        expect(request_with_on_order.default_pick_ups[0]).to eq(architecture)
-        expect(request_with_on_order.default_pick_ups[1]).to eq(eastasian)
-      end
-    end
-  end
-
   context "When passed a mfhd with missing items" do
     let(:params) do
       {

@@ -3802,7 +3802,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '[{"barcode":"","id":"23896622240006421","holding_id":"22569931350006421","copy_number":"","status":"Not
-        Available","status_label":"Acquisition","status_source":"process_type","process_type":"ACQ","on_reserve":"N","item_type":"","pickup_location_id":"recap","pickup_location_code":"recap","location":"recap$pa","label":"ReCAP
+        Available","status_label":"Unavailable","status_source":"process_type","process_type":"ACQ","on_reserve":"N","item_type":"","pickup_location_id":"recap","pickup_location_code":"recap","location":"recap$pa","label":"ReCAP
         - Remote Storage","description":"","enum_display":"","chron_display":"","in_temp_library":false}]'
   recorded_at: Fri, 06 Aug 2021 12:05:52 GMT
 - request:

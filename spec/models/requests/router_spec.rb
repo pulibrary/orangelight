@@ -49,7 +49,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
       let(:item) { {} }
       let(:stubbed_questions) do
         { alma_managed?: true, in_process?: false,
-          charged?: false, on_order?: false, aeon?: false,
+          charged?: false, aeon?: false,
           requested?: false,
           annex?: false,
           recap?: false, recap_pf?: false, held_at_marquand_library?: false, marquand_library?: false,
@@ -66,23 +66,6 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
         end
         it "returns in_process as option in the services" do
           expect(router.calculate_services).to eq(['in_process'])
-        end
-        context "unauthorized user" do
-          let(:user) { FactoryBot.build(:unauthenticated_patron) }
-
-          it "returns an empty services list" do
-            expect(router.calculate_services).to eq([])
-          end
-        end
-      end
-
-      context "on order" do
-        before do
-          stubbed_questions[:recap_pf?] = false
-          stubbed_questions[:on_order?] = true
-        end
-        it "returns on_order in the services" do
-          expect(router.calculate_services).to eq(['on_order'])
         end
         context "unauthorized user" do
           let(:user) { FactoryBot.build(:unauthenticated_patron) }

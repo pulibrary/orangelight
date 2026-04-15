@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.shared_examples 'shared request type tests' do
   let(:stubbed_questions) do
     { alma_managed?: true, in_process?: false,
-      charged?: false, on_order?: false, aeon?: false,
+      charged?: false, aeon?: false,
       requested?: false,
       annex?: false,
       recap?: false, recap_pf?: false, held_at_marquand_library?: false, marquand_library?: false,
@@ -45,10 +45,6 @@ RSpec.shared_examples 'shared request type tests' do
     stubbed_questions[:circulates?] = false
     stubbed_questions[:item_data?] = true
     expect(router.calculate_services).to eq(annex_electronic_services)
-  end
-  it 'with an on order request' do
-    stubbed_questions[:on_order?] = true
-    expect(router.calculate_services).to eq(on_order_services)
   end
   it 'with an in process request' do
     stubbed_questions[:in_process?] = true
@@ -93,7 +89,6 @@ RSpec.shared_context 'core patron group' do
   let(:annex_no_item_services) { ['annex_no_items', 'on_shelf_edd'] }
   # Should not have 'anex' since it does not circulate
   let(:annex_electronic_services) { ['annex', 'on_shelf_edd'] }
-  let(:on_order_services) { ['on_order'] }
   let(:in_process_services) { ['in_process'] }
   # Any on_shelf_eligible item will also be on_shelf_edd eligible
   let(:on_shelf_services) { ['on_shelf_edd', 'on_shelf'] }
@@ -110,7 +105,6 @@ RSpec.shared_context 'affiliate and guest patron group' do
   let(:annex_physical_services) { ['annex'] }
   let(:annex_no_item_services) { ['annex_no_items'] }
   let(:annex_electronic_services) { ['annex'] }
-  let(:on_order_services) { [] }
   let(:in_process_services) { [] }
   let(:on_shelf_services) { [] }
   let(:digitization_services) { [] }
