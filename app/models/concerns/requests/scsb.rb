@@ -15,18 +15,6 @@ module Requests
       parse_scsb_response(response)
     end
 
-    # Prefer lookup by bib over barcode
-    # def items_by_barcode(barcodes)
-    #   response = scsb_conn.post do |req|
-    #     req.url '/sharedCollection/itemAvailabilityStatus'
-    #     req.headers['Content-Type'] = 'application/json'
-    #     req.headers['Accept'] = 'application/json'
-    #     req.headers['api_key'] = scsb_auth_key
-    #     req.body = scsb_barcode_request(barcodes).to_json
-    #   end
-    #   parse_scsb_response(response)
-    # end
-
     def scsb_request(request_params)
       response = scsb_conn.post do |req|
         req.url '/requestItem/requestItem'
@@ -49,13 +37,6 @@ module Requests
       Rails.logger.error("Invalid response from the SCSB server: #{response.body}")
       raise
     end
-
-    # Not being used at the moment
-    # def scsb_barcode_request(barcodes)
-    #   {
-    #     barcodes: barcodes
-    #   }
-    # end
 
     def scsb_bib_id_request(id, source)
       {
@@ -89,17 +70,6 @@ module Requests
         startPage: item[:edd_start_page], titleIdentifier: bib[:title],
         username: user.netid, volume: item[:edd_volume_number] }
     end
-
-    # not being used
-    # def scsb_topic_type(scsb_request_type)
-    #   if scsb_request_type == 'EDD'
-    #     '/topic/PUL.EDDT'
-    #   elsif scsb_request_type == 'RECALL'
-    #     '/topic/PUL.RecallT'
-    #   else
-    #     '/topic/PUL.RequestT'
-    #   end
-    # end
 
     def scsb_request_map(request_type)
       if request_type == 'edd'
