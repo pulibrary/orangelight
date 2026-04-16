@@ -7,7 +7,7 @@ module Requests
              :holding, :item_location_code, :item?, :item, :partner_holding?, :status, :status_label, :use_restriction?, :library_code, :enum_value,
              :cron_value, :illiad_request_parameters, :location_label, :aeon?, :patron, :held_at_marquand_library?,
              :ill_eligible?, :scsb_in_library_use?, :pick_up_locations, :on_shelf?, :recap?, :recap_pf?, :illiad_request_url, :available?,
-             :on_order?, :in_process?, :alma_managed?, :title, :cul_avery?, :cul_music?,
+             :in_process?, :alma_managed?, :title, :cul_avery?, :cul_music?,
              :pick_up_location_code, :enumerated?, to: :requestable
     delegate :content_tag, :hidden_field_tag, :concat, to: :view_context
 
@@ -51,12 +51,12 @@ module Requests
     end
 
     def request_status?
-      on_order? || in_process? || ill_eligible? || services.empty?
+      in_process? || ill_eligible? || services.empty?
     end
 
     def will_submit_via_form?
       return false unless eligible_for_this_item?
-      digitize? || pick_up? || scsb_in_library_use? || ill_eligible? || on_order? || in_process? || off_site?
+      digitize? || pick_up? || scsb_in_library_use? || ill_eligible? || in_process? || off_site?
     end
 
     def on_shelf_edd?

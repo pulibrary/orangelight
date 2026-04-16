@@ -517,35 +517,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     end
   end
 
-  context 'On Order materials' do
-    let(:request) { FactoryBot.build(:request_on_order, patron_request:) }
-    let(:requestable) { request.requestable.last } # serial records on order at the end
-
-    describe 'with a status of on_order ' do
-      it 'is on_order and requestable' do
-        expect(requestable.on_order?).to be_truthy
-      end
-    end
-
-    describe '#location_label' do
-      it 'has a location label' do
-        expect(requestable.location_label).to eq('Firestone Library - Classics Collection')
-      end
-    end
-
-    describe "#held_at_marquand_library?" do
-      it "is not marquand" do
-        expect(requestable).not_to be_held_at_marquand_library
-      end
-    end
-
-    describe "#available?" do
-      it "is not available" do
-        expect(requestable).not_to be_available
-      end
-    end
-  end
-
   # user authentication tests
   context 'When a princeton user with NetID visits the site' do
     let(:valid_patron) do

@@ -17,7 +17,6 @@ module Requests
     # :annex_no_items - material is stored in an Annex location with no item record data
     # :on_shelf - material is stored in a campus library location
     # :on_shelf_edd - material is in a campus library location that is eligible for digitization
-    # :on_order - material has a status in Alma that indicates it is ordered but has not yet arrived on campus
     # :in_process - material has a status in Alma that indicates it has arrived on campus but has not been processed and shelved
     # :recap - material is stored at recap; can be paged to campus and circulates
     # :recap_in_library - material is stored at recap; can be paged to campus, but does not circulate
@@ -44,7 +43,6 @@ module Requests
       def eligibility_checks
         [
           ServiceEligibility::ILL.new(requestable:, patron:, any_loanable:),
-          ServiceEligibility::OnOrder.new(requestable:, patron:),
           ServiceEligibility::Annex::Pickup.new(requestable:, patron:),
           ServiceEligibility::Annex::NoItems.new(requestable:, patron:),
           ServiceEligibility::OnShelfDigitize.new(requestable:, patron:),

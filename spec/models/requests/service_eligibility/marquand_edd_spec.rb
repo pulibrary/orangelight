@@ -16,7 +16,6 @@ RSpec.describe Requests::ServiceEligibility::MarquandEdd, requests: true do
           aeon?: false,
           charged?: false,
           in_process?: false,
-          on_order?: false,
           annex?: false,
           recap?: false,
           recap_pf?: false

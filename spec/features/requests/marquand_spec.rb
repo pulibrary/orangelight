@@ -144,23 +144,6 @@ describe 'requests for Marquand items', type: :feature, requests: true do
           expect(confirm_email.html_part.body.to_s).to have_content("La Mirada")
         end
       end
-
-      context 'with an on-order item' do
-        let(:availability) { [{ id: item_id, status: 'Unavailable', status_label: 'Acquisition', location: location_code }].to_json }
-        let(:bibdata_holding_response) do
-          { code: "marquand$pj", library: { code: "marquand" }, delivery_locations: [{ library: { code: 'marquand' } }] }.to_json
-        end
-        it 'allows a user to request the item' do
-          visit("requests/#{bib_id}?mfhd=#{holding_id}")
-          expect(page).to have_content 'Pick-up location: Marquand Library'
-          expect(page).to have_content 'On Order books have not yet been received. Place a request to be notified when this item has arrived and is ready for your pick-up.'
-          check "requestable_selected_#{item_id}"
-          click_button 'Request this Item'
-          expect(page).to have_content 'Request submitted'
-          scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
-          expect(a_request(:post, scsb_url)).not_to have_been_made
-        end
-      end
     end
     context 'with a non-circulating item' do
       context 'with no item data' do

@@ -51,7 +51,7 @@ module Requests
       return false unless eligible_for_library_services?
 
       fill_in = false
-      unless requestable.one? && (requestable.first.services & ["on_order", "online"]).present?
+      unless requestable.one? && (requestable.first.services & ["online"]).present?
         if requestable.any? do |requestable_decorator|
           !(requestable_decorator.services & fill_in_services).empty?
         end
