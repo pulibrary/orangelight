@@ -5,7 +5,7 @@
     "holding_id": "221101269790006421",
     "copy_number": "",
     "status": "Unavailable",
-    "status_label": "Loan",
+    "status_label": "Unavailable",
     "status_source": "process_type",
     "process_type": "LOAN",
     "on_reserve": "N",

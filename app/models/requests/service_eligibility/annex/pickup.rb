@@ -20,7 +20,7 @@ module Requests
           end
 
           def on_shelf_eligible?
-            !requestable.charged? && !requestable.in_process? && !requestable.on_order?
+            !requestable.charged? && !requestable.in_process?
           end
       end
     end

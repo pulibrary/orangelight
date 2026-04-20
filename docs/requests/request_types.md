@@ -13,9 +13,6 @@
     * Materials Managed in Alma Base Status: Item in Place
     * Materials without a base status and which are not in a process type (Alma Physical Titles Only)
     * Annex Electronic Delivery Requests are placed in ILLiad.
-* On Order Requests 
-    * Items that are in the Alma "Acquisition" Process Type. These are items ordered for our shelves but have not yet arrived.
-    * On order requests are emailed to the Library where the items will be permanently shelved at. For ReCAP items that are in ReCAP Alma Library these emails go to Firestone Circulation. 
 * In Process Requests 
     * Items in the Alma "In Process" Process Type and the Alma Work Order Type "Acquisitions and Cataloging". These requests expedite processing of items that are here on campus  have not yet been prepared to be placed on shelf. Materials have an Alma Base Status of "Item Not in Place".
     * In Process requests are emailed to the Library where the items will be permanently shelved at. For ReCAP items that are in ReCAP Alma Library these emails go to Firestone Circulation. 

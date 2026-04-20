@@ -60,6 +60,11 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   context 'A requestable item with a missing status' do
     let(:request) { FactoryBot.build(:request_missing_item, patron_request:) }
     let(:requestable) { request.requestable }
+    before do
+      stub_availability_by_holding_id(bib_id: '9915486663506421', holding_id: '22495908770006421')
+      stub_single_holding_location 'lewis$stacks'
+      stub_catalog_raw(bib_id: '9915486663506421')
+    end
     describe "#services" do
       it "returns an item status of missing" do
         expect(requestable.size).to eq(1)
@@ -91,30 +96,34 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   end
 
   context 'A requestable item with hold_request status' do
-    let(:request) { FactoryBot.build(:request_serial_with_item_on_hold, patron_request:) }
-    let(:requestable_on_hold) { request.requestable[0] }
-
+    let(:request) { Requests::Form.new(system_id: '99131748575306421', mfhd: '221108140040006421', patron_request:) }
+    let(:requestable_on_hold) { request.requestable }
+    before do
+      stub_availability_by_holding_id(bib_id: '99131748575306421', holding_id: '221108140040006421')
+      stub_single_holding_location 'firestone$stacks'
+      stub_catalog_raw(bib_id: '99131748575306421')
+    end
     describe '#services' do
       it 'is available for resource sharing' do
-        expect(requestable_on_hold.services.include?('ill')).to be true
+        expect(requestable_on_hold.first.services.include?('ill')).to be true
       end
     end
 
     describe '#location_label' do
       it 'has a location label' do
-        expect(requestable_on_hold.location_label).to eq('Firestone Library - Stacks')
+        expect(requestable_on_hold.first.location_label).to eq('Firestone Library - Stacks')
       end
     end
 
     describe "#held_at_marquand_library?" do
       it "is not marquand" do
-        expect(requestable_on_hold).not_to be_held_at_marquand_library
+        expect(requestable_on_hold.first).not_to be_held_at_marquand_library
       end
     end
 
     describe "#available?" do
       it "is not available" do
-        expect(requestable_on_hold).not_to be_available
+        expect(requestable_on_hold.first).not_to be_available
       end
     end
   end
@@ -182,7 +191,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     end
 
     describe '#barcode' do
-      it 'does not report there is a barocode' do
+      it 'does not report there is a barcode' do
         expect(requestable.barcode?).to be false
       end
     end
@@ -508,35 +517,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     end
   end
 
-  context 'On Order materials' do
-    let(:request) { FactoryBot.build(:request_on_order, patron_request:) }
-    let(:requestable) { request.requestable.last } # serial records on order at the end
-
-    describe 'with a status of on_order ' do
-      it 'is on_order and requestable' do
-        expect(requestable.on_order?).to be_truthy
-      end
-    end
-
-    describe '#location_label' do
-      it 'has a location label' do
-        expect(requestable.location_label).to eq('Firestone Library - Classics Collection')
-      end
-    end
-
-    describe "#held_at_marquand_library?" do
-      it "is not marquand" do
-        expect(requestable).not_to be_held_at_marquand_library
-      end
-    end
-
-    describe "#available?" do
-      it "is not available" do
-        expect(requestable).not_to be_available
-      end
-    end
-  end
-
   # user authentication tests
   context 'When a princeton user with NetID visits the site' do
     let(:valid_patron) do
@@ -825,12 +805,12 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   end
 
   context 'A Record in the Collection Development Office process type' do
-    let(:request) { FactoryBot.build(:request_col_dev_office, patron_request:) }
+    let(:request) { Requests::Form.new(system_id: '99131764845106421', mfhd: '221103654730006421', patron_request:) }
     let(:requestable) { request.requestable.first }
     before do
       stub_single_holding_location 'firestone$stacks'
-      stub_catalog_raw(bib_id: '9911629773506421', type: 'alma')
-      stub_availability_by_holding_id(bib_id: '9911629773506421', holding_id: '22608294270006421')
+      stub_catalog_raw(bib_id: '99131764845106421')
+      stub_availability_by_holding_id(bib_id: '99131764845106421', holding_id: '221103654730006421')
     end
     describe "#available?" do
       it "is not available" do

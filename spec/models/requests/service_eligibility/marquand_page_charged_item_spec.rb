@@ -16,7 +16,6 @@ RSpec.describe Requests::ServiceEligibility::MarquandPageChargedItem, :requests 
         aeon?: false,
         charged?: true,
         in_process?: false,
-        on_order?: false,
         recap?: false
       )
       eligibility = described_class.new(requestable:, patron:)
@@ -32,23 +31,6 @@ RSpec.describe Requests::ServiceEligibility::MarquandPageChargedItem, :requests 
         aeon?: false,
         charged?: false,
         in_process?: true,
-        on_order?: false,
-        recap?: false
-      )
-      eligibility = described_class.new(requestable:, patron:)
-
-      expect(eligibility.eligible?).to be(false)
-    end
-
-    it 'does not consider on_order items eligible' do
-      requestable = instance_double(Requests::Requestable)
-      allow(requestable).to receive_messages(
-        marquand_library?: true,
-        alma_managed?: true,
-        aeon?: false,
-        charged?: false,
-        in_process?: false,
-        on_order?: true,
         recap?: false
       )
       eligibility = described_class.new(requestable:, patron:)
@@ -64,7 +46,6 @@ RSpec.describe Requests::ServiceEligibility::MarquandPageChargedItem, :requests 
         aeon?: false,
         charged?: true,
         in_process?: false,
-        on_order?: false,
         recap?: false
       )
       eligibility = described_class.new(requestable:, patron:)
@@ -80,7 +61,6 @@ RSpec.describe Requests::ServiceEligibility::MarquandPageChargedItem, :requests 
         aeon?: false,
         charged?: false,
         in_process?: false,
-        on_order?: false,
         recap?: false
       )
       eligibility = described_class.new(requestable:, patron:)

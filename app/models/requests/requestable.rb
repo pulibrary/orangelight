@@ -77,11 +77,6 @@ module Requests
       in_process_statuses.include?(item[:status_label])
     end
 
-    def on_order?
-      return false unless item? && !partner_holding?
-      item[:status_label] == 'Acquisition'
-    end
-
     def item?
       item.present?
     end
@@ -177,6 +172,7 @@ module Requests
       end
 
       def in_process_statuses
+        # I think we dont need anymore the In Process check.
         ["Acquisitions and Cataloging", "In Process", "Firestone Circulation"]
       end
   end
