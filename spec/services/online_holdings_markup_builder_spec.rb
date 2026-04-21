@@ -106,30 +106,6 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
       expect(urlified_markup).to include 'DataSpace<i class="fa fa-external-link new-tab-icon-padding" aria-label="opens in new tab" role="img"></i></a>'
     end
 
-    context '#urlify an Open access title' do
-      let(:open_access_url) { 'http://hdl.handle.net/1802/27831' }
-
-      before do
-        allow(adapter).to receive(:doc_electronic_access).and_return(open_access_url => ['Open access'])
-      end
-    end
-
-    context '#urlify an non Open access title' do
-      let(:electronic_access_url) { 'http://hdl.handle.net/1802/27831' }
-
-      before do
-        allow(adapter).to receive(:doc_electronic_access).and_return(electronic_access_url => ['I am a label'])
-      end
-    end
-
-    context '.urlify with multiple, nested electronic access titles' do
-      let(:electronic_access_url) { 'http://hdl.handle.net/1802/27831' }
-
-      before do
-        allow(adapter).to receive(:doc_electronic_access).and_return(electronic_access_url => [['I am a label'], ['I am another label']])
-      end
-    end
-
     context 'when a URL contains an encoded "|" character' do
       let(:gale_go_url) { 'http://go.galegroup.com/ps/i.do?id=GALE%257C9781440840869&v=2.1&u=prin77918&it=etoc&p=GVRL&sw=w' }
 
