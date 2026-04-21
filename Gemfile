@@ -87,7 +87,6 @@ gem 'vite_rails'
 gem 'voight_kampff', require: 'voight_kampff/rails'
 gem 'whenever'
 gem 'yajl-ruby', '>= 1.3.1', require: 'yajl'
-gem 'yard'
 
 group :development do
   gem 'benchmark-ips'
