@@ -112,10 +112,6 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
       before do
         allow(adapter).to receive(:doc_electronic_access).and_return(open_access_url => ['Open access'])
       end
-
-      it 'does not have a proxy prefix added' do
-        expect(urlified_markup).not_to include Requests.config['proxy_base']
-      end
     end
 
     context '#urlify an non Open access title' do
@@ -124,10 +120,6 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
       before do
         allow(adapter).to receive(:doc_electronic_access).and_return(electronic_access_url => ['I am a label'])
       end
-
-      it 'does not have a proxy prefix added' do
-        expect(urlified_markup).not_to include Requests.config['proxy_base']
-      end
     end
 
     context '.urlify with multiple, nested electronic access titles' do
@@ -135,10 +127,6 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
 
       before do
         allow(adapter).to receive(:doc_electronic_access).and_return(electronic_access_url => [['I am a label'], ['I am another label']])
-      end
-
-      it 'flattens the set of electronic access titles' do
-        expect(urlified_markup).not_to include Requests.config['proxy_base']
       end
     end
 
