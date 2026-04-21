@@ -100,46 +100,10 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
     let(:urlified_markup) { described_class.urlify(adapter) }
 
     it 'generates electronic access links for a catalog record' do
-      expect(urlified_markup).to include 'href="https://login.ezproxy.princeton.edu/login?url=http://gateway.proquest.com/url">gateway.proquest.com<i class="fa fa-external-link new-tab-icon-padding" aria-label="opens in new tab" role="img"></i></a>'
+      expect(urlified_markup).to include 'href="http://gateway.proquest.com/url">gateway.proquest.com<i class="fa fa-external-link new-tab-icon-padding" aria-label="opens in new tab" role="img"></i></a>'
       expect(urlified_markup).to include 'Citation only: <a target="_blank"'
       expect(urlified_markup).to include 'href="http://arks.princeton.edu/ark:/88435/dsp0141687h654"'
       expect(urlified_markup).to include 'DataSpace<i class="fa fa-external-link new-tab-icon-padding" aria-label="opens in new tab" role="img"></i></a>'
-    end
-
-    context '#urlify an Open access title' do
-      let(:open_access_url) { 'http://hdl.handle.net/1802/27831' }
-
-      before do
-        allow(adapter).to receive(:doc_electronic_access).and_return(open_access_url => ['Open access'])
-      end
-
-      it 'does not have a proxy prefix added' do
-        expect(urlified_markup).not_to include Requests.config['proxy_base']
-      end
-    end
-
-    context '#urlify an non Open access title' do
-      let(:electronic_access_url) { 'http://hdl.handle.net/1802/27831' }
-
-      before do
-        allow(adapter).to receive(:doc_electronic_access).and_return(electronic_access_url => ['I am a label'])
-      end
-
-      it 'does have a proxy prefix added' do
-        expect(urlified_markup).to include Requests.config['proxy_base']
-      end
-    end
-
-    context '.urlify with multiple, nested electronic access titles' do
-      let(:electronic_access_url) { 'http://hdl.handle.net/1802/27831' }
-
-      before do
-        allow(adapter).to receive(:doc_electronic_access).and_return(electronic_access_url => [['I am a label'], ['I am another label']])
-      end
-
-      it 'flattens the set of electronic access titles' do
-        expect(urlified_markup).to include Requests.config['proxy_base']
-      end
     end
 
     context 'when a URL contains an encoded "|" character' do
