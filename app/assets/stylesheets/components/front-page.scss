@@ -1,11 +1,63 @@
-@import "variables/breaks";
+@use "variables/breaks";
 
-@media (min-width: $bp-medium) {
+@media (min-width: breaks.$bp-medium) {
   .welcome-message {
     padding-top: 1.15em;
   }
 }
 
-.welcome-paragraph {
-  margin-bottom: 10px;
+.numismatics-search, .language-statement, .open-dataset {
+  clear: both;
+  display: flex;
+  flex-direction: row;
+  margin-top: calc(var(--space-base) * 1.3);
+  padding: var(--space-small);
+  border: solid 1px var(--color-grayscale-light);
+
+  p {
+    margin: 0;
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+}
+
+.numismatics-search {
+  .icon-coin::before {
+      font-size: var(--font-size-xx-large-max);
+      padding: 1.75rem;
+      color: white;
+      background-color: #008EA1;
+      display: inline-block;
+  }
+  .numismatics-text {
+    padding-left: var(--space-small);
+  }
+}
+
+.language-statement {
+  .icon-language-statement::before {
+      font-size: var(--font-size-xx-large-max);
+      padding: 1.75rem;
+      color: white;
+      background-color: var(--color-princeton-orange-on-white);
+      display: inline-block;
+  }
+  .language-statement-text {
+    padding-left: var(--space-small);
+  }
+}
+
+.open-dataset {
+  .icon-open-dataset::before {
+      font-size: var(--font-size-xx-large-max);
+      padding: 1.75rem;
+      color: white;
+      background-color: #edd553;
+      display: inline-block;
+  }
+  .open-dataset-text {
+    padding-left: var(--space-small);
+  }
 }
