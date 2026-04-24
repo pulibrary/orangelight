@@ -5,7 +5,7 @@
 .search-options,
 .header__secondary .user-utils a {
   font-size: $text-small;
-  line-height: 1.4rem;
+  line-height: var(--line-height-base);
 
   @media (min-width: $bp-large) {
     font-size: 14px;
