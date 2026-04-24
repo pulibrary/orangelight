@@ -3,35 +3,14 @@
   They will automatically be included in application.css.
 */
 
-.badge-danger {
-  background-color: $danger;
-}
-
-.badge-success {
-  background-color: $success;
-}
-
 .badge {
   padding: 0.6em 0.6em;
-}
-
-.show_item {
-  margin-top: 10px;
-}
-
-.muted-text {
-  color: #707070;
-}
-
-.request--edd {
-  display: none;
 }
 
 .table-responsive  {
   overflow-x: visible;
   overflow-y: visible;
 }
-
 
 .bd-pick-up {
   display: none;
@@ -43,11 +22,6 @@
   margin-top: 0;
 }
 
-.btn-sub-text {
-  display: block;
-  font-size: 0.85em;
-}
-
 .or-divider {
   background-color: #fff;
   color: #737373;
@@ -56,33 +30,6 @@
   padding-top: 1.8rem;
   text-align: center;
   width: 10ch;
-}
-
-div#go-back-link {
-  margin-top: 10px;
-}
-
-.alert-danger .request--edd {
-  color: #242424;
-}
-
-.alert-danger .request--edd .required {
-  color: #a94442;
-}
-
-#lookup {
-  display: none;
-  color: #242424;
-  h1, p {
-    margin:auto;
-    text-align: center;
-    max-width: 30em;
-  }
-}
-
-div#punetid-form hr {
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
 }
 
 /* replaces btn-default */
@@ -150,42 +97,6 @@ input[type="radio"] + label {
     white-space: nowrap; /* added line */
   }
  
-  .blacklight-request tbody td {
-    display: block;
-    border: 0;
-
-    &:empty {
-      padding: 0;
-    }
-
-    &.request--select {
-      padding: 22px;
-    }
-
-    &.request--select,
-    &.request--options {
-      display: inline-block;
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-
-    &.request--options {
-      width: calc(100% - 90px);
-      font-size: 18px;
-    }
-
-    &.request--availability {
-      display: flex;
-      flex: 1 auto;
-      padding: 0 0.75rem;
-  
-      .system-status {
-        order: 2;
-        margin-left: 1rem;
-      }
-    }
-  }
-
   #request-submit-wrapper .btn {
     display: block;
     width: 100%;
@@ -220,27 +131,6 @@ input[type="radio"] + label {
   .control-label.col-sm-6 {
     padding: 0;
     max-width: 100%;
-  }
-
-  .blacklight-request div.dataTables_wrapper .row:first-child .col-sm-12:last-child {
-    padding-left: 15px;
-  }
-
-  .blacklight-request div.dataTables_wrapper div.dataTables_filter label {
-    display: block;
-  }
-
-  .blacklight-request div.dataTables_wrapper div.dataTables_filter input {
-    display: block;
-    min-height: 44px;
-  }
-
-  .blacklight-request div.dataTables_wrapper div.dataTables_paginate ul.pagination {
-    justify-content: center;
-  }
-
-  .blacklight-request .table-responsive-sm {
-    overflow-x: unset;
   }
 }
 
