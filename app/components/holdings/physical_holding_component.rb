@@ -34,7 +34,19 @@ class Holdings::PhysicalHoldingComponent < ViewComponent::Base
       adapter.temp_location_code(holding)
     end
 
-    def libmap_libraries
+    def libmap_active_libraries
       ["Firestone Library"]
+    end
+
+    def libmap_test_libraries
+      ["Marquand Library", "Stokes Library"]
+    end
+
+    def libmap_libraries
+      if Flipflop.libmap_test?
+        libmap_active_libraries + libmap_test_libraries
+      else
+        libmap_active_libraries
+      end
     end
 end
