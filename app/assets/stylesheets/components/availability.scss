@@ -200,20 +200,6 @@
     margin-top: 1em;
   }
 
-  .holding-details .trigger {
-    cursor: pointer;
-    color: $blue;
-    padding: 0 5px;
-    border: 1px solid $blue;
-    display: inline-block;
-    margin-top: 0.5rem;
-
-    &:hover {
-      color: $white;
-      background: $blue;
-    }
-  }
-
   .journal-current-issues li:nth-child(n+2) {
     display: none;
 
