@@ -1,4 +1,4 @@
-@import "variables/breaks";
+@use "variables/breaks";
 @import "variables/colors";
 @import "variables/typography";
 
@@ -73,7 +73,7 @@
 .bookmarksTools.nav #citationLink,
 .bookmarksTools.nav > li > a,
 .bookmarksTools a {
-  @media (min-width: $bp-medium) {
+  @media (min-width: breaks.$bp-medium) {
     margin: 3px 3px 3px 0;
   }
 
