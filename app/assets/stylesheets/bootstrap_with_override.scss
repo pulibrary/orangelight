@@ -1,6 +1,12 @@
 // This file re-exports our own customized version of bootstrap
 
+@use 'variables/colors';
+
 @forward 'bootstrap' with (
     $link-decoration: none,
     $link-hover-decoration: underline,
+    $blue: colors.$blue,
+    $danger: colors.$danger,
+    $primary: colors.$primary,
+    $success: colors.$success,
 );
