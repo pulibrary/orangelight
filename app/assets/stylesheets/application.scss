@@ -17,6 +17,7 @@
 @use 'components/ask-a-librarian';
 @use 'components/availability';
 @use 'components/bookmark-all';
+@use 'components/bookmarks_search_form';
 @use 'components/browse';
 @use 'components/constraints';
 @use 'components/contact';
@@ -60,7 +61,6 @@
 @import 'icons/icons';
 
 @import 'components/buttons';
-@import 'components/bookmarks_search_form';
 @import 'components/details'; // needs to override some styles in bootstrap
 @import 'components/facets'; // needs to override some styles in blacklight
 @import 'components/header--secondary'; // depends on shade-color mixin from bootstrap
