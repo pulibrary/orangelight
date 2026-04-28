@@ -35,6 +35,7 @@
 @use 'components/pagination';
 @use 'components/record';
 @use 'components/release-notes';
+@use 'components/search-results';
 @use 'components/tables--labels';
 @use 'components/universal-viewer';
 @use 'components/user';
@@ -74,6 +75,5 @@
 @import 'components/search'; // needs to override some styles in blacklight
 @import 'components/search--advanced'; // depends on shade-color mixin from bootstrap
 @import 'components/search-options';
-@import 'components/search-results'; // depends on shade-color mixin from bootstrap
 @import 'components/skip-links'; // needs to override some styles in blacklight
 @import 'components/tables'; // needs to override some styles in bootstrap
