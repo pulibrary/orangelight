@@ -71,7 +71,7 @@
 }
 
 .document a:hover {
-  color: shade-color($orange, 10%);
+  color: var(--color-princeton-orange-on-white);
   text-decoration: underline;
 }
 
