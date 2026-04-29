@@ -2,6 +2,6 @@ $font-sans: 'Dejavu Sans', Helvetica, sans-serif !default;
 $font-sans-alt: praxis-next-condensed, Helvetica, sans-serif !default;
 $text-color: #000 !default;
 
-$text-small: 12px;
+$text-small: var(--font-size-x-small);
 
 $spacer: 0.5rem;

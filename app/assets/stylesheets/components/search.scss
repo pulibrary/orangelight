@@ -14,7 +14,7 @@ header .search-navbar .input-group .form-select {
     margin-bottom: 1em;
 
     select {
-      font-size: 12px;
+      font-size: var(--font-size-x-small);
     }
   }
 
@@ -54,7 +54,7 @@ header .search-navbar .input-group .search-btn {
   width: 136px;
   cursor: pointer;
   outline: none;
-  font-size: 14px;
+  font-size: var(--font-size-small);
   display: inline-block;
 }
 

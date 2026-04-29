@@ -8,7 +8,7 @@
   line-height: var(--line-height-base);
 
   @media (min-width: $bp-large) {
-    font-size: 14px;
+    font-size: var(--font-size-small);
   }
 }
 

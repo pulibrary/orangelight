@@ -14,7 +14,7 @@
 }
 
 .is-disabled {
-  opacity: .5;
+  opacity: var(--opacity-disabled);
   background: $light-gray;
   pointer-events: none;
   cursor: not-allowed;

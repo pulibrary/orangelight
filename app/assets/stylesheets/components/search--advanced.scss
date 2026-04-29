@@ -61,7 +61,7 @@
 }
 
 .advanced-facet-label {
-  padding-top: 4px;
+  padding-top: var(--space-xx-small);
 
   @media (min-width: $bp-medium) {
     text-align: right;

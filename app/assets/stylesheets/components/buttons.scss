@@ -9,7 +9,7 @@
   padding: 1px 0 0 0;
 
   a {
-    font-size: 16px;
+    font-size: var(--font-size-base);
     margin: 0;
   }
 }
@@ -98,7 +98,7 @@
 
 .bookmarksTools {
   float: left;
-  margin: 10px 4px 0 0;
+  margin: 10px var(--space-xx-small) 0 0;
 
   @media (max-width: 500px) {
     margin: 0 0 3px 6px;

@@ -1,14 +1,14 @@
-$white: #ffffff;
+$white: var(--color-white);
 $black: #000000;
 $black-pul: #040404;
 $dark-gray: #494f57;
 $blacklight-gray: #757575;
 $gray: #e8e6df;
-$light-gray: rgb(245, 245, 245);
+$light-gray: var(--color-grayscale-lighter);
 $dark-orange: #9F620D;
 $orange: #e87511;
 $blue: #3072AB;
-$danger: #a94442;
+$danger: #a94442; // this is the same as var(--color-brick-red)
 $yellow-light: #FFF3CD;
 //bootstrap variables override
 $table-bg-accent: #f5f4f1;

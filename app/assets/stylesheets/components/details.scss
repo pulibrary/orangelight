@@ -43,7 +43,7 @@ details > * {
 
 summary .side-by-side {
     display: flex;
-    gap: 4px;
+    gap: var(--space-xx-small);
 }
 
 @media (max-width: breaks.$bp-small) {
