@@ -1,5 +1,3 @@
-@import "../variables/colors";
-
 // reset form styling cross-browser
 .form-control,
 .form-control:focus {
@@ -11,11 +9,11 @@ form table th:first-child {
 }
 
 .blacklight-feedback h1 {
-  margin-bottom: 0.25em;
+  margin-bottom: var(--space-xx-small);
   display: block;
 }
 .blacklight-feedback small {
-  margin-bottom: 2em;
+  margin-bottom: var(--space-base);
   display: block;
 }
 
@@ -26,7 +24,7 @@ form table th:first-child {
 
 .has-error .error {
   font-weight: bold;
-  color: $danger;
+  color: var(--color-brick-red);
 }
 
 .blacklight-feedback-hidden {
