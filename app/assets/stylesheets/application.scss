@@ -13,6 +13,9 @@
  *= require_self
  */
 
+@use 'blacklight.css';
+@use 'blacklight_marc.css';
+
 @use 'components/alerts';
 @use 'components/ask-a-librarian';
 @use 'components/availability';
@@ -44,11 +47,11 @@
 @use 'variables/breaks';
 
 @use "datatables";
+
+@use "blacklight_marc_customizations";
 @use "lux_customizations";
 
 @import 'bootstrap_with_override';
-@import 'blacklight';
-@import 'blacklight_marc';
 
 @import 'requests/request';
 @import 'abstractions/mixins';
@@ -60,17 +63,17 @@
 
 @import 'components/buttons';
 @import 'components/details'; // needs to override some styles in bootstrap
-@import 'components/facets'; // needs to override some styles in blacklight
+@import 'components/facets'; // needs to be after blacklight @use since it overrides some of the blacklight css
 @import 'components/header--secondary'; // depends on shade-color mixin from bootstrap
 @import 'components/lists'; // needs to override some styles in bootstrap
 @import 'components/overrides';
 @import 'components/record--descriptions'; // needs to override some styles in bootstrap
-@import 'components/record--need-help.scss'; // needs to override some styles in blacklight);
-@import 'components/record--sidebar'; // needs to override some styles in blacklight
+@import 'components/record--need-help.scss'; // needs to be after blacklight @use since it overrides some of the blacklight css);
+@import 'components/record--sidebar'; // needs to be after blacklight @use since it overrides some of the blacklight css
 @import 'components/record--subject';  // depends on shade-color mixin from bootstrap
 @import 'components/request'; // needs to override some styles in bootstrap
-@import 'components/search'; // needs to override some styles in blacklight
+@import 'components/search'; // needs to be after blacklight @use since it overrides some of the blacklight css
 @import 'components/search--advanced'; // depends on shade-color mixin from bootstrap
 @import 'components/search-options';
-@import 'components/skip-links'; // needs to override some styles in blacklight
+@import 'components/skip-links'; // needs to be after blacklight @use since it overrides some of the blacklight css
 @import 'components/tables'; // needs to override some styles in bootstrap

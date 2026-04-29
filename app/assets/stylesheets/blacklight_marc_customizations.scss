@@ -1,0 +1,11 @@
+@use 'blacklight_marc.css';
+
+.marc_view {
+    .ind1, .ind2 {
+        display: inline-block;
+        width: 1rem;
+    }
+    .tag_ind {
+        min-width: 4rem;
+    }
+}
