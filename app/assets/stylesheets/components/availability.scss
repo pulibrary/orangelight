@@ -1,6 +1,4 @@
-@import "variables/breaks";
-@import "variables/colors";
-@import "variables/typography";
+@use "variables/breaks";
 
 .holdings-card .lux-card .lux-text-style {
   padding: 0;
@@ -95,11 +93,7 @@
     font-weight: 550;
     letter-spacing: 0.15px;
   }
-  .call-number {
-    margin-left: 22px;
-    color: $gray-light;
-    font-size: 0.75rem;
-  }
+
   font-size: 0.75rem;
 }
 
@@ -107,7 +101,7 @@
   display: flex;
   flex-direction: column;
   width: 100% !important;
-  padding: 16px 8px;
+  padding: var(--space-small) var(--space-x-small);
   border-radius: 10px;
   .lux-text-style {
     margin-top: auto;
@@ -129,35 +123,35 @@
     white-space: normal;
 
     &.bg-secondary {
-      color: $success;
+      color: var(--color-forest-green);
       --bs-bg-opacity: 0;
     }
 
     &.bg-warning {
-      color: $dark-orange;
+      color: var(--color-tan-dark);
       --bs-bg-opacity: 0;
     }
 
     &.bg-danger {
-      color: $danger;
+      color: var(--color-brick-red);
       --bs-bg-opacity: 0;
     }
 
     &.bg-success {
-      color: $success;
+      color: var(--color-forest-green);
       --bs-bg-opacity: 0;
     }
   }
 }
 
 .holding-block {
-  border-bottom: 1px solid $gray;
+  border-bottom: 1px solid var(--color-grayscale-warm-lighter);
 }
 
 .holding-status {
   span {
     &.lux-text-style {
-      padding:.25rem .5rem;
+      padding: var(--space-xx-small) var(--space-x-small);
     }
   }
 }
@@ -175,17 +169,8 @@
   padding: 0px 15px 10px 0;
 }
 
-.panel-group .panel {
-  border-radius: 0;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
-}
-
 .panel-default > .panel-heading {
-  background: $light-gray;
-}
-
-.panel-title > a {
-  font-size: 0.9em;
+  background: var(--color-grayscale-lighter);
 }
 
 .holding-block,
@@ -193,11 +178,11 @@
   .status,
   .location-has,
   .journal-current-issues {
-    margin-bottom: 1em;
+    margin-bottom: var(--space-small);
   }
 
   > ul {
-    margin-top: 1em;
+    margin-top: var(--space-small);
   }
 
   .journal-current-issues li:nth-child(n+2) {
@@ -237,7 +222,6 @@
 .availability--online,
 .availability--physical,
 .availability--other-versions,
-.availability--excerpts,
 .availability--highlighted {
   font-size: 14px;
   margin-bottom: 1.25rem;
@@ -249,16 +233,7 @@
   }
 
   li {
-    margin-bottom: .25rem;
-
-    .response_coverage_statement {
-      padding-left: 5px;
-      color: $gray-light;
-    }
-
-    .response_notes {
-      color: $gray-light;
-    }
+    margin-bottom: var(--space-xx-small);
   }
 
   a.electronic-access-link, #google_preview_link a {
@@ -268,7 +243,6 @@
   }
 }
 
-.availability-table .find-it,
 .availability-table .browse-cn {
   display: table;
   text-decoration: none;
@@ -280,7 +254,7 @@
   }
 
   .link-text {
-    margin-right: 4px;
+    margin-right: var(--space-xx-small);
 
     &:hover,
     &:focus,
@@ -301,7 +275,7 @@
   }
 
   th {
-    color: $gray-light;
+    color: var(--color-grayscale-dark);
   }
 
   tr {
@@ -357,36 +331,8 @@
   }
 
   .linked-block-id {
-    margin-left: 1em;
-    color: $gray-light;
-    font-size: 12px;
-  }
-}
-
-.availability--excerpts {
-  .section_prompt {
-    display: none;
-  }
-
-  .response_item {
-    margin-bottom: .75em;
-  }
-
-  .response_notes {
-    margin-left: 1em;
-    color: $gray-light;
-    font-size: 12px;
-  }
-}
-
-.availability--highlighted {
-  .response_item {
-    margin-bottom: .75em;
-  }
-
-  .response_source {
-    margin-left: 1em;
-    color: $gray-light;
+    margin-left: var(--space-small);
+    color: var(--color-grayscale-dark);
     font-size: 12px;
   }
 }
@@ -419,7 +365,7 @@
       padding: 6px 5px;
 
       &.bg-warning {
-        color: $black;
+        color: var(--color-rich-black);
       }
     }
   }
@@ -436,15 +382,15 @@
 
 .record-availability, .document {
   h3 {
-      margin-top: 1rem;
+      margin-top: var(--space-small);
     }
   }
 
 .electronic-access {
-  color: #717171;
+  color: var(--color-gray-80);
 }
 
-@media screen and (max-width: $bp-large) {
+@media screen and (max-width: breaks.$bp-large) {
   .holdings-card {
     display: grid;
     width: 100% !important;
@@ -466,5 +412,5 @@
 }
 
 .format-badge-group {
-  padding-top: 4px;
+  padding-top: var(--space-xx-small);
 }
