@@ -1,11 +1,3 @@
-@mixin clearfix {
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
-
 @mixin vertical-align {
   position: relative;
   top: 50%;
@@ -20,9 +12,4 @@
     height: 1px !important;
     width: 1px !important;
     overflow: hidden;
-}
-
-@mixin hidden() {
-  display: none;
-  visibility: hidden;
 }
