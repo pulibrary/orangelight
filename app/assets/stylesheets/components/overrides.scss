@@ -93,10 +93,6 @@ td[dir="rtl"]::before {
   text-align: left;
 }
 
-address {
-  margin-bottom: 0;
-}
-
 @media (min-width: breaks.$bp-small) {
   .container {
     width: 100%;
