@@ -1,6 +1,6 @@
-@import "../variables/colors";
+@use "../variables/colors";
 
 .nav-pills li a {
-  background-color: $light-gray;
+  background-color: colors.$light-gray;
   margin: 0 0.5em 0.5em 0;
 }

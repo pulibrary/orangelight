@@ -1,6 +1,5 @@
 @use "variables/breaks";
-@import "variables/colors";
-@import "variables/typography";
+@use "variables/colors";
 
 .button--start-over,
 .button--edit-search {
@@ -78,14 +77,14 @@
   }
 
   padding: 6px 12px;
-  background: $light-gray;
-  border: 1px solid $gray;
+  background: colors.$light-gray;
+  border: 1px solid colors.$gray;
   border-radius: var(--border-radius-default);
-  color: $black;
+  color: colors.$black;
 
   &:hover {
-    background: $blue;
-    color: $white;
+    background: colors.$blue;
+    color: colors.$white;
     text-decoration: none;
   }
 }
@@ -113,12 +112,12 @@ button.checkbox.bookmark_all {
 .pagination-search-widgets .previous,
 .pagination-search-widgets .next {
   opacity: .6;
-  background: $light-gray;
+  background: colors.$light-gray;
   cursor: default;
 
   &:hover {
-    background: $light-gray;
-    color: $black;
+    background: colors.$light-gray;
+    color: colors.$black;
     text-decoration: none;
   }
 }

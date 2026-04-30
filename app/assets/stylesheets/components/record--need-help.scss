@@ -1,4 +1,4 @@
-@import "variables/colors";
+@use "variables/colors";
 
 .need-help-container {
     background-color: var(--color-gray-10);
@@ -31,7 +31,7 @@
 .ask-a-question, .suggest-correction, .missing-item {
     font-size: 15px;
     font-weight: var(--font-weight-semi-bold);
-    color: $black;
+    color: colors.$black;
     display: inline-block;
     position: relative;
     width: fit-content;
@@ -50,7 +50,7 @@
     height: 3px;
     bottom: 0;
     left: 0;
-    background-color: $orange;
+    background-color: colors.$orange;
     transform-origin: bottom left;
     transition: transform 0.3s ease-out;
 }

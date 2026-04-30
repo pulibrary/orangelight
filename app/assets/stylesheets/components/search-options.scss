@@ -1,6 +1,4 @@
-@import "variables/breaks";
-@import "variables/colors";
-@import "variables/typography";
+@use "variables/breaks";
 
 // Advanced Search
 .search-options {
@@ -8,14 +6,14 @@
   display: inline-block;
   flex: 1;
 
-  @media (min-width: $bp-large) {
+  @media (min-width: breaks.$bp-large) {
     flex: initial;
   }
 
   li {
     padding: 1em 0;
 
-    @media (min-width: $bp-large) {
+    @media (min-width: breaks.$bp-large) {
       a {
         padding-left: 1em;
       }

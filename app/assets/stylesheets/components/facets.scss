@@ -1,7 +1,7 @@
-@import "variables/breaks";
-@import "variables/colors";
-@import "variables/typography";
-@import "abstractions/mixins";
+@use "abstractions/mixins";
+@use "variables/breaks";
+@use "variables/colors";
+@use "variables/typography";
 
 #sidebar {
   @media (max-width: 500px) {
@@ -44,7 +44,7 @@ ul.facet-values {
 .facet-values .remove {
   text-indent: 0;
   margin-left: 1em;
-  @include vertical-align();
+  @include mixins.vertical-align();
 }
 
 .facet-values .remove
@@ -122,7 +122,7 @@ ul.facet-values {
   line-height: 1.4em;
 }
 
-@media (max-width: $bp-medium) {
+@media (max-width: breaks.$bp-medium) {
   #facets {
     padding: 0;
   }
@@ -132,11 +132,11 @@ ul.facet-values {
 
   .facets-toggle {
     margin: 0;
-    background: $gray;
+    background: colors.$gray;
   }
 }
 
-@media (max-width: $bp-medium) {
+@media (max-width: breaks.$bp-medium) {
   .facets-toggle {
     margin: 0;
   }
@@ -160,13 +160,13 @@ a.more_facets_link {
 }
 
 .facet-limit {
-  margin-bottom: $spacer;
+  margin-bottom: typography.$spacer;
 
   .card {
     margin-bottom: 0px;
   }
   .card-body {
-    padding: $spacer ($spacer * 2);
+    padding: typography.$spacer (typography.$spacer * 2);
   }
 }
 

@@ -1,5 +1,5 @@
-@import "abstractions/mixins";
-@import "variables/breaks";
+@use "variables/breaks";
+@use "abstractions/mixins";
 
 .availability .availability--heading,
 .holding-info .holding-info--heading {
@@ -56,11 +56,11 @@
         background-size: contain;
         margin-left: auto;
         margin-right: auto;
-        @include vertical-align();
+        @include mixins.vertical-align();
     }
 }
 
-@media (min-width: $bp-medium) and (max-width: $bp-xlarge) {
+@media (min-width: breaks.$bp-medium) and (max-width: breaks.$bp-xlarge) {
     #sidebar .document-thumbnail {
         height: 135px;
         max-width: 120px;
@@ -72,7 +72,7 @@
     }
 }
 
-@media (max-width: $bp-medium) {
+@media (max-width: breaks.$bp-medium) {
     #sidebar .document-thumbnail {
         margin: 0 auto;
     }

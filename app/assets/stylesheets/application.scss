@@ -44,8 +44,6 @@
 @use 'components/user';
 @use 'shame';
 
-@use 'variables/breaks';
-
 @use "datatables";
 
 @use "blacklight_marc_customizations";
@@ -54,7 +52,6 @@
 @import 'bootstrap_with_override';
 
 @import 'requests/request';
-@import 'abstractions/mixins';
 
 @import 'base/forms';
 @import 'base/typography';

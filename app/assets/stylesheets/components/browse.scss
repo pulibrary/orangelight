@@ -1,6 +1,5 @@
-@import "variables/breaks";
-@import "variables/colors";
-@import "variables/typography";
+@use "variables/breaks";
+@use "variables/colors";
 
 .browse {
   clear: both;
@@ -15,7 +14,7 @@
 }
 
 .row-odd {
-  background: $light-gray;
+  background: colors.$light-gray;
 }
 
 .row-even + .alert,
@@ -38,20 +37,20 @@
 
 .prev_next_links .nav .previous a,
 .prev_next_links .nav .next a {
-  @media (min-width: $bp-medium) {
+  @media (min-width: breaks.$bp-medium) {
     margin: 3px 3px 3px 0;
   }
 
   padding: 6px 12px;
   margin: 3px 2px;
-  background: $light-gray;
-  border: 1px solid $gray;
+  background: colors.$light-gray;
+  border: 1px solid colors.$gray;
   border-radius: --var(border-radius-default);
-  color: $black;
+  color: colors.$black;
 
   &:hover {
-    background: $blue;
-    color: $white;
+    background: colors.$blue;
+    color: colors.$white;
     text-decoration: none;
   }
 }
