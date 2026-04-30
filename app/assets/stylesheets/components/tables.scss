@@ -18,7 +18,7 @@ table {
   th {
     padding: 10px 15px;
     font-family: Arial, sans-serif;
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
 
     &:nth-child(4),
     &:nth-child(2) {
@@ -96,7 +96,7 @@ td {
       left: 6px;
       width: 100%;
       white-space: nowrap;
-      font-weight: 700;
+      font-weight: var(--font-weight-bold);
       font-family: Arial, sans-serif;
     }
   }

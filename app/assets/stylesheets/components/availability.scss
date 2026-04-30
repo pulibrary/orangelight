@@ -117,7 +117,7 @@
     background: none;
     text-transform: none;
     text-align: left;
-    font-size: 12px;
+    font-size: var(--font-size-x-small);
     padding: 0;
     margin-right: 0;
     white-space: normal;
@@ -208,7 +208,7 @@
 .availability--physical,
 .availability--other-versions,
 .availability--highlighted {
-  font-size: 14px;
+  font-size: var(--font-size-small);
   margin-bottom: 1.25rem;
 }
 
@@ -251,7 +251,7 @@
 
 .availability-table {
   display: inline-block;
-  font-size: 14px;
+  font-size: var(--font-size-small);
 
   thead,
   tbody {
@@ -318,7 +318,7 @@
   .linked-block-id {
     margin-left: var(--space-small);
     color: var(--color-grayscale-dark);
-    font-size: 12px;
+    font-size: var(--font-size-x-small);
   }
 }
 

@@ -13,7 +13,7 @@
     margin-top: 0.5rem;
     margin-bottom: 0;
     line-height: 1.25;
-    font-weight: 600;
+    font-weight: var(--font-weight-semi-bold);
   }
 
   .main-content {
@@ -24,7 +24,7 @@
     h2,
     h3 {
       font-family: typography.$font-sans-alt;
-      font-weight: 600;
+      font-weight: var(--font-weight-semi-bold);
       font-size: 1.25rem;
       line-height: 1.25;
     }
@@ -35,7 +35,7 @@
     }
     th {
       font-size: 0.875rem;
-      line-height: 1.5;
+      line-height: var(--line-height-heading);
     }
 
     th {
@@ -139,7 +139,7 @@
 
   .restrictions--panel.alert-warning {
     font-family: typography.$font-sans-alt;
-    font-weight: 600;
+    font-weight: var(--font-weight-semi-bold);
     font-size: 1.25rem;
     line-height: 1.25;
     text-align: center;
@@ -186,9 +186,9 @@
     width: 3rem;
     background-color: colors.$black;
     height: 3rem;
-    border-radius: 50%;
-    border: 3px solid #ffffff;
-    color: #ffffff;
+    border-radius: var(--border-radius-circle);
+    border: 3px solid var(--color-white);
+    color: var(--color-white);
     bottom: -25px;
     right: -25px;
     transform: translate(-50%, -50%);

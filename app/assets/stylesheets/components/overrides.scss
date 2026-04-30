@@ -22,12 +22,6 @@ main {
   width: auto;
 }
 
-.dropdown-account {
-  .dropdown {
-    float: right;
-  }
-}
-
 .navbar {
   margin-bottom: 0;
 }
@@ -135,12 +129,6 @@ address {
 
 .btn-group.open .dropdown-toggle {
   box-shadow: none;
-}
-
-.dropdown-account .dropdown-menu {
-  right: 0;
-  left: auto;
-  margin-top: 8px;
 }
 
 [dir="rtl"] {

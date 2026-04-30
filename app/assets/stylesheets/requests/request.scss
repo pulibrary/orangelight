@@ -23,10 +23,10 @@
 }
 
 .or-divider {
-  background-color: #fff;
+  background-color: var(--color-white);
   color: #737373;
   font-size: 1.1em;
-  margin: -20px auto 8px;
+  margin: -20px auto var(--space-x-small);
   padding-top: 1.8rem;
   text-align: center;
   width: 10ch;

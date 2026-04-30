@@ -48,7 +48,7 @@ ul.pagination {
 
     @media (max-width: 500px) {
       width: 100%;
-      font-size: 14px;
+      font-size: var(--font-size-small);
     }
   }
 
@@ -80,7 +80,7 @@ ul.pagination {
 
     .page_entries {
       @media (max-width: 500px) {
-        font-size: 14px;
+        font-size: var(--font-size-small);
         display: inline;
         float: right;
         padding: 10px 6px;
