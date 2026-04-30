@@ -57,7 +57,6 @@ describe('RequestFormHandler', () => {
 
   describe('clearAllErrors', () => {
     beforeEach(() => {
-      // Set up error state
       const errorElement = document.querySelector('.error-items');
       errorElement.style.display = 'block';
       errorElement.textContent = 'Some error';
@@ -149,7 +148,7 @@ describe('RequestFormHandler', () => {
       );
     });
 
-    it('should handle items field errors specially', () => {
+    it('should handle items field errors', () => {
       const mockData = {
         success: false,
         errors: {
@@ -232,12 +231,13 @@ describe('RequestFormHandler', () => {
       expect(handler.submitTimeout).toBeNull();
     });
 
-    it('should re-enable submit button', () => {
+    it('should Not show or re-enable submit button', () => {
       mockSubmitButton.dataset.originalText = 'Submit Request';
       handler.resetSubmissionState();
 
-      expect(mockSubmitButton.disabled).toBe(false);
+      expect(mockSubmitButton.disabled).toBe(true);
       expect(mockSubmitButton.textContent).toBe('Submit Request');
+      expect(mockSubmitButton.style.display).toBe('none');
     });
   });
 

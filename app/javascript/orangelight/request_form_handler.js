@@ -115,8 +115,8 @@ class RequestFormHandler {
         this.submitButton.dataset.originalText =
           this.submitButton.value || this.submitButton.textContent;
       }
-      this.submitButton.disabled = true;
       this.submitButton.textContent = 'Submitting Request...';
+      this.submitButton.disabled = true;
     }
   }
 
@@ -131,9 +131,10 @@ class RequestFormHandler {
     }
 
     if (this.submitButton && !this.submitButton.classList.contains('success')) {
-      this.submitButton.disabled = false;
+      this.submitButton.disabled = true;
       this.submitButton.textContent =
         this.submitButton.dataset.originalText || 'Submit Request';
+      this.submitButton.style.display = 'none';
     }
   }
 }
