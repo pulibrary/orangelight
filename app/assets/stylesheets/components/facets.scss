@@ -126,9 +126,6 @@ ul.facet-values {
   #facets {
     padding: 0;
   }
-  #facets .top-panel-heading {
-    padding: 1em 0;
-  }
 
   .facets-toggle {
     margin: 0;
@@ -143,13 +140,6 @@ ul.facet-values {
 
   .facets-heading {
     padding: 0.5em;
-    margin-bottom: 0;
-  }
-}
-
-#facets .top-panel-heading {
-  @media (max-width: 768px) {
-    border: 0;
     margin-bottom: 0;
   }
 }
