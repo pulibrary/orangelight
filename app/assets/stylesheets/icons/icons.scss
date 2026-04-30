@@ -1,5 +1,5 @@
-@import "../variables/colors";
-@import "variables";
+@use "variables";
+@use "../variables/colors";
 
 @font-face {
     font-family: 'pul-icons';
@@ -41,7 +41,7 @@
     &:before {
         display: block;
         padding: 20px 0 30px 0;
-        content: $icon-book;
+        content: variables.$icon-book;
         font-size: 50px;
         margin: auto;
         align-self: center;
@@ -51,67 +51,67 @@
 
 .icon-bell {
     &:before {
-        content: $icon-bell;
+        content: variables.$icon-bell;
     }
 }
 
 .icon-announce {
     &:before {
-        content: $icon-announce;
+        content: variables.$icon-announce;
     }
 }
 
 .icon-bookslibrary {
     &:before {
-        content: $icon-bookslibrary;
+        content: variables.$icon-bookslibrary;
     }
 }
 
 .icon-bookmark {
     &:before {
-        content: $icon-bookmark;
+        content: variables.$icon-bookmark;
     }
 }
 
 .ask-a-librarian .icon-chat {
     &:before {
-        content: $icon-chat;
+        content: variables.$icon-chat;
     }
 }
 
 .icon-refresh {
     &:before {
-        content: $icon-refresh;
+        content: variables.$icon-refresh;
     }
 }
 
 .icon-moveback {
     &:before {
-        content: $icon-moveback;
+        content: variables.$icon-moveback;
     }
 }
 
 .icon-cite {
     &:before {
-        content: $icon-cite;
+        content: variables.$icon-cite;
     }
 }
 
 .icon-share {
     &:before {
-        content: $icon-share;
+        content: variables.$icon-share;
     }
 }
 
 .icon-web {
     &:before {
-        content: $icon-web;
+        content: variables.$icon-web;
     }
 }
 
 .icon-location {
     &:before {
-        content: $icon-location;
+        content: variables.$icon-location;
         display: block;
     }
 }
@@ -119,77 +119,77 @@
 .icon-senior-thesis,
 .blacklight-senior-thesis .document-thumbnail .default {
     &:before {
-        content: $icon-senior-thesis;
+        content: variables.$icon-senior-thesis;
     }
 }
 
 .icon-data-file,
 .blacklight-data-file .document-thumbnail .default {
     &:before {
-        content: $icon-databases;
+        content: variables.$icon-databases;
     }
 }
 
 .icon-databases,
 .blacklight-databases .document-thumbnail .default {
     &:before {
-        content: $icon-databases;
+        content: variables.$icon-databases;
     }
 }
 
 .icon-map,
 .blacklight-map .document-thumbnail .default {
     &:before {
-        content: $icon-map;
+        content: variables.$icon-map;
     }
 }
 
 .icon-manuscript,
 .blacklight-manuscript .document-thumbnail .default {
     &:before {
-        content: $icon-manuscript;
+        content: variables.$icon-manuscript;
     }
 }
 
 .icon-microform,
 .blacklight-microform .document-thumbnail .default {
     &:before {
-        content: $icon-film;
+        content: variables.$icon-film;
     }
 }
 
 .icon-audio,
 .blacklight-audio .document-thumbnail .default {
     &:before {
-        content: $icon-audio;
+        content: variables.$icon-audio;
     }
 }
 
 .icon-archival-item,
 .blacklight-archival-item .document-thumbnail .default {
     &:before {
-        content: $icon-manuscript;
+        content: variables.$icon-manuscript;
     }
 }
 
 .icon-musical-score,
 .blacklight-musical-score .document-thumbnail .default {
     &:before {
-        content: $icon-musical-score;
+        content: variables.$icon-musical-score;
     }
 }
 
 .icon-video-projected-medium,
 .blacklight-video-projected-medium .document-thumbnail .default {
     &:before {
-        content: $icon-video-projected-medium;
+        content: variables.$icon-video-projected-medium;
     }
 }
 
 .icon-visual-material,
 .blacklight-visual-material .document-thumbnail .default {
     &:before {
-        content: $icon-visual-material;
+        content: variables.$icon-visual-material;
     }
 }
 
@@ -198,13 +198,13 @@
     background: none;
     border: none;
     &:before {
-        content: $icon-toggle-collapsed;
+        content: variables.$icon-toggle-collapsed;
     }
 }
 
 .icon-remove {
     &:before {
-        content: $icon-remove;
+        content: variables.$icon-remove;
     }
 }
 
@@ -213,112 +213,112 @@
     background: none;
     border: none;
     &:before {
-        content: $icon-toggle;
+        content: variables.$icon-toggle;
     }
 }
 
 .icon-book,
 .blacklight-book .document-thumbnail .default {
     &:before {
-        content: $icon-book;
+        content: variables.$icon-book;
     }
 }
 
 .icon-report,
 .blacklight-report .document-thumbnail .default {
     &:before {
-        content: $icon-book;
+        content: variables.$icon-book;
     }
 }
 
 .icon-journal,
 .blacklight-journal .document-thumbnail .default {
     &:before {
-        content: $icon-journal;
+        content: variables.$icon-journal;
     }
 }
 
 .icon-mixed-material,
 .blacklight-mixed-material .document-thumbnail .default {
     &:before {
-        content: $icon-mixed-material;
+        content: variables.$icon-mixed-material;
     }
 }
 
 .icon-dissertation,
 .blacklight-dissertation .document-thumbnail .default {
     &:before {
-        content: $icon-dissertation;
+        content: variables.$icon-dissertation;
     }
 }
 
 .icon-unknown,
 .blacklight-unknown .document-thumbnail .default {
     &:before {
-        content: $icon-unknown;
+        content: variables.$icon-unknown;
     }
 }
 
 .icon-search {
     &:before {
-        content: $icon-search;
+        content: variables.$icon-search;
     }
 }
 
 .icon-cd {
     &:before {
-        content: $icon-cd;
+        content: variables.$icon-cd;
     }
 }
 
 .icon-lp {
     &:before {
-        content: $icon-lp;
+        content: variables.$icon-lp;
     }
 }
 
 .icon-coin,
 .blacklight-coin .document-thumbnail .default {
     &:before {
-        content: $icon-coins-flat;
+        content: variables.$icon-coins-flat;
     }
 }
 
 .icon-language-statement,
 .blacklight-language-statement .document-thumbnail .default {
     &:before {
-        content: $icon-language-statement;
+        content: variables.$icon-language-statement;
     }
 }
 
 .icon-open-dataset,
 .blacklight-open-dataset .document-thumbnail .default {
     &:before {
-        content: $icon-open-dataset;
+        content: variables.$icon-open-dataset;
     }
 }
 
 .icon-external {
     &:before {
-        content: $icon-newtab;
+        content: variables.$icon-newtab;
     }
 }
 
 .icon-mobile {
     &:before {
-        content: $icon-mobile;
+        content: variables.$icon-mobile;
     }
 }
 
 .icon-email {
     &:before {
-        content: $icon-email;
+        content: variables.$icon-email;
     }
 }
 
 .icon-print {
     &:before {
-        content: $icon-print;
+        content: variables.$icon-print;
     }
 }
 
@@ -326,14 +326,14 @@
     margin-left: 6px;
 
     &:before {
-        content: $icon-spinner;
+        content: variables.$icon-spinner;
         margin-right: 0;
     }
 }
 
 .icon-rssfeed {
     &:before {
-        content: $icon-rssfeed;
+        content: variables.$icon-rssfeed;
         color: $orange;
     }
 
@@ -341,7 +341,7 @@
         text-decoration: none;
 
         &:before {
-            color: $blue;
+            color: colors.$blue;
         }
     }
 

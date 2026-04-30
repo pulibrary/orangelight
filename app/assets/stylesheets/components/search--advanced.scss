@@ -1,5 +1,5 @@
-@import "../variables/breaks";
-@import "../variables/colors";
+@use "../variables/breaks";
+@use "../variables/colors";
 
 .search-operators {
   display: inline-block;
@@ -23,14 +23,14 @@
   select.form-control {
     margin-bottom: 1em;
 
-    @media (min-width: $bp-medium) {
+    @media (min-width: breaks.$bp-medium) {
       width: auto;
       margin-bottom: 0;
     }
   }
 
   div {
-    @media (min-width: $bp-medium) {
+    @media (min-width: breaks.$bp-medium) {
       display: inline-block;
       float: right;
       width: calc(100% - 150px);
@@ -63,7 +63,7 @@
 .advanced-facet-label {
   padding-top: var(--space-xx-small);
 
-  @media (min-width: $bp-medium) {
+  @media (min-width: breaks.$bp-medium) {
     text-align: right;
   }
 }
@@ -74,7 +74,7 @@
 }
 
 .clear-form {
-  color: shade-color($blue, 3);
+  color: shade-color(colors.$blue, 3);
 }
 
 .well>h4 {
@@ -126,7 +126,7 @@
   }
 }
 
-@media (min-width: $bp-small) {
+@media (min-width: breaks.$bp-small) {
   .row.dropdown svg {
     display: block;
   }

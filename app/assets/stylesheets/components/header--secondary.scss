@@ -1,13 +1,16 @@
+@use "variables/breaks";
+@use "variables/typography";
+
 .header__secondary .container {
   max-width: initial;
 }
 
 .search-options,
 .header__secondary .user-utils a {
-  font-size: $text-small;
+  font-size: typography.$text-small;
   line-height: var(--line-height-base);
 
-  @media (min-width: $bp-large) {
+  @media (min-width: breaks.$bp-large) {
     font-size: var(--font-size-small);
   }
 }
@@ -20,7 +23,7 @@
 
 .header__secondary .user-utils {
 
-  @media (min-width: $bp-large) {
+  @media (min-width: breaks.$bp-large) {
     justify-content: flex-end;
     flex-basis: 0;
     flex-grow: 1;
@@ -49,7 +52,7 @@
     &:last-child {
       padding-right: 0;
 
-      @media (min-width: $bp-medium) {
+      @media (min-width: breaks.$bp-medium) {
         padding-right: 1em;
       }
     }

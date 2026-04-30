@@ -1,14 +1,14 @@
-@import "variables/breaks";
-@import "variables/colors";
-@import "variables/typography";
+@use "variables/breaks";
+@use "variables/colors";
+@use "variables/typography";
 
 body {
-  background: $light-gray;
-  font-family: $font-sans;
+  background: colors.$light-gray;
+  font-family: typography.$font-sans;
 }
 
 main {
-  background: $white;
+  background: colors.$white;
   padding: 1em 0 1.5em;
   min-height: calc(100vh - 419px);
 }
@@ -32,8 +32,8 @@ main {
 
 .navbar-inverse,
 .navbar-default {
-  background-color: $light-gray;
-  border-bottom: 1px solid $gray;
+  background-color: colors.$light-gray;
+  border-bottom: 1px solid colors.$gray;
 }
 
 .constraints-container {
@@ -47,7 +47,7 @@ main {
 
 .orange {
   display: inline;
-  color: $orange;
+  color: colors.$orange;
 }
 
 .rtl {
@@ -57,12 +57,12 @@ main {
 }
 
 h3.rtl {
-  color: $orange;
+  color: colors.$orange;
   text-align: right;
 }
 
 dd.rtl {
-  color: $orange;
+  color: colors.$orange;
   text-align: right;
 }
 
@@ -97,23 +97,23 @@ address {
   margin-bottom: 0;
 }
 
-@media (min-width: $bp-small) {
+@media (min-width: breaks.$bp-small) {
   .container {
     width: 100%;
     max-width: 100%;
   }
 }
 
-@media (min-width: $bp-large) {
+@media (min-width: breaks.$bp-large) {
   .container {
-    width: $bp-large;
+    width: breaks.$bp-large;
   }
 }
 
-@media (min-width: $bp-xlarge) {
+@media (min-width: breaks.$bp-xlarge) {
   .container {
-    width: $bp-xlarge;
-    max-width: $bp-xlarge;
+    width: breaks.$bp-xlarge;
+    max-width: breaks.$bp-xlarge;
   }
 }
 

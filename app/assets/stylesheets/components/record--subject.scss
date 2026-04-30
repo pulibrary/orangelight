@@ -1,9 +1,9 @@
-@import "variables/colors";
+@use "variables/colors";
 
 .search-subject:hover,
 .search-title:hover,
 .search-name-title:hover {
-  color: shade-color($orange, 10%);
+  color: shade-color(colors.$orange, 10%);
 }
 
 .search-subject:active,

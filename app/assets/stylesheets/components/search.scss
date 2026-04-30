@@ -1,12 +1,11 @@
-@import "variables/breaks";
-@import "variables/colors";
-@import "variables/typography";
+@use "variables/breaks";
+@use "variables/colors";
 
 header .search-navbar .input-group .form-select {
   width: auto;
 }
 
-@media (max-width: $bp-small) {
+@media (max-width: breaks.$bp-small) {
   header .search-navbar .input-group .form-select {
     width: 100%;
     clear: both;
@@ -40,7 +39,7 @@ header .search-navbar .input-group .search-btn {
   .search-query-form {
     padding: 1.125em 0 0;
 
-    @media (min-width: $bp-large) {
+    @media (min-width: breaks.$bp-large) {
       padding: 1.125em 0;
     }
   }
@@ -64,20 +63,20 @@ header .search-navbar .input-group .search-btn {
 }
 
 .search-widgets .field:hover .caret {
-  color: $white;
+  color: colors.$white;
 }
 
 .btn .caret, .facets-toggle .caret {
   margin-left: 2px;
 }
 
-@media (min-width: $bp-large) {
+@media (min-width: breaks.$bp-large) {
   .search-navbar .search-query-form .input-group .form-control {
     width: 250px;
   }
 }
 
-@media (min-width: $bp-xlarge) {
+@media (min-width: breaks.$bp-xlarge) {
   .search-navbar .search-query-form .input-group .form-control {
     width: 375px;
   }
@@ -91,7 +90,7 @@ header .search-navbar .input-group .search-btn {
 #search-navbar .search-query-form {
   width: 100%;
 
-  @media (min-width: $bp-large) {
+  @media (min-width: breaks.$bp-large) {
     width: auto;
   }
 }
@@ -99,11 +98,11 @@ header .search-navbar .input-group .search-btn {
 .search-navbar .search-input {
   flex: 1;
 
-  @media (min-width: $bp-large) {
+  @media (min-width: breaks.$bp-large) {
     min-width: 250px;
   }
 
-  @media (min-width: $bp-xlarge) {
+  @media (min-width: breaks.$bp-xlarge) {
     min-width: 375px;
   }
 
@@ -112,7 +111,7 @@ header .search-navbar .input-group .search-btn {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 
-    @media (min-width: $bp-small) {
+    @media (min-width: breaks.$bp-small) {
       border-radius: 0;
     }
   }

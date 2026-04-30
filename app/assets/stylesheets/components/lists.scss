@@ -1,4 +1,4 @@
-@import 'variables/colors';
+@use 'variables/colors';
 
 .example {
     margin-bottom: 0;
@@ -52,7 +52,7 @@
         }
     }
     dt.tip-heading {
-        background: $light-gray;
+        background: colors.$light-gray;
         border-bottom: 1px solid #ddd;
         padding: 10px 15px;
     }
@@ -78,7 +78,7 @@ ul {
     @media (min-width: 530px) {
         li {
             display: inline-block;
-            border-left: 1px solid $gray;
+            border-left: 1px solid colors.$gray;
             padding: 0 10px;
 
             &:first-child {
