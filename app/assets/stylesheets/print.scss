@@ -115,7 +115,6 @@ footer,
   max-width: 100%;
 }
 
-.blacklight-holdings a,
 .document-metadata a,
 .search-subjects,
 .dl-horizontal a {
@@ -251,28 +250,10 @@ abbr {
 
 .document-metadata {
   line-height: 1.2em;
-
-  .blacklight-holdings {
-    margin: 0;
-
-    ul {
-      margin-top: 3px;
-    }
-  }
 }
 
 #sortAndPerPage {
   margin: 0;
-}
-
-.blacklight-catalog-index .document-metadata .blacklight-holdings {
-  border-left: 2px solid lightgray;
-  padding-left: 1em;
-  margin-top: 1em;
-
-  li {
-    margin-bottom: 1em;
-  }
 }
 
 header.documentHeader a {
