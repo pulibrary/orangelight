@@ -10,22 +10,6 @@
   margin-bottom: 0;
 }
 
-.dl-horizontal dd.blacklight-holdings > ul > li {
-  margin-bottom: 1em;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
-
-.dl-horizontal .blacklight-holdings ul.holding-block li {
-  margin-bottom: 0;
-}
-
-.blacklight-holdings li + li {
-  margin-top: .3em;
-}
-
 @media (min-width: breaks.$bp-medium) {
   .dl-horizontal dt {
     overflow: visible;
