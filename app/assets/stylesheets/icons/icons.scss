@@ -369,14 +369,6 @@ a:active.toggle {
     font-size: 1.2em;
 }
 
-.spin {
-    -webkit-animation: spin 2s infinite linear;
-    -moz-animation: spin 2s infinite linear;
-    -ms-animation: spin 2s infinite linear;
-    animation: spin 2s infinite linear;
-    display: inline-block;
-}
-
 .pulse {
     -webkit-animation: spin 1s infinite steps(8);
     -moz-animation: spin 1s infinite steps(8);
