@@ -207,6 +207,25 @@ describe Requests::Submissions::Recap, requests: true do
           expect(recap.error_hash).to eq(errors)
         end
       end
+
+      context 'when the SCSB web service times out' do
+        let(:recap) { described_class.new(submission) }
+        let(:item) { requestable.first }
+
+        before do
+          allow(Rails.logger).to receive(:error)
+          recap.instance_variable_set(:@errors, [])
+          recap.instance_variable_set(:@sent, [])
+          faraday_connection = instance_double(Faraday::Connection)
+          allow(faraday_connection).to receive(:post).and_raise(Faraday::ConnectionFailed.new('timeout'))
+          allow(recap).to receive(:scsb_conn).and_return(faraday_connection)
+        end
+
+        it 'rescues Faraday::ConnectionFailed and logs error' do
+          expect { recap.send(:handle_item, item) }.to raise_error(Faraday::ConnectionFailed)
+          expect(Rails.logger).to have_received(:error).with(/Connection to SCSB server failed: timeout/)
+        end
+      end
     end
   end
 
