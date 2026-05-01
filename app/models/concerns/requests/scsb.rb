@@ -15,6 +15,7 @@ module Requests
       parse_scsb_response(response)
     end
 
+    # :reek:UncommunicativeVariableName
     def scsb_request(request_params)
       response = scsb_conn.post do |req|
         req.url '/requestItem/requestItem'
@@ -24,6 +25,9 @@ module Requests
         req.body = request_params.to_json
       end
       response
+    rescue Faraday::ConnectionFailed => e
+      Rails.logger.error("Connection to SCSB server failed: #{e.message}")
+      raise
     end
 
     def parse_scsb_response(response)
