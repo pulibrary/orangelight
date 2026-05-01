@@ -36,11 +36,6 @@ dialog .dialog-content:focus-visible {
     outline: .25rem solid var(--color-princeton-orange-on-white) !important;
 }
 
-dialog .dialog-content .close-button:focus-visible {
-    border-radius: 20px;
-    outline: .25rem solid var(--color-princeton-orange-on-white) !important;
-}
-
 dialog .dialog-content a:focus-visible {
     border-radius: .1rem;
     outline: .25rem solid var(--color-princeton-orange-on-white) !important;
