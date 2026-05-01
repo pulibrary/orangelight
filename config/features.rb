@@ -27,6 +27,10 @@ Flipflop.configure do
     default: false,
     description: "When on / true, displays the message set by the announcement rake task."
 
+  feature :libmap_test,
+    default: false,
+    description: "When on / true, display the 'Find on Shelf' buttons for libraries not yet live with Libmap."
+
   feature :hide_marquand_special_collections_request_button,
     default: false,
     description: "When on / true, it hides the request button for Marquand Special Collections 'marquand$t','marquand$x','marquand$rrx', 'marquand$pz', 'marquand$fbx', 'marquand$ebx'."

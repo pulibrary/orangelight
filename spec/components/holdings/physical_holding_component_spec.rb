@@ -5,6 +5,8 @@ RSpec.describe Holdings::PhysicalHoldingComponent, type: :component do
   let(:adapter) { double("Adapter") }
   let(:holding_id) { "holding-123" }
   let(:holding) { { "mms_id" => "doc-456", "library" => "Firestone Library" } }
+  let(:libmap_test_holding_id) { "holding-789" }
+  let(:libmap_test_holding) { { "mms_id" => "doc-499", "library" => "Stokes Library" } }
   let(:document) { SolrDocument.new({ id: 'doc-456', title_display: 'A Title' }) }
   let(:location_rules) do
     JSON.parse '{"label":"Reserve 3-Hour","code":"arch$res3hr","aeon_location":false,"recap_electronic_delivery_location":false,"open":false,"requestable":false,"always_requestable":false,"circulates":false,"remote_storage":"","fulfillment_unit":"Reserves","library":{"label":"Architecture Library","code":"arch","order":0},"holding_library":null,"delivery_locations":[{"label":"Architecture Library","address":"School of Architecture Building, Second Floor Princeton, NJ 08544","phone_number":"609-258-3256","contact_email":"ues@princeton.edu","gfa_pickup":"PW","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"Architecture Library","code":"arch","order":0}}]}'
@@ -59,6 +61,26 @@ RSpec.describe Holdings::PhysicalHoldingComponent, type: :component do
       render_inline described_class.new(adapter, holding_id, holding)
       expect(rendered_content).to include("On-site access")
       expect(rendered_content).to include("green")
+    end
+  end
+
+  context "when libmap test is enabled" do
+    before do
+      allow(Flipflop).to receive(:libmap_test?).and_return(true)
+    end
+    it "Displays libmap libraries in testing" do
+      render_inline described_class.new(adapter, libmap_test_holding_id, libmap_test_holding)
+      expect(rendered_content).to include('data-location="Stokes Library"')
+    end
+  end
+
+  context "when libmap test is not enabled" do
+    before do
+      allow(Flipflop).to receive(:libmap_test?).and_return(false)
+    end
+    it "Does not display libmap libraries in testing" do
+      render_inline described_class.new(adapter, libmap_test_holding_id, libmap_test_holding)
+      expect(rendered_content).not_to include('data-location="Stokes Library"')
     end
   end
 end
