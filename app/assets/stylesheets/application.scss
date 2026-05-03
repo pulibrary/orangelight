@@ -21,6 +21,7 @@
 @use 'components/availability';
 @use 'components/bookmark-all';
 @use 'components/bookmarks_search_form';
+@use 'components/buttons';
 @use 'components/browse';
 @use 'components/constraints';
 @use 'components/contact';
@@ -33,11 +34,14 @@
 @use 'components/front-page';
 @use 'components/footer';
 @use 'components/header';
+@use 'components/header--secondary';
 @use 'components/nav--accounts';
 @use 'components/nav--user-utils';
 @use 'components/pagination';
 @use 'components/record';
 @use 'components/release-notes';
+@use 'components/search--advanced';
+@use 'components/search-options';
 @use 'components/search-results';
 @use 'components/tables--labels';
 @use 'components/universal-viewer';
@@ -57,19 +61,14 @@
 
 @import 'icons/icons';
 
-@import 'components/buttons';
 @import 'components/details'; // needs to override some styles in bootstrap
 @import 'components/facets'; // needs to be after blacklight @use since it overrides some of the blacklight css
-@import 'components/header--secondary'; // depends on shade-color mixin from bootstrap
 @import 'components/lists'; // needs to override some styles in bootstrap
 @import 'components/overrides';
 @import 'components/record--descriptions'; // needs to override some styles in bootstrap
 @import 'components/record--need-help.scss'; // needs to be after blacklight @use since it overrides some of the blacklight css);
 @import 'components/record--sidebar'; // needs to be after blacklight @use since it overrides some of the blacklight css
-@import 'components/record--subject';  // depends on shade-color mixin from bootstrap
 @import 'components/request'; // needs to override some styles in bootstrap
 @import 'components/search'; // needs to be after blacklight @use since it overrides some of the blacklight css
-@import 'components/search--advanced'; // depends on shade-color mixin from bootstrap
-@import 'components/search-options';
 @import 'components/skip-links'; // needs to be after blacklight @use since it overrides some of the blacklight css
 @import 'components/tables'; // needs to override some styles in bootstrap
