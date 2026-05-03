@@ -1,3 +1,4 @@
+@use "bootstrap/functions";
 @use "../variables/breaks";
 @use "../variables/colors";
 
@@ -74,7 +75,7 @@
 }
 
 .clear-form {
-  color: shade-color(colors.$blue, 3);
+  color: functions.shade-color(colors.$blue, 3);
 }
 
 .well>h4 {
@@ -100,7 +101,7 @@
   white-space: normal;
 }
 
-@include media-breakpoint-up(md) {
+@media (min-width: breaks.$bp-medium) {
   .two-columns-md {
     display: flex;
     flex-wrap: wrap;
