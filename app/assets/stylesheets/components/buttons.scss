@@ -41,19 +41,19 @@
 }
 
 .btn-outline-secondary {
-  color: $dark;
+  color: var(--color-gray-90);
   border-color: #ccc;
   &:hover, &:active {
     background-color: #ddd;
     border-color: #bbb;
-    color: $dark;
+    color: var(--color-gray-90);
   }
 }
 
 .search-constraint-value:hover,
 .search-constraint-value:active {
   background-color: transparent;
-  color: $dark;
+  color: var(--color-gray-90);
 }
 
 .search-widgets select,
@@ -130,8 +130,8 @@ button.checkbox.bookmark_all {
   &:hover,
   &:focus,
   &:active {
-    background: $blue;
-    color: $white;
+    background: colors.$blue;
+    color: colors.$white;
     text-decoration: none;
   }
 }
@@ -154,8 +154,8 @@ button.checkbox.bookmark_all {
 }
 
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
-  background: $blue;
-  color: $white;
+  background: colors.$blue;
+  color: colors.$white;
 }
 
 .prev_next_links.btn-group > .dropdown-toggle:not(:first-child) {
@@ -169,15 +169,15 @@ button.checkbox.bookmark_all {
 
 #sort-dropdown .dropdown-toggle,
 #per_page-dropdown .dropdown-toggle {
-  color: $black;
+  color: colors.$black;
 
   &:hover,
   &:active {
-    color: $white;
-    background: $blue;
+    color: colors.$white;
+    background: colors.$blue;
 
     .caret {
-      color: $white;
+      color: colors.$white;
     }
   }
 }

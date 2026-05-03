@@ -34,11 +34,11 @@
 
 /* replaces btn-default */
 .btn-outline-secondary {
-  color: $dark;
+  color: var(--color-gray-90);
   border-color: #ccc;
   &:hover {
     background-color: #ddd;
-    color: $dark;
+    color: var(--color-gray-90);
   }
 }
 
