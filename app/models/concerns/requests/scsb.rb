@@ -17,17 +17,26 @@ module Requests
 
     # :reek:UncommunicativeVariableName
     def scsb_request(request_params)
-      response = scsb_conn.post do |req|
-        req.url '/requestItem/requestItem'
-        req.headers['Content-Type'] = 'application/json'
-        req.headers['Accept'] = 'application/json'
-        req.headers['api_key'] = scsb_auth_key
-        req.body = request_params.to_json
+      retries = 0
+      begin
+        response = scsb_conn.post do |req|
+          req.url '/requestItem/requestItem'
+          req.headers['Content-Type'] = 'application/json'
+          req.headers['Accept'] = 'application/json'
+          req.headers['api_key'] = scsb_auth_key
+          req.body = request_params.to_json
+        end
+      rescue Faraday::TimeoutError => e
+        retries += 1
+        if retries <= 3
+          sleep(0.5 * retries)
+          retry
+        else
+          Rails.logger.error("Connection to SCSB server timed out after #{retries} attempts: #{e.message}")
+          raise
+        end
       end
       response
-    rescue Faraday::TimeoutError => e
-      Rails.logger.error("Connection to SCSB server timed out: #{e.message}")
-      raise
     end
 
     def parse_scsb_response(response)
