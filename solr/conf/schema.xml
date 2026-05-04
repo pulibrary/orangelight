@@ -389,12 +389,10 @@
              input string is preserved as a single token
           -->
         <tokenizer name="keyword"/>
-        <!-- The LowerCase TokenFilter does what you expect, which can be
-             when you want your sorting to be case insensitive
-          -->
-        <filter name="lowercase" />
         <!-- The TrimFilter removes any leading or trailing whitespace -->
         <filter name="trim" />
+        <!-- Convert UTF-8 characters to their lowercase equivalents -->
+        <filter name="icuFolding" />
         <!-- The PatternReplaceFilter gives you the flexibility to use
              Java Regular expression to replace any sequence of characters
              matching a pattern with an arbitrary replacement string,
