@@ -25,8 +25,8 @@ module Requests
         req.body = request_params.to_json
       end
       response
-    rescue Faraday::ConnectionFailed => e
-      Rails.logger.error("Connection to SCSB server failed: #{e.message}")
+    rescue Faraday::TimeoutError => e
+      Rails.logger.error("Connection to SCSB server timed out: #{e.message}")
       raise
     end
 

@@ -217,13 +217,13 @@ describe Requests::Submissions::Recap, requests: true do
           recap.instance_variable_set(:@errors, [])
           recap.instance_variable_set(:@sent, [])
           faraday_connection = instance_double(Faraday::Connection)
-          allow(faraday_connection).to receive(:post).and_raise(Faraday::ConnectionFailed.new('timeout'))
+          allow(faraday_connection).to receive(:post).and_raise(Faraday::TimeoutError.new('timeout'))
           allow(recap).to receive(:scsb_conn).and_return(faraday_connection)
         end
 
-        it 'rescues Faraday::ConnectionFailed and logs error' do
-          expect { recap.send(:handle_item, item) }.to raise_error(Faraday::ConnectionFailed)
-          expect(Rails.logger).to have_received(:error).with(/Connection to SCSB server failed: timeout/)
+        it 'rescues Faraday::TimeoutError and logs error' do
+          expect { recap.send(:handle_item, item) }.to raise_error(Faraday::TimeoutError)
+          expect(Rails.logger).to have_received(:error).with(/Connection to SCSB server timed out: timeout/)
         end
       end
     end
