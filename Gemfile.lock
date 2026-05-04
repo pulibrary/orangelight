@@ -646,7 +646,7 @@ GEM
       rubocop (~> 1.72, >= 1.72.1)
       rubocop-rspec (~> 3.5)
     ruby-progressbar (1.13.0)
-    rubyzip (3.2.2)
+    rubyzip (3.3.0)
     sass-embedded (1.97.3)
       google-protobuf (~> 4.31)
       rake (>= 13)
