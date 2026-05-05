@@ -221,9 +221,9 @@ describe Requests::Submissions::Recap, requests: true do
           allow(recap).to receive(:scsb_conn).and_return(faraday_connection)
         end
 
-        it 'rescues Faraday::TimeoutError and logs error' do
+        it 'rescues Faraday::TimeoutError, logs error and retries 4 times' do
           expect { recap.send(:handle_item, item) }.to raise_error(Faraday::TimeoutError)
-          expect(Rails.logger).to have_received(:error).with(/Connection to SCSB server timed out: timeout/)
+          expect(Rails.logger).to have_received(:error).with(/Connection to SCSB server timed out after 4 attempts: timeout/)
         end
       end
     end
