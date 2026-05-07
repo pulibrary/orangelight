@@ -8,6 +8,7 @@ ActiveSupport::Reloader.to_prepare do
                                                 Orangelight::MarkAsSafeProcessor,
                                                 Orangelight::ReferenceNoteUrlProcessor,
                                                 Orangelight::SeriesLinkProcessor,
+                                                Orangelight::LanguageTagProcessor,
                                                 Blacklight::Rendering::Microdata,
                                                 Orangelight::JoinProcessor]
 end
