@@ -303,8 +303,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'format', label: 'Format', helper_method: :format_render, if: false, coin_top_field: true, default_top_field: true
     config.add_show_field 'language_name_display', label: 'Language', if: false, default_top_field: true
     config.add_show_field 'original_language_of_translation_facet', label: 'Translated from', if: false, default_top_field: true
-    config.add_show_field 'edition_display', label: 'Εdition', if: false, default_top_field: true
-    config.add_show_field 'pub_created_display', label: "Published/\u200BCreated", if: false, default_top_field: true
+    config.add_show_field 'edition_display', label: 'Εdition', if: false, default_top_field: true, language_tag: true
+    config.add_show_field 'pub_created_display', label: "Published/\u200BCreated", if: false, default_top_field: true, language_tag: true
     config.add_show_field 'description_display', label: 'Description', if: false, default_top_field: true
 
     # Senior Thesis linked fields
@@ -426,7 +426,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'cumulative_index_finding_aid_display', label: "Cumulative index/\u200BFinding aid"
 
     config.add_show_field 'place_name_display', label: 'Place name(s)'
-    config.add_show_field 'other_title_display', label: 'Other title(s)'
+    config.add_show_field 'other_title_display', label: 'Other title(s)', language_tag: true
     config.add_show_field 'other_title_1display', hash: true
     config.add_show_field 'in_display', label: 'In'
     config.add_show_field 'other_editions_display', label: 'Other editions'
