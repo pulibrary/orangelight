@@ -66,6 +66,7 @@ class HoldingRequestsAdapter
   def grouped_physical_holdings
     doc_holdings_physical
       .map { |id, data| Requests::Holding.new(mfhd_id: id, holding_data: data) }
+      .reject { |holding| holding.holding_data["location_code"].start_with?("zobsolete$") }
       .group_by(&:full_location_name)
       .map { |group_name, holdings| Requests::HoldingGroup.new(group_name:, holdings:) }
       .sort

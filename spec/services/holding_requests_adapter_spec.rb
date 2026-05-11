@@ -157,6 +157,20 @@ RSpec.describe HoldingRequestsAdapter do
         'Special Collections - Remote Storage (ReCAP): Historic Maps. Special Collections Use Only'
       ]
     end
+    it 'does not include obsolete locations' do
+      allow(document).to receive(:holdings_all_display).and_return({
+                                                                     '123' => { 'library' => 'Annex', 'location' => 'Locked', 'location_code' => 'annex$locked' },
+                                                                     'abc' => { 'library' => 'Architecture Library', 'location' => 'Stacks', 'location_code' => 'arch$stacks' },
+                                                                     'obs' => { 'library' => 'Obsolete', 'location' => 'Obsolete', 'location_code' => 'zobsolete$zscl' }
+                                                                   })
+
+      group_order = holdings.grouped_physical_holdings.map(&:group_name)
+      expect(group_order).to eq [
+        'Architecture Library - Stacks',
+        'Annex - Locked'
+      ]
+      expect(group_order).not_to include 'Obsolete - Obsolete'
+    end
   end
 
   describe '#doc_id' do
