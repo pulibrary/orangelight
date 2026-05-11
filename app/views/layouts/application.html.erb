@@ -20,6 +20,7 @@
     <% if controller.controller_name == "form" %>
       <%= javascript_include_tag 'requests/application' %>
       <%= vite_javascript_tag 'requests' %>
+      <%= stylesheet_link_tag 'requests', media: 'screen' %>
     <% else  %>
       <%= javascript_include_tag "application" %>
       <%= vite_javascript_tag 'application' %>
