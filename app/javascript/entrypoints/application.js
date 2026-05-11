@@ -3,6 +3,14 @@ import AvailabilityUpdater from '../orangelight/availability_updater.js';
 import { luxImport } from '../orangelight/lux_import';
 import Blacklight from 'blacklight-frontend';
 import BlacklightRangeLimit from 'blacklight-range-limit';
+import '@popperjs/core';
+import 'bootstrap/js/dist/alert';
+import 'bootstrap/js/dist/button';
+import 'bootstrap/js/dist/collapse';
+import Dropdown from 'bootstrap/js/dist/dropdown';
+import 'bootstrap/js/dist/modal';
+
+window.bootstrap = { Dropdown };
 
 // boot stuff
 Blacklight.onLoad(() => {
