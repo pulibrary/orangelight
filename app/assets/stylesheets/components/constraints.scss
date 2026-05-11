@@ -1,3 +1,9 @@
-.applied-filter {
-    height: 38px;
+#appliedParams {
+  .btn {
+    line-height: var(--line-height-heading);
+  }
+
+  .applied-filter .constraint-value .filter-name::after {
+    height: calc(var(--line-height-heading) * .92rem);
+  }
 }
