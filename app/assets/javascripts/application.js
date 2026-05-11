@@ -16,14 +16,4 @@
 //
 //= require bootstrap
 //
-// Required by Blacklight
-//= require blacklight/blacklight
 //= require babel/polyfill
-
-// Wait for the modal to open
-document.addEventListener('show.blacklight.blacklight-modal', function () {
-  // Wait for the form to be submitted successfully
-  $('.modal_form').on('ajax:success', function () {
-    Blacklight.Modal.hide();
-  });
-});
