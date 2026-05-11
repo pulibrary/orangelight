@@ -281,7 +281,6 @@ detectors:
     - Orangelight::AdvancedSearchFormComponent
     - Orangelight::ConstraintComponent
     - Orangelight::ConstraintsComponent
-    - Orangelight::DropdownHelpTextComponent
     - Orangelight::ProcessVocabularyComponent
     - Orangelight::SearchBarComponent
     - AccountController
@@ -328,7 +327,6 @@ detectors:
     - Orangelight::ConstraintComponent
     - Orangelight::ConstraintsComponent
     - Orangelight::Document::CitationComponent
-    - Orangelight::DropdownHelpTextComponent
     - Orangelight::FacetFieldCheckboxesComponent
     - Orangelight::ProcessVocabularyComponent
     - Orangelight::SearchBarComponent
@@ -738,7 +736,6 @@ detectors:
     - Requests::RequestMailer#recap_marquand_in_library_email
   UtilityFunction:
     exclude:
-    - Orangelight::DropdownHelpTextComponent#option_text_and_value
     - Orangelight::ProcessVocabularyComponent#accumulate_subsubjects
     - AccountController#cancel_ill_success?
     - AccountController#current_patron
