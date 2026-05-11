@@ -1,0 +1,17 @@
+.marc_view {
+  .field {
+    align-items: flex-start;
+    border-bottom: 1px solid var(--bs-gray-600);
+    display: flex;
+    gap: 2em;
+  }
+
+  .ind1, .ind2 {
+    display: inline-block;
+    width: 1rem;
+  }
+
+  .tag_ind {
+    min-width: 4rem;
+  }
+}
