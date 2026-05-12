@@ -5,6 +5,7 @@ ActiveSupport::Reloader.to_prepare do
                                                 Orangelight::BrowseLinkProcessor,
                                                 Orangelight::LinkToFacetProcessor,
                                                 Orangelight::LinkToSearchValueProcessor,
+                                                Orangelight::AuthorTitleLinksProcessor,
                                                 Orangelight::MarkAsSafeProcessor,
                                                 Orangelight::ReferenceNoteUrlProcessor,
                                                 Orangelight::SeriesLinkProcessor,
