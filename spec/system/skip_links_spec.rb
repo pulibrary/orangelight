@@ -2,6 +2,13 @@
 
 require 'rails_helper'
 
+RSpec::Matchers.define :be_off_screen do
+  match do |selector|
+    # Check to see if the element is clipped as in bootstrap visually hidden
+    page.execute_script("return window.getComputedStyle(document.querySelector('#{selector}')).clip?.includes('rect(0')")
+  end
+end
+
 describe 'skip links', type: :system do
   before do
     stub_holding_locations
@@ -12,6 +19,13 @@ describe 'skip links', type: :system do
       it 'only has two skip links' do
         visit '/catalog?q=Uec4rvei7Aoxa'
         expect(page).to have_selector('#skip-link a', count: 2, visible: false)
+      end
+
+      it 'makes the skip link visible when focusing', js: true do
+        visit '/catalog?q=Uec4rvei7Aoxa'
+        expect('#skip-link a').to be_off_screen
+        page.execute_script('document.querySelector("#skip-link a").focus()')
+        expect('#skip-link a').not_to be_off_screen
       end
     end
 
