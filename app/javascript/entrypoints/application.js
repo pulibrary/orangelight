@@ -10,6 +10,17 @@ import 'bootstrap/js/dist/collapse';
 import Dropdown from 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/modal';
 
+import '@assets/stylesheets/application.scss';
+import '@assets/fonts/Dejavu/DejaVuSansCondensed-webfont.eot';
+import '@assets/fonts/Dejavu/DejaVuSansCondensed-webfont.eot?#iefix';
+import '@assets/fonts/Dejavu/DejaVuSansCondensed-webfont.woff';
+import '@assets/fonts/Dejavu/DejaVuSansCondensed-webfont.ttf';
+import '@assets/fonts/RobotoMono/RobotoMono-Regular.ttf';
+import '@assets/fonts/LibreFranklin/LibreFranklin-VariableFont_wght.ttf';
+import '@assets/fonts/icons/pul-icons.ttf?llihnc';
+import '@assets/fonts/icons/pul-icons.woff?llihnc';
+import '@assets/fonts/icons/pul-icons.svg?llihnc#pul-icons';
+
 window.bootstrap = { Dropdown };
 
 // boot stuff

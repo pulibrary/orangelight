@@ -4,9 +4,9 @@
 @font-face {
     font-family: 'pul-icons';
     src:
-        font-url('icons/pul-icons.ttf?llihnc') format('truetype'),
-        font-url('icons/pul-icons.woff?llihnc') format('woff'),
-        font-url('icons/pul-icons.svg?llihnc#pul-icons') format('svg');
+        url(@assets/fonts/icons/pul-icons.ttf?llihnc) format('truetype'),
+        url(@assets/fonts/icons/pul-icons.woff?llihnc) format('woff'),
+        url(@assets/fonts/icons/pul-icons.svg?llihnc#pul-icons) format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
