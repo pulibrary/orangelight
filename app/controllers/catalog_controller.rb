@@ -325,7 +325,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'aat_s', label: 'Getty AAT genre', component: Orangelight::ProcessVocabularyComponent
     config.add_show_field 'local_subject_display', label: 'Local Subjects', component: Orangelight::ProcessVocabularyComponent
     config.add_show_field 'fast_subject_display', label: 'FaST Subject(s)', component: Orangelight::ProcessVocabularyComponent
-    config.add_show_field 'related_works_1display', label: 'Related work(s)', helper_method: :name_title_hierarchy
+    config.add_show_field 'related_works_1display', label: 'Related work(s)', author_title_links: true, language_tag: true
     config.add_show_field 'series_display', label: 'Series', series_link: true, language_tag: true
     config.add_show_field 'contains_1display', label: 'Contains', helper_method: :name_title_hierarchy
     config.add_show_field 'data_source_display', label: 'Data source', browse_link: :name_title
