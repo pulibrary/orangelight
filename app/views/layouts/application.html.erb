@@ -22,8 +22,8 @@
       <%= stylesheet_link_tag 'requests', media: 'screen' %>
     <% else  %>
       <%= javascript_include_tag "application" %>
-      <%= vite_javascript_tag 'application' %>
     <% end %>
+    <%= vite_javascript_tag 'application' %>
     <script>window.Global = {"graphql":<%= Global.graphql.to_json.html_safe %>,"figgy":<%= Global.figgy.to_json.html_safe %>}</script>
     <%= vite_client_tag %>
     <% unless controller.controller_name == "catalog" && controller.action_name == "show" && @document.alma_record? %>
