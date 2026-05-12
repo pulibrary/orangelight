@@ -326,7 +326,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'local_subject_display', label: 'Local Subjects', component: Orangelight::ProcessVocabularyComponent
     config.add_show_field 'fast_subject_display', label: 'FaST Subject(s)', component: Orangelight::ProcessVocabularyComponent
     config.add_show_field 'related_works_1display', label: 'Related work(s)', helper_method: :name_title_hierarchy
-    config.add_show_field 'series_display', label: 'Series', series_link: true
+    config.add_show_field 'series_display', label: 'Series', series_link: true, language_tag: true
     config.add_show_field 'contains_1display', label: 'Contains', helper_method: :name_title_hierarchy
     config.add_show_field 'data_source_display', label: 'Data source', browse_link: :name_title
     config.add_show_field 'contained_in_s', label: 'Contained in', link_field: 'id'
@@ -365,7 +365,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'linking_notes_display', label: 'Linking notes'
     config.add_show_field 'restrictions_note_display', label: 'Restrictions note', mark_as_safe: true
     config.add_show_field 'biographical_historical_note_display', label: "Biographical/\u200BHistorical note"
-    config.add_show_field 'summary_note_display', label: 'Summary note'
+    config.add_show_field 'summary_note_display', label: 'Summary note', language_tag: true
     config.add_show_field 'content_advice_display', label: 'Content advice'
     config.add_show_field 'notes_display', label: 'Notes'
     config.add_show_field 'holdings_1display', label: 'Location has', if: :show_location_has?, helper_method: :location_has
@@ -374,7 +374,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'dissertation_notes_display', label: 'Dissertation note'
     config.add_show_field 'bib_ref_notes_display', label: 'Bibliographic references'
     config.add_show_field 'scale_notes_display', label: 'Scale'
-    config.add_show_field 'credits_notes_display', label: "Creation/\u200BProduction credits"
+    config.add_show_field 'credits_notes_display', label: "Creation/\u200BProduction credits", language_tag: true
     config.add_show_field 'type_period_notes_display', label: 'Type of report and period covered'
     config.add_show_field 'data_quality_notes_display', label: 'Data quality'
     config.add_show_field 'type_comp_data_notes_display', label: 'Type of data'
@@ -408,10 +408,10 @@ class CatalogController < ApplicationController
     config.add_show_field 'local_notes_display', label: 'Local notes'
     config.add_show_field 'rights_reproductions_note_display', label: 'Rights and reproductions note', mark_as_safe: true
     config.add_show_field 'exhibitions_note_display', label: 'Exhibitions note'
-    config.add_show_field 'participant_performer_display', label: "Participant(s)/\u200BPerformer(s)"
+    config.add_show_field 'participant_performer_display', label: "Participant(s)/\u200BPerformer(s)", language_tag: true
     config.add_show_field 'language_display', label: 'Language note'
     config.add_show_field 'script_display', label: 'Script'
-    config.add_show_field 'contents_display', label: 'Contents', component: DisplayMoreFieldComponent, maxInitialDisplay: 3
+    config.add_show_field 'contents_display', label: 'Contents', component: DisplayMoreFieldComponent, maxInitialDisplay: 3, language_tag: true
     config.add_show_field 'incomplete_contents_display', label: 'Incomplete contents'
     config.add_show_field 'partial_contents_display', label: 'Partial contents'
     config.add_show_field 'provenance_display', label: 'Provenance'
