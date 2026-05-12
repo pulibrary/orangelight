@@ -11,5 +11,12 @@ export default defineConfig({
     alias: {
       'vue': 'vue/dist/vue.esm-bundler',
     },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        loadPaths: ["./app/assets/stylesheets", "./node_modules"],
+      }
+    }
   }
 })

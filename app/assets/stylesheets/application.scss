@@ -13,8 +13,7 @@
  *= require_self
  */
 
-@use 'blacklight.css';
-@use 'blacklight_marc.css';
+@use 'blacklight-frontend/app/assets/builds/blacklight.css';
 
 @use 'components/alerts';
 @use 'components/ask-a-librarian';
@@ -34,6 +33,7 @@
 @use 'components/footer';
 @use 'components/header';
 @use 'components/header--secondary';
+@use "components/marc_record.scss";
 @use 'components/nav--accounts';
 @use 'components/nav--user-utils';
 @use 'components/pagination';
@@ -47,7 +47,6 @@
 @use 'shame';
 
 
-@use "blacklight_marc_customizations";
 @use "lux_customizations";
 
 @import 'bootstrap_with_override';
