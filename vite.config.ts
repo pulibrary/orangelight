@@ -14,4 +14,11 @@ export default defineConfig({
       '@assets': resolve(__dirname, 'app/assets'),
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        loadPaths: ["./app/assets/stylesheets", "./node_modules"],
+      }
+    }
+  }
 })

@@ -9,6 +9,8 @@ import 'bootstrap/js/dist/button';
 import 'bootstrap/js/dist/collapse';
 import Dropdown from 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/modal';
+
+import '@assets/stylesheets/application.scss';
 import '@assets/fonts/Dejavu/DejaVuSansCondensed-webfont.eot';
 import '@assets/fonts/Dejavu/DejaVuSansCondensed-webfont.eot?#iefix';
 import '@assets/fonts/Dejavu/DejaVuSansCondensed-webfont.woff';
