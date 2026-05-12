@@ -9,7 +9,6 @@ import 'bootstrap/js/dist/button';
 import 'bootstrap/js/dist/collapse';
 import Dropdown from 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/modal';
-import '../../assets/stylesheets/application.scss';
 
 window.bootstrap = { Dropdown };
 
