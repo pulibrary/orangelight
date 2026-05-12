@@ -34,7 +34,7 @@
     "simple-git-hooks": "^2.13.1",
     "stylelint": "^16.26.1",
     "stylelint-config-standard-scss": "^16.0.0",
-    "vite": "^8.0.0",
+    "vite": "^8.0.12",
     "vite-plugin-ruby": "^5.2.2",
     "vitest": "^4.1.6"
   },
