@@ -21,7 +21,11 @@ module Orangelight
           parsed.map do |heading|
             full_name_title = heading.join(' ')
             with_links = heading.each_with_index.map do |part, index|
-              field = index.zero? ? 'author_s' : 'name_title_browse_s'
+              # The author is the first entry in the array.
+              is_author = index.zero?
+              next if config.no_author_link && is_author
+
+              field = is_author ? 'author_s' : 'name_title_browse_s'
               search_query = StringFunctions.trim_punctuation(heading[0..index].join(' '))
               link_to part, "/?f[#{field}][]=#{CGI.escape search_query}", class: 'search-name-title', dir: part.dir
             end

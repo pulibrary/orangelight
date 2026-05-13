@@ -92,7 +92,6 @@ detectors:
     - ApplicationHelper#html_safe
     - ApplicationHelper#language_iana
     - ApplicationHelper#location_full_display
-    - ApplicationHelper#name_title_hierarchy
     - ApplicationHelper#scsb_supervised_items?
     - ApplicationHelper#series_results
     - BlacklightHelper#browse_related_name_hash
@@ -461,7 +460,6 @@ detectors:
   NestedIterators:
     exclude:
     - BookmarksController#csv_output
-    - ApplicationHelper#name_title_hierarchy
     - ApplicationHelper#title_hierarchy
     - BlacklightHelper#left_anchor_search?
     - BlacklightHelper#prepare_left_anchor_search
@@ -599,7 +597,6 @@ detectors:
     - Users::OmniauthCallbacksController#alma
     - ApplicationHelper#action_notes_display
     - ApplicationHelper#location_has
-    - ApplicationHelper#name_title_hierarchy
     - ApplicationHelper#render_location_code
     - ApplicationHelper#title_hierarchy
     - BlacklightHelper#cjk_mm
@@ -702,7 +699,6 @@ detectors:
     - ApplicationHelper#action_notes_display
     - ApplicationHelper#html_safe
     - ApplicationHelper#location_has
-    - ApplicationHelper#name_title_hierarchy
     - ApplicationHelper#same_series_result
     - ApplicationHelper#title_hierarchy
     - HoldingsHelper#holding_block_search

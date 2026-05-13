@@ -297,7 +297,7 @@ class CatalogController < ApplicationController
     # They should be designated with either `default_top_field: true`, `coin_top_field: true` or both
     config.add_show_field 'author_display', label: "Author/\u200BArtist", browse_link: :name, if: false, default_top_field: true
     # For uniform titles from 240 field - when there is both an author and uniform title
-    config.add_show_field 'name_uniform_title_1display', label: 'Uniform title', helper_method: :name_title_hierarchy, if: false, default_top_field: true
+    config.add_show_field 'name_uniform_title_1display', label: 'Uniform title', author_title_links: true, no_author_link: true, if: false, default_top_field: true
     # For uniform titles from 130 field - when there is only a uniform title, and no author
     config.add_show_field 'uniform_title_1display', label: 'Uniform title', helper_method: :title_hierarchy, if: false, default_top_field: true
     config.add_show_field 'format', label: 'Format', helper_method: :format_render, if: false, coin_top_field: true, default_top_field: true
