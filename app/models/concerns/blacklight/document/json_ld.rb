@@ -203,33 +203,39 @@ module Blacklight::Document::JsonLd
 
     contributors = self['related_name_json_1display']
 
-    JSON.parse(contributors).map { |label, contributor|
-      mapped_contributors.merge!(expanded_name(label, contributor))
-    } if contributors
+    if contributors
+      JSON.parse(contributors).map do |label, contributor|
+        mapped_contributors.merge!(expanded_name(label, contributor))
+      end
+    end
     mapped_contributors
   end
 
   def expanded_name(label, contributor)
     return unless contributor
 
+    lang = LanguageTag.from_value(c, self).to_s
     formatted_contributor = if contributor.length > 1
-      contributor.map { |c| {
-        "@value": c,
-        "@language": LanguageTag.from_value(c, self).to_s
-      }}
-    else
-      contributor.map { |c| 
-      lang = LanguageTag.from_value(c, self).to_s
-      {
-        "@value": c,
-        "@language": lang.include?('-Latn') ? "en" : lang
-      }}
-    end
+                              contributor.map do |contrib|
+                                {
+                                  '@value': contrib,
+                                  '@language': lang
+                                }
+                              end
+                            else
+                              contributor.map do |contrib|
+                                
+                                {
+                                  '@value': contrib,
+                                  '@language': lang.include?('-Latn') ? "en" : lang
+                                }
+                              end
+                            end
 
     hash = {}
     hash[label] = [
       {
-        "label": formatted_contributor
+        'label': formatted_contributor
       }
     ]
     hash
