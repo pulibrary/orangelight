@@ -214,23 +214,14 @@ module Blacklight::Document::JsonLd
   def expanded_name(label, contributor)
     return unless contributor
 
-    lang = LanguageTag.from_value(c, self).to_s
-    formatted_contributor = if contributor.length > 1
-                              contributor.map do |contrib|
-                                {
-                                  '@value': contrib,
-                                  '@language': lang
-                                }
-                              end
-                            else
-                              contributor.map do |contrib|
-                                
-                                {
-                                  '@value': contrib,
-                                  '@language': lang.include?('-Latn') ? "en" : lang
-                                }
-                              end
-                            end
+    formatted_contributor = contributor.map do |c|
+      lang = LanguageTag.from_value(c, self).to_s
+      lang = "en" if (contributor.length > 1) && lang.include?('-Latn')
+      {
+        '@value': c,
+        '@language': lang.include?('-Latn') ? "en" : lang
+      }
+    end
 
     hash = {}
     hash[label] = [
