@@ -213,12 +213,6 @@ module ApplicationHelper
     HoldingRequestsAdapter.new(@document, Bibdata)
   end
 
-  # Returns true for locations with remote storage.
-  # Remote storage locations have a value of 'recap_rmt' in Alma.
-  def remote_storage?(location_code)
-    holding_locations[location_code]["remote_storage"] == 'recap_rmt'
-  end
-
   # Testing this feature with Voice Over - reading the Web content
   # If language defaults to english 'en' when no language_iana_primary_s exists then:
   # for cyrilic: for example russian, voice over will read each character as: cyrilic <character1>, cyrilic <character2>
