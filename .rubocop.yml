@@ -102,7 +102,6 @@ Metrics/MethodLength:
     - 'app/controllers/users/omniauth_callbacks_controller.rb'
     - 'app/controllers/account_controller.rb'
     - 'app/helpers/advanced_helper.rb'
-    - 'app/helpers/application_helper.rb'
     - 'app/services/online_holdings_markup_builder.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'spec/features/course_reserves_spec.rb'

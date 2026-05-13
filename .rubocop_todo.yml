@@ -278,7 +278,6 @@ Naming/MethodParameterName:
     - 'app/processors/orangelight/link_to_facet_processor.rb'
     - 'app/services/faceted_query_service.rb'
     - 'lib/orangelight/browse_lists/call_number_csv.rb'
-    - 'app/helpers/application_helper.rb'
 
 # Offense count: 7
 # This cop supports safe autocorrection (--autocorrect).
@@ -1149,7 +1148,6 @@ Style/RedundantParentheses:
   Exclude:
     - 'app/components/orangelight/search_bar_component.rb'
     - 'app/components/request_button_component.rb'
-    - 'app/helpers/application_helper.rb'
     - 'app/helpers/requests/application_helper.rb'
 
 # Offense count: 5
