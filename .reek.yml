@@ -228,6 +228,7 @@ detectors:
     - Blacklight::Document::DublinCore#export_as_oai_dc_xml
     - Blacklight::Document::DublinCore#export_as_rdf_dc
     - Blacklight::Document::Email#add_multi_valued_field
+    - Blacklight::Document::JsonLd#expanded_name
     - Blacklight::Document::JsonLd#identifier
     - Blacklight::Marc::DocumentExtension#build_ctx
     - Blacklight::Marc::DocumentExtension#get_author_list
