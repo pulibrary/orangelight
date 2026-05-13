@@ -327,7 +327,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'fast_subject_display', label: 'FaST Subject(s)', component: Orangelight::ProcessVocabularyComponent
     config.add_show_field 'related_works_1display', label: 'Related work(s)', author_title_links: true, language_tag: true
     config.add_show_field 'series_display', label: 'Series', series_link: true, language_tag: true
-    config.add_show_field 'contains_1display', label: 'Contains', helper_method: :name_title_hierarchy
+    config.add_show_field 'contains_1display', label: 'Contains', author_title_links: true, language_tag: true
     config.add_show_field 'data_source_display', label: 'Data source', browse_link: :name_title
     config.add_show_field 'contained_in_s', label: 'Contained in', link_field: 'id'
     config.add_show_field 'related_record_s', label: 'Related record(s)', link_field: 'id'
