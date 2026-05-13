@@ -43,7 +43,7 @@ export default class GoogleBooksSnippets {
     const locationData = JSON.parse(
       document.querySelector('#document')?.dataset['location'] || '[]'
     );
-    const onlineCodes = ['elf1', 'elf2', 'elf4', 'Online'];
+    const onlineCodes = ['Online'];
     const diff = locationData.filter((x) => onlineCodes.includes(x));
     if (diff.length > 0) return true;
     return false;

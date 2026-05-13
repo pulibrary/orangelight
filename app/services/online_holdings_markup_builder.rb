@@ -124,13 +124,6 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
 
       electronic_access_links = self.class.urlify(@adapter)
       markup << electronic_access_links
-      elf_holdings = @adapter.doc_holdings_elf
-
-      if electronic_access_links.empty?
-        elf_holdings.each_key do |holding_id|
-          markup << self.class.online_link(@adapter.doc_id, holding_id)
-        end
-      end
 
       # For Alma records, add links from the electronic portfolio field
       markup << self.class.electronic_portfolio_markup(@adapter)
