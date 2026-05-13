@@ -34,6 +34,7 @@ module Blacklight::Document::JsonLd
     metadata['local_identifier'] = local_identifier if local_identifier
     metadata['location'] = location if location
     metadata['electronic_locations'] = electronic_links if electronic_links.present?
+    metadata['expanded_names'] = expanded_names if expanded_names
 
     metadata
   end
@@ -193,6 +194,45 @@ module Blacklight::Document::JsonLd
         }
       end
     end
+  end
+
+  def expanded_names
+    mapped_contributors = {}
+    author_display = self['author_display']
+    mapped_contributors.merge!(expanded_name("author", author_display)) if author_display
+
+    contributors = self['related_name_json_1display']
+
+    JSON.parse(contributors).map { |label, contributor|
+      mapped_contributors.merge!(expanded_name(label, contributor))
+    } if contributors
+    mapped_contributors
+  end
+
+  def expanded_name(label, contributor)
+    return unless contributor
+
+    formatted_contributor = if contributor.length > 1
+      contributor.map { |c| {
+        "@value": c,
+        "@language": LanguageTag.from_value(c, self).to_s
+      }}
+    else
+      contributor.map { |c| 
+      lang = LanguageTag.from_value(c, self).to_s
+      {
+        "@value": c,
+        "@language": lang.include?('-Latn') ? "en" : lang
+      }}
+    end
+
+    hash = {}
+    hash[label] = [
+      {
+        "label": formatted_contributor
+      }
+    ]
+    hash
   end
 
   def default_host
