@@ -752,7 +752,6 @@ detectors:
     - ApplicationHelper#html_safe
     - ApplicationHelper#location_full_display
     - ApplicationHelper#rails_env?
-    - ApplicationHelper#remote_storage?
     - ApplicationHelper#same_series_result
     - ApplicationHelper#scsb_supervised_items?
     - BlacklightHelper#add_wildcard
