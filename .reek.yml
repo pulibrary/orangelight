@@ -89,7 +89,6 @@ detectors:
     - Requests::FormController#sanitize_submission
     - FeedbackForm#headers
     - ApplicationHelper#action_notes_display
-    - ApplicationHelper#html_safe
     - ApplicationHelper#language_iana
     - ApplicationHelper#location_full_display
     - ApplicationHelper#scsb_supervised_items?
@@ -697,7 +696,6 @@ detectors:
     - BookmarksController#two_values
     - Orangelight::Catalog#show_location_has?
     - ApplicationHelper#action_notes_display
-    - ApplicationHelper#html_safe
     - ApplicationHelper#location_has
     - ApplicationHelper#same_series_result
     - ApplicationHelper#title_hierarchy
@@ -749,7 +747,6 @@ detectors:
     - ApplicationHelper#bibdata_location_code_to_sym
     - ApplicationHelper#format_render
     - ApplicationHelper#holding_location
-    - ApplicationHelper#html_safe
     - ApplicationHelper#location_full_display
     - ApplicationHelper#rails_env?
     - ApplicationHelper#same_series_result

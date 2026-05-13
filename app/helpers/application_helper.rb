@@ -203,10 +203,6 @@ module ApplicationHelper
     loc['label'] == '' ? loc['library']['label'] : loc['library']['label'] + ' - ' + loc['label']
   end
 
-  def html_safe(args)
-    args[:document][args[:field]].each_with_index { |v, i| args[:document][args[:field]][i] = v.html_safe }
-  end
-
   # Construct an adapter for Solr Documents and the bib. data service
   # @return [HoldingRequestsAdapter]
   def holding_requests_adapter
