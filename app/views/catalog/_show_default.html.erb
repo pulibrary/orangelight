@@ -6,7 +6,7 @@
       <% next if field&.coin_description %>
       <%# marc relator code for authors -%>
       <% if json_field?(field) %>
-        <%= render 'hash_show', document: document, field: field_name %>
+        <%= render HashMetadataFieldComponent.new(document:, solr_field_name: field_name, field_config: field) %>
       <% elsif linked_record_field?(field) %>
         <%= render 'other_versions_show', document: document, field: field, linked_records: document.linked_records(field: field.field) %>
       <% else %>

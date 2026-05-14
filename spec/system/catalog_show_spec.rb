@@ -134,29 +134,29 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
 
   describe 'showing top fields' do
     let(:document_id) { '9946093213506421' }
-    let(:top_fields) { ['uniform_title_1display', 'format', 'pub_created_display', 'description_display'] }
+    let(:top_fields) { ['Uniform title', 'Format', 'Published', 'Description'] }
     let(:details_fields) do
-      ['printer', 'binder', 'former-owner', 'notes_display', 'binding_note_display',
-       'provenance_display', 'references_url_display', 'other_format_display',
-       'other_title_display']
+      ['Printer', 'Binder', 'Former owner', 'Notes', 'Binding note',
+       'Provenance', 'References', 'Other format(s)',
+       'Other title(s)']
     end
 
     it 'shows top fields in their own section' do
       visit "catalog/#{document_id}"
       within('dl.top-fields') do
         top_fields.each do |field|
-          expect(page).to have_selector("dt.blacklight-#{field}")
+          expect(page).to have_selector("dt", text: field)
         end
         details_fields.each do |field|
-          expect(page).not_to have_selector("dt.blacklight-#{field}")
+          expect(page).not_to have_selector("dt", text: field)
         end
       end
       within('dl.document-details') do
         top_fields.each do |field|
-          expect(page).not_to have_selector("dt.blacklight-#{field}")
+          expect(page).not_to have_selector("dt", text: field)
         end
         details_fields.each do |field|
-          expect(page).to have_selector("dt.blacklight-#{field}")
+          expect(page).to have_selector("dt", text: field)
         end
       end
     end
