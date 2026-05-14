@@ -22,7 +22,7 @@ class BookmarksController < CatalogController
 
     if bookmark_ids.present?
       params[:f] ||= {}
-      params[:f][:id] = bookmark_ids
+      params.expect(:f)[:id] = bookmark_ids
       @response, = search_service.search_results
     else
       @response = Blacklight::Solr::Response.new({ response: { numFound: 0, start: 0, docs: [] } }, {})

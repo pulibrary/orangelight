@@ -27,13 +27,13 @@ module Orangelight
 
     def redirect_browse
       if params[:search_field] && params[:controller] != 'advanced'
-        if params[:search_field] == 'browse_subject' && !params[:id]
+        if params[:search_field] == 'browse_subject' && !params.expect(:id)
           redirect_to "/browse/subjects?search_field=#{params[:search_field]}&q=#{CGI.escape params[:q]}"
-        elsif params[:search_field] == 'browse_cn' && !params[:id]
+        elsif params[:search_field] == 'browse_cn' && !params.expect(:id)
           redirect_to "/browse/call_numbers?search_field=#{params[:search_field]}&q=#{CGI.escape params[:q]}"
-        elsif params[:search_field] == 'browse_name' && !params[:id]
+        elsif params[:search_field] == 'browse_name' && !params.expect(:id)
           redirect_to "/browse/names?search_field=#{params[:search_field]}&q=#{CGI.escape params[:q]}"
-        elsif params[:search_field] == 'name_title' && !params[:id]
+        elsif params[:search_field] == 'name_title' && !params.expect(:id)
           redirect_to "/browse/name_titles?search_field=#{params[:search_field]}&q=#{CGI.escape params[:q]}"
         end
       end
@@ -55,7 +55,7 @@ module Orangelight
         flash[:error] = 'You must be logged in to send an email.'
       elsif params[:to].blank?
         flash[:error] = I18n.t('blacklight.email.errors.to.blank')
-      elsif !params[:to].match(Blacklight::Engine.config.blacklight.email_regexp)
+      elsif !params.expect(:to).match(Blacklight::Engine.config.blacklight.email_regexp)
         flash[:error] = I18n.t('blacklight.email.errors.to.invalid', to: params[:to])
       end
 
