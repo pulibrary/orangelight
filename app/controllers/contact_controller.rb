@@ -63,15 +63,15 @@ class ContactController < ApplicationController
   private
 
     def question_params
-      params[:ask_a_question_form].permit!
+      params.expect(:ask_a_question_form).permit!
     end
 
     def suggestion_params
-      params[:suggest_correction_form].permit!
+      params.expect(:suggest_correction_form).permit!
     end
 
     def missing_item_params
-      params[:missing_item_form].permit!
+      params.expect(:missing_item_form).permit!
     end
 
     def flash_now_error(message)
