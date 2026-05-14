@@ -268,7 +268,6 @@ detectors:
     - SubmissionSerializer#serialize
     - DBMigrateUppercaseUsernames::UserLowercaser#merge_bookmarks
     - DBMigrateUppercaseUsernames::UserLowercaser#merge_searches
-    - HoldingRequestsAdapter#doc_holdings_elf
     - HoldingRequestsAdapter#doc_holdings_physical
     - HoldingRequestsAdapter#holding_location_rules
   InstanceVariableAssumption:
@@ -722,7 +721,6 @@ detectors:
     - SolrDocument#full_arks
     - SolrDocument#holdings_all_display
     - Bibdata#sorted_locations
-    - HoldingRequestsAdapter#doc_holdings_elf
     - HoldingRequestsAdapter#doc_holdings_physical
   UnusedParameters:
     exclude:

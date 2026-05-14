@@ -74,22 +74,6 @@ RSpec.describe HoldingRequestsAdapter do
     end
   end
 
-  describe '#doc_holdings_elf' do
-    context 'When location codes are not available' do
-      let(:holdings_hash) do
-        {
-          '671799' => { 'items' => [{ 'holding_id' => '671799', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgd' => 'Open', 'collection_code' => 'NA' }] },
-          '671798' => { 'items' => [{ 'holding_id' => '671798', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgd' => 'Open', 'collection_code' => 'NA' }] }
-        }
-      end
-      let(:document) { { 'holdings_1display' => holdings_hash.to_json } }
-
-      it 'returns an empty array' do
-        expect(holdings.doc_holdings_elf).to be_empty
-      end
-    end
-  end
-
   describe '#doc_holdings_physical' do
     context 'When location codes are not available' do
       let(:holdings_hash) do
