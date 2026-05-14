@@ -626,6 +626,7 @@ detectors:
     - Blacklight::Document::JsonLd#contributors
     - Blacklight::Document::JsonLd#data
     - Blacklight::Document::JsonLd#date
+    - Blacklight::Document::JsonLd#expanded_name
     - Blacklight::Document::JsonLd#identifier
     - Blacklight::Document::JsonLd#location
     - Blacklight::Document::Ris#author_roles_1display_to_ris

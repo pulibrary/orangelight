@@ -198,7 +198,8 @@ module Blacklight::Document::JsonLd
 
   def expanded_names
     author_display = self['author_display']
-    mapped_contributors = expanded_name("author", author_display) || {} if author_display
+    mapped_contributors = {}
+    mapped_contributors = expanded_name("author", author_display) if author_display
 
     if (contributors = self['related_name_json_1display'])
       JSON.parse(contributors).map do |label, contributor|
