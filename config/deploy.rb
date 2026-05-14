@@ -36,6 +36,14 @@ set :whenever_roles, ->{ [:cron_prod1, :cron_prod2, :cron_prod3, :cron_db] }
 
 # Default value for :linked_files is []
 # set :linked_files, %w{config/database.yml}
+#
+
+set :ssh_options, {
+  keys: %w(/Users/kayiwa/.ssh/id_ed25519_pul_desktop_2025-08-26),
+  forward_agent: true,
+  auth_methods: %w(publickey),
+  keys_only: true
+}
 
 # Default value for linked_dirs is []
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
