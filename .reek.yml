@@ -93,7 +93,6 @@ detectors:
     - ApplicationHelper#location_full_display
     - ApplicationHelper#scsb_supervised_items?
     - ApplicationHelper#series_results
-    - BlacklightHelper#browse_related_name_hash
     - BlacklightHelper#cjk_mm
     - BlacklightHelper#html_facets
     - BlacklightHelper#includes_series_search?

@@ -1,0 +1,6 @@
+<% fields.each do |label, raw_values| %>
+  <%= render Blacklight::MetadataFieldLayoutComponent.new(field: field_config) do |component|
+    component.with_label { label }
+    render_values(raw_values).each_with_index {|value, index| component.with_value(value:, index:)}
+  end %>
+<% end %>

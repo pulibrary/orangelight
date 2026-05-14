@@ -107,11 +107,6 @@ module BlacklightHelper
     '3<86%'
   end
 
-  def browse_related_name_hash(name)
-    link_to(name, "/?f[author_s][]=#{CGI.escape name}", class: 'search-related-name', 'data-original-title' => "Search: #{name}") + '  ' +
-      link_to('[Browse]', "/browse/names?q=#{CGI.escape name}", class: 'browse-related-name', 'data-original-title' => "Search: #{name}")
-  end
-
   # render_document_heading from Blacklight v7.23.0.1
   # https://github.com/projectblacklight/blacklight/blob/242880eacb1c73a2a6a3d7cdf4e24cec151179f8/app/helpers/blacklight/blacklight_helper_behavior.rb#L245
   def render_document_heading(*args)
