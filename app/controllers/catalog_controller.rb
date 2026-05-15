@@ -394,7 +394,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'related_copyright_notes_display', label: 'Copyright note'
     config.add_show_field 'location_other_arch_notes_display', label: 'Location of other archival materials'
     config.add_show_field 'former_title_complex_notes_display', label: 'Former title complexity'
-    config.add_show_field 'issuing_body_notes_display', label: 'Issuing body'
+    config.add_show_field 'issuing_body_notes_display', label: 'Issuing body', language_tag: true
     config.add_show_field 'info_document_notes_display', label: 'Information about documentation'
     config.add_show_field 'copy_version_notes_display', label: 'Copy and version identification'
     config.add_show_field 'case_file_notes_display', label: 'Case file characteristics'
@@ -427,7 +427,7 @@ class CatalogController < ApplicationController
 
     config.add_show_field 'place_name_display', label: 'Place name(s)'
     config.add_show_field 'other_title_display', label: 'Other title(s)', language_tag: true
-    config.add_show_field 'other_title_1display', hash: true
+    config.add_show_field 'other_title_1display', hash: true, language_tag: true
     config.add_show_field 'in_display', label: 'In'
     config.add_show_field 'other_editions_display', label: 'Other editions'
     config.add_show_field 'isbn_display', label: 'ISBN'
