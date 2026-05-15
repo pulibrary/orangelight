@@ -261,7 +261,7 @@ class CatalogController < ApplicationController
     #   (catalog.json), add it here!
     config.add_index_field 'series_display', label: 'Series', helper_method: :series_results
     config.add_index_field 'author_display', label: 'Author/Artist', browse_link: :name
-    config.add_index_field 'pub_created_display', label: 'Published/Created'
+    config.add_index_field 'pub_created_display', label: 'Published/Created', language_tag: true
     config.add_index_field 'format', label: 'Format', component: FormatBadgeFieldComponent
     config.add_index_field 'holdings_1display', if: :json_request?
     config.add_index_field 'contained_in_s', if: :json_request?
