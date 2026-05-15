@@ -180,7 +180,6 @@ detectors:
     - SearchBuilder#numismatics_advanced
     - SearchBuilder#parslet_trick
     - SolrDocument#electronic_access_uris
-    - SolrDocument#holdings_all_display
     - SolrDocument#host_id
     - SolrDocument#identifier_data
     - User#self.from_alma
@@ -262,7 +261,6 @@ detectors:
     - Requests::Submissions::Service#error_hash
     - SearchBuilder#numismatics_advanced
     - SolrDocument#electronic_access_uris
-    - SolrDocument#holdings_with_host_id
     - SubmissionSerializer#serialize
     - DBMigrateUppercaseUsernames::UserLowercaser#merge_bookmarks
     - DBMigrateUppercaseUsernames::UserLowercaser#merge_searches
@@ -661,7 +659,6 @@ detectors:
     - Requests::Submissions::Recap#handle_hold_for_item
     - Requests::Submissions::Recap#handle_item
     - SolrDocument#electronic_access_uris
-    - SolrDocument#holdings_with_host_id
     - SolrDocument#related_bibs_iiif_manifest
     - User#self.from_cas
     - Orangelight::JoinProcessor#render
@@ -716,7 +713,6 @@ detectors:
     - SolrDocument#doc_electronic_access
     - SolrDocument#electronic_portfolios
     - SolrDocument#full_arks
-    - SolrDocument#holdings_all_display
     - Bibdata#sorted_locations
     - HoldingRequestsAdapter#doc_holdings_physical
   UnusedParameters:

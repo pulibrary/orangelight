@@ -205,29 +205,26 @@ class SolrDocument
   # host_id an Array of host id(s)
   # appends the host_id in each host_holding
   # merges host_holding in holdings
+  # :reek:NestedIterators
   def holdings_with_host_id(holdings)
-    host_id.each do |id|
-      host_solr_document = doc_by_id(id)
-      host_holdings = host_solr_document&.dig("holdings_1display")
-      host_holdings_parse = JSON.parse(host_holdings || '{}')
-      next if host_holdings_parse.blank? # do not merge an empty holding
-      host_holding_id = host_holdings_parse.first[0]
-      # append the host_id as mms_id in the host_holdings
-      host_holdings_parse[host_holding_id]["mms_id"] = id
-
-      holdings.merge!(host_holdings_parse)
+    host_id.reduce(holdings) do |all_holdings, id|
+      host_holdings = JSON.parse(doc_by_id(id)&.dig("holdings_1display") || '{}')
+      if host_holdings.blank?
+        all_holdings
+      else
+        all_holdings.merge(
+          host_holdings.transform_values { |holding| holding.merge("mms_id" => id) }
+        )
+      end
     end
-    holdings
   end
 
   # Returns the holdings_1display of the record plus the holdings_1display of the host record
   def holdings_all_display
     holdings = JSON.parse(self["holdings_1display"] || '{}')
+                   # append the solr document id in each holding
+                   .transform_values { |holding| holding.merge("mms_id" => solr_document_id) }
 
-    holdings.each do |k, _val|
-      # append the solr document id in each holding
-      holdings[k].presence&.merge!("mms_id" => solr_document_id)
-    end
     return holdings if host_id.blank?
     # Append the host_id in the host_holdings
     # merge the host_holdings in holdings
