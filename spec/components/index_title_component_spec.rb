@@ -56,4 +56,29 @@ RSpec.describe IndexTitleComponent, type: :component do
       expect(subject.css('a').first[:style]).to eq('float: right;')
     end
   end
+
+  describe 'language tags' do
+    let(:document) do
+      SolrDocument.new({
+                         'title_display': "Yād-i dāstānʹhā-yi dilʹangīz-i dabistān : yak qarn dāstānʹhā-yi dabistān, 1290-1390 / pizhūhish va girdʹāvarī: Akbar Qarahʹdāghī.",
+                         'title_vern_display': "ياد داستان‌هاى دل‌انگيز دبستان : يک قرن داستان‌هاى دبستان ١٢٩٠-١٣٩٠ / پژوهش و گرد‌آورى: اکبر قره‌داغى.",
+                         'language_iana_s': ["fa"],
+                         'id': "9982039813506421"
+                       })
+    end
+    it 'includes language tags' do
+      expect(subject.css('[lang="fa"]').text).to include 'ياد داستان‌هاى دل‌انگيز دبستان'
+    end
+
+    it 'includes Romanized language tags' do
+      expect(subject.css('[lang="fa-Latn"]').text).to include 'Yād-i dāstānʹhā-yi dilʹangīz-i dabistān'
+    end
+
+    context 'when there is no language info in the record' do
+      let(:document) { SolrDocument.new({ id: '123', title: 'My nice title' }) }
+      it 'does not include a language tag' do
+        expect(subject.to_html).not_to include 'lang'
+      end
+    end
+  end
 end

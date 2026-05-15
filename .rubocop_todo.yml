@@ -1177,7 +1177,6 @@ Style/RedundantRegexpEscape:
 # Configuration parameters: AllowMultipleReturnValues.
 Style/RedundantReturn:
   Exclude:
-    - 'app/components/index_title_component.rb'
     - 'app/controllers/concerns/orangelight/catalog.rb'
     - 'app/models/requests/submissions/digitize_item.rb'
     - 'app/models/requests/submissions/hold_item.rb'

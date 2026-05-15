@@ -22,10 +22,18 @@ class IndexTitleComponent < Blacklight::DocumentTitleComponent
     end
 
     def title_style
-      return 'float: right;' if title_text.dir == 'rtl'
+      'float: right;' if title_text.dir == 'rtl'
     end
 
     def title_has_been_transliterated?
       document['title_display'].present? && document['title_vern_display'].present?
+    end
+
+    def language
+      document['language_iana_s']&.first
+    end
+
+    def transliterated_language_tag
+      "#{language}-Latn" if language
     end
 end
