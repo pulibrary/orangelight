@@ -203,11 +203,10 @@ class SolrDocument
   end
 
   # host_id an Array of host id(s)
-  # appends the host_id in each host_holding
-  # merges host_holding in holdings
+  # Returns a hash of holdings from this record's host(s), if any
   # :reek:NestedIterators
-  def holdings_with_host_id(holdings)
-    host_id.reduce(holdings) do |all_holdings, id|
+  def host_holdings
+    host_id&.reduce({}) do |all_holdings, id|
       host_holdings = JSON.parse(doc_by_id(id)&.dig("holdings_1display") || '{}')
       if host_holdings.blank?
         all_holdings
@@ -216,7 +215,7 @@ class SolrDocument
           host_holdings.transform_values { |holding| holding.merge("mms_id" => id) }
         )
       end
-    end
+    end || {}
   end
 
   # Returns the holdings_1display of the record plus the holdings_1display of the host record
@@ -226,9 +225,7 @@ class SolrDocument
                    .transform_values { |holding| holding.merge("mms_id" => solr_document_id) }
 
     return holdings if host_id.blank?
-    # Append the host_id in the host_holdings
-    # merge the host_holdings in holdings
-    holdings_with_host_id(holdings)
+    holdings.merge(host_holdings)
   end
 
   def physical_holding?

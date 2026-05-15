@@ -58,7 +58,7 @@ module Requests
       end
 
       def item
-        @item ||= item_from_holding || item_from_document || Item.new({})
+        @item ||= item_from_holding || item_from_host || Item.new({})
       end
 
       def item_from_holding
@@ -66,8 +66,8 @@ module Requests
         Item.new(item_hash.with_indifferent_access) if item_hash
       end
 
-      def item_from_document
-        item_hash = @document.holdings_all_display.values.first&.fetch('items', nil)&.first
+      def item_from_host
+        item_hash = @document.host_holdings.values.first&.fetch('items', nil)&.first
         Item.new(item_hash.with_indifferent_access) if item_hash
       end
 

@@ -129,4 +129,23 @@ RSpec.describe Requests::AeonUrl, requests: true do
       expect(subject).to include("ItemInfo1=For+conservation+reasons%2C+access+is+granted+for+compelling+reasons+only.")
     end
   end
+  context 'when the document has some holdings with items and some without' do
+    let(:holdings) do
+      {
+        "123" => { "items" => [{ "barcode" => "BARCODE" }] },
+        "456" => {}
+      }
+    end
+
+    it 'shows the barcode that is relevant to the holding' do
+      url = described_class.new(document:, holding: holdings.slice("123"))
+      expect(url.to_s).to include 'ItemNumber=BARCODE'
+    end
+
+    it 'shows does not include a barcode for the holding without items' do
+      url = described_class.new(document:, holding: holdings.slice("456"))
+      expect(url.to_s).not_to include 'ItemNumber'
+      expect(url.to_s).not_to include 'BARCODE'
+    end
+  end
 end
