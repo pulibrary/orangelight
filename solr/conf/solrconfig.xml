@@ -344,6 +344,7 @@
         cataloged_tdt,
         contained_in_s,
         call_number_display,
+        language_iana_s,
         thumbnail_display
       </str>
 
