@@ -131,7 +131,7 @@ RSpec.describe Holdings::LocationServicesComponent, type: :component do
     end
 
     it 'generates an aeon link including data from the host and constituent record' do
-      allow(document).to receive(:holdings_all_display).and_return({ 'host_id' => { 'items' => [{ 'barcode' => 'host123' }] } })
+      allow(document).to receive(:host_holdings).and_return({ 'host_id' => { 'items' => [{ 'barcode' => 'host123' }] } })
       expect(rendered.to_s).to include '<td class="location-services service-always-requestable"'
       expect(rendered.to_s).to include 'data-open="false"'
       expect(rendered.to_s).to include 'data-requestable="true"'
@@ -314,7 +314,7 @@ RSpec.describe Holdings::LocationServicesComponent, type: :component do
       allow(holding).to receive(:dig).and_return("99125038613506421")
     end
     it 'generates an aeon link including data from the host and constituent record' do
-      allow(document).to receive(:holdings_all_display).and_return({ 'host_id' => { 'items' => [{ 'barcode' => 'host123' }] } })
+      allow(document).to receive(:host_holdings).and_return({ 'host_id' => { 'items' => [{ 'barcode' => 'host123' }] } })
 
       expect(rendered.to_s).to include '<td class="location-services service-always-requestable"'
       expect(rendered.to_s).to include 'data-open="false"'
