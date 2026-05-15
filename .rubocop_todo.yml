@@ -1004,7 +1004,6 @@ Style/HashConversion:
 Style/HashEachMethods:
   Exclude:
     - 'app/components/orangelight/advanced_search_form_component.rb'
-    - 'app/models/solr_document.rb'
     - 'spec/models/requests/illiad_transaction_client_spec.rb'
 
 # Offense count: 9
