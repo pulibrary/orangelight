@@ -35,7 +35,7 @@ gem 'health-monitor-rails', '12.9.0'
 gem 'high_voltage'
 gem 'honeybadger'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder', '~> 2.15'
 # Use jquery as the JavaScript library
 # jest tests use yarn to get jquery; if upgrading here keep that version in sync
 gem 'jquery-datatables' # used by requests (please do not remove)
