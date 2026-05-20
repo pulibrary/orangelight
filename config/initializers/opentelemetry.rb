@@ -1,7 +1,6 @@
+# frozen_string_literal: true
 require 'opentelemetry/sdk'
 require 'opentelemetry/exporter/otlp'
 require 'opentelemetry/instrumentation/all'
 
-OpenTelemetry::SDK.configure do |c|
-  c.use_all # Enables all available instrumentations
-end
+OpenTelemetry::SDK.configure(&:use_all)
