@@ -123,5 +123,5 @@ group :development, :test do
   gem "erblint-github"
 end
 group :production do
-  gem 'datadog', require: 'datadog/auto_instrument'
+  gem 'datadog'
 end
