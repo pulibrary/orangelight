@@ -5,10 +5,10 @@ export function orangelight() {
   document.querySelector('header').addEventListener('change', () => {
     const q = document.getElementById('q');
     const searchField = document.getElementById('search_field');
-    q.setAttribute(
-      'placeholder',
-      searchField.options[searchField.selectedIndex].dataset.placeholder
-    );
+    // q.setAttribute(
+    //   'placeholder',
+    //   searchField.options[searchField.selectedIndex].dataset.placeholder
+    // );
   });
 
   document.body.addEventListener('change', function (e) {
