@@ -1,8 +1,11 @@
+<% conf = blacklight_config.view_config(document_index_view_type) %>
 <div class="col-12">
-  <%= render blacklight_config&.view_config(document_index_view_type)&.constraints_component.new(search_state: search_state) %>
+  <%= render conf&.constraints_component.new(search_state: search_state) %>
 </div>
 <div id="sidebar" class="col-12 col-md-4">
-  <%= render 'search_sidebar' %>
+  <%= render conf.sidebar_component.new(blacklight_config:,
+                                      response: @response,
+                                      view_config: conf) %>
 </div>
 
 <div id="content" class="col-12 col-md-8">
