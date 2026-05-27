@@ -62,4 +62,3 @@ codeql_results.csv
 # Yalc
 .yalc/*
 yalc.lock
-spec/fixtures/embeddings

@@ -705,6 +705,12 @@ class CatalogController < ApplicationController
       field.label = 'Call number (browse)'
       field.placeholder_text = 'e.g. P19.737.3'
     end
+    config.add_search_field('text_embeddings') do |field|
+      field.include_in_advanced_search = false
+      field.label = 'Semantic search'
+      field.placeholder_text = ''
+      field.qt = '/semantic'
+    end
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
@@ -758,7 +764,12 @@ class CatalogController < ApplicationController
   end
 
   def index
-    solrize_boolean_params
+    
+    if params[:search_field] == 'text_embeddings'
+      rewrite_semantic_query
+    else
+      solrize_boolean_params
+    end
     if no_search_yet?
       render_empty_search
     elsif bot_is_attempting_expensive_search?
@@ -817,7 +828,31 @@ class CatalogController < ApplicationController
     end
   end
 
+  # def semantic_search
+  #   params.permit(:q)
+  #   solr = RSolr.connect url: Blacklight.connection_config[:url]
+  #   response = solr.get '/semantic', params: {q: "{!knn f=text_embeddings topK=10}[0.010338805615901947,0.02806314453482628,0.020983939990401268]" }
+  # end
+
   private
+    def rewrite_semantic_query
+      return if params[:q].blank?
+      return if params[:q].start_with?('{!knn')
+      vector = params[:q].to_s.tr('[]', '').strip
+      knn_q = "{!knn f=text_embeddings topK=10}[#{vector}]"
+      # params[:q] = Orangelight::SemanticSearchService.new(params[:q]).to_vector_query
+      params[:q] = knn_q
+      @search_state = search_state.reset(search_state.params.merge(q: knn_q))
+    end
+
+    def semantic_knn_query
+      return unless params[:search_field] == 'text_embeddings'
+      return if params[:q].blank?
+      return if params[:q].start_with?('{!knn')
+      vector_query = params[:q].to_s.strip
+      # vector_query = Orangelight::SemanticSearchService.new(params[:q]).to_vector_query
+      params[:q] = "{!knn f=text_embeddings topK=10}[#{vector_query}]"
+    end
 
     def json_request?
       request.format.json?
