@@ -385,7 +385,20 @@
       <str name="defType">lucene</str>
     </lst>
   </requestHandler>
-  
+
+  <requestHandler name="/semantic" class="solr.SearchHandler" initParams="searchParams">
+    <!-- a lucene request handler for using the JSON Query DSL, for semantic search
+         Using a separate request handler as a work around to
+         https://issues.apache.org/jira/browse/SOLR-16916
+    -->
+    <!-- default values for query parameters can be specified, these
+         will be overridden by parameters in the request
+      -->
+    <lst name="defaults">
+      <str name="defType">lucene</str>
+    </lst>
+  </requestHandler>
+
   <!-- for requests to get a single document; use id=666 instead of q=id:666 -->
   <requestHandler name="document" class="solr.SearchHandler" >
     <lst name="defaults">
