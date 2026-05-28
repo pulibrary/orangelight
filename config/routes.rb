@@ -58,7 +58,7 @@ Rails.application.routes.draw do
 
   get '/numismatics', to: 'catalog#numismatics'
 
-  # get '/semantic_search', to: 'catalog#semantic_search'
+  get '/semantic', to: 'catalog#semantic_search'
 
   devise_for :users,
              controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'sessions' },
