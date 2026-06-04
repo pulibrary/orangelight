@@ -91,19 +91,22 @@ module BrowseLists
     end
 
     def load_facet(sql_command, _facet_request, _conn, facet_field, table_name)
+      unsorted = "/tmp/#{table_name}.csv"
+      sorted = "/tmp/#{table_name}.sorted"
+
       validate_csv(table_name)
-      system(%(cp /tmp/#{table_name}.sorted /tmp/#{table_name}.sorted.backup))
       system(%(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
       if facet_field == "subject_facet"
-        system(%(#{sql_command} "\\copy #{table_name}(sort,count,label,dir,vocabulary) from '/tmp/#{table_name}.csv' CSV;"))
-        system(%(#{sql_command} "\\copy (Select sort,count,label,dir,vocabulary from #{table_name} order by unaccent(sort)) To '/tmp/#{table_name}.sorted' With CSV;"))
+        system(%(#{sql_command} "\\copy #{table_name}(sort,count,label,dir,vocabulary) from '#{unsorted}' CSV;"))
+        system(%(#{sql_command} "\\copy (Select sort,count,label,dir,vocabulary from #{table_name} order by unaccent(sort)) To '#{sorted}' With CSV;"))
         system(%(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
-        system(%(#{sql_command} "\\copy #{table_name}(sort,count,label,dir,vocabulary) from '/tmp/#{table_name}.sorted' CSV;"))
+        system(%(#{sql_command} "\\copy #{table_name}(sort,count,label,dir,vocabulary) from '#{sorted}' CSV;"))
       else
-        system(%(#{sql_command} "\\copy #{table_name}(sort,count,label,dir) from '/tmp/#{table_name}.csv' CSV;"))
-        system(%(#{sql_command} "\\copy (Select sort,count,label,dir from #{table_name} order by unaccent(sort)) To '/tmp/#{table_name}.sorted' With CSV;"))
-        load_facet_file(sql_command, "/tmp/#{table_name}.sorted", table_name)
+        system(%(#{sql_command} "\\copy #{table_name}(sort,count,label,dir) from '#{unsorted}' CSV;"))
+        system(%(#{sql_command} "\\copy (Select sort,count,label,dir from #{table_name} order by unaccent(sort)) To '#{sorted}' With CSV;"))
+        load_facet_file(sql_command, sorted, table_name)
       end
+      [unsorted, sorted].each { File.delete it }
     end
 
     def validate_csv(table_name)
