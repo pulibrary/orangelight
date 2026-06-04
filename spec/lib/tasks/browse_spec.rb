@@ -38,6 +38,14 @@ RSpec.describe 'browse rake tasks', browse: true do
                                                            "بهاء الدين، احمد."
                                                          ])
     end
+
+    it 'does not leave temp files on disk after loading' do
+      FileUtils.cp file_fixture('name_browse_unsorted.csv'), '/tmp/alma_orangelight_names.csv'
+      run_described_task
+
+      expect(File.exist?('/tmp/alma_orangelight_names.csv')).to be false
+      expect(File.exist?('/tmp/alma_orangelight_names.sorted')).to be false
+    end
   end
 
   def run_described_task
