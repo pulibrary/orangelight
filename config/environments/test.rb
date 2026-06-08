@@ -44,8 +44,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :test
   config.action_mailer.deliver_later_queue_name = 'mailers'
   config.active_job.queue_adapter = :sidekiq
-  require 'sidekiq/testing'
-  Sidekiq::Testing.inline!
+  Sidekiq.testing!(:inline)
   config.action_mailer.default_options = {
     from: 'test@test.com'
   }
