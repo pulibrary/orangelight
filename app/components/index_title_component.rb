@@ -2,16 +2,18 @@
 
 class IndexTitleComponent < Blacklight::DocumentTitleComponent
   def title
-    helpers.link_to_document presenter.document, title_text, counter: @counter, itemprop: 'name', style: title_style, dir: title_text.dir
+    helpers.link_to_document document, title_text, counter: @counter, itemprop: 'name', style: title_style, dir: title_text.dir
   end
 
   def transliterated_title
-    helpers.link_to_document presenter.document, transliterated_title_text, counter: @counter, itemprop: 'name', dir: transliterated_title_text.dir
+    helpers.link_to_document document, transliterated_title_text, counter: @counter, itemprop: 'name', dir: transliterated_title_text.dir
   end
 
   private
 
-    attr_reader :document
+    def document
+      presenter.document
+    end
 
     def title_text
       document['title_vern_display'] || document['title_display'] || document['id']
