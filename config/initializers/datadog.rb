@@ -6,9 +6,6 @@ if Rails.env.production?
     # Rails
     c.tracing.instrument :rails
 
-    # Net::HTTP
-    c.tracing.instrument :http
-
     # Faraday
     c.tracing.instrument :faraday
   end

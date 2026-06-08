@@ -58,6 +58,10 @@ gem 'omniauth-cas'
 gem 'openssl'
 gem 'omniauth-rails_csrf_protection'
 gem 'openurl', '~> 1.0'
+# Opentelemetry
+gem 'opentelemetry-sdk'
+gem 'opentelemetry-exporter-otlp'
+gem 'opentelemetry-instrumentation-all'
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'puma', '~> 8.0'
@@ -119,5 +123,5 @@ group :development, :test do
   gem "erblint-github"
 end
 group :production do
-  gem 'datadog', require: 'datadog/auto_instrument'
+  gem 'datadog'
 end

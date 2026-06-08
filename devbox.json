@@ -1,0 +1,44 @@
+{
+  "packages": {
+    "ruby":       "3.4.8",
+    "bundler":    "latest",
+    "nodejs":     "24.3.0",
+    "yarn":       "1.22.10",
+    "git":        "latest",
+    "openssh":    "latest",
+    "zsh":        "latest",
+    "pkg-config": "latest",
+    "postgresql": { "version": "latest", "outputs": ["out", "lib", "dev"] },
+    "libyaml":    { "version": "latest", "outputs": ["out", "dev"] },
+    "zlib":       { "version": "latest", "outputs": ["out", "dev"] },
+    "libffi":     { "version": "latest", "outputs": ["out", "dev"] },
+    "openssl":    { "version": "latest", "outputs": ["out", "dev"] }
+  },
+  "env": {
+    "LANG": "C.UTF-8",
+    "PATH": "$PWD/node_modules/.bin:$PATH"
+  },
+  "shell": {
+    "init_hook": [
+      "echo 'devbox: orangelight environment ready (run `devbox run shell` for zsh)'"
+    ],
+    "scripts": {
+      "shell": [
+        "exec zsh"
+      ],
+      "setup": [
+        "bundle install",
+        "yarn install"
+      ],
+      "rebuild-gems": [
+        "bundle pristine"
+      ],
+      "deploy": [
+        "bundle exec cap production deploy"
+      ],
+      "deploy-staging": [
+        "bundle exec cap staging deploy"
+      ]
+    }
+  }
+}
