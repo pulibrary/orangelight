@@ -54,8 +54,8 @@ RSpec.describe BrowseLists::CallNumberCSV, browse: true do
       expect(File.exist?(csv_file)).to be true
       expect(File.read(csv_file).scan(/\n/).count).to eq 496_050
       # Ensure call numbers with spaces in them are stripped for the CSV.
-      space_call_line = File.open(csv_file).readlines.find do |line|
-        line.start_with?("0000053.0000008")
+      space_call_line = File.open(csv_file) do |file|
+        file.readlines.find { |line| line.start_with?("0000053.0000008") }
       end
       expect(space_call_line).to start_with("0000053.0000008,53.8")
     end

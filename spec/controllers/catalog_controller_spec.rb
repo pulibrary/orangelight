@@ -103,7 +103,7 @@ RSpec.describe CatalogController do
   end
 
   describe 'home page' do
-    let(:solr_empty_query) { File.open('spec/fixtures/solr_empty_query.json').read }
+    let(:solr_empty_query) { File.open('spec/fixtures/solr_empty_query.json', &:read) }
 
     before do
       allow(Rails.cache).to receive(:fetch).and_return solr_empty_query
@@ -122,7 +122,7 @@ RSpec.describe CatalogController do
     end
   end
   describe 'advanced', advanced_search: true do
-    let(:solr_empty_query) { File.open('spec/fixtures/solr_empty_query.json').read }
+    let(:solr_empty_query) { File.open('spec/fixtures/solr_empty_query.json', &:read) }
 
     before do
       allow(Rails.cache).to receive(:fetch).and_return solr_empty_query
