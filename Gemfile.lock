@@ -392,6 +392,7 @@ GEM
       thor
     language_server-protocol (3.17.0.5)
     lcsort (0.9.1)
+    libdatadog (33.0.0.1.0)
     libdatadog (33.0.0.1.0-aarch64-linux)
     libdatadog (33.0.0.1.0-x86_64-linux)
     libddwaf (1.30.0.0.2)
@@ -430,6 +431,7 @@ GEM
     matrix (0.4.3)
     memory_profiler (1.1.0)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.9)
     minitest (6.0.6)
       drb (~> 2.0)
       prism (~> 1.5)
@@ -460,6 +462,9 @@ GEM
       net-protocol
     net-ssh (7.3.2)
     nio4r (2.7.5)
+    nokogiri (1.19.3)
+      mini_portile2 (~> 2.8.2)
+      racc (~> 1.4)
     nokogiri (1.19.3-aarch64-linux-gnu)
       racc (~> 1.4)
     nokogiri (1.19.3-x86_64-linux-gnu)
@@ -968,6 +973,7 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  ruby
   x86_64-linux
   x86_64-linux-musl
 
