@@ -323,9 +323,6 @@ GEM
     google-protobuf (4.33.5-aarch64-linux-gnu)
       bigdecimal
       rake (>= 13)
-    google-protobuf (4.33.5-arm64-darwin)
-      bigdecimal
-      rake (>= 13)
     google-protobuf (4.33.5-x86_64-linux-gnu)
       bigdecimal
       rake (>= 13)
@@ -395,15 +392,11 @@ GEM
       thor
     language_server-protocol (3.17.0.5)
     lcsort (0.9.1)
-    libdatadog (30.0.0.1.0)
-    libdatadog (30.0.0.1.0-aarch64-linux)
-    libdatadog (30.0.0.1.0-arm64-darwin)
-    libdatadog (30.0.0.1.0-x86_64-linux)
+    libdatadog (33.0.0.1.0-aarch64-linux)
+    libdatadog (33.0.0.1.0-x86_64-linux)
     libddwaf (1.30.0.0.2)
       ffi (~> 1.0)
     libddwaf (1.30.0.0.2-aarch64-linux)
-      ffi (~> 1.0)
-    libddwaf (1.30.0.0.2-arm64-darwin)
       ffi (~> 1.0)
     libddwaf (1.30.0.0.2-x86_64-linux)
       ffi (~> 1.0)
@@ -437,7 +430,6 @@ GEM
     matrix (0.4.3)
     memory_profiler (1.1.0)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.9)
     minitest (6.0.6)
       drb (~> 2.0)
       prism (~> 1.5)
@@ -450,7 +442,7 @@ GEM
       racc (~> 1.7)
     net-http (0.9.1)
       uri (>= 0.11.1)
-    net-imap (0.6.4)
+    net-imap (0.6.4.1)
       date
       net-protocol
     net-ldap (0.20.0)
@@ -468,12 +460,7 @@ GEM
       net-protocol
     net-ssh (7.3.2)
     nio4r (2.7.5)
-    nokogiri (1.19.3)
-      mini_portile2 (~> 2.8.2)
-      racc (~> 1.4)
     nokogiri (1.19.3-aarch64-linux-gnu)
-      racc (~> 1.4)
-    nokogiri (1.19.3-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.19.3-x86_64-linux-gnu)
       racc (~> 1.4)
@@ -683,7 +670,6 @@ GEM
       racc
     pg (1.6.3)
     pg (1.6.3-aarch64-linux)
-    pg (1.6.3-arm64-darwin)
     pg (1.6.3-x86_64-linux)
     pg (1.6.3-x86_64-linux-musl)
     popper_js (2.11.8)
@@ -838,8 +824,6 @@ GEM
       rake (>= 13)
     sass-embedded (1.97.3-aarch64-linux-gnu)
       google-protobuf (~> 4.31)
-    sass-embedded (1.97.3-arm64-darwin)
-      google-protobuf (~> 4.31)
     sass-embedded (1.97.3-x86_64-linux-gnu)
       google-protobuf (~> 4.31)
     sass-embedded (1.97.3-x86_64-linux-musl)
@@ -984,8 +968,6 @@ GEM
 
 PLATFORMS
   aarch64-linux
-  arm64-darwin
-  ruby
   x86_64-linux
   x86_64-linux-musl
 
