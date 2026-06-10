@@ -62,6 +62,7 @@ class ContactController < ApplicationController
 
   private
 
+    # rubocop:disable Rails/StrongParametersExpect
     def question_params
       params[:ask_a_question_form].permit!
     end
@@ -73,6 +74,7 @@ class ContactController < ApplicationController
     def missing_item_params
       params[:missing_item_form].permit!
     end
+    # rubocop:enable Rails/StrongParametersExpect
 
     def flash_now_error(message)
       flash.now[:error] = message
