@@ -50,6 +50,7 @@ module Orangelight
     end
 
     # rubocop:disable Naming/PredicateMethod
+    # rubocop:disable Rails/StrongParametersExpect
     def validate_email_params
       if current_user.nil?
         flash[:error] = 'You must be logged in to send an email.'
@@ -62,6 +63,7 @@ module Orangelight
       flash[:error].blank?
     end
     # rubocop:enable Naming/PredicateMethod
+    # rubocop:enable Rails/StrongParametersExpect
 
     def user_email
       return current_user.email if current_or_guest_user.cas_provider?
