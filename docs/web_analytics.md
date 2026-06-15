@@ -19,7 +19,5 @@ To navigate to events you need to do the following:
 3. On the properties screen you can select the event type and the property type you want to view. 
 
 ## Searches
-Search values for the catalog are also being logged via umami. They are being recorded in umami's database and then streamed to [Grafana](https://grafana-nomad.lib.princeton.edu/dashboards) for reporting via a [custom dashboard](https://grafana-nomad.lib.princeton.edu/d/dexrthbr7mt4wb/top-queries?from=now-1h&to=now&timezone=browser). Two variations are displayed:
+Query string values for the catalog are also being logged via umami. They are being recorded in umami's database and can be viewed by visiting the [pages report](https://analytics.lib.princeton.edu/teams/d29eea2b-47ca-453b-b998-019911abdeb4/websites/ee910b04-8b3e-40ed-8fb1-09b28752fe48?view=path) for a given site and selecting the "[query](https://analytics.lib.princeton.edu/teams/d29eea2b-47ca-453b-b998-019911abdeb4/websites/ee910b04-8b3e-40ed-8fb1-09b28752fe48?view=query)" option under the "URL" category. This will give you the list of query strings supplied that can be downloaded and manipulated to see what query values have been used for searches. 
 
-1. Individual search terms.
-2. Search terms recorded for an individual session. These are seperated by a "comma" in the display. You need to scroll to the dashboard homepage to see searches by session. 
