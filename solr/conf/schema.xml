@@ -470,7 +470,8 @@
       users normally should not need to know about them.
      -->
     <fieldType name="point" class="solr.PointType" dimension="2" subFieldSuffix="_d"/>
-    <fieldType name="knn_vector" class="solr.DenseVectorField" vectorDimension="3" similarityFunction="cosine" knnAlgorithm="hnsw" hnswMaxConnections="10" hnswBeamWidth="40" />
+    <!-- <fieldType name="knn_vector" class="solr.DenseVectorField" vectorDimension="768" vectorEncoding="BYTE" similarityFunction="cosine" knnAlgorithm="hnsw" hnswMaxConnections="10" hnswBeamWidth="40" /> -->
+    <fieldType name="knn_vector" class="solr.DenseVectorField" vectorDimension="96" vectorEncoding="BYTE" similarityFunction="dot_product" />
  </types>
 
 
