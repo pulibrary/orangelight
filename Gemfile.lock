@@ -488,7 +488,7 @@ GEM
       stringio
       time
       uri
-    openssl (4.0.1)
+    openssl (4.0.2)
     opentelemetry-api (1.10.0)
       logger
     opentelemetry-common (0.25.0)
