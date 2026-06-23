@@ -17,9 +17,11 @@ class TextEmbeddingService
     end
     raise "Embedding API error: #{response.status} - #{response.body}" unless response.success?
 
-    vector = response.body['embedding_binary']
+    # for testing purposes we're doing the round here and in bibdata.
+    # if the results are satisfiying we move the precision limit in the embedding python service
+    vector = response.body['embedding'].map { |e| e.round(6) }
 
-    raise 'Embedding API response missing embedding_binary array' unless vector.is_a?(Array)
+    raise 'Embedding API response missing embedding array' unless vector.is_a?(Array)
 
     vector
   end
