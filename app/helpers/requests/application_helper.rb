@@ -227,17 +227,6 @@ module Requests
       content_tag(:div, requestable.item[:status], class: 'system-status')
     end
 
-    def display_urls(requestable)
-      content_tag :ol do
-        requestable.urls.each do |key, value|
-          unless key == 'iiif_manifest_paths'
-            value.reverse!
-            concat content_tag(:li, link_to(value.join(": "), key), class: 'link')
-          end
-        end
-      end
-    end
-
     private
 
       def custom_pickup_prompt(requestable, locs)
