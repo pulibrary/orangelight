@@ -110,7 +110,6 @@ detectors:
     - Requests::ApplicationHelper#available_pick_ups
     - Requests::ApplicationHelper#current_location_label
     - Requests::ApplicationHelper#display_requestable_list
-    - Requests::ApplicationHelper#display_status
     - Requests::ApplicationHelper#hidden_fields_mfhd
     - Requests::ApplicationHelper#hidden_service_options
     - Requests::ApplicationHelper#item_checkbox
@@ -118,7 +117,6 @@ detectors:
     - Requests::ApplicationHelper#show_service_options
     - Requests::ApplicationHelper#submit_button_disabled?
     - Requests::ApplicationHelper#submit_message
-    - Requests::ApplicationHelper#system_status_label
     - Requests::RequestHelper#login_url
     - Requests::RequestHelper#pul_patron_name
     - Requests::RequestMailer#on_shelf_email
@@ -218,11 +216,9 @@ detectors:
     - BlacklightHelper#left_anchor_search?
     - BlacklightHelper#oclc_resolve
     - CatalogHelper#render_search_to_page_title
-    - Requests::ApplicationHelper#display_status
     - Requests::ApplicationHelper#hidden_fields_mfhd
     - Requests::ApplicationHelper#item_checkbox
     - Requests::ApplicationHelper#single_pickup
-    - Requests::ApplicationHelper#system_status_label
     - Blacklight::Document::DublinCore#export_as_oai_dc_xml
     - Blacklight::Document::DublinCore#export_as_rdf_dc
     - Blacklight::Document::Email#add_multi_valued_field
@@ -494,7 +490,6 @@ detectors:
     - BlacklightHelper#lccn_resolve
     - BlacklightHelper#oclc_resolve
     - HoldingsHelper#holdings_block
-    - Requests::ApplicationHelper#display_status
     - Requests::ApplicationHelper#hidden_fields_mfhd
     - Requests::RequestHelper#login_url
     - Blacklight::Document::Ris#ris_authors

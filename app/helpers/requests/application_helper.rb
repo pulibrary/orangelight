@@ -218,15 +218,6 @@ module Requests
       }.with_indifferent_access
     end
 
-    def display_status(requestable)
-      content_tag(:span, requestable.item['status']) unless requestable.item.nil?
-    end
-
-    def system_status_label(requestable)
-      return "" if requestable.item.blank?
-      content_tag(:div, requestable.item[:status], class: 'system-status')
-    end
-
     private
 
       def custom_pickup_prompt(requestable, locs)
