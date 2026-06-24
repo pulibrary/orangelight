@@ -25,16 +25,10 @@ class Holdings::OnlineHoldingsComponent < ViewComponent::Base
     # @return [Array<String>] array containing the links in the <div>'s
     # :reek:FeatureEnvy
     def marc_links
-      electronic_access = document['electronic_access_1display']
-      urls = []
-      if electronic_access
-        links_hash = JSON.parse(electronic_access)
-        links_hash.first(2).each do |url, text|
-          description = text[1] ? "#{text[1]}: #{text[0]}" : text[0]
-          urls << { "url" => url, "title" => description }.to_json
-        end
+      document.doc_electronic_access.first(2).reduce([]) do |acc, (url, text)|
+        description = text[1] ? "#{text[1]}: #{text[0]}" : text[0]
+        acc + [{ "url" => url, "title" => description }.to_json]
       end
-      urls
     end
 
     # Returns electronic portfolio links for Alma records.
