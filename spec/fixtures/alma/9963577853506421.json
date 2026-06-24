@@ -1,0 +1,213 @@
+{
+    "id": "9963577853506421",
+    "numeric_id_b": true,
+    "figgy_1display": "[{\"ark\":\"http://arks.princeton.edu/ark:/88435/dc6108vq57s\",\"iiif_manifest_url\":\"https://figgy.princeton.edu/concern/scanned_resources/f72abd1a-e6d9-44ac-803d-c74ab97eb0ad/manifest\",\"label\":{\"@value\":\"السراج المنير في الاعانة على معرفة بعض معاني کلام ربنا الحکيم الخبير.\",\"@language\":\"ar\"},\"portion_note\":null,\"visibility\":{\"value\":\"open\",\"label\":\"open\",\"definition\":\"Open to the world. Anyone can view.\"}}]",
+    "author_display": [
+        "Shirbīnī, Muḥammad ibn Aḥmad, -1570",
+        "شربيني، محمد بن احمد، -1570"
+    ],
+    "author_citation_display": [
+        "Shirbīnī, Muḥammad ibn Aḥmad",
+        "Garrett, Robert",
+        "Kinānī, Ibrāhīm ibn Muṣṭafá",
+        "Princeton University"
+    ],
+    "author_roles_1display": "{\"primary_author\":\"Shirbīnī, Muḥammad ibn Aḥmad\",\"secondary_authors\":[\"Garrett, Robert\",\"Kinānī, Ibrāhīm ibn Muṣṭafá\",\"Princeton University\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+    "author_s": [
+        "Shirbīnī, Muḥammad ibn Aḥmad, -1570",
+        "شربيني، محمد بن احمد، -1570",
+        "Garrett, Robert, 1875-1961",
+        "Kinānī, Ibrāhīm ibn Muṣṭafá, active 19th century",
+        "كناني، ابراهيم بن مصطفى، active 19th century",
+        "Princeton University. Library. Manuscript. Islamic Manuscripts, Garrett no. 210L"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "al-Sirāj al-munīr fī al-iʻānah ʻalá maʻrifat baʻḍ maʻānī kalām rabbinā al-ḥakīm al-khabīr.",
+    "title_vern_display": "السراج المنير في الاعانة على معرفة بعض معاني کلام ربنا الحکيم الخبير.",
+    "title_t": [
+        ""
+    ],
+    "title_citation_display": [
+        "al-Sirāj al-munīr fī al-iʻānah ʻalá maʻrifat baʻḍ maʻānī kalām rabbinā al-ḥakīm al-khabīr",
+        "السراج المنير في الاعانة على معرفة بعض معاني کلام ربنا الحکيم الخبير"
+    ],
+    "pub_created_display": [
+        "1239 [1823 or 1824]"
+    ],
+    "pub_created_s": [
+        "1239 [1823 or 1824]"
+    ],
+    "pub_date_display": [
+        "1823"
+    ],
+    "pub_date_start_sort": 1823,
+    "publication_date_citation_display": [
+        "1823"
+    ],
+    "format": [
+        "Manuscript",
+        "Book"
+    ],
+    "electronic_access_1display": "{\"https://catalog.princeton.edu/catalog/9963577853506421#view\":[\"Digital content\",\"View online\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/dc6108vq57s\":\"https://figgy.princeton.edu/concern/scanned_resources/f72abd1a-e6d9-44ac-803d-c74ab97eb0ad/manifest\"}}",
+    "description_display": [
+        "5 volumes (497, 560, 471, 535, 483 leaves) : paper ; 235-245 x 165-170 (160-170 x 95) bound to 228-244 x 165-175 mm."
+    ],
+    "description_t": [
+        "5 volumes (497, 560, 471, 535, 483 leaves) : paper ; 235-245 x 165-170 (160-170 x 95) bound to 228-244 x 165-175 mm."
+    ],
+    "number_of_pages_citation_display": [
+        "5 volumes (497, 560, 471, 535, 483 leaves)"
+    ],
+    "geocode_display": [
+        "New Jersey"
+    ],
+    "summary_note_display": [
+        "A complete commentary on the Qurʼan in five volumes."
+    ],
+    "notes_display": [
+        "Ms. codex.",
+        "Title from preface of volume 1 (v. 1, fol. 3a).",
+        "Table of contents for volumes 1-3 at beginning of each of those volumes.",
+        "Collation: Paper ; fol. i + 497, 560, i + 471, i + 535 + ii, i + 483 + ii ; quires signed (v. 1, 4-5) ; foliation in ink using Hindu-Arabic numerals (v. 1-3) ; modern foliation in pencil using Western numerals.",
+        "Layout: 23 lines per page ; volumes 1-3 frame-ruled in red and blue.",
+        "Description: Rubricated ; some paper lightly tinted red or yellow (v. 1-2); some paper deeply tinted yellow, red or brown (v. 3) ; some paper tinted red or light yellow (v. 5) ; watermarks (v: 1-3: three crescents; v. 2: crest with roman-alphabet initial \"W\", roman-alphabet letters \"EGA\"; v. 3: shield with a face-in-the-moon; horn, roman-alphabet lettering \"AS. Ilario\"; vol. 4: eagle with roman-alphabet lettering \"TSC\", lion; fol. 5: eagle, lion with roman-alphabet letters \"NR\") ; MS in good condition.",
+        "Decoration: Illuminated headpieces in gold, blue, red and black (v. 1, fol. 1b; v. 2, fol. 2b). Illuminated headpiece in gold, blue, red, yellow and white (v. 3, fol. 1b). Opening spread in volumes 1-3 frame-ruled in gold.",
+        "Origin: According to colophon of volume 1 copy completed 1239 by Ibrāhīm ibn Muṣṭafá al-Badyawī al-Kinānī (v. 1, fol. 496b).",
+        "Incipit: بسم الله الرحمن الرحيم وبه نستعين الحمد لله الملك السلام المهيمن العلام شارع الاحكام ... اما بعد فيقول فقير بحمه ربه القريب محمد الشربينى الخطيب ان الله حل ذكره ارسل رسوله بالهدي ودين الحق ...",
+        "Colophon: تم الكتاب بحمد الله وعونه وحسن قوفيقه نقلت هذه النسخه من خط من نقل من خط من نقل من خط المؤلف رحمه الله تعالى ... عدد ما ذكره الذاكرون وعدد ما غفل عن ذكره الغافلون سبحان ربك رب العزة عما يصفون وسلام على المرسلين والحمد لله رب العالمين"
+    ],
+    "binding_note_display": [
+        "Type II (with flap) binding in brown leather. Blind-stamped inlaid red leather mandorlas with pendants and blind-tooled edging on covers. Similar decoration on flaps. Volumes 1-3, 5 in slipcovers. Not sewn."
+    ],
+    "language_name_display": [
+        "Arabic"
+    ],
+    "language_facet": [
+        "Arabic"
+    ],
+    "language_iana_s": [
+        "ar"
+    ],
+    "mult_languages_iana_s": [
+        "ar"
+    ],
+    "provenance_display": [
+        "Seal impression (beginning of vol. 1-3). Acquired from Brill, Leyden, 1904."
+    ],
+    "source_acquisition_display": [
+        "Gift ; Robert Garrett, Class of 1897 ; 1942."
+    ],
+    "references_display": [
+        "Hitti, P. Garrett Coll., 1301.",
+        "Ahlwardt, Verzeichnis der arabischen Handschriften, 900/1.",
+        "Fihrist al-kutub al-ʻArabīyah al-maḥfūẓah bi-al-Kutubkhānah al-Khudaywīyah, I, pp. 177/8."
+    ],
+    "references_url_display": [
+        "Hitti, P. Garrett Coll., 1301.",
+        "Ahlwardt, Verzeichnis der arabischen Handschriften, 900/1.",
+        "Fihrist al-kutub al-ʻArabīyah al-maḥfūẓah bi-al-Kutubkhānah al-Khudaywīyah, I, pp. 177/8."
+    ],
+    "other_format_display": [
+        "Also available in an electronic version."
+    ],
+    "lc_subject_display": [
+        "Qurʼan—Commentaries—Early works to 1800",
+        "Manuscripts, Arabic—New Jersey—Princeton"
+    ],
+    "subject_facet": [
+        "Qurʼan—Commentaries—Early works to 1800",
+        "Manuscripts, Arabic—New Jersey—Princeton",
+        "Colored papers",
+        "Watermarks",
+        "illuminated manuscripts",
+        "headpieces (layout features)",
+        "Blind tooled bindings",
+        "Stamps",
+        "manuscripts (documents)"
+    ],
+    "lc_subject_facet": [
+        "Qurʼan",
+        "Qurʼan—Commentaries",
+        "Qurʼan—Commentaries—Early works to 1800",
+        "Manuscripts, Arabic",
+        "Manuscripts, Arabic—New Jersey",
+        "Manuscripts, Arabic—New Jersey—Princeton"
+    ],
+    "aat_s": [
+        "illuminated manuscripts",
+        "headpieces (layout features)",
+        "manuscripts (documents)"
+    ],
+    "aat_genre_facet": [
+        "illuminated manuscripts",
+        "headpieces (layout features)",
+        "manuscripts (documents)"
+    ],
+    "rbgenr_s": [
+        "Colored papers",
+        "Watermarks",
+        "Blind tooled bindings",
+        "Stamps"
+    ],
+    "rbgenr_genre_facet": [
+        "Colored papers",
+        "Watermarks",
+        "Blind tooled bindings",
+        "Stamps"
+    ],
+    "jsonld_genre_display": [
+        "Commentaries",
+        "Early works",
+        "Colored papers",
+        "Watermarks",
+        "illuminated manuscripts",
+        "headpieces (layout features)",
+        "Blind tooled bindings",
+        "Stamps",
+        "manuscripts (documents)"
+    ],
+    "related_name_json_1display": "{\"Donor\":[\"Garrett, Robert, 1875-1961\"],\"Scribe\":[\"Kinānī, Ibrāhīm ibn Muṣṭafá, active 19th century\"],\"Related name\":[\"كناني، ابراهيم بن مصطفى، active 19th century\",\"Princeton University. Library. Manuscript. Islamic Manuscripts, Garrett no. 210L\"]}",
+    "other_title_display": [
+        "تفسير الخطيب الشربيني"
+    ],
+    "alt_title_246_display": [
+        "Tafsīr al-[Kh]aṭīb ilá ākhir al-Anʻām",
+        "Tafsīr al-[Kh]aṭīb min ibtidāʼ al-Aʻrāf ilá ākhir al-Isrā",
+        "Tafsīr al-[Kh]aṭīb min ibtidāʼ al-Kahf ilá ākhir al-Qaṣaṣ",
+        "Tafsīr al-Khaṭīb al-Shirbīnī",
+        "تفسير الخطيب الشربيني"
+    ],
+    "other_title_1display": "{\"Title from slipcover label of volume 1\":[\"Tafsīr al-[Kh]aṭīb ilá ākhir al-Anʻām\"],\"Title from slipcover label of volume 2\":[\"Tafsīr al-[Kh]aṭīb min ibtidāʼ al-Aʻrāf ilá ākhir al-Isrā\"],\"Title from slipcover label of volume 3\":[\"Tafsīr al-[Kh]aṭīb min ibtidāʼ al-Kahf ilá ākhir al-Qaṣaṣ\"],\"Title from slipcover label of volume 5\":[\"Tafsīr al-Khaṭīb al-Shirbīnī\"]}",
+    "oclc_s": [
+        "1340422571"
+    ],
+    "other_version_s": [
+        "on1340422571"
+    ],
+    "holdings_1display": "{\"22726806850006421\":{\"location_code\":\"rare$hsvm\",\"location\":\"Manuscripts\",\"library\":\"Special Collections\",\"call_number\":\"Islamic Manuscripts, Garrett no. 210L\",\"call_number_browse\":\"Islamic Manuscripts, Garrett no. 210L\",\"items\":[{\"holding_id\":\"22726806850006421\",\"description\":\"vol. 1, case  \",\"id\":\"231116649880006421\",\"status_at_load\":\"1\",\"barcode\":\"32101103129191\"},{\"holding_id\":\"22726806850006421\",\"description\":\"vol. 5\",\"id\":\"23726806810006421\",\"status_at_load\":\"1\",\"barcode\":\"32101037555156\",\"copy_number\":\"1\"},{\"holding_id\":\"22726806850006421\",\"description\":\"vol. 2\",\"id\":\"23726806830006421\",\"status_at_load\":\"1\",\"barcode\":\"32101037555123\",\"copy_number\":\"1\"},{\"holding_id\":\"22726806850006421\",\"description\":\"vol. 4\",\"id\":\"23726806820006421\",\"status_at_load\":\"1\",\"barcode\":\"32101037555149\",\"copy_number\":\"1\"},{\"holding_id\":\"22726806850006421\",\"description\":\"vol. 1, book \",\"id\":\"23726806840006421\",\"status_at_load\":\"1\",\"barcode\":\"32101037555115\",\"copy_number\":\"1\"},{\"holding_id\":\"22726806850006421\",\"description\":\"vol. 3\",\"id\":\"23726806780006421\",\"status_at_load\":\"1\",\"barcode\":\"32101037555131\",\"copy_number\":\"1\"}],\"location_has\":[\"Vol. 1-v. 5\"],\"supplements\":[null],\"indexes\":[null]}}",
+    "location_code_s": [
+        "rare$hsvm"
+    ],
+    "advanced_location_s": [
+        "rare$hsvm",
+        "Special Collections"
+    ],
+    "location_display": [
+        "Manuscripts"
+    ],
+    "location": [
+        "Special Collections"
+    ],
+    "name_title_browse_s": [
+        "Shirbīnī, Muḥammad ibn Aḥmad, -1570. al-Sirāj al-munīr fī al-iʻānah ʻalá maʻrifat baʻḍ maʻānī kalām rabbinā al-ḥakīm al-khabīr",
+        "شربيني، محمد بن احمد، -1570. السراج المنير في الاعانة على معرفة بعض معاني کلام ربنا الحکيم الخبير"
+    ],
+    "call_number_display": [
+        "Islamic Manuscripts, Garrett no. 210L"
+    ],
+    "call_number_browse_s": [
+        "Islamic Manuscripts, Garrett no. 210L"
+    ]
+}

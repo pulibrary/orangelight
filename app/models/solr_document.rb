@@ -101,7 +101,7 @@ class SolrDocument
   # @return [String] electronic access value
   def doc_electronic_access
     string_values = first('electronic_access_1display') || '{}'
-    JSON.parse(string_values).delete_if { |k, _v| k == 'iiif_manifest_paths' }
+    JSON.parse(string_values).except 'iiif_manifest_paths'
   end
 
   # Retrieve electronic portfolio values and parse
