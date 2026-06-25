@@ -47,7 +47,7 @@ module Requests
     end
 
     def core_patron_group?
-      core_patron_groups = %w[p reg grad senr ugrd sum]
+      core_patron_groups = %w[p reg grad senr ugrd sum lib]
       core_patron_groups.include?(patron_group)
     end
 

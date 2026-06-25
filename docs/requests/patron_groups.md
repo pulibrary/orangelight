@@ -19,6 +19,7 @@ We have two groupings of patron types.
 * SENR Senior undergraduate
 * UGRD Undergraduate
 * SUM Summer Student
+* LIB Library Staff Member
 
 ### Core request services
 
