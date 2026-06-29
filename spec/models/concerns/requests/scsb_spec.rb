@@ -29,6 +29,7 @@ describe Requests::Scsb, requests: true do
 
   context 'with an authorized scsb key', vcr: { cassette_name: 'authorized_ol_authorized_bibdata_scsb_key', record: :none } do
     it 'is available' do
+      stub_single_holding_location 'scsbnypl'
       stub_scsb_availability(bib_id: ".b106574619", institution_id: "NYPL", barcode: "33433088591924")
       stub_catalog_raw bib_id: 'SCSB-7935196'
       # build Requestables, which also loads the availability info from SCSB

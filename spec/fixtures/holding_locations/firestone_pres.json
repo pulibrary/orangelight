@@ -1,0 +1,35 @@
+{
+    "label": "Preservation Office: Contact preservation@princeton.edu",
+    "code": "firestone$pres",
+    "aeon_location": false,
+    "recap_electronic_delivery_location": false,
+    "open": false,
+    "requestable": true,
+    "always_requestable": false,
+    "circulates": true,
+    "remote_storage": "",
+    "fulfillment_unit": "Closed",
+    "library": {
+        "label": "Firestone Library",
+        "code": "firestone",
+        "order": 0
+    },
+    "holding_library": null,
+    "delivery_locations": [
+        {
+            "label": "Firestone Library",
+            "address": "One Washington Rd. Princeton, NJ 08544",
+            "phone_number": "609-258-1470",
+            "contact_email": "fstcirc@princeton.edu",
+            "gfa_pickup": "PA",
+            "staff_only": false,
+            "pickup_location": true,
+            "digital_location": true,
+            "library": {
+                "label": "Firestone Library",
+                "code": "firestone",
+                "order": 0
+            }
+        }
+    ]
+}

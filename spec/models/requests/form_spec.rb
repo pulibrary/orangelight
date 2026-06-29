@@ -375,7 +375,10 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       }
     end
     let(:request_with_only_system_id) { described_class.new(**params) }
-    before { stub_catalog_raw bib_id: params[:system_id] }
+    before do
+      stub_catalog_raw bib_id: params[:system_id]
+      stub_single_holding_location 'eastasian$pl'
+    end
 
     describe "#requestable" do
       it "has a list of request objects" do
@@ -561,7 +564,10 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       }
     end
     let(:request) { described_class.new(**params) }
-    before { stub_catalog_raw bib_id: params[:system_id] }
+    before do
+      stub_catalog_raw bib_id: params[:system_id]
+      stub_single_holding_location 'engineer$serial'
+    end
 
     describe "#requestable" do
       it "has an requestable items" do
@@ -618,7 +624,10 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       }
     end
     let(:request) { described_class.new(**params) }
-    before { stub_catalog_raw bib_id: params[:system_id] }
+    before do
+      stub_catalog_raw bib_id: params[:system_id]
+      stub_single_holding_location 'annex$fst'
+    end
     describe '#requestable' do
       it "has an requestable items" do
         expect(request.requestable.size).to be >= 1
@@ -743,7 +752,10 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       }
     end
     let(:request_with_optional_params) { described_class.new(**params) }
-    before { stub_catalog_raw bib_id: params[:system_id] }
+    before do
+      stub_catalog_raw bib_id: params[:system_id]
+      stub_single_holding_location 'arch$ref'
+    end
 
     describe "#request" do
       it "has accessible mfhd param" do
@@ -761,7 +773,10 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       }
     end
     let(:request_for_preservation) { described_class.new(**params) }
-    before { stub_catalog_raw bib_id: params[:system_id] }
+    before do
+      stub_catalog_raw bib_id: params[:system_id]
+      stub_single_holding_location 'firestone$pres'
+    end
     describe "#requestable" do
       it "has a preservation location code" do
         expect(request_for_preservation.requestable[0].location_code).to eq('firestone$pres')
@@ -862,6 +877,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     before do
       stub_catalog_raw(bib_id: params[:system_id], type: 'scsb')
       stub_scsb_availability(bib_id: ".b106574619", institution_id: "NYPL", barcode: '33433088591924')
+      stub_single_holding_location 'scsbnypl'
     end
     describe '#requestable' do
       it 'has an unknown format' do

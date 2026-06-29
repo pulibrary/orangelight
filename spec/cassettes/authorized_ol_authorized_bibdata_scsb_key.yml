@@ -2,53 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/scsbnypl.json
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.17.5
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      Access-Control-Allow-Headers:
-      - Origin, Content-Type, Accept, Authorization, Token
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Access-Control-Allow-Origin:
-      - "*"
-      Etag:
-      - W/"28aec19f9a2c315804f2e02e6f131f0c"
-      X-Runtime:
-      - '0.019060'
-      Access-Control-Request-Method:
-      - GET
-      X-Request-Id:
-      - 869613b8-5d1a-41b2-a4ac-dd29a78d6d04
-    body:
-      encoding: UTF-8
-      string: '{"label":"Remote Storage","code":"scsbnypl","aeon_location":false,"recap_electronic_delivery_location":true,"open":false,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"recap_rmt","fulfillment_unit":null,"library":{"label":"ReCAP","code":"recap","order":0},"holding_library":null,"delivery_locations":[{"label":"Firestone
-        Circulation Desk","address":"One Washington Rd. Princeton, NJ 08544","phone_number":"609
-        258-2345","contact_email":"fstcirc@princton.edu","gfa_pickup":"QX","staff_only":false,"pickup_location":false,"digital_location":false,"library":{"label":"Firestone
-        Library","code":"firestone","order":0}}]}'
-  recorded_at: Wed, 24 Aug 2022 17:39:53 GMT
-- request:
-    method: get
     uri: https://bibdata-staging.lib.princeton.edu/bibliographic/SCSB-7935196/holdings/8076325/availability.json
     body:
       encoding: US-ASCII

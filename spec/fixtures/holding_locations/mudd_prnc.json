@@ -1,0 +1,35 @@
+{
+    "label": "Princetoniana Collection",
+    "code": "mudd$prnc",
+    "aeon_location": true,
+    "recap_electronic_delivery_location": false,
+    "open": false,
+    "requestable": true,
+    "always_requestable": true,
+    "circulates": false,
+    "remote_storage": "",
+    "fulfillment_unit": "Closed",
+    "library": {
+        "label": "Mudd Manuscript Library",
+        "code": "mudd",
+        "order": 0
+    },
+    "holding_library": null,
+    "delivery_locations": [
+        {
+            "label": "Mendel Music Library",
+            "address": "Woolworth Center Princeton, NJ 08544",
+            "phone_number": "609-258-3230",
+            "contact_email": "muslib@princeton.edu",
+            "gfa_pickup": "PK",
+            "staff_only": false,
+            "pickup_location": true,
+            "digital_location": true,
+            "library": {
+                "label": "Mendel Music Library",
+                "code": "mendel",
+                "order": 0
+            }
+        }
+    ]
+}
