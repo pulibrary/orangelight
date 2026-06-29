@@ -566,7 +566,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     let(:request) { described_class.new(**params) }
     before do
       stub_catalog_raw bib_id: params[:system_id]
-            stub_single_holding_location 'engineer$serial'
+      stub_single_holding_location 'engineer$serial'
     end
 
     describe "#requestable" do
