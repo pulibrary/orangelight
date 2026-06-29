@@ -78,6 +78,7 @@ describe Requests::Scsb, requests: true do
         .with(body: "{\"bibliographicId\":\".b106574619\",\"institutionId\":\"NYPL\"}")
         .and_return(status: 401, body: 'Authentication Failed')
       stub_catalog_raw bib_id: 'SCSB-7935196', type: 'scsb'
+      stub_single_holding_location 'scsbnypl'
     end
     it 'is not available' do
       allow(Rails.logger).to receive(:error)
