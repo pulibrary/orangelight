@@ -540,6 +540,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       before do
         stub_scsb_availability(bib_id: "9999998003506421", institution_id: "PUL", barcode: '32101099186403')
         stub_single_holding_location 'firestone$stacks'
+        stub_single_holding_location 'recap$pa'
       end
 
       it "has recap request service available" do
@@ -607,6 +608,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe '#requestable' do
       before do
         stub_scsb_availability(bib_id: "9999998003506421", institution_id: "PUL", barcode: '32101099186403')
+        stub_single_holding_location 'recap$pa'
       end
 
       it "has recap request service available" do
@@ -787,6 +789,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       stub_catalog_raw(bib_id: '9977664533506421')
       stub_availability_by_holding_id(bib_id: '9977664533506421', holding_id: '22109013720006421')
       stub_single_holding_location('RES_SHARE$OUT_RS_REQ')
+      stub_single_holding_location 'recap$pa'
       stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .to_return(status: 200, body: "[{\"itemBarcode\":\"32101092097763\",\"itemAvailabilityStatus\":\"Not available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]")
     end
