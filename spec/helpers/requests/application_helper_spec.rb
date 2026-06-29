@@ -67,7 +67,10 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
           patron_request:
         }
       end
-      before { stub_catalog_raw bib_id: '9938488723506421' }
+      before do
+        stub_single_holding_location 'lewis$stacks'
+        stub_catalog_raw bib_id: '9938488723506421'
+      end
       it 'lewis is a submitable request' do
         assign(:user, user)
         expect(submit_button_disabled).to be false
@@ -87,7 +90,10 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     end
     let(:aeon_only_request) { Requests::FormDecorator.new(Requests::Form.new(**params), nil, '/catalog/12345') }
     let(:login_suppressed) { helper.suppress_login?(aeon_only_request) }
-    before { stub_catalog_raw bib_id: params[:system_id] }
+    before do
+      stub_catalog_raw bib_id: params[:system_id]
+      stub_single_holding_location 'rare$ctsn'
+    end
 
     it 'returns a boolean to disable/enable submit' do
       expect(login_suppressed).to be true
