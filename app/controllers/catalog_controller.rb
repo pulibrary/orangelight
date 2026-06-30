@@ -758,7 +758,8 @@ class CatalogController < ApplicationController
   end
 
   def index
-    solrize_boolean_params
+    result_grouping
+    # solrize_boolean_params
     if no_search_yet?
       render_empty_search
     elsif bot_is_attempting_expensive_search?
@@ -821,6 +822,11 @@ class CatalogController < ApplicationController
 
     def json_request?
       request.format.json?
+    end
+
+    def result_grouping
+      @search_state = search_state.reset(search_state.params.merge(fl: "title_display,holdings_1display", group: { field: "cluster_id" }))
+      # /select?fl=title_display,holdings_1display,cluster_id,&group=true&group.field=cluster_id&rows=1000&group.limit=-1&sort=score%20desc&group.sort=score%20desc
     end
 
     def render_empty_search
