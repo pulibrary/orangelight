@@ -27,8 +27,6 @@ describe "accessibility", type: :feature, js: true do
   end
   context "browse list page" do
     it 'complies with wcag2aa wcag21aa next button' do
-      # Issue: https://github.com/pulibrary/orangelight/issues/4837
-      pending('increase contrast for next button when on the last page and disabled')
       visit '/browse/call_numbers?rpp=10&start=10619849'
       expect(page).to be_axe_clean
         .according_to(:wcag2a, :wcag2aa, :wcag21a, :wcag21aa)
