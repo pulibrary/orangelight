@@ -20,7 +20,10 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:mfhd_id) { requestable.holding.mfhd_id }
     let(:call_number) { CGI.escape(requestable.holding.holding_data['call_number']) }
     let(:location_code) { CGI.escape(requestable.holding.holding_data['location_code']) }
-    before { stub_catalog_raw bib_id: '9912140633506421' }
+    before do
+      stub_catalog_raw bib_id: '9912140633506421'
+      stub_single_holding_location 'firestone$stacks'
+    end
 
     describe '#services' do
       it 'has on shelf and digitization services' do
@@ -153,6 +156,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:no_circ_item_id) { requestable.item['id'] }
     let(:no_circ_item_type) { requestable.item['item_type'] }
     let(:no_circ_pick_up_location_code) { requestable.item['pickup_location_code'] }
+    before { stub_single_holding_location 'firestone$stacks' }
 
     describe '#item_type_circulate' do
       it 'returns the item type from alma' do
@@ -183,6 +187,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   context 'A requestable item from an Aeon EAL Holding with a nil barcode' do
     let(:request) { FactoryBot.build(:aeon_eal_alma_item, patron_request:) }
     let(:requestable) { request.requestable.first } # assume only one requestable
+    before { stub_single_holding_location 'rare$crare' }
 
     describe '#services' do
       it 'is eligible for aeon services' do
@@ -251,6 +256,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:holding_id) { '22256352610006421' }
     let(:requestable) { requestable_holding.first } # assume only one requestable
     let(:enumeration) { 'v.7' }
+    before { stub_single_holding_location 'rare$ex' }
 
     describe '#location_label' do
       it 'has a location label' do
@@ -274,7 +280,10 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   context 'A requestable item from a RBSC holding without an item record' do
     let(:request) { FactoryBot.build(:aeon_no_item_record, patron_request:) }
     let(:requestable) { request.requestable.first } # assume only one requestable
-    before { stub_single_holding_location 'mudd$stacks' }
+    before do
+      stub_single_holding_location 'mudd$stacks'
+      stub_single_holding_location 'rare$ex'
+    end
     describe '#barcode?' do
       it 'does not have a barcode' do
         expect(requestable.barcode?).to be false
@@ -391,6 +400,8 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:user) { FactoryBot.build(:user) }
     let(:request) { FactoryBot.build(:aeon_w_long_title) }
     let(:requestable) { request.requestable.first } # assume only one requestable
+
+    before { stub_single_holding_location 'rare$exov' }
     describe '#aeon_basic_params' do
       it 'includes a Title Param that is less than 250 characters' do
         expect(requestable.aeon_mapped_params.key?(:ItemTitle)).to be true
@@ -485,6 +496,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   context 'A requestable item from Forrestal Annex with no item data' do
     let(:request) { FactoryBot.build(:request_no_items, patron_request:) }
     let(:requestable) { request.requestable.first }
+    before { stub_single_holding_location 'annex$princeton' }
 
     describe 'requestable with no items ' do
       it 'does not have item data' do
@@ -566,6 +578,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:requestable_charged) { requestable_holding.first }
 
     describe '# checked-out requestable' do
+      before { stub_single_holding_location 'firestone$stacks' }
       it "does not have ILL request service available" do
         expect(requestable_charged.services.include?('ill')).to be false
       end
@@ -631,6 +644,8 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:request_charged) { FactoryBot.build(:request_with_items_charged_barcode_patron) }
     let(:requestable_holding) { request_charged.requestable.select { |r| r.holding.mfhd_id == '22739043950006421' } }
     let(:requestable_charged) { requestable_holding.first }
+
+    before { stub_single_holding_location 'firestone$stacks' }
 
     describe '#checked-out requestable' do
       # Barcode users should NOT have the following privileges
@@ -717,6 +732,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:user) { FactoryBot.build(:user) }
     let(:request) { FactoryBot.build(:request_aeon_holding_volume_note) }
     let(:requestable) { request.requestable.find { |m| m.holding.mfhd_id == '22563389780006421' } }
+    before { stub_single_holding_location 'rare$ex' }
 
     describe "#held_at_marquand_library?" do
       it "is not at Marquand Library" do
