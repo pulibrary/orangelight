@@ -618,6 +618,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:request) { Requests::Form.new(**params) }
     let(:requestable) { request.requestable.first }
 
+    before { stub_single_holding_location 'firestone$stacks' }
     describe '#requestable' do
       before do
         stub_scsb_availability(bib_id: "9999998003506421", institution_id: "PUL", barcode: '32101099186403')
@@ -644,8 +645,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:request_charged) { FactoryBot.build(:request_with_items_charged_barcode_patron) }
     let(:requestable_holding) { request_charged.requestable.select { |r| r.holding.mfhd_id == '22739043950006421' } }
     let(:requestable_charged) { requestable_holding.first }
-
-    before { stub_single_holding_location 'firestone$stacks' }
 
     describe '#checked-out requestable' do
       # Barcode users should NOT have the following privileges
