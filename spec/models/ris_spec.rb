@@ -73,11 +73,11 @@ RSpec.describe Blacklight::Document::Ris do
       end
 
       it 'Contains title citation information' do
-        expect(document).to match(/TI - Yŏkchu Pulsŏl Amit'agyŏng ŏnhae ; Yŏkchu Pulchŏngsim taranigyŏng ŏnhae /)
+        expect(document).to include("TI - Yŏkchu Pulsŏl Amit'agyŏng ŏnhae ; Yŏkchu Pulchŏngsim taranigyŏng ŏnhae ")
       end
 
       it 'Contains vernacular title as a secondary title' do
-        expect(document).to match(/T2 - 역주불설아미타경언해불정심다라니경언해/)
+        expect(document).to include('T2 - 역주불설아미타경언해불정심다라니경언해')
       end
 
       it 'Contains an end of record character' do
@@ -89,7 +89,7 @@ RSpec.describe Blacklight::Document::Ris do
       end
 
       it 'Contains form genre' do
-        expect(document).to match(/M3 - Commentaries/)
+        expect(document).to include('M3 - Commentaries')
       end
 
       it 'Contains notes' do
@@ -220,16 +220,16 @@ RSpec.describe Blacklight::Document::Ris do
         expect(document).to match(/^TY - BOOK/)
       end
       it 'Contains valid secondary author information' do
-        expect(document).to match(/A2 - Tsarouchēs, Giannēs/)
+        expect(document).to include('A2 - Tsarouchēs, Giannēs')
       end
       it 'Contains title citation information' do
-        expect(document).to match(/TI - Tsarouchēs/)
+        expect(document).to include('TI - Tsarouchēs')
       end
       it 'Contains an end of record character' do
         expect(document).to match(/\nER - $/)
       end
       it 'Contains subject information' do
-        expect(document).to match(/KW - Tsarouchēs, Giannēs/)
+        expect(document).to include('KW - Tsarouchēs, Giannēs')
       end
     end
   end
@@ -263,7 +263,7 @@ RSpec.describe Blacklight::Document::Ris do
       end
 
       it 'Has a first Author' do
-        expect(document).to match(/AU - Doe, Jane/)
+        expect(document).to include('AU - Doe, Jane')
       end
 
       it 'lists the department as a second author' do
@@ -271,7 +271,7 @@ RSpec.describe Blacklight::Document::Ris do
       end
 
       it 'lists the advisor as a second author' do
-        expect(document).to match(/A2 - Smith, Joe/)
+        expect(document).to include('A2 - Smith, Joe')
       end
     end
   end
@@ -297,7 +297,7 @@ RSpec.describe Blacklight::Document::Ris do
       expect(document).to match(/A2 - Stets, Jan E./)
     end
     it "has a proper url in the UR field" do
-      expect(document).to match(/UR - http/)
+      expect(document).to include('UR - http')
     end
   end
 end
