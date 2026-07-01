@@ -7,7 +7,7 @@ RSpec.describe 'shared/_announcement' do
 
   it 'renders an announcement' do
     render
-    expect(rendered).to match(//)
+    expect(rendered).to include('')
   end
 
   context 'in read-only mode' do
@@ -15,7 +15,7 @@ RSpec.describe 'shared/_announcement' do
       allow(Orangelight).to receive(:read_only_mode).and_return(true)
       allow(Orangelight).to receive(:read_only_message).and_return("test message")
       render
-      expect(rendered).to match(/test message/)
+      expect(rendered).to include('test message')
     end
   end
 
@@ -37,7 +37,7 @@ RSpec.describe 'shared/_announcement' do
 
     it 'renders an empty announcement partial' do
       render
-      expect(rendered).to match(//)
+      expect(rendered).to include('')
     end
   end
 end

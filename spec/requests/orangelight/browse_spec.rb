@@ -92,14 +92,14 @@ RSpec.describe 'Orangelight Browsables', type: :request, browse: true do
     it 'single title with multiple holdings in same location, display single location' do
       get '/browse/call_numbers.json?q=QA303.2+.W45+2014&rpp=5'
       r = JSON.parse(response.body)
-      expect(r[2]['title']).to match(/Thomas' calculus : multivariable/)
-      expect(r[2]['location']).not_to match(/Multiple locations/)
+      expect(r[2]['title']).to include("Thomas' calculus : multivariable")
+      expect(r[2]['location']).not_to include('Multiple locations')
     end
     it 'single title with multiple locations' do
       get '/browse/call_numbers.json?q=RA643.86.B6+B54+2007&rpp=5'
       r = JSON.parse(response.body)
       expect(r[2]['title']).not_to match(/\d+ titles with this call number/)
-      expect(r[2]['location']).to match(/Multiple locations/)
+      expect(r[2]['location']).to include('Multiple locations')
     end
   end
 

@@ -21,12 +21,14 @@ describe 'skip links', type: :system do
         expect(page).to have_selector('#skip-link a', count: 2, visible: false)
       end
 
+      # rubocop:disable RSpec/ExpectActual
       it 'makes the skip link visible when focusing', js: true do
         visit '/catalog?q=Uec4rvei7Aoxa'
         expect('#skip-link a').to be_off_screen
         page.execute_script('document.querySelector("#skip-link a").focus()')
         expect('#skip-link a').not_to be_off_screen
       end
+      # rubocop:enable RSpec/ExpectActual
     end
 
     context 'when there are search results' do
