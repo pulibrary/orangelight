@@ -51,13 +51,13 @@ commands:
       # Restore bundle cache
       - restore_cache:
           keys:
-          - orangelight-v3-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+          - orangelight-v3-{{ checksum "Gemfile.lock" }}
       # Bundle install dependencies
       - run:
           name: Install dependencies
           command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
       - save_cache:
-          key: orangelight-v3-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+          key: orangelight-v3-{{ checksum "Gemfile.lock" }}
           paths:
             - ./vendor/bundle
 
@@ -75,13 +75,13 @@ jobs:
       - restore_cache:
           name: Restore cached dependencies
           keys:
-            - orangelight-v3-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+            - orangelight-v3-{{ checksum "Gemfile.lock" }}
       - run:
           name: Yarn Install
-          command: yarn install --frozen-lockfile
+          command: yarn install
       - save_cache:
           name: Save Yarn cache
-          key: orangelight-v3-yarn-{{ checksum "yarn.lock" }}
+          key: orangelight-v3-yarn
           paths:
             - ~/.cache/yarn
       - run:
