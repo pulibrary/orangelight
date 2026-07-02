@@ -2,59 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/firestone$stacks.json
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.5.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx/1.19.10
-      Date:
-      - Fri, 06 Aug 2021 12:10:51 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      Access-Control-Allow-Headers:
-      - Origin, Content-Type, Accept, Authorization, Token
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Access-Control-Allow-Origin:
-      - "*"
-      Etag:
-      - W/"afb16e2a8c2334ffba49f58adcb63280"
-      X-Runtime:
-      - '0.013879'
-      Access-Control-Request-Method:
-      - GET
-      X-Request-Id:
-      - 02ece257-cb13-4792-88de-3f5e0d4e40e6
-      X-Powered-By:
-      - Phusion Passenger(R) 6.0.9
-    body:
-      encoding: UTF-8
-      string: '{"label":"Stacks","code":"firestone$stacks","aeon_location":false,"recap_electronic_delivery_location":false,"open":true,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"","library":{"label":"Firestone
-        Library","code":"firestone","order":0},"holding_library":null,"hours_location":null,"delivery_locations":[{"label":"Firestone
-        Library","address":"One Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"PA","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"Firestone
-        Library","code":"firestone","order":0}}]}'
-  recorded_at: Fri, 06 Aug 2021 12:10:51 GMT
-- request:
-    method: get
     uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9912140633506421/holdings/22722595360006421/availability.json
     body:
       encoding: US-ASCII
@@ -190,59 +137,6 @@ http_interactions:
         Library\",\"call_number\":\"GC98.B76\",\"call_number_browse\":\"GC98.B76\",\"items\":[{\"holding_id\":\"22495908730006421\",\"id\":\"23495908720006421\",\"status_at_load\":\"1\",\"barcode\":\"32101011081369\",\"copy_number\":\"4\"}]}}","location_code_s":["lewis$stacks"],"location":["Lewis
         Library"],"location_display":["Stacks"],"advanced_location_s":["lewis$stacks","Lewis
         Library"],"name_title_browse_s":["Broecker, Wallace S., 1931-. Chemical oceanography"],"call_number_display":["GC98.B76"],"call_number_browse_s":["GC98.B76"],"call_number_locator_display":["GC98.B76"],"_version_":1707271037380460544,"timestamp":"2021-08-05T16:22:17.713Z"}'
-  recorded_at: Fri, 06 Aug 2021 12:10:57 GMT
-- request:
-    method: get
-    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/lewis$stacks.json
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.5.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx/1.19.10
-      Date:
-      - Fri, 06 Aug 2021 12:10:57 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      Access-Control-Allow-Headers:
-      - Origin, Content-Type, Accept, Authorization, Token
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Access-Control-Allow-Origin:
-      - "*"
-      Etag:
-      - W/"6f385cfb2316bb192a6671936961a4d2"
-      X-Runtime:
-      - '0.008418'
-      Access-Control-Request-Method:
-      - GET
-      X-Request-Id:
-      - 1a66e976-435b-4ad3-80cc-b6197c325224
-      X-Powered-By:
-      - Phusion Passenger(R) 6.0.9
-    body:
-      encoding: UTF-8
-      string: '{"label":"Stacks","code":"lewis$stacks","aeon_location":false,"recap_electronic_delivery_location":false,"open":false,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"","library":{"label":"Lewis
-        Library","code":"lewis","order":0},"holding_library":null,"hours_location":null,"delivery_locations":[{"label":"Lewis
-        Library","address":"Washington Road and Ivy Lane Princeton, NJ 08544","phone_number":"609-258-6004","contact_email":"lewislib@princeton.edu","gfa_pickup":"PN","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"Lewis
-        Library","code":"lewis","order":0}}]}'
   recorded_at: Fri, 06 Aug 2021 12:10:57 GMT
 - request:
     method: get
@@ -718,59 +612,6 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:11:20 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/rare$crare.json
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.5.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx/1.19.10
-      Date:
-      - Fri, 06 Aug 2021 12:11:20 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      Access-Control-Allow-Headers:
-      - Origin, Content-Type, Accept, Authorization, Token
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Access-Control-Allow-Origin:
-      - "*"
-      Etag:
-      - W/"883383d0afa3bf85929ff07b7abed28a"
-      X-Runtime:
-      - '0.012296'
-      Access-Control-Request-Method:
-      - GET
-      X-Request-Id:
-      - 9ed33857-9308-43de-bc3a-3f2949c2c150
-      X-Powered-By:
-      - Phusion Passenger(R) 6.0.9
-    body:
-      encoding: UTF-8
-      string: '{"label":"East Asian Library (Gest) Rare Books","code":"rare$crare","aeon_location":true,"recap_electronic_delivery_location":false,"open":true,"requestable":true,"always_requestable":true,"circulates":false,"remote_storage":"","library":{"label":"Special
-        Collections","code":"rare","order":0},"holding_library":null,"hours_location":null,"delivery_locations":[{"label":"East
-        Asian Library","address":"Frist Campus Center, Room 317 Princeton, NJ 08544","phone_number":"609-258-3182","contact_email":"gestcirc@princeton.edu","gfa_pickup":"PL","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"East
-        Asian Library","code":"eastasian","order":0}}]}'
-  recorded_at: Fri, 06 Aug 2021 12:11:20 GMT
-- request:
-    method: get
     uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9977213233506421/holdings/22707739710006421/availability.json
     body:
       encoding: US-ASCII
@@ -1048,59 +889,6 @@ http_interactions:
       string: !binary |-
         eyJpZCI6Ijk5NjE2MDg2MzUwNjQyMSIsIm51bWVyaWNfaWRfYiI6dHJ1ZSwiYXV0aG9yX2Rpc3BsYXkiOlsiUmljaGFyZHNvbiwgU2FtdWVsLCAxNjg5LTE3NjEiXSwiYXV0aG9yX2NpdGF0aW9uX2Rpc3BsYXkiOlsiUmljaGFyZHNvbiwgU2FtdWVsIiwiQnJhZHNoYWlnaCwgRG9yb3RoeSJdLCJhdXRob3Jfcm9sZXNfMWRpc3BsYXkiOiJ7XCJzZWNvbmRhcnlfYXV0aG9yc1wiOltcIkJyYWRzaGFpZ2gsIERvcm90aHlcIixcIlJpY2hhcmRzb24sIFNhbXVlbFwiXSxcInRyYW5zbGF0b3JzXCI6W10sXCJlZGl0b3JzXCI6W10sXCJjb21waWxlcnNcIjpbXSxcInByaW1hcnlfYXV0aG9yXCI6XCJSaWNoYXJkc29uLCBTYW11ZWxcIn0iLCJhdXRob3JfcyI6WyJSaWNoYXJkc29uLCBTYW11ZWwsIDE2ODktMTc2MSIsIkJyYWRzaGFpZ2gsIERvcm90aHksIExhZHksIGFwcHJveGltYXRlbHkgMTcwOC0xNzg1Il0sIm1hcmNfcmVsYXRvcl9kaXNwbGF5IjpbIkF1dGhvciJdLCJ1bmlmb3JtX3RpdGxlX3MiOlsiQ2xhcmlzc2EiXSwidGl0bGVfZGlzcGxheSI6IkNsYXJpc3NhLCBvciwgVGhlIGhpc3Rvcnkgb2YgYSB5b3VuZyBsYWR5IDogY29tcHJlaGVuZGluZyB0aGUgbW9zdCBpbXBvcnRhbnQgY29uY2VybnMgb2YgcHJpdmF0ZSBsaWZlIDogYW5kIHBhcnRpY3VsYXJseSBzaGV3aW5nLCB0aGUgZGlzdHJlc3NlcyB0aGF0IG1heSBhdHRlbmQgdGhlIG1pc2NvbmR1Y3QgYm90aCBvZiBwYXJlbnRzIGFuZCBjaGlsZHJlbiwgaW4gcmVsYXRpb24gdG8gbWFycmlhZ2UgLyBwdWJsaXNoZWQgYnkgdGhlIGVkaXRvciBvZiBQYW1lbGEuIiwidGl0bGVfdCI6WyJDbGFyaXNzYSwgb3IsIFRoZSBoaXN0b3J5IG9mIGEgeW91bmcgbGFkeSA6IGNvbXByZWhlbmRpbmcgdGhlIG1vc3QgaW1wb3J0YW50IGNvbmNlcm5zIG9mIHByaXZhdGUgbGlmZSA6IGFuZCBwYXJ0aWN1bGFybHkgc2hld2luZywgdGhlIGRpc3RyZXNzZXMgdGhhdCBtYXkgYXR0ZW5kIHRoZSBtaXNjb25kdWN0IGJvdGggb2YgcGFyZW50cyBhbmQgY2hpbGRyZW4sIGluIHJlbGF0aW9uIHRvIG1hcnJpYWdlIC8gcHVibGlzaGVkIGJ5IHRoZSBlZGl0b3Igb2YgUGFtZWxhLiJdLCJ0aXRsZV9jaXRhdGlvbl9kaXNwbGF5IjpbIkNsYXJpc3NhLCBvciwgVGhlIGhpc3Rvcnkgb2YgYSB5b3VuZyBsYWR5IDogY29tcHJlaGVuZGluZyB0aGUgbW9zdCBpbXBvcnRhbnQgY29uY2VybnMgb2YgcHJpdmF0ZSBsaWZlIDogYW5kIHBhcnRpY3VsYXJseSBzaGV3aW5nLCB0aGUgZGlzdHJlc3NlcyB0aGF0IG1heSBhdHRlbmQgdGhlIG1pc2NvbmR1Y3QgYm90aCBvZiBwYXJlbnRzIGFuZCBjaGlsZHJlbiwgaW4gcmVsYXRpb24gdG8gbWFycmlhZ2UiXSwiY29tcGlsZWRfY3JlYXRlZF90IjpbIkNsYXJpc3NhLCBvciwgVGhlIGhpc3Rvcnkgb2YgYSB5b3VuZyBsYWR5IDogY29tcHJlaGVuZGluZyB0aGUgbW9zdCBpbXBvcnRhbnQgY29uY2VybnMgb2YgcHJpdmF0ZSBsaWZlIDogYW5kIHBhcnRpY3VsYXJseSBzaGV3aW5nLCB0aGUgZGlzdHJlc3NlcyB0aGF0IG1heSBhdHRlbmQgdGhlIG1pc2NvbmR1Y3QgYm90aCBvZiBwYXJlbnRzIGFuZCBjaGlsZHJlbiwgaW4gcmVsYXRpb24gdG8gbWFycmlhZ2UgLyBwdWJsaXNoZWQgYnkgdGhlIGVkaXRvciBvZiBQYW1lbGEuIl0sInB1Yl9jcmVhdGVkX2Rpc3BsYXkiOlsiTG9uZG9uIDogUHJpbnRlZCBmb3IgUy4gUmljaGFyZHNvbiBhbmQgc29sZCBieSBBLiBNaWxsYXIgLi4uIEouIGFuZCBKYS4gUml2aW5ndG9uIC4uLiBKb2huIE9zYm9ybiAuLi4gYW5kIGJ5IEouIExlYWtlLCBhdCBCYXRoLCAxNzQ4IFtpLmUuIDE3NDctMTc0OF0iXSwicHViX2NyZWF0ZWRfcyI6WyJMb25kb24gOiBQcmludGVkIGZvciBTLiBSaWNoYXJkc29uIGFuZCBzb2xkIGJ5IEEuIE1pbGxhciAuLi4gSi4gYW5kIEphLiBSaXZpbmd0b24gLi4uIEpvaG4gT3Nib3JuIC4uLiBhbmQgYnkgSi4gTGVha2UsIGF0IEJhdGgsIDE3NDggW2kuZS4gMTc0Ny0xNzQ4XSJdLCJwdWJfY2l0YXRpb25fZGlzcGxheSI6WyJMb25kb246IFByaW50ZWQgZm9yIFMuIFJpY2hhcmRzb24gYW5kIHNvbGQgYnkgQS4gTWlsbGFyIC4uLiBKLiBhbmQgSmEuIFJpdmluZ3RvbiAuLi4gSm9obiBPc2Jvcm4gLi4uIGFuZCBieSBKLiBMZWFrZSwgYXQgQmF0aCJdLCJwdWJfZGF0ZV9kaXNwbGF5IjpbIjE3NDciXSwicHViX2RhdGVfc3RhcnRfc29ydCI6MTc0NywicHViX2RhdGVfZW5kX3NvcnQiOjE3NDgsImNhdGFsb2dlZF90ZHQiOiIyMDIxLTA3LTEzVDAwOjAxOjMxWiIsImZvcm1hdCI6WyJCb29rIl0sImVsZWN0cm9uaWNfYWNjZXNzXzFkaXNwbGF5Ijoie1wiaHR0cHM6Ly9jYXRhbG9nLnByaW5jZXRvbi5lZHUvY2F0YWxvZy82MTYwODYjdmlld1wiOltcIkRpZ2l0YWwgY29udGVudFwiXSxcImlpaWZfbWFuaWZlc3RfcGF0aHNcIjp7XCJodHRwOi8vYXJrcy5wcmluY2V0b24uZWR1L2FyazovODg0MzUvZHowMTBzNzA0XCI6XCJodHRwczovL2ZpZ2d5LnByaW5jZXRvbi5lZHUvY29uY2Vybi9zY2FubmVkX3Jlc291cmNlcy84YjczYjFiYi02NDE3LTRhZTEtYjUxNi1iYjY4ZDk5OWVkMmYvbWFuaWZlc3RcIn19IiwiZGVzY3JpcHRpb25fZGlzcGxheSI6WyI3IHYuIDogbXVzaWMgKDEgZm9sZGVkIGxlYWYsIGVuZ3JhdmVkKSA7IDE3IGNtLiAoMTJtbykiXSwiZGVzY3JpcHRpb25fdCI6WyI3IHYuIDogbXVzaWMgKDEgZm9sZGVkIGxlYWYsIGVuZ3JhdmVkKSA7IDE3IGNtLiAoMTJtbykiXSwibnVtYmVyX29mX3BhZ2VzX2NpdGF0aW9uX2Rpc3BsYXkiOlsiNyB2LiJdLCJnZW9jb2RlX2Rpc3BsYXkiOlsiRW5nbGFuZCJdLCJub3Rlc19kaXNwbGF5IjpbIk5vdmVsLiIsIlZvbHMuIDMtNyBoYXZlIHZhcmlhbnQgaW1wcmludDogTG9uZG9uIDogUHJpbnRlZCBieSBTLiBSaWNoYXJkc29uIGFuZCBzb2xkIGJ5IEpvaG4gT3Nib3JuIC4uLiBBbmRyZXcgTWlsbGFyIC4uLiBKLiBhbmQgSmEuIFJpdmluZ3RvbiAuLi4gYW5kIGJ5IEouIExlYWtlLCBhdCBCYXRoLCAxNzQ4LiIsIlZvbC4gMiBoYXMgMSBmb2xkZWQgbGVhZiBvZiBwbGF0ZXMgZmFjaW5nIHAuIDUwLCB3aXRoIHdvcmRzIGFuZCBtdXNpYyBvZiB2ZXJzZXMgMTQtMTYgb2YgXCJPZGUgdG8gd2lzZG9tLlwiIiwiRXggY29weTogRXZpZGVuY2UgZm9yIGFzc2lnbmVkIHBoeXNpY2FsIGRlc2NyaXB0aW9uIGhlYWRpbmcocykgZGlzY292ZXJlZCBieSBzdGFmZiBkdXJpbmcgMjAxNCBzdXJ2ZXkuIEZvciBtb3JlIGV4YWN0IGRldGFpbHMgY29uc3VsdCBib29rLiJdLCJiaW5kaW5nX25vdGVfZGlzcGxheSI6WyJSSFQgYy4gMSAoMTh0aC00NDcpIGluIG9uZSBibHVlIG1vcm9jY28gcHVsbC1vZmYgY2FzZTsgUkhUIGMuIDIgKDE4dGgtNDQ2KSBpbiBzZXZlbiBmYWxsLWRvd24tYmFjayBib3hlcyBjb3ZlcmVkIGluIHJlZCBjbG90aCBhbmQgbGluZWQgd2l0aCBtYXJibGVkIHBhcGVyLiJdLCJsYW5ndWFnZV9mYWNldCI6WyJFbmdsaXNoIl0sImxhbmd1YWdlX2NvZGVfcyI6WyJlbmciXSwibGFuZ3VhZ2VfaWFuYV9zIjpbImVuIl0sInByb3ZlbmFuY2VfZGlzcGxheSI6WyJSSFQgYy4gMiAoMTh0aC00NDYpIGlzIExhZHkgRG9yb3RoeSBCcmFkc2hhaWdoJ3MgY29weSB3aXRoIGhlciBtYXJnaW5hbCBjb21tZW50cyBhbmQgdGhlIGF1dGhvcidzIG1hcmdpbmFsIHJlcGxpZXM7IFJIVCBjLiAxICgxOHRoLTQ0NykgaGFzIGJvb2twbGF0ZSBvZiBBbm4gVGhvbWFzIGFuZCBzaWduYXR1cmUgb2YgQW5uZSBUaG9tYXMuIl0sInJlZmVyZW5jZXNfZGlzcGxheSI6WyJCYXJjaGFzLCBKYW5pbmUuIFRoZSBBbm5vdGF0aW9ucyBpbiBMYWR5IEJyYWRzaGFpZ2gncyBDb3B5IG9mIENsYXJpc3NhIChWaWN0b3JpYSxCLkMuLCAxOTk4KS4iLCJCZXJuYXJkIFF1YXJpdGNoIChGaXJtKS4gU2FtdWVsIFJpY2hhcmRzb24sIEphbmUgQXVzdGVuIDogdGhlIGNvbXBsZXRlIG5vdmVscyBhbmQgYSBwbGF5LiAoTG9uZG9uLCAxOTg3KS4gW3Byb3ZlbmFuY2UgYW5kIGJpYmxpb2dyYXBoaWNhbCBkZXNjcmlwdGlvbiBvZiBMYWR5IEJyYWRzaGFpZ2gncyBjb3B5IG9mIENsYXJpc3NhXS4gKEV4IDIwMDUtMDc0NU4pIiwiU2FsZSwgVy5NLiBTYW11ZWwgUmljaGFyZHNvbiwgYSBiaWJsaW9ncmFwaGljYWwgcmVjb3JkLCBwLiA0NS01MS4iLCJFU1RDIFQwNTg5OTIuIl0sInJlZmVyZW5jZXNfdXJsX2Rpc3BsYXkiOlsiQmFyY2hhcywgSmFuaW5lLiBUaGUgQW5ub3RhdGlvbnMgaW4gTGFkeSBCcmFkc2hhaWdoJ3MgQ29weSBvZiBDbGFyaXNzYSAoVmljdG9yaWEsQi5DLiwgMTk5OCkuIiwiQmVybmFyZCBRdWFyaXRjaCAoRmlybSkuIFNhbXVlbCBSaWNoYXJkc29uLCBKYW5lIEF1c3RlbiA6IHRoZSBjb21wbGV0ZSBub3ZlbHMgYW5kIGEgcGxheS4gKExvbmRvbiwgMTk4NykuIFtwcm92ZW5hbmNlIGFuZCBiaWJsaW9ncmFwaGljYWwgZGVzY3JpcHRpb24gb2YgTGFkeSBCcmFkc2hhaWdoJ3MgY29weSBvZiBDbGFyaXNzYV0uIChFeCAyMDA1LTA3NDVOKSIsIlNhbGUsIFcuTS4gU2FtdWVsIFJpY2hhcmRzb24sIGEgYmlibGlvZ3JhcGhpY2FsIHJlY29yZCwgcC4gNDUtNTEuIiwiRVNUQyBUMDU4OTkyLiJdLCJvdGhlcl9mb3JtYXRfZGlzcGxheSI6WyJBbHNvIGF2YWlsYWJsZSBpbiBhbiBlbGVjdHJvbmljIHZlcnNpb24uIl0sImxjX3N1YmplY3RfZGlzcGxheSI6WyJFbmdsYW5k4oCUU29jaWFsIGxpZmUgYW5kIGN1c3RvbXPigJQxOHRoIGNlbnR1cnnigJRGaWN0aW9uIiwiWW91bmcgd29tZW7igJRFbmdsYW5k4oCUQ3JpbWVzIGFnYWluc3TigJRGaWN0aW9uIl0sInN1YmplY3RfZmFjZXQiOlsiRW5nbGFuZOKAlFNvY2lhbCBsaWZlIGFuZCBjdXN0b21z4oCUMTh0aCBjZW50dXJ54oCURmljdGlvbiIsIllvdW5nIHdvbWVu4oCURW5nbGFuZOKAlENyaW1lcyBhZ2FpbnN04oCURmljdGlvbiIsIkF1dGhvcnMnIGFubm90YXRpb25zIChQcm92ZW5hbmNlKeKAlDE4dGggY2VudHVyeSIsIkFubm90YXRpb25zIiwiRmljdGlvbiJdLCJsY2dmdF9zIjpbIkZpY3Rpb24iXSwicmJnZW5yX3MiOlsiQXV0aG9ycycgYW5ub3RhdGlvbnMgKFByb3ZlbmFuY2Up4oCUMTh0aCBjZW50dXJ5IiwiQW5ub3RhdGlvbnMiXSwicmVsYXRlZF9uYW1lX2pzb25fMWRpc3BsYXkiOiJ7XCJBbm5vdGF0b3JcIjpbXCJCcmFkc2hhaWdoLCBEb3JvdGh5LCBMYWR5LCBhcHByb3hpbWF0ZWx5IDE3MDgtMTc4NVwiLFwiUmljaGFyZHNvbiwgU2FtdWVsLCAxNjg5LTE3NjFcIl19Iiwib2NsY19zIjpbIjEzNjMxODE1Il0sIm90aGVyX3ZlcnNpb25fcyI6WyJvY20xMzYzMTgxNSJdLCJzdWJqZWN0X2VyYV9mYWNldCI6WyIxOHRoIGNlbnR1cnkiXSwiaG9sZGluZ3NfMWRpc3BsYXkiOiJ7XCIyMjU2MzM4OTc5MDAwNjQyMVwiOntcImxvY2F0aW9uX2NvZGVcIjpcInJhcmUkaHN2clwiLFwibG9jYXRpb25cIjpcIlJhcmUgQm9va3NcIixcImxpYnJhcnlcIjpcIlNwZWNpYWwgQ29sbGVjdGlvbnNcIixcImNhbGxfbnVtYmVyXCI6XCIxOHRoLTQ0NiBSSFRcIixcImNhbGxfbnVtYmVyX2Jyb3dzZVwiOlwiMTh0aC00NDYgUkhUXCJ9LFwiMjI1NjMzODk4MDAwMDY0MjFcIjp7XCJsb2NhdGlvbl9jb2RlXCI6XCJyYXJlJGhzdnJcIixcImxvY2F0aW9uXCI6XCJSYXJlIEJvb2tzXCIsXCJsaWJyYXJ5XCI6XCJTcGVjaWFsIENvbGxlY3Rpb25zXCIsXCJjYWxsX251bWJlclwiOlwiMTh0aC00NDcgUkhUXCIsXCJjYWxsX251bWJlcl9icm93c2VcIjpcIjE4dGgtNDQ3IFJIVFwifSxcIjIyNTYzMzg5NzgwMDA2NDIxXCI6e1wibG9jYXRpb25fY29kZVwiOlwicmFyZSRleFwiLFwibG9jYXRpb25cIjpcIlJhcmUgQm9va3NcIixcImxpYnJhcnlcIjpcIlNwZWNpYWwgQ29sbGVjdGlvbnNcIixcImNhbGxfbnVtYmVyXCI6XCIyMDE1LTA4MDFOXCIsXCJjYWxsX251bWJlcl9icm93c2VcIjpcIjIwMTUtMDgwMU5cIixcIml0ZW1zXCI6W3tcImhvbGRpbmdfaWRcIjpcIjIyNTYzMzg5NzgwMDA2NDIxXCIsXCJpZFwiOlwiMjM1NjMzODk3MTAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJlbnVtZXJhdGlvblwiOlwidi41XCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA5MTEzMDkxMlwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI1NjMzODk3ODAwMDY0MjFcIixcImlkXCI6XCIyMzU2MzM4OTc0MDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImVudW1lcmF0aW9uXCI6XCJ2LjNcIixcImJhcmNvZGVcIjpcIjMyMTAxMDkxMTMwODk2XCIsXCJjb3B5X251bWJlclwiOlwiMVwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjU2MzM4OTc4MDAwNjQyMVwiLFwiaWRcIjpcIjIzNTYzMzg5NzUwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiZW51bWVyYXRpb25cIjpcInYuMlwiLFwiYmFyY29kZVwiOlwiMzIxMDEwOTExMzA4ODhcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNTYzMzg5NzgwMDA2NDIxXCIsXCJpZFwiOlwiMjM1NjMzODk2ODAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJlbnVtZXJhdGlvblwiOlwidi43XCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA5MTEzMDkzOFwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI1NjMzODk3ODAwMDY0MjFcIixcImlkXCI6XCIyMzU2MzM4OTc2MDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImVudW1lcmF0aW9uXCI6XCJ2LjFcIixcImJhcmNvZGVcIjpcIjMyMTAxMDkxMTMwODcwXCIsXCJjb3B5X251bWJlclwiOlwiMVwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjU2MzM4OTc4MDAwNjQyMVwiLFwiaWRcIjpcIjIzNTYzMzg5NzcwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiZW51bWVyYXRpb25cIjpcInYuNFwiLFwiYmFyY29kZVwiOlwiMzIxMDEwOTExMzA5MDRcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNTYzMzg5NzgwMDA2NDIxXCIsXCJpZFwiOlwiMjM1NjMzODk3MDAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJlbnVtZXJhdGlvblwiOlwidi42XCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA5MTEzMDkyMFwiLFwiY29weV9udW1iZXJcIjpcIjFcIn1dfX0iLCJsb2NhdGlvbl9jb2RlX3MiOlsicmFyZSRoc3ZyIiwicmFyZSRleCJdLCJsb2NhdGlvbiI6WyJTcGVjaWFsIENvbGxlY3Rpb25zIl0sImxvY2F0aW9uX2Rpc3BsYXkiOlsiUmFyZSBCb29rcyIsIlJhcmUgQm9va3MiXSwiYWR2YW5jZWRfbG9jYXRpb25fcyI6WyJyYXJlJGhzdnIiLCJyYXJlJGV4IiwiU3BlY2lhbCBDb2xsZWN0aW9ucyJdLCJuYW1lX3VuaWZvcm1fdGl0bGVfMWRpc3BsYXkiOiJbW1wiUmljaGFyZHNvbiwgU2FtdWVsLCAxNjg5LTE3NjEuXCIsXCJDbGFyaXNzYVwiXV0iLCJuYW1lX3RpdGxlX2Jyb3dzZV9zIjpbIlJpY2hhcmRzb24sIFNhbXVlbCwgMTY4OS0xNzYxLiBDbGFyaXNzYSJdLCJjYWxsX251bWJlcl9kaXNwbGF5IjpbIlJIVCAxOHRoLTQ0NiIsIlJIVCAxOHRoLTQ0NyIsIjIwMTUtMDgwMU4iXSwiY2FsbF9udW1iZXJfYnJvd3NlX3MiOlsiMTh0aC00NDYgUkhUIiwiMTh0aC00NDcgUkhUIiwiMjAxNS0wODAxTiJdLCJjYWxsX251bWJlcl9sb2NhdG9yX2Rpc3BsYXkiOlsiMTh0aC00NDYiLCIxOHRoLTQ0NyIsIjIwMTUtMDgwMU4iXSwiZWxlY3Ryb25pY19wb3J0Zm9saW9fcyI6WyJ7XCJkZXNjXCI6bnVsbCxcInRpdGxlXCI6bnVsbCxcInVybFwiOlwiaHR0cHM6Ly9uYTA1LmFsbWEuZXhsaWJyaXNncm91cC5jb20vdmlldy91cmVzb2x2ZXIvMDFQUklfSU5TVC9vcGVudXJsP3UuaWdub3JlX2RhdGVfY292ZXJhZ2U9dHJ1ZSZwb3J0Zm9saW9fcGlkPTUzODY0ODMzMjYwMDA2NDIxJkZvcmNlX2RpcmVjdD10cnVlXCIsXCJzdGFydFwiOm51bGwsXCJlbmRcIjpcImxhdGVzdFwifSJdLCJfdmVyc2lvbl8iOjE3MDczMDk3MDYyNDI5NDkxMjAsInRpbWVzdGFtcCI6IjIwMjEtMDgtMDZUMDI6MzY6NTYuMzcxWiJ9
   recorded_at: Fri, 06 Aug 2021 12:11:31 GMT
-- request:
-    method: get
-    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/rare$ex.json
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.5.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx/1.19.10
-      Date:
-      - Fri, 06 Aug 2021 12:11:32 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      Access-Control-Allow-Headers:
-      - Origin, Content-Type, Accept, Authorization, Token
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Access-Control-Allow-Origin:
-      - "*"
-      Etag:
-      - W/"4042b6848f4a01a6dfd7ef43f17b8f4d"
-      X-Runtime:
-      - '0.008687'
-      Access-Control-Request-Method:
-      - GET
-      X-Request-Id:
-      - 64883343-455f-4421-9bc0-51f54d6a62f1
-      X-Powered-By:
-      - Phusion Passenger(R) 6.0.9
-    body:
-      encoding: UTF-8
-      string: '{"label":"Rare Books","code":"rare$ex","aeon_location":true,"recap_electronic_delivery_location":false,"open":false,"requestable":true,"always_requestable":true,"circulates":false,"remote_storage":"","library":{"label":"Special
-        Collections","code":"rare","order":0},"holding_library":null,"hours_location":null,"delivery_locations":[{"label":"Special
-        Collections","address":"One Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"rbsc@princeton.edu","gfa_pickup":"PG","staff_only":false,"pickup_location":false,"digital_location":true,"library":{"label":"Firestone
-        Library","code":"firestone","order":0}}]}'
-  recorded_at: Fri, 06 Aug 2021 12:11:32 GMT
 - request:
     method: get
     uri: https://bibdata-staging.lib.princeton.edu/bibliographic/996160863506421/holdings/22563389780006421/availability.json
@@ -1632,57 +1420,6 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:11:52 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/rare$exov.json
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.5.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx/1.19.10
-      Date:
-      - Fri, 06 Aug 2021 12:11:52 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      Access-Control-Allow-Headers:
-      - Origin, Content-Type, Accept, Authorization, Token
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Access-Control-Allow-Origin:
-      - "*"
-      Etag:
-      - W/"67f2b31d8ae4842a2d62390a8e0010e9"
-      X-Runtime:
-      - '0.007976'
-      Access-Control-Request-Method:
-      - GET
-      X-Request-Id:
-      - e896a66a-695d-4fa2-b372-2b649a5316f3
-      X-Powered-By:
-      - Phusion Passenger(R) 6.0.9
-    body:
-      encoding: UTF-8
-      string: '{"label":"Rare Books Oversize","code":"rare$exov","aeon_location":true,"recap_electronic_delivery_location":false,"open":false,"requestable":true,"always_requestable":true,"circulates":false,"remote_storage":"","library":{"label":"Special
-        Collections","code":"rare","order":0},"holding_library":null,"hours_location":null,"delivery_locations":[]}'
-  recorded_at: Fri, 06 Aug 2021 12:11:52 GMT
-- request:
-    method: get
     uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9929908463506421/holdings/22656754050006421/availability.json
     body:
       encoding: US-ASCII
@@ -1882,57 +1619,6 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:12:08 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/annex$princeton.json
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.5.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx/1.19.10
-      Date:
-      - Fri, 06 Aug 2021 12:12:08 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      Access-Control-Allow-Headers:
-      - Origin, Content-Type, Accept, Authorization, Token
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Access-Control-Allow-Origin:
-      - "*"
-      Etag:
-      - W/"4bb4a549d67dac92e9d8b3c69958aff2"
-      X-Runtime:
-      - '0.014051'
-      Access-Control-Request-Method:
-      - GET
-      X-Request-Id:
-      - ded945f3-b51d-4725-bbd9-433bd8f040c7
-      X-Powered-By:
-      - Phusion Passenger(R) 6.0.9
-    body:
-      encoding: UTF-8
-      string: '{"label":"Princeton Collection","code":"annex$princeton","aeon_location":false,"recap_electronic_delivery_location":false,"open":false,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"","library":{"label":"Forrestal
-        Annex","code":"annex","order":0},"holding_library":null,"hours_location":null,"delivery_locations":[]}'
-  recorded_at: Fri, 06 Aug 2021 12:12:08 GMT
-- request:
-    method: get
     uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9944928463506421/holdings/22490610730006421/availability.json
     body:
       encoding: US-ASCII
@@ -2047,57 +1733,6 @@ http_interactions:
       encoding: ASCII-8BIT
       string: !binary |-
         eyJpZCI6Ijk5MzkwNzU1MzM1MDY0MjEiLCJudW1lcmljX2lkX2IiOnRydWUsImF1dGhvcl9kaXNwbGF5IjpbIkRpb2RvcnVzLCBTaWN1bHVzIl0sImF1dGhvcl9jaXRhdGlvbl9kaXNwbGF5IjpbIkRpb2RvcnVzIiwiR2FpbGxhcmQtR291a293c2t5LCBEYW5pZcyAbGUuIiwiSmFjcXVlbWluLCBBbm5lIiwiQ29oZW4tU2thbGxpLCBBdWRlIiwiQ2hhbW91eCwgRnJhbmPMp29pcyIsIkJlcnRyYWMsIFBpZXJyZSIsIlZlcm5pZcyAcmUsIFl2b25uZSIsIkVjaywgQmVybmFyZCIsIkJvbW1lbGFlciwgQmliaWFuZSIsIkhhaWxsZXQsIEplYW4iLCJDYXNldml0eiwgTWljaGVsIiwiQm9ubmV0LCBNYXJ0aW5lIiwiQmVubmV0LCBFcmljIFIuIiwiVmlhbCwgQ2xhdWRlIiwiR291a293c2t5LCBQYXVsIiwiQml6aWXMgHJlLCBGcmFuY8ynb2lzZSJdLCJhdXRob3Jfcm9sZXNfMWRpc3BsYXkiOiJ7XCJzZWNvbmRhcnlfYXV0aG9yc1wiOltcIkdhaWxsYXJkLUdvdWtvd3NreSwgRGFuaWXMgGxlLlwiLFwiSmFjcXVlbWluLCBBbm5lXCIsXCJDb2hlbi1Ta2FsbGksIEF1ZGVcIixcIkNoYW1vdXgsIEZyYW5jzKdvaXNcIixcIkJlcnRyYWMsIFBpZXJyZVwiLFwiVmVybmllzIByZSwgWXZvbm5lXCIsXCJFY2ssIEJlcm5hcmRcIixcIkJvbW1lbGFlciwgQmliaWFuZVwiLFwiSGFpbGxldCwgSmVhblwiLFwiQ2FzZXZpdHosIE1pY2hlbFwiLFwiQm9ubmV0LCBNYXJ0aW5lXCIsXCJCZW5uZXQsIEVyaWMgUi5cIixcIlZpYWwsIENsYXVkZVwiLFwiR291a293c2t5LCBQYXVsXCIsXCJCaXppZcyAcmUsIEZyYW5jzKdvaXNlXCJdLFwidHJhbnNsYXRvcnNcIjpbXSxcImVkaXRvcnNcIjpbXSxcImNvbXBpbGVyc1wiOltdLFwicHJpbWFyeV9hdXRob3JcIjpcIkRpb2RvcnVzXCJ9IiwiYXV0aG9yX3MiOlsiRGlvZG9ydXMsIFNpY3VsdXMiLCJHYWlsbGFyZC1Hb3Vrb3dza3ksIERhbmllzIBsZS4iLCJKYWNxdWVtaW4sIEFubmUiLCJDb2hlbi1Ta2FsbGksIEF1ZGUiLCJDaGFtb3V4LCBGcmFuY8ynb2lzIiwiQmVydHJhYywgUGllcnJlIiwiVmVybmllzIByZSwgWXZvbm5lIiwiRWNrLCBCZXJuYXJkIiwiQm9tbWVsYWVyLCBCaWJpYW5lIiwiSGFpbGxldCwgSmVhbiIsIkNhc2V2aXR6LCBNaWNoZWwiLCJCb25uZXQsIE1hcnRpbmUiLCJCZW5uZXQsIEVyaWMgUi4iLCJWaWFsLCBDbGF1ZGUiLCJHb3Vrb3dza3ksIFBhdWwiLCJCaXppZcyAcmUsIEZyYW5jzKdvaXNlIl0sIm1hcmNfcmVsYXRvcl9kaXNwbGF5IjpbIkF1dGhvciJdLCJ1bmlmb3JtX3RpdGxlX3MiOlsiQmlibGlvdGhlY2EgaGlzdG9yaWNhLiBGcmVuY2ggJiBHcmVlayJdLCJ0aXRsZV9kaXNwbGF5IjoiQmlibGlvdGhlzIBxdWUgaGlzdG9yaXF1ZSAvIERpb2RvcmUgZGUgU2ljaWxlLiIsInRpdGxlX3QiOlsiQmlibGlvdGhlzIBxdWUgaGlzdG9yaXF1ZSAvIERpb2RvcmUgZGUgU2ljaWxlLiJdLCJ0aXRsZV9jaXRhdGlvbl9kaXNwbGF5IjpbIkJpYmxpb3RoZcyAcXVlIGhpc3RvcmlxdWUiXSwiY29tcGlsZWRfY3JlYXRlZF90IjpbIkJpYmxpb3RoZcyAcXVlIGhpc3RvcmlxdWUgLyBEaW9kb3JlIGRlIFNpY2lsZS4iXSwicHViX2NyZWF0ZWRfZGlzcGxheSI6WyJQYXJpcyA6IExlcyBCZWxsZXMgbGV0dHJlcywgMjAwMi0iXSwicHViX2NyZWF0ZWRfcyI6WyJQYXJpcyA6IExlcyBCZWxsZXMgbGV0dHJlcywgMjAwMi0iXSwicHViX2NpdGF0aW9uX2Rpc3BsYXkiOlsiUGFyaXM6IExlcyBCZWxsZXMgbGV0dHJlcyJdLCJwdWJfZGF0ZV9kaXNwbGF5IjpbIjIwMDIiXSwicHViX2RhdGVfc3RhcnRfc29ydCI6MjAwMiwicHViX2RhdGVfZW5kX3NvcnQiOjk5OTksImNhdGFsb2dlZF90ZHQiOiIyMDIxLTA3LTEzVDEwOjIxOjE4WiIsImZvcm1hdCI6WyJCb29rIl0sImRlc2NyaXB0aW9uX2Rpc3BsYXkiOlsidm9sdW1lcyA6IGlsbHVzdHJhdGlvbnMsIG1hcHMgKHNvbWUgY29sb3IpIDsgMjAgY20uIl0sImRlc2NyaXB0aW9uX3QiOlsidm9sdW1lcyA6IGlsbHVzdHJhdGlvbnMsIG1hcHMgKHNvbWUgY29sb3IpIDsgMjAgY20uIl0sIm51bWJlcl9vZl9wYWdlc19jaXRhdGlvbl9kaXNwbGF5IjpbInZvbHVtZXMiXSwic2VyaWVzX2Rpc3BsYXkiOlsiQ29sbGVjdGlvbiBkZXMgdW5pdmVyc2l0ZcyBcyBkZSBGcmFuY2UiLCJDb2xsZWN0aW9uIGRlcyB1bml2ZXJzaXRlzIFzIGRlIEZyYW5jZS4gU2XMgXJpZSBncmVjcXVlIDsgdi4gMzQ0LCAzNzgsIDQwOCwgNDMwLCA0NDksIDQ4NiwgNDg5LCA1MDIsIDUxNiwgNTE5LCA1MzguIiwiQ29sbGVjdGlvbiBkZXMgdW5pdmVyc2l0ZcyBcyBkZSBGcmFuY2UsIDAxODQtNzE1NSBTZcyBcmllIGdyZWNxdWUgOyB2LiAzNDQsIDM3OCwgNDA4LCA0MzAsIDQ0OSwgNDg2LCA0ODksIDUwMiwgNTE2LCA1MTksIDUzOCJdLCJtb3JlX2luX3RoaXNfc2VyaWVzX3QiOlsiQ29sbGVjdGlvbiBkZXMgdW5pdmVyc2l0ZcyBcyBkZSBGcmFuY2UiLCJDb2xsZWN0aW9uIGRlcyB1bml2ZXJzaXRlzIFzIGRlIEZyYW5jZS4gU2XMgXJpZSBncmVjcXVlIl0sInJlbGF0ZWRfcmVjb3JkX2luZm9fZGlzcGxheSI6WyJPbmxpbmUgdmVyc2lvbjoiXSwibm90ZXNfZGlzcGxheSI6WyJGcmVuY2ggYW5kIEdyZWVrLCBvbiBmYWNpbmcgcGFnZXMsIG51bWJlcmVkIGluIGR1cGxpY2F0ZS4iLCIxZcyAcmUgZWQuOiAxOTcyLSIsIlZvbC4gMSwgMywgNi03LCA5LTEwLCAxMy0xNDogMmUgdGlyYWdlOyB2LiAxMjogM2UgdGlyYWdlLiJdLCJiaWJfcmVmX25vdGVzX2Rpc3BsYXkiOlsiSW5jbHVkZXMgYmlibGlvZ3JhcGhpY2FsIHJlZmVyZW5jZXMgYW5kIGluZGV4ZXMuIl0sImxhbmd1YWdlX2ZhY2V0IjpbIkZyZW5jaCIsIkdyZWVrLCBBbmNpZW50ICh0byAxNDUzKSJdLCJsYW5ndWFnZV9jb2RlX3MiOlsiZnJlIiwiZ3JjIl0sImxhbmd1YWdlX2lhbmFfcyI6WyJmciIsImdyYyJdLCJjb250ZW50c19kaXNwbGF5IjpbInQuIDEsIHB0LiAxLiBJbnRyb2R1Y3Rpb24gZ2XMgW5lzIFyYWxlIDsgTGl2cmUgSSBbRcyBZ3lwdGVdIC8gSW50cm9kdWN0aW9uIGdlzIFuZcyBcmFsZSBwYXIgRnJhbmPMp29pcyBDaGFtb3V4IGV0IFBpZXJyZSBCZXJ0cmFjLiBMaXZyZSBJIHRleHRlIGXMgXRhYmxpIHBhciBQaWVycmUgQmVydHJhYyBldCB0cmFkdWl0IHBhciBZdm9ubmUgVmVybmllzIByZSAtLSB0LiAxLCBwdC4gMi4gTGl2cmVzIFZJLVgsIEZyYWdtZW50cy4gW015dGhvbG9naWVzIDsgUmXMgWNpdHMgZGUgZm9uZGF0aW9ucyBldCBkZSBjb2xvbmlzYXRpb25zIHN1aXRlIGF1IHJldG91ciBkZSBUcm9pZSA7IExlIG1vbmRlIGdyZWMgYXV4IFZJSUllLVZJZSBzaWXMgGNsZXNdIC8gdGV4dGUgZcyBdGFibGksIHRyYWR1aXQgZXQgY29tbWVudGXMgSBwYXIgQXVkZSBDb2hlbi1Ta2FsbGkgLS0gdC4gMi4gTGl2cmUgSUkgW0JhYnlsb25pZSwgSW5kZSwgU2N5dGhpZV0gLyB0ZXh0ZSBlzIF0YWJsaSBldCB0cmFkdWl0IHBhciBCZXJuYXJkIEVjayAtLSB0LiAyLiwgcHQuIDIuIExpdnJlcyBYWEktWFhWSSwgRnJhZ21lbnRzLiBbTGUgbW9uZGUgbWXMgWRpdGVycmFuZcyBZW4gZGUgMzAxIGHMgCAyMDddIC8gdGV4dGUgZcyBdGFibGksIHRyYWR1aXQgZXQgY29tbWVudGXMgSBwYXIgUGF1bCBHb3Vrb3dza3kgLS0gdC4gMy4gTGl2cmUgSUlJIFtMaWJ5ZSwgRcyBdGhpb3BpZSwgQXJhYmllXSAvIHRleHRlIGXMgXRhYmxpIGV0IHRyYWR1aXQgcGFyIEJpYmlhbmUgQm9tbWVsYWVyIC0tIHQuIDMuLCBwdC4gMi4gTGl2cmVzIFhYVklJLVhYWElJLCBGcmFnbWVudHMuIFtMZSBtb25kZSBtZcyBZGl0ZXJyYW5lzIFlbiBkZSAyMDYgYcyAIDE0NV0gLyB0ZXh0ZSBlzIF0YWJsaSwgdHJhZHVpdCBldCBjb21tZW50ZcyBIHBhciBQYXVsIEdvdWtvd3NreSAtLSB0LiA0LiBMaXZyZXMgWFhYSUlJLVhMLCBGcmFnbWVudHMgLyB0ZXh0ZSBlzIF0YWJsaSwgdHJhZHVpdCBldCBjb21tZW50ZcyBIHBhciBQYXVsIEdvdWtvd3NreSAtLSB0LiA1LiBMaXZyZSBWIDsgTGl2cmUgZGVzIGnMgmxlcyAvIHRleHRlIGXMgXRhYmxpIGV0IHRyYWR1aXQgcGFyIE1pY2hlbCBDYXNldml0eiA7IHByZcyBc2VudGXMgSBldCBjb21tZW50ZcyBIHBhciBBbm5lIEphY3F1ZW1pbiAtLSB0LiA2LiBMaXZyZSBYSSBbTGUgbW9uZGUgZ3JlYyBkZSA0ODAgYcyAIDQ1MF0gLyB0ZXh0ZSBlzIF0YWJsaSBldCB0cmFkdWl0IHBhciBKZWFuIEhhaWxsZXQgLS0gdC4gNy4gTGl2cmUgWElJIFtMZSBtb25kZSBncmVjIGRlIDQ1MCBhzIAgNDE1XSAvIHRleHRlIGXMgXRhYmxpIGV0IHRyYWR1aXQgcGFyIE1pY2hlbCBDYXNldml0eiAtLSB0LiA5LiBMaXZyZSBYSVYgW0xlIG1vbmRlIG1lzIFkaXRlcnJhbmXMgWVuIGRlIDQwNCBhzIAgMzg2XSAvIHRleHRlIGXMgXRhYmxpIGV0IHRyYWR1aXQgcGFyIE1hcnRpbmUgQm9ubmV0IGV0IEVyaWMgUi4gQmVubmV0dCAtLSB0LiAxMC4gTGl2cmUgMTUgW0xlcyBHcmVjcyBldCBsZXMgUGVyc2VzIGRlcyBhbm5lzIFlcyAzODYgYcyAIDM2MF0gLyB0ZXh0ZSBlzIF0YWJsaSBldCB0cmFkdWl0IHBhciBDbGF1ZGUgVmlhbCAtLSB0LiAxMS4gTGl2cmUgWFZJIC8gdGV4dGUgZcyBdGFibGkgcGFyIERhbmllzIBsZSBHYWlsbGFyZC1Hb3Vrb3dza3kgLS0gdC4gMTIuIExpdnJlIFhWSUkgW0xlcyBjb25xdWXMgnRlcyBtYWNlzIFkb25pZW5uZXNdIC8gdGV4dGUgZcyBdGFibGkgZXQgdHJhZHVpdCBwYXIgUGF1bCBHb3Vrb3dza3kgLS0gdC4gMTMuIExpdnJlIFhWSUlJIFtMZSBtb25kZSBncmVjIGRlIDMyMyBhzIAgMzE4XSAvIHRleHRlIGXMgXRhYmxpIGV0IHRyYWR1aXQgcGFyIFBhdWwgR291a293c2t5IC0tIHQuIDE0LiBMaXZyZSBYSVggW0xlIG1vbmRlIGdyZWMgZGUgMzE3IGHMgCAzMTBdIC8gdGV4dGUgZcyBdGFibGkgZXQgdHJhZHVpdCBwYXIgRnJhbmPMp29pc2UgQml6aWXMgHJlIC0tIHQuIDE1LiBMaXZyZSBYWCBbTGUgbW9uZGUgZ3JlYyA1MzhdIC8gdGV4dGUgZcyBdGFibGksIHRyYWR1aXQgZXQgY29tbWVudGXMgSBwYXIgQ2XMgWNpbGUgRHVydnllLiJdLCJsY19zdWJqZWN0X2Rpc3BsYXkiOlsiSGlzdG9yeSwgQW5jaWVudOKAlEVhcmx5IHdvcmtzIHRvIDE4MDAiXSwic3ViamVjdF9mYWNldCI6WyJIaXN0b3J5LCBBbmNpZW504oCURWFybHkgd29ya3MgdG8gMTgwMCJdLCJyZWxhdGVkX25hbWVfanNvbl8xZGlzcGxheSI6IntcIlJlbGF0ZWQgbmFtZVwiOltcIkdhaWxsYXJkLUdvdWtvd3NreSwgRGFuaWXMgGxlLlwiLFwiSmFjcXVlbWluLCBBbm5lXCIsXCJDb2hlbi1Ta2FsbGksIEF1ZGVcIixcIkNoYW1vdXgsIEZyYW5jzKdvaXNcIixcIkJlcnRyYWMsIFBpZXJyZVwiLFwiVmVybmllzIByZSwgWXZvbm5lXCIsXCJFY2ssIEJlcm5hcmRcIixcIkJvbW1lbGFlciwgQmliaWFuZVwiLFwiSGFpbGxldCwgSmVhblwiLFwiQ2FzZXZpdHosIE1pY2hlbFwiLFwiQm9ubmV0LCBNYXJ0aW5lXCIsXCJCZW5uZXQsIEVyaWMgUi5cIixcIlZpYWwsIENsYXVkZVwiLFwiR291a293c2t5LCBQYXVsXCIsXCJCaXppZcyAcmUsIEZyYW5jzKdvaXNlXCJdfSIsImlzYm5fZGlzcGxheSI6WyIyMjUxMDA0MzUxICgodi4gMSwgcHQuIDEpKSIsIjk3ODIyNTEwMDQzNTggKCh2LiAxLCBwdC4gMSkpIiwiMjI1MTAwNTcxNCAoKHYuIDEsIHB0LiAyKSkiLCI5NzgyMjUxMDA1NzEzICgodi4gMSwgcHQuIDIpKSIsIjIyNTEwMDUxMzcgKCh2LiAyLCBwdC4gMSkpIiwiOTc4MjI1MTAwNTEzMyAoKHYuIDIsIHB0LiAxKSkiLCIyMjUxMDA1MzIzICgodi4gMiwgcHQuIDIpKSIsIjk3ODIyNTEwMDUzMjQgKCh2LiAyLCBwdC4gMikpIiwiMjI1MTAwMzgxOSAoKHYuIDMsIHB0LiAxKSkiLCI5NzgyMjUxMDAzODE4ICgodi4gMywgcHQuIDEpKSIsIjIyNTEwMDU3MzAgKCh2LiAzLCBwdC4gMikpIiwiOTc4MjI1MTAwNTczNyAoKHYuIDMsIHB0LiAyKSkiLCIyMjUxMDA1ODYyICgodi4gNCkpIiwiOTc4MjI1MTAwNTg2NyAoKHYuIDQpKSIsIjIyNTEwMDYwMDEgKCh2LiA1KSkiLCI5NzgyMjUxMDA2MDAwICgodi4gNSkpIiwiMjI1MTAwNDg0WCAoKHYuIDYpKSIsIjk3ODIyNTEwMDQ4NDYgKCh2LiA2KSkiLCIyMjUxMDAwOTg0ICgodi4gNykpIiwiOTc4MjI1MTAwMDk4NSAoKHYuIDcpKSIsIjIyNTEwMDQ1OTkgKCh2LiA5KSkiLCI5NzgyMjUxMDA0NTk0ICgodi4gOSkpIiwiMjI1MTAwMDk5MiAoKHYuIDEwKSkiLCI5NzgyMjUxMDAwOTkyICgodi4gMTApKSIsIjIyNTEwMDYwMzYgKCh2LiAxMSkpIiwiOTc4MjI1MTAwNjAzMSAoKHYuIDExKSkiLCIyMjUxMDAxMDBYICgodi4gMTIpKSIsIjk3ODIyNTEwMDEwMDUgKCh2LiAxMikpIiwiMjI1MTAwMTAxOCAoKHYuIDEzKSkiLCI5NzgyMjUxMDAxMDEyICgodi4gMTMpKSIsIjIyNTEwMDEwMjYgKCh2LiAxNCkpIiwiOTc4MjI1MTAwMTAyOSAoKHYuIDE0KSkiLCI5NzgyMjUxMDA2MjA4ICgodi4gMTUpKSIsIjIyNTEwMDYyMDYgKCh2LiAxNSkpIl0sImlzYm5fcyI6WyI5NzgyMjUxMDA0MzU4IiwiOTc4MjI1MTAwNTcxMyIsIjk3ODIyNTEwMDUxMzMiLCI5NzgyMjUxMDA1MzI0IiwiOTc4MjI1MTAwMzgxOCIsIjk3ODIyNTEwMDU3MzciLCI5NzgyMjUxMDA1ODY3IiwiOTc4MjI1MTAwNjAwMCIsIjk3ODIyNTEwMDQ4NDYiLCI5NzgyMjUxMDAwOTg1IiwiOTc4MjI1MTAwNDU5NCIsIjk3ODIyNTEwMDA5OTIiLCI5NzgyMjUxMDA2MDMxIiwiOTc4MjI1MTAwMTAwNSIsIjk3ODIyNTEwMDEwMTIiLCI5NzgyMjUxMDAxMDI5IiwiOTc4MjI1MTAwNjIwOCJdLCJvY2xjX3MiOlsiOTA2NTA4MSJdLCJvdGhlcl92ZXJzaW9uX3MiOlsib2NtMDkwNjUwODEiLCJvY20wMzQwMDc4NCIsIm9jbjE1MDg1MTAwNSIsIm9jbjU1ODU5NjMzNiIsIm9jbjk0MDMyMTc3MSIsIjk3ODIyNTEwMDQzNTgiLCI5NzgyMjUxMDA1NzEzIiwiOTc4MjI1MTAwNTEzMyIsIjk3ODIyNTEwMDUzMjQiLCI5NzgyMjUxMDAzODE4IiwiOTc4MjI1MTAwNTczNyIsIjk3ODIyNTEwMDU4NjciLCI5NzgyMjUxMDA2MDAwIiwiOTc4MjI1MTAwNDg0NiIsIjk3ODIyNTEwMDA5ODUiLCI5NzgyMjUxMDA0NTk0IiwiOTc4MjI1MTAwMDk5MiIsIjk3ODIyNTEwMDYwMzEiLCI5NzgyMjUxMDAxMDA1IiwiOTc4MjI1MTAwMTAxMiIsIjk3ODIyNTEwMDEwMjkiLCI5NzgyMjUxMDA2MjA4Iiwib2NuNjA2Mjc4ODc3Iiwib2NuNjA3MzM3NDg1Il0sImxvY2F0aW9uX2NvZGVfcyI6WyJmaXJlc3RvbmUkY2xhcyIsImZpcmVzdG9uZSRzYyJdLCJsb2NhdGlvbiI6WyJGaXJlc3RvbmUgTGlicmFyeSJdLCJsb2NhdGlvbl9kaXNwbGF5IjpbIkNsYXNzaWNzIENvbGxlY3Rpb24iLCJDbGFzc2ljcyBHcmFkdWF0ZSBTdHVkeSBSb29tIl0sImFkdmFuY2VkX2xvY2F0aW9uX3MiOlsiZmlyZXN0b25lJGNsYXMiLCJmaXJlc3RvbmUkc2MiLCJGaXJlc3RvbmUgTGlicmFyeSJdLCJuYW1lX3VuaWZvcm1fdGl0bGVfMWRpc3BsYXkiOiJbW1wiRGlvZG9ydXMsIFNpY3VsdXMuXCIsXCJCaWJsaW90aGVjYSBoaXN0b3JpY2EuXCIsXCJGcmVuY2ggJiBHcmVla1wiXV0iLCJuYW1lX3RpdGxlX2Jyb3dzZV9zIjpbIkRpb2RvcnVzLCBTaWN1bHVzLiBCaWJsaW90aGVjYSBoaXN0b3JpY2EiLCJEaW9kb3J1cywgU2ljdWx1cy4gQmlibGlvdGhlY2EgaGlzdG9yaWNhLiBGcmVuY2ggJiBHcmVlayJdLCJjYWxsX251bWJlcl9kaXNwbGF5IjpbIlBBMzk2NSAuRDMgMTk3MiIsIlBBMzQwNSAuQjggdm9sLjExOC0xMjMsIGV0Yy4iXSwiY2FsbF9udW1iZXJfYnJvd3NlX3MiOlsiUEEzOTY1IC5EMyAxOTcyIiwiUEEzNDA1IC5COCB2b2wuMTE4LTEyMywgZXRjLiJdLCJjYWxsX251bWJlcl9sb2NhdG9yX2Rpc3BsYXkiOlsiUEEzOTY1IC5EMyAxOTcyIiwiUEEzNDA1IC5COCB2b2wuMTE4LTEyMywgZXRjLiJdLCJfdmVyc2lvbl8iOjE3MDcyNzI2NzQ2ODU3NDcyMDAsInRpbWVzdGFtcCI6IjIwMjEtMDgtMDVUMTY6NDg6MTEuNDYwWiIsImhvbGRpbmdzXzFkaXNwbGF5Ijoie1wiMjI2NzUwODkyMzAwMDY0MjFcIjp7XCJsb2NhdGlvbl9jb2RlXCI6XCJmaXJlc3RvbmUkY2xhc1wiLFwibG9jYXRpb25cIjpcIkNsYXNzaWNzIENvbGxlY3Rpb25cIixcImxpYnJhcnlcIjpcIkZpcmVzdG9uZSBMaWJyYXJ5XCIsXCJjYWxsX251bWJlclwiOlwiUEEzOTY1IC5EMyAxOTcyXCIsXCJjYWxsX251bWJlcl9icm93c2VcIjpcIlBBMzk2NSAuRDMgMTk3MlwiLFwibG9jYXRpb25faGFzXCI6W1wiVC4gMy10LiAxNVwiLFwiTEFDS1M6IHQuIDQtNiA7IDgtMTIsXCJdLFwiaXRlbXNcIjpbe1wiaG9sZGluZ19pZFwiOlwiMjI2NzUwODkyMzAwMDY0MjFcIixcImlkXCI6XCIyMzY3NTA4OTE4MDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImVudW1lcmF0aW9uXCI6XCJ0LjE1XCIsXCJiYXJjb2RlXCI6XCIzMjEwMTEwMTIyNjYxOVwiLFwiY29weV9udW1iZXJcIjpcIjBcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NzUwODkyMzAwMDY0MjFcIixcImlkXCI6XCIyMzY3NTA4OTIyMDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImVudW1lcmF0aW9uXCI6XCJ0LjcsYy4yXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA0NjYzNzI2OFwiLFwiY29weV9udW1iZXJcIjpcIjJcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NzUwODkyMzAwMDY0MjFcIixcImlkXCI6XCIyMzY3NTA4OTE5MDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImVudW1lcmF0aW9uXCI6XCJ0LjMsYy4yXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA5MjAxNzYwNVwiLFwiY29weV9udW1iZXJcIjpcIjJcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NzUwODkyMzAwMDY0MjFcIixcImlkXCI6XCIyMzY3NTA4OTIwMDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImVudW1lcmF0aW9uXCI6XCJ0LjE0LGMuMlwiLFwiYmFyY29kZVwiOlwiMzIxMDEwNDY2MzczMDBcIixcImNvcHlfbnVtYmVyXCI6XCIyXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNjc1MDg5MjMwMDA2NDIxXCIsXCJpZFwiOlwiMjM2NzUwODkyMTAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJlbnVtZXJhdGlvblwiOlwidC4xMyxjLjJcIixcImJhcmNvZGVcIjpcIjMyMTAxMDQ2NjM3Mjc2XCIsXCJjb3B5X251bWJlclwiOlwiMlwifV19LFwiMjI2NzUwODk0MjAwMDY0MjFcIjp7XCJsb2NhdGlvbl9jb2RlXCI6XCJmaXJlc3RvbmUkY2xhc1wiLFwibG9jYXRpb25cIjpcIkNsYXNzaWNzIENvbGxlY3Rpb25cIixcImxpYnJhcnlcIjpcIkZpcmVzdG9uZSBMaWJyYXJ5XCIsXCJjYWxsX251bWJlclwiOlwiUEEzOTY1IC5EMyAxOTcyXCIsXCJjYWxsX251bWJlcl9icm93c2VcIjpcIlBBMzk2NSAuRDMgMTk3MlwiLFwibG9jYXRpb25faGFzXCI6W1wiVC4gMS10LiAxNiAocHVibGlzaGVkIDIwMTYpXCIsXCJMQUNLUzogdC4gOFwiXSxcIml0ZW1zXCI6W3tcImhvbGRpbmdfaWRcIjpcIjIyNjc1MDg5NDIwMDA2NDIxXCIsXCJpZFwiOlwiMjM2NzUwODkzNTAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJlbnVtZXJhdGlvblwiOlwidC4xNFwiLFwiYmFyY29kZVwiOlwiMzIxMDEwNDY2MzcyNTBcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNjc1MDg5NDIwMDA2NDIxXCIsXCJpZFwiOlwiMjM2NzUwODkyNjAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJlbnVtZXJhdGlvblwiOlwidC45XCIsXCJiYXJjb2RlXCI6XCIzMjEwMTAzMjI4MzQxNlwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NzUwODk0MjAwMDY0MjFcIixcImlkXCI6XCIyMzY3NTA4OTI3MDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImVudW1lcmF0aW9uXCI6XCJ0LjE1XCIsXCJiYXJjb2RlXCI6XCIzMjEwMTEwMjU1MTM2MVwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NzUwODk0MjAwMDY0MjFcIixcImlkXCI6XCIyMzY3NTA4OTM0MDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImVudW1lcmF0aW9uXCI6XCJ0LjE2XCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA5OTY2MTk4M1wiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NzUwODk0MjAwMDY0MjFcIixcImlkXCI6XCIyMzY3NTA4OTM2MDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImVudW1lcmF0aW9uXCI6XCJ0LjEzXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA0NjYzNzI0M1wiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NzUwODk0MjAwMDY0MjFcIixcImlkXCI6XCIyMzY3NTA4OTMzMDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImVudW1lcmF0aW9uXCI6XCJ0LjNcIixcImJhcmNvZGVcIjpcIjMyMTAxMDQ3NjQ5MDcyXCIsXCJjb3B5X251bWJlclwiOlwiMVwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjY3NTA4OTQyMDAwNjQyMVwiLFwiaWRcIjpcIjIzNjc1MDg5MjQwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiZW51bWVyYXRpb25cIjpcInQuMTFcIixcImJhcmNvZGVcIjpcIjMyMTAxMDk4NjgzMzUwXCIsXCJjb3B5X251bWJlclwiOlwiMFwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjY3NTA4OTQyMDAwNjQyMVwiLFwiaWRcIjpcIjIzNjc1MDg5MjUwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiZW51bWVyYXRpb25cIjpcInQuNFwiLFwiYmFyY29kZVwiOlwiMzIxMDEwNjk1NzkwMDlcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNjc1MDg5NDIwMDA2NDIxXCIsXCJpZFwiOlwiMjM2NzUwODkyODAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJlbnVtZXJhdGlvblwiOlwidC41XCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA5NjI5MDIzMlwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NzUwODk0MjAwMDY0MjFcIixcImlkXCI6XCIyMzY3NTA4OTI5MDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImVudW1lcmF0aW9uXCI6XCJ0LjZcIixcImJhcmNvZGVcIjpcIjMyMTAxMDU5OTQxNTE2XCIsXCJjb3B5X251bWJlclwiOlwiMVwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjY3NTA4OTQyMDAwNjQyMVwiLFwiaWRcIjpcIjIzNjc1MDg5MzAwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiZW51bWVyYXRpb25cIjpcInQuMlwiLFwiYmFyY29kZVwiOlwiMzIxMDEwNTA3ODY3NjFcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNjc1MDg5NDIwMDA2NDIxXCIsXCJpZFwiOlwiMjM2NzUwODkzMTAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIwXCIsXCJlbnVtZXJhdGlvblwiOlwidC4xMFwiLFwiYmFyY29kZVwiOlwiMzIxMDEwNDY2MzcyOTJcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNjc1MDg5NDIwMDA2NDIxXCIsXCJpZFwiOlwiMjM2NzUwODkzMjAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJlbnVtZXJhdGlvblwiOlwidC4xMlwiLFwiYmFyY29kZVwiOlwiMzIxMDEwNDY2MzcyODRcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNjc1MDg5NDIwMDA2NDIxXCIsXCJpZFwiOlwiMjM2NzUwODkzNzAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJlbnVtZXJhdGlvblwiOlwidC43XCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA0NjY4NjA5MVwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NzUwODk0MjAwMDY0MjFcIixcImlkXCI6XCIyMzY3NTA4OTM4MDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImVudW1lcmF0aW9uXCI6XCJ0LjFcIixcImJhcmNvZGVcIjpcIjMyMTAxMDQ0NDExNDE5XCIsXCJjb3B5X251bWJlclwiOlwiMVwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjY3NTA4OTQyMDAwNjQyMVwiLFwiaWRcIjpcIjIzNjc1MDg5NDEwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMFwiLFwiZW51bWVyYXRpb25cIjpcIjIwXCIsXCJiYXJjb2RlXCI6XCJJU1NpdG0zMTkxNi4yMDAtcHJpbmNldG9uZGJcIn1dfSxcIjIyNjc1MDg5MTcwMDA2NDIxXCI6e1wibG9jYXRpb25fY29kZVwiOlwiZmlyZXN0b25lJHNjXCIsXCJsb2NhdGlvblwiOlwiQ2xhc3NpY3MgR3JhZHVhdGUgU3R1ZHkgUm9vbVwiLFwibGlicmFyeVwiOlwiRmlyZXN0b25lIExpYnJhcnlcIixcImNhbGxfbnVtYmVyXCI6XCJQQTM0MDUgLkI4IHZvbC4xMTgtMTIzLCBldGMuXCIsXCJjYWxsX251bWJlcl9icm93c2VcIjpcIlBBMzQwNSAuQjggdm9sLjExOC0xMjMsIGV0Yy5cIixcImxvY2F0aW9uX2hhc1wiOltcIlQuIDEtdC4gMywgNS03LCA5LTExLCAxMi0xNSAocHVibGlzaGVkIGluIDIwMTgpXCJdLFwiaXRlbXNcIjpbe1wiaG9sZGluZ19pZFwiOlwiMjI2NzUwODkxNzAwMDY0MjFcIixcImlkXCI6XCIyMzY3NTA4OTEwMDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImVudW1lcmF0aW9uXCI6XCJ0LjEwXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA1MDM3NDc2NlwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NzUwODkxNzAwMDY0MjFcIixcImlkXCI6XCIyMzY3NTA4OTAzMDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImVudW1lcmF0aW9uXCI6XCJ0LjE1XCIsXCJiYXJjb2RlXCI6XCIzMjEwMTEwMTIyNjYyN1wiLFwiY29weV9udW1iZXJcIjpcIjBcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NzUwODkxNzAwMDY0MjFcIixcImlkXCI6XCIyMzY3NTA4OTA0MDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImVudW1lcmF0aW9uXCI6XCJ0LjExXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA5ODY4MzM2OFwiLFwiY29weV9udW1iZXJcIjpcIjBcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NzUwODkxNzAwMDY0MjFcIixcImlkXCI6XCIyMzY3NTA4OTAxMDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImVudW1lcmF0aW9uXCI6XCJ0LjVcIixcImJhcmNvZGVcIjpcIjMyMTAxMDkxMjY3NjQ5XCIsXCJjb3B5X251bWJlclwiOlwiMFwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjY3NTA4OTE3MDAwNjQyMVwiLFwiaWRcIjpcIjIzNjc1MDg5MDgwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiZW51bWVyYXRpb25cIjpcInQuMTNcIixcImJhcmNvZGVcIjpcIjMyMTAxMDUwMzc0NzgyXCIsXCJjb3B5X251bWJlclwiOlwiMVwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjY3NTA4OTE3MDAwNjQyMVwiLFwiaWRcIjpcIjIzNjc1MDg5MDkwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiZW51bWVyYXRpb25cIjpcInQuMTJcIixcImJhcmNvZGVcIjpcIjMyMTAxMDUwMzc0Nzc0XCIsXCJjb3B5X251bWJlclwiOlwiMVwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjY3NTA4OTE3MDAwNjQyMVwiLFwiaWRcIjpcIjIzNjc1MDg5MDcwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiZW51bWVyYXRpb25cIjpcInQuMTRcIixcImJhcmNvZGVcIjpcIjMyMTAxMDUwMzc0NzkwXCIsXCJjb3B5X251bWJlclwiOlwiMVwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjY3NTA4OTE3MDAwNjQyMVwiLFwiaWRcIjpcIjIzNjc1MDg5MTYwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiZW51bWVyYXRpb25cIjpcInQuMVwiLFwiYmFyY29kZVwiOlwiMzIxMDEwOTg2ODQxMjdcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNjc1MDg5MTcwMDA2NDIxXCIsXCJpZFwiOlwiMjM2NzUwODkxMTAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJlbnVtZXJhdGlvblwiOlwidC45XCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA1MDM3NDc1OFwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NzUwODkxNzAwMDY0MjFcIixcImlkXCI6XCIyMzY3NTA4OTEyMDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImVudW1lcmF0aW9uXCI6XCJ0LjdcIixcImJhcmNvZGVcIjpcIjMyMTAxMDUwMzc0NzQxXCIsXCJjb3B5X251bWJlclwiOlwiMVwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjY3NTA4OTE3MDAwNjQyMVwiLFwiaWRcIjpcIjIzNjc1MDg5MTMwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiZW51bWVyYXRpb25cIjpcInQuNlwiLFwiYmFyY29kZVwiOlwiMzIxMDEwNTAzNzQ3MzNcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNjc1MDg5MTcwMDA2NDIxXCIsXCJpZFwiOlwiMjM2NzUwODkxNDAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJlbnVtZXJhdGlvblwiOlwidC4zXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA1MDM3NDcyNVwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NzUwODkxNzAwMDY0MjFcIixcImlkXCI6XCIyMzY3NTA4OTE1MDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImVudW1lcmF0aW9uXCI6XCJ0LjJcIixcImJhcmNvZGVcIjpcIjMyMTAxMDUwMzc0NzE3XCIsXCJjb3B5X251bWJlclwiOlwiMVwifV19fSJ9
-  recorded_at: Fri, 06 Aug 2021 12:12:13 GMT
-- request:
-    method: get
-    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/firestone$clas.json
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.5.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx/1.19.10
-      Date:
-      - Fri, 06 Aug 2021 12:12:13 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      Access-Control-Allow-Headers:
-      - Origin, Content-Type, Accept, Authorization, Token
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Access-Control-Allow-Origin:
-      - "*"
-      Etag:
-      - W/"f20c8894da1c984b43eb0d1abb025f73"
-      X-Runtime:
-      - '0.012048'
-      Access-Control-Request-Method:
-      - GET
-      X-Request-Id:
-      - aead7023-4666-42de-9c22-f5d74c98166f
-      X-Powered-By:
-      - Phusion Passenger(R) 6.0.9
-    body:
-      encoding: UTF-8
-      string: '{"label":"Classics Collection","code":"firestone$clas","aeon_location":false,"recap_electronic_delivery_location":false,"open":true,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"","library":{"label":"Firestone
-        Library","code":"firestone","order":0},"holding_library":null,"hours_location":null,"delivery_locations":[]}'
   recorded_at: Fri, 06 Aug 2021 12:12:13 GMT
 - request:
     method: get
