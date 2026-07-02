@@ -746,6 +746,12 @@ class CatalogController < ApplicationController
       return true if request.env['HTTP_USER_AGENT'].blank?
       request.bot?
     }
+    config.default_solr_params = {
+      'group': true,
+      'group.field': 'cluster_id',
+      'group.limit': -1,
+      'group.ngroups': true
+    }
   end
 
   def sms_mappings
