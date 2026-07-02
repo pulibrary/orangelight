@@ -329,6 +329,7 @@
         id,
         score,
         author_display,
+        cluster_id,
         marc_relator_display,
         format,
         pub_created_display,
