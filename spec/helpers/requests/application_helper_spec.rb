@@ -32,6 +32,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     before do
       stub_single_holding_location 'firestone$stacks'
       stub_catalog_raw bib_id: '9981794023506421'
+      stub_availability_by_holding_id bib_id: '9981794023506421', holding_id: '22591269990006421'
     end
 
     it 'returns a boolean to disable/enable submit' do
