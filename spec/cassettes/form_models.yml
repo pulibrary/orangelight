@@ -2,58 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9981794023506421/holdings/22591269990006421/availability.json
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.5.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx/1.19.10
-      Date:
-      - Fri, 06 Aug 2021 13:51:53 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      Access-Control-Allow-Headers:
-      - Origin, Content-Type, Accept, Authorization, Token
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Access-Control-Allow-Origin:
-      - "*"
-      Etag:
-      - W/"02b14b8fcc270a9e61885deaf30ce538"
-      X-Runtime:
-      - '10.984203'
-      Access-Control-Request-Method:
-      - GET
-      X-Request-Id:
-      - 0d9f6c6c-fa72-449a-a6b6-2e81123d8404
-      X-Powered-By:
-      - Phusion Passenger(R) 6.0.9
-    body:
-      encoding: UTF-8
-      string: '[{"barcode":"32101089774630","id":"23591269960006421","holding_id":"22591269990006421","copy_number":"1","status":"Available","status_label":"Item
-        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"Gen","pickup_location_id":"firestone","pickup_location_code":"firestone","location":"firestone$stacks","label":"Firestone
-        Library - Stacks","description":"","enum_display":"","chron_display":"","in_temp_library":false}]'
-  recorded_at: Fri, 06 Aug 2021 13:51:53 GMT
-- request:
-    method: get
     uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9992220243506421/holdings/22558467250006421/availability.json
     body:
       encoding: US-ASCII
