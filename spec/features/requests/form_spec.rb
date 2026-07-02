@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-describe 'request form', vcr: { cassette_name: 'form_features', record: :none }, type: :feature, requests: true do
+describe 'request form', type: :feature, requests: true do
   include ActiveJob::TestHelper
 
   let(:mms_id) { '9994933183506421?mfhd=22558528920006421' }
@@ -108,6 +108,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     describe 'When visiting an Alma ID as a CAS User' do
       let(:good_response) { file_fixture('../scsb_request_item_response.json') }
       it 'Shows a ReCAP PUL item that is at "preservation and conservation" as a Resource Sharing partner request' do
+        stub_availability_by_holding_id(bib_id: '9941150973506421', holding_id: '22492663380006421')
         stub_single_holding_location 'recap$pa'
         stub_illiad_patron
         stub_request(:post, transaction_url)
@@ -139,6 +140,8 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'allow CAS patrons to request an available ReCAP PUL item.' do
+        stub_availability_by_holding_id(bib_id: '9994933183506421', holding_id: '22558528920006421')
+        stub_catalog_raw(bib_id: '9994933183506421')
         stub_single_holding_location 'recap$pa'
         stub_scsb_availability(bib_id: "9994933183506421", institution_id: "PUL", barcode: '32101095798938')
         scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
@@ -174,6 +177,8 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'allows CAS patrons to request In-Process items that reside in a PUL library and can only be delivered to that library' do
+        stub_availability_by_holding_id(bib_id: '99117665883506421', holding_id: '22707341710006421')
+        stub_single_holding_location('eastasian$cjk')
         stub_catalog_raw bib_id: '99117665883506421'
         visit "/requests/#{in_process_id}"
         expect(page).to have_content 'In Process'
@@ -184,6 +189,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
       # In-Process -> it's waiting to be cataloged in a PUL library and then shipped to RECAP
       it 'makes sure In-Process ReCAP items with no holding library can be delivered anywhere' do
+        stub_availability_by_holding_id(bib_id: '99114026863506421', holding_id: '22753408610006421')
         stub_catalog_raw bib_id: '99114026863506421'
         stub_single_holding_location 'recap$pa'
         stub_scsb_availability(bib_id: "99114026863506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
@@ -214,6 +220,8 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       # This is an example item that was in incorrect state.
       # It has changed. We still want to keep this scenario in case it happens again.
       it 'allows CAS patrons to request a ReCAP PUL record that has no item data' do
+        stub_availability_by_holding_id(bib_id: '99113283293506421', holding_id: '22750642660006421')
+        stub_catalog_raw(bib_id: '99113283293506421')
         stub_single_holding_location 'recap$pa'
         visit "/requests/99113283293506421?mfhd=22750642660006421"
         check('requestable_selected', exact: true)
@@ -222,12 +230,18 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'allows CAS patrons to request a PUL record that has no item data' do
+        stub_availability_by_holding_id(bib_id: '993083506421', holding_id: '22740191170006421')
+        stub_single_holding_location('firestone$stacks')
+        stub_catalog_raw(bib_id: '993083506421')
         visit "/requests/#{on_shelf_no_items_id}"
         choose('requestable__delivery_mode_22740191170006421_print') # chooses 'print' radio button
         expect(page).to have_content "Pick-up location: Firestone Library"
         expect(page).to have_content "Requests for pick-up typically take 2 business days to process."
       end
       it 'allows CAS patrons to request an on_shelf record' do
+        stub_availability_by_holding_id(bib_id: '9912636153506421', holding_id: '22557213410006421')
+        stub_single_holding_location('firestone$stacks')
+        stub_catalog_raw(bib_id: '9912636153506421')
         stub_alma_hold_success('9912636153506421', '22557213410006421', '23557213400006421', '960594184')
 
         visit "requests/9912636153506421?mfhd=22557213410006421"
@@ -255,6 +269,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'shows the CAS patron a duplication message when they request an item more than once' do
+        stub_availability_by_holding_id(bib_id: '9912636153506421', holding_id: '22557213410006421')
+        stub_single_holding_location('firestone$stacks')
+        stub_catalog_raw(bib_id: '9912636153506421')
         stub_alma_hold('9912636153506421', '22557213410006421', '23557213400006421', '960594184', status: 200, fixture_name: "alma_hold_error_response.json")
 
         visit "requests/9912636153506421?mfhd=22557213410006421"
@@ -268,6 +285,8 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(page).to have_content 'You have sent a duplicate request to Alma for this item'
       end
       it 'allows CAS patrons to request a PUL electronic document delivery (EDD) ReCAP item' do
+        stub_availability_by_holding_id(bib_id: '9999443553506421', holding_id: '22743365320006421')
+        stub_catalog_raw(bib_id: '9999443553506421')
         stub_single_holding_location 'recap$pa'
         scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
         stub_request(:post, scsb_url)
@@ -296,6 +315,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'allows CAS patrons to request a Forrestal Annex item' do
+        stub_availability_by_holding_id(bib_id: '999455503506421', holding_id: '22642306790006421')
+        stub_single_holding_location('annex$fst')
+        stub_catalog_raw(bib_id: '999455503506421')
         stub_alma_hold_success('999455503506421', '22642306790006421', '23642306760006421', '960594184')
         visit '/requests/999455503506421?mfhd=22642306790006421'
         choose('requestable__delivery_mode_23642306760006421_print') # chooses 'print' radio button
@@ -327,6 +349,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'allows CAS patrons to request electronic delivery of a Forrestal item' do
+        stub_single_holding_location('annex$stacks')
         stub_catalog_raw(bib_id: '9956562643506421')
         stub_availability_by_holding_id(bib_id: '9956562643506421', holding_id: '22700125400006421')
         stub_illiad_patron
@@ -346,6 +369,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'allows CAS patrons to make an electronic document delivery request for a Lewis ReCAP item' do
+        stub_availability_by_holding_id(bib_id: '9970533073506421', holding_id: '22667391160006421')
+        stub_single_holding_location('lewis$pn')
+        stub_catalog_raw(bib_id: '9970533073506421')
         scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
         stub_scsb_availability(bib_id: "9970533073506421", institution_id: "PUL", barcode: '32101051217659')
         stub_request(:post, scsb_url)
@@ -371,6 +397,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'allows CAS patrons to request a Lewis physical item' do
+        stub_availability_by_holding_id(bib_id: '9970533073506421', holding_id: '22667391180006421')
+        stub_single_holding_location('lewis$stacks')
+        stub_catalog_raw(bib_id: '9970533073506421')
         stub_scsb_availability(bib_id: "9994933183506421", institution_id: "PUL", barcode: '32101095798938')
         stub_alma_hold_success('9970533073506421', '22667391180006421', '23667391170006421', '960594184')
         visit '/requests/9970533073506421?mfhd=22667391180006421'
@@ -398,6 +427,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'allows CAS patrons to ask for digitization on non circulating items' do
+        stub_availability_by_holding_id(bib_id: '9995948403506421', holding_id: '22500774400006421')
+        stub_single_holding_location('lewis$ref')
+        stub_catalog_raw(bib_id: '9995948403506421')
         visit '/requests/9995948403506421?mfhd=22500774400006421'
         expect(page).to have_content 'Electronic Delivery'
         expect(page).not_to have_content 'Pick-up location: Lewis Library'
@@ -405,6 +437,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'shows a fill in form if the item is an enumeration (Journal ect.) and choose a print copy' do
+        stub_availability_by_holding_id(bib_id: '99105746993506421', holding_id: '22547424510006421')
+        stub_single_holding_location('firestone$stacks')
+        stub_catalog_raw(bib_id: '99105746993506421')
         visit 'requests/99105746993506421?mfhd=22547424510006421'
         choose('requestable__delivery_mode_22547424510006421_print')
         expect(page).to have_content 'Pick-up location: Firestone Library'
@@ -436,6 +471,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'shows a fill in form if the item is an enumeration (Journal etc.) and choose a electronic copy' do
+        stub_availability_by_holding_id(bib_id: '99105746993506421', holding_id: '22547424510006421')
+        stub_single_holding_location('firestone$stacks')
+        stub_catalog_raw(bib_id: '99105746993506421')
         stub_illiad_patron
         stub_request(:post, transaction_url)
           .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Article Express Processing", "RequestType" => "Article", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "PhotoItemAuthor" => "", "PhotoArticleAuthor" => "", "PhotoJournalTitle" => "Mefisto : rivista di medicina, filosofia, storia", "PhotoItemPublisher" => "", "ISSN" => "", "CallNumber" => "R131.A1 M38", "PhotoJournalInclusivePages" => "-", "CitedIn" => "https://catalog.princeton.edu/catalog/99105746993506421", "PhotoJournalYear" => "2017", "PhotoJournalVolume" => "ABC ZZZ",
@@ -469,6 +507,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it "shows items in the Architecture Library as available" do
+        stub_availability_by_holding_id(bib_id: '99117876713506421', holding_id: '22561348800006421')
+        stub_single_holding_location('arch$stacks')
+        stub_catalog_raw(bib_id: '99117876713506421')
         stub_alma_hold_success('99117876713506421', '22561348800006421', '23561348790006421', '960594184')
         visit '/requests/99117876713506421?mfhd=22561348800006421'
         # choose('requestable__delivery_mode_8298341_edd') # chooses 'edd' radio button
@@ -490,6 +531,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it "allows requests of ReCAP pick-up only items" do
+        stub_availability_by_holding_id(bib_id: '99115783193506421', holding_id: '22534122440006421')
+        stub_single_holding_location('recap$qv')
+        stub_catalog_raw(bib_id: '99115783193506421')
         scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
         stub_scsb_availability(bib_id: "99115783193506421", institution_id: "PUL", barcode: '32101108035435')
         stub_request(:post, scsb_url)
@@ -517,6 +561,8 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
 
       context 'Resource Sharing request via Illiad' do
         it 'sends requests directly to Illiad' do
+          stub_availability_by_holding_id(bib_id: '9917887963506421', holding_id: '22503918400006421')
+          stub_single_holding_location('firestone$stacks')
           stub_illiad_patron
           stub_request(:post, transaction_url)
             .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing",
@@ -548,6 +594,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
       context 'Annex with item data' do
         it 'an Annex item with user supplied information creates Annex emails' do
+          stub_availability_by_holding_id(bib_id: '9922868943506421', holding_id: '22692156940006421')
+          stub_single_holding_location('annex$locked')
+          stub_catalog_raw(bib_id: '9922868943506421')
           patron = instance_double(Requests::Patron, core_patron_group?: true, affiliate_patron_group?: false)
           allow(patron).to receive(:user).and_return(user)
           allow(patron).to receive(:errors).and_return([])
@@ -649,6 +698,8 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'allows an in process item to be requested' do
+        stub_availability_by_holding_id(bib_id: '99117665883506421', holding_id: '22707341710006421')
+        stub_single_holding_location('eastasian$cjk')
         stub_catalog_raw bib_id: '99117665883506421'
         visit "/requests/#{in_process_id}"
         expect(page).to have_content 'In Process materials are typically available in several business days'
@@ -670,6 +721,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
 
       context 'disavowed Illiad user' do
         it 'allows a non circulating item with not item data to be digitized to be requested, but then errors' do
+          stub_availability_by_holding_id(bib_id: '9941274093506421', holding_id: '22690999210006421')
+          stub_single_holding_location('marquand$stacks')
+          stub_catalog_raw(bib_id: '9941274093506421')
           stub_illiad_patron(disavowed: true)
           visit '/requests/9941274093506421?mfhd=22690999210006421'
           expect(page).to have_content 'Electronic Delivery'
@@ -716,6 +770,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it "Display only the 'In Library Use' option for an in library use only ReCAP Partner item" do
+        stub_single_holding_location('scsbnypl')
         scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
         stub_request(:post, scsb_url)
           .with(body: hash_including(author: nil, bibId: "SCSB-8953469", callNumber: "ReCAP 18-69309", chapterTitle: nil, deliveryLocation: "QX", emailAddress: "a@b.com", endPage: nil, issue: nil, itemBarcodes: ["33433121206696"], itemOwningInstitution: "NYPL", patronBarcode: "22101008199999", requestNotes: nil, requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: nil, titleIdentifier: "1955-1968 : gli artisti italiani alle Documenta di Kassel", username: "jstudent", volume: nil))
@@ -738,6 +793,8 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'Shows a PUL ReCAP item that has not made it to ReCAP available for a Resource Sharing Request' do
+        stub_availability_by_holding_id(bib_id: '99123340993506421', holding_id: '22569931350006421')
+        stub_catalog_raw(bib_id: '99123340993506421')
         stub_single_holding_location 'recap$pa'
         stub_illiad_patron
         stub_scsb_availability(bib_id: "99123340993506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
@@ -747,6 +804,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it "Delivers ReCAP Partner in library use music items only to Mendel Music Library" do
+        stub_catalog_raw(bib_id: 'SCSB-9726156', type: 'scsb')
         # Why does stub use the wrong bib_id?
         stub_scsb_availability(bib_id: "14577462", institution_id: "CUL", barcode: 'MR00393223')
         stub_single_holding_location 'scsbcul'
@@ -756,6 +814,8 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it "a ReCAP Partner item from Harvard that is restricted to in library use at Marquand" do
+        stub_single_holding_location('scsbhl')
+        stub_catalog_raw(bib_id: 'SCSB-9919951', type: 'scsb')
         scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
         # Why does stub use the wrong bib_id?
         stub_scsb_availability(bib_id: "990143653400203941", institution_id: "HL", barcode: '32044136602687')
@@ -771,6 +831,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'Request an enumerated on campus item correctly' do
+        stub_availability_by_holding_id(bib_id: '9973397793506421', holding_id: '22541187250006421')
+        stub_single_holding_location('eastasian$cjk')
+        stub_catalog_raw(bib_id: '9973397793506421')
         stub_illiad_patron
         stub_alma_hold_success('9973397793506421', '22541187250006421', '23541187200006421', '960594184')
         visit '/requests/9973397793506421?mfhd=22541187250006421'
@@ -799,6 +862,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'Request a Forrestal Annex In Library Use book correctly' do
+        stub_availability_by_holding_id(bib_id: '9941347943506421', holding_id: '22560381400006421')
+        stub_single_holding_location('annex$stacks')
+        stub_catalog_raw(bib_id: '9941347943506421')
         stub_alma_hold_success('9941347943506421', '22560381400006421', '23560381360006421', '960594184')
         visit 'requests/9941347943506421?mfhd=22560381400006421'
         expect(page).to have_content "Er ru ting Qun fang pu : [san shi juan]"
@@ -832,10 +898,11 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
           stub_alma_hold_success('99105816503506421', '22514405160006421', '23514405150006421', '960594184')
           stub_catalog_raw(bib_id: '99105816503506421')
           stub_request(:post, transaction_url)
-            .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "Zhongguo xin li xue hui", "LoanTitle" => "Xin li ke xue = Journal of psychological science 心理科学 = Journal of psychological science", "LoanPublisher" => nil, "ISSN" => "", "CallNumber" => "BF8.C5 H76", "CitedIn" => "https://catalog.princeton.edu/catalog/9941150973506421", "ItemInfo3" => "no.217-218", "ItemInfo4" => nil, "AcceptNonEnglish" => true, "ESPNumber" => nil, "DocumentType" => "Book", "LoanPlace" => nil))
-            .to_return(status: 200, body: responses[:transaction_created], headers: {})
+            .to_return(status: 401, body: '', headers: {})
         end
         it 'with an electronic delivery' do
+          stub_availability_by_holding_id(bib_id: '99105816503506421', holding_id: '22514405160006421')
+          stub_single_holding_location('arch$la')
           visit 'requests/99105816503506421?mfhd=22514405160006421'
           expect(page).to have_content "SOS brutalism : a global survey"
           expect(page).to have_content 'Elser, Oliver'
@@ -853,6 +920,8 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
           expect(a_request(:post, transaction_url)).to have_been_made
         end
         it 'with a Physical delivery' do
+          stub_availability_by_holding_id(bib_id: '99105816503506421', holding_id: '22514405160006421')
+          stub_single_holding_location('arch$la')
           visit 'requests/99105816503506421?mfhd=22514405160006421'
           expect(page).to have_content "SOS brutalism : a global survey"
           expect(page).to have_content 'Elser, Oliver'
@@ -882,6 +951,8 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
           stub_catalog_raw(bib_id: '9991807103506421')
         end
         it 'request via partner library' do
+          stub_availability_by_holding_id(bib_id: '9991807103506421', holding_id: '22696270550006421')
+          stub_single_holding_location('firestone$stacks')
           visit 'requests/9991807103506421?mfhd=22696270550006421'
           expect(page).to have_content "Towards the critique of violence : Walter Benjamin and Giorgio Agamben"
           expect(page).to have_content 'Moran, Brendan P.'
@@ -900,6 +971,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     end
 
     it 'Request a Forrestal Annex with no items will email annex' do
+      stub_availability_by_holding_id(bib_id: '9941347943506421', holding_id: '22560381400006421')
+      stub_single_holding_location('annex$stacks')
+      stub_catalog_raw(bib_id: '9941347943506421')
       stub_alma_hold_success('9941347943506421', '22560381400006421', '23560381360006421', '960594184')
       visit 'requests/9941347943506421?mfhd=22560381400006421'
       expect(page).to have_content "Er ru ting Qun fang pu : [san shi juan]"
@@ -928,11 +1002,17 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     end
 
     it 'Handles a bad mfhd without system error' do
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/bibliographic/998574693506421/holdings/abc123/availability.json")
+        .to_return(status: 504)
+      stub_catalog_raw(bib_id: '998574693506421')
       visit 'requests/998574693506421?mfhd=abc123'
       expect(page).to have_content "Science"
     end
 
     it 'has firestone as the resource sharing delivery location' do
+      stub_availability_by_holding_id(bib_id: '99123713303506421', holding_id: '22668310350006421')
+      stub_single_holding_location('arch$ref')
+      stub_catalog_raw(bib_id: '99123713303506421')
       stub_illiad_patron
       visit 'requests/99123713303506421?mfhd=22668310350006421'
       expect(page).to have_content 'Reconstructions : architecture and Blackness in America'
@@ -951,6 +1031,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
 
     describe 'Visits a request page', js: true do
       it 'Tells the user their patron record is not available' do
+        stub_availability_by_holding_id(bib_id: '99117809653506421', holding_id: '22613352460006421')
+        stub_single_holding_location('marquand$pj')
+        stub_catalog_raw(bib_id: '99117809653506421')
         stub_scsb_availability bib_id: '99117809653506421', institution_id: 'PUL', barcode: '32101106347378'
         visit "/requests/99117809653506421?mfhd=22613352460006421"
         expect(a_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")).to have_been_made
@@ -992,6 +1075,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
 
     describe 'When visiting an Alma ID as a user without a barcode' do
       it 'disallows access to request an available ReCAP item.' do
+        stub_availability_by_holding_id(bib_id: '9994933183506421', holding_id: '22558528920006421')
         stub_single_holding_location 'recap$pa'
         stub_scsb_availability(bib_id: "9994933183506421", institution_id: "PUL", barcode: '32101095798938')
         stub_catalog_raw bib_id: '9994933183506421'
@@ -1003,6 +1087,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'disallows access to In Process items' do
+        stub_availability_by_holding_id(bib_id: '99124449473506421', holding_id: '22664801380006421')
+        stub_single_holding_location('marquand$stacks')
+        stub_catalog_raw(bib_id: '99124449473506421')
         visit "/requests/#{in_process_id}"
         expect(page).not_to have_content 'Electronic Delivery'
         expect(page).not_to have_content 'Physical Item Delivery'
@@ -1011,6 +1098,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'disallows access for In Process recap items' do
+        stub_availability_by_holding_id(bib_id: '99114026863506421', holding_id: '22753408610006421')
         stub_single_holding_location 'recap$pa'
         stub_scsb_availability bib_id: '99114026863506421', institution_id: 'PUL', barcode: 'fake-barcode'
         stub_catalog_raw bib_id: '99114026863506421'
@@ -1022,6 +1110,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'disallows access to a record that has no item data' do
+        stub_availability_by_holding_id(bib_id: '9941274093506421', holding_id: '22690999210006421')
+        stub_single_holding_location('marquand$stacks')
+        stub_catalog_raw(bib_id: '9941274093506421')
         visit "/requests/#{no_items_id}"
         expect(page).not_to have_button('Request this Item')
         expect(page).not_to have_content 'Electronic Delivery'
@@ -1031,6 +1122,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'disallows access to a ReCAP record that has no item data to be digitized' do
+        stub_availability_by_holding_id(bib_id: '993083506421', holding_id: '22740191180006421')
+        stub_single_holding_location('firestone$pf')
+        stub_catalog_raw(bib_id: '993083506421')
         visit "/requests/993083506421?mfhd=22740191180006421"
         expect(page).not_to have_content 'Electronic Delivery'
         expect(page).not_to have_content 'Physical Item Delivery'
@@ -1039,6 +1133,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'disallows access to request an on-campus item' do
+        stub_availability_by_holding_id(bib_id: '9997708113506421', holding_id: '22729045760006421')
+        stub_single_holding_location('firestone$stacks')
+        stub_catalog_raw(bib_id: '9997708113506421')
         stub_illiad_patron
         visit "/requests/9997708113506421?mfhd=22729045760006421"
         expect(page).not_to have_button('Request this Item')
@@ -1050,6 +1147,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
 
       let(:good_response) { file_fixture('../scsb_request_item_response.json') }
       it 'disallows access to request a physical ReCAP item' do
+        stub_availability_by_holding_id(bib_id: '9999443553506421', holding_id: '22743365320006421')
         stub_single_holding_location 'recap$pa'
         stub_scsb_availability(bib_id: "9999443553506421", institution_id: "PUL", barcode: '32101098722844')
         stub_catalog_raw bib_id: '9999443553506421'
@@ -1062,6 +1160,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'disallows access to request a Forrestal Annex item' do
+        stub_availability_by_holding_id(bib_id: '999455503506421', holding_id: '22642306790006421')
+        stub_single_holding_location('annex$fst')
+        stub_catalog_raw(bib_id: '999455503506421')
         visit '/requests/999455503506421?mfhd=22642306790006421'
         expect(page).not_to have_button('Request this Item')
         expect(page).not_to have_content 'Electronic Delivery'
@@ -1071,6 +1172,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'disallows access to request a Lewis Library ReCAP item digitally' do
+        stub_availability_by_holding_id(bib_id: '9970533073506421', holding_id: '22667391160006421')
+        stub_single_holding_location('lewis$pn')
+        stub_catalog_raw(bib_id: '9970533073506421')
         stub_scsb_availability(bib_id: "9970533073506421", institution_id: "PUL", barcode: '32101051217659')
         visit '/requests/9970533073506421?mfhd=22667391160006421'
         expect(page).not_to have_button('Request this Item')
@@ -1081,6 +1185,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'disallows access to request a digital copy from an item in Lewis Library' do
+        stub_availability_by_holding_id(bib_id: '9970533073506421', holding_id: '22667391180006421')
+        stub_single_holding_location('lewis$stacks')
+        stub_catalog_raw(bib_id: '9970533073506421')
         visit '/requests/9970533073506421?mfhd=22667391180006421'
         expect(page).not_to have_button('Request this Item')
         expect(page).not_to have_content 'Electronic Delivery'
@@ -1090,6 +1197,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'disallows access to ask for digitizing on non circulating items' do
+        stub_availability_by_holding_id(bib_id: '9995948403506421', holding_id: '22500774400006421')
+        stub_single_holding_location('lewis$ref')
+        stub_catalog_raw(bib_id: '9995948403506421')
         visit '/requests/9995948403506421?mfhd=22500774400006421'
         expect(page).not_to have_button('Request this Item')
         expect(page).not_to have_content 'Electronic Delivery'
@@ -1104,6 +1214,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'disallows access to fill in form options on multi-volume works' do
+        stub_availability_by_holding_id(bib_id: '99105746993506421', holding_id: '22547424510006421')
+        stub_single_holding_location('firestone$stacks')
+        stub_catalog_raw(bib_id: '99105746993506421')
         visit 'requests/99105746993506421?mfhd=22547424510006421'
         expect(page).not_to have_button('Request this Item')
         expect(page).not_to have_content 'Electronic Delivery'
@@ -1112,6 +1225,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'disallows access ReCAP Marqaund as an EDD option only' do
+        stub_availability_by_holding_id(bib_id: '99117809653506421', holding_id: '22613352460006421')
+        stub_single_holding_location('marquand$pj')
+        stub_catalog_raw(bib_id: '99117809653506421')
         stub_scsb_availability(bib_id: "99117809653506421", institution_id: "PUL", barcode: '32101106347378')
         visit '/requests/99117809653506421?mfhd=22613352460006421'
         expect(page).not_to have_button('Request this Item')
@@ -1121,6 +1237,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it "disallows access to items in the Architecture Library as available" do
+        stub_availability_by_holding_id(bib_id: '99117876713506421', holding_id: '22561348800006421')
+        stub_single_holding_location('arch$stacks')
+        stub_catalog_raw(bib_id: '99117876713506421')
         visit '/requests/99117876713506421?mfhd=22561348800006421'
         expect(page).not_to have_button('Request this Item')
         expect(page).not_to have_content 'Electronic Delivery'
@@ -1130,6 +1249,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it "disallows requests of recap pick-up only items" do
+        stub_availability_by_holding_id(bib_id: '99115783193506421', holding_id: '22534122440006421')
+        stub_single_holding_location('recap$qv')
+        stub_catalog_raw(bib_id: '99115783193506421')
         stub_scsb_availability(bib_id: "99115783193506421", institution_id: "PUL", barcode: '32101108035435')
         visit '/requests/99115783193506421?mfhd=22534122440006421'
         expect(page).not_to have_button('Request this Item')
@@ -1140,6 +1262,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'allows aeon requests for all users' do
+        stub_availability_by_holding_id(bib_id: '9973529363506421', holding_id: '22667098990006421')
+        stub_single_holding_location('rare$ctsn')
+        stub_catalog_raw(bib_id: '9973529363506421')
         stub_holding_locations
         visit '/requests/9973529363506421?mfhd=22667098990006421'
         expect(page).to have_content 'Request to View in Reading Room'
@@ -1148,11 +1273,15 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'displays there are no available items for online only items' do
+        stub_availability_by_holding_id(bib_id: '9999946923506421', holding_id: '22558528920006421')
+        stub_catalog_raw(bib_id: '9999946923506421')
         visit '/requests/9999946923506421?mfhd=22558528920006421'
         expect(page).to have_content 'there are no requestable items for this record'
       end
 
       it 'disallows access on missing items' do
+        stub_availability_by_holding_id(bib_id: '9917887963506421', holding_id: '22503918400006421')
+        stub_single_holding_location('firestone$stacks')
         stub_catalog_raw bib_id: '9917887963506421'
         visit '/requests/9917887963506421?mfhd=22503918400006421'
         expect(page).not_to have_content 'Electronic Delivery'
@@ -1162,6 +1291,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'disallows access a non circulating item with not item data to be digitized' do
+        stub_availability_by_holding_id(bib_id: '9941274093506421', holding_id: '22690999210006421')
+        stub_single_holding_location('marquand$stacks')
+        stub_catalog_raw(bib_id: '9941274093506421')
         visit '/requests/9941274093506421?mfhd=22690999210006421'
         expect(page).not_to have_content 'Electronic Delivery'
         expect(page).not_to have_content 'Physical Item Delivery'
@@ -1182,6 +1314,8 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       login_as user
     end
     it "allows a physical pickup request of ReCAP Item" do
+      stub_availability_by_holding_id(bib_id: '9941151723506421', holding_id: '22492702000006421')
+      stub_catalog_raw(bib_id: '9941151723506421')
       stub_single_holding_location 'recap$pa'
       stub_scsb_availability(bib_id: "9941151723506421", institution_id: "PUL", barcode: '33333059902417')
       visit 'requests/9941151723506421?mfhd=22492702000006421'
@@ -1201,10 +1335,14 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       login_as user
     end
     it 'displays the correct message when requesting a Firestone stacks item' do
+      stub_availability_by_holding_id(bib_id: '9912636153506421', holding_id: '22557213410006421')
+      stub_single_holding_location('firestone$stacks')
+      stub_catalog_raw(bib_id: '9912636153506421')
       visit 'requests/9912636153506421?mfhd=22557213410006421'
       expect(page).to have_content('Request options for this item are only available to Faculty, Staff, and Students.')
     end
     it 'displays the correct message when requesting a marquand$stacks item' do
+      stub_single_holding_location('marquand$stacks')
       visit 'requests/9997371413506421?mfhd=22613310220006421'
       expect(page).to have_content('Request options for this item are only available to Faculty, Staff, and Students.')
     end
@@ -1223,6 +1361,8 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     end
 
     it "allows a physical pickup request of ReCAP Item" do
+      stub_availability_by_holding_id(bib_id: '9941151723506421', holding_id: '22492702000006421')
+      stub_catalog_raw(bib_id: '9941151723506421')
       stub_single_holding_location 'recap$pa'
       stub_scsb_availability(bib_id: "9941151723506421", institution_id: "PUL", barcode: '33333059902417')
       visit 'requests/9941151723506421?mfhd=22492702000006421'
@@ -1231,6 +1371,8 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     end
 
     it "allows a physical pickup request of a - Library In Use - ReCAP Item" do
+      stub_availability_by_holding_id(bib_id: '99127133356906421', holding_id: '22971539920006421')
+      stub_single_holding_location('mendel$pk')
       stub_scsb_availability(bib_id: "99127133356906421", institution_id: "PUL", barcode: '33333059902417')
       stub_catalog_raw bib_id: '99127133356906421'
       visit 'requests/99127133356906421?aeon=false&mfhd=22971539920006421'
@@ -1239,6 +1381,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     end
 
     it "allows only physical pickup to enumerated Forrestal Annex item" do
+      stub_availability_by_holding_id(bib_id: '9947220743506421', holding_id: '22734584180006421')
+      stub_single_holding_location('annex$doc')
+      stub_catalog_raw(bib_id: '9947220743506421')
       stub_alma_hold_success('9947220743506421', '22734584180006421', '23734584140006421', user.uid)
 
       visit "requests/9947220743506421?mfhd=22734584180006421"
@@ -1271,6 +1416,8 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     end
 
     it 'does not allow a ReCAP record that has no item data' do
+      stub_availability_by_holding_id(bib_id: '99113283293506421', holding_id: '22750642660006421')
+      stub_catalog_raw(bib_id: '99113283293506421')
       stub_single_holding_location 'recap$pa'
       visit "/requests/99113283293506421?mfhd=22750642660006421"
       expect(page).not_to have_content 'Electronic Delivery'
@@ -1279,6 +1426,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     end
 
     it "does not allow access to items on campus when available" do
+      stub_availability_by_holding_id(bib_id: '99125428126306421', holding_id: '22910398870006421')
+      stub_single_holding_location('firestone$clas')
+      stub_catalog_raw(bib_id: '99125428126306421')
       visit "requests/99125428126306421?mfhd=22910398870006421"
       expect(page).not_to have_content 'Electronic Delivery'
       expect(page).not_to have_content 'Physical Item Delivery'
@@ -1286,6 +1436,10 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     end
 
     it "does not allow access to items on campus when not available" do
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/bibliographic/99125452799106421/holdings/22917143470006421/availability.json")
+        .to_return(status: 400)
+      stub_single_holding_location('firestone$dixn')
+      stub_catalog_raw(bib_id: '99125452799106421')
       visit "requests/99125452799106421?mfhd=22917143470006421"
       expect(page).not_to have_content 'Electronic Delivery'
       expect(page).not_to have_content 'Physical Item Delivery'
@@ -1293,6 +1447,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     end
 
     it "does not allow access to items on campus when enumerated" do
+      stub_availability_by_holding_id(bib_id: '998574693506421', holding_id: '22579850750006421')
+      stub_single_holding_location('engineer$serial')
+      stub_catalog_raw(bib_id: '998574693506421')
       visit "requests/998574693506421?mfhd=22579850750006421"
       expect(page).not_to have_content 'Electronic Delivery'
       expect(page).not_to have_content 'Physical Item Delivery'
@@ -1300,6 +1457,8 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     end
 
     it "allows access to In Process items" do
+      stub_availability_by_holding_id(bib_id: '99124417723506421', holding_id: '22689758840006421')
+      stub_catalog_raw(bib_id: '99124417723506421')
       stub_scsb_availability bib_id: '99124417723506421', institution_id: 'PUL', barcode: '32101108129568'
       stub_single_holding_location 'recap$pa'
       visit "requests/99124417723506421?mfhd=22689758840006421"
