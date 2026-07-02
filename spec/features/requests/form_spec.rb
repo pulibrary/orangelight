@@ -231,7 +231,7 @@ describe 'request form', type: :feature, requests: true do
 
       it 'allows CAS patrons to request a PUL record that has no item data' do
         stub_availability_by_holding_id(bib_id: '993083506421', holding_id: '22740191170006421')
-        stub_single_holding_location('firestone$stacks')
+        stub_single_holding_location('firestone$stacks', fixture: 'firestone_stacks_non_standard_circ.json')
         stub_catalog_raw(bib_id: '993083506421')
         visit "/requests/#{on_shelf_no_items_id}"
         choose('requestable__delivery_mode_22740191170006421_print') # chooses 'print' radio button
@@ -240,7 +240,7 @@ describe 'request form', type: :feature, requests: true do
       end
       it 'allows CAS patrons to request an on_shelf record' do
         stub_availability_by_holding_id(bib_id: '9912636153506421', holding_id: '22557213410006421')
-        stub_single_holding_location('firestone$stacks')
+        stub_single_holding_location('firestone$stacks', fixture: 'firestone_stacks_non_standard_circ.json')
         stub_catalog_raw(bib_id: '9912636153506421')
         stub_alma_hold_success('9912636153506421', '22557213410006421', '23557213400006421', '960594184')
 
@@ -270,7 +270,7 @@ describe 'request form', type: :feature, requests: true do
 
       it 'shows the CAS patron a duplication message when they request an item more than once' do
         stub_availability_by_holding_id(bib_id: '9912636153506421', holding_id: '22557213410006421')
-        stub_single_holding_location('firestone$stacks')
+        stub_single_holding_location('firestone$stacks', fixture: 'firestone_stacks_non_standard_circ.json')
         stub_catalog_raw(bib_id: '9912636153506421')
         stub_alma_hold('9912636153506421', '22557213410006421', '23557213400006421', '960594184', status: 200, fixture_name: "alma_hold_error_response.json")
 
@@ -438,7 +438,7 @@ describe 'request form', type: :feature, requests: true do
 
       it 'shows a fill in form if the item is an enumeration (Journal ect.) and choose a print copy' do
         stub_availability_by_holding_id(bib_id: '99105746993506421', holding_id: '22547424510006421')
-        stub_single_holding_location('firestone$stacks')
+        stub_single_holding_location('firestone$stacks', fixture: 'firestone_stacks_non_standard_circ.json')
         stub_catalog_raw(bib_id: '99105746993506421')
         visit 'requests/99105746993506421?mfhd=22547424510006421'
         choose('requestable__delivery_mode_22547424510006421_print')
@@ -472,7 +472,7 @@ describe 'request form', type: :feature, requests: true do
 
       it 'shows a fill in form if the item is an enumeration (Journal etc.) and choose a electronic copy' do
         stub_availability_by_holding_id(bib_id: '99105746993506421', holding_id: '22547424510006421')
-        stub_single_holding_location('firestone$stacks')
+        stub_single_holding_location('firestone$stacks', fixture: 'firestone_stacks_non_standard_circ.json')
         stub_catalog_raw(bib_id: '99105746993506421')
         stub_illiad_patron
         stub_request(:post, transaction_url)
@@ -562,7 +562,7 @@ describe 'request form', type: :feature, requests: true do
       context 'Resource Sharing request via Illiad' do
         it 'sends requests directly to Illiad' do
           stub_availability_by_holding_id(bib_id: '9917887963506421', holding_id: '22503918400006421')
-          stub_single_holding_location('firestone$stacks')
+          stub_single_holding_location('firestone$stacks', fixture: 'firestone_stacks_non_standard_circ.json')
           stub_illiad_patron
           stub_request(:post, transaction_url)
             .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing",
@@ -952,7 +952,7 @@ describe 'request form', type: :feature, requests: true do
         end
         it 'request via partner library' do
           stub_availability_by_holding_id(bib_id: '9991807103506421', holding_id: '22696270550006421')
-          stub_single_holding_location('firestone$stacks')
+          stub_single_holding_location('firestone$stacks', fixture: 'firestone_stacks_non_standard_circ.json')
           visit 'requests/9991807103506421?mfhd=22696270550006421'
           expect(page).to have_content "Towards the critique of violence : Walter Benjamin and Giorgio Agamben"
           expect(page).to have_content 'Moran, Brendan P.'
@@ -1134,7 +1134,7 @@ describe 'request form', type: :feature, requests: true do
 
       it 'disallows access to request an on-campus item' do
         stub_availability_by_holding_id(bib_id: '9997708113506421', holding_id: '22729045760006421')
-        stub_single_holding_location('firestone$stacks')
+        stub_single_holding_location('firestone$stacks', fixture: 'firestone_stacks_non_standard_circ.json')
         stub_catalog_raw(bib_id: '9997708113506421')
         stub_illiad_patron
         visit "/requests/9997708113506421?mfhd=22729045760006421"
@@ -1215,7 +1215,7 @@ describe 'request form', type: :feature, requests: true do
 
       it 'disallows access to fill in form options on multi-volume works' do
         stub_availability_by_holding_id(bib_id: '99105746993506421', holding_id: '22547424510006421')
-        stub_single_holding_location('firestone$stacks')
+        stub_single_holding_location('firestone$stacks', fixture: 'firestone_stacks_non_standard_circ.json')
         stub_catalog_raw(bib_id: '99105746993506421')
         visit 'requests/99105746993506421?mfhd=22547424510006421'
         expect(page).not_to have_button('Request this Item')
@@ -1281,7 +1281,7 @@ describe 'request form', type: :feature, requests: true do
 
       it 'disallows access on missing items' do
         stub_availability_by_holding_id(bib_id: '9917887963506421', holding_id: '22503918400006421')
-        stub_single_holding_location('firestone$stacks')
+        stub_single_holding_location('firestone$stacks', fixture: 'firestone_stacks_non_standard_circ.json')
         stub_catalog_raw bib_id: '9917887963506421'
         visit '/requests/9917887963506421?mfhd=22503918400006421'
         expect(page).not_to have_content 'Electronic Delivery'
@@ -1336,7 +1336,7 @@ describe 'request form', type: :feature, requests: true do
     end
     it 'displays the correct message when requesting a Firestone stacks item' do
       stub_availability_by_holding_id(bib_id: '9912636153506421', holding_id: '22557213410006421')
-      stub_single_holding_location('firestone$stacks')
+      stub_single_holding_location('firestone$stacks', fixture: 'firestone_stacks_non_standard_circ.json')
       stub_catalog_raw(bib_id: '9912636153506421')
       visit 'requests/9912636153506421?mfhd=22557213410006421'
       expect(page).to have_content('Request options for this item are only available to Faculty, Staff, and Students.')
