@@ -746,6 +746,12 @@ class CatalogController < ApplicationController
       return true if request.env['HTTP_USER_AGENT'].blank?
       request.bot?
     }
+    config.default_solr_params = {
+      'group': true,
+      'group.field': 'cluster_id',
+      'group.limit': -1,
+      'group.ngroups': true
+    }
   end
 
   def sms_mappings
@@ -758,13 +764,20 @@ class CatalogController < ApplicationController
   end
 
   def index
+    group_params = result_grouping
     solrize_boolean_params
+    @search_state = search_state.reset(search_state.params.merge(group_params)) if group_params.present?
     if no_search_yet?
       render_empty_search
     elsif bot_is_attempting_expensive_search?
       head :uri_too_long
     else
       super
+      # The following grouping code is so that I can view in the search results page only the clusters with more than one document.
+      # Every record has a cluster_id even if it is not a duplicate
+      # groups = @response.dig('grouped', 'cluster_id', 'groups') || []
+      # @multi_doc_groups = groups.select { |g| g.dig('doclist', 'numFound').to_i > 1 }
+
     end
   rescue ActionController::BadRequest
     render file: Rails.public_path.join('x400.html'), layout: true, status: :bad_request
@@ -821,6 +834,24 @@ class CatalogController < ApplicationController
 
     def json_request?
       request.format.json?
+    end
+
+    def result_grouping
+      # http://localhost:3000/catalog?sort=score+desc&group=true&group.field=cluster_id&group.limit=-1&group.main=true&group.sort=score+desc&search_field=all_fields&q=cluster_id%3Aa6c4234c-bca8-4a47-9b62-ef16679fc50b
+      # assumption that we want it only for keyword search
+      return unless params[:q].present? && params[:search_field] == 'all_fields'
+
+      {
+        group: 'true',
+        'group.field': 'cluster_id',
+        'group.limit': -1,
+        'group.main': 'true',
+        'group.sort': 'score desc',
+        'sort': 'score desc'
+      }
+
+      # @search_state = search_state.reset(search_state.params.merge(group_params))
+      # /select?fl=title_display,holdings_1display,cluster_id,&group=true&group.field=cluster_id&rows=1000&group.limit=-1&sort=score%20desc&group.sort=score%20desc
     end
 
     def render_empty_search
