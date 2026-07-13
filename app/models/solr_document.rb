@@ -98,10 +98,12 @@ class SolrDocument
   end
 
   # Retrieve the electronic access information
-  # @return [String] electronic access value
+  # @return [Hash] electronic access value
   def doc_electronic_access
+    catalog_url = "#{Rails.application.routes.url_helpers.url_for protocol: 'https', controller: 'catalog', host: ENV['APPLICATION_HOST'] || 'catalog.princeton.edu', action: 'show', id: id}#view"
+    viewer_links = first('figgy_1display').present? ? { catalog_url => ['Digital content'] } : {}
     string_values = first('electronic_access_1display') || '{}'
-    JSON.parse(string_values).except 'iiif_manifest_paths'
+    viewer_links.merge(JSON.parse(string_values).except('iiif_manifest_paths'))
   end
 
   # Retrieve electronic portfolio values and parse

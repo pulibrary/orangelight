@@ -472,6 +472,7 @@ RSpec.describe SolrDocument do
   describe '#doc_electronic_access' do
     let(:properties) do
       {
+        'id' => '4609321',
         'electronic_access_1display' => '{"https://pulsearch.princeton.edu/catalog/4609321#view":["arks.princeton.edu"],"https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs":["drive.google.com","Curatorial documentation"]}'
       }
     end
@@ -485,6 +486,7 @@ RSpec.describe SolrDocument do
     context 'with IIIF Manifest URLs indexed' do
       let(:properties) do
         {
+          'id' => '4609321',
           'electronic_access_1display' => '{"https://pulsearch.princeton.edu/catalog/4609321#view":["arks.princeton.edu"],"https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs":["drive.google.com","Curatorial documentation"],"iiif_manifest_paths":{"http://arks.princeton.edu/ark:/88435/7d278t10z":"https://figgy.princeton.edu/concern/scanned_resources/d446107a-bdfd-4a5d-803c-f315b7905bf4/manifest","http://arks.princeton.edu/ark:/88435/xp68kg247":"https://figgy.princeton.edu/concern/scanned_resources/42570d35-13b3-4bce-8fd0-7e465decb0e1/manifest"}}'
         }
       end
@@ -493,6 +495,17 @@ RSpec.describe SolrDocument do
         expect(solr_document.doc_electronic_access).not_to have_key('iiif_manifests')
         expect(solr_document.doc_electronic_access).to include 'https://pulsearch.princeton.edu/catalog/4609321#view' => ['arks.princeton.edu']
         expect(solr_document.doc_electronic_access).to include 'https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs' => ['drive.google.com', 'Curatorial documentation']
+      end
+    end
+    context 'with figgy_1display' do
+      let(:properties) do
+        {
+          'id' => '9952961993506421',
+          'figgy_1display' => "[{\"ark\":\"http://arks.princeton.edu/ark:/88435/rf55zj238\",\"iiif_manifest_url\":\"https://figgy.princeton.edu/concern/scanned_resources/02d1867b-eb5e-4b4e-841e-bc85d1d96b73/manifest\",\"label\":{\"@value\":\"جواهر النصوص في حل كلات الفصوص.\",\"@language\":\"ar\"},\"portion_note\":null,\"visibility\":{\"value\":\"open\",\"label\":\"open\",\"definition\":\"Open to the world. Anyone can view.\"}}]"
+        }
+      end
+      it 'inlcudes the urls from figgy_1display' do
+        expect(solr_document.doc_electronic_access).to include 'https://catalog.princeton.edu/catalog/9952961993506421#view' => ['Digital content']
       end
     end
   end
