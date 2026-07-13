@@ -6,7 +6,7 @@ RSpec.describe FormatBadgeFieldComponent, type: :component do
   let(:rendered) do
     Capybara::Node::Simple.new(render_inline(described_class.new(field:)))
   end
-  let(:document) { SolrDocument.new 'format' => ['Journal', 'Microform'] }
+  let(:document) { SolrDocument.new 'id' => '9912345678906421', 'format' => ['Journal', 'Microform'] }
   let(:field_config) { Blacklight::Configuration::Field.new key: 'format', field: 'format', label: 'Format' }
 
   let(:field) do
