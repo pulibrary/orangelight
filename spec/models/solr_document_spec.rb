@@ -472,6 +472,7 @@ RSpec.describe SolrDocument do
   describe '#doc_electronic_access' do
     let(:properties) do
       {
+        'id' => '4609321',
         'electronic_access_1display' => '{"https://pulsearch.princeton.edu/catalog/4609321#view":["arks.princeton.edu"],"https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs":["drive.google.com","Curatorial documentation"]}'
       }
     end
@@ -485,6 +486,7 @@ RSpec.describe SolrDocument do
     context 'with IIIF Manifest URLs indexed' do
       let(:properties) do
         {
+          'id' => '4609321',
           'electronic_access_1display' => '{"https://pulsearch.princeton.edu/catalog/4609321#view":["arks.princeton.edu"],"https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs":["drive.google.com","Curatorial documentation"],"iiif_manifest_paths":{"http://arks.princeton.edu/ark:/88435/7d278t10z":"https://figgy.princeton.edu/concern/scanned_resources/d446107a-bdfd-4a5d-803c-f315b7905bf4/manifest","http://arks.princeton.edu/ark:/88435/xp68kg247":"https://figgy.princeton.edu/concern/scanned_resources/42570d35-13b3-4bce-8fd0-7e465decb0e1/manifest"}}'
         }
       end
