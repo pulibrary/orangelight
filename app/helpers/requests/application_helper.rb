@@ -17,7 +17,7 @@ module Requests
     # array of error_keys
     def guest_user_error?(error_keys)
       user_errors = [:email, :user_name, :barcode]
-      error_keys.any? { |item| user_errors.include? item }
+      error_keys.intersect?(user_errors)
     end
 
     def show_pick_up_service_options(requestable, mfhd_id)
