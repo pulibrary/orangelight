@@ -108,10 +108,6 @@ Rails.application.routes.draw do
   get '/missing_item', to: 'feedback#missing_item'
   post '/contact/missing_item', to: 'contact#missing_item'
 
-  # For "Report Harmful Language" form
-  get "/report_harmful_language", to: "feedback#report_harmful_language"
-  post "/contact/report_harmful_language", to: "contact#report_harmful_language"
-
   get '/thumbnail/:id', to: 'thumbnail#show'
 
   # error pages
