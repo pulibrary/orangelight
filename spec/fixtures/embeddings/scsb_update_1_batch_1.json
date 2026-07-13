@@ -1,0 +1,30 @@
+[
+  {
+    "id": "9923849243506421",
+    "title_display": "Vercinge\u0301torix. Histoire du pays gaulois depuis ses origines jusqu'a\u0300 la conque\u0302te romaine",
+    "author_display": "Colomb, Georges",
+    "pub_date_display": 1947,
+    "description_display": "282 pages",
+    "publisher_citation_display": "A Fayard",
+    "text": "Vercinge\u0301torix. Histoire du pays gaulois depuis ses origines jusqu'a\u0300 la conque\u0302te romaine    Vercinge\u0301torix. Histoire du pays gaulois depuis ses origines jusqu'a\u0300 la conque\u0302te romaine Colomb, Georges 1947 282 pages 2 e\u0301d  A Fayard a",
+    "text_embeddings": [
+      0.010338805615901947,
+      0.02806314453482628,
+      0.01864738017320633
+    ]
+  },
+  {
+    "id": "9923843813506421",
+    "title_display": "The bright land",
+    "author_display": "Fairbank, Janet Ayer",
+    "pub_date_display": 1932,
+    "description_display": "4 p 3525 1 pages",
+    "publisher_citation_display": "Houghton Mifflin company",
+    "text": "The bright land    The bright land Fairbank, Janet Ayer 1932 4 p 3525 1 pages   Houghton Mifflin company a",
+    "text_embeddings": [
+      0.005065082106739283,
+      0.020983939990401268,
+      -0.011023974977433681
+    ]
+  }
+]

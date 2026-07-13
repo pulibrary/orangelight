@@ -705,6 +705,12 @@ class CatalogController < ApplicationController
       field.label = 'Call number (browse)'
       field.placeholder_text = 'e.g. P19.737.3'
     end
+    config.add_search_field('text_embeddings') do |field|
+      field.include_in_advanced_search = false
+      field.label = 'Semantic search'
+      field.placeholder_text = ''
+      field.qt = '/semantic'
+    end
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
@@ -758,7 +764,10 @@ class CatalogController < ApplicationController
   end
 
   def index
+    return redirect_to semantic_path(q: params[:q], search_field: 'text_embeddings') if params[:search_field] == 'text_embeddings' && params[:q].present?
+
     solrize_boolean_params
+
     if no_search_yet?
       render_empty_search
     elsif bot_is_attempting_expensive_search?
@@ -815,6 +824,32 @@ class CatalogController < ApplicationController
     else
       super
     end
+  end
+
+  def semantic_search
+    query = params[:q].to_s.strip
+    if query.blank?
+      flash[:error] = "Please enter a search phrase"
+      redirect_to catalog_index_path
+    end
+
+    vector = TextEmbeddingService.new(query).query_to_vector
+    knn_q = "{!knn f=text_embeddings topK=10}#{vector}"
+
+    # solr = RSolr.connect url: Blacklight.connection_config[:url]
+    # response = solr.get '/semantic', params: {q: knn_q}
+
+    params[:search_field] = "text_embeddings"
+    # use the knn query in the solr search
+    knn_state = search_state.reset(search_state.params.merge(q: knn_q, search_field: "text_embeddings"))
+    @search_state = knn_state
+    @response, @document_list = search_service.search_results
+
+    # display the user's input query in the search box
+    @search_state = search_state.reset(search_state.params.merge(q: query, search_field: "text_embeddings"))
+
+    render :index
+    # christina remember to rescue it
   end
 
   private
