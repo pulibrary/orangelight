@@ -262,12 +262,6 @@ header.documentHeader a {
   text-decoration-line: none;
 }
 
-
-/* Hides blocks from print view */
-.hide-print {
-  display: none;
-}
-
 .blacklight-catalog-librarian_view {
   font-family: monospace;
   font-size: 11pt;
@@ -312,5 +306,10 @@ header.documentHeader a {
       content: "\00a0|\00a0";
       display: inline-block;
       vertical-align: baseline;
+    }
+
+    /* Hides blocks from print view */
+    .hide-print {
+      display: none !important;
     }
 }
