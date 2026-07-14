@@ -6,7 +6,7 @@
     <%= component.with_value(index:) do %>
       <%= value %>
       <% if show_button? %>
-        <button class="show-more btn btn-sm btn-link"
+        <button class="show-more btn btn-sm btn-link hide-print"
           aria-expanded="false" aria-controls="<%= @field.key %>-list"
           data-maximum-default-values="<%= @field.field_config.maxInitialDisplay %>"
           data-show-more-text="<%= show_more_text %>"
