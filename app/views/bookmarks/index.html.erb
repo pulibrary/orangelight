@@ -26,7 +26,7 @@
       </div>
     <% else %>
       <h2 class='section-heading visually-hidden'><%= t('blacklight.bookmarks.list_title') %></h2>
-      <%= render_document_index @response.documents %>
+      <%= render_document_index sort_by_most_recently_bookmarked(@response.documents, current_user) %>
       <div class="page-links mt-5">
         <%= render :partial => "paginate_compact", :object => @response if show_pagination? %>
       </div>
