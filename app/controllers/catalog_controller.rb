@@ -817,6 +817,13 @@ class CatalogController < ApplicationController
     end
   end
 
+  def suggest
+    params.permit(:q)
+    solr = RSolr.connect url: Blacklight.connection_config[:url], timeout: 10
+    response = solr.get 'suggest', params: {'suggest.q': params[:q], 'suggest.dictionary': 'south_asian_latin'}
+    render json: response['suggest']['south_asian_latin'].values.first['suggestions'].map { {label: it['term'], value: it['term']} }
+  end
+
   private
 
     def json_request?
