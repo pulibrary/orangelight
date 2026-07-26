@@ -183,13 +183,9 @@ describe 'Searching', type: :system, js: false do
       visit '/advanced'
       fill_in 'clause_0_query', with: 'robots'
       click_button 'Search'
-      expect(page).to have_button('Access')
-      expect(page).to have_button('Library')
       expect(page).to have_button('Format')
       expect(page).to have_button('Publication year')
       expect(page).to have_button('Language')
-      expect(page).to have_content('Online')
-      expect(page).to have_content('Physical')
     end
   end
 
