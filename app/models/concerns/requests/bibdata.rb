@@ -47,7 +47,7 @@ module Requests
     # :reek:UtilityFunction
     def build_pick_ups
       pick_up_locations = []
-      request_delivery_locations = Requests::BibdataService.delivery_locations
+
       request_delivery_locations.each_value do |pick_up|
         pick_up_locations << { label: pick_up["label"], gfa_pickup: pick_up["gfa_pickup"], pick_up_location_code: pick_up["library"]["code"] || 'firestone', staff_only: pick_up["staff_only"] } if pick_up["pickup_location"] == true
       end
@@ -66,5 +66,11 @@ module Requests
       delivery_location = Requests::BibdataService.delivery_locations.select { |_key, value| value[:library][:code] == library_code }
       delivery_location.values.first[:contact_email]
     end
+
+    private
+
+      def request_delivery_locations
+        @request_delivery_locations ||= Requests::BibdataService.delivery_locations
+      end
   end
 end
