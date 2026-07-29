@@ -1,7 +1,7 @@
 # requests.yml
 
 defaults: &defaults
-  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata.princeton.edu" %>
+  bibdata_base: <%= "http://localhost:3009" %>
   pulsearch_base: https://catalog.princeton.edu
   aeon_base: https://princeton.aeon.atlas-sys.com/logon
   gfa_base: http://libweb5.princeton.edu/ReCAPNoUI/Default.aspx
@@ -19,7 +19,7 @@ defaults: &defaults
     pub_date_display: "Published/Created"
 development:
   <<: *defaults
-  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata.princeton.edu" %>
+  bibdata_base: <%= "http://localhost:3009" %>
 test:
   <<: *defaults
   bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.lib.princeton.edu" %>

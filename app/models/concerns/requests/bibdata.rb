@@ -82,7 +82,7 @@ module Requests
       end
 
       def delivery_locations_not_including_staff_only
-        delivery_locations&.reject { |_key, loc| loc["staff_only"] == true }
+        delivery_locations&.reject { |loc| loc["staff_only"] == true }
       end
 
       def library_staff_patron_group?
