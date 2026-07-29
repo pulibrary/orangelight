@@ -6,12 +6,12 @@ RSpec.describe Requests::PickUpLocations::AnnexPickUpLocations, :requests do
     form = instance_double(Requests::Form, default_pick_ups: [{ label: 'Stokes Library', gfa_pickup: 'PM' }])
     custom_locations = [
       { label: "Valid Custom Location", gfa_pickup: "QA", pick_up_location_code: "custom1", staff_only: false },
-      { label: "Invalid Custom Location", gfa_pickup: "ZZ", pick_up_location_code: "custom2", staff_only: false }
+      { label: "Invalid Custom Location", gfa_pickup: "PF", pick_up_location_code: "custom2", staff_only: false }
     ]
     requestable = instance_double(Requests::RequestableDecorator, location: { delivery_locations: custom_locations })
     locations = described_class.new(form:, requestable:)
 
-    # Only the first custom location should be returned (QA is valid, ZZ is not)
+    # Only the first custom location should be returned (QA is valid, PF is not)
     expect(locations.call).to eq([custom_locations[0]])
   end
 

@@ -32,9 +32,7 @@ module Requests
 
       # :reek:UtilityFunction
       def valid_annex_pickup?(location_hash)
-        # This excludes PQ (Plasma) and PH (Mudd), which are not valid but are currently listed as pickup locations
-        # in bibdata holding_locations.json
-        ['PA', 'PB', 'PF', 'PK', 'PL', 'PM', 'PT', 'PW', 'QA', 'QC', 'QL', 'QP', 'QT', 'QX'].include?(location_hash[:gfa_pickup])
+        ['PA', 'PB', 'PK', 'PL', 'PM', 'PT', 'PW', 'QA', 'QC', 'QL', 'QP', 'QT', 'QX'].include?(location_hash[:gfa_pickup])
       end
 
       def delivery_locations
