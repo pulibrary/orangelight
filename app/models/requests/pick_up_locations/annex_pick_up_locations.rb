@@ -24,8 +24,9 @@ module Requests
 
       def all_delivery_locations
         if delivery_locations&.any?
-          # patron_group: 'lib', has only access to offsite locations
-          # so we need to filter out princeton items in recap and patron group library staff
+          # patron_group: 'lib', has access to offsite locations
+          # when a location has delivery locations configured in bibdata
+          # we need to filter out the Staff locations that are for the library staff
           if library_staff_patron_group?
             delivery_locations
           else

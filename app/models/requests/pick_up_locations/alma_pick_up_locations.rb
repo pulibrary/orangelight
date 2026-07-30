@@ -11,9 +11,10 @@ module Requests
 
       def call
         if delivery_locations&.any?
-          # patron_group: 'lib', has only access to offsite locations
-          # so we need to filter out princeton items in recap and patron group library staff
-          if library_staff_patron_group? && recap?
+          # patron_group: 'lib', has access to offsite locations
+          # when a location has delivery locations configured in bibdata
+          # we need to filter out the Staff locations that are for the library staff
+          if library_staff_patron_group?
             delivery_locations
           else
             delivery_locations_not_including_staff_only
