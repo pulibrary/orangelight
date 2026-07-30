@@ -9,7 +9,7 @@ RSpec.describe Requests::PickUpLocations::AnnexPickUpLocations, :requests do
       { label: "Invalid Custom Location", gfa_pickup: "PF", pick_up_location_code: "custom2", staff_only: false },
       { label: "Invalid Custom Location", gfa_pickup: "PB", pick_up_location_code: "custom3", staff_only: false }
     ]
-    requestable = instance_double(Requests::RequestableDecorator, location: { delivery_locations: custom_locations })
+    requestable = instance_double(Requests::RequestableDecorator, location: { delivery_locations: custom_locations }, patron: instance_double(Requests::Patron, library_staff_patron_group?: false, affiliate_patron_group?: false))
     locations = described_class.new(form:, requestable:)
 
     # Only the first custom location should be returned (QA is valid, PF and PB are not)
@@ -21,7 +21,7 @@ RSpec.describe Requests::PickUpLocations::AnnexPickUpLocations, :requests do
     custom_locations = [
       { label: "Invalid Custom Location", gfa_pickup: "ZZ", pick_up_location_code: "custom2", staff_only: false }
     ]
-    requestable = instance_double(Requests::RequestableDecorator, location: { delivery_locations: custom_locations })
+    requestable = instance_double(Requests::RequestableDecorator, location: { delivery_locations: custom_locations }, patron: instance_double(Requests::Patron, library_staff_patron_group?: false, affiliate_patron_group?: false))
     locations = described_class.new(form:, requestable:)
 
     expect(locations.call).to eq([{ label: 'Firestone Library', gfa_pickup: 'PA' }])

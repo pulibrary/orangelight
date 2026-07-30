@@ -196,10 +196,9 @@ describe 'request form', type: :feature, requests: true do
         visit "/requests/#{recap_in_process_id}"
         expect(page).to have_content 'In Process'
         expect(page.find(:css, ".request--availability").text).to eq("Unavailable")
-        select('Firestone Library', from: 'requestable__pick_up_23753408610006421')
-        expect(page).not_to have_content 'Firestone Library, Resource Sharing (Staff Only)'
-        expect(page).not_to have_content 'Technical Services 693 (Staff Only)'
-        expect(page).not_to have_content 'Technical Services HMT (Staff Only)'
+        select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_23753408600006421')
+        select('Technical Services 693 (Staff Only)', from: 'requestable__pick_up_23753408600006421')
+        select('Technical Services HMT (Staff Only)', from: 'requestable__pick_up_23753408600006421')
         expect do
           click_button 'Request this Item'
         end.to change { ActionMailer::Base.deliveries.count }.by(2)
@@ -325,9 +324,9 @@ describe 'request form', type: :feature, requests: true do
         expect(page).to have_content 'Item offsite at Forrestal Annex. Requests for pick-up'
         expect(page).to have_content 'Electronic Delivery'
         # Confirm that all the following options are in the drop-down
-        expect(page).not_to have_content 'Firestone Library, Resource Sharing (Staff Only)'
-        expect(page).not_to have_content 'Technical Services 693 (Staff Only)'
-        expect(page).not_to have_content 'Technical Services HMT (Staff Only)'
+        select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_23642306760006421')
+        select('Technical Services 693 (Staff Only)', from: 'requestable__pick_up_23642306760006421')
+        select('Technical Services HMT (Staff Only)', from: 'requestable__pick_up_23642306760006421')
         select('Firestone Library', from: 'requestable__pick_up_23642306760006421')
         expect do
           click_button 'Request Selected Items'
