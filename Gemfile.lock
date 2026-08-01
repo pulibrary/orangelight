@@ -208,14 +208,14 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    datadog (2.38.0)
+    datadog (2.39.0)
       cgi
       datadog-ruby_core_source (~> 3.5, >= 3.5.3)
       libdatadog (~> 36.0.0.1.0)
       libddwaf (~> 1.30.0.0.0)
       logger
       msgpack
-    datadog-ruby_core_source (3.5.3)
+    datadog-ruby_core_source (3.5.4)
     date (3.5.1)
     deprecation (1.1.0)
       activesupport
@@ -427,7 +427,7 @@ GEM
       drb (~> 2.0)
       prism (~> 1.5)
     mize (0.6.1)
-    msgpack (1.8.3)
+    msgpack (1.8.4)
     multi_xml (0.9.1)
       bigdecimal (>= 3.1, < 5)
     mutex_m (0.3.0)
