@@ -615,6 +615,7 @@ describe 'request form', type: :feature, requests: true do
         end
       end
       context 'Annex with item data' do
+        let(:library_staff_patron_response) { file_fixture('../bibdata_patron_library_staff_response.json') }
         before do
           allow(Rack::MiniProfiler).to receive(:authorize_request)
           login_as(user)
@@ -632,7 +633,7 @@ describe 'request form', type: :feature, requests: true do
           stub_single_holding_location('annex$stacks')
           stub_catalog_raw(bib_id: '9922868943506421')
           stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
-            .to_return(status: 200, body: valid_patron_response, headers: {})
+            .to_return(status: 200, body: library_staff_patron_response, headers: {})
           visit '/requests/9922868943506421?mfhd=22692156940006421'
 
           expect(page).to have_field 'requestable_selected', disabled: false
