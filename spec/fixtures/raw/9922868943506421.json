@@ -49,9 +49,9 @@
         "ocm53175640",
         "ocm01536494"
     ],
-    "holdings_1display": "{\"22692156940006421\":{\"location_code\":\"annex$locked\",\"location\":\"Locked\",\"library\":\"Forrestal Annex\",\"call_number\":\"HQ766 .B53f Oversize\",\"call_number_browse\":\"HQ766 .B53f Oversize\",\"location_has\":[\"v.[1]-7\"]},\"22692156930006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"HQ766 .B53\",\"call_number_browse\":\"HQ766 .B53\",\"location_has\":[\"v.8-23\"],\"items\":[{\"holding_id\":\"22692156930006421\",\"id\":\"23692156850006421\",\"status_at_load\":\"1\",\"enumeration\":\"v. 19-23\",\"barcode\":\"32101100259603\",\"copy_number\":\"1\"},{\"holding_id\":\"22692156930006421\",\"id\":\"23692156860006421\",\"status_at_load\":\"1\",\"enumeration\":\"v. 17-18\",\"barcode\":\"32101100259595\",\"copy_number\":\"1\"},{\"holding_id\":\"22692156930006421\",\"id\":\"23692156880006421\",\"status_at_load\":\"1\",\"enumeration\":\"v. 10\",\"barcode\":\"32101100259579\",\"copy_number\":\"1\"},{\"holding_id\":\"22692156930006421\",\"id\":\"23692156870006421\",\"status_at_load\":\"1\",\"enumeration\":\"v. 13-14\",\"barcode\":\"32101100259546\",\"copy_number\":\"1\"},{\"holding_id\":\"22692156930006421\",\"id\":\"23692156890006421\",\"status_at_load\":\"1\",\"enumeration\":\"v. 9\",\"barcode\":\"32101100259587\",\"copy_number\":\"1\"},{\"holding_id\":\"22692156930006421\",\"id\":\"23692156910006421\",\"status_at_load\":\"1\",\"enumeration\":\"v. 8\",\"barcode\":\"32101100259561\",\"copy_number\":\"1\"},{\"holding_id\":\"22692156930006421\",\"id\":\"23692156900006421\",\"status_at_load\":\"1\",\"enumeration\":\"v. 15-16\",\"barcode\":\"32101100259538\",\"copy_number\":\"1\"},{\"holding_id\":\"22692156930006421\",\"id\":\"23692156920006421\",\"status_at_load\":\"1\",\"enumeration\":\"v. 11-12\",\"barcode\":\"32101100259553\",\"copy_number\":\"1\"}]}}",
+    "holdings_1display": "{\"22692156940006421\":{\"location_code\":\"annex$stacks\",\"location\":\"Stacks\",\"library\":\"Forrestal Annex\",\"call_number\":\"HQ766 .B53f Oversize\",\"call_number_browse\":\"HQ766 .B53f Oversize\",\"location_has\":[\"v.[1]-7\"]},\"22692156930006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"HQ766 .B53\",\"call_number_browse\":\"HQ766 .B53\",\"location_has\":[\"v.8-23\"],\"items\":[{\"holding_id\":\"22692156930006421\",\"id\":\"23692156850006421\",\"status_at_load\":\"1\",\"enumeration\":\"v. 19-23\",\"barcode\":\"32101100259603\",\"copy_number\":\"1\"},{\"holding_id\":\"22692156930006421\",\"id\":\"23692156860006421\",\"status_at_load\":\"1\",\"enumeration\":\"v. 17-18\",\"barcode\":\"32101100259595\",\"copy_number\":\"1\"},{\"holding_id\":\"22692156930006421\",\"id\":\"23692156880006421\",\"status_at_load\":\"1\",\"enumeration\":\"v. 10\",\"barcode\":\"32101100259579\",\"copy_number\":\"1\"},{\"holding_id\":\"22692156930006421\",\"id\":\"23692156870006421\",\"status_at_load\":\"1\",\"enumeration\":\"v. 13-14\",\"barcode\":\"32101100259546\",\"copy_number\":\"1\"},{\"holding_id\":\"22692156930006421\",\"id\":\"23692156890006421\",\"status_at_load\":\"1\",\"enumeration\":\"v. 9\",\"barcode\":\"32101100259587\",\"copy_number\":\"1\"},{\"holding_id\":\"22692156930006421\",\"id\":\"23692156910006421\",\"status_at_load\":\"1\",\"enumeration\":\"v. 8\",\"barcode\":\"32101100259561\",\"copy_number\":\"1\"},{\"holding_id\":\"22692156930006421\",\"id\":\"23692156900006421\",\"status_at_load\":\"1\",\"enumeration\":\"v. 15-16\",\"barcode\":\"32101100259538\",\"copy_number\":\"1\"},{\"holding_id\":\"22692156930006421\",\"id\":\"23692156920006421\",\"status_at_load\":\"1\",\"enumeration\":\"v. 11-12\",\"barcode\":\"32101100259553\",\"copy_number\":\"1\"}]}}",
     "location_code_s": [
-        "annex$locked",
+        "annex$stacks",
         "firestone$stacks"
     ],
     "location": [
@@ -63,7 +63,7 @@
         "Stacks"
     ],
     "advanced_location_s": [
-        "annex$locked",
+        "annex$stacks",
         "firestone$stacks",
         "Forrestal Annex",
         "Firestone Library"
