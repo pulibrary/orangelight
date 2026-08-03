@@ -35,10 +35,6 @@ module Requests
         location[:delivery_locations]
       end
 
-      def recap?
-        location[:remote_storage] == "recap_rmt"
-      end
-
       def library_staff_patron_group?
         patron.library_staff_patron_group?
       end
