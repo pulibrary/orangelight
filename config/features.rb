@@ -38,4 +38,7 @@ Flipflop.configure do
   feature :hide_marquand_non_rare_request_button,
     default: false,
     description: "When on / true, it hides the request button for Marquand Non-Rare Collections '$fesrf', '$ltop', '$mic', '$ms', '$msref', '$pj', '$pv', '$ref', '$pjm', '$res', '$rp', '$saf', '$stacks', '$tech', '$wr'."
+  feature :deduplication,
+    default: false,
+    description: "When on/true use the deduplication changes."
 end
