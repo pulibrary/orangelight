@@ -597,73 +597,8 @@ describe 'request form', type: :feature, requests: true do
           stub_availability_by_holding_id(bib_id: '9922868943506421', holding_id: '22692156940006421')
           stub_single_holding_location('annex$locked')
           stub_catalog_raw(bib_id: '9922868943506421')
-          patron = instance_double(Requests::Patron, core_patron_group?: true, affiliate_patron_group?: false)
-          allow(patron).to receive(:user).and_return(user)
-          allow(patron).to receive(:errors).and_return([])
-          allow(patron).to receive(:guest?).and_return(false)
-          allow(patron).to receive(:eligible_for_library_services?).and_return(true)
-          allow(patron).to receive(:last_name).and_return('Cute')
-          allow(patron).to receive(:first_name).and_return('Aspen')
-          item_double = instance_double(Requests::Item, temp_loc_other_than_resource_sharing?: false)
-          holding_double = instance_double(Requests::Holding, mfhd_id: 'mfhd123')
-          requestable = instance_double(Requests::Requestable,
-                                        holding: holding_double,
-                                        bib: { id: 'bibid123' },
-                                        id: 'requestable_id',
-                                        item: item_double,
-                                        title: 'Trump : the art of the comeback',
-                                        location: { code: 'annex', label: 'Annex' },
-                                        call_number: 'ANNEX 1234',
-                                        services: [],
-                                        eligible_for_library_services?: true,
-                                        annex?: true,
-                                        item_data?: true,
-                                        charged?: false,
-                                        aeon?: false,
-                                        in_process?: false,
-                                        alma_managed?: true,
-                                        recap?: false,
-                                        recap_pf?: false,
-                                        held_at_marquand_library?: false,
-                                        use_statement: nil,
-                                        item_type_non_circulate?: false,
-                                        partner_holding?: false,
-                                        pick_up_location_code: 'firestone',
-                                        item_type: 'book',
-                                        enum_value: nil,
-                                        cron_value: nil,
-                                        temp_loc_other_than_resource_sharing?: false,
-                                        on_reserve?: false,
-                                        enumerated?: false,
-                                        collection_code: nil,
-                                        status: 'Available',
-                                        status_label: 'Available',
-                                        barcode?: true,
-                                        barcode: '123456789',
-                                        aeon_request_url: nil,
-                                        holding_library_in_library_only?: false,
-                                        holding_library: nil,
-                                        circulates?: true,
-                                        recap_edd?: false,
-                                        item_location_code: nil,
-                                        item?: true,
-                                        use_restriction?: false,
-                                        library_code: 'annex',
-                                        illiad_request_parameters: nil,
-                                        location_label: 'Annex',
-                                        patron: patron,
-                                        ill_eligible?: false,
-                                        scsb_in_library_use?: false,
-                                        on_shelf?: true,
-                                        illiad_request_url: nil,
-                                        available?: true,
-                                        cul_avery?: false,
-                                        cul_music?: false)
-          # rubocop:disable RSpec/AnyInstance
-          allow_any_instance_of(Requests::Router).to receive(:eligibility_checks).and_return([
-                                                                                               Requests::ServiceEligibility::Annex::Pickup.new(requestable: requestable, patron: patron)
-                                                                                             ])
-          # rubocop:enable RSpec/AnyInstance
+          stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
+            .to_return(status: 200, body: valid_patron_response, headers: {})
           visit '/requests/9922868943506421?mfhd=22692156940006421'
 
           expect(page).to have_field 'requestable_selected', disabled: false
@@ -681,7 +616,7 @@ describe 'request form', type: :feature, requests: true do
           expect(page).to have_content I18n.t('requests.submit.annex_success')
           email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
           confirm_email = ActionMailer::Base.deliveries.last
-          expect(email.subject).to eq("Annex Request")
+          expect(email.subject).to eq("Annex Non-Barcoded Request.")
           expect(email.to).to eq(["forranx@princeton.edu"])
           expect(email.cc).to be_blank
           expect(email.html_part.body.to_s).to have_content("Birth control news")
