@@ -87,13 +87,7 @@ describe 'request form', type: :feature, requests: true do
     after do
       clear_enqueued_jobs
     end
-    # around do |example|
-    #   cached_admin_netids = ENV['ORANGELIGHT_ADMIN_NETIDS']
-    #   ENV['ORANGELIGHT_ADMIN_NETIDS'] = ''
-    #   example.run
-    # ensure
-    #   ENV['ORANGELIGHT_ADMIN_NETIDS'] = cached_admin_netids
-    # end
+
     describe 'an item with no #show_pick_up_service_options' do
       # This is testing specifically issue https://github.com/pulibrary/orangelight/issues/3498
       # It does not test requesting it fixes a display issue.
@@ -214,9 +208,6 @@ describe 'request form', type: :feature, requests: true do
           select('Firestone Library', from: 'requestable__pick_up_23753408600006421')
           expect(page).not_to have_content 'Technical Services 693 (Staff Only)'
           expect(page).not_to have_content 'Technical Services HMT (Staff Only)'
-
-          # select('Technical Services 693 (Staff Only)', from: 'requestable__pick_up_23753408600006421')
-          # select('Technical Services HMT (Staff Only)', from: 'requestable__pick_up_23753408600006421')
 
           expect do
             click_button 'Request this Item'
@@ -617,7 +608,6 @@ describe 'request form', type: :feature, requests: true do
       context 'Annex with item data' do
         let(:library_staff_patron_response) { file_fixture('../bibdata_patron_library_staff_response.json') }
         before do
-          allow(Rack::MiniProfiler).to receive(:authorize_request)
           login_as(user)
         end
 
