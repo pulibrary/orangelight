@@ -654,7 +654,7 @@ describe 'request form', type: :feature, requests: true do
           expect(email.subject).to eq("Annex Request")
           expect(email.to).to eq(["forranx@princeton.edu"])
           expect(email.cc).to be_blank
-          expect(email.html_part.body.to_s).to have_content("Birth control news")
+          expect(email.html_part.body.to_s).to have_content("無求備齋論語集成")
           expect(email.html_part.body.to_s).to have_content("test")
           expect(email.text_part.body.to_s).to have_content("test")
           expect(confirm_email.subject).to eq("Annex Request")
@@ -662,7 +662,7 @@ describe 'request form', type: :feature, requests: true do
           expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
           expect(confirm_email.to).to eq(["a@b.com"])
           expect(confirm_email.cc).to be_blank
-          expect(confirm_email.html_part.body.to_s).to have_content("Birth control news")
+          expect(confirm_email.html_part.body.to_s).to have_content("Wu qiu bei zhai Lun yu ji")
           expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
         end
       end
@@ -1352,7 +1352,7 @@ describe 'request form', type: :feature, requests: true do
 
     it "allows only physical pickup to enumerated Forrestal Annex item" do
       stub_availability_by_holding_id(bib_id: '9947220743506421', holding_id: '22734584180006421')
-      stub_single_holding_location('annex$doc')
+      stub_single_holding_location('annex$stacks')
       stub_catalog_raw(bib_id: '9947220743506421')
       stub_alma_hold_success('9947220743506421', '22734584180006421', '23734584140006421', user.uid)
 
@@ -1362,7 +1362,7 @@ describe 'request form', type: :feature, requests: true do
 
       expect(page).to have_content "Department of Homeland Security appropriations for 2007"
       check('requestable_selected_23734584140006421')
-      select('Firestone Library', from: 'requestable__pick_up_23734584140006421')
+      select('Architecture Library', from: 'requestable__pick_up_23734584140006421')
       page.find(".submit--request") # this is really strange, but if I find the button then I can click it in the next line...
       expect do
         click_button 'Request Selected Items'
@@ -1371,7 +1371,7 @@ describe 'request form', type: :feature, requests: true do
       email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
       confirm_email = ActionMailer::Base.deliveries.last
       expect(email.subject).to eq("Annex Request")
-      expect(email.to).to eq(["docstor@princeton.edu"])
+      expect(email.to).to eq(["forranx@princeton.edu"])
       expect(email.cc).to be_blank
       expect(email.html_part.body.to_s).to have_content("Department of Homeland Security appropriations for 2007")
       expect(email.html_part.body.to_s).to have_content("pt.6")
