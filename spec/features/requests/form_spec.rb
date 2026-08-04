@@ -76,6 +76,7 @@ describe 'request form', type: :feature, requests: true do
     end
 
     before do
+      allow(Rack::MiniProfiler).to receive(:authorize_request)
       stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
         .to_return(status: 200, body: valid_patron_response, headers: {})
       stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=false")
@@ -187,38 +188,49 @@ describe 'request form', type: :feature, requests: true do
         click_button 'Request this Item'
         expect(page).to have_content I18n.t("requests.submit.in_process_success")
       end
-      # In-Process -> it's waiting to be cataloged in a PUL library and then shipped to RECAP
-      it 'makes sure In-Process ReCAP items with no holding library can be delivered anywhere' do
-        stub_availability_by_holding_id(bib_id: '99114026863506421', holding_id: '22753408610006421')
-        stub_catalog_raw bib_id: '99114026863506421'
-        stub_single_holding_location 'recap$pa'
-        stub_scsb_availability(bib_id: "99114026863506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
-        visit "/requests/#{recap_in_process_id}"
-        expect(page).to have_content 'In Process'
-        expect(page.find(:css, ".request--availability").text).to eq("Unavailable")
-        select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_23753408600006421')
-        select('Technical Services 693 (Staff Only)', from: 'requestable__pick_up_23753408600006421')
-        select('Technical Services HMT (Staff Only)', from: 'requestable__pick_up_23753408600006421')
-        expect do
-          click_button 'Request this Item'
-        end.to change { ActionMailer::Base.deliveries.count }.by(2)
-        expect(page).to have_content I18n.t("requests.submit.in_process_success")
-        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-        confirm_email = ActionMailer::Base.deliveries.last
-        expect(email.subject).to eq("In Process Request")
-        expect(email.to).to eq(["fstcirc@princeton.edu"])
-        expect(email.cc).to be_blank
-        expect(email.html_part.body.to_s).to have_content("Konteneryzacja w PRL")
-        expect(confirm_email.subject).to eq("In Process Request")
-        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.to).to eq(["a@b.com"])
-        expect(confirm_email.cc).to be_blank
-        expect(confirm_email.html_part.body.to_s).to have_content("Konteneryzacja w PRL")
-        expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
+      context 'when a ReCAP item is in-process' do
+        around do |example|
+          cached_admin_netids = ENV.fetch('ORANGELIGHT_ADMIN_NETIDS', nil)
+          ENV['ORANGELIGHT_ADMIN_NETIDS'] = ''
+          example.run
+        ensure
+          ENV['ORANGELIGHT_ADMIN_NETIDS'] = cached_admin_netids
+        end
+        # In-Process -> it's waiting to be cataloged in a PUL library and then shipped to RECAP
+        it 'makes sure In-Process ReCAP items with no holding library can be delivered anywhere' do
+          stub_availability_by_holding_id(bib_id: '99114026863506421', holding_id: '22753408610006421')
+          stub_catalog_raw bib_id: '99114026863506421'
+          stub_single_holding_location 'recap$pa'
+          stub_scsb_availability(bib_id: "99114026863506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
+          visit "/requests/#{recap_in_process_id}"
+          expect(page).to have_content 'In Process'
+          expect(page.find(:css, ".request--availability").text).to eq("Unavailable")
+          select('Firestone Library', from: 'requestable__pick_up_23753408600006421')
+          expect(page).not_to have_content 'Technical Services 693 (Staff Only)'
+          expect(page).not_to have_content 'Technical Services HMT (Staff Only)'
+
+          expect do
+            click_button 'Request this Item'
+          end.to change { ActionMailer::Base.deliveries.count }.by(2)
+          expect(page).to have_content I18n.t("requests.submit.in_process_success")
+          email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+          confirm_email = ActionMailer::Base.deliveries.last
+          expect(email.subject).to eq("In Process Request")
+          expect(email.to).to eq(["fstcirc@princeton.edu"])
+          expect(email.cc).to be_blank
+          expect(email.html_part.body.to_s).to have_content("Konteneryzacja w PRL")
+          expect(confirm_email.subject).to eq("In Process Request")
+          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+          expect(confirm_email.to).to eq(["a@b.com"])
+          expect(confirm_email.cc).to be_blank
+          expect(confirm_email.html_part.body.to_s).to have_content("Konteneryzacja w PRL")
+          expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
+        end
       end
-      # This is an example item that was in incorrect state.
-      # It has changed. We still want to keep this scenario in case it happens again.
+
+      #     # This is an example item that was in incorrect state.
+      #     # It has changed. We still want to keep this scenario in case it happens again.
       it 'allows CAS patrons to request a ReCAP PUL record that has no item data' do
         stub_availability_by_holding_id(bib_id: '99113283293506421', holding_id: '22750642660006421')
         stub_catalog_raw(bib_id: '99113283293506421')
@@ -238,6 +250,7 @@ describe 'request form', type: :feature, requests: true do
         expect(page).to have_content "Pick-up location: Firestone Library"
         expect(page).to have_content "Requests for pick-up typically take 2 business days to process."
       end
+
       it 'allows CAS patrons to request an on_shelf record' do
         stub_availability_by_holding_id(bib_id: '9912636153506421', holding_id: '22557213410006421')
         stub_single_holding_location('firestone$stacks', fixture: 'firestone_stacks_non_standard_circ.json')
@@ -324,9 +337,9 @@ describe 'request form', type: :feature, requests: true do
         expect(page).to have_content 'Item offsite at Forrestal Annex. Requests for pick-up'
         expect(page).to have_content 'Electronic Delivery'
         # Confirm that all the following options are in the drop-down
-        select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_23642306760006421')
-        select('Technical Services 693 (Staff Only)', from: 'requestable__pick_up_23642306760006421')
-        select('Technical Services HMT (Staff Only)', from: 'requestable__pick_up_23642306760006421')
+        expect(page).not_to have_content('Firestone Library, Resource Sharing (Staff Only)')
+        expect(page).not_to have_content('Technical Services 693 (Staff Only)')
+        expect(page).not_to have_content('Technical Services HMT (Staff Only)')
         select('Firestone Library', from: 'requestable__pick_up_23642306760006421')
         expect do
           click_button 'Request Selected Items'
@@ -593,33 +606,45 @@ describe 'request form', type: :feature, requests: true do
         end
       end
       context 'Annex with item data' do
+        let(:library_staff_patron_response) { file_fixture('../bibdata_patron_library_staff_response.json') }
+        before do
+          login_as(user)
+        end
+
+        around do |example|
+          cached_admin_netids = ENV.fetch('ORANGELIGHT_ADMIN_NETIDS', nil)
+          ENV['ORANGELIGHT_ADMIN_NETIDS'] = ''
+          example.run
+        ensure
+          ENV['ORANGELIGHT_ADMIN_NETIDS'] = cached_admin_netids
+        end
         it 'an Annex item with user supplied information creates Annex emails' do
-          stub_availability_by_holding_id(bib_id: '9922868943506421', holding_id: '22692156940006421')
-          stub_single_holding_location('annex$locked')
-          stub_catalog_raw(bib_id: '9922868943506421')
+          stub_availability_by_holding_id(bib_id: '9940097583506421', holding_id: '22668778350006421')
+          stub_single_holding_location('annex$stacks')
+          stub_catalog_raw(bib_id: '9940097583506421')
           stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
-            .to_return(status: 200, body: valid_patron_response, headers: {})
-          visit '/requests/9922868943506421?mfhd=22692156940006421'
+            .to_return(status: 200, body: library_staff_patron_response, headers: {})
+          visit '/requests/9940097583506421?mfhd=22668778350006421'
 
           expect(page).to have_field 'requestable_selected', disabled: false
-          expect(page).to have_field 'requestable_user_supplied_enum_22692156940006421'
-          within('#request_user_supplied_22692156940006421') do
+          expect(page).to have_field 'requestable_user_supplied_enum_22668778350006421'
+          within('#request_user_supplied_22668778350006421') do
             check('requestable_selected', exact: true)
-            fill_in 'requestable_user_supplied_enum_22692156940006421', with: 'test'
+            fill_in 'requestable_user_supplied_enum_22668778350006421', with: 'test'
           end
           expect(page).to have_content 'Physical Item Delivery'
-          choose 'requestable__delivery_mode_22692156940006421_print'
-          select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_22692156940006421')
+          choose 'requestable__delivery_mode_22668778350006421_print'
+          select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_22668778350006421')
           expect do
             click_button 'Request Selected Items'
           end.to change { ActionMailer::Base.deliveries.count }.by(2)
           expect(page).to have_content I18n.t('requests.submit.annex_success')
           email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
           confirm_email = ActionMailer::Base.deliveries.last
-          expect(email.subject).to eq("Annex Non-Barcoded Request.")
+          expect(email.subject).to eq("Annex Request")
           expect(email.to).to eq(["forranx@princeton.edu"])
           expect(email.cc).to be_blank
-          expect(email.html_part.body.to_s).to have_content("Birth control news")
+          expect(email.html_part.body.to_s).to have_content("無求備齋論語集成")
           expect(email.html_part.body.to_s).to have_content("test")
           expect(email.text_part.body.to_s).to have_content("test")
           expect(confirm_email.subject).to eq("Annex Request")
@@ -627,7 +652,7 @@ describe 'request form', type: :feature, requests: true do
           expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
           expect(confirm_email.to).to eq(["a@b.com"])
           expect(confirm_email.cc).to be_blank
-          expect(confirm_email.html_part.body.to_s).to have_content("Birth control news")
+          expect(confirm_email.html_part.body.to_s).to have_content("Wu qiu bei zhai Lun yu ji")
           expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
         end
       end
@@ -1317,7 +1342,7 @@ describe 'request form', type: :feature, requests: true do
 
     it "allows only physical pickup to enumerated Forrestal Annex item" do
       stub_availability_by_holding_id(bib_id: '9947220743506421', holding_id: '22734584180006421')
-      stub_single_holding_location('annex$doc')
+      stub_single_holding_location('annex$stacks')
       stub_catalog_raw(bib_id: '9947220743506421')
       stub_alma_hold_success('9947220743506421', '22734584180006421', '23734584140006421', user.uid)
 
@@ -1327,7 +1352,7 @@ describe 'request form', type: :feature, requests: true do
 
       expect(page).to have_content "Department of Homeland Security appropriations for 2007"
       check('requestable_selected_23734584140006421')
-      select('Firestone Library', from: 'requestable__pick_up_23734584140006421')
+      select('Architecture Library', from: 'requestable__pick_up_23734584140006421')
       page.find(".submit--request") # this is really strange, but if I find the button then I can click it in the next line...
       expect do
         click_button 'Request Selected Items'
@@ -1336,7 +1361,7 @@ describe 'request form', type: :feature, requests: true do
       email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
       confirm_email = ActionMailer::Base.deliveries.last
       expect(email.subject).to eq("Annex Request")
-      expect(email.to).to eq(["docstor@princeton.edu"])
+      expect(email.to).to eq(["forranx@princeton.edu"])
       expect(email.cc).to be_blank
       expect(email.html_part.body.to_s).to have_content("Department of Homeland Security appropriations for 2007")
       expect(email.html_part.body.to_s).to have_content("pt.6")

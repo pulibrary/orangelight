@@ -322,6 +322,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
                       preferred_request_id: 'test123',
                       charged?: false,
                       partner_holding?: false,
+                      patron: patron,
                       recap?: false)
     end
 
@@ -362,6 +363,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
                         partner_holding?: false,
                         preferred_request_id: 'test456',
                         charged?: false,
+                        patron: patron,
                         recap?: false)
       end
 
@@ -384,6 +386,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
                         location: Requests::Location.new({ code: 'scsbcul', delivery_locations: sample_locations }),
                         preferred_request_id: 'test789',
                         charged?: false,
+                        patron: patron,
                         recap?: true)
       end
 
@@ -412,6 +415,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
                         ill_eligible?: false,
                         partner_holding?: false,
                         location: Requests::Location.new({ code: 'firestone$stacks', delivery_locations: [{ label: "Firestone Library", gfa_pickup: "PA", library: { code: 'firestone' }, pick_up_location_code: 'firestone' }, { label: "Engineering Library", gfa_pickup: "PT", library: { code: 'engineer' } }, { label: "Lewis Library", gfa_pickup: "PN", library: { code: 'lewis' } }], fulfillment_unit: 'General' }),
+                        patron: patron,
                         annex?: false)
       end
 
