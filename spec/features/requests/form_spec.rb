@@ -629,29 +629,29 @@ describe 'request form', type: :feature, requests: true do
           ENV['ORANGELIGHT_ADMIN_NETIDS'] = cached_admin_netids
         end
         it 'an Annex item with user supplied information creates Annex emails' do
-          stub_availability_by_holding_id(bib_id: '9922868943506421', holding_id: '22692156940006421')
+          stub_availability_by_holding_id(bib_id: '9940097583506421', holding_id: '22668778350006421')
           stub_single_holding_location('annex$stacks')
-          stub_catalog_raw(bib_id: '9922868943506421')
+          stub_catalog_raw(bib_id: '9940097583506421')
           stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
             .to_return(status: 200, body: library_staff_patron_response, headers: {})
-          visit '/requests/9922868943506421?mfhd=22692156940006421'
+          visit '/requests/9940097583506421?mfhd=22668778350006421'
 
           expect(page).to have_field 'requestable_selected', disabled: false
-          expect(page).to have_field 'requestable_user_supplied_enum_22692156940006421'
-          within('#request_user_supplied_22692156940006421') do
+          expect(page).to have_field 'requestable_user_supplied_enum_22668778350006421'
+          within('#request_user_supplied_22668778350006421') do
             check('requestable_selected', exact: true)
-            fill_in 'requestable_user_supplied_enum_22692156940006421', with: 'test'
+            fill_in 'requestable_user_supplied_enum_22668778350006421', with: 'test'
           end
           expect(page).to have_content 'Physical Item Delivery'
-          choose 'requestable__delivery_mode_22692156940006421_print'
-          select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_22692156940006421')
+          choose 'requestable__delivery_mode_22668778350006421_print'
+          select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_22668778350006421')
           expect do
             click_button 'Request Selected Items'
           end.to change { ActionMailer::Base.deliveries.count }.by(2)
           expect(page).to have_content I18n.t('requests.submit.annex_success')
           email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
           confirm_email = ActionMailer::Base.deliveries.last
-          expect(email.subject).to eq("Annex Non-Barcoded Request.")
+          expect(email.subject).to eq("Annex Request")
           expect(email.to).to eq(["forranx@princeton.edu"])
           expect(email.cc).to be_blank
           expect(email.html_part.body.to_s).to have_content("Birth control news")

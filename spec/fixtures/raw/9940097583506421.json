@@ -1,0 +1,158 @@
+{
+    "id": "9940097583506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Yan, Lingfeng, 1904-",
+        "嚴靈峯, 1904-"
+    ],
+    "author_citation_display": [
+        "Yan, Lingfeng",
+        "Confucius"
+    ],
+    "author_roles_1display": "{\"primary_author\":\"Yan, Lingfeng\",\"secondary_authors\":[\"Confucius\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+    "author_s": [
+        "Yan, Lingfeng, 1904-",
+        "嚴靈峯, 1904-",
+        "Confucius"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "Wu qiu bei zhai Lun yu ji cheng, Yan Lingfeng bian ji.",
+    "title_vern_display": "無求備齋論語集成, 嚴靈峯編輯.",
+    "title_t": [
+        ""
+    ],
+    "title_citation_display": [
+        "Wu qiu bei zhai Lun yu ji cheng",
+        "無求備齋論語集成"
+    ],
+    "pub_created_vern_display": [
+        "[臺北] 藝文印書館 [1966]"
+    ],
+    "pub_created_display": [
+        "[Taibei] : Yi wen yin shu guan, [1966]",
+        "[臺北] 藝文印書館 [1966]"
+    ],
+    "pub_created_s": [
+        "[Taibei] : Yi wen yin shu guan, [1966]",
+        "[臺北] 藝文印書館 [1966]"
+    ],
+    "pub_citation_display": [
+        "Taibei: Yi wen yin shu guan",
+        "臺北: 藝文印書館"
+    ],
+    "publication_location_citation_display": [
+        "Taibei"
+    ],
+    "publisher_citation_display": [
+        "Yi wen yin shu guan"
+    ],
+    "pub_date_display": [
+        "1966"
+    ],
+    "pub_date_start_sort": 1966,
+    "publication_date_citation_display": [
+        "1966"
+    ],
+    "cataloged_tdt": "2005-10-14T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "308 v. (double leaves) in 66. illus., port. 19 cm."
+    ],
+    "description_t": [
+        "308 v. (double leaves) in 66. illus., port. 19 cm."
+    ],
+    "number_of_pages_citation_display": [
+        "308 v. (double leaves) in 66."
+    ],
+    "notes_display": [
+        "Binderʻs title: Lun yu ji cheng.",
+        "Binderʻs title: 論語集成.",
+        "Analyzed.",
+        "Library has: v.1-308."
+    ],
+    "language_name_display": [
+        "Chinese"
+    ],
+    "language_facet": [
+        "Chinese"
+    ],
+    "language_iana_s": [
+        "zh"
+    ],
+    "mult_languages_iana_s": [
+        "zh"
+    ],
+    "lc_subject_display": [
+        "Confucius—Lun yu.",
+        "Confucius—論語."
+    ],
+    "subject_facet": [
+        "Confucius—Lun yu.",
+        "Confucius—論語."
+    ],
+    "lc_subject_facet": [
+        "Confucius",
+        "Confucius—Lun yu.",
+        "Confucius—論語."
+    ],
+    "contains_1display": "[[\"Confucius.\",\"Lun yu.\",\"1966.\"],[\"Confucius.\",\"論語.\",\"1966.\"]]",
+    "other_title_display": [
+        "Lun yu ji cheng.",
+        "論語集成."
+    ],
+    "lccn_display": [
+        "70836182"
+    ],
+    "lccn_s": [
+        "70836182"
+    ],
+    "oclc_s": [
+        "20051786"
+    ],
+    "other_version_s": [
+        "ocm20051786"
+    ],
+    "original_language_display": [
+        "嚴靈峯,",
+        "無求備齋論語集成, 嚴靈峯編輯.",
+        "[臺北] 藝文印書館 [1966]",
+        "Binderʻs title: 論語集成.",
+        "Confucius.",
+        "論語集成."
+    ],
+    "holdings_1display": "{\"22668778350006421\":{\"location_code\":\"annex$stacks\",\"location\":\"Stacks\",\"library\":\"Forrestal Annex\",\"call_number\":\"930/6412\",\"call_number_browse\":\"930/6412\",\"items\":[{\"holding_id\":\"22668778350006421\",\"description\":\"vol.64-74\",\"id\":\"23668778290006421\",\"status_at_load\":\"1\",\"barcode\":\"32101018423267\",\"copy_number\":\"1\"},{\"holding_id\":\"22668778350006421\",\"description\":\"vol.280-290\",\"id\":\"23668778330006421\",\"status_at_load\":\"1\",\"barcode\":\"32101018423473\",\"copy_number\":\"1\"},{\"holding_id\":\"22668778350006421\",\"description\":\"vol.1-10\",\"id\":\"23668778340006421\",\"status_at_load\":\"1\",\"barcode\":\"32101018423200\",\"copy_number\":\"1\"},{\"holding_id\":\"22668778350006421\",\"description\":\"vol.54-63\",\"id\":\"23668778300006421\",\"status_at_load\":\"1\",\"barcode\":\"32101018423259\",\"copy_number\":\"1\"},{\"holding_id\":\"22668778350006421\",\"description\":\"vol.31-41\",\"id\":\"23668778310006421\",\"status_at_load\":\"1\",\"barcode\":\"32101018423234\",\"copy_number\":\"1\"},{\"holding_id\":\"22668778350006421\",\"description\":\"vol.21-30\",\"id\":\"23668778320006421\",\"status_at_load\":\"1\",\"barcode\":\"32101018423226\",\"copy_number\":\"1\"}],\"location_has\":[\"Vol.1-v.308\"],\"supplements\":[null],\"indexes\":[null]}}",
+    "location_code_s": [
+        "annex$stacks"
+    ],
+    "advanced_location_s": [
+        "annex$stacks",
+        "Forrestal Annex"
+    ],
+    "location_display": [
+        "Stacks"
+    ],
+    "location": [
+        "Forrestal Annex"
+    ],
+    "name_title_browse_s": [
+        "Confucius. Lun yu.",
+        "Confucius. Lun yu. 1966",
+        "Confucius. 論語.",
+        "Confucius. 論語. 1966",
+        "Yan, Lingfeng, 1904-. Wu qiu bei zhai Lun yu ji cheng",
+        "嚴靈峯, 1904-. 無求備齋論語集成"
+    ],
+    "call_number_display": [
+        "930/6412"
+    ],
+    "call_number_browse_s": [
+        "930/6412"
+    ],
+    "hashed_id_ssi": "90a68e5083d2a283",
+    "_version_": 1871961672499855360,
+    "timestamp": "2026-07-28T12:29:28.250Z"
+}
