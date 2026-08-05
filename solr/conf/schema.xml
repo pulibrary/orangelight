@@ -454,6 +454,8 @@
       </analyzer>
     </fieldType>
 
+    <fieldType name="icuSortKey" class="solr.ICUCollationField" locale="" strength="primary" />
+
     <!-- since fields of this type are by default not stored or indexed,
          any data added to them will be ignored outright.  -->
     <fieldtype name="ignored" stored="false" indexed="false" multiValued="true" class="solr.StrField" />
@@ -530,6 +532,7 @@
    <field name="original_language_of_translation_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="author_int" type="author" indexed="true" stored="false" multiValued="true"/>
    <field name="title_sort" type="alphaNumSort" indexed="true" stored="false" />
+   <field name="title_sort_key" type="icuSortKey" indexed="false" stored="false" docValues="true" />
     <!-- pub_date sort uses new trie-based int fields, which are recommended for any int and are displayable, sortable, and range-quer
    we use 'pint' for faster range-queries. -->
    <field name="pub_date_start_sort" type="pint" indexed="true" stored="true" multiValued="false"/>
@@ -728,4 +731,9 @@
    <copyField source="title_addl_la" dest="text"/>
 
    <copyField source="cjk_notes" dest="cjk_text"/>
+
+   <!-- temporary copy Field for backwards compatibility. Once orangelight uses title_sort_key
+    for sorting and we have done a full reindex, we can start indexing directly
+    into title_sort_key directly, and remove title_sort altogether -->
+  <copyField source="title_sort" dest="title_sort_key" />
 </schema>
