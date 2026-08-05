@@ -33,6 +33,7 @@ Metrics/BlockLength:
     - 'app/views/catalog/_document_default.atom.builder'
     - 'config/routes.rb'
     - 'config/deploy/staging.rb'
+    - 'config/deploy/dedupe.rb'
     - 'config/deploy/alma-qa.rb'
     - 'config/deploy/qa.rb'
     - 'lib/tasks/browse.rake'
