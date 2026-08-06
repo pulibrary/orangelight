@@ -3,7 +3,7 @@
     <div class="page-links">
     <%= render :partial => "paginate_compact", :object => @response if show_pagination? %>
     <%= link_to(" ", search_catalog_path(params.permit!.merge(format: 'atom',
-                sort: 'cataloged_tdt desc, pub_date_start_sort desc, title_sort asc').except(:controller, :action)),
+                sort: 'cataloged_tdt desc, pub_date_start_sort desc, title_sort_key asc').except(:controller, :action)),
                 :class => "icon-rssfeed", :title => "Subscribe to results feed", "aria-label"=>"Subscribe to results feed" ) %>
     </div>
   </div>

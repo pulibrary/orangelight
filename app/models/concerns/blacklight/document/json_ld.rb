@@ -52,7 +52,6 @@ module Blacklight::Document::JsonLd
       lc_subject_display: 'subject',
       jsonld_genre_display: 'genre',
       coverage_display: 'coverage',
-      title_sort: 'title_sort',
       alt_title_246_display: 'alternative',
       scale_display: 'cartographic_scale',
       projection_display: 'cartographic_projection',
