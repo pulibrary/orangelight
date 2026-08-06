@@ -717,7 +717,7 @@ class CatalogController < ApplicationController
                                                                                              }
     config.add_sort_field 'pub_date_start_sort desc, title_sort_key asc, score desc', label: 'year (newest first)'
     config.add_sort_field 'pub_date_start_sort asc, title_sort_key asc, score desc', label: 'year (oldest first)'
-    config.add_sort_field 'author_sort asc, title_sort_key asc, score desc', label: 'author'
+    config.add_sort_field 'author_sort_key asc, title_sort_key asc, score desc', label: 'author'
     config.add_sort_field 'title_sort_key asc, pub_date_start_sort desc, score desc', label: 'title'
     config.add_sort_field 'cataloged_tdt desc, title_sort_key asc, score desc', label: 'date cataloged'
 
