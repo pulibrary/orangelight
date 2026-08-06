@@ -12,7 +12,7 @@
             ],
             "f.subject_era_facet.facet.limit": "11",
             "f.location.facet.mincount": "1",
-            "sort": "score desc, pub_date_start_sort desc, title_sort asc",
+            "sort": "score desc, pub_date_start_sort desc, title_sort_key_key asc",
             "f.location.facet.sort": "index",
             "rows": "20",
             "facet.query": [

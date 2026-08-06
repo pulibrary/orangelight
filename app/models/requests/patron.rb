@@ -56,6 +56,11 @@ module Requests
       affiliate_patron_groups.include?(patron_group)
     end
 
+    def library_staff_patron_group?
+      library_staff_patron_groups = %w[lib]
+      library_staff_patron_groups.include?(patron_group)
+    end
+
     def university_id
       patron_hash[:university_id] || user.uid
     end

@@ -36,7 +36,7 @@
         "title_a_index": [
             "From Hiroshima to the iceman"
         ],
-        "title_sort": [
+        "title_sort_key": [
             "From Hiroshima to the iceman : the development and applications of accelerator mass spectrometry / Harry E. Gove."
         ],
         "title_no_h_index": [
@@ -255,7 +255,7 @@
         "title_a_index": [
             "Studies in intelligence"
         ],
-        "title_sort": [
+        "title_sort_key": [
             "Studies in intelligence."
         ],
         "title_no_h_index": [
@@ -466,7 +466,7 @@
         "title_a_index": [
             "Journal de l'agriculture de la ferme et des maisons de campagnes de la zootechnie, de la viticulture, de l'horticulture, de l'économie rurale et des intérêts de la propriété"
         ],
-        "title_sort": [
+        "title_sort_key": [
             "Journal de l'agriculture de la ferme et des maisons de campagnes de la zootechnie, de la viticulture, de l'horticulture, de l'économie rurale et des intérêts de la propriété."
         ],
         "title_no_h_index": [
@@ -640,7 +640,7 @@
         "title_a_index": [
             "中国现象学与哲学评论/#/中國現象學與哲學評論 [[zhong guo xian xiang xue yu zhe xue ping lun]]"
         ],
-        "title_sort": [
+        "title_sort_key": [
             "中国现象学与哲学评论/#/中國現象學與哲學評論 [[zhong guo xian xiang xue yu zhe xue ping lun]]"
         ],
         "title_no_h_index": [
@@ -717,7 +717,7 @@
         "title_a_index": [
             "Ear wave event"
         ],
-        "title_sort": [
+        "title_sort_key": [
             "Ear wave event"
         ],
         "title_no_h_index": [
@@ -778,7 +778,7 @@
         "title_a_index": [
             "International journal of exergy"
         ],
-        "title_sort": [
+        "title_sort_key": [
             "International journal of exergy"
         ],
         "title_no_h_index": [
@@ -891,7 +891,7 @@
         "title_a_index": [
             "Mémoires de l'Académie royale des sciences, inscriptions et belles-lettres de Toulouse"
         ],
-        "title_sort": [
+        "title_sort_key": [
             "Mémoires de l'Académie royale des sciences, inscriptions et belles-lettres de Toulouse."
         ],
         "title_no_h_index": [
@@ -1019,7 +1019,7 @@
         "title_a_index": [
             "The New York times on the Web"
         ],
-        "title_sort": [
+        "title_sort_key": [
             "New York times on the Web."
         ],
         "title_no_h_index": [
@@ -1272,7 +1272,7 @@
         "title_a_index": [
             "Anuario estadístico / Estados Unidos Mexicanos"
         ],
-        "title_sort": [
+        "title_sort_key": [
             "Anuario estadístico / Estados Unidos Mexicanos"
         ],
         "title_no_h_index": [
@@ -1418,7 +1418,7 @@
         "title_a_index": [
             "Intersight"
         ],
-        "title_sort": [
+        "title_sort_key": [
             "Intersight"
         ],
         "title_no_h_index": [
@@ -1507,7 +1507,7 @@
         "title_a_index": [
             "The Nassau lit"
         ],
-        "title_sort": [
+        "title_sort_key": [
             "Nassau lit."
         ],
         "title_no_h_index": [
@@ -1717,7 +1717,7 @@
         "title_a_index": [
             "Demographic review of the Maltese Islands"
         ],
-        "title_sort": [
+        "title_sort_key": [
             "Demographic review of the Maltese Islands"
         ],
         "title_no_h_index": [
@@ -1824,7 +1824,7 @@
         "title_a_index": [
             "Monatshefte für Mathematik"
         ],
-        "title_sort": [
+        "title_sort_key": [
             "Monatshefte für Mathematik."
         ],
         "title_no_h_index": [
@@ -2068,7 +2068,7 @@
         "title_a_index": [
             "Kroeber Anthropological Society papers"
         ],
-        "title_sort": [
+        "title_sort_key": [
             "Kroeber Anthropological Society papers."
         ],
         "title_no_h_index": [
@@ -2282,7 +2282,7 @@
         "title_a_index": [
             "Solar bulletin"
         ],
-        "title_sort": [
+        "title_sort_key": [
             "Solar bulletin."
         ],
         "title_no_h_index": [
@@ -2471,7 +2471,7 @@
         "title_a_index": [
             "Discussion paper"
         ],
-        "title_sort": [
+        "title_sort_key": [
             "Discussion paper / Institute for Economic Research, Queen's University."
         ],
         "title_no_h_index": [
@@ -2654,7 +2654,7 @@
         "title_a_index": [
             "Anuario estadístico de la República Argentina"
         ],
-        "title_sort": [
+        "title_sort_key": [
             "Anuario estadístico de la República Argentina / INDEC."
         ],
         "title_no_h_index": [
@@ -2848,7 +2848,7 @@
         "title_a_index": [
             "The Times higher education supplement"
         ],
-        "title_sort": [
+        "title_sort_key": [
             "Times higher education supplement."
         ],
         "title_no_h_index": [

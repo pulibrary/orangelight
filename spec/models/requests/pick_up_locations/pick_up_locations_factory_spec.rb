@@ -6,7 +6,7 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory, :requests do
   it 'returns pickup locations for on-shelf Firestone title' do
     location = Requests::Location.new single_holding_data_from_fixture('firestone$stacks')
     form = instance_double(Requests::Form)
-    requestable = instance_double(Requests::Requestable, partner_holding?: false, location:, ill_eligible?: false, annex?: false, recap?: false)
+    requestable = instance_double(Requests::Requestable, partner_holding?: false, location:, ill_eligible?: false, annex?: false, recap?: false, patron: instance_double(Requests::Patron, library_staff_patron_group?: false, affiliate_patron_group?: false))
     factory = described_class.new(form:, requestable:)
 
     expect(factory.call.pluck(:label, :gfa_pickup)).to eq([

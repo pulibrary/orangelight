@@ -710,16 +710,16 @@ class CatalogController < ApplicationController
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
-    config.add_sort_field 'score desc, pub_date_start_sort desc, title_sort asc', label: 'relevance'
+    config.add_sort_field 'score desc, pub_date_start_sort desc, title_sort_key asc', label: 'relevance'
     config.add_sort_field 'location asc, advanced_location_s asc, call_number_browse_s asc', label: 'library',
                                                                                              if: lambda { |controller, _config|
                                                                                                controller.controller_path == 'bookmarks'
                                                                                              }
-    config.add_sort_field 'pub_date_start_sort desc, title_sort asc, score desc', label: 'year (newest first)'
-    config.add_sort_field 'pub_date_start_sort asc, title_sort asc, score desc', label: 'year (oldest first)'
-    config.add_sort_field 'author_sort asc, title_sort asc, score desc', label: 'author'
-    config.add_sort_field 'title_sort asc, pub_date_start_sort desc, score desc', label: 'title'
-    config.add_sort_field 'cataloged_tdt desc, title_sort asc, score desc', label: 'date cataloged'
+    config.add_sort_field 'pub_date_start_sort desc, title_sort_key asc, score desc', label: 'year (newest first)'
+    config.add_sort_field 'pub_date_start_sort asc, title_sort_key asc, score desc', label: 'year (oldest first)'
+    config.add_sort_field 'author_sort asc, title_sort_key asc, score desc', label: 'author'
+    config.add_sort_field 'title_sort_key asc, pub_date_start_sort desc, score desc', label: 'title'
+    config.add_sort_field 'cataloged_tdt desc, title_sort_key asc, score desc', label: 'date cataloged'
 
     config.add_email_field 'title_display', label: 'Title'
     config.add_email_field 'title_vern_display', label: 'Title'

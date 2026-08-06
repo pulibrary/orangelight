@@ -22,7 +22,7 @@ module Requests
       end
 
       def allowed_patron_groups
-        @allowed_patron_groups ||= %w[p reg grad senr ugrd sum]
+        @allowed_patron_groups ||= %w[p reg grad senr ugrd sum lib]
       end
 
     private

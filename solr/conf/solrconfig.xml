@@ -341,6 +341,7 @@
         holdings_1display,
         electronic_access_1display,
         electronic_portfolio_s,
+        figgy_1display,
         cataloged_tdt,
         contained_in_s,
         call_number_display,
