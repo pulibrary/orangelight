@@ -14,7 +14,7 @@
   <% end %>
   <% if @field.document.electronic_access?%>
     <li>
-      <lux-badge color="blue"><%= render DecorativeAccessIconComponent.new "Online" %>
+      <lux-badge color="<%= online_color %>"><%= render DecorativeAccessIconComponent.new "Online" %>
         Online
       </lux-badge>
   <% end %>
