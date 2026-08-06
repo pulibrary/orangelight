@@ -531,8 +531,6 @@
    <field name="thumbnail_display" type="text" indexed="false" stored="true" multiValued="false" />
    <field name="original_language_of_translation_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="author_int" type="author" indexed="true" stored="false" multiValued="true"/>
-   <field name="title_sort" type="alphaNumSort" indexed="true" stored="false" />
-   <field name="title_sort_key" type="icuSortKey" indexed="false" stored="false" docValues="true" />
     <!-- pub_date sort uses new trie-based int fields, which are recommended for any int and are displayable, sortable, and range-quer
    we use 'pint' for faster range-queries. -->
    <field name="pub_date_start_sort" type="pint" indexed="true" stored="true" multiValued="false"/>
@@ -589,6 +587,7 @@
    <dynamicField name="*_facet" type="string" indexed="true" stored="false" multiValued="true" />
    <dynamicField name="*_index" type="text" indexed="true" stored="false" multiValued="true" />
    <dynamicField name="*_sort" type="alphaOnlySort" indexed="true" stored="false" />
+   <dynamicField name="*_sort_key" type="icuSortKey" indexed="false" stored="false" docValues="true" />
    <dynamicField name="*_unstem_search" type="text_general" indexed="true" stored="false" multiValued="true" />
    <dynamicField name="*spell" type="textSpell" indexed="true" stored="false" multiValued="true" />
 
@@ -637,7 +636,6 @@
    <copyField source="title_display" dest="title_245_lr"/>
    <copyField source="title_vern_display" dest="title_245_la"/>
    <copyField source="title_vern_display" dest="title_245_lr"/>
-   <copyField source="title_sort" dest="title_245_la"/>
    <copyField source="title_vern_sort" dest="title_245_la"/>
    <copyField source="title_no_h_index" dest="title_245_la"/>
    <copyField source="title_245_la" dest="title_245_lr"/>
@@ -731,9 +729,4 @@
    <copyField source="title_addl_la" dest="text"/>
 
    <copyField source="cjk_notes" dest="cjk_text"/>
-
-   <!-- temporary copy Field for backwards compatibility. Once orangelight uses title_sort_key
-    for sorting and we have done a full reindex, we can start indexing directly
-    into title_sort_key directly, and remove title_sort altogether -->
-  <copyField source="title_sort" dest="title_sort_key" />
 </schema>
