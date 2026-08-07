@@ -15,7 +15,7 @@
         "author_display": [
             "Gove, H. E. (Harry Edmund), 1922-"
         ],
-        "author_sort": [
+        "author_sort_key": [
             "Gove, H. E. (Harry Edmund), 1922-"
         ],
         "author_citation_display": [
@@ -870,7 +870,7 @@
         "author_display": [
             "Académie des sciences, inscriptions et belles-lettres de Toulouse"
         ],
-        "author_sort": [
+        "author_sort_key": [
             "Académie des sciences, inscriptions et belles-lettres de Toulouse"
         ],
         "author_citation_display": [
@@ -1247,7 +1247,7 @@
         "author_display": [
             "Mexiko"
         ],
-        "author_sort": [
+        "author_sort_key": [
             "Mexiko"
         ],
         "author_citation_display": [
