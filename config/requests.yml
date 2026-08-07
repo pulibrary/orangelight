@@ -32,6 +32,11 @@ staging:
   aeon_base: https://princeton.aeon.atlas-sys.com/logon
   pulsearch_base: https://catalog-staging.princeton.edu
   bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.lib.princeton.edu" %>
+dedupe:
+  <<: *defaults
+  aeon_base: https://princeton.aeon.atlas-sys.com/logon
+  pulsearch_base: https://catalog-dedupe.princeton.edu
+  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.lib.princeton.edu" %>
 qa:
   <<: *defaults
   aeon_base: https://princeton.aeon.atlas-sys.com/logon
