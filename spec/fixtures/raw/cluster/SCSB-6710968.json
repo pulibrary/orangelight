@@ -90,7 +90,7 @@
   "lccn_s": [
     "68011331"
   ],
-  "holdings_1display": "{\"6792309\":{\"holding_id\":\"6792309\",\"display_format\":\"book\",\"source_id\":\"SCSB-6710968\",\"location_code\":\"scsbnypl\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"J 636.7 G\",\"call_number_browse\":\"J 636.7 G\",\"sub_location\":null,\"shelving_title\":null,\"location_note\":null,\"items\":[{\"holding_id\":\"6792309\",\"description\":null,\"id\":\"10948482\",\"status_at_load\":\"Available\",\"barcode\":\"33333068000773\",\"copy_number\":\"1\",\"use_statement\":null,\"storage_location\":\"RECAP\",\"cgd\":\"Shared\",\"collection_code\":\"NH\"}],\"location_has\":[],\"supplements\":[],\"indexes\":[]}}",
+  "holdings_1display": "{\"6792309\":{\"holding_id\":\"6792309\",\"display_format\":\"Book\",\"source_id\":\"SCSB-6710968\",\"location_code\":\"scsbnypl\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"J 636.7 G\",\"call_number_browse\":\"J 636.7 G\",\"sub_location\":null,\"shelving_title\":null,\"location_note\":null,\"items\":[{\"holding_id\":\"6792309\",\"description\":null,\"id\":\"10948482\",\"status_at_load\":\"Available\",\"barcode\":\"33333068000773\",\"copy_number\":\"1\",\"use_statement\":null,\"storage_location\":\"RECAP\",\"cgd\":\"Shared\",\"collection_code\":\"NH\"}],\"location_has\":[],\"supplements\":[],\"indexes\":[]}}",
   "recap_notes_display": [
     "N - S"
   ],
