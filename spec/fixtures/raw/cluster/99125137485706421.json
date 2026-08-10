@@ -1,0 +1,72 @@
+{
+  "id": "99125137485706421",
+  "numeric_id_b": true,
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "title_display": "U.S. Congress Act to Incorporate Near East Relief, August 6, 1919 / by the United States Congress.",
+  "title_t": [
+    ""
+  ],
+  "title_citation_display": [
+    "U.S. Congress Act to Incorporate Near East Relief, August 6, 1919"
+  ],
+  "pub_created_display": [
+    "District of Columbia : United States. Congress, 7158."
+  ],
+  "pub_created_s": [
+    "District of Columbia : United States. Congress, 7158."
+  ],
+  "pub_citation_display": [
+    "District of Columbia: United States. Congress"
+  ],
+  "publication_location_citation_display": [
+    "District of Columbia"
+  ],
+  "publisher_citation_display": [
+    "United States. Congress"
+  ],
+  "pub_date_display": [
+    "7158"
+  ],
+  "pub_date_start_sort": 7158,
+  "publication_date_citation_display": [
+    "7158"
+  ],
+  "cataloged_tdt": "2020-06-14T03:40:19Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "1 online resource (1 page)"
+  ],
+  "description_t": [
+    "1 online resource (1 page)"
+  ],
+  "number_of_pages_citation_display": [
+    "1 online resource (1 page)"
+  ],
+  "notes_display": [
+    "Title from resource description page (viewed May 15, 2017)."
+  ],
+  "language_display": [
+    "In English.",
+    "Original language in English."
+  ],
+  "language_name_display": [
+    "English"
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "mult_languages_iana_s": [
+    "en"
+  ],
+  "electronic_portfolio_s": [
+    "{\"desc\":null,\"title\":\"Human Rights Studies Online (Text)\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53760583850006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[], \"display_format\":\"ebook\",\"source_id\":\"99125137485706421\"}"
+  ],
+  "hashed_id_ssi": "557da08b76f3755c",
+  "_version_": 1872818850735587328,
+  "timestamp": "2026-08-06T23:33:57.220Z"
+}
