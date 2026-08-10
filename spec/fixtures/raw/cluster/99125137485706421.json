@@ -64,9 +64,6 @@
     "en"
   ],
   "electronic_portfolio_s": [
-    "{\"desc\":null,\"title\":\"Human Rights Studies Online (Text)\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53760583850006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[], \"display_format\":\"ebook\",\"source_id\":\"99125137485706421\"}"
-  ],
-  "hashed_id_ssi": "557da08b76f3755c",
-  "_version_": 1872818850735587328,
-  "timestamp": "2026-08-06T23:33:57.220Z"
+    "{\"desc\":null,\"title\":\"Human Rights Studies Online (Text)\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53760583850006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[],\"display_format\":\"ebook\",\"source_id\":\"99125137485706421\"}"
+  ]
 }
