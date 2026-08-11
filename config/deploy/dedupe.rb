@@ -9,30 +9,6 @@ server 'catalog-dedupe2.princeton.edu', user: 'deploy', roles: %i[web app worker
 server 'catalog-indexer-dedupe1.princeton.edu', user: 'deploy', roles: %i[cron_db worker indexer]
 server 'catalog-indexer-dedupe2.princeton.edu', user: 'deploy', roles: %i[cron_db worker indexer]
 
-namespace :env do
-  desc 'Set an Orangelight environment variable'
-  task :set do |_task, args|
-    on roles(:app) do
-      raise "Environment variables and values must be specified. `env:set['ENV_VAR=value']`" if args.extras.empty?
-      config_file = '/home/deploy/app_configs/orangelight'
-      args.extras.each do |arg|
-        variable, value = arg.split('=', 2)
-        raise "Environment variable and value must be specified. `env:set['ENV_VAR=value']`" if value.nil?
-        within release_path do
-          execute("sed -i -e 's/#{variable}=.*/#{variable}=#{value.gsub('/', '\/')}/' #{config_file}")
-        end
-      end
-
-      # Print out app_config file
-      within release_path do
-        execute :cat, config_file
-      end
-
-      # Restart passenger
-      invoke 'deploy:restart'
-    end
-  end
-
   desc 'Set Orangelight to use figgy production'
   task :figgy_production do
     on roles(:app) do
