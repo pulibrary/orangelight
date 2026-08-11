@@ -1,0 +1,187 @@
+{
+  "id": "12be71a4-8e76-47ea-98f0-8da9ae511406",
+  "cluster_members_s": [
+    "99118229023506421",
+    "99116557753506421",
+    "99117295683506421",
+    "99127101640306421"
+  ],
+  "numeric_id_b": true,
+  "author_display": [
+    "Williams, Niall, 1958-"
+  ],
+  "author_citation_display": [
+    "Williams, Niall"
+  ],
+  "author_roles_1display": "{\"primary_author\":\"Williams, Niall\",\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+    "Williams, Niall, 1958-"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "This is happiness / Niall Williams.",
+  "title_t": [
+    ""
+  ],
+  "title_citation_display": [
+    "This is happiness"
+  ],
+  "pub_created_display": [
+    "New York : Bloomsbury Publishing, 2019."
+  ],
+  "pub_created_s": [
+    "New York : Bloomsbury Publishing, 2019."
+  ],
+  "pub_citation_display": [
+    "New York: Bloomsbury Publishing"
+  ],
+  "publication_location_citation_display": [
+    "New York"
+  ],
+  "publisher_citation_display": [
+    "Bloomsbury Publishing"
+  ],
+  "pub_date_display": [
+    "2019"
+  ],
+  "pub_date_start_sort": 2019,
+  "publication_date_citation_display": [
+    "2019"
+  ],
+  "cataloged_tdt": "2020-02-14T00:00:00Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "380 pages ; 25 cm"
+  ],
+  "description_t": [
+    "380 pages ; 25 cm"
+  ],
+  "number_of_pages_citation_display": [
+    "380 pages"
+  ],
+  "geocode_display": [
+    "Ireland"
+  ],
+  "summary_note_display": [
+    "\"Change is coming to Faha, a small Irish parish that hasn't changed in a thousand years. For one thing, the rain is stopping. Nobody remembers when it started; rain on the western seaboard is a condition of living. But now - just as Father Coffey proclaims the coming of the electricity - the rain clouds are lifting. Seventeen-year-old Noel Crowe is idling in the unexpected sunshine when Christy makes his first entrance into Faha, bringing secrets he needs to atone for. Though he can't explain it, Noel knows right then: something has changed. As the people of Faha anticipate the endlessly procrastinated advent of the electricity, and Noel navigates his own coming-of-age and his falling in and out of love, Christy's past gradually comes to light, casting a new glow on a small world. Harking back to a simpler time, This Is Happiness is a tender portrait of a community - its idiosyncrasies and traditions, its paradoxes and kindnesses, its failures and triumphs - and a coming-of-age tale like no other. Luminous and lyrical, yet anchored by roots running deep into the earthy and everyday, it is about the power of stories: their invisible currents that run through all we do, writing and rewriting us, and the transforming light that they throw onto our world.\"--Publisher description."
+  ],
+  "language_name_display": [
+    "English"
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "mult_languages_iana_s": [
+    "en"
+  ],
+  "lc_subject_display": [
+    "Communities—Fiction",
+    "Interpersonal relations—Fiction",
+    "Secrecy—Fiction",
+    "Manners and customs—Fiction",
+    "Rites and ceremonies—Fiction",
+    "Rural electrification—Ireland—Fiction",
+    "Ireland—Fiction"
+  ],
+  "subject_facet": [
+    "Communities—Fiction",
+    "Interpersonal relations—Fiction",
+    "Secrecy—Fiction",
+    "Manners and customs—Fiction",
+    "Rites and ceremonies—Fiction",
+    "Rural electrification—Ireland—Fiction",
+    "Ireland—Fiction",
+    "Coming-of-age fiction",
+    "Fiction",
+    "Novels"
+  ],
+  "lc_subject_facet": [
+    "Communities",
+    "Communities—Fiction",
+    "Interpersonal relations",
+    "Interpersonal relations—Fiction",
+    "Secrecy",
+    "Secrecy—Fiction",
+    "Manners and customs",
+    "Manners and customs—Fiction",
+    "Rites and ceremonies",
+    "Rites and ceremonies—Fiction",
+    "Rural electrification",
+    "Rural electrification—Ireland",
+    "Rural electrification—Ireland—Fiction",
+    "Ireland",
+    "Ireland—Fiction"
+  ],
+  "lcgft_s": [
+    "Coming-of-age fiction",
+    "Fiction",
+    "Novels"
+  ],
+  "lcgft_genre_facet": [
+    "Coming-of-age fiction",
+    "Fiction",
+    "Novels"
+  ],
+  "jsonld_genre_display": [
+    "Bildungsromans.",
+    "Fiction.",
+    "Novels.",
+    "Coming-of-age fiction."
+  ],
+  "isbn_display": [
+    "9781526609366 (trade paperback)",
+    "1526609363 (trade paperback)",
+    "9781526609335 (hardcover)",
+    "1526609339 (hardcover)",
+    "9781635574203 (hardcover)",
+    "163557420X (hardcover)"
+  ],
+  "isbn_s": [
+    "9781526609366",
+    "9781526609335",
+    "9781635574203"
+  ],
+  "oclc_s": [
+    "1076498976"
+  ],
+  "other_version_s": [
+    "9781526609366",
+    "9781526609335",
+    "9781635574203",
+    "9781526609342",
+    "on1076498976"
+  ],
+  "holdings_1display": "{\"22693379330006421\":{\"display_format\":\"Book\",\"source_id\":\"99118229023506421\",\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"PR6073.I43273 T55 2019\",\"call_number_browse\":\"PR6073.I43273 T55 2019\",\"items\":[{\"holding_id\":\"22693379330006421\",\"id\":\"23693379320006421\",\"status_at_load\":\"0\",\"barcode\":\"32101108228139\",\"copy_number\":\"0\"}]},\"22743502480006421\":{\"display_format\":\"Book\",\"source_id\":\"99116557753506421\",\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"PR6073.I43273 T45 2019\",\"call_number_browse\":\"PR6073.I43273 T45 2019\",\"items\":[{\"holding_id\":\"22743502480006421\",\"id\":\"23743502470006421\",\"status_at_load\":\"1\",\"barcode\":\"32101107861708\",\"copy_number\":\"0\"}]}}",
+  "electronic_portfolio_s": [
+    "{\"desc\":null,\"title\":\"OverDrive\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53967191620006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[],\"display_format\":\"Audio\",\"source_id\":\"99127101640306421\"}",
+    "{\"desc\":null,\"title\":\"OverDrive\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53832946020006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[],\"display_format\":\"EBook\",\"source_id\":\"99117295683506421\"}"
+  ],
+  "location_code_s": [
+    "firestone$stacks"
+  ],
+  "advanced_location_s": [
+    "firestone$stacks",
+    "Firestone Library"
+  ],
+  "location_display": [
+    "Stacks"
+  ],
+  "location": [
+    "Firestone Library"
+  ],
+  "name_title_browse_s": [
+    "Williams, Niall, 1958-. This is happiness"
+  ],
+  "call_number_display": [
+    "PR6073.I43273 T55 2019"
+  ],
+  "call_number_browse_s": [
+    "PR6073.I43273 T55 2019"
+  ]
+}
