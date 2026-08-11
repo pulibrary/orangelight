@@ -5,7 +5,7 @@
     "title_citation_display": "The Show Must Go On... And On, And On: The Lasting Appeal of the Stage Comedy",
     "title_display": "The Show Must Go On... And On, And On: The Lasting Appeal of the Stage Comedy",
     "title_sort_key": "showmustgoonandonandonthelastingappealofthestagecomedy",
-    "author_sort": "White-Mink, Chamari",
+    "author_sort_key": "White-Mink, Chamari",
     "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/dsp01wd3760321\":[\"DataSpace\",\"Citation only\"]}",
     "restrictions_note_display": [
       "Walk-in Access. This thesis can only be viewed on computer terminals at the <a href=http://mudd.princeton.edu>Mudd Manuscript Library</a>."
@@ -59,7 +59,7 @@
     "title_citation_display": "Unfinished Business: An Examination of Unrevived, Unproduced, and Incomplete Musical Theatre",
     "title_display": "Unfinished Business: An Examination of Unrevived, Unproduced, and Incomplete Musical Theatre",
     "title_sort_key": "unfinishedbusinessanexaminationofunrevivedunproducedandincompletemusicaltheatre",
-    "author_sort": "Plunkett, William Anderson",
+    "author_sort_key": "Plunkett, William Anderson",
     "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/dsp01w6634604k\":[\"DataSpace\",\"Full text\"]}",
     "restrictions_note_display": null,
     "call_number_display": "AC102",
@@ -118,7 +118,7 @@
     "Li, Jiefei",
     "李絜非."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Li, Jiefei"
   ],
   "author_citation_display": [
@@ -322,7 +322,7 @@
     "Kli︠u︡kanov, I. Ė.",
     "Клюканов, И. Э."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Kli︠u︡kanov, I. Ė."
   ],
   "author_citation_display": [
@@ -549,7 +549,7 @@
     "Sakai, Seinosuke",
     "酒井政之助"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Sakai, Seinosuke"
   ],
   "author_citation_display": [
@@ -1053,7 +1053,7 @@
     "Farḥāt, Ilyās Ḥabīb, 1893-",
     "فرحات، الياس حبيب، 1893؟"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Farḥāt, Ilyās Ḥabīb, 1893-"
   ],
   "author_citation_display": [
@@ -1261,7 +1261,7 @@
   "author_display": [
     "Seale, Patrick"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Seale, Patrick"
   ],
   "author_citation_display": [
@@ -1490,7 +1490,7 @@
     "Psurt︠s︡ev, Nikolaĭ, 1954-",
     "Псурцев, Николай, 1954-"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Psurt︠s︡ev, Nikolaĭ, 1954-"
   ],
   "author_citation_display": [
@@ -1701,7 +1701,7 @@
     "Ḥarīrī, 1054-1122",
     "حريري"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Ḥarīrī, 1054-1122"
   ],
   "author_citation_display": [
@@ -1960,7 +1960,7 @@
     "Slept︠s︡ov, I︠U︡riĭ.",
     "Слепцов, Юрий."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Slept︠s︡ov, I︠U︡riĭ."
   ],
   "author_citation_display": [
@@ -2405,7 +2405,7 @@
     "Shinmura, Izuru, 1876-1967",
     "新村出, 1876-1967"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Shinmura, Izuru, 1876-1967"
   ],
   "author_citation_display": [
@@ -2912,7 +2912,7 @@
     "Maḥmūd, Muṣṭafá.",
     "محمود، مصطفى."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Maḥmūd, Muṣṭafá."
   ],
   "author_citation_display": [
@@ -3113,7 +3113,7 @@
     "Nayyir Mamqānī, Muḥammad Taqī ibn Muḥammad, 1831 or 1832-1894 or 1895",
     "نير ممقانى، محمد تقى بن محمد، 1831 or 1832-1894 or 1895"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Nayyir Mamqānī, Muḥammad Taqī ibn Muḥammad, 1831 or 1832-1894 or 1895"
   ],
   "author_citation_display": [
@@ -3311,7 +3311,7 @@
   "author_display": [
     "Rikun, Moni︠a︡"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Rikun, Moni︠a︡"
   ],
   "author_citation_display": [
@@ -3537,7 +3537,7 @@
   "author_display": [
     "Geonauki (Conference)"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Geonauki (Conference)"
   ],
   "author_citation_display": [
@@ -3750,7 +3750,7 @@
   "author_display": [
     "Seminario en Latinoamérica de Teoría Constitucional y Política (2014 : Lima, Peru)"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Seminario en Latinoamérica de Teoría Constitucional y Política (2014 : Lima, Peru)"
   ],
   "author_citation_display": [
@@ -3972,7 +3972,7 @@
   "author_display": [
     "Tunik, S. A. (Sergeĭ Aleksandrovich)"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Tunik, S. A. (Sergeĭ Aleksandrovich)"
   ],
   "author_citation_display": [
@@ -4210,7 +4210,7 @@
   "author_display": [
     "Shaked, Gershon"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Shaked, Gershon"
   ],
   "author_citation_display": [
@@ -4469,7 +4469,7 @@
     "Geĭzer, Matveĭ.",
     "Гейзер, Матвей."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Geĭzer, Matveĭ."
   ],
   "author_citation_display": [
@@ -4743,7 +4743,7 @@
     "Patrikios, Titos, 1928-",
     "Πατρίκιος, Τίτος, 1928-"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Patrikios, Titos, 1928-"
   ],
   "author_citation_display": [
@@ -5008,7 +5008,7 @@
     "Yamawaki, Iwao, 1898-1987",
     "山脇巖, 1898-"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Yamawaki, Iwao, 1898-1987"
   ],
   "author_citation_display": [
@@ -5181,7 +5181,7 @@
     "Qāsimī, Zahrān",
     "قاسمي، زهران،"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Qāsimī, Zahrān"
   ],
   "author_citation_display": [
@@ -5405,7 +5405,7 @@
     "Esin, Sergeĭ.",
     "Есин, Сергей."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Esin, Sergeĭ."
   ],
   "author_citation_display": [
@@ -5663,7 +5663,7 @@
   "author_display": [
     "Sarkhasī, Muḥammad ibn Muḥammad, d. 1149 or 50."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Sarkhasī, Muḥammad ibn Muḥammad, d. 1149 or 50."
   ],
   "author_citation_display": [
@@ -5840,7 +5840,7 @@
   "author_display": [
     "Ṭihrānī, Abū al-Faz̤l ibn Abū al-Qāsim, 1856 or 1857-1898"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Ṭihrānī, Abū al-Faz̤l ibn Abū al-Qāsim, 1856 or 1857-1898"
   ],
   "author_citation_display": [
@@ -6441,7 +6441,7 @@
     "Muṣṭafá, Sharīf.",
     "مصطفى، شريف."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Muṣṭafá, Sharīf."
   ],
   "author_citation_display": [
@@ -7044,7 +7044,7 @@
     "Andreeva, Irina",
     "Андреева, Ирина"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Andreeva, Irina"
   ],
   "author_citation_display": [
@@ -7255,7 +7255,7 @@
     "Mo, Di, active 400 B.C.",
     "墨翟, active 400 B. C."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Mo, Di, active 400 B.C."
   ],
   "author_citation_display": [
@@ -7540,7 +7540,7 @@
   "author_display": [
     "Larson, Ron, 1941-"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Larson, Ron, 1941-"
   ],
   "author_citation_display": [
@@ -8065,7 +8065,7 @@
     "Hua, Huilun",
     "华惠伦."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Hua, Huilun"
   ],
   "author_citation_display": [
@@ -8301,7 +8301,7 @@
     "Yazıcıoğlu Mehmet, -1451",
     "يازيجي اوغلو محمد."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Yazıcıoğlu Mehmet, -1451"
   ],
   "author_citation_display": [
@@ -8546,7 +8546,7 @@
     "Kosogov, Vladimir, 1986-",
     "Косогов, Владимир, 1986-"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Kosogov, Vladimir, 1986-"
   ],
   "author_citation_display": [
@@ -8758,7 +8758,7 @@
     "Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich)",
     "Семененко-Басин, И. В. (Илья Викторович)"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich)"
   ],
   "author_citation_display": [
@@ -8979,7 +8979,7 @@
     "Nakanoin, Michifuyu, 1315-1363",
     "中院通冬, 1315-1363"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Nakanoin, Michifuyu, 1315-1363"
   ],
   "author_citation_display": [
@@ -9513,7 +9513,7 @@
     "Pinchas-Cohen, Chava",
     "פנחס־כהן, חוה."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Pinchas-Cohen, Chava"
   ],
   "author_citation_display": [
@@ -9726,7 +9726,7 @@
   "author_display": [
     "Cornelis, Bart"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Cornelis, Bart"
   ],
   "author_citation_display": [
@@ -9959,7 +9959,7 @@
     "Xu, Zhimo, 1897-1931",
     "徐志摩, 1897-1931"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Xu, Zhimo, 1897-1931"
   ],
   "author_citation_display": [
@@ -10406,7 +10406,7 @@
   "author_display": [
     "Brahms, Johannes, 1833-1897"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Brahms, Johannes, 1833-1897"
   ],
   "author_citation_display": [
@@ -10735,7 +10735,7 @@
     "Mirzoev, Saĭmuddin Tilloevich",
     "Мирзоев, Саймуддин Тиллоевич"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Mirzoev, Saĭmuddin Tilloevich"
   ],
   "author_citation_display": [
@@ -10992,7 +10992,7 @@
     "Pohribni︠a︡k, M.",
     "Погрібняк, М."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Pohribni︠a︡k, M."
   ],
   "author_citation_display": [
@@ -11229,7 +11229,7 @@
     "Aleshkovskiĭ, P. (Petr)",
     "Алешковский, П. (Петр)"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Aleshkovskiĭ, P. (Petr)"
   ],
   "author_citation_display": [
@@ -11706,7 +11706,7 @@
   "author_display": [
     "Weir, Maurice D."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Weir, Maurice D."
   ],
   "author_citation_display": [
@@ -11946,7 +11946,7 @@
     "Murakami, Haruki, 1949-",
     "村上春樹, 1949-"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Murakami, Haruki, 1949-"
   ],
   "author_citation_display": [
@@ -12193,7 +12193,7 @@
     "Madanī, Aḥmad Tawfīq.",
     "مدني، احمد توفيق."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Madanī, Aḥmad Tawfīq."
   ],
   "author_citation_display": [
@@ -12617,7 +12617,7 @@
     "Papamarkos, Dēmosthenēs, 1983-",
     "Παπαμάρκος, Δημοσθένης, 1983-"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Papamarkos, Dēmosthenēs, 1983-"
   ],
   "author_citation_display": [
@@ -12829,7 +12829,7 @@
     "Karatani, Kōjin, 1941-",
     "柄谷行人, 1941-"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Karatani, Kōjin, 1941-"
   ],
   "author_citation_display": [
@@ -13027,7 +13027,7 @@
   "author_display": [
     "Offenbach, Jacques, 1819-1880"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Offenbach, Jacques, 1819-1880"
   ],
   "author_citation_display": [
@@ -13301,7 +13301,7 @@
     "Shams al-Dīn Muḥammad ibn Niʻmat Allāh, active 16th century",
     "شمس الدىن محمد بن نعمت الله، active 16th century"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Shams al-Dīn Muḥammad ibn Niʻmat Allāh, active 16th century"
   ],
   "author_citation_display": [
@@ -13533,7 +13533,7 @@
     "Kurt Mehmet Efendi, 1524 or 1525-1588",
     "قورد محمد افندي."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Kurt Mehmet Efendi, 1524 or 1525-1588"
   ],
   "author_citation_display": [
@@ -13990,7 +13990,7 @@
     "Aḥsāʼī, Aḥmad ibn Zayn al-Dīn, 1753-1826",
     "احسائي، احمد بن زين الدين، 1753-1826"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Aḥsāʼī, Aḥmad ibn Zayn al-Dīn, 1753-1826"
   ],
   "author_citation_display": [
@@ -14553,7 +14553,7 @@
     "Salʹnikov, Alekseĭ, 1978-",
     "Сальников, Алексей, 1978-"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Salʹnikov, Alekseĭ, 1978-"
   ],
   "author_citation_display": [
@@ -15264,7 +15264,7 @@
     "ʻAwf, Yūsuf",
     "عوف، يوسف."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "ʻAwf, Yūsuf"
   ],
   "author_citation_display": [
@@ -15453,7 +15453,7 @@
     "Nuʻmānī, Wajīh, 1904-",
     "نعماني، وجيه، 1904-"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Nuʻmānī, Wajīh, 1904-"
   ],
   "author_citation_display": [
@@ -15643,7 +15643,7 @@
     "Zhukov, I︠U︡. N. (I︠U︡riĭ Nikolaevich)",
     "Жуков, Ю. Н. (Юрий Николаевич)"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Zhukov, I︠U︡. N. (I︠U︡riĭ Nikolaevich)"
   ],
   "author_citation_display": [
@@ -15911,7 +15911,7 @@
   "author_display": [
     "I︠A︡kovlev, Oleg Vitalʹevich, 1948-"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "I︠A︡kovlev, Oleg Vitalʹevich, 1948-"
   ],
   "author_citation_display": [
@@ -16519,7 +16519,7 @@
     "Dolinin, Dmitriĭ",
     "Долинин, Дмитрий"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Dolinin, Dmitriĭ"
   ],
   "author_citation_display": [
@@ -16789,7 +16789,7 @@
     "Yi, Yŏng-ho",
     "이 영호"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Yi, Yŏng-ho"
   ],
   "author_citation_display": [
@@ -17053,7 +17053,7 @@
     "Volkov, Aleksandr, 1953-",
     "Волков, Александр, 1953-"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Volkov, Aleksandr, 1953-"
   ],
   "author_citation_display": [
@@ -17265,7 +17265,7 @@
     "Sāmarrāʼī, Nīrān",
     "سامرائي، نيران."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Sāmarrāʼī, Nīrān"
   ],
   "author_citation_display": [
@@ -17702,7 +17702,7 @@
     "Ermolaev, Vladimir, 1950-",
     "Ермолаев, Владимир."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Ermolaev, Vladimir, 1950-"
   ],
   "author_citation_display": [
@@ -17925,7 +17925,7 @@
     "Kwŏn, Yŏ-sŏn, 1965-",
     "권여선, 1965-"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Kwŏn, Yŏ-sŏn, 1965-"
   ],
   "author_citation_display": [
@@ -18163,7 +18163,7 @@
     "Abū Raḥmah, Anas",
     "أبو رحمة، أنس."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Abū Raḥmah, Anas"
   ],
   "author_citation_display": [
@@ -18383,7 +18383,7 @@
     "Taftāzānī, Masʻūd ibn ʻUmar, 1322-1389?",
     "تفتازاني، مسعود بن عمر"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Taftāzānī, Masʻūd ibn ʻUmar, 1322-1389?"
   ],
   "author_citation_display": [
@@ -18644,7 +18644,7 @@
     "Kozloff, Pavel",
     "Козлофф, Павел"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Kozloff, Pavel"
   ],
   "author_citation_display": [
@@ -18846,7 +18846,7 @@
   "author_display": [
     "Great Britain. Parliament. House of Commons"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Great Britain. Parliament. House of Commons"
   ],
   "author_citation_display": [
@@ -19462,7 +19462,7 @@
   "author_display": [
     "Underwood, Thomas A."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Underwood, Thomas A."
   ],
   "author_citation_display": [
@@ -19714,7 +19714,7 @@
   "author_display": [
     "Eames, Wilberforce, 1855-1937"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Eames, Wilberforce, 1855-1937"
   ],
   "author_citation_display": [
@@ -20121,7 +20121,7 @@
   "author_display": [
     "Bychkov, V. V. (Viktor Vasilʹevich)"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Bychkov, V. V. (Viktor Vasilʹevich)"
   ],
   "author_citation_display": [
@@ -20358,7 +20358,7 @@
     "Ili︠u︡khin, V. I. (Viktor Ivanovich)",
     "Илюхин, В. И. (Виктор Иванович)"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Ili︠u︡khin, V. I. (Viktor Ivanovich)"
   ],
   "author_citation_display": [
@@ -20620,7 +20620,7 @@
     "Mazor, Maʻayan",
     "מזור, מעין."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Mazor, Maʻayan"
   ],
   "author_citation_display": [
@@ -21143,7 +21143,7 @@
     "Tsirakēs, Vasilēs, 1961-",
     "Τσιράκης, Βασίλης, 1961-"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Tsirakēs, Vasilēs, 1961-"
   ],
   "author_citation_display": [
@@ -21563,7 +21563,7 @@
     "Musharrafah, Muṣṭafá.",
     "مشرفة، مصطفى."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Musharrafah, Muṣṭafá."
   ],
   "author_citation_display": [
@@ -21951,7 +21951,7 @@
     "Bahāʼ al-Dīn, Aḥmad",
     "بهاء الدين، احمد."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Bahāʼ al-Dīn, Aḥmad"
   ],
   "author_citation_display": [
@@ -22209,7 +22209,7 @@
     "ʻAdlī, Rashā.",
     "عدلي، رشا."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "ʻAdlī, Rashā."
   ],
   "author_citation_display": [
@@ -22582,7 +22582,7 @@
     "Biri︠u︡kov, I︠U︡. S.",
     "Бирюков, Юрий Станиславович."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Biri︠u︡kov, I︠U︡. S."
   ],
   "author_citation_display": [
@@ -22840,7 +22840,7 @@
     "Sergeevskiĭ, B. N. (Boris Nikolaevich)",
     "Сергеевский, Борис Николаевич."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Sergeevskiĭ, B. N. (Boris Nikolaevich)"
   ],
   "author_citation_display": [
@@ -23092,7 +23092,7 @@
   "author_display": [
     "Princeton Institute for International and Regional Studies"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Princeton Institute for International and Regional Studies"
   ],
   "author_citation_display": [
@@ -23312,7 +23312,7 @@
     "Vserossiĭskai︠a︡ konferent︠s︡ii︠a︡ \"Nochʹ: zakonomernosti, ritualy, iskusstvo\" (3rd : 2009 : Moscow, Russia)",
     "Всероссийская конференция \"Ночь: закономерности, ритуалы, искусство\" (3rd : 2009 : Moscow, Russia)"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Vserossiĭskai︠a︡ konferent︠s︡ii︠a︡ \"Nochʹ: zakonomernosti, ritualy, iskusstvo\" (3rd : 2009 : Moscow, Russia)"
   ],
   "author_citation_display": [
@@ -23577,7 +23577,7 @@
     "Furūzānī, Abū al-Qāsim, 1956 or 1957-",
     "فروزانى، ابو القاسم."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Furūzānī, Abū al-Qāsim, 1956 or 1957-"
   ],
   "author_citation_display": [
@@ -23861,7 +23861,7 @@
   "author_display": [
     "Schoeppl, Mizzi, 1895-"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Schoeppl, Mizzi, 1895-"
   ],
   "author_citation_display": [
@@ -24015,7 +24015,7 @@
     "Ett︠s︡elʹ, M. S. (Mikhail Sergeevich), 1937-",
     "Етцель, М. С. (Михаил Сергеевич), 1937-"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Ett︠s︡elʹ, M. S. (Mikhail Sergeevich), 1937-"
   ],
   "author_citation_display": [
@@ -24509,7 +24509,7 @@
     "Rāmakiruṣṇan̲, Es., 1966-",
     "ராமகிருஷ்ணன், எஸ்., 1966-"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Rāmakiruṣṇan̲, Es., 1966-"
   ],
   "author_citation_display": [
@@ -24746,7 +24746,7 @@
     "Limonov, Ėduard",
     "Лимонов, Эдуард."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Limonov, Ėduard"
   ],
   "author_citation_display": [
@@ -24997,7 +24997,7 @@
   "author_display": [
     "Taqī al-Dīn al-Adhraʻī, d. 1454"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Taqī al-Dīn al-Adhraʻī, d. 1454"
   ],
   "author_citation_display": [
@@ -25157,7 +25157,7 @@
   "author_display": [
     "Japan. Tōkanfu"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Japan. Tōkanfu"
   ],
   "author_citation_display": [
@@ -25394,7 +25394,7 @@
     "ʻAql, Saʻīd.",
     "عقل، سعيد."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "ʻAql, Saʻīd."
   ],
   "author_citation_display": [
@@ -25830,7 +25830,7 @@
     "Smirnova, S. I. (Serafima Ivanovna)",
     "Смирнова, С. И."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Smirnova, S. I. (Serafima Ivanovna)"
   ],
   "author_citation_display": [
@@ -26005,7 +26005,7 @@
   "author_display": [
     "Biehl, João Guilherme"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Biehl, João Guilherme"
   ],
   "author_citation_display": [
@@ -26249,7 +26249,7 @@
     "Ch'oe, In-ho, 1945-",
     "최 인호, 1945-"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Ch'oe, In-ho, 1945-"
   ],
   "author_citation_display": [
@@ -27085,7 +27085,7 @@
     "Xinlong, 1946-",
     "心珑, 1946-"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Xinlong, 1946-"
   ],
   "author_citation_display": [
@@ -27289,7 +27289,7 @@
     "Dawwānī, Muḥammad ibn Asʻad, 1426 or 1427-1512 or 1513",
     "دواني، محمد بن اسعد"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Dawwānī, Muḥammad ibn Asʻad, 1426 or 1427-1512 or 1513"
   ],
   "author_citation_display": [
@@ -27562,7 +27562,7 @@
     "Khalajī, Muḥammad Taqī, 1948 or 1949-",
     "خلجى، محمد تقى، 1948 or 1949-"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Khalajī, Muḥammad Taqī, 1948 or 1949-"
   ],
   "author_citation_display": [
@@ -28029,7 +28029,7 @@
   "author_display": [
     "صروف، يعقوب."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "صروف، يعقوب."
   ],
   "author_citation_display": [
@@ -28232,7 +28232,7 @@
     "Navābī, Ghulām Ḥabīb.",
     "نوابى، غلام حبيب."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Navābī, Ghulām Ḥabīb."
   ],
   "author_citation_display": [
@@ -28487,7 +28487,7 @@
     "Ḥayeḳ, Yoʼav",
     "חייק, יואב"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Ḥayeḳ, Yoʼav"
   ],
   "author_citation_display": [
@@ -29262,7 +29262,7 @@
     "Sin, Chae-hong",
     "신재홍．"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Sin, Chae-hong"
   ],
   "author_citation_display": [
@@ -29723,7 +29723,7 @@
   "cjk_all":[""],
   "cjk_notes":[""],
   "author_display":["Turner, Jonathan H."],
-  "author_sort":["Turner, Jonathan H."],
+  "author_sort_key":["Turner, Jonathan H."],
   "author_citation_display":["Turner, Jonathan H.","Stets, Jan E."],
   "author_roles_1display":["{\"secondary_authors\":[\"Stets, Jan E.\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Turner, Jonathan H.\"}"],
   "author_s":["Turner, Jonathan H.","Stets, Jan E."],
@@ -29810,7 +29810,7 @@
   "author_display": [
     "Driver, Harold E. (Harold Edson), 1907-1992"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Driver, Harold E. (Harold Edson), 1907-1992"
   ],
   "author_citation_display": [
@@ -30281,7 +30281,7 @@
   "author_display": [
     "Hervey, John Hervey, Baron, 1696-1743"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Hervey, John Hervey, Baron, 1696-1743"
   ],
   "author_citation_display": [
@@ -30662,7 +30662,7 @@
   "author_display": [
     "Siegler, Robert S."
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Siegler, Robert S."
   ],
   "author_citation_display": [
@@ -30912,7 +30912,7 @@
   "author_display": [
     "Proietti, Giorgia"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Proietti, Giorgia"
   ],
   "author_citation_display": [
@@ -31165,7 +31165,7 @@
     "Dawwānī, Muḥammad ibn Asʻad, 1426 or 1427-1512 or 1513",
     "دواني، محمد بن اسعد"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Dawwānī, Muḥammad ibn Asʻad, 1426 or 1427-1512 or 1513"
   ],
   "author_citation_display": [
@@ -32734,7 +32734,7 @@
   "author_display": [
     "Malabou, Catherine"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Malabou, Catherine"
   ],
   "author_citation_display": [
@@ -32969,7 +32969,7 @@
   "author_display": [
     "Sun, Zhixin, 1951-"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Sun, Zhixin, 1951-"
   ],
   "author_citation_display": [
@@ -33224,7 +33224,7 @@
     "Wang, Yangming, 1472-1529",
     "王陽明, 1472-1529"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Wang, Yangming, 1472-1529"
   ],
   "author_citation_display": [
@@ -33494,7 +33494,7 @@
       "Li, Jiefei",
       "李絜非."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Li, Jiefei"
     ],
     "author_citation_display": [
@@ -33692,7 +33692,7 @@
       "Kli︠u︡kanov, I. Ė.",
       "Клюканов, И. Э."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Kli︠u︡kanov, I. Ė."
     ],
     "author_citation_display": [
@@ -33913,7 +33913,7 @@
       "Sakai, Seinosuke",
       "酒井政之助"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Sakai, Seinosuke"
     ],
     "author_citation_display": [
@@ -34405,7 +34405,7 @@
       "Farḥāt, Ilyās Ḥabīb, 1893-",
       "فرحات، الياس حبيب، 1893؟"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Farḥāt, Ilyās Ḥabīb, 1893-"
     ],
     "author_citation_display": [
@@ -34607,7 +34607,7 @@
     "author_display": [
       "Seale, Patrick"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Seale, Patrick"
     ],
     "author_citation_display": [
@@ -34830,7 +34830,7 @@
       "Psurt︠s︡ev, Nikolaĭ, 1954-",
       "Псурцев, Николай, 1954-"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Psurt︠s︡ev, Nikolaĭ, 1954-"
     ],
     "author_citation_display": [
@@ -35035,7 +35035,7 @@
       "Ḥarīrī, 1054-1122",
       "حريري"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Ḥarīrī, 1054-1122"
     ],
     "author_citation_display": [
@@ -35288,7 +35288,7 @@
       "Slept︠s︡ov, I︠U︡riĭ.",
       "Слепцов, Юрий."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Slept︠s︡ov, I︠U︡riĭ."
     ],
     "author_citation_display": [
@@ -35721,7 +35721,7 @@
       "Shinmura, Izuru, 1876-1967",
       "新村出, 1876-1967"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Shinmura, Izuru, 1876-1967"
     ],
     "author_citation_display": [
@@ -36216,7 +36216,7 @@
       "Maḥmūd, Muṣṭafá.",
       "محمود، مصطفى."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Maḥmūd, Muṣṭafá."
     ],
     "author_citation_display": [
@@ -36411,7 +36411,7 @@
       "Nayyir Mamqānī, Muḥammad Taqī ibn Muḥammad, 1831 or 1832-1894 or 1895",
       "نير ممقانى، محمد تقى بن محمد، 1831 or 1832-1894 or 1895"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Nayyir Mamqānī, Muḥammad Taqī ibn Muḥammad, 1831 or 1832-1894 or 1895"
     ],
     "author_citation_display": [
@@ -36603,7 +36603,7 @@
     "author_display": [
       "Rikun, Moni︠a︡"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Rikun, Moni︠a︡"
     ],
     "author_citation_display": [
@@ -36823,7 +36823,7 @@
     "author_display": [
       "Geonauki (Conference)"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Geonauki (Conference)"
     ],
     "author_citation_display": [
@@ -37036,7 +37036,7 @@
     "author_display": [
       "Seminario en Latinoamérica de Teoría Constitucional y Política (2014 : Lima, Peru)"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Seminario en Latinoamérica de Teoría Constitucional y Política (2014 : Lima, Peru)"
     ],
     "author_citation_display": [
@@ -37252,7 +37252,7 @@
     "author_display": [
       "Tunik, S. A. (Sergeĭ Aleksandrovich)"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Tunik, S. A. (Sergeĭ Aleksandrovich)"
     ],
     "author_citation_display": [
@@ -37484,7 +37484,7 @@
     "author_display": [
       "Shaked, Gershon"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Shaked, Gershon"
     ],
     "author_citation_display": [
@@ -37737,7 +37737,7 @@
       "Geĭzer, Matveĭ.",
       "Гейзер, Матвей."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Geĭzer, Matveĭ."
     ],
     "author_citation_display": [
@@ -38005,7 +38005,7 @@
       "Patrikios, Titos, 1928-",
       "Πατρίκιος, Τίτος, 1928-"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Patrikios, Titos, 1928-"
     ],
     "author_citation_display": [
@@ -38264,7 +38264,7 @@
       "Yamawaki, Iwao, 1898-1987",
       "山脇巖, 1898-"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Yamawaki, Iwao, 1898-1987"
     ],
     "author_citation_display": [
@@ -38431,7 +38431,7 @@
       "Qāsimī, Zahrān",
       "قاسمي، زهران،"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Qāsimī, Zahrān"
     ],
     "author_citation_display": [
@@ -38649,7 +38649,7 @@
       "Esin, Sergeĭ.",
       "Есин, Сергей."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Esin, Sergeĭ."
     ],
     "author_citation_display": [
@@ -38901,7 +38901,7 @@
     "author_display": [
       "Sarkhasī, Muḥammad ibn Muḥammad, d. 1149 or 50."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Sarkhasī, Muḥammad ibn Muḥammad, d. 1149 or 50."
     ],
     "author_citation_display": [
@@ -39072,7 +39072,7 @@
     "author_display": [
       "Ṭihrānī, Abū al-Faz̤l ibn Abū al-Qāsim, 1856 or 1857-1898"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Ṭihrānī, Abū al-Faz̤l ibn Abū al-Qāsim, 1856 or 1857-1898"
     ],
     "author_citation_display": [
@@ -39667,7 +39667,7 @@
       "Muṣṭafá, Sharīf.",
       "مصطفى، شريف."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Muṣṭafá, Sharīf."
     ],
     "author_citation_display": [
@@ -40264,7 +40264,7 @@
       "Andreeva, Irina",
       "Андреева, Ирина"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Andreeva, Irina"
     ],
     "author_citation_display": [
@@ -40469,7 +40469,7 @@
       "Mo, Di, active 400 B.C.",
       "墨翟, active 400 B. C."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Mo, Di, active 400 B.C."
     ],
     "author_citation_display": [
@@ -41047,7 +41047,7 @@
     "author_display": [
       "Larson, Ron, 1941-"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Larson, Ron, 1941-"
     ],
     "author_citation_display": [
@@ -41266,7 +41266,7 @@
       "Ṣabbāgh, Māzin Yūsuf",
       "صباغ، مازن يوسف."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Ṣabbāgh, Māzin Yūsuf"
     ],
     "author_citation_display": [
@@ -41781,7 +41781,7 @@
       "Hua, Huilun",
       "华惠伦."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Hua, Huilun"
     ],
     "author_citation_display": [
@@ -42011,7 +42011,7 @@
       "Yazıcıoğlu Mehmet, -1451",
       "يازيجي اوغلو محمد."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Yazıcıoğlu Mehmet, -1451"
     ],
     "author_citation_display": [
@@ -42250,7 +42250,7 @@
       "Kosogov, Vladimir, 1986-",
       "Косогов, Владимир, 1986-"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Kosogov, Vladimir, 1986-"
     ],
     "author_citation_display": [
@@ -42456,7 +42456,7 @@
       "Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich)",
       "Семененко-Басин, И. В. (Илья Викторович)"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich)"
     ],
     "author_citation_display": [
@@ -42671,7 +42671,7 @@
       "Nakanoin, Michifuyu, 1315-1363",
       "中院通冬, 1315-1363"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Nakanoin, Michifuyu, 1315-1363"
     ],
     "author_citation_display": [
@@ -43191,7 +43191,7 @@
       "Pinchas-Cohen, Chava",
       "פנחס־כהן, חוה."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Pinchas-Cohen, Chava"
     ],
     "author_citation_display": [
@@ -43398,7 +43398,7 @@
     "author_display": [
       "Cornelis, Bart"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Cornelis, Bart"
     ],
     "author_citation_display": [
@@ -43623,7 +43623,7 @@
       "Xu, Zhimo, 1897-1931",
       "徐志摩, 1897-1931"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Xu, Zhimo, 1897-1931"
     ],
     "author_citation_display": [
@@ -44064,7 +44064,7 @@
     "author_display": [
       "Brahms, Johannes, 1833-1897"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Brahms, Johannes, 1833-1897"
     ],
     "author_citation_display": [
@@ -44387,7 +44387,7 @@
       "Mirzoev, Saĭmuddin Tilloevich",
       "Мирзоев, Саймуддин Тиллоевич"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Mirzoev, Saĭmuddin Tilloevich"
     ],
     "author_citation_display": [
@@ -44638,7 +44638,7 @@
       "Pohribni︠a︡k, M.",
       "Погрібняк, М."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Pohribni︠a︡k, M."
     ],
     "author_citation_display": [
@@ -44869,7 +44869,7 @@
       "Aleshkovskiĭ, P. (Petr)",
       "Алешковский, П. (Петр)"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Aleshkovskiĭ, P. (Petr)"
     ],
     "author_citation_display": [
@@ -45334,7 +45334,7 @@
     "author_display": [
       "Weir, Maurice D."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Weir, Maurice D."
     ],
     "author_citation_display": [
@@ -45566,7 +45566,7 @@
       "Murakami, Haruki, 1949-",
       "村上春樹, 1949-"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Murakami, Haruki, 1949-"
     ],
     "author_citation_display": [
@@ -45807,7 +45807,7 @@
       "Madanī, Aḥmad Tawfīq.",
       "مدني، احمد توفيق."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Madanī, Aḥmad Tawfīq."
     ],
     "author_citation_display": [
@@ -46219,7 +46219,7 @@
       "Papamarkos, Dēmosthenēs, 1983-",
       "Παπαμάρκος, Δημοσθένης, 1983-"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Papamarkos, Dēmosthenēs, 1983-"
     ],
     "author_citation_display": [
@@ -46425,7 +46425,7 @@
       "Karatani, Kōjin, 1941-",
       "柄谷行人, 1941-"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Karatani, Kōjin, 1941-"
     ],
     "author_citation_display": [
@@ -46617,7 +46617,7 @@
     "author_display": [
       "Offenbach, Jacques, 1819-1880"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Offenbach, Jacques, 1819-1880"
     ],
     "author_citation_display": [
@@ -46885,7 +46885,7 @@
       "Shams al-Dīn Muḥammad ibn Niʻmat Allāh, active 16th century",
       "شمس الدىن محمد بن نعمت الله، active 16th century"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Shams al-Dīn Muḥammad ibn Niʻmat Allāh, active 16th century"
     ],
     "author_citation_display": [
@@ -47111,7 +47111,7 @@
       "Kurt Mehmet Efendi, 1524 or 1525-1588",
       "قورد محمد افندي."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Kurt Mehmet Efendi, 1524 or 1525-1588"
     ],
     "author_citation_display": [
@@ -47556,7 +47556,7 @@
       "Aḥsāʼī, Aḥmad ibn Zayn al-Dīn, 1753-1826",
       "احسائي، احمد بن زين الدين، 1753-1826"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Aḥsāʼī, Aḥmad ibn Zayn al-Dīn, 1753-1826"
     ],
     "author_citation_display": [
@@ -48107,7 +48107,7 @@
       "Salʹnikov, Alekseĭ, 1978-",
       "Сальников, Алексей, 1978-"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Salʹnikov, Alekseĭ, 1978-"
     ],
     "author_citation_display": [
@@ -48800,7 +48800,7 @@
       "ʻAwf, Yūsuf",
       "عوف، يوسف."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "ʻAwf, Yūsuf"
     ],
     "author_citation_display": [
@@ -48983,7 +48983,7 @@
       "Nuʻmānī, Wajīh, 1904-",
       "نعماني، وجيه، 1904-"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Nuʻmānī, Wajīh, 1904-"
     ],
     "author_citation_display": [
@@ -49167,7 +49167,7 @@
       "Zhukov, I︠U︡. N. (I︠U︡riĭ Nikolaevich)",
       "Жуков, Ю. Н. (Юрий Николаевич)"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Zhukov, I︠U︡. N. (I︠U︡riĭ Nikolaevich)"
     ],
     "author_citation_display": [
@@ -49429,7 +49429,7 @@
     "author_display": [
       "I︠A︡kovlev, Oleg Vitalʹevich, 1948-"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "I︠A︡kovlev, Oleg Vitalʹevich, 1948-"
     ],
     "author_citation_display": [
@@ -50017,7 +50017,7 @@
       "Dolinin, Dmitriĭ",
       "Долинин, Дмитрий"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Dolinin, Dmitriĭ"
     ],
     "author_citation_display": [
@@ -50281,7 +50281,7 @@
       "Yi, Yŏng-ho",
       "이 영호"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Yi, Yŏng-ho"
     ],
     "author_citation_display": [
@@ -50539,7 +50539,7 @@
       "Volkov, Aleksandr, 1953-",
       "Волков, Александр, 1953-"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Volkov, Aleksandr, 1953-"
     ],
     "author_citation_display": [
@@ -50745,7 +50745,7 @@
       "Sāmarrāʼī, Nīrān",
       "سامرائي، نيران."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Sāmarrāʼī, Nīrān"
     ],
     "author_citation_display": [
@@ -51170,7 +51170,7 @@
       "Ermolaev, Vladimir, 1950-",
       "Ермолаев, Владимир."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Ermolaev, Vladimir, 1950-"
     ],
     "author_citation_display": [
@@ -51387,7 +51387,7 @@
       "Kwŏn, Yŏ-sŏn, 1965-",
       "권여선, 1965-"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Kwŏn, Yŏ-sŏn, 1965-"
     ],
     "author_citation_display": [
@@ -51619,7 +51619,7 @@
       "Abū Raḥmah, Anas",
       "أبو رحمة، أنس."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Abū Raḥmah, Anas"
     ],
     "author_citation_display": [
@@ -51834,7 +51834,7 @@
       "Taftāzānī, Masʻūd ibn ʻUmar, 1322-1389?",
       "تفتازاني، مسعود بن عمر"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Taftāzānī, Masʻūd ibn ʻUmar, 1322-1389?"
     ],
     "author_citation_display": [
@@ -52089,7 +52089,7 @@
       "Kozloff, Pavel",
       "Козлофф, Павел"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Kozloff, Pavel"
     ],
     "author_citation_display": [
@@ -52285,7 +52285,7 @@
     "author_display": [
       "Great Britain. Parliament. House of Commons"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Great Britain. Parliament. House of Commons"
     ],
     "author_citation_display": [
@@ -52885,7 +52885,7 @@
     "author_display": [
       "Underwood, Thomas A."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Underwood, Thomas A."
     ],
     "author_citation_display": [
@@ -53129,7 +53129,7 @@
     "author_display": [
       "Eames, Wilberforce, 1855-1937"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Eames, Wilberforce, 1855-1937"
     ],
     "author_citation_display": [
@@ -53522,7 +53522,7 @@
     "author_display": [
       "Bychkov, V. V. (Viktor Vasilʹevich)"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Bychkov, V. V. (Viktor Vasilʹevich)"
     ],
     "author_citation_display": [
@@ -53753,7 +53753,7 @@
       "Ili︠u︡khin, V. I. (Viktor Ivanovich)",
       "Илюхин, В. И. (Виктор Иванович)"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Ili︠u︡khin, V. I. (Viktor Ivanovich)"
     ],
     "author_citation_display": [
@@ -54009,7 +54009,7 @@
       "Mazor, Maʻayan",
       "מזור, מעין."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Mazor, Maʻayan"
     ],
     "author_citation_display": [
@@ -54520,7 +54520,7 @@
       "Tsirakēs, Vasilēs, 1961-",
       "Τσιράκης, Βασίλης, 1961-"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Tsirakēs, Vasilēs, 1961-"
     ],
     "author_citation_display": [
@@ -54928,7 +54928,7 @@
       "Musharrafah, Muṣṭafá.",
       "مشرفة، مصطفى."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Musharrafah, Muṣṭafá."
     ],
     "author_citation_display": [
@@ -55304,7 +55304,7 @@
       "Bahāʼ al-Dīn, Aḥmad",
       "بهاء الدين، احمد."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Bahāʼ al-Dīn, Aḥmad"
     ],
     "author_citation_display": [
@@ -55556,7 +55556,7 @@
       "ʻAdlī, Rashā.",
       "عدلي، رشا."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "ʻAdlī, Rashā."
     ],
     "author_citation_display": [
@@ -55917,7 +55917,7 @@
       "Biri︠u︡kov, I︠U︡. S.",
       "Бирюков, Юрий Станиславович."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Biri︠u︡kov, I︠U︡. S."
     ],
     "author_citation_display": [
@@ -56169,7 +56169,7 @@
       "Sergeevskiĭ, B. N. (Boris Nikolaevich)",
       "Сергеевский, Борис Николаевич."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Sergeevskiĭ, B. N. (Boris Nikolaevich)"
     ],
     "author_citation_display": [
@@ -56415,7 +56415,7 @@
     "author_display": [
       "Princeton Institute for International and Regional Studies"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Princeton Institute for International and Regional Studies"
     ],
     "author_citation_display": [
@@ -56627,7 +56627,7 @@
       "Vserossiĭskai︠a︡ konferent︠s︡ii︠a︡ \"Nochʹ: zakonomernosti, ritualy, iskusstvo\" (3rd : 2009 : Moscow, Russia)",
       "Всероссийская конференция \"Ночь: закономерности, ритуалы, искусство\" (3rd : 2009 : Moscow, Russia)"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Vserossiĭskai︠a︡ konferent︠s︡ii︠a︡ \"Nochʹ: zakonomernosti, ritualy, iskusstvo\" (3rd : 2009 : Moscow, Russia)"
     ],
     "author_citation_display": [
@@ -56886,7 +56886,7 @@
       "Furūzānī, Abū al-Qāsim, 1956 or 1957-",
       "فروزانى، ابو القاسم."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Furūzānī, Abū al-Qāsim, 1956 or 1957-"
     ],
     "author_citation_display": [
@@ -57164,7 +57164,7 @@
     "author_display": [
       "Schoeppl, Mizzi, 1895-"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Schoeppl, Mizzi, 1895-"
     ],
     "author_citation_display": [
@@ -57310,7 +57310,7 @@
       "Ett︠s︡elʹ, M. S. (Mikhail Sergeevich), 1937-",
       "Етцель, М. С. (Михаил Сергеевич), 1937-"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Ett︠s︡elʹ, M. S. (Mikhail Sergeevich), 1937-"
     ],
     "author_citation_display": [
@@ -57792,7 +57792,7 @@
       "Rāmakiruṣṇan̲, Es., 1966-",
       "ராமகிருஷ்ணன், எஸ்., 1966-"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Rāmakiruṣṇan̲, Es., 1966-"
     ],
     "author_citation_display": [
@@ -58023,7 +58023,7 @@
       "Limonov, Ėduard",
       "Лимонов, Эдуард."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Limonov, Ėduard"
     ],
     "author_citation_display": [
@@ -58268,7 +58268,7 @@
     "author_display": [
       "Taqī al-Dīn al-Adhraʻī, d. 1454"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Taqī al-Dīn al-Adhraʻī, d. 1454"
     ],
     "author_citation_display": [
@@ -58422,7 +58422,7 @@
     "author_display": [
       "Japan. Tōkanfu"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Japan. Tōkanfu"
     ],
     "author_citation_display": [
@@ -58653,7 +58653,7 @@
       "ʻAql, Saʻīd.",
       "عقل، سعيد."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "ʻAql, Saʻīd."
     ],
     "author_citation_display": [
@@ -59083,7 +59083,7 @@
       "Smirnova, S. I. (Serafima Ivanovna)",
       "Смирнова, С. И."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Smirnova, S. I. (Serafima Ivanovna)"
     ],
     "author_citation_display": [
@@ -59252,7 +59252,7 @@
     "author_display": [
       "Biehl, João Guilherme"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Biehl, João Guilherme"
     ],
     "author_citation_display": [
@@ -59488,7 +59488,7 @@
       "Ch'oe, In-ho, 1945-",
       "최 인호, 1945-"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Ch'oe, In-ho, 1945-"
     ],
     "author_citation_display": [
@@ -60590,7 +60590,7 @@
       "Xinlong, 1946-",
       "心珑, 1946-"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Xinlong, 1946-"
     ],
     "author_citation_display": [
@@ -60788,7 +60788,7 @@
       "Dawwānī, Muḥammad ibn Asʻad, 1426 or 1427-1512 or 1513",
       "دواني، محمد بن اسعد"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Dawwānī, Muḥammad ibn Asʻad, 1426 or 1427-1512 or 1513"
     ],
     "author_citation_display": [
@@ -61055,7 +61055,7 @@
       "Khalajī, Muḥammad Taqī, 1948 or 1949-",
       "خلجى، محمد تقى، 1948 or 1949-"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Khalajī, Muḥammad Taqī, 1948 or 1949-"
     ],
     "author_citation_display": [
@@ -61510,7 +61510,7 @@
     "author_display": [
       "صروف، يعقوب."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "صروف، يعقوب."
     ],
     "author_citation_display": [
@@ -61705,7 +61705,7 @@
       "Navābī, Ghulām Ḥabīb.",
       "نوابى، غلام حبيب."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Navābī, Ghulām Ḥabīb."
     ],
     "author_citation_display": [
@@ -61954,7 +61954,7 @@
       "Ḥayeḳ, Yoʼav",
       "חייק, יואב"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Ḥayeḳ, Yoʼav"
     ],
     "author_citation_display": [
@@ -62723,7 +62723,7 @@
       "Sin, Chae-hong",
       "신재홍．"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Sin, Chae-hong"
     ],
     "author_citation_display": [
@@ -63170,7 +63170,7 @@
     "author_display": [
       "Turner, Jonathan H."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Turner, Jonathan H."
     ],
     "author_citation_display": [
@@ -63395,7 +63395,7 @@
     "author_display": [
       "Driver, Harold E. (Harold Edson), 1907-1992"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Driver, Harold E. (Harold Edson), 1907-1992"
     ],
     "author_citation_display": [
@@ -63844,7 +63844,7 @@
     "author_display": [
       "Hervey, John Hervey, Baron, 1696-1743"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Hervey, John Hervey, Baron, 1696-1743"
     ],
     "author_citation_display": [
@@ -64209,7 +64209,7 @@
     "author_display": [
       "Siegler, Robert S."
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Siegler, Robert S."
     ],
     "author_citation_display": [
@@ -64451,7 +64451,7 @@
     "author_display": [
       "Proietti, Giorgia"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Proietti, Giorgia"
     ],
     "author_citation_display": [
@@ -64698,7 +64698,7 @@
       "Dawwānī, Muḥammad ibn Asʻad, 1426 or 1427-1512 or 1513",
       "دواني، محمد بن اسعد"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Dawwānī, Muḥammad ibn Asʻad, 1426 or 1427-1512 or 1513"
     ],
     "author_citation_display": [
@@ -66253,7 +66253,7 @@
     "author_display": [
       "Malabou, Catherine"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Malabou, Catherine"
     ],
     "author_citation_display": [
@@ -66480,7 +66480,7 @@
     "author_display": [
       "Sun, Zhixin, 1951-"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Sun, Zhixin, 1951-"
     ],
     "author_citation_display": [
@@ -66727,7 +66727,7 @@
       "Wang, Yangming, 1472-1529",
       "王陽明, 1472-1529"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Wang, Yangming, 1472-1529"
     ],
     "author_citation_display": [
@@ -66990,7 +66990,7 @@
     "author_display": [
       "Pringle, Michael"
     ],
-    "author_sort": [
+    "author_sort_key": [
       "Pringle, Michael"
     ],
     "author_citation_display": [
@@ -67670,7 +67670,7 @@
   "author_display": [
     "Douglass, Frederick"
   ],
-  "author_sort": [
+  "author_sort_key": [
     "Douglass, Frederick"
   ],
   "author_citation_display": [

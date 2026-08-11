@@ -141,8 +141,9 @@ GEM
     bootstrap (5.3.8)
       popper_js (>= 2.11.8, < 3)
     builder (3.3.0)
-    bunny (2.24.0)
-      amq-protocol (~> 2.3)
+    bunny (3.1.0)
+      amq-protocol (~> 2.7)
+      logger (~> 1, >= 1.7)
       sorted_set (~> 1, >= 1.0.2)
     byebug (13.0.0)
       reline (>= 0.6.0)
@@ -372,8 +373,8 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    kicks (3.3.0)
-      bunny (~> 2.24)
+    kicks (3.4.0)
+      bunny (~> 3.0)
       concurrent-ruby (~> 1.0)
       rake (>= 12.3, < 14.0)
       serverengine (~> 2.1)
@@ -749,9 +750,9 @@ GEM
       tsort
     readline (0.0.4)
       reline
-    redis (5.4.1)
-      redis-client (>= 0.22.0)
-    redis-client (0.30.0)
+    redis (6.0.0)
+      redis-client (= 0.30.1)
+    redis-client (0.30.1)
       connection_pool
     reek (6.5.0)
       dry-schema (~> 1.13)
