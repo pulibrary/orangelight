@@ -66,3 +66,5 @@ staging:
   <<: *default
 qa:
   <<: *default
+dedupe:
+  <<: *default

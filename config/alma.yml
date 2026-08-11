@@ -11,6 +11,9 @@ test:
 qa:
   <<: *default
 
+dedupe:
+  <<: *default
+
 staging:
   <<: *default
 

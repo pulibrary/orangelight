@@ -22,3 +22,7 @@ qa:
   <<: *defaults
   host: <%= ENV['OL_REDIS_HOST'] %>
   port: <%= ENV['OL_REDIS_PORT'] || '6379' %>
+dedupe:
+  <<: *defaults
+  host: <%= ENV['OL_REDIS_HOST'] %>
+  port: <%= ENV['OL_REDIS_PORT'] || '6379' %>
