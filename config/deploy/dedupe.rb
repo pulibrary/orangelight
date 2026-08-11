@@ -9,17 +9,3 @@ server 'catalog-dedupe2.princeton.edu', user: 'deploy', roles: %i[web app worker
 server 'catalog-indexer-dedupe1.princeton.edu', user: 'deploy', roles: %i[cron_db worker indexer]
 server 'catalog-indexer-dedupe2.princeton.edu', user: 'deploy', roles: %i[cron_db worker indexer]
 
-  desc 'Set Orangelight to use figgy production'
-  task :figgy_production do
-    on roles(:app) do
-      Rake::Task['env:set'].invoke('GRAPHQL_API_URL=https://figgy.princeton.edu/graphql', 'FIGGY_URL=https://figgy.princeton.edu')
-    end
-  end
-
-  desc 'Set Orangelight to use figgy staging'
-  task :figgy_staging do
-    on roles(:app) do
-      Rake::Task['env:set'].invoke('GRAPHQL_API_URL=https://figgy-staging.princeton.edu/graphql', 'FIGGY_URL=https://figgy-staging.princeton.edu')
-    end
-  end
-end
