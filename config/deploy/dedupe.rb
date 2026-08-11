@@ -8,4 +8,3 @@ server 'catalog-dedupe1.princeton.edu', user: 'deploy', roles: %i[web app db wor
 server 'catalog-dedupe2.princeton.edu', user: 'deploy', roles: %i[web app worker mailcatcher]
 server 'catalog-indexer-dedupe1.princeton.edu', user: 'deploy', roles: %i[cron_db worker indexer]
 server 'catalog-indexer-dedupe2.princeton.edu', user: 'deploy', roles: %i[cron_db worker indexer]
-
