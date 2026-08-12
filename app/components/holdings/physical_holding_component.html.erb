@@ -1,4 +1,9 @@
 <tr class="holding-block">
+    <% if deduplication? && format -%>
+      <td>
+        <lux-badge color="gray"><%= render DecorativeFormatIconComponent.new(format) %><%= format %></lux-badge>
+      </td>
+    <% end -%>
     <td class="call-number-details">
       <%= render(Holdings::CallNumberLinkComponent.new(holding, cn_value)) %>
       <%= render(Holdings::HoldingNotesComponent.new(holding, holding_id, adapter)) %>
