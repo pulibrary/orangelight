@@ -729,10 +729,4 @@
    <copyField source="title_addl_la" dest="text"/>
 
    <copyField source="cjk_notes" dest="cjk_text"/>
-
-   <!-- Backwards compatibility: we are moving from author_sort to author_sort_key.
-    We need to do a full reindex, then switch Orangelight to use author_sort_key,
-    then switch Bibdata to index directly into author_sort_key and remove this copyField
-    -->
-    <copyField source="author_sort" dest="author_sort_key" />
 </schema>

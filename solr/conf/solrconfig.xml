@@ -110,6 +110,7 @@
 
    <queryResultWindowSize>100</queryResultWindowSize>
    <queryResultMaxDocsCached>500</queryResultMaxDocsCached>
+   <slowQueryThresholdMillis>4000</slowQueryThresholdMillis>
   </query>
 
   <initParams name="searchParams">
