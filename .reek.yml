@@ -194,10 +194,6 @@ detectors:
     - DBMigrateUppercaseUsernames::UserLowercaser#find_lowercase_user
     - HoldingRequestsAdapter#sc_location_with_suppressed_button?
     - LinkedDocumentResolver::LinkedDocuments#siblings
-    - OnlineHoldingsMarkupBuilder#online_holdings
-    - OnlineHoldingsMarkupBuilder#self.electronic_access_link
-    - OnlineHoldingsMarkupBuilder#self.electronic_portfolio_markup
-    - OnlineHoldingsMarkupBuilder#self.urlify
     - Requests::BibdataService#self.delivery_locations
   FeatureEnvy:
     exclude:
@@ -421,7 +417,6 @@ detectors:
     - FacetedQueryService
     - HoldingRequestsBuilder
     - OAuthService::CouldNotGenerateOAuthToken
-    - OnlineHoldingsMarkupBuilder
     - Requests::BibdataService
     - EventHandler
   LongParameterList:
@@ -665,10 +660,6 @@ detectors:
     - Bibdata#sorted_locations
     - FacetedQueryService#get_fq_solr_response
     - HoldingRequestsBuilder#build
-    - OnlineHoldingsMarkupBuilder#online_holdings
-    - OnlineHoldingsMarkupBuilder#self.electronic_access_link
-    - OnlineHoldingsMarkupBuilder#self.electronic_portfolio_markup
-    - OnlineHoldingsMarkupBuilder#self.urlify
     - Requests::BibdataService#self.delivery_locations
   UncommunicativeMethodName:
     exclude:

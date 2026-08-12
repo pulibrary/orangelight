@@ -51,7 +51,6 @@ Metrics/ClassLength:
     - 'app/controllers/catalog_controller.rb'
     - 'app/controllers/orangelight/browsables_controller.rb'
     - 'app/controllers/account_controller.rb'
-    - 'app/services/online_holdings_markup_builder.rb'
     - 'app/services/holding_requests_adapter.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'spec/mailers/previews/*'
@@ -82,7 +81,6 @@ Layout/LineLength:
     - 'spec/features/availability_spec.rb'
     - 'spec/helpers/holding_block_spec.rb'
     - 'spec/helpers/blacklight_helper_spec.rb'
-    - 'spec/services/online_holdings_markup_builder_spec.rb'
     - 'spec/services/holding_requests_adapter_spec.rb'
     - 'app/repositories/course_reserve_repository.rb'
     - 'spec/mailers/previews/*'
@@ -101,7 +99,6 @@ Metrics/MethodLength:
     - 'app/controllers/users/omniauth_callbacks_controller.rb'
     - 'app/controllers/account_controller.rb'
     - 'app/helpers/advanced_helper.rb'
-    - 'app/services/online_holdings_markup_builder.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'spec/features/course_reserves_spec.rb'
     - 'spec/repositories/course_reserve_repository_spec.rb'
@@ -150,11 +147,9 @@ Rails/I18nLocaleTexts:
 # TODO: Fix
 Rails/OutputSafety:
   Exclude:
-    - 'app/components/holdings/online_holdings_component.rb'
     - 'app/helpers/application_helper.rb'
     - 'app/helpers/blacklight_helper.rb'
     - 'app/services/holding_requests_builder.rb'
-    - 'app/services/online_holdings_markup_builder.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'app/processors/orangelight/highlight_processor.rb'
 

@@ -1,0 +1,14 @@
+<ul>
+  <%= electronic_access_links.html_safe %>
+  <% portfolios.each do |portfolio| -%>
+    <li class="electronic-access lux">
+      <a href="<%= portfolio[:url] %>" target="_blank" rel="noopener" class="electronic-access-link">
+        <%= portfolio[:label] %>
+        <i class="fa fa-external-link new-tab-icon-padding" aria-label="Opens in new tab" role="img"></i>
+      </a>
+      <br/>
+      <lux-show-more v-bind:character-limit=150 show-label='See more' hide-label='See less'><%= portfolio[:desc] %></lux-show-more>
+      <% if portfolio[:notes].present? %>(<%= portfolio[:notes] %>)<% end %>
+    </li>
+  <% end %>
+</ul>

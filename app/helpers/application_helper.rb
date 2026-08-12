@@ -23,7 +23,6 @@ module ApplicationHelper
   def holding_request_block(document)
     adapter = HoldingRequestsAdapter.new(document, Bibdata)
     markup_builder = HoldingRequestsBuilder.new(adapter:,
-                                                online_markup_builder: OnlineHoldingsMarkupBuilder,
                                                 physical_markup_builder: PhysicalHoldingsMarkupBuilder,
                                                 params:)
     online_markup, physical_markup = markup_builder.build
