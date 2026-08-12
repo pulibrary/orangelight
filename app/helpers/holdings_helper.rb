@@ -44,7 +44,7 @@ module HoldingsHelper
   # rubocop:enable Metrics/MethodLength
 
   def online_content_block(document)
-    controller.view_context.render(Holdings::OnlineHoldingsComponent.new(document:))
+    controller.view_context.render(Holdings::OnlineHoldingsIndexComponent.new(document:))
   end
 
   # rubocop:disable Metrics/MethodLength
@@ -54,7 +54,7 @@ module HoldingsHelper
     check_availability = render_availability?
     accumulator = ''.html_safe
     if holding['library'] == 'Online'
-      rendered_online_holdings_block = controller.view_context.render(Holdings::OnlineHoldingsComponent.new(document:))
+      rendered_online_holdings_block = controller.view_context.render(Holdings::OnlineHoldingsIndexComponent.new(document:))
       return rendered_online_holdings_block if rendered_online_holdings_block.present?
 
       check_availability = render_availability?

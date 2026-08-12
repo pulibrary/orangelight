@@ -3,7 +3,7 @@
 # This component is responsible for displaying a brief description of
 # a document's online holdings for concise contexts like the search
 # results page
-class Holdings::OnlineHoldingsComponent < ViewComponent::Base
+class Holdings::OnlineHoldingsIndexComponent < ViewComponent::Base
   def initialize(document:)
     @document = document
   end

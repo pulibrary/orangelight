@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Holdings::OnlineHoldingsComponent, type: :component do
+RSpec.describe Holdings::OnlineHoldingsIndexComponent, type: :component do
   it 'renders nothing if there are no links in the document' do
     document = SolrDocument.new({ id: '9912345678906421' })
     rendered = render_inline(described_class.new(document:))

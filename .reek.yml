@@ -61,7 +61,7 @@ detectors:
     - Requests::SelectedItemsValidator
   DuplicateMethodCall:
     exclude:
-    - Holdings::OnlineHoldingsComponent#marc_links
+    - Holdings::OnlineHoldingsIndexComponent#marc_links
     - NumismaticsSearchFormComponent#initialize_constraints
     - Orangelight::AdvancedSearchFormComponent#fields_for_etc
     - Orangelight::ConstraintComponent#constraint_value
@@ -561,7 +561,7 @@ detectors:
     - initialize
     - AeonStatus#check!
     - BibdataStatus#check!
-    - Holdings::OnlineHoldingsComponent#marc_links
+    - Holdings::OnlineHoldingsIndexComponent#marc_links
     - Orangelight::ConstraintsComponent#guided_search_value
     - Orangelight::ProcessVocabularyComponent#build_subject_list
     - Orangelight::ProcessVocabularyComponent#subjectify
