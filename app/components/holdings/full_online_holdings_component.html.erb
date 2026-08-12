@@ -8,7 +8,7 @@
       </a>
       <br/>
       <lux-show-more v-bind:character-limit=150 show-label='See more' hide-label='See less'><%= portfolio[:desc] %></lux-show-more>
-      <% if portfolio[:notes] %>(<%= portfolio[:notes] %>)<% end %>
+      <% if portfolio[:notes].present? %>(<%= portfolio[:notes] %>)<% end %>
     </li>
   <% end %>
 </ul>
