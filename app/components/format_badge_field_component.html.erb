@@ -1,11 +1,4 @@
 <ul class="lux format-badge-group">
-  <% @field.values.each do |value| %>
-    <li>
-      <lux-badge color="gray"><%= render DecorativeFormatIconComponent.new value %>
-        <%= value %>
-      </lux-badge>
-    </li>
-  <% end %>
   <% if @field.document.physical_holding?%>
     <li>
       <lux-badge color="yellow"><%= render DecorativeAccessIconComponent.new "Physical" %>

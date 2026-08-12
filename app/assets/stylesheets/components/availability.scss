@@ -19,6 +19,7 @@ a > article > div > div.call-number {
   flex-direction: row;
   border-radius: 0.375rem;
   padding: 0.25rem 0rem 0.5rem 0rem;
+  align-items: flex-start;
 
   a:hover, a:focus {
     outline: solid 0.25rem var(--color-princeton-orange-on-white) !important;

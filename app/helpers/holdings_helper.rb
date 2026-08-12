@@ -5,6 +5,7 @@ module HoldingsHelper
   # Generate the markup block for individual search result items containing holding information
   # @param document [SolrDocument] the Solr Document retrieved in the search result set
   # @return [String] the markup
+  delegate :deduplication?, to: Flipflop
 
   # rubocop:disable Metrics/MethodLength
   def holding_block_search(document)
@@ -12,6 +13,17 @@ module HoldingsHelper
     block_extra = ''.html_safe
     holdings_hash = document.holdings_all_display.sort { |a, b| sort_holdings(a, b) }
     @scsb_multiple = false
+
+    block_icon = ''.html_safe
+    block_icon << content_tag(:div, class: "format-badge-group") do
+      icon_badge = controller.view_context.render(DecorativeFormatIconComponent.new document['format'].first) if document['format'].present?
+      content_tag(:span, "#{icon_badge}&nbsp;#{document['format'].first}".html_safe, class: "lux-badge lux-badge-gray") if document['format'].present?
+    end
+    if deduplication?
+      block << block_icon
+    end
+
+    
     if holdings_hash.count <= 4
       holdings_hash.each do |id, holding|
         block << holdings_block(document, id, holding)
