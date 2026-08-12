@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # This component is responsible for displaying a brief description of
-# a document's online holdings for consice contexts like the search
+# a document's online holdings for concise contexts like the search
 # results page
 class Holdings::OnlineHoldingsComponent < ViewComponent::Base
   def initialize(document:)

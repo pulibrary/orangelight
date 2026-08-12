@@ -19,6 +19,7 @@ linters:
     exclude:
       - 'app/views/shared/_account.html.erb'
       - 'app/views/kaminari/blacklight/_page.html.erb'
+      - 'app/components/holdings/full_online_holdings_component.html.erb'
 
   GitHub::Accessibility::NestedInteractiveElements:
     exclude:

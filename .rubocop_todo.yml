@@ -102,7 +102,6 @@ Layout/LineContinuationSpacing:
     - 'spec/processors/orangelight/series_link_processor_spec.rb'
     - 'spec/requests/left_anchor_spec.rb'
     - 'spec/requests/request_spec.rb'
-    - 'spec/services/online_holdings_markup_builder_spec.rb'
 
 # Offense count: 20
 # This cop supports safe autocorrection (--autocorrect).
@@ -353,7 +352,6 @@ Performance/StringIdentifierArgument:
 # This cop supports unsafe autocorrection (--autocorrect-all).
 Performance/StringInclude:
   Exclude:
-    - 'app/services/online_holdings_markup_builder.rb'
     - 'app/views/catalog/_document_default.atom.builder'
     - 'config/initializers/rack_attack.rb'
 
@@ -434,7 +432,6 @@ RSpec/ChangeByZero:
 RSpec/ContextMethod:
   Exclude:
     - 'spec/helpers/holding_block_spec.rb'
-    - 'spec/services/online_holdings_markup_builder_spec.rb'
 
 # Offense count: 450
 # Configuration parameters: Prefixes, AllowedPatterns.
@@ -1084,7 +1081,6 @@ Style/QuotedSymbols:
   Exclude:
     - 'app/helpers/holdings_helper.rb'
     - 'app/processors/orangelight/series_link_processor.rb'
-    - 'app/services/online_holdings_markup_builder.rb'
     - 'spec/controllers/omniauth_callbacks_controller_spec.rb'
     - 'spec/helpers/blacklight_advanced_search/parsing_nesting_spec.rb'
     - 'spec/helpers/holding_block_spec.rb'
@@ -1108,7 +1104,6 @@ Style/RedundantAssignment:
     - 'app/helpers/requests/application_helper.rb'
     - 'app/models/concerns/requests/bibdata.rb'
     - 'app/models/concerns/requests/scsb.rb'
-    - 'app/services/online_holdings_markup_builder.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'spec/mailers/previews/request_mailer_preview.rb'
 
@@ -1166,7 +1161,6 @@ Style/RedundantRegexpEscape:
     - 'app/models/requests/illiad.rb'
     - 'app/models/solr_document.rb'
     - 'app/services/faceted_query_service.rb'
-    - 'app/services/online_holdings_markup_builder.rb'
     - 'lib/orangelight/browse_lists/call_number_csv.rb'
     - 'spec/helpers/blacklight_advanced_search/parsing_nesting_spec.rb'
     - 'spec/lib/orangelight/middleware/invalid_parameter_handler_spec.rb'
