@@ -1,0 +1,136 @@
+{
+    "id": "4ac26931-f30c-4bf2-b331-69ec9f9ce576",
+    "cluster_members_s": [
+        "99112222563506421",
+        "SCSB-9756116",
+        "SCSB-9431649"
+    ],
+    "marcxml_s":"{\"SCSB-9756116\":\"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\",\"SCSB-9431649\":\"H4sIAAAAAAAA/8VX227bOBD9FUJPu0AskRQlUVlHgFe7QVEkTVo3QNu3MUXbKnQxSDpx+vWl7NR1G4cmUBTVgyyYh2fODIcz5FhJ0asKbdqm0xfB0pjVeRQ9PDyETS/CRX8fXU/elZREuqnbYAc73+j6B+hDHPZqEVGMSfTh+moqlrKFUd1pA52Qdpauz/X2z6tegKn77pQldGR4YKtAVTpqQQmrJNpxPs0bpoUbXQXFuJFQSVVgglMioEVArbSYJqhGLMF4HD0BxqLvjOqbeS2bChlYXATWhaCYltN/RzmLScrycXQIOj4lDoo3b0ofZBIUFFNmdXH7m7I0xD7TeFAQjrl1kmLCkX1WCh08GGO0QnoFSPjQ5ZYuznIaJ/RneAUGDrEUB6juKnIRoO0HHT6KsV7PdijRV/IigKDIM05yRnOeJ9gG7RugGEd7yl9g31MzX+o48aT+66bsr8q/+45gZi0QzunvsvEbLXxfTz9i5hv528ndIedPgFlQyG7hAMigUBU4AOKUCbuhp+8v3YCb8qr0gNy4IR/vpm5AefOfd3ypZ3xXQnhz5p6cn8q7iS9p8jwR2PFEeJsxhsMpTd358IpnaKhSngII3gsgbq+m0Jlejy7lTEl9hq7hUcGZe8FInqYjd3bC2ix7FTpANhxP3aiu9s3o3jay2boB9Rgp2YDplY4slYMGH6PZWa9NLXXUQTu888zWe+5dQylLnsUPH43fq7UCAR1UgCL3htyGFv0Q79BXTsqe5RN5aTnR67V9nbvz6b2CGTS1PnNrHlLOV2SMfasfp2gFC6nRPyesEyRaX+tx6mndyI1xB8c4AXRbfIcGLzvjrS7zVLfuWlnVYGTl1tidVLjl8dbHPfXd9826lSe0idPhA6VqqTzlJd6pddvL1ntbpcnzg0D2Eq1Rj6HbrUYs5r9UqxayU/KyV639nNutx4bDLCd/yJ056BPePB3A5tpYrTTm1LtW5Jj41gpRJWTG5QgnJB+xKoMRSM5HcwpzjoGDyJk7G2nirjJzaLT01M2T/QkEO/rC8rCxo2+9e+GOZp5n9joSu53RQs/EuvGVm3kVRS/jw3E4SdPUXi8cKOs5cgx/DorJPdQNzBpXDVnZU+Fdbht2whl34IzV5Bje2H64BOUspV8GU47xJije/V9Obl+KeLS76hdfAcZNGoPzDwAA\"}",
+    
+    "numeric_id_b": true,
+    "author_display": [
+        "Santos-Febres, Mayra, 1966-"
+    ],
+    "author_citation_display": [
+        "Santos-Febres, Mayra"
+    ],
+    "author_roles_1display": "{\"primary_author\":\"Santos-Febres, Mayra\",\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+    "author_s": [
+        "Santos-Febres, Mayra, 1966-"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "Huracanada / Mayra Santos-Febres.",
+    "title_t": [
+        ""
+    ],
+    "title_citation_display": [
+        "Huracanada"
+    ],
+    "pub_created_display": [
+        "San Juan : Trabalis, 2018."
+    ],
+    "pub_created_s": [
+        "San Juan : Trabalis, 2018."
+    ],
+    "pub_citation_display": [
+        "San Juan: Trabalis"
+    ],
+    "publication_location_citation_display": [
+        "San Juan"
+    ],
+    "publisher_citation_display": [
+        "Trabalis"
+    ],
+    "pub_date_display": [
+        "2018"
+    ],
+    "pub_date_start_sort": 2018,
+    "publication_date_citation_display": [
+        "2018"
+    ],
+    "cataloged_tdt": "2019-03-18T00:00:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "82 pages ; 21 cm"
+    ],
+    "description_t": [
+        "82 pages ; 21 cm"
+    ],
+    "number_of_pages_citation_display": [
+        "82 pages"
+    ],
+    "notes_display": [
+        "Poems."
+    ],
+    "language_name_display": [
+        "Spanish"
+    ],
+    "language_facet": [
+        "Spanish"
+    ],
+    "language_iana_s": [
+        "es"
+    ],
+    "mult_languages_iana_s": [
+        "es"
+    ],
+    "fast_subject_facet": [
+        "Poetry"
+    ],
+    "fast_subject_display": [
+        "Poetry"
+    ],
+    "subject_facet": [
+        "Poetry"
+    ],
+    "lcgft_s": [
+        "Poetry"
+    ],
+    "lcgft_genre_facet": [
+        "Poetry"
+    ],
+    "jsonld_genre_display": [
+        "Poetry."
+    ],
+    "isbn_display": [
+        "9781942989509",
+        "1942989504"
+    ],
+    "isbn_s": [
+        "9781942989509"
+    ],
+    "oclc_s": [
+        "1048951882"
+    ],
+    "other_version_s": [
+        "9781942989509",
+        "on1048951882"
+    ],
+    "holdings_1display": "{\"22559519580006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"PQ7440.S26 H87 2018\",\"call_number_browse\":\"PQ7440.S26 H87 2018\",\"items\":[{\"holding_id\":\"22559519580006421\",\"id\":\"23559519570006421\",\"status_at_load\":\"1\",\"barcode\":\"32101102128715\",\"copy_number\":\"0\"}]}}",
+    "location_code_s": [
+        "firestone$stacks"
+    ],
+    "advanced_location_s": [
+        "firestone$stacks",
+        "Firestone Library"
+    ],
+    "location_display": [
+        "Stacks"
+    ],
+    "location": [
+        "Firestone Library"
+    ],
+    "name_title_browse_s": [
+        "Santos-Febres, Mayra, 1966-. Huracanada"
+    ],
+    "call_number_display": [
+        "PQ7440.S26 H87 2018"
+    ],
+    "call_number_browse_s": [
+        "PQ7440.S26 H87 2018"
+    ]
+}
