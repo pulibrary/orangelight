@@ -71,7 +71,7 @@
     "Baker, Benjamin D.. Woodsman"
   ],
   "electronic_portfolio_s": [
-    "{\"source_id\":\"99131903455606421\",\"display_format\":\"Journal\",\"desc\":\" Available from 03/01/1935 until 11/30/1935. Available from 10/01/1936 until 02/28/1937. Available from 11/01/1937 until 11/30/1937. Available from 03/01/1938 until 08/31/1939. Available from 01/01/1940 until 03/31/1940.\",\"title\":\"CRL Open Access Newspapers\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=531125637320006421&Force_direct=true\",\"start\":\"1935\",\"end\":\"1935\",\"notes\":[]}",
-    "{\"source_id\":\"99131903455606421\",\"display_format\":\"Journal\",\"desc\":\" Available from 05/10/1936 until 09/25/1936.\",\"title\":\"CRL Open Access Newspapers\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=531125637460006421&Force_direct=true\",\"start\":\"1936\",\"end\":\"1936\",\"notes\":[]}"
+    "{\"source_id\":\"99131903455606421\",\"display_format\":\"EBook\",\"desc\":\" Available from 03/01/1935 until 11/30/1935. Available from 10/01/1936 until 02/28/1937. Available from 11/01/1937 until 11/30/1937. Available from 03/01/1938 until 08/31/1939. Available from 01/01/1940 until 03/31/1940.\",\"title\":\"CRL Open Access Newspapers\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=531125637320006421&Force_direct=true\",\"start\":\"1935\",\"end\":\"1935\",\"notes\":[]}",
+    "{\"source_id\":\"99131903455606421\",\"display_format\":\"EBook\",\"desc\":\" Available from 05/10/1936 until 09/25/1936.\",\"title\":\"CRL Open Access Newspapers\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=531125637460006421&Force_direct=true\",\"start\":\"1936\",\"end\":\"1936\",\"notes\":[]}"
   ]
 }
