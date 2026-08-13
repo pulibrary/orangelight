@@ -7,7 +7,7 @@ RSpec.shared_examples "a simple search" do
     select('Title starts with', from: 'search_field')
     fill_in('Search...', with: 'The')
     click_on('Search')
-    expect(page).to have_content('The senses : a comprehensive reference')
+    expect(page).to have_content('The Nassau lit.')
   end
   it 'does not do boolean searching' do
     visit '/catalog'
@@ -24,7 +24,7 @@ RSpec.shared_examples "an advanced search" do
     select('Title starts with', from: 'Options for advanced search')
     fill_in('Advanced search terms', with: 'The')
     click_on('Search')
-    expect(page).to have_content('The senses : a comprehensive reference')
+    expect(page).to have_content('The Nassau lit.')
   end
   it 'uses a wildcard for left anchored search from the second search box' do
     visit '/advanced'
@@ -33,7 +33,7 @@ RSpec.shared_examples "an advanced search" do
     select('Title starts with', from: 'Options for advanced search - second parameter')
     fill_in('Advanced search terms - second parameter', with: 'The')
     click_on('Search')
-    expect(page).to have_content('The senses : a comprehensive reference')
+    expect(page).to have_content('The senses : a comprehensive reference.')
   end
   it 'does not do boolean searching', js: true do
     visit '/advanced'

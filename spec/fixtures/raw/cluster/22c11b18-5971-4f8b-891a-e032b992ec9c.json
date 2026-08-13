@@ -1,0 +1,156 @@
+{
+  "id": "22c11b18-5971-4f8b-891a-e032b992ec9c",
+  "numeric_id_b": true,
+  "cluster_members_s": [
+    "9952908733506421",
+    "SCSB-14448270",
+    "SCSB-8919840",
+    "SCSB-12622148"
+  ],
+  "author_display": [
+    "Röller, Ute"
+  ],
+  "author_citation_display": [
+    "Röller, Ute"
+  ],
+  "author_roles_1display": "{\"primary_author\":\"Röller, Ute\",\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+    "Röller, Ute"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "\"Mein Leben ist ein Roman - \" : poetologische und gattungstheoretische Untersuchung jüngerer literarischer Musikerbiographien / Ute Röller.",
+  "title_t": [
+    ""
+  ],
+  "title_citation_display": [
+    "\"Mein Leben ist ein Roman - \" : poetologische und gattungstheoretische Untersuchung jüngerer literarischer Musikerbiographien"
+  ],
+  "pub_created_display": [
+    "Würzburg : Königshausen & Neumann, c2007."
+  ],
+  "pub_created_s": [
+    "Würzburg : Königshausen & Neumann, c2007."
+  ],
+  "pub_citation_display": [
+    "Würzburg: Königshausen & Neumann"
+  ],
+  "publication_location_citation_display": [
+    "Würzburg"
+  ],
+  "publisher_citation_display": [
+    "Königshausen & Neumann"
+  ],
+  "pub_date_display": [
+    "2007"
+  ],
+  "pub_date_start_sort": 2007,
+  "publication_date_citation_display": [
+    "2007"
+  ],
+  "cataloged_tdt": "2007-10-04T00:00:00Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "281 p. : ill. ; 24 cm."
+  ],
+  "description_t": [
+    "281 p. : ill. ; 24 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "281 p."
+  ],
+  "series_display": [
+    "Epistemata. Reihe Literaturwissenschaft ; Bd. 608"
+  ],
+  "more_in_this_series_t": [
+    "Epistemata. Reihe Literaturwissenschaft"
+  ],
+  "dissertation_notes_display": [
+    "Thesis (doctoral) - Universität, Oldenburg."
+  ],
+  "bib_ref_notes_display": [
+    "Includes bibliographical references (p. 270-281)."
+  ],
+  "language_name_display": [
+    "German"
+  ],
+  "language_facet": [
+    "German"
+  ],
+  "language_iana_s": [
+    "de"
+  ],
+  "mult_languages_iana_s": [
+    "de"
+  ],
+  "lc_subject_display": [
+    "German literature—20th century—History and criticism",
+    "Biography as a literary form",
+    "Musicians—Biography",
+    "Biographical fiction, German"
+  ],
+  "subject_facet": [
+    "German literature—20th century—History and criticism",
+    "Biography as a literary form",
+    "Musicians—Biography",
+    "Biographical fiction, German"
+  ],
+  "lc_subject_facet": [
+    "German literature",
+    "German literature—20th century",
+    "German literature—20th century—History and criticism",
+    "Biography as a literary form",
+    "Musicians",
+    "Musicians—Biography",
+    "Biographical fiction, German"
+  ],
+  "other_title_display": [
+    "Untersuchung jüngerer literarischer Musikerbiographien"
+  ],
+  "alt_title_246_display": [
+    "Untersuchung jüngerer literarischer Musikerbiographien"
+  ],
+  "isbn_display": [
+    "9783826036637 (pbk.)",
+    "3826036638 (pbk.)"
+  ],
+  "isbn_s": [
+    "9783826036637"
+  ],
+  "oclc_s": [
+    "170907279"
+  ],
+  "other_version_s": [
+    "9783826036637",
+    "ocn170907279"
+  ],
+  "subject_era_facet": [
+    "20th century"
+  ],
+  "holdings_1display": "{\"22584766000006421\":{\"display_format\":\"Book\",\"source_id\":\"9952908733506421\",\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"PT749.M76 R6 2007\",\"call_number_browse\":\"PT749.M76 R6 2007\",\"items\":[{\"holding_id\":\"22584766000006421\",\"id\":\"23584765990006421\",\"status_at_load\":\"1\",\"barcode\":\"32101060315007\",\"copy_number\":\"1\"}]},\"9117453\":{\"display_format\":\"Book\",\"source_id\":\"SCSB-8919840\",\"holding_id\":\"9117453\",\"location_code\":\"scsbcul\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"PT749.M76 R6 2007g\",\"call_number_browse\":\"PT749.M76 R6 2007g\",\"sub_location\":null,\"shelving_title\":null,\"location_note\":null,\"items\":[{\"holding_id\":\"9117453\",\"description\":null,\"id\":\"14724023\",\"status_at_load\":\"Available\",\"barcode\":\"CU75196468\",\"copy_number\":\"1\",\"use_statement\":\" \",\"storage_location\":\"RECAP\",\"cgd\":\"Shared\",\"collection_code\":\"CU\"}],\"location_has\":[],\"supplements\":[],\"indexes\":[]},\"15415874\":{\"display_format\":\"Book\",\"source_id\":\"SCSB-14448270\",\"holding_id\":\"15415874\",\"location_code\":\"scsbnypl\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"JME 08-978\",\"call_number_browse\":\"JME 08-978\",\"sub_location\":null,\"shelving_title\":null,\"location_note\":null,\"items\":[{\"holding_id\":\"15415874\",\"description\":null,\"id\":\"21980685\",\"status_at_load\":\"Available\",\"barcode\":\"33433083436711\",\"copy_number\":\"1\",\"use_statement\":null,\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"NA\"}],\"location_has\":[],\"supplements\":[],\"indexes\":[]},\"13465296\":{\"display_format\":\"Book\",\"source_id\":\"SCSB-12622148\",\"holding_id\":\"13465296\",\"location_code\":\"scsbhl\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"PT405 .R65 2007\",\"call_number_browse\":\"PT405 .R65 2007\",\"sub_location\":null,\"shelving_title\":null,\"location_note\":null,\"items\":[{\"holding_id\":\"13465296\",\"description\":null,\"id\":\"19282790\",\"status_at_load\":\"Available\",\"barcode\":\"32044100418219\",\"copy_number\":null,\"use_statement\":\" \",\"storage_location\":\"HD\",\"cgd\":\"Open\",\"collection_code\":\"HW\"}],\"location_has\":[],\"supplements\":[],\"indexes\":[]}}",
+  "location_code_s": [
+    "firestone$stacks"
+  ],
+  "advanced_location_s": [
+    "firestone$stacks",
+    "Firestone Library"
+  ],
+  "location_display": [
+    "Stacks"
+  ],
+  "location": [
+    "Firestone Library"
+  ],
+  "name_title_browse_s": [
+    "Röller, Ute. \"Mein Leben ist ein Roman - \""
+  ],
+  "call_number_display": [
+    "PT749.M76 R6 2007"
+  ],
+  "call_number_browse_s": [
+    "PT749.M76 R6 2007"
+  ]
+}

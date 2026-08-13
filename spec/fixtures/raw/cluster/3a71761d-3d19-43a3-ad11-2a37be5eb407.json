@@ -1,0 +1,141 @@
+{
+  "id": "3a71761d-3d19-43a3-ad11-2a37be5eb407",
+  "numeric_id_b": true,
+  "cluster_members_s": [
+        "9992037903506421",
+        "9992203703506421"
+    ], 
+  "author_display": [
+    "Eagleman, David"
+  ],
+  "author_citation_display": [
+    "Eagleman, David"
+  ],
+  "author_roles_1display": "{\"primary_author\":\"Eagleman, David\",\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+    "Eagleman, David"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "The brain : the story of you / David Eagleman.",
+  "title_t": [
+    ""
+  ],
+  "title_citation_display": [
+    "The brain : the story of you"
+  ],
+  "pub_created_display": [
+    "New York : Pantheon Books, [2015]"
+  ],
+  "pub_created_s": [
+    "New York : Pantheon Books, [2015]"
+  ],
+  "pub_citation_display": [
+    "New York: Pantheon Books"
+  ],
+  "publication_location_citation_display": [
+    "New York"
+  ],
+  "publisher_citation_display": [
+    "Pantheon Books"
+  ],
+  "pub_date_display": [
+    "2015"
+  ],
+  "pub_date_start_sort": 2015,
+  "publication_date_citation_display": [
+    "2015"
+  ],
+  "cataloged_tdt": "2015-10-06T00:00:00Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "218 pages : illustrations, color ; 24 cm"
+  ],
+  "description_t": [
+    "218 pages : illustrations, color ; 24 cm"
+  ],
+  "number_of_pages_citation_display": [
+    "218 pages"
+  ],
+  "summary_note_display": [
+    "\"Locked in the silence and darkness of your skull, your brain fashions the rich narratives of your reality and your identity. Join renowned neuroscientist David Eagleman for a journey into the questions at the mysterious heart of our existence. What is reality? Who are \"you\"? How do you make decisions? Why does your brain need other people? How is technology poised to change what it means to be human? In the course of his investigations, Eagleman guides us through the world of extreme sports, criminal justice, facial expressions, genocide, brain surgery, gut feelings, robotics, and the search for immortality. Strap in for a whistle-stop tour into the inner cosmos. In the infinitely dense tangle of billions of brain cells and their trillions of connections, something emerges that you might not have expected to see in there: you. This is the story of how your life shapes your brain, and how your brain shapes your life. (A companion to the six-part PBS series. Color illustrations throughout.)\"-- Provided by publisher.",
+    "\"The dramatic story of the brain's role in creating our world, our experience of it, and ourselves; the basis for a PBS television series by the bestselling David Eagleman. How does a three pound mass of biological matter locked in the dark, silent fortress of the skull produce the extraordinary multi-sensory experience that comprises us, while also constructing reality and guiding us through the endless need to make decisions and determine our judgments and into a future that we are convinced we are shaping? David Eagleman compares the brain to a cityscape with different neighborhoods where neural networks vie for supremacy and determine our behavior in ways we are not always aware or in control of. At the same time, he suggests that the brain works as a storyteller--creating a narrative that allows us to navigate and make sense of a world that it is busy constructing for us\"-- Provided by publisher."
+  ],
+  "language_name_display": [
+    "English"
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "mult_languages_iana_s": [
+    "en"
+  ],
+  "lc_subject_display": [
+    "Brain",
+    "Self",
+    "Neurosciences"
+  ],
+  "subject_facet": [
+    "Brain",
+    "Self",
+    "Neurosciences"
+  ],
+  "lc_subject_facet": [
+    "Brain",
+    "Self",
+    "Neurosciences"
+  ],
+  "isbn_display": [
+    "9781101870532 (hardback)",
+    "1101870532 (hardback)"
+  ],
+  "lccn_display": [
+    "2015023281"
+  ],
+  "lccn_s": [
+    "2015023281"
+  ],
+  "isbn_s": [
+    "9781101870532"
+  ],
+  "oclc_s": [
+    "911594068"
+  ],
+  "other_version_s": [
+    "9781101870532",
+    "9781101870549",
+    "ocn911594068"
+  ],
+  "electronic_portfolio_s": [
+    "{\"display_format\":\"EBook\",\"source_id\":\"9992203703506421\",\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53824668830006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+  ],
+  "holdings_1display": "{\"22653273000006421\":{\"display_format\":\"Book\",\"source_id\":\"\",\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"QP376 .E24 2015\",\"call_number_browse\":\"QP376 .E24 2015\",\"items\":[{\"holding_id\":\"22653273000006421\",\"id\":\"23653272990006421\",\"status_at_load\":\"1\",\"barcode\":\"32101096778681\",\"copy_number\":\"1\"}]}}",
+  "location_code_s": [
+    "firestone$stacks"
+  ],
+  "advanced_location_s": [
+    "firestone$stacks",
+    "Firestone Library"
+  ],
+  "location_display": [
+    "Stacks"
+  ],
+  "location": [
+    "Firestone Library"
+  ],
+  "name_title_browse_s": [
+    "Eagleman, David. The brain"
+  ],
+  "call_number_display": [
+    "QP376 .E24 2015"
+  ],
+  "call_number_browse_s": [
+    "QP376 .E24 2015"
+  ]
+}

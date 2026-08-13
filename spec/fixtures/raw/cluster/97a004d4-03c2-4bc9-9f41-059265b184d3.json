@@ -1,0 +1,141 @@
+{
+  "id": "97a004d4-03c2-4bc9-9f41-059265b184d3",
+  "numeric_id_b": true,
+  "cluster_members_s": [
+    "99129077838406421",
+    "SCSB-14678412"
+  ],
+  "author_display": [
+    "Gerbeau, Hubert"
+  ],
+  "author_citation_display": [
+    "Gerbeau, Hubert"
+  ],
+  "author_roles_1display": "{\"primary_author\":\"Gerbeau, Hubert\",\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+    "Gerbeau, Hubert"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "L'esclavage et son ombre : l'île Bourbon aux XIXe et XXe siècles / Hubert Gerbeau.",
+  "title_t": [
+    ""
+  ],
+  "title_citation_display": [
+    "L'esclavage et son ombre : l'île Bourbon aux XIXe et XXe siècles"
+  ],
+  "pub_created_display": [
+    "Paris : Les Indes savantes, [2023]",
+    "©2023"
+  ],
+  "pub_created_s": [
+    "Paris : Les Indes savantes, [2023]",
+    "©2023"
+  ],
+  "pub_citation_display": [
+    "Paris: Les Indes savantes, [2023]"
+  ],
+  "publication_location_citation_display": [
+    "Paris"
+  ],
+  "publisher_citation_display": [
+    "Les Indes savantes, [2023]"
+  ],
+  "pub_date_display": [
+    "2023"
+  ],
+  "pub_date_start_sort": 2023,
+  "pub_date_end_sort": 2023,
+  "publication_date_citation_display": [
+    "2023"
+  ],
+  "cataloged_tdt": "2023-10-31T06:03:24Z",
+  "format": [
+    "Manuscript",
+    "Book"
+  ],
+  "description_display": [
+    "2 volumes (1239 pages) : illustrations, maps ; 24 cm"
+  ],
+  "description_t": [
+    "2 volumes (1239 pages) : illustrations, maps ; 24 cm"
+  ],
+  "number_of_pages_citation_display": [
+    "2 volumes (1239 pages)"
+  ],
+  "geocode_display": [
+    "Réunion"
+  ],
+  "bib_ref_notes_display": [
+    "Includes bibliographical references (pages 1175-1211) and index."
+  ],
+  "language_name_display": [
+    "French"
+  ],
+  "language_facet": [
+    "French"
+  ],
+  "language_iana_s": [
+    "fr"
+  ],
+  "mult_languages_iana_s": [
+    "fr"
+  ],
+  "lc_subject_display": [
+    "Slavery—Réunion—History—19th century",
+    "Slavery—Réunion—History—20th century"
+  ],
+  "subject_facet": [
+    "Slavery—Réunion—History—19th century",
+    "Slavery—Réunion—History—20th century"
+  ],
+  "lc_subject_facet": [
+    "Slavery",
+    "Slavery—Réunion",
+    "Slavery—Réunion—History",
+    "Slavery—Réunion—History—19th century",
+    "Slavery—Réunion—History—20th century"
+  ],
+  "isbn_display": [
+    "9782846546447 ((paperback))",
+    "2846546444 ((paperback))"
+  ],
+  "isbn_s": [
+    "9782846546447"
+  ],
+  "oclc_s": [
+    "1406780338"
+  ],
+  "other_version_s": [
+    "9782846546447",
+    "on1406780338"
+  ],
+  "subject_era_facet": [
+    "19th century",
+    "20th century"
+  ],
+  "holdings_1display": "{\"22997407410006421\":{\"display_format\":\"Manuscript\",\"source_id\":\"99129077838406421\",\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"HT1430.Z9 R48534 2023\",\"call_number_browse\":\"HT1430.Z9 R48534 2023\",\"items\":[{\"holding_id\":\"22997407410006421\",\"description\":\"tome 2\",\"id\":\"231000698840006421\",\"status_at_load\":\"1\",\"barcode\":\"32101116344837\"},{\"holding_id\":\"22997407410006421\",\"description\":\"tome 1\",\"id\":\"23997407390006421\",\"status_at_load\":\"1\",\"barcode\":\"32101116344829\"}],\"location_has\":[\"tome 1-t. 2\",\"Vol. 1\"],\"supplements\":[null,null],\"indexes\":[null,null]},\"15681607\":{\"display_format\":\"Book\",\"source_id\":\"SCSB-14678412\",\"holding_id\":\"15681607\",\"location_code\":\"scsbnypl\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"ReCAP 23-12018 t. 1\",\"call_number_browse\":\"ReCAP 23-12018 t. 1\",\"sub_location\":null,\"shelving_title\":null,\"location_note\":null,\"items\":[{\"holding_id\":\"15681607\",\"description\":\"t. 1\",\"id\":\"22305670\",\"status_at_load\":\"Available\",\"barcode\":\"33433135535247\",\"copy_number\":\"1\",\"use_statement\":null,\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"NA\"}],\"location_has\":[\"t. 1\"],\"supplements\":[],\"indexes\":[]},\"15681767\":{\"display_format\":\"Book\",\"source_id\":\"SCSB-14678412\",\"holding_id\":\"15681767\",\"location_code\":\"scsbnypl\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"ReCAP 23-12018 t. 2\",\"call_number_browse\":\"ReCAP 23-12018 t. 2\",\"sub_location\":null,\"shelving_title\":null,\"location_note\":null,\"items\":[{\"holding_id\":\"15681767\",\"description\":\"t. 2\",\"id\":\"22305830\",\"status_at_load\":\"Available\",\"barcode\":\"33433135535239\",\"copy_number\":\"1\",\"use_statement\":null,\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"NA\"}],\"location_has\":[\"t. 2\"],\"supplements\":[],\"indexes\":[]}}",
+  "location_code_s": [
+    "recap$pa"
+  ],
+  "advanced_location_s": [
+    "recap$pa",
+    "ReCAP"
+  ],
+  "location_display": [
+    "Remote Storage"
+  ],
+  "location": [
+    "ReCAP"
+  ],
+  "name_title_browse_s": [
+    "Gerbeau, Hubert. L'esclavage et son ombre"
+  ],
+  "call_number_display": [
+    "HT1430.Z9 R48534 2023"
+  ],
+  "call_number_browse_s": [
+    "HT1430.Z9 R48534 2023"
+  ]
+}
