@@ -110,6 +110,8 @@ Rails.application.routes.draw do
 
   get '/thumbnail/:id', to: 'thumbnail#show'
 
+  get '/suggest', to: 'catalog#suggest'
+
   # error pages
   match '/404' => 'errors#missing', via: %i[get post patch delete]
   match '/422' => 'errors#missing', via: %i[get post patch delete]
