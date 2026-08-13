@@ -133,8 +133,15 @@ a > article > div > div.call-number {
 .holding-block {
   border-bottom: 1px solid var(--color-grayscale-warm-lighter);
 
-  .lux-badge svg {
-    height: var(--font-size-base);
+  .holding-format {
+    padding-right: var(--space-x-small);
+    flex-grow: 0;
+    .lux-badge {
+        margin: 0;
+        svg {
+          height: var(--font-size-base);
+        }
+      }
   }
 }
 
