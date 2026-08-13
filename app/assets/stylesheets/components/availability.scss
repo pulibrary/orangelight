@@ -135,6 +135,13 @@ a > article > div > div.call-number {
 
   .holding-format {
     padding-right: var(--space-x-small);
+
+    /* The desired display is for the format badge to *not* be aligned
+    vertically, but rather, the icon within the format badge to be
+    aligned vertically, so we add an offset equal to its left padding */
+    left: calc(var(--space-x-small) * -1);
+    position: relative;
+    
     flex-grow: 0;
     .lux-badge {
         margin: 0;
