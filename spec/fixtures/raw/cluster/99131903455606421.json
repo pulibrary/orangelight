@@ -1,0 +1,77 @@
+{
+  "id": "99131903455606421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Baker, Benjamin D."
+  ],
+  "author_citation_display": [
+    "Baker, Benjamin D."
+  ],
+  "author_roles_1display": "{\"primary_author\":\"Baker, Benjamin D.\",\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+    "Baker, Benjamin D."
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "Woodsman",
+  "title_t": [
+    ""
+  ],
+  "title_citation_display": [
+    "Woodsman"
+  ],
+  "pub_created_display": [
+    "Distributed via Smashwords"
+  ],
+  "pub_created_s": [
+    "Distributed via Smashwords"
+  ],
+  "pub_citation_display": [
+    "Distributed via Smashwords"
+  ],
+  "publisher_citation_display": [
+    "Distributed via Smashwords"
+  ],
+  "cataloged_tdt": "2026-07-24T05:03:00Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "1 online resource (1 p.)"
+  ],
+  "description_t": [
+    "1 online resource (1 p.)"
+  ],
+  "number_of_pages_citation_display": [
+    "1 online resource (1 p.)"
+  ],
+  "language_name_display": [
+    "English"
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "mult_languages_iana_s": [
+    "en"
+  ],
+  "isbn_display": [
+    "1-005-43611-8"
+  ],
+  "isbn_s": [
+    "9781005436117"
+  ],
+  "other_version_s": [
+    "9781005436117"
+  ],
+  "name_title_browse_s": [
+    "Baker, Benjamin D.. Woodsman"
+  ],
+  "electronic_portfolio_s": [
+    "{\"source_id\":\"99131903455606421\",\"display_format\":\"EBook\",\"desc\":\" Available from 03/01/1935 until 11/30/1935. Available from 10/01/1936 until 02/28/1937. Available from 11/01/1937 until 11/30/1937. Available from 03/01/1938 until 08/31/1939. Available from 01/01/1940 until 03/31/1940.\",\"title\":\"CRL Open Access Newspapers\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=531125637320006421&Force_direct=true\",\"start\":\"1935\",\"end\":\"1935\",\"notes\":[]}",
+    "{\"source_id\":\"99131903455606421\",\"display_format\":\"EBook\",\"desc\":\" Available from 05/10/1936 until 09/25/1936.\",\"title\":\"CRL Open Access Newspapers\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=531125637460006421&Force_direct=true\",\"start\":\"1936\",\"end\":\"1936\",\"notes\":[]}"
+  ]
+}
