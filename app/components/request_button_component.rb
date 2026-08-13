@@ -3,13 +3,16 @@
 # ViewComponent that displays a request button on the show page
 # :reek:TooManyInstanceVariables
 class RequestButtonComponent < ViewComponent::Base
-  def initialize(location:, doc_id:, holding: nil, holding_id: nil, open_holdings: nil)
+  delegate :deduplication?, to: Flipflop
+  # rubocop:disable Metrics/ParameterLists
+  def initialize(location:, doc_id:, holding: nil, holding_id: nil, open_holdings: nil, holding_hash: nil)
     @location = location
     @doc_id = doc_id
     @holding = holding
     @holding_id = holding_id
     @open_holdings = open_holdings
   end
+  # rubocop:enable Metrics/ParameterLists
 
   def label
     return 'Reading Room Request' if aeon?
@@ -18,6 +21,7 @@ class RequestButtonComponent < ViewComponent::Base
 
   def url
     query = { mfhd: @holding_id, aeon: aeon?.to_s, open_holdings: }.compact.to_query
+    deduplication? ? @doc_id = @holding[@holding_id]['source_id'] : @doc_id
     URI::HTTP.build(path: "/requests/#{@doc_id}", query:).request_uri
   end
 
