@@ -94,9 +94,12 @@
     <% if @document.alma_record? || (@document.scsb_record? && @document.scsb_marcxml?) %>
       <dl class="dl-horizontal dl-invert">
         <dt class="other-views">Other views</dt>
+        <%= @document.cluster_members.each do |member| %>
         <dd class="classic-views">
           <%= link_to t('blacklight.tools.librarian_view'), staff_view_solr_document_path(@document), {:id => 'staffLink'} %>
         </dd>
+        <% end %>
+
       </dl>
     <% end %>
     <%= render partial: 'show_need_help' %>

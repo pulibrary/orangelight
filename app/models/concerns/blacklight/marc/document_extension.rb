@@ -11,6 +11,8 @@ module Blacklight
       include Blacklight::Marc::DocumentExport
       include OpenURL
 
+      delegate :deduplication?, to: Flipflop
+
       # Prepend our overloaded method to bypass bug in Blacklight
       # See https://stackoverflow.com/questions/5944278/overriding-method-by-another-defined-in-module
       prepend Blacklight::Marc::Document::MarcExportOverride
@@ -171,7 +173,8 @@ module Blacklight
             id = fetch(_marc_source_field)
 
             if scsb_record?
-              marcxml_record_scsb(marcxml_field)
+              deduplication? ? marcxml_cluster_scsb(marcxml_cluster) : marcxml_record_scsb(marcxml_field)
+              # marcxml_record_scsb(marcxml_field)
             else
               response = Faraday.get("#{Requests.config['bibdata_base']}/bibliographic/#{id}")
               @can_retry = response.status == 429
@@ -180,6 +183,22 @@ module Blacklight
               marc_records = marc_reader.to_a
               marc_records.first
             end
+          end
+
+          def marcxml_cluster_scsb(marcxml_cluster)
+            return nil unless marcxml_cluster
+            marc_records_from_marcxml = []
+            marcxml_cluster.each do |json_str|
+              scsb_marcxml_pair = JSON.parse(json_str)
+              scsb_marcxml_pair.each do |_key, value|
+                decompressed_marcxml = decompress_marcxml(value)
+                response_stream = StringIO.new(decompressed_marcxml)
+                marc_reader = ::MARC::XMLReader.new(response_stream)
+                marc_records = marc_reader.to_a
+                marc_records_from_marcxml << marc_records.first
+              end
+            end
+            marc_records_from_marcxml.first
           end
 
           # :reek:TooManyStatements
