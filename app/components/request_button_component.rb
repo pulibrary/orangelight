@@ -4,15 +4,13 @@
 # :reek:TooManyInstanceVariables
 class RequestButtonComponent < ViewComponent::Base
   delegate :deduplication?, to: Flipflop
-  # rubocop:disable Metrics/ParameterLists
-  def initialize(location:, doc_id:, holding: nil, holding_id: nil, open_holdings: nil, holding_hash: nil)
+  def initialize(location:, doc_id:, holding: nil, holding_id: nil, open_holdings: nil)
     @location = location
     @doc_id = doc_id
     @holding = holding
     @holding_id = holding_id
     @open_holdings = open_holdings
   end
-  # rubocop:enable Metrics/ParameterLists
 
   def label
     return 'Reading Room Request' if aeon?

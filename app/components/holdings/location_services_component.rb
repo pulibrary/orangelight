@@ -35,7 +35,7 @@ class Holdings::LocationServicesComponent < ViewComponent::Base
         elsif aeon_location? || (scsb_location? && scsb_supervised_items?)
           AeonRequestButtonComponent.new(document:, holding: holding_hash)
         elsif scsb_location?
-          RequestButtonComponent.new(doc_id:, location: location_rules, open_holdings:, holding: holding_hash)
+          RequestButtonComponent.new(doc_id:, holding_id:, location: location_rules, open_holdings:, holding: holding_hash)
         elsif temporary_holding_id?
           holding_identifier = temporary_location_holding_id_first
           RequestButtonComponent.new(doc_id:, holding_id: holding_identifier, location: location_rules, open_holdings:, holding: holding_hash)
