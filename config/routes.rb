@@ -57,6 +57,9 @@ Rails.application.routes.draw do
   get '/advanced', to: 'catalog#advanced_search'
 
   get '/numismatics', to: 'catalog#numismatics'
+
+  get '/semantic', to: 'catalog#semantic_search'
+
   devise_for :users,
              controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'sessions' },
              skip: %i[passwords registration]
