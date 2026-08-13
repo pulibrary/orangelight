@@ -129,6 +129,10 @@ footer,
 
 .holding-block {
   display: block;
+
+  .holding-format {
+    display: none;
+  }
 }
 
 .holding-block,

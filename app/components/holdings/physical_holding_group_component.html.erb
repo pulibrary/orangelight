@@ -13,10 +13,11 @@
       </span>
     </div>
   </summary>
-  <div class="detailed-content">
+  <div class="detailed-content lux">
     <table class="availability-table" aria-label="Library locations availability">
       <thead class="visually-hidden">
         <tr>
+          <% if deduplication? %><th>Format</th><% end -%>
           <th>Call Number</th>
           <th>Status</th>
           <th class="location-services">Location Service</th>

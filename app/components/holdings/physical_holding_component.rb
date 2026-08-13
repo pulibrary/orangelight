@@ -14,6 +14,8 @@ class Holdings::PhysicalHoldingComponent < ViewComponent::Base
 
     attr_reader :adapter, :holding_id, :holding, :open_holdings
 
+    delegate :deduplication?, to: Flipflop
+
     def mapable?
       libmap_libraries.include?(holding['library'])
     end
@@ -48,5 +50,9 @@ class Holdings::PhysicalHoldingComponent < ViewComponent::Base
       else
         libmap_active_libraries
       end
+    end
+
+    def format
+      holding['display_format']
     end
 end

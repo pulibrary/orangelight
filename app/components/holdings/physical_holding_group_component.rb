@@ -3,6 +3,8 @@
 # This component is responsible for displaying a group
 # of physical holdings
 class Holdings::PhysicalHoldingGroupComponent < ViewComponent::Base
+  delegate :deduplication?, to: Flipflop
+
   # :reek:BooleanParameter
   def initialize(group:, adapter:, open: false)
     @group = group

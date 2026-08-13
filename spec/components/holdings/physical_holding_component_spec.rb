@@ -83,4 +83,13 @@ RSpec.describe Holdings::PhysicalHoldingComponent, type: :component do
       expect(rendered_content).not_to include('data-location="East Asian Library"')
     end
   end
+
+  context 'when deduplication feature is on' do
+    before { allow(Flipflop).to receive(:deduplication?).and_return(true) }
+    let(:holding) { { 'mms_id' => 'doc-456', 'library' => 'Firestone Library', 'source_id' => '99123450421', 'display_format' => 'Book' } }
+    it 'Shows the format' do
+      render_inline described_class.new(adapter, holding_id, holding)
+      expect(rendered_content).to include('Book')
+    end
+  end
 end
