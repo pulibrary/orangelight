@@ -1,0 +1,121 @@
+{
+  "id": "991966213506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Sherren, Wilkinson"
+  ],
+  "author_citation_display": [
+    "Sherren, Wilkinson"
+  ],
+  "author_roles_1display": "{\"primary_author\":\"Sherren, Wilkinson\",\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+    "Sherren, Wilkinson"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "The insurgent [microform] / by Wilkinson Sherren.",
+  "title_t": [
+    ""
+  ],
+  "title_citation_display": [
+    "The insurgent"
+  ],
+  "pub_created_display": [
+    "London : Francis Griffiths, 1908."
+  ],
+  "pub_created_s": [
+    "London : Francis Griffiths, 1908."
+  ],
+  "pub_citation_display": [
+    "London: Francis Griffiths"
+  ],
+  "publication_location_citation_display": [
+    "London"
+  ],
+  "publisher_citation_display": [
+    "Francis Griffiths"
+  ],
+  "pub_date_display": [
+    "1983"
+  ],
+  "pub_date_start_sort": 1983,
+  "publication_date_citation_display": [
+    "1983"
+  ],
+  "cataloged_tdt": "2002-08-01T00:00:00Z",
+  "format": [
+    "Book",
+    "Microform"
+  ],
+  "description_display": [
+    "331, [4] p. ; 20 cm."
+  ],
+  "description_t": [
+    "331, [4] p. ; 20 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "331, [4] p."
+  ],
+  "notes_display": [
+    "Publisher's advertising, printed with text, [4] p. at end.",
+    "Master printing negative.",
+    "Available for reproduction only."
+  ],
+  "reproduction_notes_display": [
+    "Microfilm. Princeton, N.J. : Princeton University Library, 1983. -- 1 microfilm reel ; 35 mm."
+  ],
+  "language_name_display": [
+    "English"
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "mult_languages_iana_s": [
+    "en"
+  ],
+  "subject_facet": [
+    "Fiction"
+  ],
+  "lcgft_s": [
+    "Fiction"
+  ],
+  "lcgft_genre_facet": [
+    "Fiction"
+  ],
+  "jsonld_genre_display": [
+    "Fiction."
+  ],
+  "oclc_s": [
+    "14458127"
+  ],
+  "other_version_s": [
+    "ocm14458127"
+  ],
+  "holdings_1display": "{\"22585394520006421\":{\"display_format\":\"Microform\",\"source_id\":\"991966213506421\",\"location_code\":\"firestone$pf\",\"location\":\"Remote Storage (ReCAP): Firestone Library Use Only\",\"library\":\"Firestone Library\",\"call_number\":\"MICROFILM 1679\",\"call_number_browse\":\"MICROFILM 1679\",\"items\":[{\"holding_id\":\"22585394520006421\",\"id\":\"23585394510006421\",\"status_at_load\":\"1\",\"barcode\":\"32101030171985\",\"copy_number\":\"1\"}]}}",
+  "location_code_s": [
+    "firestone$pf"
+  ],
+  "advanced_location_s": [
+    "firestone$pf",
+    "Firestone Library"
+  ],
+  "location_display": [
+    "Remote Storage (ReCAP): Firestone Library Use Only"
+  ],
+  "location": [
+    "Firestone Library"
+  ],
+  "name_title_browse_s": [
+    "Sherren, Wilkinson. The insurgent"
+  ],
+  "call_number_display": [
+    "MICROFILM 1679"
+  ],
+  "call_number_browse_s": [
+    "MICROFILM 1679"
+  ]
+}
