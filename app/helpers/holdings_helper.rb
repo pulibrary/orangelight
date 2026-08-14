@@ -12,6 +12,9 @@ module HoldingsHelper
     block_extra = ''.html_safe
     holdings_hash = document.holdings_all_display.sort { |a, b| sort_holdings(a, b) }
     @scsb_multiple = false
+    if Flipflop.deduplication? && holdings_hash.count > 0
+      # block << format_pill(document['format'].first)
+    end
     if holdings_hash.count <= 4
       holdings_hash.each do |id, holding|
         block << holdings_block(document, id, holding)
@@ -176,6 +179,15 @@ module HoldingsHelper
           bound_with: document.bound_with?
         }.compact
       )
+    end
+  end
+
+  def format_pill(value)
+    tag.div(class: 'lux format-badge-group d-flex align-items-start holdings-column') do
+      tag.lux_badge(color: 'gray') do
+        concat render DecorativeFormatIconComponent.new value
+        concat value
+      end
     end
   end
 

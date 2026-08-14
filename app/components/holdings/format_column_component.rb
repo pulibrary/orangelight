@@ -1,15 +1,9 @@
 # frozen_string_literal: true
 
-# This component is responsible for displaying a brief description of
-# a document's online holdings for concise contexts like the search
-# results page
-class Holdings::OnlineHoldingsIndexComponent < ViewComponent::Base
+# This component is responsible for displaying the format pills for each row
+class Holdings::FormatColumnComponent < ViewComponent::Base
   def initialize(document:)
     @document = document
-  end
-
-  def render?
-    links.present?
   end
 
   private
