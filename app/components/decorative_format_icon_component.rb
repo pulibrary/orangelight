@@ -22,7 +22,6 @@ class DecorativeFormatIconComponent < ViewComponent::Base
           'Coin',
           'Databases',
           'Data file',
-          'EBook',
           'Journal',
           'Manuscript',
           'Map',
