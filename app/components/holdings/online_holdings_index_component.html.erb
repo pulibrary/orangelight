@@ -1,13 +1,13 @@
 <% if Flipflop.deduplication? %>
-    <%# <%= tag.div(class: "lux format-badge-group holdings-column") do
-        # tag.lux_badge(color: "gray") do
-        #     concat render DecorativeFormatIconComponent.new format
-        #     concat format
-        # end
-    end %>
-    <%= tag.div(class: "holdings-column") do
-        tag.online_options(:"document-id" => document.id, :"options-count" => links.length, :"link-json" => links.first)
-    end %>
+    <div class="format-badge-group digital-holdings-row">
+        <%= tag.lux_badge(color: "gray") do
+                concat render DecorativeFormatIconComponent.new display_format
+                concat display_format
+        end %>
+        <%= tag.div(class: "online-holdings-list") do
+            tag.online_options(:"document-id" => document.id, :"options-count" => links.length, :"link-json" => links.first)
+        end %>
+    </div>
 <% else %>
     <%= tag.div(class: "online-holdings-list") do
             tag.online_options(:"document-id" => document.id, :"options-count" => links.length, :"link-json" => links.first)
