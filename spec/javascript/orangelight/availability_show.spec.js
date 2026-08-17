@@ -6,10 +6,18 @@ global.console = {
   error: vi.fn(),
 };
 
-global.fetch = vi.fn();
-
 delete window.location;
 window.location = { pathname: '/catalog/123456789' };
+
+function mockSuccessfulAvailabilityFetch(jsonResponse) {
+  const mockResponse = {
+    ok: true,
+    status: 200,
+    json: vi.fn().mockResolvedValue(jsonResponse),
+  };
+
+  return vi.spyOn(global, 'fetch').mockResolvedValue(mockResponse);
+}
 
 describe('AvailabilityShow', function () {
   let availabilityShow;
@@ -83,15 +91,7 @@ describe('AvailabilityShow', function () {
         },
       };
 
-      const mockResponse = {
-        ok: true,
-        status: 200,
-        json: vi.fn().mockResolvedValue(mockJson),
-      };
-
-      const fetchSpy = vi
-        .spyOn(global, 'fetch')
-        .mockResolvedValue(mockResponse);
+      const fetchSpy = mockSuccessfulAvailabilityFetch(mockJson);
       const processSpy = vi.spyOn(availabilityShow, 'process_scsb_single');
       const consoleLogSpy = vi
         .spyOn(console, 'log')
@@ -446,13 +446,7 @@ describe('AvailabilityShow', function () {
       },
     };
 
-    const mockResponse = {
-      ok: true,
-      status: 200,
-      json: vi.fn().mockResolvedValue(mockJson),
-    };
-
-    const fetchSpy = vi.spyOn(global, 'fetch').mockResolvedValue(mockResponse);
+    const fetchSpy = mockSuccessfulAvailabilityFetch(mockJson);
     const processSpy = vi.spyOn(availabilityShow, 'process_scsb_single');
 
     availabilityShow.availability_url = 'http://mock_url/availability';
@@ -502,13 +496,7 @@ describe('AvailabilityShow', function () {
       },
     };
 
-    const mockResponse = {
-      ok: true,
-      status: 200,
-      json: vi.fn().mockResolvedValue(mockJson),
-    };
-
-    const fetchSpy = vi.spyOn(global, 'fetch').mockResolvedValue(mockResponse);
+    const fetchSpy = mockSuccessfulAvailabilityFetch(mockJson);
     const processSpy = vi.spyOn(availabilityShow, 'process_single');
 
     availabilityShow.bibdata_base_url = 'http://mock_url';
@@ -687,13 +675,7 @@ describe('AvailabilityShow', function () {
       },
     };
 
-    const mockResponse = {
-      ok: true,
-      status: 200,
-      json: vi.fn().mockResolvedValue(holding_records),
-    };
-
-    const fetchSpy = vi.spyOn(global, 'fetch').mockResolvedValue(mockResponse);
+    const fetchSpy = mockSuccessfulAvailabilityFetch(holding_records);
     const processSpy = vi.spyOn(availabilityShow, 'process_single');
 
     availabilityShow.bibdata_base_url = 'http://mock_url';
@@ -836,15 +818,7 @@ describe('AvailabilityShow', function () {
         },
       };
 
-      const mockResponse = {
-        ok: true,
-        status: 200,
-        json: vi.fn().mockResolvedValue(holding_records),
-      };
-
-      const fetchSpy = vi
-        .spyOn(global, 'fetch')
-        .mockResolvedValue(mockResponse);
+      const fetchSpy = mockSuccessfulAvailabilityFetch(holding_records);
       const processSpy = vi.spyOn(availabilityShow, 'process_single');
 
       availabilityShow.bibdata_base_url = 'http://mock_url';
@@ -1008,15 +982,7 @@ describe('AvailabilityShow', function () {
         },
       };
 
-      const mockResponse = {
-        ok: true,
-        status: 200,
-        json: vi.fn().mockResolvedValue(holding_records),
-      };
-
-      const fetchSpy = vi
-        .spyOn(global, 'fetch')
-        .mockResolvedValue(mockResponse);
+      const fetchSpy = mockSuccessfulAvailabilityFetch(holding_records);
       const processSpy = vi.spyOn(availabilityShow, 'process_single');
 
       availabilityShow.bibdata_base_url = 'http://mock_url';
