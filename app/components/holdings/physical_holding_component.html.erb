@@ -19,7 +19,7 @@
         <span class="availability-icon lux-text-style red strong">Unavailable</span>
       </td>
     <% else %>
-      <%= render Holdings::HoldingAvailabilityComponent.new(doc_id, holding_id, location_rules, temp_location_code) %>
+      <%= render Holdings::HoldingAvailabilityComponent.new(doc_id, holding_id, holding, location_rules, temp_location_code) %>
     <% end %>
     <% if mapable? %>
       <%= render Holdings::LibmapButtonComponent.new(adapter, holding) %>
