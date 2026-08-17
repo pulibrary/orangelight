@@ -590,7 +590,7 @@
    <dynamicField name="*_sort_key" type="icuSortKey" indexed="false" stored="false" docValues="true" />
    <dynamicField name="*_unstem_search" type="text_general" indexed="true" stored="false" multiValued="true" />
    <dynamicField name="*spell" type="textSpell" indexed="true" stored="false" multiValued="true" />
-
+   <dynamicField name="*_bi" type="binary" indexed="false" stored="true" multiValued="true" />
     <!-- uncomment the following to ignore any fields that don't already match an existing
         field name or dynamic field, rather than reporting them as an error.
         alternately, change the type="ignored" to some other type e.g. "text" if you want
