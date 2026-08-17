@@ -38,7 +38,7 @@ class Holdings::OnlineHoldingsIndexComponent < ViewComponent::Base
       document.electronic_portfolios.map(&:to_json)
     end
 
-    def format
+    def display_format
       if document["format"].include?("Book")
         "EBook"
       elsif document["format"].include?("manuscript")
