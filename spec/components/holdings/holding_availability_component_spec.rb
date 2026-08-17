@@ -6,6 +6,7 @@ RSpec.describe Holdings::HoldingAvailabilityComponent, type: :component do
     holding_availability = described_class.new(
       '994831543506421', # doc_id
       '22549882290006421', # holding_id
+      {}, # holding
       {}, # location_rules
       nil # temp_location_code
     )
@@ -20,10 +21,22 @@ RSpec.describe Holdings::HoldingAvailabilityComponent, type: :component do
     holding_availability = described_class.new(
       '994831543506421', # doc_id
       '22549882290006421', # holding_id
+      {}, # holding
       {}, # location_rules
       nil # temp_location_code
     )
     expect(render_inline(holding_availability).css('td span').attribute('class').value).to include 'availability-icon'
+  end
+
+  it "can use the holding source_id as the data-record-id if present" do
+    holding_availability = described_class.new(
+      '67890', # doc_id
+      '22549882290006421', # holding_id
+      { 'source_id' => '12345' }, # holding
+      {}, # location_rules
+      nil # temp_location_code
+    )
+    expect(render_inline(holding_availability).css('td').attribute('data-record-id').value).to eq '12345'
   end
 
   context "temp_location_code is RES_SHARE$IN_RS_REQ" do
@@ -31,6 +44,7 @@ RSpec.describe Holdings::HoldingAvailabilityComponent, type: :component do
       holding_availability = described_class.new(
         '994831543506421', # doc_id
         '22549882290006421', # holding_id
+        {}, # holding
         {}, # location_rules
         "RES_SHARE$IN_RS_REQ" # temp_location_code
       )
@@ -47,6 +61,7 @@ RSpec.describe Holdings::HoldingAvailabilityComponent, type: :component do
       holding_availability = described_class.new(
         '994831543506421', # doc_id
         '22549882290006421', # holding_id
+        {}, # holding
         {}, # location_rules
         "commons$stacks" # temp_location_code
       )
