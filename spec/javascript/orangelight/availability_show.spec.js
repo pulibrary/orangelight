@@ -46,7 +46,6 @@ describe('AvailabilityShow', function () {
       'https://bibdata.princeton.edu/availability'
     );
     expect(availabilityShow.status_display).toBeDefined();
-    expect(availabilityShow.id).toBe('');
   });
 
   describe('request_availability', () => {
@@ -55,7 +54,7 @@ describe('AvailabilityShow', function () {
       <div id="main-content" data-host-id="">
         <table>
       <td class="holding-status" data-availability-record="true"></td>
-        </table>  
+        </table>
       </div>
       `;
       const spy = vi
@@ -70,8 +69,11 @@ describe('AvailabilityShow', function () {
 
   describe('availability_url_show', () => {
     test('builds URL with just record id when no host_ids', () => {
-      availabilityShow.id = '123456789';
-
+      document.body.innerHTML = `
+      <div id="main-content" data-host-id="">
+        <table><td class="holding-status" data-availability-record="true" data-record-id="123456789"></td></table>
+      </div>
+      `;
       const url = availabilityShow.availability_url_show();
 
       expect(url).toBe(
@@ -82,6 +84,12 @@ describe('AvailabilityShow', function () {
 
   describe('request_scsb_single_availability', () => {
     test('makes fetch request with correct SCSB URL and processes response', async () => {
+      window.location = { pathname: '/catalog/SCSB-15084779' };
+      document.body.innerHTML = `
+      <div id="main-content" data-host-id="">
+        <table><td class="holding-status" data-availability-record="true" data-record-id="SCSB-15084779"></td></table>
+      </div>
+      `;
       const mockJson = {
         CU29420407: {
           itemBarcode: 'CU29420407',
@@ -98,7 +106,6 @@ describe('AvailabilityShow', function () {
         .mockImplementation(() => {});
 
       availabilityShow.availability_url = 'http://mock_url/availability';
-      availabilityShow.id = 'SCSB-15084779';
 
       availabilityShow.request_scsb_single_availability();
       await new Promise(setImmediate);
@@ -114,13 +121,18 @@ describe('AvailabilityShow', function () {
     });
 
     test('handles fetch errors properly', async () => {
+      window.location = { pathname: '/catalog/SCSB-15084779' };
+      document.body.innerHTML = `
+      <div id="main-content" data-host-id="">
+        <table><td class="holding-status" data-availability-record="true" data-record-id="SCSB-15084779"></td></table>
+      </div>
+      `;
       const fetchSpy = vi
         .spyOn(global, 'fetch')
         .mockRejectedValue(new Error('Network error'));
       const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
       availabilityShow.availability_url = 'http://mock_url/availability';
-      availabilityShow.id = 'SCSB-15084779';
 
       availabilityShow.request_scsb_single_availability();
       await new Promise(setImmediate);
@@ -157,7 +169,6 @@ describe('AvailabilityShow', function () {
       availabilityShow.request_show_page_availability(true);
 
       expect(scsbSpy).toHaveBeenCalled();
-      expect(availabilityShow.id).toBe('SCSB-15084779');
       expect(regularSpy).not.toHaveBeenCalled();
 
       scsbSpy.mockRestore();
@@ -185,23 +196,9 @@ describe('AvailabilityShow', function () {
 
       expect(scsbSpy).not.toHaveBeenCalled();
       expect(regularSpy).toHaveBeenCalledWith(true);
-      expect(availabilityShow.id).toBe('9932127373506421');
 
       scsbSpy.mockRestore();
       regularSpy.mockRestore();
-    });
-    test('sets id from window location pathname', () => {
-      window.location.pathname = '/catalog/9987654321';
-      document.body.innerHTML = '<div id="main-content"></div>';
-
-      const spy = vi
-        .spyOn(availabilityShow, 'request_show_availability')
-        .mockImplementation(() => {});
-
-      availabilityShow.request_show_page_availability(true);
-
-      expect(availabilityShow.id).toBe('9987654321');
-      expect(spy).toHaveBeenCalledWith(true);
     });
   });
 
@@ -297,7 +294,7 @@ describe('AvailabilityShow', function () {
 
   describe('process_scsb_single', () => {
     test('handles single available item', () => {
-      availabilityShow.id = 'SCSB-123456';
+      window.location = { pathname: '/catalog/SCSB-123456' };
       const itemRecords = {
         barcode123: {
           itemAvailabilityStatus: 'Available',
@@ -310,7 +307,7 @@ describe('AvailabilityShow', function () {
         <td class="holding-status" data-availability-record="true" data-record-id="SCSB-123456" data-scsb-barcode="barcode123">
           <span class="availability-icon"></span>
         </td>
-        </table>  
+        </table>
       </div>
       `;
 
@@ -323,7 +320,7 @@ describe('AvailabilityShow', function () {
     });
 
     test('unavailable SCSB item', () => {
-      availabilityShow.id = 'SCSB-123456';
+      window.location = { pathname: '/catalog/SCSB-123456' };
       const itemRecords = {
         barcode123: {
           itemAvailabilityStatus: 'Unavailable',
@@ -336,7 +333,7 @@ describe('AvailabilityShow', function () {
         <td class="holding-status" data-availability-record="true" data-record-id="SCSB-123456" data-scsb-barcode="barcode123">
           <span class="availability-icon"></span>
         </td>
-        </table>  
+        </table>
       </div>
       `;
 
@@ -688,7 +685,7 @@ describe('AvailabilityShow', function () {
     await new Promise(setImmediate);
 
     expect(fetchSpy).toHaveBeenCalledWith(
-      'http://mock_url/bibliographic/availability.json?deep=true&bib_ids=99576993506421,99125489925606421,99125489799906421'
+      'http://mock_url/bibliographic/availability.json?deep=true&bib_ids=99125489925606421,99125489799906421,99576993506421'
     );
     expect(fetchSpy).toHaveBeenCalledTimes(1);
     expect(processSpy).toHaveBeenCalledWith(holding_records);
@@ -710,6 +707,26 @@ describe('AvailabilityShow', function () {
     fetchSpy.mockRestore();
     processSpy.mockRestore();
     update_single.mockRestore();
+  });
+  test('cluster record page with both a SCSB and Alma holding', async () => {
+    document.body.innerHTML = `
+    <div id="main-content" data-host-id>
+      <table>
+        <td class="holding-status" data-availability-record="true" data-record-id="SCSB-2579633" data-holding-id="2556783" data-scsb-barcode="AR62679988" data-aeon="false"></td>
+        <td class="holding-status" data-availability-record="true" data-record-id="9938928443506421" data-holding-id="22599503660006421" data-temp-location-code="true"></td>
+      </table>
+    </div>`;
+
+    const fetchSpy = mockSuccessfulAvailabilityFetch('{}');
+
+    availabilityShow.request_show_page_availability(true);
+    await new Promise(setImmediate);
+    expect(fetchSpy).toHaveBeenCalledWith(
+      'https://bibdata.princeton.edu/bibliographic/availability.json?deep=true&bib_ids=9938928443506421'
+    );
+    expect(fetchSpy).toHaveBeenCalledWith(
+      'https://bibdata.princeton.edu/availability?scsb_id=2579633'
+    );
   });
   describe('Holding location group label updates', () => {
     test('it updates holding location group label when it has only one holding and it has changed in Alma', async () => {

@@ -15,7 +15,6 @@ import AvailabilityBase from './availability_base.js';
 export default class AvailabilityShow extends AvailabilityBase {
   constructor() {
     super();
-    this.id = '';
 
     this.process_single = this.process_single.bind(this);
     this.update_single = this.update_single.bind(this);
@@ -28,11 +27,7 @@ export default class AvailabilityShow extends AvailabilityBase {
   /* example with three host ids: https://bibdata.princeton.edu/bibliographic/availability.json?deep=true&bib_ids=9923427953506421,99125038613506421,99125026373506421,99124945733506421 */
   // the record id is 9923427953506421
   availability_url_show() {
-    let url = `${this.bibdata_base_url}/bibliographic/availability.json?deep=true&bib_ids=${this.id}`;
-    if (this.#hostIds().length > 0) {
-      url += `,${this.#hostIds().join(',')}`;
-    }
-    return url;
+    return `${this.bibdata_base_url}/bibliographic/availability.json?deep=true&bib_ids=${this.#almaBibliographicIds().join(',')}`;
   }
 
   request_availability(allowRetry) {
@@ -40,10 +35,10 @@ export default class AvailabilityShow extends AvailabilityBase {
   }
 
   request_show_page_availability(allowRetry) {
-    this.id = window.location.pathname.split('/').pop();
-    if (this.id.match(/^SCSB-\d+/)) {
+    if (this.#scsbBibliographicIds().length > 0) {
       this.request_scsb_single_availability();
-    } else {
+    }
+    if (this.#almaBibliographicIds().length > 0) {
       this.request_show_availability(allowRetry);
     }
   }
@@ -53,15 +48,12 @@ export default class AvailabilityShow extends AvailabilityBase {
   // that we are showing is bound with another (host) record and in those instances
   // `holding_records` has data for two or more bibs: `this.id`, `this.host_ids`.
   process_single(holding_records) {
-    this.update_single(holding_records, this.id);
     // Availability response in bibdata should be refactored not to include the host holdings under the mms_id of the record page.
     // problematic availability response behavior for constituent record page with host records.
     // It treats host records as holdings of the constituent record. see: https://github.com/pulibrary/bibdata/issues/1739
-    if (this.#hostIds().length > 0) {
-      this.#hostIds().forEach((mms_id) => {
-        this.update_single(holding_records, mms_id);
-      });
-    }
+    this.#allBibliographicIds().forEach((id) =>
+      this.update_single(holding_records, id)
+    );
   }
 
   update_single(holding_records, id) {
@@ -120,31 +112,34 @@ export default class AvailabilityShow extends AvailabilityBase {
   }
 
   request_scsb_single_availability() {
-    const url = `${this.availability_url}?scsb_id=${this.id.replace(/^SCSB-/, '')}`;
-    fetch(url)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        this.process_scsb_single(data);
-      })
-      .catch((error) => {
-        console.error(
-          `Failed to retrieve availability data for the SCSB record ${this.id}: ${error}`
-        );
-      });
+    this.#scsbBibliographicIds().forEach((scsbId) => {
+      const url = `${this.availability_url}?scsb_id=${scsbId}`;
+      fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          this.process_scsb_single(data);
+        })
+        .catch((error) => {
+          console.error(
+            `Failed to retrieve availability data for the SCSB record ${this.#solrDocumentId()}: ${error}`
+          );
+        });
+    });
   }
 
   request_show_availability(allowRetry) {
-    const url = this.availability_url_show();
-    fetch(url)
+    fetch(this.availability_url_show())
       .then((response) => {
         if (response.status === 429) {
           if (allowRetry) {
-            console.log(`Retrying availability for record ${this.id}`);
+            console.log(
+              `Retrying availability for record ${this.#solrDocumentId()}`
+            );
             window.setTimeout(() => {
               this.update_availability_retrying();
               this.request_availability(false);
@@ -152,7 +147,7 @@ export default class AvailabilityShow extends AvailabilityBase {
             return;
           } else {
             console.error(
-              `Failed to retrieve availability data for the bib (retry). Record ${this.id}: HTTP status 429`
+              `Failed to retrieve availability data for the bib (retry). Record ${this.#solrDocumentId()}: HTTP status 429`
             );
             this.update_availability_undetermined();
             return;
@@ -170,7 +165,7 @@ export default class AvailabilityShow extends AvailabilityBase {
       })
       .catch((error) => {
         console.error(
-          `Failed to retrieve availability data for the bib. record ${this.id}: ${error.message}`
+          `Failed to retrieve availability data for the bib. record ${this.#solrDocumentId()}: ${error.message}`
         );
       });
   }
@@ -206,6 +201,60 @@ export default class AvailabilityShow extends AvailabilityBase {
   }
 
   /**
+   * The solr document ID
+   */
+  #solrDocumentId() {
+    if (this.solrDocumentId === undefined) {
+      this.solrDocumentId = window.location.pathname.split('/').pop();
+    }
+    return this.solrDocumentId;
+  }
+
+  /**
+   * All bibliographic IDs on the DOM page
+   *
+   * @returns {string[]}
+   */
+  #allBibliographicIds() {
+    return Array.from(this.#bibIdsFromDom().union(this.#hostIds()));
+  }
+
+  #almaBibliographicIds() {
+    return this.#allBibliographicIds().filter(
+      (id) => !this.#isScsb(id) && id.length < 25
+    );
+  }
+
+  #scsbBibliographicIds() {
+    return this.#allBibliographicIds()
+      .filter((id) => this.#isScsb(id))
+      .map((id) => id.replace(/^SCSB-/, ''));
+  }
+
+  #isScsb(id) {
+    return id.match(/^SCSB-\d+/);
+  }
+
+  /**
+   * Bibliographic ids found from the holdings section of the DOM
+   *
+   * @returns {Set<string>}
+   */
+  #bibIdsFromDom() {
+    if (!this.bibIdsFromDom) {
+      this.bibIdsFromDom = Array.from(
+        document.querySelectorAll('[data-record-id]')
+      ).reduce((acc, element) => {
+        if (element?.dataset?.recordId) {
+          acc.add(element.dataset.recordId);
+        }
+        return acc;
+      }, new Set());
+    }
+    return this.bibIdsFromDom;
+  }
+
+  /**
    * Returns an array of 0, 1, or many host record ids based on the DOM content.
    * In the case of 0, the main-content tag has an empty data-host-id attribute.
    * Otherwise, that attribute will be an array with 1 or many elements
@@ -216,10 +265,10 @@ export default class AvailabilityShow extends AvailabilityBase {
     const hostIdsFromDom = () => {
       const raw = document.getElementById('main-content')?.dataset?.hostId;
       if (!raw) {
-        return [];
+        return new Set();
       }
 
-      return JSON.parse(raw);
+      return new Set(JSON.parse(raw));
     };
     if (this.hostIds === undefined) {
       this.hostIds = hostIdsFromDom();
@@ -274,13 +323,13 @@ export default class AvailabilityShow extends AvailabilityBase {
 
   #getScsbAvailabilityElement(barcode) {
     return document.querySelector(
-      `*[data-availability-record='true'][data-record-id='${this.id}'][data-scsb-barcode='${barcode}'] .availability-icon`
+      `*[data-availability-record='true'][data-record-id='${this.#solrDocumentId()}'][data-scsb-barcode='${barcode}'] .availability-icon`
     );
   }
 
   #getScsbAeonElement(barcode) {
     return document.querySelector(
-      `*[data-availability-record='true'][data-record-id='${this.id}'][data-scsb-barcode='${barcode}']`
+      `*[data-availability-record='true'][data-record-id='${this.#solrDocumentId()}'][data-scsb-barcode='${barcode}']`
     );
   }
 
