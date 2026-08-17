@@ -39,7 +39,6 @@ describe('AvailabilityShow', function () {
     );
     expect(availabilityShow.status_display).toBeDefined();
     expect(availabilityShow.id).toBe('');
-    expect(availabilityShow.host_ids).toEqual([]);
   });
 
   describe('request_availability', () => {
@@ -64,7 +63,6 @@ describe('AvailabilityShow', function () {
   describe('availability_url_show', () => {
     test('builds URL with just record id when no host_ids', () => {
       availabilityShow.id = '123456789';
-      availabilityShow.host_ids = '';
 
       const url = availabilityShow.availability_url_show();
 

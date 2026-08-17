@@ -16,7 +16,6 @@ export default class AvailabilityShow extends AvailabilityBase {
   constructor() {
     super();
     this.id = '';
-    this.host_ids = [];
 
     this.process_single = this.process_single.bind(this);
     this.update_single = this.update_single.bind(this);
@@ -30,11 +29,8 @@ export default class AvailabilityShow extends AvailabilityBase {
   // the record id is 9923427953506421
   availability_url_show() {
     let url = `${this.bibdata_base_url}/bibliographic/availability.json?deep=true&bib_ids=${this.id}`;
-    if (this.host_ids.length > 0) {
-      const hostIds = Array.isArray(this.host_ids)
-        ? this.host_ids.join(',')
-        : this.host_ids;
-      url += `,${hostIds}`;
+    if (this.#hostIds().length > 0) {
+      url += `,${this.#hostIds().join(',')}`;
     }
     return url;
   }
@@ -45,16 +41,6 @@ export default class AvailabilityShow extends AvailabilityBase {
 
   request_show_page_availability(allowRetry) {
     this.id = window.location.pathname.split('/').pop();
-    const mainContent = document.getElementById('main-content');
-    const hostIdAttr = mainContent
-      ? mainContent.getAttribute('data-host-id') || ''
-      : '';
-    if (hostIdAttr && hostIdAttr.startsWith('[') && hostIdAttr.endsWith(']')) {
-      const parsed = JSON.parse(hostIdAttr);
-      this.host_ids = Array.isArray(parsed) ? parsed : [hostIdAttr];
-    } else {
-      this.host_ids = hostIdAttr ? [hostIdAttr] : [];
-    }
     if (this.id.match(/^SCSB-\d+/)) {
       this.request_scsb_single_availability();
     } else {
@@ -71,8 +57,8 @@ export default class AvailabilityShow extends AvailabilityBase {
     // Availability response in bibdata should be refactored not to include the host holdings under the mms_id of the record page.
     // problematic availability response behavior for constituent record page with host records.
     // It treats host records as holdings of the constituent record. see: https://github.com/pulibrary/bibdata/issues/1739
-    if (this.host_ids.length > 0) {
-      this.host_ids.forEach((mms_id) => {
+    if (this.#hostIds().length > 0) {
+      this.#hostIds().forEach((mms_id) => {
         this.update_single(holding_records, mms_id);
       });
     }
@@ -217,6 +203,28 @@ export default class AvailabilityShow extends AvailabilityBase {
       `*[data-availability-record='true'] span.availability-icon`
     );
     this.status_display.setUndeterminedStatus(show_availability_display);
+  }
+
+  /**
+   * Returns an array of 0, 1, or many host record ids based on the DOM content.
+   * In the case of 0, the main-content tag has an empty data-host-id attribute.
+   * Otherwise, that attribute will be an array with 1 or many elements
+   *
+   * @returns string[] of host record IDs found in the DOM
+   */
+  #hostIds() {
+    const hostIdsFromDom = () => {
+      const raw = document.getElementById('main-content')?.dataset?.hostId;
+      if (!raw) {
+        return [];
+      }
+
+      return JSON.parse(raw);
+    };
+    if (this.hostIds === undefined) {
+      this.hostIds = hostIdsFromDom();
+    }
+    return this.hostIds;
   }
 
   #getAvailabilityElementForHolding(id, holding_id) {
