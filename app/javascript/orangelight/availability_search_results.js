@@ -27,23 +27,19 @@ export default class AvailabilitySearchResults extends AvailabilityBase {
 
   process_barcodes(barcodes) {
     return (() => {
-      const result = [];
       for (const barcode_id in barcodes) {
         const item_data = barcodes[barcode_id];
-        result.push(this.#apply_scsb_record(barcode_id, item_data));
+        this.#apply_scsb_record(barcode_id, item_data);
       }
-      return result;
     })();
   }
 
   process_results_list(records) {
     console.log(`Batch finished at ${new Date().toISOString()}`);
-    const result = [];
     for (const record_id in records) {
       const holding_records = records[record_id];
-      result.push(this.process_result(record_id, holding_records));
+      this.process_result(record_id, holding_records);
     }
-    return result;
   }
 
   process_result(record_id, holding_records) {
@@ -145,7 +141,7 @@ export default class AvailabilitySearchResults extends AvailabilityBase {
           return response.json();
         })
         .then((data) => {
-          return this.process_barcodes(data);
+          this.process_barcodes(data);
         })
         .catch((error) => {
           console.error(
@@ -222,20 +218,12 @@ export default class AvailabilitySearchResults extends AvailabilityBase {
   }
 
   #ids_to_batches(ids, batch_size) {
-    const batches = [];
-    const batch_count =
-      Math.floor(ids.length / batch_size) + (ids.length % batch_size);
-    let i, begin, end, batch;
-    for (i = 0; i < batch_count; i++) {
-      begin = i * batch_size;
-      end = begin + batch_size;
-      batch = ids.slice(begin, end);
-      if (batch.length == 0) {
-        break;
-      }
-      batches.push(batch);
-    }
-    return batches;
+    return ids.reduce((batches, id, index) => {
+      const batchId = Math.floor(index / batch_size);
+      batches[batchId] ||= [];
+      batches[batchId].push(id);
+      return batches;
+    }, []);
   }
 
   #record_ids() {
