@@ -301,8 +301,6 @@ describe('AvailabilitySearchResults', function () {
       '[data-scsb-barcode="AR02546990"]'
     );
     expect(holding_status_ar02546990.textContent).toBe('Request');
-    fetchSpy.mockRestore();
-    processSpy.mockRestore();
   });
 
   describe('request_search_results_availability', () => {
@@ -384,9 +382,6 @@ describe('AvailabilitySearchResults', function () {
         'http://mock_url/bibliographic/availability.json?bib_ids=99125410673606421,9949378963506421'
       );
       expect(processSpy).toHaveBeenCalledWith(mockJson);
-
-      fetchSpy.mockRestore();
-      processSpy.mockRestore();
     });
     test('returns early when no bib IDs are found', () => {
       document.body.innerHTML = '<div class="documents-list"></div>';
@@ -396,7 +391,6 @@ describe('AvailabilitySearchResults', function () {
       searchResults.request_search_results_availability();
 
       expect(fetchSpy).not.toHaveBeenCalled();
-      fetchSpy.mockRestore();
     });
   });
 
@@ -458,9 +452,6 @@ describe('AvailabilitySearchResults', function () {
 
     expect(fetchSpy).toHaveBeenCalled();
     expect(processSpy).toHaveBeenCalledWith(mockJson);
-
-    fetchSpy.mockRestore();
-    processSpy.mockRestore();
   });
 
   describe('update_availability_undetermined', () => {
