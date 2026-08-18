@@ -130,7 +130,7 @@ describe('AvailabilitySearchResults', function () {
     const record_id = '99131390231506421';
     document.body.innerHTML = `
       <article id="" class="lux-card medium holding-status" data-availability-record="true" data-record-id="99131390231506421" data-holding-id="221044292940006421" data-temp-location-code="RES_SHARE$IN_RS_REQ" data-aeon="false" data-bound-with="false">
-      <div class="library-location" data-location="true" data-record-id="99131390231506421" data-holding-id="221044292940006421">
+      <div class="library-location" data-location="true">
       <div class="results_location row"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" class="location-pin-icon"><path d="M9.5,1.8" stroke-width="2" fill="none"></path><circle r="2" fill="none" stroke-width="1.5" cx="10" cy="7.8"></circle></svg>
       <span class="search-result-library-name">Firestone Library</span>
       </div>
@@ -165,12 +165,12 @@ describe('AvailabilitySearchResults', function () {
     document.body.innerHTML = `
     <a href="/catalog/99131688668106421">
     <article id="" class="lux-card medium holding-status" data-availability-record="true" data-record-id="99131688668106421" data-holding-id="221095863350006421" data-aeon="false" data-bound-with="false">
-    <div class="library-location" data-location="true" data-record-id="99131688668106421" data-holding-id="221095863350006421">
+    <div class="library-location" data-location="true">
     <div class="results_location row"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" class="location-pin-icon"><path d="M9.5,1.8" stroke-width="2" fill="none"></path><circle r="2" fill="none" stroke-width="1.5" cx="10" cy="7.8"></circle></svg><span class="search-result-library-name">Firestone Library</span></div><div class="call-number">NA2543<wbr>.S6 S53 2025</div></div>
     <span class="lux-text-style"></span>
     </article></a><a href="/catalog/99131688668106421">
     <article id="" class="lux-card medium holding-status" data-availability-record="true" data-record-id="99131688668106421" data-holding-id="arch$fac" data-temp-location-code="arch$fac" data-aeon="false" data-bound-with="false">
-    <div class="library-location" data-location="true" data-record-id="99131688668106421" data-holding-id="arch$fac">
+    <div class="library-location" data-location="true">
     <div class="results_location row"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" class="location-pin-icon"><path d="M9.5,1.8" stroke-width="2" fill="none"></path><circle r="2" fill="none" stroke-width="1.5" cx="10" cy="7.8"></circle></svg><span class="search-result-library-name">Architecture Library</span></div>
     <div class="call-number">NA2543<wbr>.S6 S53 2025q Oversize</div>
     </div>
@@ -309,18 +309,18 @@ describe('AvailabilitySearchResults', function () {
           <div class="documents-list">
             <div class="holdings-card">
             <a href="/catalog/99125410673606421"><article id="" class="lux-card medium holding-status" data-availability-record="true" data-record-id="99125410673606421" data-holding-id="22905775240006421" data-aeon="false" data-bound-with="false">
-            <div class="library-location" data-location="true" data-record-id="99125410673606421" data-holding-id="22905775240006421">
+            <div class="library-location" data-location="true">
             <div class="results_location row"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" class="location-pin-icon"><path d="M9.5,1.8"
        stroke-width="2" fill="none">
        </path><circle r="2" fill="none" stroke-width="1.5" cx="10" cy="7.8"></circle></svg><span class="search-result-library-name">Firestone Library</span></div>
        <div class="call-number">PN1995<wbr>.25 <wbr>.C87 2021</div></div><span class="lux-text-style strong"></span></article></a><a href="/catalog/99125410673606421"><article id="" class="lux-card medium holding-status" data-availability-record="true" data-record-id="99125410673606421" data-holding-id="22909226080006421" data-aeon="false" data-bound-with="false">
-       <div class="library-location" data-location="true" data-record-id="99125410673606421" data-holding-id="22909226080006421">
+       <div class="library-location" data-location="true">
        <div class="results_location row"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" class="location-pin-icon"><path d="M9.5,1.8"
        stroke-width="2" fill="none"></path><circle r="2" fill="none" stroke-width="1.5" cx="10" cy="7.8"></circle></svg><span class="search-result-library-name">Marquand Library</span></div>
        <div class="call-number">PN1995<wbr>.25 <wbr>.C87 2021</div></div><span class="lux-text-style strong"></span></article></a></div>
            <div class="holdings-card">
            <a href="/catalog/9949378963506421"><article id="" class="lux-card medium holding-status" data-availability-record="true" data-record-id="9949378963506421" data-holding-id="22738013960006421" data-aeon="false" data-bound-with="false">
-           <div class="library-location" data-location="true" data-record-id="9949378963506421" data-holding-id="22738013960006421">
+           <div class="library-location" data-location="true">
            <div class="results_location row"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" class="location-pin-icon"><path d="M9.5,1.8"
        stroke-width="2" fill="none"></path><circle r="2" fill="none" stroke-width="1.5" cx="10" cy="7.8"></circle></svg><span class="search-result-library-name">Firestone Library</span></div><div class="call-number">PN1995<wbr>.25 <wbr>.C87 2021</div></div><span class="lux-text-style strong"></span></article></a>
           </div>
