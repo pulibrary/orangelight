@@ -17,7 +17,15 @@
     <h1 class="page-heading"><%= t('blacklight.search.librarian_view.title') %></h1>
 </div>
 
-<%- if @document.respond_to?(:to_marc) && @document.to_marc.present? -%>
+<%- if Flipflop.deduplication? -%>
+  <lux-tab-wrapper>
+    <% @document.to_marc.each do |record| %>
+      <lux-tab title="<%= record['001'] %>">
+        <%= render "marc_view", document: record %>
+      </lux-tab>
+    <% end %>
+  </lux-tab-wrapper>
+<%- elsif @document.respond_to?(:to_marc) && @document.to_marc.present? -%>
   <%= render "marc_view", document: @document %>
 <%- elsif @document.respond_to?(:to_marc) && @document.can_retry? %>
   <%= t('blacklight.search.librarian_view.retry') %>

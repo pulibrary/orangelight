@@ -197,10 +197,11 @@ module Blacklight
           end
 
           def marcxml_record_read(marcxml_binary)
+            marcxml_remove_empty = marcxml_binary.reject(&:empty?)
             return nil unless marcxml_binary
-            return nil if marcxml_binary.reject!(&:empty?).blank?
+            return nil if marcxml_remove_empty.blank?
             marcxml_records = []
-            marcxml_binary.each do |marcxml_field|
+            marcxml_remove_empty.each do |marcxml_field|
               decompressed_marcxml = decompress_marcxml(marcxml_field)
               response_stream = StringIO.new(decompressed_marcxml)
               marc_reader = ::MARC::XMLReader.new(response_stream)
