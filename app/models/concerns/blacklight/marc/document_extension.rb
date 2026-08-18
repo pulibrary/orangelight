@@ -11,6 +11,8 @@ module Blacklight
       include Blacklight::Marc::DocumentExport
       include OpenURL
 
+      delegate :deduplication?, to: Flipflop
+
       # Prepend our overloaded method to bypass bug in Blacklight
       # See https://stackoverflow.com/questions/5944278/overriding-method-by-another-defined-in-module
       prepend Blacklight::Marc::Document::MarcExportOverride
@@ -150,7 +152,7 @@ module Blacklight
             marc_format = _marc_format_type.to_s
 
             case marc_format
-            when 'marcxml'
+            when 'marcxml' || 'marcxml_bi'
               marc_record_from_marcxml
             when 'marc21'
               marc_record_from_marc21
@@ -169,9 +171,10 @@ module Blacklight
           # :reek:TooManyStatements
           def marc_record_from_marcxml
             id = fetch(_marc_source_field)
-
-            if scsb_record?
-              marcxml_record_scsb(marcxml_field)
+            if deduplication?
+              marcxml_record_read(marcxml_binary)
+            elsif scsb_record?
+              marcxml_record_read(marcxml_field)
             else
               response = Faraday.get("#{Requests.config['bibdata_base']}/bibliographic/#{id}")
               @can_retry = response.status == 429
@@ -191,6 +194,21 @@ module Blacklight
             marc_reader = ::MARC::XMLReader.new(response_stream)
             marc_records = marc_reader.to_a
             marc_records.first
+          end
+
+          def marcxml_record_read(marcxml_binary)
+            return nil unless marcxml_binary
+            return nil if marcxml_binary.reject!(&:empty?).blank?
+            marcxml_records = []
+            marcxml_binary.each do |marcxml_field|
+              decompressed_marcxml = decompress_marcxml(marcxml_field)
+              response_stream = StringIO.new(decompressed_marcxml)
+              marc_reader = ::MARC::XMLReader.new(response_stream)
+              marc_records = marc_reader.to_a
+
+              marcxml_records << marc_records.first
+            end
+            marcxml_records
           end
 
           # @param [String] compressed_data The compressed MARCXML data
