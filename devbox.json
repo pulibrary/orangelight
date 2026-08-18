@@ -2,7 +2,7 @@
   "packages": {
     "ruby":       "3.4.8",
     "bundler":    "latest",
-    "nodejs":     "24.3.0",
+    "nodejs":     "26.7.0",
     "yarn":       "1.22.10",
     "git":        "latest",
     "openssh":    "latest",
