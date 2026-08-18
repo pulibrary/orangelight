@@ -114,10 +114,6 @@ describe('AvailabilityShow', function () {
         'http://mock_url/availability?scsb_id=15084779'
       );
       expect(processSpy).toHaveBeenCalledWith(mockJson);
-
-      fetchSpy.mockRestore();
-      processSpy.mockRestore();
-      consoleLogSpy.mockRestore();
     });
 
     test('handles fetch errors properly', async () => {
@@ -143,9 +139,6 @@ describe('AvailabilityShow', function () {
           'Failed to retrieve availability data for the SCSB record SCSB-15084779'
         )
       );
-
-      fetchSpy.mockRestore();
-      errorSpy.mockRestore();
     });
   });
 
@@ -170,9 +163,6 @@ describe('AvailabilityShow', function () {
 
       expect(scsbSpy).toHaveBeenCalled();
       expect(regularSpy).not.toHaveBeenCalled();
-
-      scsbSpy.mockRestore();
-      regularSpy.mockRestore();
     });
 
     test('calls request_show_availability for non-SCSB records', () => {
@@ -196,9 +186,6 @@ describe('AvailabilityShow', function () {
 
       expect(scsbSpy).not.toHaveBeenCalled();
       expect(regularSpy).toHaveBeenCalledWith(true);
-
-      scsbSpy.mockRestore();
-      regularSpy.mockRestore();
     });
   });
 
@@ -461,9 +448,6 @@ describe('AvailabilityShow', function () {
     expect(holding_status.classList.contains('lux-text-style')).toBe(true);
     expect(holding_status.classList.contains('green')).toBe(true);
     expect(holding_status.textContent).toBe('Some Available');
-
-    fetchSpy.mockRestore();
-    processSpy.mockRestore();
   });
 
   test('request_availability uses fetch for available NON SCSB record and calls process_single on success', async () => {
@@ -511,9 +495,6 @@ describe('AvailabilityShow', function () {
     expect(holding_status.classList.contains('lux-text-style')).toBe(true);
     expect(holding_status.classList.contains('green')).toBe(true);
     expect(holding_status.textContent).toBe('Available');
-
-    fetchSpy.mockRestore();
-    processSpy.mockRestore();
   });
   test('record in temporary location shows as available', () => {
     // Set up DOM exactly like the working test
@@ -703,10 +684,6 @@ describe('AvailabilityShow', function () {
       holding_records,
       '99125489799906421'
     );
-
-    fetchSpy.mockRestore();
-    processSpy.mockRestore();
-    update_single.mockRestore();
   });
   test('cluster record page with both a SCSB and Alma holding', async () => {
     document.body.innerHTML = `
@@ -862,9 +839,6 @@ describe('AvailabilityShow', function () {
       expect(locationTextMarquand.textContent).toBe(
         'Marquand Library - Remote Storage: Marquand Use Only'
       );
-
-      fetchSpy.mockRestore();
-      processSpy.mockRestore();
     });
     test('it will not update holding location group label when it has more than one holdings and only one of them has changed in Alma', async () => {
       document.body.innerHTML = `
@@ -1026,9 +1000,6 @@ describe('AvailabilityShow', function () {
       expect(locationTextMarquand.textContent).toBe(
         'Marquand Library - Remote Storage: Marquand Use Only'
       );
-
-      fetchSpy.mockRestore();
-      processSpy.mockRestore();
     });
   });
 });
