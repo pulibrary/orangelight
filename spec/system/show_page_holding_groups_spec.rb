@@ -19,4 +19,10 @@ RSpec.describe 'Holding groups on the show page', js: true do
       expect(page).to have_no_selector '.lux-badge'
     end
   end
+
+  it 'shows information about which volumes of a journal we have' do
+    stub_holding_locations
+    visit '/catalog/997218033506421'
+    expect(page).to have_text 'Vol. 1-v. 28 (published 2021)'
+  end
 end
