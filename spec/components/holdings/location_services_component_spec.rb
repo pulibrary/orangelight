@@ -414,25 +414,10 @@ RSpec.describe Holdings::LocationServicesComponent, type: :component do
       before do
         allow(adapter).to receive(:document).and_return(document)
       end
-      context 'when FlipFlop feature hide_marquand_non_rare_request_button is on' do
-        before do
-          allow(Flipflop).to receive(:hide_marquand_non_rare_request_button?).and_return(true)
-        end
 
-        it 'renders a request button' do
-          expect(rendered.to_s).to include '<td class="location-services service-conditional"'
-          expect(rendered.to_s).to include "Request"
-        end
-      end
-      context 'when FlipFlop feature hide_marquand_non_rare_request_button is off' do
-        before do
-          allow(Flipflop).to receive(:hide_marquand_non_rare_request_button?).and_return(false)
-        end
-
-        it 'renders a request button' do
-          expect(rendered.to_s).to include '<td class="location-services service-conditional"'
-          expect(rendered.to_s).to include "Request"
-        end
+      it 'renders a request button' do
+        expect(rendered.to_s).to include '<td class="location-services service-conditional"'
+        expect(rendered.to_s).to include "Request"
       end
     end
 
@@ -471,25 +456,10 @@ RSpec.describe Holdings::LocationServicesComponent, type: :component do
       before do
         allow(adapter).to receive(:document).and_return(document)
       end
-      context 'when FlipFlop feature hide_marquand_special_collections_request_button is on' do
-        before do
-          allow(Flipflop).to receive(:hide_marquand_special_collections_request_button?).and_return(true)
-        end
 
-        it 'does not render a request button' do
-          expect(rendered.to_s).to include '<td class="location-services service-always-requestable"'
-          expect(rendered.to_s).not_to include "Reading Room Request"
-        end
-      end
-      context 'when FlipFlop feature hide_marquand_special_collections_request_button is off' do
-        before do
-          allow(Flipflop).to receive(:hide_marquand_special_collections_request_button?).and_return(false)
-        end
-
-        it 'renders a request button' do
-          expect(rendered.to_s).to include '<td class="location-services service-always-requestable"'
-          expect(rendered.to_s).to include "Reading Room Request"
-        end
+      it 'renders a request button' do
+        expect(rendered.to_s).to include '<td class="location-services service-always-requestable"'
+        expect(rendered.to_s).to include "Reading Room Request"
       end
     end
 
@@ -524,25 +494,10 @@ RSpec.describe Holdings::LocationServicesComponent, type: :component do
       before do
         allow(adapter).to receive(:document).and_return(document)
       end
-      context 'when FlipFlop feature hide_marquand_non_rare_request_button is on' do
-        before do
-          allow(Flipflop).to receive(:hide_marquand_non_rare_request_button?).and_return(true)
-        end
 
-        it 'does not render a request button' do
-          expect(rendered.to_s).to include '<td class="location-services service-conditional"'
-          expect(rendered.to_s).not_to include "Request"
-        end
-      end
-      context 'when FlipFlop feature hide_marquand_non_rare_request_button is off' do
-        before do
-          allow(Flipflop).to receive(:hide_marquand_non_rare_request_button?).and_return(false)
-        end
-
-        it 'renders a request button' do
-          expect(rendered.to_s).to include '<td class="location-services service-conditional"'
-          expect(rendered.to_s).to include "Request"
-        end
+      it 'renders a request button' do
+        expect(rendered.to_s).to include '<td class="location-services service-conditional"'
+        expect(rendered.to_s).to include "Request"
       end
     end
 
@@ -610,23 +565,9 @@ RSpec.describe Holdings::LocationServicesComponent, type: :component do
       before do
         allow(adapter).to receive(:document).and_return(document)
       end
-      context 'when FlipFlop feature hide_marquand_non_rare_request_button is on' do
-        before do
-          allow(Flipflop).to receive(:hide_marquand_non_rare_request_button?).and_return(true)
-        end
 
-        it 'does not render a request button' do
-          expect(rendered.to_s).not_to include "Request"
-        end
-      end
-      context 'when FlipFlop feature hide_marquand_non_rare_request_button is off' do
-        before do
-          allow(Flipflop).to receive(:hide_marquand_non_rare_request_button?).and_return(false)
-        end
-
-        it 'renders a request button' do
-          expect(rendered.to_s).to include "Request"
-        end
+      it 'renders a request button' do
+        expect(rendered.to_s).to include "Request"
       end
     end
   end

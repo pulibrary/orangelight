@@ -28,8 +28,6 @@ class Holdings::LocationServicesComponent < ViewComponent::Base
       # rubocop:disable Lint/DuplicateBranch
       # :reek:TooManyStatements
       def button_component
-        return nil if Flipflop.hide_marquand_special_collections_request_button? && marquand_special_collections?
-        return nil if Flipflop.hide_marquand_non_rare_request_button? && marquand_non_rare?
         if holding_id == 'thesis' || numismatics?
           AeonRequestButtonComponent.new(document:, holding: holding_hash, url_class: Requests::NonAlmaAeonUrl)
         elsif items && items.length > 1
