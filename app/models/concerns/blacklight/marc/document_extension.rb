@@ -171,7 +171,7 @@ module Blacklight
           # :reek:TooManyStatements
           def marc_record_from_marcxml
             id = fetch(_marc_source_field)
-            if deduplication?
+            if deduplication? && marcxml_binary.present?
               marcxml_record_read(marcxml_binary)
             elsif scsb_record?
               marcxml_record_read(marcxml_field)
