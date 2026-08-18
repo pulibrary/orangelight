@@ -229,11 +229,13 @@ export default class AvailabilitySearchResults extends AvailabilityBase {
   #record_ids() {
     const ids = Array.from(
       document.querySelectorAll(
-        "*[data-availability-record='true'][data-record-id]"
+        "[data-availability-record='true'] [data-record-id]"
       )
-    ).map(function (node) {
-      return node.getAttribute('data-record-id');
-    });
+    )
+      .map(function (node) {
+        return node.getAttribute('data-record-id');
+      })
+      .filter((id) => !id.startsWith('SCSB-'));
 
     return [...new Set(ids)];
   }
@@ -277,7 +279,7 @@ export default class AvailabilitySearchResults extends AvailabilityBase {
 
   #getLocationElement(record_id, holding_id) {
     return document.querySelector(
-      `*[data-location='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .results_location .search-result-library-name`
+      `*[data-location='true'][data-holding-id='${holding_id}'] .results_location .search-result-library-name`
     );
   }
 
@@ -285,7 +287,7 @@ export default class AvailabilitySearchResults extends AvailabilityBase {
     // The following query selector will not return for temporary RES_SHARE$IN_RS_REQ.
     // This is the desired behavior for this temporary location.
     return document.querySelector(
-      `*[data-availability-record='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .lux-text-style`
+      `*[data-availability-record='true'][data-holding-id='${holding_id}'] .lux-text-style`
     );
   }
 }

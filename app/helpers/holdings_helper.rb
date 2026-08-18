@@ -158,9 +158,10 @@ module HoldingsHelper
       class: 'library-location',
       data: {
         location: true,
-        record_id: document['id'],
-        holding_id: id
-      }
+        record_id: holding['source_id'] || document['id'],
+        holding_id: id,
+        availability_record: Flipflop.deduplication? ? true : nil
+      }.compact
     )
   end
 
@@ -173,7 +174,6 @@ module HoldingsHelper
         class: 'holding-status',
         data: {
           availability_record: check_availability,
-          record_id: document['id'],
           holding_id: id,
           temp_location_code: holding['temp_location_code'],
           aeon: aeon_location?(location),
