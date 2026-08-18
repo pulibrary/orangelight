@@ -83,7 +83,6 @@ export default class AvailabilityShow extends AvailabilityBase {
     let availability_info, barcode;
     const status_message = this.#determineMultiItemStatusMessage(item_records);
     return (() => {
-      const result = [];
       for (barcode in item_records) {
         availability_info = item_records[barcode];
         const itemStatus = availability_info['itemAvailabilityStatus'];
@@ -95,19 +94,14 @@ export default class AvailabilityShow extends AvailabilityBase {
             availability_element.classList.add('lux-text-style');
           }
           this.status_display.setOnSiteAccessStatus(availability_element);
-          result.push(availability_element);
         } else if (status_message == 'Some Available') {
           this.status_display.setSomeAvailableStatus(availability_element);
-          result.push(availability_element);
         } else if (itemStatus == 'Unavailable') {
           this.status_display.setUnavailableStatus(availability_element);
-          result.push(availability_element);
         } else if (itemStatus == 'Available') {
           this.status_display.setAvailableStatus(availability_element);
-          result.push(availability_element);
         }
       }
-      return result;
     })();
   }
 
