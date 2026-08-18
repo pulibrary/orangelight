@@ -57,7 +57,6 @@ module HoldingsHelper
       rendered_online_holdings_block = controller.view_context.render(Holdings::OnlineHoldingsIndexComponent.new(document:))
       return rendered_online_holdings_block if rendered_online_holdings_block.present?
 
-      check_availability = render_availability?
       accumulator << empty_link_online_holding_block
 
     else
