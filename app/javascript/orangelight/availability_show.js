@@ -323,7 +323,7 @@ export default class AvailabilityShow extends AvailabilityBase {
 
   #getScsbAvailabilityElement(barcode) {
     return document.querySelector(
-      `*[data-availability-record='true'][data-record-id='${this.#solrDocumentId()}'][data-scsb-barcode='${barcode}'] .availability-icon`
+      `*[data-availability-record='true'][data-scsb-barcode='${barcode}'] .availability-icon`
     );
   }
 

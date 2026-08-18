@@ -29,4 +29,13 @@ RSpec.describe Holdings::HoldingAvailabilityScsbComponent, type: :component do
     expect(render_inline(holding_location).css('td span').attribute('class').value).to include 'availability-icon'
     expect(render_inline(holding_location).css('td span').attribute('class').value).to include 'lux-text-style'
   end
+
+  it 'can use the holding source_id as the data-record-id if present' do
+    holding_availability = described_class.new(
+      JSON.parse(holding_json).merge({ 'source_id' => '12345' }),
+      '67890', # doc_id
+      '22549882290006421' # holding_id
+    )
+    expect(render_inline(holding_availability).css('td').attribute('data-record-id').value).to eq '12345'
+  end
 end

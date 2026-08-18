@@ -12,7 +12,7 @@ class Holdings::HoldingAvailabilityScsbComponent < ViewComponent::Base
 
     private
 
-      attr_reader :holding, :doc_id, :holding_id
+      attr_reader :holding, :holding_id
 
       def scsb_supervised_items?
         if holding.key? 'items'
@@ -27,5 +27,9 @@ class Holdings::HoldingAvailabilityScsbComponent < ViewComponent::Base
 
       def items
         @items ||= holding['items']
+      end
+
+      def doc_id
+        holding['source_id'] || @doc_id
       end
 end
