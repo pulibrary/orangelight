@@ -170,7 +170,7 @@ module HoldingsHelper
         class: 'holding-status',
         data: {
           availability_record: check_availability,
-          record_id: document['id'],
+          record_id: holding['source_id'] || document['id'],
           holding_id: id,
           temp_location_code: holding['temp_location_code'],
           aeon: aeon_location?(location),
