@@ -1,0 +1,9 @@
+version: "0.1"
+
+processes:
+  solr:
+    command: solr start
+    environment:
+      - "SOLR_LOGS_DIR=${PWD}/log"
+    availability:
+      restart: "always"

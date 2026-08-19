@@ -8,11 +8,12 @@
     "openssh":    "latest",
     "zsh":        "latest",
     "pkg-config": "latest",
-    "postgresql": { "version": "latest", "outputs": ["out", "lib", "dev"] },
-    "libyaml":    { "version": "latest", "outputs": ["out", "dev"] },
-    "zlib":       { "version": "latest", "outputs": ["out", "dev"] },
-    "libffi":     { "version": "latest", "outputs": ["out", "dev"] },
-    "openssl":    { "version": "latest", "outputs": ["out", "dev"] }
+    "postgresql": {"version": "latest", "outputs": ["out", "lib", "dev"]},
+    "libyaml":    {"version": "latest", "outputs": ["out", "dev"]},
+    "zlib":       {"version": "latest", "outputs": ["out", "dev"]},
+    "libffi":     {"version": "latest", "outputs": ["out", "dev"]},
+    "openssl":    {"version": "latest", "outputs": ["out", "dev"]},
+    "path:flakes/solr#default": {}
   },
   "env": {
     "LANG": "C.UTF-8",
@@ -27,6 +28,7 @@
         "exec zsh"
       ],
       "setup": [
+        "test -f \"$PGDATA/PG_VERSION\" || initdb",
         "bundle install",
         "yarn install"
       ],
@@ -38,6 +40,16 @@
       ],
       "deploy-staging": [
         "bundle exec cap staging deploy"
+      ],
+      "dev": [
+        "devbox run setup",
+        "bundle exec rake db:migrate",
+        "bundle exec rails s"
+      ],
+      "test": [
+        "devbox run setup",
+        "RAILS_ENV=test bundle exec rake db:migrate",
+        "bundle exec rspec"
       ]
     }
   }

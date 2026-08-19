@@ -46,6 +46,14 @@ On macOS: If the command `yarn install` gives error "No Xcode or CLT version det
    ```
    *This will continue running until you Ctrl C, you will need a new tab or window for the next step*
 
+## Experimental: run the development environment locally with devbox
+
+1. [Install devbox](https://www.jetify.com/devbox)
+1. `devbox services up` (this will take a long time the first time you run it, since it needs to download solr)
+1. `devbox shell`
+1. To run tests: `devbox run test`
+1. To run the application: `devbox run dev`
+
 
 Deploying with Capistrano
 ------------------
