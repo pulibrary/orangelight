@@ -2,8 +2,8 @@ version: "0.1"
 
 processes:
   solr:
-    command: solr start
+    command: mkdir -p solr/data && solr start -s $(pwd)/solr/data -Dsolr.modules=analysis-extras
+    shutdown:
+      command: solr stop
     environment:
       - "SOLR_LOGS_DIR=${PWD}/log"
-    availability:
-      restart: "always"
