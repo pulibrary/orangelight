@@ -60,7 +60,7 @@ module HoldingsHelper
       accumulator << empty_link_online_holding_block
 
     else
-      accumulator << library_location_div(holding, document, id)
+      accumulator << library_location_div(holding)
       if holding['dspace'] || holding['location_code'] == 'rare$num'
         check_availability = false
         accumulator << dspace_or_numismatics_holding_block
@@ -150,15 +150,13 @@ module HoldingsHelper
     )
   end
 
-  def library_location_div(holding, document, id)
+  def library_location_div(holding)
     content_tag(
       :div,
       ApplicationController.new.view_context.render(Holdings::SearchLocationComponent.new(holding)),
       class: 'library-location',
       data: {
-        location: true,
-        record_id: document['id'],
-        holding_id: id
+        location: true
       }
     )
   end
