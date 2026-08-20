@@ -1,5 +1,16 @@
 <ul>
-  <%= electronic_access_links.html_safe %>
+  <% if electronic_access_links.any? %>
+    <% electronic_access_links.each do |link| %>
+      <li class="electronic-access">
+        <% if link.link_description %><%= link.link_description %>:<% end %>
+        <% if link.viewer_url? %>
+          <%= link_to link.link_text, link.url, class: 'electronic-access-link' %>
+        <% else %>
+          <a href="<%= link.url %>" target="_blank" rel="noopener" class="electronic-access-link"><%= link.first_text %><%= new_tab_icon %></a>
+        <% end %>
+      </li>
+    <% end %>
+  <% end %>
   <% portfolios.each do |portfolio| -%>
     <li class="electronic-access lux">
       <a href="<%= portfolio[:url] %>" target="_blank" rel="noopener" class="electronic-access-link">
