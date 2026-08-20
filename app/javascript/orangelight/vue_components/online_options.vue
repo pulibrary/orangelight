@@ -1,5 +1,5 @@
 <template>
-  <LuxHyperlink v-if="count > 1" :href="url">
+  <LuxHyperlink v-if="count > 1" :href="url" class="important-link">
     <span>{{ text }}</span>
   </LuxHyperlink>
   <LuxHyperlink
@@ -7,6 +7,7 @@
       !link.title.includes('Princeton University Library Finding Aids')
     "
     :href="link.url"
+    class="important-link"
   >
     <span>{{ link.title }}</span>
     <span class="icon icon-external d-inline"></span>
@@ -25,22 +26,6 @@ a {
   margin: 10px 12px;
   display: inline-block;
   font-size: 0.875rem;
-}
-
-.lux-link {
-  display: block;
-  padding: 0.5rem;
-  border: solid 2px var(--color-grayscale-lighter);
-  border-radius: 8px;
-  margin: 0;
-  span {
-    color: var(--color-bleu-de-france-dark);
-  }
-}
-
-.lux-link:hover {
-  text-decoration: none;
-  color: var(--color-princeton-orange-50);
 }
 
 .icon {

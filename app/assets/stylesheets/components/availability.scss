@@ -238,6 +238,23 @@ a > article > div > div.call-number {
   }
 }
 
+a.electronic-access-link.important-link {
+  margin-top: var(--space-small);
+  margin-bottom: var(--space-x-small);
+}
+
+.electronic-access-clustered .lux-show-more {
+  margin-left: var(--space-x-small);
+}
+
+.electronic-access-clustered:first-child {
+  margin-top: 0;
+}
+
+.blacklight-catalog-show .main-content .availability--online ul:has(.electronic-access-clustered) {
+  padding-top: 0 !important;
+}
+
 .availability-table .browse-cn {
   display: table;
   text-decoration: none;

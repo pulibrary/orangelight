@@ -1,0 +1,25 @@
+/* If clicking on a link is one of the primary actions somebody can
+take on a page (e.g. a link to the electronic resource on the Record page),
+you can use this style to indicate the link's importance */
+
+a.important-link {
+  margin: 10px 12px;
+  display: inline-block;
+  font-size: 0.875rem;
+  display: block;
+  padding: 0.5rem;
+  border: solid 2px var(--color-grayscale-lighter);
+  border-radius: 8px;
+  margin: 0;
+  span {
+    color: var(--color-bleu-de-france-dark);
+  }
+}
+
+a.important-link:hover, a.important-link:focus {
+  text-decoration: none;
+  box-shadow: 0 2px;
+  outline: solid 0.25rem var(--color-princeton-orange-on-white) !important;
+  border-radius: 10px;
+  background-color: var(--color-grayscale-lighter);
+}

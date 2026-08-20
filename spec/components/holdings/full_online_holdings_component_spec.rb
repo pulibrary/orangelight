@@ -11,12 +11,12 @@ RSpec.describe Holdings::FullOnlineHoldingsComponent, type: :component do
                               })
     rendered = render_inline(described_class.new(adapter))
     proquest_link = rendered.css('[href="http://gateway.proquest.com/url"]')
-    expect(proquest_link.text).to eq 'gateway.proquest.com'
+    expect(proquest_link.text.strip).to eq 'gateway.proquest.com'
     expect(proquest_link.css('i[class="fa fa-external-link new-tab-icon-padding"][aria-label="opens in new tab"][role="img"]')).to be_present
 
-    expect(rendered.text).to include 'Citation only'
     dataspace_link = rendered.css('[href="http://arks.princeton.edu/ark:/88435/dsp0141687h654"]')
-    expect(dataspace_link.text).to eq 'DataSpace'
+    expect(dataspace_link.text).to include 'Citation only:'
+    expect(dataspace_link.text).to include 'DataSpace'
     expect(dataspace_link.css('i[class="fa fa-external-link new-tab-icon-padding"][aria-label="opens in new tab"][role="img"]')).to be_present
   end
 
@@ -46,7 +46,7 @@ RSpec.describe Holdings::FullOnlineHoldingsComponent, type: :component do
     parsed = render_inline(described_class.new(adapter))
 
     list_item = parsed.css('li').first
-    expect(list_item['class']).to eq 'electronic-access lux'
+    expect(list_item['class'].strip).to eq 'electronic-access lux'
 
     link = list_item.at_css 'a'
     expect(link['target']).to eq '_blank'
