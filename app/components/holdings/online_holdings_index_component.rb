@@ -39,10 +39,14 @@ class Holdings::OnlineHoldingsIndexComponent < ViewComponent::Base
     end
 
     def display_format
-      if document["format"].include?("Book")
+      if ebook?
         "EBook"
       else
         document["format"].first
       end
+    end
+
+    def ebook?
+      true if document["format"].include?("Book")
     end
 end
