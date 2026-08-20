@@ -10,6 +10,19 @@ class Holdings::FullOnlineHoldingsComponent < ViewComponent::Base
     @adapter = adapter
   end
 
+  # Data from an 856 field used to render a link
+  LinkData = Data.define(:url, :texts, :link_to) do
+    def electronic_access_link(new_tab_icon) = viewer_url? ? viewer_link : new_tab_link(new_tab_icon)
+
+    private
+
+      def viewer_url? = url.to_s.match?(%r{(/catalog/.+?#view)})
+      def first_text = texts.first
+      def link_text = first_text == 'arks.princeton.edu' ? 'Digital content' : first_text
+      def viewer_link = link_to.call(link_text, url, class: 'electronic-access-link')
+      def new_tab_link(new_tab_icon) = link_to.call(new_tab_icon.call(first_text), url.to_s, target: '_blank', rel: 'noopener', class: 'electronic-access-link')
+  end
+
   private
 
     attr_reader :adapter
@@ -61,26 +74,6 @@ class Holdings::FullOnlineHoldingsComponent < ViewComponent::Base
       # rubocop:enable Rails/OutputSafety
     end
 
-    # Generate the link for electronic access information within a record 856 field
-    # @param url [String] the URL to the service endpoint
-    # @param text [String] the label for the link
-    # :reek:TooManyStatements
-    # :reek:DuplicateMethodCall
-    def electronic_access_link(url, texts)
-      if texts.first.include?('Open access')
-        link_to(texts.first, url.to_s, target: '_blank', rel: 'noopener', class: 'electronic-access-link')
-      elsif %r{(/catalog/.+?#view)} =~ url.to_s
-        if texts.first == "arks.princeton.edu"
-          link_to('Digital content', ::Regexp.last_match(0), class: 'electronic-access-link')
-        else
-          link_to(texts.first, ::Regexp.last_match(0), class: 'electronic-access-link')
-        end
-      else
-        link_text = new_tab_icon(texts.first)
-        link_to(link_text, url.to_s, target: '_blank', rel: 'noopener', class: 'electronic-access-link')
-      end
-    end
-
     # Method for cleaning URLs
     # @param url [String] the URL for an online holding
     # @return [String] the cleaned URL
@@ -107,7 +100,7 @@ class Holdings::FullOnlineHoldingsComponent < ViewComponent::Base
         texts = electronic_texts.flatten
         url = clean_url(url)
 
-        link = electronic_access_link(url, texts)
+        link = LinkData.new(url, texts, method(:link_to)).electronic_access_link(method(:new_tab_icon))
         link = "#{texts[1]}: " + link if texts[1]
         link = "<li>#{link}</li>" if electronic_access.many?
         markup += helpers.content_tag(:li, link.html_safe, class: 'electronic-access')
