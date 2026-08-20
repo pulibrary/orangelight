@@ -6,6 +6,11 @@
     "99125402246206421",
     "SCSB-9087591"
   ],
+  "cluster_members_display": [
+    "{\"9960356893506421\":{\"display_format\":\"Book\"}}",
+    "{\"99125402246206421\":{\"display_format\":\"EBook\"}}",
+    "{\"SCSB-9087591\":{\"display_format\":\"Book\"}}"
+  ],
   "author_display": [
     "Coulam, Robert F., 1948-"
   ],

@@ -8,6 +8,12 @@
     "SCSB-7773521",
 	"SCSB-7773529"
     ],
+  "cluster_members_display": [
+    "{\"source_id\":\"9913079923506421\",\"display_format\":\"Book\"}",
+    "{\"source_id\":\"SCSB-7773524\",\"display_format\":\"EBook\"}",
+    "{\"source_id\":\"SCSB-7773521\",\"display_format\":\"Book\"}",
+    "{\"source_id\":\"SCSB-7773529\",\"display_format\":\"Book\"}"
+  ],
 	"numeric_id_b": true,
 	"author_display": [
 		"Marenholtz-Bülow, Bertha von, 1810-1893"
