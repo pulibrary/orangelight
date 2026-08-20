@@ -14,9 +14,7 @@ module HoldingsHelper
     block_extra = ''.html_safe
     holdings_hash = document.holdings_all_display.sort { |a, b| sort_holdings(a, b) }
     @scsb_multiple = false
-    if deduplication? && holdings_hash.count > 0
-      block << format_pill(document['format'].first)
-    end
+    block << format_pill(document['format'].first) if deduplication? && holdings_hash.any?
     if holdings_hash.count <= 4
       holdings_hash.each do |id, holding|
         block << holdings_block(document, id, holding)
