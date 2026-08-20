@@ -54,8 +54,9 @@ describe 'blacklight tests' do
       get '/catalog/9918309193506421'
       parsed = Nokogiri::HTML.parse response.body
 
-      link = parsed.at_css('a[href="/catalog/9918309193506421#view"]')
+      link = parsed.at_css('a.electronic-access-link')
       expect(link).to be_present
+      expect(link.attr('href')).to end_with('/catalog/9918309193506421#view')
       expect(link.text).to eq 'Book preliminaries'
     end
 
