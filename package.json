@@ -9,7 +9,7 @@
     "bootstrap": "^5.3.8",
     "chart.js": "^4.5.1",
     "graphql": "^16.14.2",
-    "lux-design-system": "^7.9.0",
+    "lux-design-system": "^7.10.0",
     "serialize-javascript": "^7.1.0",
     "vue": "^3.5.41"
   },
