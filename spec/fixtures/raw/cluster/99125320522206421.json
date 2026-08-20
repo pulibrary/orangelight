@@ -1,0 +1,177 @@
+{
+  "id": "99125320522206421",
+  "numeric_id_b": true,
+  "author_citation_display": [
+    "American Association for the Advancement of Science"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"American Association for the Advancement of Science\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+    "American Association for the Advancement of Science"
+  ],
+  "uniform_title_s": [
+    "Science"
+  ],
+  "title_display": "Science",
+  "title_t": [
+    ""
+  ],
+  "title_citation_display": [
+    "Science"
+  ],
+  "pub_created_display": [
+    "New York, N.Y. : [publisher not identified], 1880-",
+    "Cambridge, Mass. : Science Company, Moses King",
+    "Lancaster, Pa. : Science Press",
+    "Lancaster, Pa. : American Association for the Advancement of Science",
+    "Washington, DC : American Association for the Advancement of Science"
+  ],
+  "pub_created_s": [
+    "New York, N.Y. : [publisher not identified], 1880-",
+    "Cambridge, Mass. : Science Company, Moses King",
+    "Lancaster, Pa. : Science Press",
+    "Lancaster, Pa. : American Association for the Advancement of Science",
+    "Washington, DC : American Association for the Advancement of Science"
+  ],
+  "pub_citation_display": [
+    "New York, N.Y.: publisher not identified",
+    "Cambridge, Mass: Science Company, Moses King",
+    "Lancaster, Pa.: Science Press",
+    "Lancaster, Pa.: American Association for the Advancement of Science",
+    "Washington, DC: American Association for the Advancement of Science"
+  ],
+  "publication_location_citation_display": [
+    "New York, N.Y."
+  ],
+  "publisher_citation_display": [
+    "publisher not identified"
+  ],
+  "pub_date_display": [
+    "1880"
+  ],
+  "pub_date_start_sort": 1880,
+  "publication_date_citation_display": [
+    "1880"
+  ],
+  "cataloged_tdt": "2021-11-01T16:30:09Z",
+  "format": [
+    "Journal"
+  ],
+  "description_display": [
+    "Vol. 1, no. 1 (July 3, 1880)-v. 3, no. 82 (Mar. 4, 1882); [New ser.] vol. 1, no. 1 (Feb. 9, 1883)-v. 23, no. 581 (Mar. 23, 1894); [2nd ser.] v. 1, no. 1 (Jan. 4, 1895)-"
+  ],
+  "description_t": [
+    "Vol. 1, no. 1 (July 3, 1880)-v. 3, no. 82 (Mar. 4, 1882); [New ser.] vol. 1, no. 1 (Feb. 9, 1883)-v. 23, no. 581 (Mar. 23, 1894); [2nd ser.] v. 1, no. 1 (Jan. 4, 1895)-",
+    "None issued for Jan. 7, Jan. 28-Feb. 1882."
+  ],
+  "frequency_display": [
+    "Weekly"
+  ],
+  "linking_notes_display": [
+    "Volumes for 1911-1913 contain: the Proceedings of the Helminthological Society of Washington, 1st-15th meeting."
+  ],
+  "notes_display": [
+    "Refereed/Peer-reviewed",
+    "Title from pdf title page, (Science Mag. website, viewed March 8, 2007)."
+  ],
+  "numbering_pec_notes_display": [
+    "None issued for Jan. 7, Jan. 28-Feb. 1882."
+  ],
+  "system_details_notes_display": [
+    "Master and use copy. Digital master created according to Biodiversity Heritage Library Digital Imaging Specifications.",
+    "Mode of access: World Wide Web."
+  ],
+  "source_desc_notes_display": [
+    "Vol. 346, no. 6205 (Oct. 3, 2014) (JSTOR website, viewed October 30, 2020)."
+  ],
+  "language_name_display": [
+    "English"
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "mult_languages_iana_s": [
+    "en"
+  ],
+  "lc_subject_display": [
+    "Science—Periodicals"
+  ],
+  "subject_facet": [
+    "Science—Periodicals",
+    "Periodicals"
+  ],
+  "lc_subject_facet": [
+    "Science",
+    "Science—Periodicals"
+  ],
+  "lcgft_s": [
+    "Periodicals"
+  ],
+  "lcgft_genre_facet": [
+    "Periodicals"
+  ],
+  "rbgenr_s": [
+    "Periodicals"
+  ],
+  "rbgenr_genre_facet": [
+    "Periodicals"
+  ],
+  "jsonld_genre_display": [
+    "Periodicals",
+    "Zeitschrift.",
+    "Periodicals.",
+    "Elektronische Publikation."
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"American Association for the Advancement of Science\"]}",
+  "other_title_display": [
+    "Science (N.Y. N.Y., Online)",
+    "Science (New York, N.Y. Online)",
+    "Science on-line",
+    "Science magazine online"
+  ],
+  "alt_title_246_display": [
+    "Science magazine on-line",
+    "Science online",
+    "Science on-line",
+    "Science magazine online"
+  ],
+  "other_title_1display": "{\"HTML source title from Science mag. website\":[\"Science magazine on-line\"],\"Title on introductory screen from Science mag\":[\"Science online\"]}",
+  "issn_display": [
+    "1095-9203"
+  ],
+  "lccn_display": [
+    "sn 96036234"
+  ],
+  "coden_display": [
+    "SCIEAS"
+  ],
+  "issn_s": [
+    "10959203"
+  ],
+  "lccn_s": [
+    "sn96036234"
+  ],
+  "oclc_s": [
+    "34298537"
+  ],
+  "other_version_s": [
+    "10959203",
+    "00368075",
+    "ocm34298537"
+  ],
+  "uniform_title_1display": "[[\"Science\"]]",
+  "electronic_portfolio_s": [
+    "{\"display_format\":\"Journal\",\"source_id\":\"99125320522206421\",\"desc\":\" Available from 01/01/1988 volume: 239 until 12/23/2005 volume: 310.\",\"title\":\"ProQuest Central\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53800489140006421&Force_direct=true\",\"start\":\"1988\",\"end\":\"2005\",\"notes\":[]}",
+    "{\"display_format\":\"Journal\",\"source_id\":\"99125320522206421\",\"desc\":\" Available from 03/07/2025.\",\"title\":\"EBSCOhost Academic Search Ultimate\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=531090600330006421&Force_direct=true\",\"start\":\"2025\",\"end\":\"latest\",\"notes\":[]}",
+    "{\"display_format\":\"Journal\",\"source_id\":\"99125320522206421\",\"desc\":\" Available from 1997 volume: 276 issue: 5309.\",\"title\":\"American Association for the Advancement of Science\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53800489100006421&Force_direct=true\",\"start\":\"1997\",\"end\":\"latest\",\"notes\":[]}",
+    "{\"display_format\":\"Journal\",\"source_id\":\"99125320522206421\",\"desc\":\" Available from 01/01/1988 volume: 239 until 12/23/2005 volume: 310.\",\"title\":\"Social Science Premium Collection\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53800489160006421&Force_direct=true\",\"start\":\"1988\",\"end\":\"2005\",\"notes\":[]}",
+    "{\"display_format\":\"Journal\",\"source_id\":\"99125320522206421\",\"desc\":\" Available from 07/03/1880 until 02/28/2025.\",\"title\":\"EBSCOhost Academic Search Ultimate\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53987673900006421&Force_direct=true\",\"start\":\"1880\",\"end\":\"2025\",\"notes\":[]}",
+    "{\"display_format\":\"Journal\",\"source_id\":\"99125320522206421\",\"desc\":\" Available from 07/22/1983 volume: 221 until 12/23/2005 volume: 310.\",\"title\":\"Gale In Context: Environmental Studies\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=531033671450006421&Force_direct=true\",\"start\":\"1983\",\"end\":\"2005\",\"notes\":[]}",
+    "{\"display_format\":\"Journal\",\"source_id\":\"99125320522206421\",\"desc\":\" Available from 01/02/1931 volume: 73. Available from 07/03/1880 volume: 1 issue: 1 until 12/26/1930 volume: 72. Most recent 6 year(s) not available.\",\"title\":\"JSTOR Complete Journals\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53800489130006421&Force_direct=true\",\"start\":\"1931\",\"end\":\"2020\",\"notes\":[]}",
+    "{\"display_format\":\"Journal\",\"source_id\":\"99125320522206421\",\"desc\":\" Available from 1880 volume: 1 until 1922 volume: 56.\",\"title\":\"Biodiversity Heritage Library Free\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=531043003730006421&Force_direct=true\",\"start\":\"1880\",\"end\":\"1922\",\"notes\":[]}",
+    "{\"display_format\":\"Journal\",\"source_id\":\"99125320522206421\",\"desc\":\" Available from 1880 volume: 1 issue: 1 until 1922 volume: 56.\",\"title\":\"EZB Free E-Journals\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=531108760890006421&Force_direct=true\",\"start\":\"1880\",\"end\":\"1922\",\"notes\":[]}",
+    "{\"display_format\":\"Journal\",\"source_id\":\"99125320522206421\",\"desc\":\" Available from 01/01/1988 volume: 239 until 12/23/2005 volume: 310.\",\"title\":\"SciTech Premium Collection\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53800489150006421&Force_direct=true\",\"start\":\"1988\",\"end\":\"2005\",\"notes\":[]}"
+  ]
+}
