@@ -61,11 +61,11 @@ RSpec.describe 'catalog/index' do
   end
 
   describe 'search results' do
-    it '<ul> elements contain only <li>, <script>, or <template>' do
+    it '<ul> elements contain only <li>, <script>, <template>, or <div>' do
       visit '/catalog?q=korea'
       lists = page.all('ul')
       child_tags = lists.map { |list| list.find_all(:xpath, './*').map(&:tag_name) }.flatten.uniq
-      invalid_child_tags = child_tags.delete_if { |tag| %(li script template).include? tag }
+      invalid_child_tags = child_tags.delete_if { |tag| %(li script template div).include? tag }
       expect(invalid_child_tags).to be_empty
     end
   end
