@@ -1,7 +1,7 @@
 <ul>
   <% if electronic_access_links.any? -%>
     <% electronic_access_links.each do |link| -%>
-      <li class="electronic-access">
+      <li class="electronic-access <%= 'electronic-access-clustered' if Flipflop.deduplication? %>">
         <% if link.viewer_url? -%>
           <%= link_to link.link_text, link.url, class: css_class %>
         <% else %>
@@ -19,7 +19,9 @@
         <%= portfolio[:label] %>
         <i class="fa fa-external-link new-tab-icon-padding" aria-label="Opens in new tab" role="img"></i>
       </a>
-      <lux-show-more v-bind:character-limit=150 show-label='See more' hide-label='See less'><%= portfolio[:desc] %></lux-show-more>
+      <% if portfolio[:desc].present? %>
+        <lux-show-more v-bind:character-limit=150 show-label='See more' hide-label='See less' class='d-block'><%= portfolio[:desc] %></lux-show-more>
+      <% end %>
       <% if portfolio[:notes].present? %>(<%= portfolio[:notes] %>)<% end %>
     </li>
   <% end %>

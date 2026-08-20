@@ -60,4 +60,28 @@ RSpec.describe Holdings::FullOnlineHoldingsComponent, type: :component do
 
     expect(list_item.text).to include '(First note, Second note)'
   end
+
+  it 'does not show a lux-show-more if there is no description' do
+    adapter = instance_double(HoldingRequestsAdapter, {
+                                doc_electronic_access: {},
+                                electronic_portfolios: [
+                                  { 'title' => 'Title',
+                                    'url' => 'https://princeton.edu/great-resource' }
+                                ],
+                                sibling_electronic_portfolios: []
+                              })
+    parsed = render_inline(described_class.new(adapter))
+    expect(parsed.css('lux-show-more')).not_to be_present
+  end
+
+  it 'adds the class electronic-access-clustered if the deduplication feature is on' do
+    allow(Flipflop).to receive(:deduplication?).and_return true
+    adapter = instance_double(HoldingRequestsAdapter, {
+                                doc_electronic_access: { 'http://arks.princeton.edu/ark:/88435/dsp0141687h654': ['DataSpace', 'Citation only'] },
+                                electronic_portfolios: [],
+                                sibling_electronic_portfolios: []
+                              })
+    rendered = render_inline(described_class.new(adapter))
+    expect(rendered.css('.electronic-access-clustered')).to be_present
+  end
 end
