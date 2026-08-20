@@ -63,6 +63,7 @@ a > article > div > div.call-number {
 /* If there are multiple cards, they should be consistent widths */
 .holdings-card:has(a:nth-child(n+2)) a {
   width: 23%;
+  flex-grow: 2;
 }
 
 .holdings-card article.lux-card {
