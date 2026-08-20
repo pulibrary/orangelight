@@ -41,10 +41,6 @@ class Holdings::OnlineHoldingsIndexComponent < ViewComponent::Base
     def display_format
       if document["format"].include?("Book")
         "EBook"
-      elsif document["format"].include?("manuscript")
-        "Manuscript"
-      elsif document["format"].include?("microform")
-        "Microform"
       else
         document["format"].first
       end
