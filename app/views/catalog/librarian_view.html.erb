@@ -21,7 +21,7 @@
   <div class="lux">
     <lux-tab-wrapper>
       <% @document.to_marc.each do |record| %>
-        <lux-tab title="<%= record['001'] %>">
+        <lux-tab title="<%= @document.tab_title_display(record) %>">
           <%= render "marc_view", document: record %>
         </lux-tab>
       <% end %>

@@ -268,6 +268,10 @@ class SolrDocument
     true
   end
 
+  def cluster_members_display
+    self['cluster_members_display']
+  end
+
   private
 
     def electronic_access_uris

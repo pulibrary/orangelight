@@ -103,7 +103,29 @@ module Blacklight
         @can_retry
       end
 
+      def tab_title_display(record)
+        "#{partner_record(record)} - #{display_format(record)}"
+      end
+
         protected
+
+          # :reek:FeatureEnvy
+          def display_format(record)
+            record_id = record['001'].value
+            cluster_members_display.each do |member|
+              source_format = JSON.parse(member)
+
+              return source_format.dig(record_id, "display_format") if source_format.key?(record_id)
+            end
+          end
+
+          # :reek:UtilityFunction
+          def partner_record(marcxml_record)
+            codes = marcxml_record['852'].subfields
+            codes.filter_map do |subfield|
+              Orangelight.config[:recap_partner_location_names].fetch(subfield.value, "Princeton") if subfield.code == 'b'
+            end.first
+          end
 
           def build_ctx(format = nil)
             format ||= first('format')&.downcase
@@ -196,6 +218,8 @@ module Blacklight
             marc_records.first
           end
 
+          # :reek:FeatureEnvy
+          # :reek:TooManyStatements
           def marcxml_record_read(marcxml_binary)
             marcxml_remove_empty = marcxml_binary.reject(&:empty?)
             return nil unless marcxml_binary
