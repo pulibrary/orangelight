@@ -115,7 +115,7 @@ module Blacklight
             cluster_members_display.each do |member|
               source_format = JSON.parse(member)
 
-              return source_format.dig(record_id, "display_format") if source_format.key?(record_id)
+              return source_format.dig(record_id, "display_format")&.downcase if source_format.key?(record_id)
             end
           end
 
