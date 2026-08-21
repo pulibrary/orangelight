@@ -247,6 +247,7 @@ a > article > div > div.call-number {
 
 li.electronic-access-clustered .link-container {
   display: flex;
+  gap: var(--space-xx-small);
   align-items: center;
   margin-top: var(--space-base);
   margin-bottom: var(--space-x-small);
