@@ -222,18 +222,16 @@ module Blacklight
           # :reek:TooManyStatements
           def marcxml_record_read(marcxml_binary)
             marcxml_remove_empty = marcxml_binary.reject(&:empty?)
-            return nil unless marcxml_binary
             return nil if marcxml_remove_empty.blank?
-            marcxml_records = []
-            marcxml_remove_empty.each do |marcxml_field|
+
+            marcxml_remove_empty.map do |marcxml_field|
               decompressed_marcxml = decompress_marcxml(marcxml_field)
               response_stream = StringIO.new(decompressed_marcxml)
               marc_reader = ::MARC::XMLReader.new(response_stream)
               marc_records = marc_reader.to_a
 
-              marcxml_records << marc_records.first
+              marc_records.first
             end
-            marcxml_records
           end
 
           # @param [String] compressed_data The compressed MARCXML data
