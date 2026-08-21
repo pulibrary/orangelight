@@ -1,4 +1,8 @@
 defaults: &defaults
+  recap_partner_location_names:
+    scsbcul: "Columbia"
+    scsbnypl: "New York Public Library"
+    scsbhl: "Harvard"
   events:
     server: 'amqp://localhost:5672'
     exchange: 'orangelight_events'

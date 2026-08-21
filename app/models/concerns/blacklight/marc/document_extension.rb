@@ -11,6 +11,8 @@ module Blacklight
       include Blacklight::Marc::DocumentExport
       include OpenURL
 
+      delegate :deduplication?, to: Flipflop
+
       # Prepend our overloaded method to bypass bug in Blacklight
       # See https://stackoverflow.com/questions/5944278/overriding-method-by-another-defined-in-module
       prepend Blacklight::Marc::Document::MarcExportOverride
@@ -101,7 +103,29 @@ module Blacklight
         @can_retry
       end
 
+      def tab_title_display(record)
+        "#{partner_record(record)} - #{display_format(record)}"
+      end
+
         protected
+
+          # :reek:FeatureEnvy
+          def display_format(record)
+            record_id = record['001'].value
+            cluster_members_display.each do |member|
+              source_format = JSON.parse(member)
+
+              return source_format.dig(record_id, "display_format")&.downcase if source_format.key?(record_id)
+            end
+          end
+
+          # :reek:UtilityFunction
+          def partner_record(marcxml_record)
+            codes = marcxml_record['852'].subfields
+            codes.filter_map do |subfield|
+              Orangelight.config[:recap_partner_location_names].fetch(subfield.value, "Princeton") if subfield.code == 'b'
+            end.first
+          end
 
           def build_ctx(format = nil)
             format ||= first('format')&.downcase
@@ -150,7 +174,7 @@ module Blacklight
             marc_format = _marc_format_type.to_s
 
             case marc_format
-            when 'marcxml'
+            when 'marcxml' || 'marcxml_bi'
               marc_record_from_marcxml
             when 'marc21'
               marc_record_from_marc21
@@ -169,8 +193,9 @@ module Blacklight
           # :reek:TooManyStatements
           def marc_record_from_marcxml
             id = fetch(_marc_source_field)
-
-            if scsb_record?
+            if deduplication? && marcxml_binary.present?
+              marcxml_record_read(marcxml_binary)
+            elsif scsb_record?
               marcxml_record_scsb(marcxml_field)
             else
               response = Faraday.get("#{Requests.config['bibdata_base']}/bibliographic/#{id}")
@@ -191,6 +216,22 @@ module Blacklight
             marc_reader = ::MARC::XMLReader.new(response_stream)
             marc_records = marc_reader.to_a
             marc_records.first
+          end
+
+          # :reek:FeatureEnvy
+          # :reek:TooManyStatements
+          def marcxml_record_read(marcxml_binary)
+            marcxml_remove_empty = marcxml_binary.reject(&:empty?)
+            return nil if marcxml_remove_empty.blank?
+
+            marcxml_remove_empty.map do |marcxml_field|
+              decompressed_marcxml = decompress_marcxml(marcxml_field)
+              response_stream = StringIO.new(decompressed_marcxml)
+              marc_reader = ::MARC::XMLReader.new(response_stream)
+              marc_records = marc_reader.to_a
+
+              marc_records.first
+            end
           end
 
           # @param [String] compressed_data The compressed MARCXML data

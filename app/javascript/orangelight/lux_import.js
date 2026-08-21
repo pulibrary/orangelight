@@ -11,6 +11,8 @@ import {
   LuxLibraryFooter,
   LuxShowMore,
   LuxTextStyle,
+  LuxTab,
+  LuxTabWrapper,
 } from 'lux-design-system';
 import OrangelightHeader from '../orangelight/vue_components/orangelight_header.vue';
 import OnlineOptions from './vue_components/online_options.vue';
@@ -27,6 +29,8 @@ export function luxImport() {
     if (!el || el.dataset.vueMounted) continue; // Skip if already mounted or null
     const app = createApp({});
     app
+      .component('lux-tab', LuxTab)
+      .component('lux-tab-wrapper', LuxTabWrapper)
       .component('lux-alert', LuxAlert)
       .component('lux-badge', LuxBadge)
       .component('lux-icon-arrow-down', LuxIconArrowDown)

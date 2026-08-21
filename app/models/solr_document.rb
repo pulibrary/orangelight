@@ -255,6 +255,23 @@ class SolrDocument
     self['marcxml']
   end
 
+  def marcxml_binary
+    self['marcxml_bi']
+  end
+
+  def cluster_member_ids
+    self['cluster_members_s']
+  end
+
+  def cluster_record?
+    return false if cluster_member_ids.blank?
+    true
+  end
+
+  def cluster_members_display
+    self['cluster_members_display']
+  end
+
   private
 
     def electronic_access_uris

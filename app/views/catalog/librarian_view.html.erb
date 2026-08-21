@@ -17,10 +17,21 @@
     <h1 class="page-heading"><%= t('blacklight.search.librarian_view.title') %></h1>
 </div>
 
-<%- if @document.respond_to?(:to_marc) && @document.to_marc.present? -%>
-  <%= render "marc_view", document: @document %>
+<%- if Flipflop.deduplication? && @document.cluster_record? -%>
+  <div class="lux">
+    <lux-tab-wrapper>
+      <% @document.to_marc.each do |record| %>
+        <lux-tab title="<%= @document.tab_title_display(record) %>"<%# erb_lint:disable GitHub::Accessibility::NoTitleAttribute %>>
+          <%= render "marc_view", document: record %>
+        </lux-tab>
+      <% end %>
+    </lux-tab-wrapper>
+  </div>
+<%- elsif @document.respond_to?(:to_marc) && @document.to_marc.present? -%>
+  <%= render "marc_view", document: @document.to_marc %>
 <%- elsif @document.respond_to?(:to_marc) && @document.can_retry? %>
   <%= t('blacklight.search.librarian_view.retry') %>
 <%- else %>
-  <%= t('blacklight.search.librarian_view.empty') %>
+    <%= t('blacklight.search.librarian_view.empty') %>
 <%- end -%>
+
