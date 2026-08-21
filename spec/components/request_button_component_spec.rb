@@ -66,4 +66,30 @@ RSpec.describe RequestButtonComponent, type: :component do
       expect(subject.css('a').attribute('href').text).to eq('/requests/123?aeon=false&mfhd=456&open_holdings=Firestone+Library+-+Stacks')
     end
   end
+  context 'when deduplication is on' do
+    before do
+      allow(Flipflop).to receive(:deduplication?).and_return(true)
+    end
+    let(:holding) do
+      { "22693379330006421" => { "display_format" => "Book", "source_id" => "99118229023506421", "location_code" => "firestone$stacks", "location" => "Stacks", "library" => "Firestone Library", "call_number" => "PR6073.I43273 T55 2019", "call_number_browse" => "PR6073.I43273 T55 2019", "items" => [{ "holding_id" => "22693379330006421", "id" => "23693379320006421", "status_at_load" => "0", "barcode" => "32101108228139", "copy_number" => "0" }], "mms_id" => "12be71a4-8e76-47ea-98f0-8da9ae511406" } }
+    end
+
+    it 'uses the cluster member id (source_id) from the holding hash in the link url' do
+      subject = render_inline(described_class.new(location:, doc_id: '9978906421', holding_id: '22693379330006421', holding: holding))
+      expect(subject.css('a').attribute('href').text).to eq('/requests/99118229023506421?aeon=false&mfhd=22693379330006421')
+    end
+  end
+  context 'when deduplication is off' do
+    before do
+      allow(Flipflop).to receive(:deduplication?).and_return(false)
+    end
+    let(:holding) do
+      { "22693379330006421" => { "display_format" => "Book", "source_id" => "99118229023506421", "location_code" => "firestone$stacks", "location" => "Stacks", "library" => "Firestone Library", "call_number" => "PR6073.I43273 T55 2019", "call_number_browse" => "PR6073.I43273 T55 2019", "items" => [{ "holding_id" => "22693379330006421", "id" => "23693379320006421", "status_at_load" => "0", "barcode" => "32101108228139", "copy_number" => "0" }], "mms_id" => "12be71a4-8e76-47ea-98f0-8da9ae511406" } }
+    end
+
+    it 'uses the doc_id in the link url' do
+      subject = render_inline(described_class.new(location:, doc_id: '9978906421', holding_id: '22693379330006421', holding: holding))
+      expect(subject.css('a').attribute('href').text).to eq('/requests/9978906421?aeon=false&mfhd=22693379330006421')
+    end
+  end
 end
