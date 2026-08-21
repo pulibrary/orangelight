@@ -1,24 +1,32 @@
 <ul>
-  <% if electronic_access_links.any? %>
-    <% electronic_access_links.each do |link| %>
-      <li class="electronic-access">
-        <% if link.link_description %><%= link.link_description %>:<% end %>
-        <% if link.viewer_url? %>
-          <%= link_to link.link_text, link.url, class: 'electronic-access-link' %>
+  <% if electronic_access_links.any? -%>
+    <% electronic_access_links.each do |link| -%>
+      <li class="electronic-access <%= 'electronic-access-clustered' if Flipflop.deduplication? %>">
+        <% if link.viewer_url? -%>
+          <%= link_to link.link_text, link.url, class: css_class %>
         <% else %>
-          <a href="<%= link.url %>" target="_blank" rel="noopener" class="electronic-access-link"><%= link.first_text %><%= new_tab_icon %></a>
+          <a href="<%= link.url %>" target="_blank" rel="noopener" class="<%= css_class %>">
+            <% if link.link_description %><%= link.link_description -%>:<% end %>
+            <%= link.first_text -%><%= new_tab_icon %>
+          </a>
         <% end %>
       </li>
     <% end %>
   <% end %>
   <% portfolios.each do |portfolio| -%>
-    <li class="electronic-access lux">
-      <a href="<%= portfolio[:url] %>" target="_blank" rel="noopener" class="electronic-access-link">
-        <%= portfolio[:label] %>
-        <i class="fa fa-external-link new-tab-icon-padding" aria-label="Opens in new tab" role="img"></i>
-      </a>
-      <br/>
-      <lux-show-more v-bind:character-limit=150 show-label='See more' hide-label='See less'><%= portfolio[:desc] %></lux-show-more>
+    <li class="electronic-access lux <%= 'electronic-access-clustered' if deduplication? %>">
+      <div class="link-container">
+        <% if deduplication? %>
+          <lux-badge color="gray"><%= render DecorativeFormatIconComponent.new(portfolio[:display_format]) %><%= portfolio[:display_format]%></lux-badge>
+        <% end %>
+        <a href="<%= portfolio[:url] %>" target="_blank" rel="noopener" class="<%= css_class %>">
+          <%= portfolio[:label] %>
+          <i class="fa fa-external-link new-tab-icon-padding" aria-label="Opens in new tab" role="img"></i>
+        </a>
+      </div>
+      <% if portfolio[:desc].present? %>
+        <lux-show-more v-bind:character-limit=150 show-label='See more' hide-label='See less' class='d-block'><%= portfolio[:desc] %></lux-show-more>
+      <% end %>
       <% if portfolio[:notes].present? %>(<%= portfolio[:notes] %>)<% end %>
     </li>
   <% end %>

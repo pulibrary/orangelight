@@ -70,7 +70,8 @@ describe 'blacklight tests' do
 
       link = additional_label.at_css('a')
       expect(link['href']).to eq 'http://arks.princeton.edu/ark:/88435/pz50gw142'
-      expect(link.text).to eq 'Princeton University Library Finding Aids'
+      expect(link.text).to include 'Princeton University Library Finding Aids'
+      expect(link.text).to include subfield_z_text
     end
   end
 

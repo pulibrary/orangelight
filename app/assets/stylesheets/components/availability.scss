@@ -238,6 +238,25 @@ a > article > div > div.call-number {
   }
 }
 
+.electronic-access-clustered .lux-show-more {
+  margin: var(--space-xx-small) 0 0 var(--space-x-small);
+}
+
+li.electronic-access-clustered .link-container {
+  display: flex;
+  align-items: center;
+  margin-top: var(--space-base);
+  margin-bottom: var(--space-x-small);
+
+  a {
+    flex-grow: 3;
+  }
+}
+
+.blacklight-catalog-show .main-content .availability--online ul:has(.electronic-access-clustered) {
+  padding-top: 0 !important;
+}
+
 .availability-table .browse-cn {
   display: table;
   text-decoration: none;

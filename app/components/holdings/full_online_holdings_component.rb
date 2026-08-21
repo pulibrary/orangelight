@@ -22,6 +22,8 @@ class Holdings::FullOnlineHoldingsComponent < ViewComponent::Base
 
     attr_reader :adapter
 
+    delegate :deduplication?, to: Flipflop
+
     def all_portfolios = (adapter.electronic_portfolios || []) + (adapter.sibling_electronic_portfolios || [])
 
     # :reek:FeatureEnvy
@@ -38,7 +40,8 @@ class Holdings::FullOnlineHoldingsComponent < ViewComponent::Base
                             label: "#{date_range}#{portfolio['title']}",
                             url: portfolio['url'],
                             desc: portfolio['desc'],
-                            notes: portfolio['notes']&.join(', ') || ''
+                            notes: portfolio['notes']&.join(', ') || '',
+                            display_format: portfolio['display_format']
                           }
                         end
                       end
@@ -68,5 +71,13 @@ class Holdings::FullOnlineHoldingsComponent < ViewComponent::Base
 
     def new_tab_icon
       helpers.content_tag(:i, "", class: "fa fa-external-link new-tab-icon-padding", 'aria-label': "opens in new tab", role: "img")
+    end
+
+    def css_class
+      if deduplication?
+        'electronic-access-link important-link'
+      else
+        'electronic-access-link'
+      end
     end
 end
