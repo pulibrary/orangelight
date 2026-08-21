@@ -41,7 +41,6 @@ RSpec.describe "catalog/librarian_view.html.erb" do
                                          ]))
     end
     it "when deduplication is on it displays a tabbed interface" do
-      # visit 'catalog/a61f9a41-edeb-43db-a0bb-04f1cd360266/staff_view'
       allow(view).to receive(:params).and_return(id: "a61f9a41-edeb-43db-a0bb-04f1cd360266")
       allow(Flipflop).to receive(:deduplication?).and_return(true)
 
@@ -51,7 +50,6 @@ RSpec.describe "catalog/librarian_view.html.erb" do
       )
     end
     it "when deduplication is off it does not display a tabbed interface" do
-      # visit 'catalog/a61f9a41-edeb-43db-a0bb-04f1cd360266/staff_view'
       allow(view).to receive(:params).and_return(id: "a61f9a41-edeb-43db-a0bb-04f1cd360266")
       allow(Flipflop).to receive(:deduplication?).and_return(false)
 
