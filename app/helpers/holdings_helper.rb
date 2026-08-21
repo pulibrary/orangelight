@@ -186,10 +186,10 @@ module HoldingsHelper
   def format_pill(value)
     tag.div(class: 'format-badge-group') do
       tag.lux_badge(color: 'gray') do
-        tag.span(class: 'lux-badge lux-badge-gray') do
-          concat render DecorativeFormatIconComponent.new value
-          concat value
-        end
+        # tag.span(class: 'lux-badge lux-badge-gray') do
+        concat render DecorativeFormatIconComponent.new value
+        concat value
+        # end
       end
     end
   end
