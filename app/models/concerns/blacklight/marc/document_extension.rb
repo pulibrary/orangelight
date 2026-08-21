@@ -196,7 +196,7 @@ module Blacklight
             if deduplication? && marcxml_binary.present?
               marcxml_record_read(marcxml_binary)
             elsif scsb_record?
-              marcxml_record_read(marcxml_field)
+              marcxml_record_scsb(marcxml_field)
             else
               response = Faraday.get("#{Requests.config['bibdata_base']}/bibliographic/#{id}")
               @can_retry = response.status == 429

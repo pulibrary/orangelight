@@ -21,7 +21,7 @@
   <div class="lux">
     <lux-tab-wrapper>
       <% @document.to_marc.each do |record| %>
-        <lux-tab title="<%= @document.tab_title_display(record) %>">
+        <lux-tab title="<%= @document.tab_title_display(record) %>"<%# erb_lint:disable GitHub::Accessibility::NoTitleAttribute %>>
           <%= render "marc_view", document: record %>
         </lux-tab>
       <% end %>
