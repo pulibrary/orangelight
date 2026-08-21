@@ -84,4 +84,19 @@ RSpec.describe Holdings::FullOnlineHoldingsComponent, type: :component do
     rendered = render_inline(described_class.new(adapter))
     expect(rendered.css('.electronic-access-clustered')).to be_present
   end
+
+  it 'adds a format icon when the dedupliction feature is on' do
+    allow(Flipflop).to receive(:deduplication?).and_return true
+    adapter = instance_double(HoldingRequestsAdapter, {
+                                doc_electronic_access: {},
+                                electronic_portfolios: [
+                                  { 'title' => 'Title',
+                                    'url' => 'https://princeton.edu/great-resource',
+                                    'display_format' => 'Journal' }
+                                ],
+                                sibling_electronic_portfolios: []
+                              })
+    rendered = render_inline(described_class.new(adapter))
+    expect(rendered.css('svg')).to be_present
+  end
 end

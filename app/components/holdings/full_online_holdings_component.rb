@@ -40,7 +40,8 @@ class Holdings::FullOnlineHoldingsComponent < ViewComponent::Base
                             label: "#{date_range}#{portfolio['title']}",
                             url: portfolio['url'],
                             desc: portfolio['desc'],
-                            notes: portfolio['notes']&.join(', ') || ''
+                            notes: portfolio['notes']&.join(', ') || '',
+                            display_format: portfolio['display_format']
                           }
                         end
                       end

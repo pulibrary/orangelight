@@ -14,11 +14,16 @@
     <% end %>
   <% end %>
   <% portfolios.each do |portfolio| -%>
-    <li class="electronic-access lux <%= 'electronic-access-clustered' if Flipflop.deduplication? %>">
-      <a href="<%= portfolio[:url] %>" target="_blank" rel="noopener" class="<%= css_class %>">
-        <%= portfolio[:label] %>
-        <i class="fa fa-external-link new-tab-icon-padding" aria-label="Opens in new tab" role="img"></i>
-      </a>
+    <li class="electronic-access lux <%= 'electronic-access-clustered' if deduplication? %>">
+      <div class="link-container">
+        <% if deduplication? %>
+          <lux-badge color="gray"><%= render DecorativeFormatIconComponent.new(portfolio[:display_format]) %><%= portfolio[:display_format]%></lux-badge>
+        <% end %>
+        <a href="<%= portfolio[:url] %>" target="_blank" rel="noopener" class="<%= css_class %>">
+          <%= portfolio[:label] %>
+          <i class="fa fa-external-link new-tab-icon-padding" aria-label="Opens in new tab" role="img"></i>
+        </a>
+      </div>
       <% if portfolio[:desc].present? %>
         <lux-show-more v-bind:character-limit=150 show-label='See more' hide-label='See less' class='d-block'><%= portfolio[:desc] %></lux-show-more>
       <% end %>
