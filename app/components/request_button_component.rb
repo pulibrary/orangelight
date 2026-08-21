@@ -18,8 +18,13 @@ class RequestButtonComponent < ViewComponent::Base
   end
 
   def url
-    query = { mfhd: @holding_id, aeon: aeon?.to_s, open_holdings: }.compact.to_query
     deduplication? ? @doc_id = @holding[@holding_id]['source_id'] : @doc_id
+    query = {
+      mfhd: deduplication? && scsb_location? ? nil : @holding_id,
+      aeon: aeon?.to_s,
+      open_holdings:
+    }.compact.to_query
+
     URI::HTTP.build(path: "/requests/#{@doc_id}", query:).request_uri
   end
 
@@ -29,6 +34,10 @@ class RequestButtonComponent < ViewComponent::Base
 
     def aeon?
       @aeon ||= (@location&.dig(:aeon_location) || scsb_supervised_items?)
+    end
+
+    def scsb_location?
+      %w[scsbhl scsbcul scsbnypl].include?(@location&.dig(:code))
     end
 
     def scsb_supervised_items?
