@@ -98,8 +98,11 @@ a > article > div > div.call-number {
   font-size: 0.75rem;
 }
 
-.lux-card.medium, .link.medium {
+.lux-card.medium {
   display: flex;
+}
+
+.lux-card.medium, .link.medium {
   flex-direction: column;
   width: 100% !important;
   padding: var(--space-small) var(--space-x-small);
