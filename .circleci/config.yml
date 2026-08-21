@@ -181,7 +181,7 @@ jobs:
       - attach_workspace:
           at: '~/orangelight'
       - setup-bundler-and-node
-      - run: bundle exec erblint --lint-all
+      - run: bundle exec erb_lint --lint-all
 
   reek:
     docker:
