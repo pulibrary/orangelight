@@ -37,4 +37,16 @@ class Holdings::OnlineHoldingsIndexComponent < ViewComponent::Base
       return [] if document.try(:electronic_portfolios).blank?
       document.electronic_portfolios.map(&:to_json)
     end
+
+    def display_format
+      if ebook?
+        "EBook"
+      else
+        document["format"].first
+      end
+    end
+
+    def ebook?
+      true if document["format"].include?("Book")
+    end
 end

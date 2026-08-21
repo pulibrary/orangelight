@@ -4,11 +4,13 @@
   <%= render IndexMetadataComponent.new presenter: doc_presenter %>
 </ul>
   <div class="lux">
+    <div class="holdings-values">
     <% physical_block = holding_block_search(document) -%>
     <% online_block = online_content_block(document) -%>
     <% if physical_block.present? || online_block.present? -%>
       <%= physical_block -%>
       <%= online_block -%>
+    </div>
     <% else -%>
       <div><%= t('blacklight.holdings.search_missing') %></div>
     <% end -%>

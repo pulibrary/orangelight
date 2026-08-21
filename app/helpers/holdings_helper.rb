@@ -6,12 +6,15 @@ module HoldingsHelper
   # @param document [SolrDocument] the Solr Document retrieved in the search result set
   # @return [String] the markup
 
+  delegate :deduplication?, to: Flipflop
+
   # rubocop:disable Metrics/MethodLength
   def holding_block_search(document)
     block = ''.html_safe
     block_extra = ''.html_safe
     holdings_hash = document.holdings_all_display.sort { |a, b| sort_holdings(a, b) }
     @scsb_multiple = false
+    block << format_pill(document['format'].first) if deduplication? && holdings_hash.any?
     if holdings_hash.count <= 4
       holdings_hash.each do |id, holding|
         block << holdings_block(document, id, holding)
@@ -177,6 +180,17 @@ module HoldingsHelper
           bound_with: document.bound_with?
         }.compact
       )
+    end
+  end
+
+  def format_pill(value)
+    tag.div(class: 'format-badge-group') do
+      tag.lux_badge(color: 'gray') do
+        # tag.span(class: 'lux-badge lux-badge-gray') do
+        concat render DecorativeFormatIconComponent.new value
+        concat value
+        # end
+      end
     end
   end
 
