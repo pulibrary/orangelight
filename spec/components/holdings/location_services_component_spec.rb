@@ -255,6 +255,7 @@ RSpec.describe Holdings::LocationServicesComponent, type: :component do
     end
 
     before do
+      allow(Flipflop).to receive(:deduplication?).and_return(false)
       allow(adapter).to receive(:document).and_return(document)
       allow(holding).to receive(:dig).and_return("SCSB-10422725")
     end
