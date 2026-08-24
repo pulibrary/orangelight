@@ -7,13 +7,15 @@ module HoldingsHelper
   # @return [String] the markup
 
   # rubocop:disable-next Metrics/MethodLength
+  delegate :deduplication?, to: Flipflop
+
   def holding_block_search(document)
     block = ''.html_safe
     block_extra = ''.html_safe
     holdings_hash = document.holdings_all_display.sort { |a, b| sort_holdings(a, b) }
     @scsb_multiple = false
-    if Flipflop.deduplication? && holdings_hash.count > 0
-      # block << format_pill(document['format'].first)
+    if deduplication? && holdings_hash.count > 0
+      block << format_pill(document['format'].first)
     end
     if holdings_hash.count <= 4
       holdings_hash.each do |id, holding|
@@ -183,10 +185,12 @@ module HoldingsHelper
   end
 
   def format_pill(value)
-    tag.div(class: 'lux format-badge-group d-flex align-items-start holdings-column') do
+    tag.div(class: 'format-badge-group') do
       tag.lux_badge(color: 'gray') do
-        concat render DecorativeFormatIconComponent.new value
-        concat value
+        tag.span(class: 'lux-badge lux-badge-gray') do
+          concat render DecorativeFormatIconComponent.new value
+          concat value
+        end
       end
     end
   end
