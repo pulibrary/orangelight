@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Orangelight::ConstraintsComponent < Blacklight::ConstraintsComponent
-  # rubocop:disable Metrics/ParameterLists
+  # rubocop:disable-next Metrics/ParameterLists
   def initialize(search_state:,
                  tag: :div,
                  render_headers: true,
@@ -13,7 +13,6 @@ class Orangelight::ConstraintsComponent < Blacklight::ConstraintsComponent
                  start_over_component: Blacklight::StartOverButtonComponent)
     super
   end
-  # rubocop:enable Metrics/ParameterLists
 
   def query_constraints
     super + guided_search_constraints

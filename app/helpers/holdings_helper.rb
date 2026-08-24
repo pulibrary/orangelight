@@ -1,12 +1,12 @@
 # frozen_string_literal: false
 
-# rubocop:disable Metrics/ModuleLength
+# rubocop:disable-next Metrics/ModuleLength
 module HoldingsHelper
   # Generate the markup block for individual search result items containing holding information
   # @param document [SolrDocument] the Solr Document retrieved in the search result set
   # @return [String] the markup
 
-  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable-next Metrics/MethodLength
   def holding_block_search(document)
     block = ''.html_safe
     block_extra = ''.html_safe
@@ -41,7 +41,6 @@ module HoldingsHelper
       content_tag(:div, block, class: "holdings-card")
     end
   end
-  # rubocop:enable Metrics/MethodLength
 
   def online_content_block(document)
     controller.view_context.render(Holdings::OnlineHoldingsIndexComponent.new(document:))
@@ -211,4 +210,3 @@ module HoldingsHelper
   # rubocop:enable Naming/MethodParameterName
   # rubocop:enable Lint/DuplicateBranch
 end
-# rubocop:enable Metrics/ModuleLength

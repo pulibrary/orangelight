@@ -14,7 +14,7 @@ describe 'Request Options', requests: true do
       stub_delivery_locations
       visit '/catalog/99113436223506421'
     end
-    # rubocop:disable RSpec/AnyInstance
+    # rubocop:disable-next RSpec/AnyInstance
     context 'as a logged in user' do
       let(:user) { FactoryBot.create(:user) }
       before do
@@ -29,7 +29,6 @@ describe 'Request Options', requests: true do
         end
       end
     end
-    # rubocop:enable RSpec/AnyInstance
   end
 
   describe 'On site access status in non-circulate location', js: true do

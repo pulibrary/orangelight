@@ -37,11 +37,10 @@ module Requests
       ""
     end
 
-    # rubocop:disable Naming/PredicateMethod
+    # rubocop:disable-next Naming/PredicateMethod
     def temp_loc?
       ""
     end
-    # rubocop:enable Naming/PredicateMethod
 
     def in_resource_sharing?
       false

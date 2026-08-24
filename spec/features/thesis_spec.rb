@@ -13,7 +13,7 @@ describe 'Viewing on-site thesis record' do
     # It uses a thesis fixture from fixtures/alma/current_fixtures.json
     before do
       stub_holding_locations
-      visit  '/catalog/dsp01wd3760321'
+      visit '/catalog/dsp01wd3760321'
     end
     it 'has link to Mudd website' do
       within 'dd.blacklight-restrictions_note_display' do

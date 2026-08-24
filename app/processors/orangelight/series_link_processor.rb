@@ -6,9 +6,8 @@ module Orangelight
     def render
       return next_step(values) unless config.series_link
       values.map! do |title|
-        # rubocop:disable Rails/OutputSafety
+        # rubocop:disable-next Rails/OutputSafety
         title = "#{title} #{more_in_this_series_link(title)}".html_safe if more_in_this_series_field_contains? title
-        # rubocop:enable Rails/OutputSafety
         title
       end
       next_step(values)

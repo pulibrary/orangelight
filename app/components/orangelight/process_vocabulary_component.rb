@@ -39,9 +39,8 @@ private
 
       lnk = build_search_subject_links(all_subjects[index], sub_array_index)
       lnk += build_browse_subject_link(index, sub_array_index.last).to_s
-      # rubocop:disable Rails/OutputSafety
+      # rubocop:disable-next Rails/OutputSafety
       document_field[index] = lnk.html_safe
-      # rubocop:enable Rails/OutputSafety
     end
   end
 

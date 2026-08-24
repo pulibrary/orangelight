@@ -19,12 +19,11 @@ describe 'Orangelight advanced search', type: :request, advanced_search: true do
   end
 
   it 'does not send complex facet queries to solr when rendering advanced search form' do
-    # rubocop:disable RSpec/AnyInstance
+    # rubocop:disable-next RSpec/AnyInstance
     expect_any_instance_of(RSolr::Client).to receive(:send_and_receive)
       .with('select', request_without_facet_queries)
       .once
       .and_call_original
-    # rubocop:enable RSpec/AnyInstance
 
     get '/advanced'
   end

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-# rubocop:disable Metrics/ModuleLength
+# rubocop:disable-next Metrics/ModuleLength
 module Requests
   module ApplicationHelper
     def format_label(key)
@@ -122,7 +122,7 @@ module Requests
         end
     end
 
-    # rubocop:disable Rails/OutputSafety
+    # rubocop:disable-next Rails/OutputSafety
     def hidden_fields_mfhd(mfhd)
       hidden = ""
       return hidden if mfhd.nil?
@@ -131,7 +131,6 @@ module Requests
       hidden += hidden_field_tag "mfhd[][library]", "", value: (mfhd['library']).to_s
       hidden.html_safe
     end
-    # rubocop:enable Rails/OutputSafety
 
     def suppress_login?(request)
       request.only_aeon?
@@ -343,4 +342,3 @@ module Requests
       end
   end
 end
-# rubocop:enable Metrics/ModuleLength

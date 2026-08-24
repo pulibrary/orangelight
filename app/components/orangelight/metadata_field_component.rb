@@ -5,7 +5,7 @@
 class Orangelight::MetadataFieldComponent < Blacklight::MetadataFieldComponent
   # :reek:BooleanParameter - it maintains compatibility with Blacklight::MetadataFieldComponent's API
   # :reek:LongParameterList
-  # rubocop:disable Metrics/ParameterLists
+  # rubocop:disable-next Metrics/ParameterLists
   def initialize(
     field:, layout: nil, show: false, view_type: nil,
     labeler: ->(show, field) { show ? show_field_label(field.label('show')) : index_field_label(field.label) },
@@ -15,7 +15,6 @@ class Orangelight::MetadataFieldComponent < Blacklight::MetadataFieldComponent
     @labeler = labeler
     @should_render = should_render
   end
-  # rubocop:enable Metrics/ParameterLists
 
   def label
     labeler.call(show, field)

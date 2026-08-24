@@ -12,10 +12,9 @@ RSpec.describe Holdings::SearchLocationComponent, type: :component do
   end
 
   before do
-    # rubocop:disable RSpec/AnyInstance
+    # rubocop:disable-next RSpec/AnyInstance
     allow_any_instance_of(ApplicationHelper).to receive(:holding_library_label)
       .and_return("Firestone Library")
-    # rubocop:enable RSpec/AnyInstance
   end
 
   it "renders the location label" do

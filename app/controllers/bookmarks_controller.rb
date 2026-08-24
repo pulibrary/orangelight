@@ -16,7 +16,7 @@ class BookmarksController < CatalogController
 
   # :reek:TooManyStatements
   # :reek:DuplicateMethodCall
-  # rubocop:disable Rails/StrongParametersExpect
+  # rubocop:disable-next Rails/StrongParametersExpect
   def index
     @bookmarks = token_or_current_or_guest_user.bookmarks
     bookmark_ids = @bookmarks.collect { |bookmark| bookmark.document_id.to_s }
@@ -34,7 +34,6 @@ class BookmarksController < CatalogController
       format.json { render json: render_search_results_as_json }
     end
   end
-  # rubocop:enable Rails/StrongParametersExpect
 
   def print
     fetch_bookmarked_documents

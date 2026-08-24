@@ -37,9 +37,8 @@ describe 'robot user-agents' do
     end
 
     it 'does not make any calls to solr' do
-      # rubocop:disable RSpec/AnyInstance
+      # rubocop:disable-next RSpec/AnyInstance
       expect_any_instance_of(RSolr::Client).not_to receive(:send_and_receive)
-      # rubocop:enable RSpec/AnyInstance
       get '/?f[access_facet][]=In+the+Library&f[format][]=Journal&f[geographic_facet][]=Alsace+%28France%29&' \
           'f[language_facet][]=French&f[publication_place_facet][]=France&f[subject_topic_facet][]=Antiquities',
           headers: { "HTTP_USER_AGENT" => GOOGLEBOT_USER_AGENT }
@@ -133,9 +132,8 @@ describe 'empty user-agents' do
     end
 
     it 'does not make any calls to solr' do
-      # rubocop:disable RSpec/AnyInstance
+      # rubocop:disable-next RSpec/AnyInstance
       expect_any_instance_of(RSolr::Client).not_to receive(:send_and_receive)
-      # rubocop:enable RSpec/AnyInstance
       get '/?f[access_facet][]=In+the+Library&f[format][]=Journal&f[geographic_facet][]=Alsace+%28France%29&' \
           'f[language_facet][]=French&f[publication_place_facet][]=France&f[subject_topic_facet][]=Antiquities',
           headers: { "HTTP_USER_AGENT" => GOOGLEBOT_USER_AGENT }
