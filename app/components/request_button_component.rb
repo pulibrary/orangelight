@@ -20,11 +20,10 @@ class RequestButtonComponent < ViewComponent::Base
   def url
     deduplication? ? @doc_id = @holding[@holding_id]['source_id'] : @doc_id
     query = {
-      mfhd: deduplication? && scsb_location? ? nil : @holding_id,
+      mfhd: scsb_location? ? nil : @holding_id,
       aeon: aeon?.to_s,
       open_holdings:
     }.compact.to_query
-
     URI::HTTP.build(path: "/requests/#{@doc_id}", query:).request_uri
   end
 
