@@ -6,10 +6,10 @@ module HoldingsHelper
   # @param document [SolrDocument] the Solr Document retrieved in the search result set
   # @return [String] the markup
 
-  # rubocop:disable-next Metrics/MethodLength
   delegate :deduplication?, to: Flipflop
 
   def holding_block_search(document)
+    # rubocop:disable-next Metrics/MethodLength
     block = ''.html_safe
     block_extra = ''.html_safe
     holdings_hash = document.holdings_all_display.sort { |a, b| sort_holdings(a, b) }
