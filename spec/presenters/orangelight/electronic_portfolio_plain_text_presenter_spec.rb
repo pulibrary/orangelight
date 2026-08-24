@@ -11,9 +11,8 @@ RSpec.describe Orangelight::ElectronicPortfolioPlainTextPresenter do
                                     ]
                                   })
       field_config = Blacklight::Configuration::Field.new(label: 'Online access', field: 'electronic_portfolio_s')
-      # rubocop:disable RSpec/VerifiedDoubles
+      # rubocop:disable-next RSpec/VerifiedDoubles
       view_context = double('View context', should_render_field?: true)
-      # rubocop:enable RSpec/VerifiedDoubles
       presenter = described_class.new(view_context, document, field_config)
       expect(presenter.values[0]).to eq("\tFull Text: https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53827030770006421&Force_direct=true\n")
       expect(presenter.values[1]).to eq("\tSecond Title: https://example.com\n")

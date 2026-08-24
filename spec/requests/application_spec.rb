@@ -73,7 +73,7 @@ RSpec.describe ApplicationController, type: :request do
           end
         end
       end
-      # rubocop:disable RSpec/AnyInstance
+      # rubocop:disable-next RSpec/AnyInstance
       context 'only with devise stored_location_for' do
         before do
           allow_any_instance_of(Devise::Controllers::StoreLocation).to receive(:stored_location_for)
@@ -96,7 +96,6 @@ RSpec.describe ApplicationController, type: :request do
           end
         end
       end
-      # rubocop:enable RSpec/AnyInstance
     end
 
     context "as an unauthenticated user" do

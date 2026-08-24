@@ -39,7 +39,7 @@ class Orangelight::GuidedSearchFieldsComponent < Blacklight::Component
   end
 
   # carries over guided search operations if user switches back to guided search from regular search
-  # rubocop:disable Naming/PredicateMethod
+  # rubocop:disable-next Naming/PredicateMethod
   def guided_radio(op_num, operator)
     op_num_from_params = params[op_num]
     if op_num_from_params
@@ -48,7 +48,6 @@ class Orangelight::GuidedSearchFieldsComponent < Blacklight::Component
       operator == 'AND'
     end
   end
-  # rubocop:enable Naming/PredicateMethod
 
   # private
 

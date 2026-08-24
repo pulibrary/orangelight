@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require_relative 'smoke_spec_helper'
 
-# rubocop:disable RSpec/DescribeClass
+# rubocop:disable-next RSpec/DescribeClass
 RSpec.describe 'Deployed environment', :staging_test do
   let(:host) { 'catalog-staging.princeton.edu' }
   let(:path) { nil }
@@ -27,4 +27,3 @@ RSpec.describe 'Deployed environment', :staging_test do
     end
   end
 end
-# rubocop:enable RSpec/DescribeClass

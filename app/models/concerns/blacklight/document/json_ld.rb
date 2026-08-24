@@ -38,7 +38,7 @@ module Blacklight::Document::JsonLd
     metadata
   end
 
-  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable-next Metrics/MethodLength
   def metadata_map
     {
       author_display: 'creator',
@@ -67,7 +67,6 @@ module Blacklight::Document::JsonLd
       indexed_in_display: 'indexed_by'
     }
   end
-  # rubocop:enable Metrics/MethodLength
 
   def title
     return [vernacular_title, roman_title] if vernacular_title
@@ -125,9 +124,8 @@ module Blacklight::Document::JsonLd
     return unless self['pub_date_start_sort']
     date = self['pub_date_start_sort'].to_s
     date += "-01-01T00:00:00Z" if expanded
-    # rubocop:disable Lint/UselessOr
+    # rubocop:disable-next Lint/UselessOr
     end_date = self['pub_date_end_sort'].to_s || ''
-    # rubocop:enable Lint/UselessOr
     unless end_date.empty?
       date += expanded ? "/" + end_date + "-12-31T23:59:59Z" : "-" + end_date
     end

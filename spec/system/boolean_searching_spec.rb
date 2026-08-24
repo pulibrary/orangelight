@@ -58,9 +58,8 @@ RSpec.describe 'complex boolean searching', advanced_search: true do
   before do
     stub_holding_locations
     allow(Blacklight.default_index).to receive(:connection).and_return(solr)
-    # rubocop:disable RSpec/AnyInstance
+    # rubocop:disable-next RSpec/AnyInstance
     allow_any_instance_of(Blacklight::Configuration).to receive(:connection_config).and_return({ adapter: "solr", url: solr_url })
-    # rubocop:enable RSpec/AnyInstance
   end
 
   context 'using advanced search' do

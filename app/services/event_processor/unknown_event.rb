@@ -7,11 +7,10 @@ class EventProcessor
       @event = event
     end
 
-    # rubocop:disable Naming/PredicateMethod
+    # rubocop:disable-next Naming/PredicateMethod
     def process
       Rails.logger.info("Unable to process event type #{event_type}")
       false
     end
-    # rubocop:enable Naming/PredicateMethod
   end
 end

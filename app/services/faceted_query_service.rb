@@ -14,8 +14,8 @@ class FacetedQueryService
   def get_fq_solr_response(fq)
     solr_url = @blacklight_context.connection_config[:url]
     conn = Faraday.new(url: solr_url) do |faraday|
-      faraday.request  :url_encoded             # form-encode POST params
-      faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+      faraday.request :url_encoded             # form-encode POST params
+      faraday.adapter Faraday.default_adapter  # make requests with Net::HTTP
     end
     facet_request = \
       "#{core_url}select?fq=#{fq}&fl=id,title_display,title_vern_display,author_display,\

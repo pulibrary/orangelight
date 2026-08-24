@@ -92,9 +92,8 @@ describe Requests::FormController, type: :controller, vcr: { cassette_name: 'for
       }.with_indifferent_access
     end
 
-    # rubocop:disable RSpec/VerifiedDoubles
+    # rubocop:disable-next RSpec/VerifiedDoubles
     let(:mail_message) { double(::Mail::Message) }
-    # rubocop:enable RSpec/VerifiedDoubles
 
     before do
       sign_in(user)

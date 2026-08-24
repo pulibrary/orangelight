@@ -38,7 +38,7 @@ describe 'Tools links', js: true do
 
   context 'With non-MARC-based records' do
     before do
-      visit  '/catalog/dsp017s75dc44p'
+      visit '/catalog/dsp017s75dc44p'
     end
 
     it 'does have cite link but not RefWorks or EndNote links' do

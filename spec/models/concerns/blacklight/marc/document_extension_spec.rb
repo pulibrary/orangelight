@@ -23,9 +23,8 @@ RSpec.describe Blacklight::Marc::DocumentExtension do
     context 'with invalid compressed data' do
       let(:invalid_data) { 'invalid_base64_data' }
       it 'returns the original data and logs an error' do
-        # rubocop:disable RSpec/MessageSpies
+        # rubocop:disable-next RSpec/MessageSpies
         expect(Rails.logger).to receive(:error).with(/Failed to decompress MARCXML/)
-        # rubocop:enable RSpec/MessageSpies
         result = scsb_document.send(:decompress_marcxml, invalid_data)
         expect(result).to eq(invalid_data)
       end
