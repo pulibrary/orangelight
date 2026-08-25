@@ -19,6 +19,7 @@ a > article > div > div.call-number {
   flex-direction: row;
   border-radius: 0.375rem;
   padding: 0.25rem 0rem 0.5rem 0rem;
+  align-items: flex-start;
 
   a:hover, a:focus {
     outline: solid 0.25rem var(--color-princeton-orange-on-white) !important;
@@ -59,9 +60,10 @@ a > article > div > div.call-number {
   min-width: 23%;
 }
     
-/* If there are multiple cards, they should be consistent widths */
-.holdings-card:has(a:nth-child(n+2)) a {
+/* If there are two or more cards after the format badge, they should be consistent widths */
+.holdings-card:has(a:nth-child(n+3)) a {
   width: 23%;
+  flex-grow: 2;
 }
 
 .holdings-card article.lux-card {
@@ -400,4 +402,10 @@ li.electronic-access-clustered .link-container {
 
 .format-badge-group {
   padding-top: var(--space-xx-small);
+}
+
+.digital-holdings-row {
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.5rem;
 }

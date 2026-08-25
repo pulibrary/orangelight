@@ -19,6 +19,7 @@ class DecorativeFormatIconComponent < ViewComponent::Base
           'Audio',
           'Archival item',
           'Book',
+          'EBook',
           'Coin',
           'Databases',
           'Data file',

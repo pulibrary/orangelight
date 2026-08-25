@@ -1,6 +1,16 @@
-<%= content_tag(
-        :div,
-        tag(:'online-options', :'document-id' => document.id, :'options-count' => links.length, :'link-json' => links.first),
-        class: 'online-holdings-list'
-    )
-%>
+<% if Flipflop.deduplication? %>
+  <div class="digital-holdings-row format-badge-group">
+        <%= tag.lux_badge(color: "gray") do
+                concat render DecorativeFormatIconComponent.new display_format
+                concat display_format
+        end %>
+        <%= tag.div(class: "online-holdings-list") do
+            tag.online_options(:"document-id" => document.id, :"options-count" => links.length, :"link-json" => links.first)
+        end %>
+  </div>  
+<% else %>
+    <%= tag.div(class: "online-holdings-list") do
+            tag.online_options(:"document-id" => document.id, :"options-count" => links.length, :"link-json" => links.first)
+        end
+    %>
+<% end %>
