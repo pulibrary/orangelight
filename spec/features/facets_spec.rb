@@ -94,9 +94,9 @@ describe 'Facets' do
     context 'with the hierarchical place of publication facet' do
       it 'renders the place of publication facet' do
         visit '/catalog?search_field=all_fields&q='
-        expect(page).to have_selector('.blacklight-publication_place_hierarchical_facet')
+        expect(page).to have_selector('.blacklight-publication_place_hierarchical_pipe_facet')
         # Displays all 3 place of publication classes
-        within('.blacklight-publication_place_hierarchical_facet') do
+        within('.blacklight-publication_place_hierarchical_pipe_facet') do
           expect(page.all('.h-node').length).to eq(3)
           # The A class contains two subclasses
           expect(page.all('.h-node')[2].all('.h-leaf').length).to eq(7)

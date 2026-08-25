@@ -41,13 +41,11 @@ class CatalogController < ApplicationController
     config.advanced_search[:url_key] ||= 'advanced'
     config.advanced_search[:query_parser] ||= 'edismax'
     config.advanced_search[:form_solr_parameters] ||= {}
-    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w[access_facet format publication_place_hierarchical_facet language_facet original_language_of_translation_facet advanced_location_s]
+    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w[access_facet format language_facet original_language_of_translation_facet publication_place_hierarchical_pipe_facet advanced_location_s]
     config.advanced_search[:form_solr_parameters]['facet.query'] ||= ''
     config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['facet.pivot'] ||= ''
     config.advanced_search[:form_solr_parameters]['f.language_facet.facet.sort'] ||= 'index'
-    # TODO: Remove non-pipe options after re-index with pipe delimiter
-    config.advanced_search[:form_solr_parameters]['f.publication_place_hierarchical_facet.facet.sort'] ||= 'index'
     config.advanced_search[:form_solr_parameters]['f.publication_place_hierarchical_pipe_facet.facet.sort'] ||= 'index'
 
     config.numismatics_search ||= Blacklight::OpenStructWithHashAccess.new
@@ -156,9 +154,7 @@ class CatalogController < ApplicationController
     }, include_in_advanced_search: false
 
     config.add_facet_field 'instrumentation_facet', label: 'Instrumentation', limit: true, include_in_advanced_search: false
-    # TODO: Remove non-pipe options after re-index with pipe delimiter
-    config.add_facet_field 'publication_place_hierarchical_facet', label: 'Place of publication', component: Blacklight::Hierarchy::FacetFieldListComponent, sort: 'index', limit: 1000, include_in_advanced_search: true
-    # TODO: Remove non-pipe options after re-index with pipe delimiter
+    config.add_facet_field 'publication_place_hierarchical_pipe_facet', label: 'Place of publication', component: Blacklight::Hierarchy::FacetFieldListComponent, sort: 'index', limit: 1000, include_in_advanced_search: true, checkbox_presenter: Orangelight::PipeFacetCheckboxItemPresenter
     config.add_facet_field 'lc_facet', label: 'Classification', component: Blacklight::Hierarchy::FacetFieldListComponent, sort: 'index', limit: 1000, include_in_advanced_search: false
 
     config.add_facet_field 'lc_1letter_facet', label: 'Classification', limit: 25, include_in_request: false, sort: 'index'

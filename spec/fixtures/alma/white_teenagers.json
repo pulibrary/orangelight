@@ -110,10 +110,6 @@
         "publication_place_facet": [
             "New York (State)"
         ],
-        "publication_place_hierarchical_facet": [
-            "United States",
-            "United States:New York (State)"
-        ],
         "publication_place_hierarchical_pipe_facet": [
             "United States",
             "United States|||New York (State)"
@@ -436,10 +432,6 @@
         "publication_place_facet": [
             "England"
         ],
-        "publication_place_hierarchical_facet": [
-            "United Kingdom",
-            "United Kingdom:England"
-        ],
         "publication_place_hierarchical_pipe_facet": [
             "United Kingdom",
             "United Kingdom|||England"
@@ -663,10 +655,6 @@
         ],
         "publication_place_facet": [
             "New York (State)"
-        ],
-        "publication_place_hierarchical_facet": [
-            "United States",
-            "United States:New York (State)"
         ],
         "publication_place_hierarchical_pipe_facet": [
             "United States",

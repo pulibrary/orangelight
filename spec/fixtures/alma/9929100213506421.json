@@ -123,10 +123,6 @@
   "siku_subject_unstem_search": null,
   "homoit_subject_unstem_search": null,
   "fast_subject_unstem_search": null,
-  "publication_place_hierarchical_facet": [
-    "United States",
-    "United States:Massachusetts"
-  ],
   "publication_place_hierarchical_pipe_facet": [
     "United States",
     "United States|||Massachusetts"
