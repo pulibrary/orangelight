@@ -123,10 +123,6 @@
         "publication_place_facet": [
             "Massachusetts"
         ],
-        "publication_place_hierarchical_facet": [
-            "United States",
-            "United States:Massachusetts"
-        ],
         "publication_place_hierarchical_pipe_facet": [
             "United States",
             "United States|||Massachusetts"
@@ -369,10 +365,6 @@
         "publication_place_facet": [
             "England"
         ],
-        "publication_place_hierarchical_facet": [
-            "United Kingdom",
-            "United Kingdom:England"
-        ],
         "publication_place_hierarchical_pipe_facet": [
             "United Kingdom",
             "United Kingdom|||England"
@@ -569,10 +561,6 @@
         ],
         "publication_place_facet": [
             "District of Columbia"
-        ],
-        "publication_place_hierarchical_facet": [
-            "United States",
-            "United States:District of Columbia"
         ],
         "publication_place_hierarchical_pipe_facet": [
             "United States",
@@ -798,10 +786,6 @@
         ],
         "publication_place_facet": [
             "England"
-        ],
-        "publication_place_hierarchical_facet": [
-            "United Kingdom",
-            "United Kingdom:England"
         ],
         "publication_place_hierarchical_pipe_facet": [
             "United Kingdom",
@@ -1053,10 +1037,6 @@
         "publication_place_facet": [
             "England"
         ],
-        "publication_place_hierarchical_facet": [
-            "United Kingdom",
-            "United Kingdom:England"
-        ],
         "publication_place_hierarchical_pipe_facet": [
             "United Kingdom",
             "United Kingdom|||England"
@@ -1236,9 +1216,6 @@
             "Portuguese"
         ],
         "publication_place_facet": [
-            "Brazil"
-        ],
-        "publication_place_hierarchical_facet": [
             "Brazil"
         ],
         "publication_place_hierarchical_pipe_facet": [
@@ -1467,10 +1444,6 @@
         "publication_place_facet": [
             "District of Columbia"
         ],
-        "publication_place_hierarchical_facet": [
-            "United States",
-            "United States:District of Columbia"
-        ],
         "publication_place_hierarchical_pipe_facet": [
             "United States",
             "United States|||District of Columbia"
@@ -1648,10 +1621,6 @@
         ],
         "publication_place_facet": [
             "Massachusetts"
-        ],
-        "publication_place_hierarchical_facet": [
-            "United States",
-            "United States:Massachusetts"
         ],
         "publication_place_hierarchical_pipe_facet": [
             "United States",
