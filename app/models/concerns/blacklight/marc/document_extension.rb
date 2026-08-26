@@ -121,7 +121,10 @@ module Blacklight
 
           # :reek:UtilityFunction
           def partner_record(marcxml_record)
-            codes = marcxml_record['852'].subfields
+            field = marcxml_record['852']
+            return "Princeton" unless field
+            codes = field.subfields
+
             codes.filter_map do |subfield|
               Orangelight.config[:recap_partner_location_names].fetch(subfield.value, "Princeton") if subfield.code == 'b'
             end.first
