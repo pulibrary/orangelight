@@ -7,6 +7,16 @@ global.console = {
 
 global.fetch = vi.fn();
 
+function mockSuccessfulAvailabilityFetch(jsonResponse) {
+  const mockResponse = {
+    ok: true,
+    status: 200,
+    json: vi.fn().mockResolvedValue(jsonResponse),
+  };
+
+  return vi.spyOn(global, 'fetch').mockResolvedValue(mockResponse);
+}
+
 describe('AvailabilitySearchResults', function () {
   let searchResults;
 
@@ -219,9 +229,58 @@ describe('AvailabilitySearchResults', function () {
     expect(availability_display_non_temp.textContent).toEqual('Request');
   });
 
+  test('request_availability includes correct Alma Ids', async () => {
+    document.body.innerHTML = `
+      <div class="documents-list"><div data-availability-record="true" data-record-id="9932127373506421"></div></div>
+    `;
+
+    mockSuccessfulAvailabilityFetch({});
+
+    searchResults.request_availability();
+    await new Promise(setImmediate);
+
+    expect(fetch).toHaveBeenCalledWith(
+      expect.stringContaining('9932127373506421')
+    );
+  });
+
+  test('request_availability does not run if there are no valid Alma Ids', async () => {
+    document.body.innerHTML = `
+      <div class="documents-list"><div data-availability-record="true" data-record-id="f7a2277a-9fe6-4528-b12e-2e60b1a8bb80"></div></div>
+    `;
+
+    mockSuccessfulAvailabilityFetch({});
+
+    searchResults.request_availability();
+    await new Promise(setImmediate);
+
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
+  test('request_availability only includes correct alma IDs in its fetch calls', async () => {
+    document.body.innerHTML = `
+      <div class="documents-list">
+        <div data-availability-record="true" data-record-id="9932127373506421"></div>
+        <div data-availability-record="true" data-record-id="f7a2277a-9fe6-4528-b12e-2e60b1a8bb80"></div>
+      </div>
+    `;
+
+    mockSuccessfulAvailabilityFetch({});
+
+    searchResults.request_availability();
+    await new Promise(setImmediate);
+
+    expect(fetch).toHaveBeenCalledWith(
+      expect.stringContaining('9932127373506421')
+    );
+    expect(fetch).not.toHaveBeenCalledWith(
+      expect.stringContaining('f7a2277a-9fe6-4528-b12e-2e60b1a8bb80')
+    );
+  });
+
   test('request_search_results_availability handles fetch errors', async () => {
     document.body.innerHTML = `
-      <div data-availability-record="true" data-record-id="123"></div>
+      <div data-availability-record="true" data-record-id="9932127373506421"></div>
     `;
 
     fetch.mockRejectedValue(new Error('Network error'));

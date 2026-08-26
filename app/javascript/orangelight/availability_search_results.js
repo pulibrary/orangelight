@@ -7,6 +7,7 @@
   some available -> Available
 */
 import AvailabilityBase from './availability_base.js';
+import { isAlmaId } from './ids.js';
 
 export default class AvailabilitySearchResults extends AvailabilityBase {
   constructor() {
@@ -231,9 +232,9 @@ export default class AvailabilitySearchResults extends AvailabilityBase {
       document.querySelectorAll(
         "*[data-availability-record='true'][data-record-id]"
       )
-    ).map(function (node) {
-      return node.getAttribute('data-record-id');
-    });
+    )
+      .map((node) => node.getAttribute('data-record-id'))
+      .filter((id) => isAlmaId(id));
 
     return [...new Set(ids)];
   }
