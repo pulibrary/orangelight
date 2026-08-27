@@ -7,7 +7,7 @@ a.important-link {
   display: inline-block;
   font-size: 0.875rem;
   display: block;
-  padding: 0.5rem;
+  padding: var(--space-x-small);
   border: solid 2px var(--color-grayscale-lighter);
   border-radius: 8px;
   margin: 0;
