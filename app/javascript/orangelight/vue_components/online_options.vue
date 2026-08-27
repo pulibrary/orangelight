@@ -23,7 +23,6 @@ const link = JSON.parse(props.linkJson);
 </script>
 <style scoped>
 a {
-  margin: 10px 12px;
   display: inline-block;
   font-size: 0.875rem;
 }
