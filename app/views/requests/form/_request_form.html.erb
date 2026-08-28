@@ -15,7 +15,6 @@
       <span class="error error-items">
       </span>
     </div>
-
     <% if @request.alma_provider_item_unavailable? %>
      <h2><%=I18n.t('requests.alma_login.unavailable')%> </h2>
     <% elsif @request.only_aeon? %>

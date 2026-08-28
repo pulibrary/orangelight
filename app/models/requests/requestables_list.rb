@@ -4,6 +4,7 @@ module Requests
   # a list of Requestables based on the provided document and
   # holdings data
   class RequestablesList
+    delegate :deduplication?, to: Flipflop
     include Bibdata
     include Scsb
 
@@ -43,7 +44,7 @@ module Requests
       return nil unless system_id
       return nil if too_many_items?
       @items ||= begin
-        mfhd_items = { mfhd => items_by_mfhd(system_id, mfhd) }
+        mfhd_items = { mfhd => items_by_mfhd(system_id, mfhd, holdings['source_id']) }
         mfhd_items.empty? ? nil : mfhd_items.with_indifferent_access
       end
     end
@@ -53,11 +54,11 @@ module Requests
       attr_reader :document, :holdings, :location, :mfhd, :patron
 
       def system_id
-        document.id
+        deduplication? ? holdings['source_id'] : document.id
       end
 
       def holding
-        Holding.new(mfhd_id: mfhd, holding_data: holdings[mfhd])
+        deduplication? ? Holding.new(mfhd_id: mfhd, holding_data: holdings) : Holding.new(mfhd_id: mfhd, holding_data: holdings[mfhd])
       end
   end
 end

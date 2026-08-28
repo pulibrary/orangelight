@@ -48,16 +48,19 @@ module Requests
 
           def requestable_mfhd_items(mfhd_items:)
             if mfhd_items.empty?
+
               NoItemsFactory.new(document:, holding:, location:, patron:).call
             else
+
               mfhd_items.map { |item| requestable_mfhd_item(item) }
             end.compact
           end
 
           def requestable_mfhd_item(item)
             return if item['on_reserve'] == 'Y'
-            item_current_location = item_current_location(item)
 
+            item_current_location = item_current_location(item)
+            # check what is going on with holding:
             Requests::Requestable.new(
               bib: document,
               holding: holding_data(item, item_current_location['code']),
@@ -71,7 +74,7 @@ module Requests
             holding_data = if item["in_temp_library"] && item["temp_location_code"] != "RES_SHARE$IN_RS_REQ"
                              holdings[item_location_code]
                            else
-                             holdings[mfhd]
+                             deduplication? ? holdings : holdings[mfhd]
                            end
             Holding.new(mfhd_id: mfhd.to_sym.to_s, holding_data:)
           end
@@ -111,11 +114,11 @@ module Requests
           end
 
           def system_id
-            document.id
+            deduplication? ? holdings['source_id'] : document.id
           end
 
           def holding
-            Holding.new(mfhd_id: mfhd, holding_data: holdings[mfhd])
+            deduplication? ? Holding.new(mfhd_id: mfhd, holding_data: holdings) : Holding.new(mfhd_id: mfhd, holding_data: holdings[mfhd])
           end
 
           def temp_locations

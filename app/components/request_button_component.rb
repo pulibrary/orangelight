@@ -4,7 +4,9 @@
 # :reek:TooManyInstanceVariables
 class RequestButtonComponent < ViewComponent::Base
   delegate :deduplication?, to: Flipflop
-  def initialize(location:, doc_id:, holding: nil, holding_id: nil, open_holdings: nil)
+  # rubocop:disable-next Metrics/ParameterLists
+  def initialize(cluster_id:, location:, doc_id:, holding: nil, holding_id: nil, open_holdings: nil)
+    @cluster_id = cluster_id
     @location = location
     @doc_id = doc_id
     @holding = holding
@@ -22,14 +24,15 @@ class RequestButtonComponent < ViewComponent::Base
     query = {
       mfhd: scsb_location? ? nil : @holding_id,
       aeon: aeon?.to_s,
-      open_holdings:
+      open_holdings:,
+      cluster_id:
     }.compact.to_query
     URI::HTTP.build(path: "/requests/#{@doc_id}", query:).request_uri
   end
 
   private
 
-    attr_reader :open_holdings
+    attr_reader :open_holdings, :cluster_id
 
     def aeon?
       @aeon ||= (@location&.dig(:aeon_location) || scsb_supervised_items?)

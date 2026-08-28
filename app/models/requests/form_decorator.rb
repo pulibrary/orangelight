@@ -8,7 +8,7 @@ module Requests
              :user_name, :email, # passed to request as login options on the request form
              to: :request
     delegate :content_tag, :hidden_field_tag, :concat, to: :view_context
-
+    delegate :deduplication?, to: Flipflop
     alias bib_id system_id
 
     attr_reader :request, :view_context, :first_filtered_requestable, :non_requestable_message, :back_to_record_url
@@ -104,7 +104,7 @@ module Requests
       if any_items? && first_requestable_item.temp_loc_other_than_resource_sharing?
         holdings[first_requestable_item["temp_location_code"]]
       else
-        holdings[mfhd]
+        deduplication? ? holdings : holdings[mfhd]
       end
     end
 

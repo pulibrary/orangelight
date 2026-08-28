@@ -5,7 +5,8 @@ require_relative '../../../lib/orangelight/illiad_account'
 module Requests
   # This class is responsible for assembling the data to display the Requests form
   class Form
-    attr_reader :system_id, :mfhd, :requestable, :requestable_unrouted, :holdings, :location, :location_code, :pick_ups
+    delegate :deduplication?, to: Flipflop
+    attr_reader :system_id, :cluster_id, :mfhd, :requestable, :requestable_unrouted, :location, :location_code, :pick_ups
     alias default_pick_ups pick_ups
     delegate :eligible_for_library_services?, to: :patron
     delegate :items, :too_many_items?, to: :requestables_list
@@ -16,14 +17,17 @@ module Requests
     # @option opts [String] :system_id A bib record id or a special collection ID value
     # @option opts [Fixnum] :mfhd alma holding id
     # @option opts [Thread] :patron_request a Thread that will resolve to a Patron object when #value is called
-    def initialize(system_id:, mfhd:, patron_request: nil, illiad_account_class: Orangelight::IlliadAccount)
+    def initialize(system_id:, cluster_id:, mfhd:, patron_request: nil, illiad_account_class: Orangelight::IlliadAccount)
       @system_id = system_id
-      @holdings = JSON.parse(doc[:holdings_1display] || '{}')
+      @cluster_id = cluster_id
+
+      @holdings = holdings || {}
+      @mfhd = mfhd || @holdings.keys.first
       # scsb items are the only ones that come in without a MFHD parameter from the catalog now
       # set it for them, because they only ever have one location
-      @mfhd = mfhd || @holdings.keys.first
+
       @patron_request = patron_request
-      @location_code = @holdings[@mfhd]["location_code"] if @holdings[@mfhd].present?
+      @location_code = @holdings["location_code"]
       @location = load_bibdata_location
       @pick_ups = build_pick_ups
       @requestable_unrouted = requestables_list.to_a
@@ -56,6 +60,7 @@ module Requests
     end
 
     def serial?
+      doc = cluster_doc if deduplication?
       doc[:format].present? && doc[:format].include?('Journal')
     end
 
@@ -63,6 +68,7 @@ module Requests
     # Fields to return all keys are arrays
     ## Add more fields here as needed
     def hidden_field_metadata
+      doc = cluster_doc if deduplication?
       {
         title: doc["title_citation_display"],
         author: doc["author_citation_display"],
@@ -72,11 +78,16 @@ module Requests
     end
 
     def ctx
+      doc = cluster_doc if deduplication?
       @ctx ||= Requests::SolrOpenUrlContext.new(solr_doc: doc).ctx
     end
 
     def doc
       @doc ||= SolrDocument.new(solr_doc(system_id))
+    end
+
+    def cluster_doc
+      @cluster_doc ||= SolrDocument.new(solr_doc(cluster_id))
     end
 
     def illiad_account
@@ -85,6 +96,10 @@ module Requests
 
     def patron
       @patron ||= patron_request.value
+    end
+
+    def holdings
+      deduplication? ? JSON.parse(cluster_doc[:holdings_1display])[@mfhd] : JSON.parse(doc[:holdings_1display] || {})
     end
 
     private
@@ -100,7 +115,8 @@ module Requests
       end
 
       def requestables_list
-        @requestables_list ||= RequestablesList.new(document: doc, holdings:, mfhd:, location:, patron:)
+        document = deduplication? ? cluster_doc : doc
+        @requestables_list ||= RequestablesList.new(document: document, holdings:, mfhd:, location:, patron:)
       end
   end
 end

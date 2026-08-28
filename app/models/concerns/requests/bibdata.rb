@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 module Requests
   module Bibdata
+    delegate :deduplication?, to: Flipflop
     # for PUL Bibliographic Helpers
     extend ActiveSupport::Concern
 
@@ -14,7 +15,8 @@ module Requests
       parse_response(response)
     end
 
-    def items_by_mfhd(system_id, mfhd_id)
+    def items_by_mfhd(system_id, mfhd_id, source_id)
+      deduplication? ? system_id = source_id : system_id
       response = bibdata_conn.get "/bibliographic/#{system_id}/holdings/#{mfhd_id}/availability.json"
       parse_response(response)
     end

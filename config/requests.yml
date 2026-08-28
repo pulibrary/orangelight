@@ -19,6 +19,7 @@ defaults: &defaults
     pub_date_display: "Published/Created"
 development:
   <<: *defaults
+  pulsearch_base: <%= Flipflop.deduplication? ? "https://catalog-dedupe.princeton.edu" : "https://catalog.princeton.edu" %>
   bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata.princeton.edu" %>
 test:
   <<: *defaults
@@ -35,7 +36,7 @@ staging:
 dedupe:
   <<: *defaults
   aeon_base: https://princeton.aeon.atlas-sys.com/logon
-  pulsearch_base: https://catalog-staging.princeton.edu
+  pulsearch_base: https://catalog-dedupe.princeton.edu
   bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.lib.princeton.edu" %>
 qa:
   <<: *defaults

@@ -10,6 +10,8 @@ module Requests
 
     include Requests::Aeon
 
+    delegate :deduplication?, to: Flipflop
+
     # @param bib [Hash] Solr Document of the Top level Request
     # @param holding [Requests::Holding] Bibdata information on where the item is held, created with data from the parsed solr_document[holdings_1display] json
     # @param item [Requests::Item] A Requests::Item or similar object (e.g. NullItem)
@@ -91,7 +93,7 @@ module Requests
 
     # assume numeric ids come from alma
     def alma_managed?
-      bib[:id].to_i.positive?
+      deduplication? ? holding.holding_data["source_id"] : bib[:id].to_i.positive?
     end
 
     def scsb_in_library_use?

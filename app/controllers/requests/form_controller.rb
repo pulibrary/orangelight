@@ -17,6 +17,7 @@ module Requests
       patron_request = Thread.new { Patron.authorize(user: @user) }
 
       system_id = sanitize(params[:system_id])
+      cluster_id = sanitize(params[:cluster_id])
       mfhd = sanitize(params[:mfhd])
       params.require(:mfhd) unless system_id.starts_with?("SCSB") # there are not multiple locations for shared items so no MFHD is passed
       @back_to_record_url = BackToRecordUrl.new(params)
@@ -24,7 +25,7 @@ module Requests
       @title = "Request ID: #{system_id}"
 
       # needed to see if we can suppress login for this item
-      @request = FormDecorator.new(Requests::Form.new(system_id:, mfhd:, patron_request:), view_context, @back_to_record_url)
+      @request = FormDecorator.new(Requests::Form.new(system_id:, cluster_id:, mfhd:, patron_request:), view_context, @back_to_record_url)
       @patron = patron_request.value
       patron_errors = @patron.errors
       flash.now[:error] = patron_errors.join(", ") if patron_errors.present?

@@ -5,6 +5,7 @@
 # :reek:TooManyMethods
 # :reek:TooManyInstanceVariables
 class Holdings::LocationServicesComponent < ViewComponent::Base
+  delegate :deduplication?, to: Flipflop
   def initialize(adapter, holding_id, location_rules, holding, open_holdings = nil)
     @adapter = adapter
     @holding_id = holding_id
@@ -21,6 +22,10 @@ class Holdings::LocationServicesComponent < ViewComponent::Base
         holding["mms_id"] || adapter.doc_id
       end
 
+      def cluster_id
+        document.id if deduplication?
+      end
+
       def holding_object
         Requests::Holding.new(mfhd_id: holding_id, holding_data: holding)
       end
@@ -31,16 +36,16 @@ class Holdings::LocationServicesComponent < ViewComponent::Base
         if holding_id == 'thesis' || numismatics?
           AeonRequestButtonComponent.new(document:, holding: holding_hash, url_class: Requests::NonAlmaAeonUrl)
         elsif items && items.length > 1
-          RequestButtonComponent.new(doc_id:, holding_id:, location: location_rules, open_holdings:, holding: holding_hash)
+          RequestButtonComponent.new(cluster_id:, doc_id:, holding_id:, location: location_rules, open_holdings:, holding: holding_hash)
         elsif aeon_location? || (scsb_location? && scsb_supervised_items?)
           AeonRequestButtonComponent.new(document:, holding: holding_hash)
         elsif scsb_location?
-          RequestButtonComponent.new(doc_id:, holding_id:, location: location_rules, open_holdings:, holding: holding_hash)
+          RequestButtonComponent.new(cluster_id:, doc_id:, holding_id:, location: location_rules, open_holdings:, holding: holding_hash)
         elsif temporary_holding_id?
           holding_identifier = temporary_location_holding_id_first
-          RequestButtonComponent.new(doc_id:, holding_id: holding_identifier, location: location_rules, open_holdings:, holding: holding_hash)
+          RequestButtonComponent.new(cluster_id:, doc_id:, holding_id: holding_identifier, location: location_rules, open_holdings:, holding: holding_hash)
         else
-          RequestButtonComponent.new(doc_id:, holding_id:, location: location_rules, open_holdings:, holding: holding_hash)
+          RequestButtonComponent.new(cluster_id:, doc_id:, holding_id:, location: location_rules, open_holdings:, holding: holding_hash)
         end
       end
       # rubocop:enable Lint/DuplicateBranch
