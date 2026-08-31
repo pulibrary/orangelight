@@ -1,5 +1,6 @@
 {
   "id": "9927499873506421",
+  "cluster_members_s": ["9927499873506421"],
   "numeric_id_b": true,
   "figgy_1display": "[{\"display_foramt\":\"EBook\",\"source_id\":\"9927499873506421\",\"ark\":\"http://arks.princeton.edu/ark:/88435/dc2j62sh91d\",\"iiif_manifest_url\":\"https://figgy.princeton.edu/concern/scanned_resources/0368a9cd-d175-4113-a889-ce1cff4d25cc/manifest\",\"label\":{\"@value\":\"Memorie istoriche di più uomini illustri pisani [di A. Fabroni et al.]\",\"@language\":\"it\"},\"portion_note\":null,\"visibility\":{\"value\":\"open\",\"label\":\"open\",\"definition\":\"Open to the world. Anyone can view.\"}}]",
   "author_citation_display": [
