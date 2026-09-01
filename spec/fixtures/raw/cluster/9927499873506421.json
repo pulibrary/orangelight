@@ -1,6 +1,12 @@
 {
   "id": "9927499873506421",
   "cluster_members_s": ["9927499873506421"],
+  "cluster_members_display": [
+    "{\"9927499873506421\":{\"display_format\":\"Book\"}}"
+  ],
+  "marcxml_bi": [
+    "H4sIAAAAAAAA/+1Y227jNhD9FUIF2gaIJJIidXEdAYG76UuSGkm3LVr0gZEYhxtJdEg6yebrO06c1F0bNBcwFlhgDV8Ea+bMmTlDDu2xkY02LXrsu8EeRTfOzUdp+vDwkHS6SWb6Pj07vphQktpO9dGL2ejRqv+ZPmSJNrOUYkzSP89OL5sb2YtYDdaJoZHgZdXIPn95qhvhlB52RUJbbi/RWmFam/bCNMAkfcFc+S3dkkfbRvW4k6KVpsa44nkjeiQoUKM5JwgxjvE4XRmMGz04o7trJbsWOTE7iiCFqK4qWrCqKouM45xRMk7XDbe78aimmHJCcI4hBuYJDnEro7oEF0p7UlQYXlQ5tPYAJISRcgK1n8K1wol1LMoipIaWHEXo+YIeRQUUwy6uXqwa3cqjSER123Qjcns7Tl9vbRjRZyN1tW6SvsXbDJ3xjdBoM3QV1ZPzd6Qqqt8u94sMSf14/mF6sJItnhsFjef00O45hadVoN/1RzGTZhVv/8n8OtGnkwPd9ISVvIC+CA3BcGCI89MzTwNcRbUcZh6DZhcCrMPp+9NQ2nyTNttK++dfqoIn0zwUOH8Dxv56/PEXojn2l+SEsLxHy4UaHL4KDI8JZqA1vghEpoxvIOOtyGey10ZJpKyDT9gxUavQXC2+/+4xw/gntNC9GhRSXbewzixvWTEov/R/A8Rxgk7EldHgKx0SXfJPKPU8tEenQOXQL8nUSGs1ugDKEshPjbZzuDj0819KGFc0CWQMdQpkzNB9KCgnb6DMDzoBx07PNDJiBrNTOI1aqRDsz5Bx+4MwTiK5vBgc6Auz4lXaubZWtgsHVqJDy+kh0UQ1ejYIIxDNSBXItfivAMTPddUSh9AeHgnuYIs7Hmay0weH/j2EFBmNSYkzHxw0/uq8oNq344JYuBtoeKekTQfRL9/LvMwYjOjArCvC9rJfb3bts7m/RXvhmht/bVbnDe6xklE9N7qRyz7wmF1DoT9v0FQsdJad+EtBdqxUzmlS0CzJszt/nvcJiVkoex60oJvnGucxLmPMEOEjQkecoveX6TthnTSDPzXwJTEuYpIhXI0whWeYL1TtWnRWBmZTcvqaTfmaDYm2MTLCSH+9H43n/k2wHrfQ4/fSWPXkiweHXwpHqALTEgY1Xp21w3LO8w0Ft8+/jb7YI4kiD2kjvCPCJ+Yf/IviaYdI86jOKIHzRFFxBj8KKo+t84eC6tFsRZzuJp4ti43Yrk2L4BiTmMCCgkWB4Rm2KO7WfDnCfMSrYN+Pm63/lcta0P3IykNlJd9k/QKy8nw/smahsmbfZP0CsuZsP7KyUFnp1ydr+vJPZP0vNVMqdJIUAAA="
+  ],
   "numeric_id_b": true,
   "figgy_1display": "[{\"display_foramt\":\"EBook\",\"source_id\":\"9927499873506421\",\"ark\":\"http://arks.princeton.edu/ark:/88435/dc2j62sh91d\",\"iiif_manifest_url\":\"https://figgy.princeton.edu/concern/scanned_resources/0368a9cd-d175-4113-a889-ce1cff4d25cc/manifest\",\"label\":{\"@value\":\"Memorie istoriche di più uomini illustri pisani [di A. Fabroni et al.]\",\"@language\":\"it\"},\"portion_note\":null,\"visibility\":{\"value\":\"open\",\"label\":\"open\",\"definition\":\"Open to the world. Anyone can view.\"}}]",
   "author_citation_display": [

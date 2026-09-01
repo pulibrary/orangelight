@@ -1,6 +1,12 @@
 {
   "id": "99131903455606421",
   "cluster_members_s": ["99131903455606421"],
+  "marcxml_bi":[
+    "H4sIAAAAAAAA/+1Y3W7bNhR+FUIXQwNMIilKtOTZGpI0A4q6SRBva7Ebg5Foh4skGqRkp0MefpTtBHXsUWocYNlaXhgE/Z2/j+ccHmigeCpVBu6KvNRD56aq5n0Il8ull8vUm8kF/HB8depjqHNROGtY/06LLeiSeFLNoI8Qhp8+jMbpDS+YK0pdsTLlRkqLvl4djmTKKiHLNktgz9+NtoypTMOCqdR4Atc6N3KNmHenMycZ5JxlXCVus0pWuMz3V/u/XDcIERrADWCQyrJSMp8KnmegYrOhY0JwkjjGBMeIBGFIEQ18PIBfIvfLRU7iB4j6tN5a7r0rG9v1ffN7z8uZmz1Vl7GKfanLRw4QZYaHDlht/GaTDHR9vUalMuNDhzkJdhEK3YBQjN1oAB8AyQA+qtzVTsKO2t+cvj85CmmE1ivoBRjHL2/l9xE/kfJWH8W9CJt4VuH0Xt7O2afR6R9HcfzMiIxrHS2dsFuufgQnvPyTFaIEb72OJvygazAfpcx0wcquimkn36+d5K3QlRLXdcUzsBAMjAumb5amQ+iOpkhnmjCQZS5KDhTXslYpB28wmHtHHQ3FiHa9j4uL912Vhp28T02tI5+6qOf6AUC4j0gfIfDbGJ4xXXG1dS+7JBvZwEXUxQQg2sdBH9NusiaYKcs17xwN7hLNYl80fjePZk5yyksDAlOpwBXX3PTmGzAS14opwbVFtHaS8Wejv7BgqgNcu3OS5hXR5hkpGQo9lhfM43e5cU3omZL13EtlAReCL2Hd5GC+4AoifHn1bvLufPwrlHNe1ir/ufbErJSKTwy9fJJKA2MzPqxUzX9gxfynuVTVVOZCTuYiG4YEYz+kpEfMe7h6PVagX6TJ8EkmzHtbrUQtnmsn4bnBKVmK1NzbwjAs1WeQKs7MxiKJnGTXvgW/3OY3XPNrEbh1EnC8YCJn1zkHUyULgIghDeKYhKAuK5EDjCFBqwPvKRajDZZusMiHftQc9HaxeIPtPdW7i330IXrQG0GyOoh3sRu9AXrAkjU2QJ4l8ume2nsCKZyE4hj3zBBAaDv5pamdqxG4MGkGjtOUaw3O+VLP2Zwrbe8gc6aYrW7MEEP9jSdhuyemn2Wtaa6mlVcUemJyfM+AZOtZjxdggeUNd0GM0cMiyLclIneS87OP48vjy7MrCyxqKwhr+yQdX5ivqjlzfU1t2K+jBWGmXGInB2N7LmN7UyfoNZBEW0nq2UnCyM6SfxBJfvQaSOodTBL+BlIpamUpPqjeosM4eg09KUBtHFkRmT1KbqfwRTl6/tiLXu/Yi/4bY29A/92xN6DPHHvRV469IcRoa5SNoR+uDr6Pkf/nMXJvgr1sy+6Sw10nJGpv2Si0s4PilqaNWmak8J9ogutPz8nfBlVQeoMWAAA="
+  ],
+  "cluster_members_display": [
+    "{\"99131903455606421\":{\"display_format\":\"Book\"}}"
+  ],
   "numeric_id_b": true,
   "author_display": [
     "Baker, Benjamin D."
