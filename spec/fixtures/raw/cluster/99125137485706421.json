@@ -1,6 +1,12 @@
 {
   "id": "99125137485706421",
   "cluster_members_s": ["99125137485706421"],
+  "marcxml_bi":[
+    "H4sIAAAAAAAA/7VYbU/jRhD+Kyt/qEAi9q5f4zS4ylGuRQfHicAV9Uu0sTfOSuvddL2GUPHjO04Cx0vkbNuwElICM/M8szN+mPFQs1zpAi0rIetjZ27MYuB59/f3rlC5W6o772J0deITrxa8ctZmg2XNX5neB67SpedjTLzbi/NxPmcV7XFZGypzBl41H9SrX56rnBqu5C4ktOXPbbSC6qL2KqpzYOKtY278Wjd3WRdONhSMFkxnmPgJlrRC1AdqQT8KOAojjIfexmCYK2m0EjPORIEMLY8dSMHJ0pT4EQmSsB8lOA59MvReWm73i5zMxyTBEYkIRMGxi23cYierHtujHh+Lx82xcUycLNfoUT75UBunvpOtKdYJifoIznKJnuDXB74yWaLibbiCGvoyVhA5iMuCHDto9cFvP2TDupmurXJVsGOHOtnBdzoSo/G3Qz/GOA3Sofdkkw2956j/B+Dky6fDMA3x+oQBjtMPQHlKA342mXjzRvP9A53enp/8eZim/zWlEFsibTJ6GfeN0dTJoBk6DJiT6YJ2GORbYTro++HzReEn+ngr/Rt37KITJUvN6hqNcoOMQmcS9GyhNDUMfWVUo1NaG3TFBGezIzRqyga+xkeIpCRFXjfx6QMyc4ZuJDesQGMDMetnQNc2nzh8Vw6yNZ9feW00hzTUDFBEU005RYPu6rzi9uM2jroTax9+W/4Btm0ngpQUXDIEDFSjc4YOCFrQkh3aQgWxJZRhS9N9MabTwF+1bStwTBprdoklu1xVi8Yw3c0w38mvYgWne2fXyFVcaJtufnLP/PqW/N400Y5L1LurTLXmr4uxH56gDTtKLP/eN7vQtsqtI5pxwXYysISOQtuH80yiU1kKXs/dvce+1LzkkgokqCwb0Baw/tdo1op2zY1gaKZV9UPTClbnmi/aKXYlbujgjrN70OAL+oBIdITaKfDQlkscvecSbuXye1NREHuqOZWI8uJjAUYfAPAH1R8RE8FagL5zJZh8rRadAJElwG/qjmlQTGlgHm60QYXKm8r+v0aKbVv70+XlF9ugkVUH5+1K4vs9THp+gnA0COKB76ObsdcORZBWt3qBL+7huEcC5AeDEA9gYrLyhWRmVNTMOhtik83dihHpEdzzMcLJIAJSgR2j0slGgi2hU5iGYUkz1jUdNE42foCQVYeN2bDBSY9ELRvcHxBLNksna/fbGhZcSXHkUlFRly0Fn2pel1o1CxdGCK/VFa9phUdAD3qYfLs6m5x9HV97asFko8UvjctLqTSbwI2ySd62KijSsdEN+4lWi59hDjYzJbiaLHhxHAVJjKM+LMKwUrRr7crmswJVmxQcXgSYlWcH8Rou5vNthwEM6u9QOsxnMKd1I1ZOFpMkCsJ+2k93B5QbGUNXvJybGkrdFByG9sv1THFwDXPjYXfXL6imXYX/q12h0yQNw95Cc5Aco2Qx7XCAYT/2IYUI9/tkdwrw0BY7C6tnxq2qegJV3fKyouvBHN1RLui0cy4Q7aWHKX4+fhiT7iXwrXi9sejv6IuX6uCtX0ll/wDzp9UNmxIAAA=="
+  ],
+  "cluster_members_display": [
+    "{\"99125137485706421\":{\"display_format\":\"Book\"}}"
+  ],
   "numeric_id_b": true,
   "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
   "title_display": "U.S. Congress Act to Incorporate Near East Relief, August 6, 1919 / by the United States Congress.",
