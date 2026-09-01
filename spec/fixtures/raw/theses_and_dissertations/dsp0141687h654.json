@@ -1,24 +1,6 @@
 {
-  "id": "dsp0141687h654",
-  "title_t": [
-    "TESTING THE\r\nEFFICIENT-MARKET HYPOTHESIS\r\nON THE NFL BETTING MARKET"
-  ],
-  "title_citation_display": [
-    "TESTING THE\r\nEFFICIENT-MARKET HYPOTHESIS\r\nON THE NFL BETTING MARKET"
-  ],
-  "title_display": "TESTING THE\r\nEFFICIENT-MARKET HYPOTHESIS\r\nON THE NFL BETTING MARKET",
-  "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/dsp0141687h654\":[\"DataSpace\",\"Citation only\"]}",
-  "restrictions_note_display": [
-    "Walk-in Access. This thesis can only be viewed on computer terminals at the <a href=http://mudd.princeton.edu>Mudd Manuscript Library</a>."
-  ],
-  "call_number_display": [
-    "AC102"
-  ],
-  "call_number_browse_s": [
-    "AC102"
-  ],
-  "language_facet": [
-    "English"
+  "advisor_display": [
+    "Xandri, Juan Pablo"
   ],
   "author_display": [
     "Smith, Desmond"
@@ -28,8 +10,14 @@
     "Xandri, Juan Pablo",
     "Princeton University. Department of Economics"
   ],
-  "advisor_display": [
-    "Xandri, Juan Pablo"
+  "call_number_browse_s": [
+    "AC102"
+  ],
+  "call_number_display": [
+    "AC102"
+  ],
+  "class_year_s": [
+    "2014"
   ],
   "department_display": [
     "Princeton University. Department of Economics"
@@ -37,26 +25,30 @@
   "description_display": [
     "94 pages"
   ],
-  "location": [
-    "Mudd Manuscript Library"
+  "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/dsp0141687h654\":[\"Thesis Central\",\"Full text\"]}",
+  "electronic_portfolio_s": [
+    "{\"thesis\":{\"call_number\":\"AC102\",\"call_number_browse\":\"AC102\",\"dspace\":true}}"
   ],
-  "location_display": [
-    "Mudd Manuscript Library"
-  ],
-  "location_code_s": [
-    "mudd$stacks"
-  ],
-  "advanced_location_s": [
-    "mudd$stacks",
-    "Mudd Manuscript Library"
-  ],
-  "holdings_1display": "{\"thesis\":{\"location\":\"Mudd Manuscript Library\",\"library\":\"Mudd Manuscript Library\",\"location_code\":\"mudd$stacks\",\"call_number\":\"AC102\",\"call_number_browse\":\"AC102\",\"dspace\":true}}",
-  "class_year_s": [
-    "2014"
-  ],
-  "pub_date_start_sort": 2014,
-  "pub_date_end_sort": 2014,
   "format": [
     "Senior thesis"
+  ],
+  "id": "dsp0141687h654",
+  "language_facet": [
+    "English"
+  ],
+  "language_name_display": [
+    "English"
+  ],
+  "pub_date_end_sort": 2014,
+  "pub_date_start_sort": 2014,
+  "restrictions_note_display": [
+    "Walk-in Access. This thesis can only be viewed on computer terminals at the \u003ca href=http://mudd.princeton.edu\u003eMudd Manuscript Library\u003c/a\u003e."
+  ],
+  "title_citation_display": [
+    "TESTING THE\r\nEFFICIENT-MARKET HYPOTHESIS\r\nON THE NFL BETTING MARKET"
+  ],
+  "title_display": "TESTING THE\r\nEFFICIENT-MARKET HYPOTHESIS\r\nON THE NFL BETTING MARKET",
+  "title_t": [
+    "TESTING THE\r\nEFFICIENT-MARKET HYPOTHESIS\r\nON THE NFL BETTING MARKET"
   ]
 }
