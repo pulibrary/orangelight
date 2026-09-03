@@ -128,6 +128,3 @@ group :development, :test do
   gem "erb_lint", require: false
   gem "erblint-github"
 end
-group :production do
-  gem 'datadog'
-end
