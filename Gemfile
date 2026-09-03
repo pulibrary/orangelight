@@ -43,7 +43,6 @@ gem 'jquery-rails'
 gem 'kicks'
 gem 'lcsort', '>= 0.9.1'
 gem 'library_stdnums'
-gem 'lograge'
 gem 'logstash-event'
 gem 'matrix'
 # For memory profiling
@@ -75,6 +74,7 @@ gem 'puma', '~> 8.0'
 gem 'rack-attack'
 # For profiling
 gem 'rack-mini-profiler'
+gem 'rails_semantic_logger'
 gem 'rake'
 # Needed for rack-mini-profiler storage
 gem 'redis'
