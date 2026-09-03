@@ -374,11 +374,6 @@ GEM
     lint_roller (1.1.0)
     llhttp (0.6.2)
     logger (1.7.0)
-    lograge (0.15.0)
-      actionpack (>= 4)
-      activesupport (>= 4)
-      railties (>= 4)
-      request_store (~> 1.0)
     logstash-event (1.2.02)
     loofah (2.25.2)
       crass (~> 1.0.2)
@@ -595,6 +590,10 @@ GEM
     rails-html-sanitizer (1.7.1)
       loofah (~> 2.25, >= 2.25.2)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
+    rails_semantic_logger (5.1.0)
+      rack
+      railties (>= 7.2)
+      semantic_logger (>= 5.1)
     railties (8.1.3.1)
       actionpack (= 8.1.3.1)
       activesupport (= 8.1.3.1)
@@ -631,8 +630,6 @@ GEM
     regexp_parser (2.12.0)
     reline (0.7.0)
       io-console (~> 0.5)
-    request_store (1.7.0)
-      rack (>= 1.4)
     responders (3.2.0)
       actionpack (>= 7.0)
       railties (>= 7.0)
@@ -714,6 +711,8 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
+    semantic_logger (5.1.0)
+      concurrent-ruby (~> 1.0)
     serverengine (2.4.0)
       base64 (~> 0.1)
       logger (~> 1.4)
@@ -886,7 +885,6 @@ DEPENDENCIES
   kicks
   lcsort (>= 0.9.1)
   library_stdnums
-  lograge
   logstash-event
   matrix
   memory_profiler
@@ -914,6 +912,7 @@ DEPENDENCIES
   rack-mini-profiler
   rails (~> 8.1)
   rails-controller-testing
+  rails_semantic_logger
   rake
   redis
   reek
