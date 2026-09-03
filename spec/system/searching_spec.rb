@@ -215,6 +215,14 @@ describe 'Searching', type: :system, js: false do
       expect(field_value).to include('Audio')
     end
   end
+
+  it 'does not error on a very long query' do
+    visit '/catalog?search_field=all_fields&q=The+fyrst+boke+of+the+introduction+of+knowledge+:+' \
+          'The+whych+dothe+teache+a+man+to+speake+parte+of+all+maner+of+languages,+and+to+knowe+the+vsage+and+fashion+of+al+maner+of+countreys.+' \
+          'And+for+to+know+the+moste+parte+of+all+maner+of+coynes+of+money,+the+whych+is+currant+in+euery+region+Made+by+Andrew+Borde,+of+Physycke+Doctor.+' \
+          'Dedycated+to+the+right+honorable+[and]+gracio[us]+lady+Mary+doughter+of+our+souerayne+lorde+king+Henry+the+eyght.'
+    expect(page).to have_link href: '/catalog/99131735570606421'
+  end
 end
 
 def search_results_count
