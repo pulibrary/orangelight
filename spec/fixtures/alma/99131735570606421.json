@@ -1,0 +1,103 @@
+{
+    "id": "99131735570606421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Boorde, Andrew, 1490?-1549"
+    ],
+    "author_citation_display": [
+        "Boorde, Andrew"
+    ],
+    "author_roles_1display": "{\"primary_author\":\"Boorde, Andrew\",\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+    "author_s": [
+        "Boorde, Andrew, 1490?-1549"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "The fyrst boke of the introduction of knowledge : The whych dothe teache a man to speake parte of all maner of languages, and to knowe the vsage and fashion of al maner of countreys. And for to know the moste parte of all maner of coynes of money, the whych is currant in euery region Made by Andrew Borde, of Physycke Doctor. Dedycated to the right honorable [and] gracio[us] lady Mary doughter of our souerayne lorde king Henry the eyght.",
+    "title_t": [
+        ""
+    ],
+    "title_citation_display": [
+        "The fyrst boke of the introduction of knowledge : The whych dothe teache a man to speake parte of all maner of languages, and to knowe the vsage and fashion of al maner of countreys. And for to know the moste parte of all maner of coynes of money, the whych is currant in euery region Made by Andrew Borde, of Physycke Doctor. Dedycated to the right honorable [and] gracio[us] lady Mary doughter of our souerayne lorde king Henry the eyght"
+    ],
+    "pub_created_display": [
+        "[Impryinted at London : In fleetestrete, at the signe of the Rose Garland, by me William Copland, [1555?]]"
+    ],
+    "pub_created_s": [
+        "[Impryinted at London : In fleetestrete, at the signe of the Rose Garland, by me William Copland, [1555?]]"
+    ],
+    "pub_citation_display": [
+        "Impryinted at London: In fleetestrete, at the signe of the Rose Garland, by me William Copland"
+    ],
+    "publication_location_citation_display": [
+        "Impryinted at London"
+    ],
+    "publisher_citation_display": [
+        "In fleetestrete, at the signe of the Rose Garland, by me William Copland"
+    ],
+    "pub_date_display": [
+        "1555"
+    ],
+    "pub_date_start_sort": 1555,
+    "publication_date_citation_display": [
+        "1555"
+    ],
+    "cataloged_tdt": "2019-09-07T20:19:43Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "[104] p. : ill."
+    ],
+    "description_t": [
+        "[104] p. : ill."
+    ],
+    "number_of_pages_citation_display": [
+        "[104] p."
+    ],
+    "notes_display": [
+        "Partly in verse.",
+        "Printer's name and address from colophon; publication date conjectured by STC.",
+        "Signatures: A-N⁴.",
+        "Reproduction of the original in the British Library."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "mult_languages_iana_s": [
+        "en"
+    ],
+    "references_display": [
+        "STC (2nd ed.) 3383."
+    ],
+    "references_url_display": [
+        "STC (2nd ed.) 3383."
+    ],
+    "lc_subject_display": [
+        "Geography—Early works to 1800",
+        "Manners and customs—Early works to 1800"
+    ],
+    "subject_facet": [
+        "Geography—Early works to 1800",
+        "Manners and customs—Early works to 1800"
+    ],
+    "lc_subject_facet": [
+        "Geography",
+        "Geography—Early works to 1800",
+        "Manners and customs",
+        "Manners and customs—Early works to 1800"
+    ],
+    "name_title_browse_s": [
+        "Boorde, Andrew, 1490?-1549. The fyrst boke of the introduction of knowledge"
+    ],
+    "electronic_portfolio_s": [
+        "{\"desc\":null,\"title\":\"Early English Books Online\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true\u0026portfolio_pid=53788726420006421\u0026Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+    ]
+}

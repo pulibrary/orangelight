@@ -5,6 +5,14 @@ class SearchBuilder < Blacklight::SearchBuilder
   include BlacklightRangeLimit::RangeLimitBuilder
   include BlacklightHelper
 
+  # The maximum number of words in a query
+  # At time of writing, solr is configured with a maximum of 1,024 clauses
+  # In the default OR search, each word counts as a clause -- and those clauses are repeated for
+  # every qf and pf we have defined in the query (50 at time of writing)
+  # Make sure you have some padding, that is to say MAX_WORDS * (QF_COUNT + PF_COUNT) should be less than 1,024
+  # You can see the clauses produced by a query in the solr ui: check the debugQuery box and check out the parsedquery
+  MAX_WORDS = 20
+
   default_processor_chain.delete(:add_facets_for_advanced_search_form)
   default_processor_chain.unshift(:conditionally_configure_json_query_dsl)
 
@@ -12,7 +20,7 @@ class SearchBuilder < Blacklight::SearchBuilder
                                      cjk_mm wildcard_char_strip
                                      only_home_facets prepare_left_anchor_search
                                      series_title_results pul_holdings html_facets
-                                     numismatics_advanced
+                                     numismatics_advanced truncate_long_queries
                                      adjust_mm remove_unneeded_facets remove_deftype]
 
   # mutate the solr_parameters to remove words that are
@@ -107,6 +115,10 @@ class SearchBuilder < Blacklight::SearchBuilder
     # Inlcuding a defType=lucene, as stock blacklight does, can cause our facet-only
     # advanced search results to be empty
     solr_parameters.delete('defType')
+  end
+
+  def truncate_long_queries(solr_parameters)
+    transform_queries!(solr_parameters) { |query| query.split(/\s/)[..MAX_WORDS].join(' ') }
   end
 
   private
