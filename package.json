@@ -31,7 +31,7 @@
     "lint-staged": "^17.3.0",
     "prettier": "^3.9.6",
     "sass-embedded": "^1.102.0",
-    "simple-git-hooks": "^2.13.1",
+    "simple-git-hooks": "^2.14.0",
     "stylelint": "^16.26.1",
     "stylelint-config-standard-scss": "^16.0.0",
     "vite": "^8.2.1",
