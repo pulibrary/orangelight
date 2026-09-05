@@ -28,7 +28,7 @@
     "globals": "^17.11.0",
     "jquery": "^4.0.0",
     "jsdom": "^30.0.1",
-    "lint-staged": "^17.3.0",
+    "lint-staged": "^17.4.1",
     "prettier": "^3.9.6",
     "sass-embedded": "^1.102.0",
     "simple-git-hooks": "^2.13.1",
