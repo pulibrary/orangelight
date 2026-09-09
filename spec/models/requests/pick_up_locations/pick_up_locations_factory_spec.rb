@@ -87,4 +87,20 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory, :requests do
                                                             ["Firestone Library", "PA"]
                                                           ])
   end
+
+  it 'returns pickup locations for on-shelf Commons title' do
+    location = Requests::Location.new single_holding_data_from_fixture('commons$stacks')
+    form = instance_double(Requests::Form)
+    requestable = instance_double(Requests::Requestable, partner_holding?: false, location:, ill_eligible?: false, annex?: false, recap?: false, patron: instance_double(Requests::Patron, library_staff_patron_group?: false, affiliate_patron_group?: false))
+    factory = described_class.new(form:, requestable:)
+
+    expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
+                                                            ["Architecture Library", "PW"],
+                                                            ["East Asian Library", "PL"],
+                                                            ["Engineering Library", "PT"],
+                                                            ["Mendel Music Library", "PK"],
+                                                            ["Stokes Library", "PM"],
+                                                            ["Firestone Library", "PA"]
+                                                          ])
+  end
 end

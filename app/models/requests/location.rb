@@ -86,7 +86,7 @@ module Requests
     def standard_circ_location?
       return false if code.blank?
 
-      code.start_with?("arch$", "eastasian$", "engineer$", "firestone$", "plasma$", "lewis", "mendel$", "stokes$") && fulfillment_unit == 'General'
+      code.start_with?("arch$", "commons$", "eastasian$", "engineer$", "firestone$", "plasma$", "lewis", "mendel$", "stokes$") && fulfillment_unit == 'General'
     end
 
     ## Accepts an array of location hashes and sorts them according to our quirks
