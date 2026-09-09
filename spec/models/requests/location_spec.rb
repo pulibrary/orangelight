@@ -119,37 +119,6 @@ RSpec.describe Requests::Location, requests: true do
     end
   end
 
-  describe '#filter_pick_ups' do
-    let(:delivery_locations_with_pf) do
-      [
-        { "label" => "Firestone Library", "gfa_pickup" => "PA", "staff_only" => false },
-        { "label" => "Firestone Library, Microforms", "gfa_pickup" => "PF", "staff_only" => false },
-        { "label" => "Architecture Library", "gfa_pickup" => "PW", "staff_only" => false }
-      ]
-    end
-
-    context 'when location code is firestone$pf' do
-      let(:location) { described_class.new({ "code" => "firestone$pf", "delivery_locations" => delivery_locations_with_pf }) }
-
-      it 'filters to only PF locations' do
-        result = location.filter_pick_ups
-        expect(result).to eq([{ "label" => "Firestone Library, Microforms", "gfa_pickup" => "PF", "staff_only" => false }])
-      end
-    end
-
-    context 'when location code is not firestone' do
-      let(:location) { described_class.new({ "code" => "arch$stacks", "delivery_locations" => delivery_locations_with_pf }) }
-
-      it 'rejects PF locations' do
-        result = location.filter_pick_ups
-        expect(result).to eq([
-                               { "label" => "Firestone Library", "gfa_pickup" => "PA", "staff_only" => false },
-                               { "label" => "Architecture Library", "gfa_pickup" => "PW", "staff_only" => false }
-                             ])
-      end
-    end
-  end
-
   describe '#sort_and_filter_pick_ups' do
     let(:delivery_locations_with_pf) do
       [
