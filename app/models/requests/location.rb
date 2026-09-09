@@ -94,11 +94,6 @@ module Requests
       self.class.sort_pick_up_locations(delivery_locations)
     end
 
-    ## Filter pickup locations based on the location code
-    def filter_pick_ups
-      self.class.filter_pick_up_locations_by_code(delivery_locations, code)
-    end
-
     ## Accepts an array of location hashes, filters them based on the location code, and sorts them
     def sort_and_filter_pick_ups
       location_class = self.class
