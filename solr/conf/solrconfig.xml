@@ -144,9 +144,7 @@
         author_unstem_search^88
         subject_topic_unstem_search^39.6
         subject_unstem_search^33
-        siku_subject_unstem_search^33
-        local_subject_unstem_search^33
-        homoit_subject_unstem_search^33
+        specialized_thesaurus_subject_unstem_search^33
         subject_topic_index^26.4
         genre_unstem_search^22
         subject_t^22
@@ -172,9 +170,7 @@
         author_unstem_search^880
         subject_topic_unstem_search^396
         subject_unstem_search^330
-        siku_subject_unstem_search^330
-        local_subject_unstem_search^330
-        homoit_subject_unstem_search^330
+        specialized_thesaurus_subject_unstem_search^330
         subject_topic_index^264
         genre_unstem_search^220
         subject_t^220
@@ -305,9 +301,7 @@
         subject_topic_unstem_search^55
         subject_unstem_search^44
         genre_unstem_search^33
-        siku_subject_unstem_search^2.2
-        local_subject_unstem_search^2.2
-        homoit_subject_unstem_search^2.2
+        specialized_thesaurus_subject_unstem_search^2.2
         cjk_subject^2.2
         non_latin_non_cjk_subject_index^2.2
         icpsr_subject_unstem_search
@@ -316,9 +310,7 @@
         subject_topic_unstem_search^550
         subject_unstem_search^440
         genre_unstem_search^330
-        siku_subject_unstem_search^22
-        local_subject_unstem_search^22
-        homoit_subject_unstem_search^22
+        specialized_thesaurus_subject_unstem_search^22
         cjk_subject^22
         non_latin_non_cjk_subject_index^22
       </str>
