@@ -50,7 +50,8 @@ module Requests::Submissions
 
     def send_mail
       return if duplicate?
-      super
+      hashed_submission = submission.to_h # Sidekiq will only accept a hash, not a Requests::Submission object
+      Requests::RequestMailer.send("#{service_type}_confirmation", hashed_submission).deliver_later
     end
 
     private
