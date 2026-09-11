@@ -40,6 +40,7 @@ gem 'jbuilder', '~> 2.15'
 # jest tests use yarn to get jquery; if upgrading here keep that version in sync
 gem 'jquery-datatables' # used by requests (please do not remove)
 gem 'jquery-rails'
+gem "json", "~> 2.21"
 gem 'kicks'
 gem 'lcsort', '>= 0.9.1'
 gem 'library_stdnums'
