@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 module Requests
+
   module ServiceEligibility
     # This class is responsible for determining if a specific
     # resource can be requested via Aeon
