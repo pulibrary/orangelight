@@ -13,7 +13,7 @@ module Requests
       raise "You are missing a configuration file: #{requests_config_file}. Have you run \"rails generate requests:install\"?" unless File.exist?(requests_config_file)
 
       begin
-        requests_erb = ERB.new(IO.read(requests_config_file)).result(binding)
+        requests_erb = ERB.new(File.read(requests_config_file)).result(binding)
       rescue StandardError, SyntaxError => e
         raise("#{requests_config_file} was found, but could not be parsed with ERB. \n#{e.inspect}")
       end
