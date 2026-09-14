@@ -83,7 +83,7 @@ module Orangelight
     config.middleware.insert_before Rack::MethodOverride, Orangelight::Middleware::NoFileUploads
 
     config.rails_semantic_logger.appenders do |appenders|
-      appenders.add(file_name: "log/#{Rails.env}.log", formatter: :json)
+      appenders.add(file_name: "log/#{Rails.env}.log", formatter: :json_filter_formatter)
     end
   end
 end
