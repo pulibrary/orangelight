@@ -117,8 +117,13 @@ class SearchBuilder < Blacklight::SearchBuilder
     solr_parameters.delete('defType')
   end
 
+  # :reek:FeatureEnvy
   def truncate_long_queries(solr_parameters)
-    transform_queries!(solr_parameters) { |query| query.split(/\s/)[..MAX_WORDS].join(' ') }
+    transform_queries!(solr_parameters) do |query|
+      next query if query.match?(/\A\{!lucene\}id:\([^)]*\)\z/)
+
+      query.split(/\s/)[..MAX_WORDS].join(' ')
+    end
   end
 
   private

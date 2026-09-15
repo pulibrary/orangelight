@@ -79,6 +79,26 @@ RSpec.describe SearchBuilder do
     end
   end
 
+  describe '#truncate_long_queries' do
+    it 'does not truncate a bulk document ID filter' do
+      ids = (1..12).map { |id| "991223049235064#{id}" }
+      solr_parameters = { q: "{!lucene}id:(#{ids.join(' OR ')})" }
+
+      subject.truncate_long_queries(solr_parameters)
+
+      expect(solr_parameters[:q]).to eq("{!lucene}id:(#{ids.join(' OR ')})")
+    end
+
+    it 'still truncates long queries with multiple words' do
+      query = (1..25).map { |word| "Bonjour! #{word}" }.join(' ')
+      solr_parameters = { q: query }
+
+      subject.truncate_long_queries(solr_parameters)
+
+      expect(solr_parameters[:q]).to eq(query.split(/\s/)[..SearchBuilder::MAX_WORDS].join(' '))
+    end
+  end
+
   describe '#only_home_facets' do
     let(:blacklight_params) do
       { q: 'Douglas fir' }
