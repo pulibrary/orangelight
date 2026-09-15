@@ -911,7 +911,7 @@ describe Requests::Submission, requests: true do
         expect(submission).to be_valid
         expect do
           submission.process_submission
-        end.to change { ActionMailer::Base.deliveries.count }.by(2)
+        end.to change { ActionMailer::Base.deliveries.count }.by(1)
         expect(alma_stub).to have_been_requested
       end
 
@@ -954,7 +954,7 @@ describe Requests::Submission, requests: true do
         expect(submission).to be_valid
         expect do
           submission.process_submission
-        end.to change { ActionMailer::Base.deliveries.count }.by(2)
+        end.to change { ActionMailer::Base.deliveries.count }.by(1)
         expect(submission.service_errors.count).to eq(0)
         expect(alma_stub).to have_been_requested
       end
