@@ -172,7 +172,7 @@ module Requests
 
       # :reek:UtilityFunction
       def annex_no_items?(item)
-        item["library_code"] == 'annex' && item["type"] == "annex_no_items"
+        item["library_code"] == 'annex' && item["fill_in"] == "true"
       end
 
       def off_site?(library_code)
