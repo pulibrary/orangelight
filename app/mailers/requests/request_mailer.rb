@@ -88,6 +88,27 @@ module Requests
       request_email(submission:, subject_key: 'requests.annex_no_items.email_subject', destination_key: 'requests.annex_no_items.email')
     end
 
+    def on_shelf_no_items_email(submission)
+      @submission = Submission.new_from_hash submission
+      location_email = get_location_contact_email(@submission.items.first[:location_code])
+      # Location and destination are the same forthe moment
+      # destination_email = I18n.t('requests.on_shelf.email')
+      subject = "#{I18n.t('requests.on_shelf.email_subject')} (#{@submission.items.first[:location_code].upcase}) #{@submission.items.first[:call_number]}"
+      mail(to: location_email,
+           # cc: destination_email,
+           from: I18n.t('requests.default.email_from'),
+           subject:)
+    end
+
+    def on_shelf_no_items_confirmation(submission)
+      @submission = Submission.new_from_hash submission
+      destination_email = @submission.email
+      subject = "#{Requests::BibdataService.delivery_locations[@submission.items.first['pick_up']]['label']} #{I18n.t('requests.on_shelf.email_subject_patron')}"
+      mail(to: destination_email,
+           from: I18n.t('requests.default.email_from'),
+           subject:)
+    end
+
     def annex_no_items_confirmation(submission)
       @submission = Submission.new_from_hash submission
       destination_email = @submission.email

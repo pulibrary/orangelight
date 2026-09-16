@@ -178,7 +178,7 @@ module Requests
       end
 
       def on_shelf_no_items?(item)
-        print?(item) && library_code.present? && item["fill_in"] == "true"
+        print?(item) && item["library_code"].present? && item["fill_in"] == "true"
       end
 
       def off_site?(library_code)
