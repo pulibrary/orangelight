@@ -154,6 +154,8 @@ module Requests
           item["type"] += "_in_library" if in_library?(item)
         elsif edd?(item) && library_code.present?
           item["type"] = "digitize"
+        elsif on_shelf_no_items?(item)
+          item["type"] = "on_shelf_no_items"
         elsif print?(item) && library_code.present?
           item["type"] = "on_shelf"
         end
@@ -167,12 +169,16 @@ module Requests
       end
 
       def recap_no_items?(item)
-        item["library_code"] == 'recap' && (item["type"] == "digitize_fill_in" || item["type"] == "recap_no_items")
+        item["library_code"] == 'recap' && (item["type"] == "digitize_fill_in" || item["type"] == "recap_no_items" || item["fill_in"] == "true")
       end
 
       # :reek:UtilityFunction
       def annex_no_items?(item)
         item["library_code"] == 'annex' && item["fill_in"] == "true"
+      end
+
+      def on_shelf_no_items?(item)
+        print?(item) && library_code.present? && item["fill_in"] == "true"
       end
 
       def off_site?(library_code)
