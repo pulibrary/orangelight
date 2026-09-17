@@ -10,11 +10,12 @@ RSpec.describe Holdings::HoldingAvailabilityComponent, type: :component do
       {}, # location_rules
       nil # temp_location_code
     )
-    expect(render_inline(holding_availability).css('td').length).to eq 1
-    expect(render_inline(holding_availability).css('td').attribute('class').value).to eq 'holding-status'
-    expect(render_inline(holding_availability).css('td').attribute('data-availability-record').value).to eq 'true'
-    expect(render_inline(holding_availability).css('td').attribute('data-record-id').value).to eq '994831543506421'
-    expect(render_inline(holding_availability).css('td').attribute('data-holding-id').value).to eq '22549882290006421'
+    rendered = render_inline(holding_availability)
+    expect(rendered.css('td').length).to eq 1
+    expect(rendered.css('td').attribute('class').value).to eq 'holding-status'
+    expect(rendered.css('td').attribute('data-availability-record').value).to eq 'true'
+    expect(rendered.css('td').attribute('data-record-id').value).to eq '994831543506421'
+    expect(rendered.css('td').attribute('data-holding-id').value).to eq '22549882290006421'
   end
 
   it "includes an availability icon" do
@@ -25,7 +26,8 @@ RSpec.describe Holdings::HoldingAvailabilityComponent, type: :component do
       {}, # location_rules
       nil # temp_location_code
     )
-    expect(render_inline(holding_availability).css('td span').attribute('class').value).to include 'availability-icon'
+    rendered = render_inline(holding_availability)
+    expect(rendered.css('td span').attribute('class').value).to include 'availability-icon'
   end
 
   it "can use the holding source_id as the data-record-id if present" do
@@ -36,7 +38,8 @@ RSpec.describe Holdings::HoldingAvailabilityComponent, type: :component do
       {}, # location_rules
       nil # temp_location_code
     )
-    expect(render_inline(holding_availability).css('td').attribute('data-record-id').value).to eq '12345'
+    rendered = render_inline(holding_availability)
+    expect(rendered.css('td').attribute('data-record-id').value).to eq '12345'
   end
 
   context "temp_location_code is RES_SHARE$IN_RS_REQ" do
@@ -48,12 +51,13 @@ RSpec.describe Holdings::HoldingAvailabilityComponent, type: :component do
         {}, # location_rules
         "RES_SHARE$IN_RS_REQ" # temp_location_code
       )
-      expect(render_inline(holding_availability).css('td').length).to eq 1
-      expect(render_inline(holding_availability).css('td').attribute('class').value).to eq 'holding-status'
-      expect(render_inline(holding_availability).css('td').attribute('data-availability-record').value).to eq 'true'
-      expect(render_inline(holding_availability).css('td').attribute('data-record-id').value).to eq '994831543506421'
-      expect(render_inline(holding_availability).css('td').attribute('data-holding-id').value).to eq '22549882290006421'
-      expect(render_inline(holding_availability).css('td').attribute('data-temp-location-code').value).to eq 'RES_SHARE$IN_RS_REQ'
+      rendered = render_inline(holding_availability)
+      expect(rendered.css('td').length).to eq 1
+      expect(rendered.css('td').attribute('class').value).to eq 'holding-status'
+      expect(rendered.css('td').attribute('data-availability-record').value).to eq 'true'
+      expect(rendered.css('td').attribute('data-record-id').value).to eq '994831543506421'
+      expect(rendered.css('td').attribute('data-holding-id').value).to eq '22549882290006421'
+      expect(rendered.css('td').attribute('data-temp-location-code').value).to eq 'RES_SHARE$IN_RS_REQ'
     end
   end
   context "temp_location_code is not RES_SHARE$IN_RS_REQ" do
@@ -65,12 +69,13 @@ RSpec.describe Holdings::HoldingAvailabilityComponent, type: :component do
         {}, # location_rules
         "commons$stacks" # temp_location_code
       )
-      expect(render_inline(holding_availability).css('td').length).to eq 1
-      expect(render_inline(holding_availability).css('td').attribute('class').value).to eq 'holding-status'
-      expect(render_inline(holding_availability).css('td').attribute('data-availability-record').value).to eq 'true'
-      expect(render_inline(holding_availability).css('td').attribute('data-record-id').value).to eq '994831543506421'
-      expect(render_inline(holding_availability).css('td').attribute('data-holding-id').value).to eq '22549882290006421'
-      expect(render_inline(holding_availability).css('td').attribute('data-temp-location-code').value).to eq 'true'
+      rendered = render_inline(holding_availability)
+      expect(rendered.css('td').length).to eq 1
+      expect(rendered.css('td').attribute('class').value).to eq 'holding-status'
+      expect(rendered.css('td').attribute('data-availability-record').value).to eq 'true'
+      expect(rendered.css('td').attribute('data-record-id').value).to eq '994831543506421'
+      expect(rendered.css('td').attribute('data-holding-id').value).to eq '22549882290006421'
+      expect(rendered.css('td').attribute('data-temp-location-code').value).to eq 'true'
     end
   end
 end
