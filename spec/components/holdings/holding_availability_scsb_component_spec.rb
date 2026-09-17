@@ -11,13 +11,14 @@ RSpec.describe Holdings::HoldingAvailabilityScsbComponent, type: :component do
       'SCSB-14168459', # doc_id
       '7854805' # holding_id
     )
-    expect(render_inline(holding_location).css('td').length).to eq 1
-    expect(render_inline(holding_location).css('td').attribute('class').value).to eq 'holding-status'
-    expect(render_inline(holding_location).css('td').attribute('data-availability-record').value).to eq 'true'
-    expect(render_inline(holding_location).css('td').attribute('data-record-id').value).to eq 'SCSB-14168459'
-    expect(render_inline(holding_location).css('td').attribute('data-holding-id').value).to eq '7854805'
-    expect(render_inline(holding_location).css('td').attribute('data-scsb-barcode').value).to eq '33433097876571'
-    expect(render_inline(holding_location).css('td').attribute('data-aeon').value).to eq 'false'
+    rendered = render_inline(holding_location)
+    expect(rendered.css('td').length).to eq 1
+    expect(rendered.css('td').attribute('class').value).to eq 'holding-status'
+    expect(rendered.css('td').attribute('data-availability-record').value).to eq 'true'
+    expect(rendered.css('td').attribute('data-record-id').value).to eq 'SCSB-14168459'
+    expect(rendered.css('td').attribute('data-holding-id').value).to eq '7854805'
+    expect(rendered.css('td').attribute('data-scsb-barcode').value).to eq '33433097876571'
+    expect(rendered.css('td').attribute('data-aeon').value).to eq 'false'
   end
 
   it "includes an availability icon" do
@@ -26,8 +27,9 @@ RSpec.describe Holdings::HoldingAvailabilityScsbComponent, type: :component do
       'SCSB-14168459', # doc_id
       '7854805' # holding_id
     )
-    expect(render_inline(holding_location).css('td span').attribute('class').value).to include 'availability-icon'
-    expect(render_inline(holding_location).css('td span').attribute('class').value).to include 'lux-text-style'
+    rendered = render_inline(holding_location)
+    expect(rendered.css('td span').attribute('class').value).to include 'availability-icon'
+    expect(rendered.css('td span').attribute('class').value).to include 'lux-text-style'
   end
 
   it 'can use the holding source_id as the data-record-id if present' do
