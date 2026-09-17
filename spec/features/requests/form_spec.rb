@@ -229,8 +229,8 @@ describe 'request form', type: :feature, requests: true do
         end
       end
 
-      #     # This is an example item that was in incorrect state.
-      #     # It has changed. We still want to keep this scenario in case it happens again.
+      # This is an example item that was in incorrect state.
+      # It has changed. We still want to keep this scenario in case it happens again.
       it 'allows CAS patrons to request a ReCAP PUL record that has no item data' do
         stub_availability_by_holding_id(bib_id: '99113283293506421', holding_id: '22750642660006421')
         stub_catalog_raw(bib_id: '99113283293506421')
