@@ -194,7 +194,6 @@
           <!-- Filters for individual characters -->
           <charFilter name="patternReplace" pattern="[ʹ’՚Ꞌꞌ']" replacement="" />
           <charFilter name="patternReplace" pattern="\p{Punct}" replacement="" />
-          <charFilter name="patternReplace" pattern="\s+" replacement=" " />
           <!-- Tokenize the string -->
           <tokenizer name="standard"/>
           <!-- Remove trailing and leading spaces -->
