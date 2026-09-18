@@ -10,33 +10,33 @@ RSpec.describe Requests::ServiceEligibility::OnShelfNoItems, requests: true do
   describe '#eligible?' do
     it 'returns true if all criteria are met' do
       allow(requestable).to receive_messages(
-          aeon?: false,
-          alma_managed?: true,
-          charged?: false,
-          in_process?: false,
-          circulates?: true,
-          annex?: false,
-          recap?: false,
-          recap_pf?: false,
-          held_at_marquand_library?: false,
-          item_data?: false
-        )
+        aeon?: false,
+        alma_managed?: true,
+        charged?: false,
+        in_process?: false,
+        circulates?: true,
+        annex?: false,
+        recap?: false,
+        recap_pf?: false,
+        held_at_marquand_library?: false,
+        item_data?: false
+      )
 
       expect(eligibility.eligible?).to be(true)
     end
     it 'returns false if the item is in the annex' do
       allow(requestable).to receive_messages(
-          aeon?: false,
-          charged?: false,
-          alma_managed?: true,
-          in_process?: false,
-          circulates?: true,
-          annex?: true,
-          recap?: false,
-          recap_pf?: false,
-          held_at_marquand_library?: false,
-          item_data?: false
-        )
+        aeon?: false,
+        charged?: false,
+        alma_managed?: true,
+        in_process?: false,
+        circulates?: true,
+        annex?: true,
+        recap?: false,
+        recap_pf?: false,
+        held_at_marquand_library?: false,
+        item_data?: false
+      )
 
       expect(eligibility.eligible?).to be(false)
     end

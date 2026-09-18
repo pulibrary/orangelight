@@ -90,10 +90,12 @@ module Requests
 
     def on_shelf_no_items_email(submission)
       @submission = Submission.new_from_hash submission
-      location_email = get_location_contact_email(@submission.items.first[:location_code])
+      first_item = @submission.items.first
+      location_code = first_item[:location_code]
+      location_email = get_location_contact_email(location_code)
       # Location and destination are the same forthe moment
       # destination_email = I18n.t('requests.on_shelf.email')
-      subject = "#{I18n.t('requests.on_shelf.email_subject')} (#{@submission.items.first[:location_code].upcase}) #{@submission.items.first[:call_number]}"
+      subject = "#{I18n.t('requests.on_shelf.email_subject')} (#{location_code.upcase}) #{first_item[:call_number]}"
       mail(to: location_email,
            # cc: destination_email,
            from: I18n.t('requests.default.email_from'),
