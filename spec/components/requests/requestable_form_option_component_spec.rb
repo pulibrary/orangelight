@@ -21,7 +21,8 @@ RSpec.describe Requests::RequestableFormOptionComponent, :requests, type: :compo
         ill_eligible?: false, location: Requests::Location.new({ 'code' => 'firestone$stacks', 'fulfillment_unit' => 'General' }), charged?: false,
         off_site_location: 'firestone', enum_value: '', cron_value: '', illiad_request_parameters: {},
         location_label: 'Firestone Library - Stacks', call_number: 'Q125 .S35 2007', patron_should_contact_marquand?: false,
-        recap?: false, annex?: false, delivery_location_label: nil
+        recap?: false, annex?: false, delivery_location_label: nil,
+        null_item?: false
       )
       default_pick_ups = [{ label: "Firestone Library", gfa_pickup: "PF", pick_up_location_code: "firestone", staff_only: false }]
       form = double Requests::Form

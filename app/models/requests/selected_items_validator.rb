@@ -36,6 +36,8 @@ module Requests
           validate_recap_no_items(record, selected)
         when 'annex_no_items'
           validate_annex_no_items(record, selected)
+        when 'on_shelf_no_items'
+          validate_on_shelf_no_items(record, selected)
         when 'recap', 'recap_edd', 'recap_in_library', 'marquand_in_library', 'recap_marquand_edd', 'recap_marquand_in_library'
           validate_offsite(record, selected)
         when 'on_shelf'
@@ -45,6 +47,10 @@ module Requests
         else
           record.errors.add(:items, { selected['mfhd'] => { 'text' => 'Please choose a Request Method for your selected item.', 'type' => 'pick_up' } })
         end
+      end
+
+      def selected_valid?
+        selected['pick_up'].present? || selected['edd_art_title'].present?
       end
 
       def validate_ill_on_shelf(record, selected, pick_up_phrase: 'your selected item', action_phrase: 'Requested')
@@ -64,16 +70,23 @@ module Requests
       end
 
       def validate_recap_no_items(record, selected)
-        return if selected['pick_up'].present? || selected['edd_art_title'].present?
+        return if selected_valid?
 
         record.errors.add(:items, { selected['mfhd'] => { 'text' => 'Please select a pick-up location for your selected ReCAP item', 'type' => 'pick_up' } })
       end
 
       # :reek:UtilityFunction
       def validate_annex_no_items(record, selected)
-        return if selected['pick_up'].present? || selected['edd_art_title'].present?
+        return if selected_valid?
 
         record.errors.add(:items, { selected['mfhd'] => { 'text' => 'Please select a pick-up location for your selected Annex item', 'type' => 'pick_up' } })
+      end
+
+      # :reek:UtilityFunction
+      def validate_on_shelf_no_items(record, selected)
+        return if selected_valid?
+
+        record.errors.add(:items, { selected['mfhd'] => { 'text' => 'Please select a pick-up location for your selected on shelf item', 'type' => 'pick_up' } })
       end
 
       def validate_offsite(record, selected)

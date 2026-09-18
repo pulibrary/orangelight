@@ -5,6 +5,7 @@
   <input type="hidden" name="requestable[][call_number]" value="<%= requestable.holding.holding_data['call_number'].to_s %>" id="requestable_call_number_<%= request_id %>" />
 <% end -%>
 <input type="hidden" name="requestable[][location_code]" value="<%= requestable.item_location_code.to_s %>" id="requestable_location_<%= request_id %>" />
+<input type="hidden" name="requestable[][null_item]" value="<%= requestable.null_item? %>" id="requestable_null_item_<%= request_id %>" />
 <% if requestable.item? -%>
   <input type="hidden" name="requestable[][item_id]" value="<%= request_id.to_s %>" id="requestable_item_id_<%= request_id %>" />
   <% unless barcode.nil? -%>

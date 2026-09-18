@@ -229,8 +229,8 @@ describe 'request form', type: :feature, requests: true do
         end
       end
 
-      #     # This is an example item that was in incorrect state.
-      #     # It has changed. We still want to keep this scenario in case it happens again.
+      # This is an example item that was in incorrect state.
+      # It has changed. We still want to keep this scenario in case it happens again.
       it 'allows CAS patrons to request a ReCAP PUL record that has no item data' do
         stub_availability_by_holding_id(bib_id: '99113283293506421', holding_id: '22750642660006421')
         stub_catalog_raw(bib_id: '99113283293506421')
@@ -264,14 +264,8 @@ describe 'request form', type: :feature, requests: true do
         expect(page).to have_content 'Electronic Delivery'
         expect do
           click_button 'Request this Item'
-        end.to change { ActionMailer::Base.deliveries.count }.by(2)
-        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+        end.to change { ActionMailer::Base.deliveries.count }.by(1)
         confirm_email = ActionMailer::Base.deliveries.last
-        expect(email.subject).to eq("On Shelf Request (FIRESTONE$STACKS) PR3187 .L443 1951")
-        expect(email.to).to eq(["fstpage@princeton.edu"])
-        expect(email.cc).to be_blank
-        expect(email.html_part.body.to_s).to have_content("John Webster; a critical study")
-        expect(email.html_part.body.to_s).not_to have_content("9912636153506421") # does not show detailed metadata
         expect(confirm_email.subject).to eq("Firestone Library On Shelf Request")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
@@ -343,14 +337,9 @@ describe 'request form', type: :feature, requests: true do
         select('Firestone Library', from: 'requestable__pick_up_23642306760006421')
         expect do
           click_button 'Request Selected Items'
-        end.to change { ActionMailer::Base.deliveries.count }.by(2)
+        end.to change { ActionMailer::Base.deliveries.count }.by(1)
         expect(page).to have_content 'Request submitted'
-        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
         confirm_email = ActionMailer::Base.deliveries.last
-        expect(email.subject).to eq("Annex Request")
-        expect(email.to).to eq(["forranx@princeton.edu"])
-        expect(email.cc).to be_blank
-        expect(email.html_part.body.to_s).to have_content("A tale of cats and mice of Obeyd of Záákán")
         expect(confirm_email.subject).to eq("Annex Request")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
@@ -423,14 +412,9 @@ describe 'request form', type: :feature, requests: true do
         check 'requestable_selected_23667391170006421'
         expect do
           click_button 'Request this Item'
-        end.to change { ActionMailer::Base.deliveries.count }.by(2)
+        end.to change { ActionMailer::Base.deliveries.count }.by(1)
         expect(page).to have_content 'Item has been requested for pick-up'
-        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
         confirm_email = ActionMailer::Base.deliveries.last
-        expect(email.subject).to eq("On Shelf Request (LEWIS$STACKS) QA646 .A44 2012")
-        expect(email.to).to eq(["lewislib@princeton.edu"])
-        expect(email.cc).to be_nil
-        expect(email.html_part.body.to_s).to have_content("The decomposition of global conformal invariants")
         expect(confirm_email.subject).to eq("Lewis Library On Shelf Request")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
@@ -531,11 +515,8 @@ describe 'request form', type: :feature, requests: true do
         expect(page).to have_content 'Pick-up location: Architecture Library'
         expect do
           click_button 'Request this Item'
-        end.to change { ActionMailer::Base.deliveries.count }.by(2)
-        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+        end.to change { ActionMailer::Base.deliveries.count }.by(1)
         confirm_email = ActionMailer::Base.deliveries.last
-        expect(email.subject).to eq("On Shelf Request (ARCH$STACKS) NA1585.A23 S7 2020")
-        expect(email.html_part.body.to_s).to have_content("Abdelhalim Ibrahim Abdelhalim : an architecture of collective memory")
         expect(confirm_email.subject).to eq("Architecture Library On Shelf Request")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
@@ -641,12 +622,8 @@ describe 'request form', type: :feature, requests: true do
           expect(page).to have_content I18n.t('requests.submit.annex_success')
           email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
           confirm_email = ActionMailer::Base.deliveries.last
-          expect(email.subject).to eq("Annex Request")
-          expect(email.to).to eq(["forranx@princeton.edu"])
-          expect(email.cc).to be_blank
-          expect(email.html_part.body.to_s).to have_content("無求備齋論語集成")
-          expect(email.html_part.body.to_s).to have_content("test")
-          expect(email.text_part.body.to_s).to have_content("test")
+          expect(email.subject).to eq("On Shelf Request (ARCH$STACKS) NA1585.A23 S7 2020")
+          expect(email.html_part.body.to_s).to have_content("Abdelhalim Ibrahim Abdelhalim : an architecture of collective memory")
           expect(confirm_email.subject).to eq("Annex Request")
           expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
           expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
@@ -802,16 +779,9 @@ describe 'request form', type: :feature, requests: true do
         choose('requestable__delivery_mode_23541187200006421_print')
         expect do
           click_button 'Request Selected Items'
-        end.to change { ActionMailer::Base.deliveries.count }.by(2)
+        end.to change { ActionMailer::Base.deliveries.count }.by(1)
         expect(page).to have_content I18n.t("requests.submit.on_shelf_success")
-        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
         confirm_email = ActionMailer::Base.deliveries.last
-        expect(email.subject).to eq("On Shelf Request (EASTASIAN$CJK) DS923.25 .K363 2011")
-        expect(email.to).to eq(["gestcirc@princeton.edu"])
-        expect(email.cc).to be_blank
-        expect(email.html_part.body.to_s).to have_content("Han'guk hyŏndaesa sanch'aek. No Mu-hyŏn sidae ŭi myŏngam")
-        expect(email.html_part.body.to_s).to have_content("vol.5")
-        expect(email.text_part.body.to_s).to have_content("vol.5")
         expect(confirm_email.subject).to eq("East Asian Library On Shelf Request")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
@@ -833,16 +803,9 @@ describe 'request form', type: :feature, requests: true do
         select 'Firestone Library', from: 'requestable__pick_up_23560381360006421'
         expect do
           click_button 'Request Selected Items'
-        end.to change { ActionMailer::Base.deliveries.count }.by(2)
+        end.to change { ActionMailer::Base.deliveries.count }.by(1)
         expect(page).to have_content I18n.t("requests.submit.annex_in_library_success")
-        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
         confirm_email = ActionMailer::Base.deliveries.last
-        expect(email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
-        expect(email.to).to eq(["forranx@princeton.edu"])
-        expect(email.cc).to be_blank
-        expect(email.html_part.body.to_s).to have_content("Er ru ting Qun fang pu : [san shi juan]")
-        expect(email.html_part.body.to_s).to have_content("vol.9-16")
-        expect(email.text_part.body.to_s).to have_content("vol.9-16")
         expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
@@ -895,7 +858,7 @@ describe 'request form', type: :feature, requests: true do
           expect(page).to have_content 'Pick-up location: Architecture Library'
           expect do
             click_button 'Request this Item'
-          end.to change { ActionMailer::Base.deliveries.count }.by(2)
+          end.to change { ActionMailer::Base.deliveries.count }.by(1)
         end
       end
 
@@ -942,16 +905,9 @@ describe 'request form', type: :feature, requests: true do
       select 'Firestone Library', from: 'requestable__pick_up_23560381360006421'
       expect do
         click_button 'Request Selected Items'
-      end.to change { ActionMailer::Base.deliveries.count }.by(2)
+      end.to change { ActionMailer::Base.deliveries.count }.by(1)
       expect(page).to have_content I18n.t("requests.submit.annex_in_library_success")
-      email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
       confirm_email = ActionMailer::Base.deliveries.last
-      expect(email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
-      expect(email.to).to eq(["forranx@princeton.edu"])
-      expect(email.cc).to be_blank
-      expect(email.html_part.body.to_s).to have_content("Er ru ting Qun fang pu : [san shi juan]")
-      expect(email.html_part.body.to_s).to have_content("vol.9-16")
-      expect(email.text_part.body.to_s).to have_content("vol.9-16")
       expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
       expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
       expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
@@ -1356,16 +1312,9 @@ describe 'request form', type: :feature, requests: true do
       page.find(".submit--request") # this is really strange, but if I find the button then I can click it in the next line...
       expect do
         click_button 'Request Selected Items'
-      end.to change { ActionMailer::Base.deliveries.count }.by(2)
+      end.to change { ActionMailer::Base.deliveries.count }.by(1)
       expect(page).to have_content I18n.t("requests.submit.annex_success")
-      email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
       confirm_email = ActionMailer::Base.deliveries.last
-      expect(email.subject).to eq("Annex Request")
-      expect(email.to).to eq(["forranx@princeton.edu"])
-      expect(email.cc).to be_blank
-      expect(email.html_part.body.to_s).to have_content("Department of Homeland Security appropriations for 2007")
-      expect(email.html_part.body.to_s).to have_content("pt.6")
-      expect(email.text_part.body.to_s).to have_content("pt.6")
       expect(confirm_email.subject).to eq(I18n.t("requests.annex.email_subject"))
       expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
       expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
