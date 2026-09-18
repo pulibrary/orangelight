@@ -121,6 +121,10 @@ module Requests
       self[:location]
     end
 
+    def null_item?
+      false
+    end
+
     private
 
       def short_description_from_alma_availability_call

@@ -169,16 +169,16 @@ module Requests
       end
 
       def recap_no_items?(item)
-        item["library_code"] == 'recap' && (item["type"] == "digitize_fill_in" || item["type"] == "recap_no_items")
+        item["library_code"] == 'recap' && (item["type"] == "digitize_fill_in" || item["type"] == "recap_no_items" || item['null_item' == "true"])
       end
 
       # :reek:UtilityFunction
       def annex_no_items?(item)
-        item["library_code"] == 'annex' && item["type"] == "annex_no_items"
+        item["library_code"] == 'annex' && item["null_item"] == "true"
       end
 
       def on_shelf_no_items?(item)
-        print?(item) && item["library_code"].present? && item["type"] == "on_shelf_no_items"
+        print?(item) && item["library_code"].present? && item["null_item"] == "true"
       end
 
       def off_site?(library_code)
