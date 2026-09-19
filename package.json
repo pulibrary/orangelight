@@ -30,7 +30,7 @@
     "jsdom": "^30.0.1",
     "lint-staged": "^17.4.1",
     "prettier": "^3.9.6",
-    "sass-embedded": "^1.102.0",
+    "sass-embedded": "^1.104.1",
     "simple-git-hooks": "^2.14.0",
     "stylelint": "^16.26.1",
     "stylelint-config-standard-scss": "^16.0.0",
