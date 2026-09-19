@@ -338,10 +338,10 @@
   resolved "https://registry.yarnpkg.com/@kurkle/color/-/color-0.3.4.tgz#4d4ff677e1609214fc71c580125ddddd86abcabf"
   integrity sha512-M5UknZPHRu3DEDWoipU6sE8PdkZ6Z/S+v4dD+Ke8IaNlpdSQah50lz1KtcFBa2vsdOnwbbnxJwVM4wty6udA5w==
 
-"@kurkle/color@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@kurkle/color/-/color-0.4.0.tgz#a9a6748d75983271b583afa8d14a9eaf6518aadb"
-  integrity sha512-H4MGdCNqaMQW2gz47VNOE7zLy8s1NLLpvzxFTpWIPJzlmkYQMkOD9pRwrMWRDYjyErxL297mbgK6yyLuGdGEbg==
+"@kurkle/color@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@kurkle/color/-/color-0.5.1.tgz#f4171eee49ac5eff36d14efa97bc74f16106551f"
+  integrity sha512-1kr6Dl1BT6iO4oL9iwPjK5DQvF0tiwUQWtvd1/Y7wltabckBPNbN3dUOvri0hVS98RdCqkZbZrG+bnnGN5tqDw==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
