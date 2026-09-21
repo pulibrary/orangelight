@@ -49,10 +49,6 @@ module Requests
         end
       end
 
-      def selected_valid?
-        selected['pick_up'].present? || selected['edd_art_title'].present?
-      end
-
       def validate_ill_on_shelf(record, selected, pick_up_phrase: 'your selected item', action_phrase: 'Requested')
         return unless validate_item_id?(record:, selected:, action_phrase:)
         item_id = selected['item_id']
@@ -70,21 +66,21 @@ module Requests
       end
 
       def validate_recap_no_items(record, selected)
-        return if selected_valid?
+        return if selected['pick_up'].present? || selected['edd_art_title'].present?
 
         record.errors.add(:items, { selected['mfhd'] => { 'text' => 'Please select a pick-up location for your selected ReCAP item', 'type' => 'pick_up' } })
       end
 
       # :reek:UtilityFunction
       def validate_annex_no_items(record, selected)
-        return if selected_valid?
+        return if selected['pick_up'].present? || selected['edd_art_title'].present?
 
         record.errors.add(:items, { selected['mfhd'] => { 'text' => 'Please select a pick-up location for your selected Annex item', 'type' => 'pick_up' } })
       end
 
       # :reek:UtilityFunction
       def validate_on_shelf_no_items(record, selected)
-        return if selected_valid?
+        return if selected['pick_up'].present? || selected['edd_art_title'].present?
 
         record.errors.add(:items, { selected['mfhd'] => { 'text' => 'Please select a pick-up location for your selected on shelf item', 'type' => 'pick_up' } })
       end
