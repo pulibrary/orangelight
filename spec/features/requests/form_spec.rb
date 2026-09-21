@@ -623,7 +623,7 @@ describe 'request form', type: :feature, requests: true do
           email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
           confirm_email = ActionMailer::Base.deliveries.last
           expect(email.subject).to eq("Annex Non-Barcoded Request.")
-          expect(email.html_part.body.to_s).to have_content("Abdelhalim Ibrahim Abdelhalim : an architecture of collective memory")
+          expect(email.html_part.body.to_s).to have_content("Wu qiu bei zhai Lun yu ji")
           expect(confirm_email.subject).to eq("Annex Request")
           expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
           expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
