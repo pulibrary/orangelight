@@ -3,6 +3,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require_relative 'log_filter'
 require_relative "lando_env"
 require_relative "../lib/orangelight/browse_lists"
 require_relative "../lib/orangelight/middleware/no_file_uploads"
@@ -83,7 +84,7 @@ module Orangelight
     config.middleware.insert_before Rack::MethodOverride, Orangelight::Middleware::NoFileUploads
 
     config.rails_semantic_logger.appenders do |appenders|
-      appenders.add(file_name: "log/#{Rails.env}.log", formatter: :json_filter_formatter)
+      appenders.add(file_name: "log/#{Rails.env}.log", filter: LogFilter, formatter: :json)
     end
   end
 end
