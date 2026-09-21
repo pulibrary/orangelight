@@ -177,6 +177,7 @@ module Requests
         item["library_code"] == 'annex' && item["null_item"] == "true"
       end
 
+      # :reek:UtilityFunction
       def on_shelf_no_items?(item)
         print?(item) && item["library_code"].present? && item["null_item"] == "true"
       end

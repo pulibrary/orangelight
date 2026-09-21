@@ -88,6 +88,7 @@ module Requests
       request_email(submission:, subject_key: 'requests.annex_no_items.email_subject', destination_key: 'requests.annex_no_items.email')
     end
 
+    # :reek:TooManyStatements
     def on_shelf_no_items_email(submission)
       @submission = Submission.new_from_hash submission
       first_item = @submission.items.first

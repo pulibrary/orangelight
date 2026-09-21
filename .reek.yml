@@ -517,6 +517,7 @@ detectors:
     - ContactController
     - Requests::FormDecorator
     - Requests::RequestableDecorator
+    - Requests::SelectedItemsValidator
   TooManyInstanceVariables:
     exclude:
     - AccountController
