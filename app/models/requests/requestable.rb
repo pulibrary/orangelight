@@ -7,6 +7,7 @@ module Requests
 
     delegate :illiad_request_url, :illiad_request_parameters, to: :illiad
     delegate :eligible_for_library_services?, to: :@patron
+    delegate :null_item?, to: :item
 
     include Requests::Aeon
 

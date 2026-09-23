@@ -109,5 +109,9 @@ module Requests
     def location
       nil
     end
+
+    def null_item?
+      true
+    end
   end
 end

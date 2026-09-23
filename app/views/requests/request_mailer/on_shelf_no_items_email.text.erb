@@ -1,0 +1,9 @@
+<% # temporary changes issue 438 %>
+==============================================
+<%= I18n.t('requests.on_shelf.email_subject') %>
+
+<%= I18n.t('requests.on_shelf.email_conf_msg') %>
+
+<%= render 'patron_info' %>
+<%= render 'bib_info' %>
+<%= render partial: 'item_info', locals: { show_edd_fields: false } %>
