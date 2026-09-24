@@ -81,7 +81,7 @@ en:
     on_shelf:
       # temporary changes issue 438
       # brief_msg: "Item on Shelf. Consult shelf location map."
-      email: "fstpage@princeton.edu"
+      email: "libcir@princeton.edu"
       email_subject: "On Shelf Request"
       email_subject_patron: "On Shelf Request"
       brief_msg: "Requests for pick-up typically take 2 business days to process."
