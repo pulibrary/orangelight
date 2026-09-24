@@ -456,7 +456,7 @@ describe 'request form', type: :feature, requests: true do
         email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
         confirm_email = ActionMailer::Base.deliveries.last
         expect(email.subject).to eq("On Shelf Request (FIRESTONE$STACKS) R131.A1 M38")
-        expect(email.to).to eq(["fstpage@princeton.edu"])
+        expect(email.to).to eq(["libcir@princeton.edu"])
         expect(email.cc).to be_nil
         expect(email.html_part.body.to_s).to have_content("ABC ZZZ")
         expect(confirm_email.subject).to eq("Firestone Library On Shelf Request")
