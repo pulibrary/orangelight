@@ -840,10 +840,10 @@ bidi-js@^1.0.3:
   dependencies:
     require-from-string "^2.0.2"
 
-blacklight-frontend@^9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/blacklight-frontend/-/blacklight-frontend-9.0.0.tgz#74fb324ca604465ae7b89aed2f8d3df5c097f9bd"
-  integrity sha512-lvNivnINpi2gS3XLugfpEljHQV1TXMrY/0g/c94NVnAvQgvIK/trdqAGQq2Y+cdLPFjs0+L+qO3EbxjgGTxmIA==
+blacklight-frontend@^9.2.0:
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/blacklight-frontend/-/blacklight-frontend-9.2.0.tgz#c7c0266b6ac0e7009b77148ee6c77085d6354936"
+  integrity sha512-pkAxL5k7ftPXBEMaXUrXTSbE4VonwKYOVji8SogwBAiDjXQf1yRrE3Ao9PjZ7uD1OQkcJETbhMvCO3vJnG05mA==
   dependencies:
     bootstrap ">=5.3.5 <6.0.0"
 
