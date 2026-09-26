@@ -3,7 +3,7 @@
     "@apollo/client": "^3.13.0",
     "@popperjs/core": "^2.11.8",
     "@vitejs/plugin-vue": "^6.0.9",
-    "blacklight-frontend": "^9.0.0",
+    "blacklight-frontend": "^9.2.0",
     "blacklight-range-limit": "^9.3.0",
     "bootstrap": "^5.3.8",
     "chart.js": "^4.5.1",
