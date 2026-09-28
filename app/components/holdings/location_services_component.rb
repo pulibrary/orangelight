@@ -88,11 +88,6 @@ class Holdings::LocationServicesComponent < ViewComponent::Base
         location_rules && marquand_special_collections_codes.include?(location_rules[:code])
       end
 
-      def marquand_non_rare?
-        non_rare_codes = %w[marquand$fesrf marquand$ltop marquand$mic marquand$ms marquand$msref marquand$pj marquand$pv marquand$ref marquand$pjm marquand$res marquand$rp marquand$saf marquand$stacks marquand$tech marquand$wr]
-        (location_rules && non_rare_codes.include?(location_rules[:code])) || cul_avery? || hl_art?
-      end
-
       # Example of a temporary holding, in this case holding_id is : firestone$res3hr
       # {\"firestone$res3hr\":{\"location_code\":\"firestone$res3hr\",
       # \"current_location\":\"Circulation Desk (3 Hour Reserve)\",\"current_library\":\"Firestone Library\",
