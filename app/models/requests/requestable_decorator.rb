@@ -124,9 +124,9 @@ module Requests
     end
 
     def delivery_location_code
-      if requestable.cul_avery? || requestable.hl_art?
+      if (requestable.cul_avery? && requestable.use_restriction?) || requestable.hl_art?
         "PJ"
-      elsif requestable.cul_music?
+      elsif requestable.cul_music? && requestable.use_restriction?
         "PK"
       else
         first_delivery_location[:gfa_pickup] || "PA"
