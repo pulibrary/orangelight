@@ -9,8 +9,7 @@ class StdoutLogger
   # Plain text with color is easier to follow when tailing a worker in a
   # terminal, so only emit JSON in the environments whose logs get shipped.
   def self.build(name)
-    formatter = Rails.env.local? ? :color : :json
-    SemanticLogger::Appender::IO.new($stdout, formatter:, level: :info).tap do |logger|
+    SemanticLogger::Appender::IO.new($stdout, formatter: :json, level: :info).tap do |logger|
       logger.name = name
     end
   end
