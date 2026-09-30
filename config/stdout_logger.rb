@@ -6,8 +6,8 @@
 # plain text format, which put two different shapes in that one file and gave
 # our log collector nothing structured to index.
 class StdoutLogger
-  # Plain text with color is easier to follow when tailing a worker in a
-  # terminal, so only emit JSON in the environments whose logs get shipped.
+  # JSON in every environment, so that what you read while tailing a worker is
+  # the same shape the log collector indexes.
   def self.build(name)
     SemanticLogger::Appender::IO.new($stdout, formatter: :json, level: :info).tap do |logger|
       logger.name = name

@@ -14,21 +14,11 @@ describe StdoutLogger do
     expect(logger).to respond_to(:info, :debug, :error, :warn)
   end
 
-  it 'logs JSON in environments whose logs are shipped' do
-    allow(Rails.env).to receive(:local?).and_return false
-
+  it 'logs JSON in every environment' do
     expect(described_class.build('Sneakers').formatter).to be_a SemanticLogger::Formatters::Json
   end
 
-  it 'stays human readable when tailing a worker locally' do
-    allow(Rails.env).to receive(:local?).and_return true
-
-    expect(described_class.build('Sneakers').formatter).to be_a SemanticLogger::Formatters::Color
-  end
-
   it 'writes one JSON object per event to stdout' do
-    allow(Rails.env).to receive(:local?).and_return false
-
     # Built inside the block on purpose. The appender keeps a reference to
     # whichever $stdout it was handed, and this matcher only swaps $stdout for
     # the duration of the block, so a logger built beforehand would write past
