@@ -28,9 +28,14 @@ describe StdoutLogger do
 
   it 'writes one JSON object per event to stdout' do
     allow(Rails.env).to receive(:local?).and_return false
-    logger = described_class.build('Sneakers')
 
-    expect { logger.info 'Working off', queue: 'figgy_events' }.to output(
+    # Built inside the block on purpose. The appender keeps a reference to
+    # whichever $stdout it was handed, and this matcher only swaps $stdout for
+    # the duration of the block, so a logger built beforehand would write past
+    # it to the real stdout and capture nothing.
+    expect do
+      described_class.build('Sneakers').info 'Working off', queue: 'figgy_events'
+    end.to output(
       a_string_matching(/\A\{.*"name":"Sneakers".*"message":"Working off".*\}\n\z/m)
     ).to_stdout
   end
