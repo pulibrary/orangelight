@@ -3,6 +3,10 @@ require 'opentelemetry/sdk'
 require 'opentelemetry/exporter/otlp'
 
 unless Rails.env.local?
+  # Assigned before the SDK is configured so that the instrumentation install
+  # messages, which are most of what it logs, are JSON as well.
+  OpenTelemetry.logger = StdoutLogger.build('OpenTelemetry')
+
   OpenTelemetry::SDK.configure do |c|
     c.use 'OpenTelemetry::Instrumentation::Faraday'
     c.use 'OpenTelemetry::Instrumentation::Net::HTTP'

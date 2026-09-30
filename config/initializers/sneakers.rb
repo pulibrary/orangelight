@@ -8,6 +8,9 @@ Sneakers.configure(
   exchange: Orangelight.config['events']['exchange'],
   exchange_type: :fanout,
   handler: Sneakers::Handlers::Maxretry,
+  # Sneakers uses this object as its logger as-is because it responds to the
+  # level methods, which stops it installing its own plain text formatter.
+  log: StdoutLogger.build('Sneakers'),
   before_fork: lambda {
     ActiveSupport.on_load(:active_record) do
       ActiveRecord::Base.connection_pool.disconnect!
@@ -19,7 +22,6 @@ Sneakers.configure(
     end
   }
 )
-Sneakers.logger.level = Logger::INFO
 
 WORKER_OPTIONS = {
   ack: true,
