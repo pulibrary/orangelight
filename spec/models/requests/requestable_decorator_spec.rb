@@ -827,8 +827,8 @@ describe Requests::RequestableDecorator, requests: true do
       end
     end
 
-    context "avery item at recap from marquand" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(recap?: true, library_code: 'abc', cul_avery?: true, holding_library: 'recap') }
+    context "avery item at recap from marquand with restrictions" do
+      let(:stubbed_questions) { default_stubbed_questions.merge(recap?: true, library_code: 'abc', cul_avery?: true, holding_library: 'recap', use_restriction?: true) }
       it 'is off site' do
         expect(decorator.off_site_location).to eq('recap_marquand')
       end
