@@ -864,13 +864,13 @@ describe Requests::RequestableDecorator, requests: true do
   end
 
   describe "#delivery_location_code" do
-    let(:stubbed_questions) { default_stubbed_questions.merge(recap_pf?: false, held_at_marquand_library?: false, cul_music?: false, hl_art?: false, location: {}) }
+    let(:stubbed_questions) { default_stubbed_questions.merge(recap_pf?: false, held_at_marquand_library?: false, cul_music?: false, hl_art?: false, location: {}, use_restriction?: false) }
     it 'shows the default location code' do
       expect(decorator.delivery_location_code).to eq('PA')
     end
 
     context "has a delivery location" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(recap_pf?: false, held_at_marquand_library?: true, cul_music?: false, hl_art?: false, location: { delivery_locations: [{ gfa_pickup: 'PJ', label: 'abc' }] }) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(recap_pf?: false, held_at_marquand_library?: true, cul_music?: false, hl_art?: false, location: { delivery_locations: [{ gfa_pickup: 'PJ', label: 'abc' }] }, use_restriction?: false) }
       it 'shows the location code' do
         expect(decorator.delivery_location_code).to eq('PJ')
       end
@@ -905,14 +905,14 @@ describe Requests::RequestableDecorator, requests: true do
     end
 
     context "is a hl art item" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: false, cul_avery?: false, hl_art?: true, cul_music?: false) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: false, cul_avery?: false, hl_art?: true, cul_music?: false, use_restriction?: false) }
       it 'shows the location code' do
         expect(decorator.delivery_location_code).to eq('PJ')
       end
     end
 
     context "is a PF item" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: false, cul_avery?: false, hl_art?: false, cul_music?: false, location: { delivery_locations: [{ gfa_pickup: 'PF', label: 'Firestone Library, Microforms' }] }) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: false, cul_avery?: false, hl_art?: false, cul_music?: false, location: { delivery_locations: [{ gfa_pickup: 'PF', label: 'Firestone Library, Microforms' }] }, use_restriction?: false) }
       it 'shows the location code' do
         expect(decorator.delivery_location_code).to eq('PF')
       end
