@@ -76,7 +76,7 @@ module Requests
     end
 
     def off_site_location
-      if recap? && (holding_library == "marquand" || requestable.cul_avery?)
+      if recap? && (holding_library == "marquand" || (requestable.cul_avery? && requestable.use_restriction?))
         "recap_marquand"
       elsif recap?
         "recap"
