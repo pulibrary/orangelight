@@ -26,11 +26,11 @@ module Requests
 
         def partner_pickup_locations
           return default_pick_ups unless delivery_locations&.any?
-          if collection_code == 'FL' || (collection_code == 'AR' && use_statement)
+          if collection_code == 'FL' || (collection_code == 'AR' && use_statement.present?)
             # FL (Harvard) can only be requested to marquand
             # AR (Columbia) can only be requested to marquand when there are item restrictions in use_statement
             [bibdata_delivery_locations[:PJ]]
-          elsif collection_code == 'MR' && use_statement
+          elsif collection_code == 'MR' && use_statement.present?
             # MR can only be requested to Mendel when there are item restrictions in use_statement
             [bibdata_delivery_locations[:PK]]
           else
@@ -43,7 +43,7 @@ module Requests
         end
 
         def use_statement
-          @use_statement ||= item[:use_statement]
+          @use_statement ||= item[:use_statement].to_s
         end
 
         def delivery_locations
