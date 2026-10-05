@@ -67,7 +67,7 @@ module Requests
     end
 
     def use_statement
-      self[:use_statement]
+      self[:use_statement].to_s
     end
 
     def collection_code
