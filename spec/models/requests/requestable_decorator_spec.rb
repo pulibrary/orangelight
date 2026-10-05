@@ -876,17 +876,31 @@ describe Requests::RequestableDecorator, requests: true do
       end
     end
 
-    context "is an avery item" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: true, cul_avery?: true, hl_art?: false) }
+    context "is an avery item with restriction" do
+      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: true, cul_avery?: true, hl_art?: false, use_restriction?: true) }
       it 'shows the location code' do
         expect(decorator.delivery_location_code).to eq('PJ')
       end
     end
 
-    context "is a cul music item" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: false, cul_avery?: false, hl_art?: false, cul_music?: true) }
+    context "is an avery item with no restriction" do
+      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: true, cul_avery?: true, cul_music?: false, hl_art?: false, use_restriction?: false, location: { delivery_locations: [{ gfa_pickup: 'QK', label: 'Mendel Music Library' }] }) }
+      it 'shows the location code' do
+        expect(decorator.delivery_location_code).to eq('QK')
+      end
+    end
+
+    context "is a cul music item with restriction" do
+      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: false, cul_avery?: false, hl_art?: false, cul_music?: true, use_restriction?: true) }
       it 'shows the location code' do
         expect(decorator.delivery_location_code).to eq('PK')
+      end
+    end
+
+    context "is a cul music item with no restriction" do
+      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: false, cul_avery?: false, hl_art?: false, cul_music?: true, use_restriction?: false, location: { delivery_locations: [{ gfa_pickup: 'QK', label: 'Mendel Music Library' }] }) }
+      it 'shows the location code' do
+        expect(decorator.delivery_location_code).to eq('QK')
       end
     end
 
