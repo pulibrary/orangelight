@@ -24,6 +24,7 @@ module Requests
         delegate :default_pick_ups, to: :form
         delegate :item, :location, to: :requestable
 
+        # :reek:DuplicateMethodCall
         def partner_pickup_locations
           return default_pick_ups unless delivery_locations&.any?
           if collection_code == 'FL' || (collection_code == 'AR' && use_statement.present?)
