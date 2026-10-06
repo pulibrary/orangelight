@@ -167,9 +167,6 @@ class CatalogController < ApplicationController
     config.add_facet_field 'class_year_s', label: 'PU class year', limit: true, include_in_request: false
     config.add_facet_field 'call_number_browse_s', label: 'Call number', include_in_request: false
 
-    config.add_facet_field 'call_number_scheme_facet', label: 'Call number scheme', limit: 25, include_in_request: false, sort: 'index'
-    config.add_facet_field 'call_number_group_facet', label: 'Call number group', limit: 25, include_in_request: false, sort: 'index'
-    config.add_facet_field 'call_number_full_facet', label: 'Full call number', limit: 25, include_in_request: false, sort: 'index'
     config.add_facet_field 'advanced_location_s', label: 'Holding location', include_in_request: true, show: false,
                                                   helper_method: :render_location_code, include_in_advanced_search: true, sort: 'alpha'
     config.add_facet_field 'name_title_browse_s', label: 'Author-title heading', include_in_request: false
