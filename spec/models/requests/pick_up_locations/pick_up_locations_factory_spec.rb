@@ -127,4 +127,22 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory, :requests do
                                                             ["Firestone Library", "PA"]
                                                           ])
   end
+  describe 'when patron is Faculty and statistic category PPPL' do
+    it 'Alma circulating items can be picked up in all locations and Plasma Physics' do
+      location = Requests::Location.new single_holding_data_from_fixture('firestone$stacks')
+      form = instance_double(Requests::Form, default_pick_ups: [{ label: 'Firestone Library', gfa_pickup: 'PA' }, { label: 'Architecture Library', gfa_pickup: 'PW' }, { label: 'Plasma Physics', gfa_pickup: 'PQ' }])
+      requestable = instance_double(Requests::Requestable, partner_holding?: false, location:, ill_eligible?: false, annex?: false, recap?: false, patron: instance_double(Requests::Patron, library_staff_patron_group?: false, affiliate_patron_group?: false, eligible_faculty_pickup_pppl?: true))
+      factory = described_class.new(form:, requestable:)
+
+      expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
+                                                              ["Architecture Library", "PW"],
+                                                              ["East Asian Library", "PL"],
+                                                              ["Engineering Library", "PT"],
+                                                              ["Mendel Music Library", "PK"],
+                                                              ["Stokes Library", "PM"],
+                                                              ["Plasma Physics", "PQ"],
+                                                              ["Firestone Library", "PA"]
+                                                            ])
+    end
+  end
 end
