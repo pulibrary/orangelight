@@ -260,10 +260,13 @@ module Requests
         end
       end
 
+      ## make sure to test this case
       # :reek:UtilityFunction
       def engineering_library_prompt(holding_library, locs)
         # Special case: lewis, plasma should default to Engineering Library
         if ['lewis', 'plasma'].include?(holding_library)
+          # if faculty prompt pppl
+          # if not faculty do what we do
           engineering_loc = locs.find { |loc| loc[:label] == "Engineering Library" }
           return I18n.t('requests.pick_up_suggested.engineering_holding_library', engineering_holding_library: engineering_loc[:label]) if engineering_loc
         end

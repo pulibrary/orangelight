@@ -38,7 +38,7 @@ module Requests
       end
 
       def delivery_locations
-        location[:delivery_locations]
+        location[:delivery_locations] || []
       end
 
       def library_staff_patron_group?
