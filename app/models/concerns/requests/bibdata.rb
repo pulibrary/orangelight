@@ -56,9 +56,6 @@ module Requests
       # - All other locations, exclude PF locations
       filtered_locations = Requests::Location.filter_pick_up_locations_by_code(pick_up_locations, location_code)
       Requests::Location.sort_pick_up_locations(filtered_locations)
-      # plasma is present
-      # => form.rb
-      # these are the default pickups
     end
 
     # get the location contact email from thr delivery locations via the library code

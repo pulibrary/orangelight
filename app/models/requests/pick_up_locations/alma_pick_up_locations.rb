@@ -10,7 +10,6 @@ module Requests
       end
 
       def call
-        # if delivery_locations&.any?
         # patron_group: 'lib', has access to offsite locations
         # when a location has delivery locations configured in bibdata
         # we need to filter out the Staff locations that are for the library staff
