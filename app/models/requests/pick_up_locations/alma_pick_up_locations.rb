@@ -28,7 +28,7 @@ module Requests
       delegate :location, :patron, to: :requestable
 
       def delivery_locations
-        location[:delivery_locations]
+        location[:delivery_locations] || []
       end
 
       def library_staff_patron_group?
