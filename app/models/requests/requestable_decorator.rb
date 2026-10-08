@@ -76,7 +76,7 @@ module Requests
     end
 
     def off_site_location
-      if recap? && (holding_library == "marquand" || requestable.cul_avery?)
+      if recap? && (holding_library == "marquand" || (requestable.cul_avery? && requestable.use_restriction?))
         "recap_marquand"
       elsif recap?
         "recap"
@@ -124,7 +124,8 @@ module Requests
     end
 
     def delivery_location_code
-      if requestable.cul_avery? || requestable.hl_art?
+      requestable_use_restriction = requestable.use_restriction?
+      if (requestable.cul_avery? && requestable_use_restriction) || requestable.hl_art?
         "PJ"
       elsif requestable.cul_music?
         "PK"

@@ -43,9 +43,9 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory, :requests do
 
   it 'returns a single pickup location for SCSB partner with no restrictions' do
     location = single_holding_data_from_fixture('scsbcul')
-    item = { collection_code: 'CU' }.with_indifferent_access
+    item = { collection_code: 'CU', use_statement: '' }.with_indifferent_access
     form = instance_double(Requests::Form)
-    requestable = instance_double(Requests::Requestable, partner_holding?: true, item:, location:, ill_eligible?: false, annex?: false, recap?: true)
+    requestable = instance_double(Requests::Requestable, partner_holding?: true, item:, location:, ill_eligible?: false, annex?: false, recap?: true, use_restriction?: false)
     factory = described_class.new(form:, requestable:)
 
     expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
@@ -53,11 +53,11 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory, :requests do
                                                           ])
   end
 
-  it 'returns a single pickup location for a SCSB Item from a restricted Art-related collection code' do
+  it 'returns Marquand Library of Art and Archaeology as a single pickup location for a SCSB Item from a restricted Art-related collection code' do
     location = single_holding_data_from_fixture('scsbcul')
-    item = { collection_code: 'AR' }.with_indifferent_access
+    item = { collection_code: 'AR', use_statement: 'In library use' }.with_indifferent_access
     form = instance_double(Requests::Form)
-    requestable = instance_double(Requests::Requestable, partner_holding?: true, item:, location:, ill_eligible?: false, annex?: false, recap?: true)
+    requestable = instance_double(Requests::Requestable, cul_avery?: true, partner_holding?: true, item:, location:, ill_eligible?: false, annex?: false, recap?: true, use_restriction?: true)
     factory = described_class.new(form:, requestable:)
 
     expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
@@ -65,11 +65,35 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory, :requests do
                                                           ])
   end
 
-  it 'returns a single pickup location for a SCSB Item from a restricted Music-related collection code' do
+  it 'returns Firestone Circulation Desk as a single pickup location for a SCSB Item from a not restricted Art-related collection code' do
     location = single_holding_data_from_fixture('scsbcul')
-    item = { collection_code: 'MR' }.with_indifferent_access
+    item = { collection_code: 'AR', use_statement: nil }.with_indifferent_access
     form = instance_double(Requests::Form)
-    requestable = instance_double(Requests::Requestable, partner_holding?: true, item:, location:, ill_eligible?: false, annex?: false, recap?: true)
+    requestable = instance_double(Requests::Requestable, cul_avery?: true, partner_holding?: true, item:, location:, ill_eligible?: false, annex?: false, recap?: true, use_restriction?: false)
+    factory = described_class.new(form:, requestable:)
+
+    expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
+                                                            ["Firestone Circulation Desk", "QX"]
+                                                          ])
+  end
+
+  it 'returns Mendel Music Library as a single pickup location for a SCSB Item from a restricted Music-related collection code' do
+    location = single_holding_data_from_fixture('scsbcul')
+    item = { collection_code: 'MR', use_statement: 'In library use' }.with_indifferent_access
+    form = instance_double(Requests::Form)
+    requestable = instance_double(Requests::Requestable, partner_holding?: true, item:, location:, ill_eligible?: false, annex?: false, recap?: true, use_restriction?: true)
+    factory = described_class.new(form:, requestable:)
+
+    expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
+                                                            ["Mendel Music Library", "PK"]
+                                                          ])
+  end
+
+  it 'returns Mendel Music Library as a single pickup location for a SCSB Item from a Not restricted Music-related collection code' do
+    location = single_holding_data_from_fixture('scsbcul')
+    item = { collection_code: 'MR', use_statement: '' }.with_indifferent_access
+    form = instance_double(Requests::Form)
+    requestable = instance_double(Requests::Requestable, partner_holding?: true, item:, location:, ill_eligible?: false, annex?: false, recap?: true, use_restriction?: false)
     factory = described_class.new(form:, requestable:)
 
     expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
