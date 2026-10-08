@@ -127,7 +127,7 @@ module Requests
       requestable_use_restriction = requestable.use_restriction?
       if (requestable.cul_avery? && requestable_use_restriction) || requestable.hl_art?
         "PJ"
-      elsif requestable.cul_music? && requestable_use_restriction
+      elsif requestable.cul_music?
         "PK"
       else
         first_delivery_location[:gfa_pickup] || "PA"

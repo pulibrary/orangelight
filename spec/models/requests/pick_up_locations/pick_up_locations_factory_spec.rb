@@ -89,7 +89,7 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory, :requests do
                                                           ])
   end
 
-  it 'returns Firestone Circulation Desk as a single pickup location for a SCSB Item from a not restricted Music-related collection code' do
+  it 'returns Mendel Music Library as a single pickup location for a SCSB Item from a Not restricted Music-related collection code' do
     location = single_holding_data_from_fixture('scsbcul')
     item = { collection_code: 'MR', use_statement: '' }.with_indifferent_access
     form = instance_double(Requests::Form)
@@ -97,7 +97,7 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory, :requests do
     factory = described_class.new(form:, requestable:)
 
     expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
-                                                            ["Firestone Circulation Desk", "QX"]
+                                                            ["Mendel Music Library", "PK"]
                                                           ])
   end
 

@@ -898,9 +898,9 @@ describe Requests::RequestableDecorator, requests: true do
     end
 
     context "is a cul music item with no restriction" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: false, cul_avery?: false, hl_art?: false, cul_music?: true, use_restriction?: false, location: { delivery_locations: [{ gfa_pickup: 'QK', label: 'Mendel Music Library' }] }) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: false, cul_avery?: false, hl_art?: false, cul_music?: true, use_restriction?: false, location: { delivery_locations: [{ gfa_pickup: 'PK', label: 'Mendel Music Library' }] }) }
       it 'shows the location code' do
-        expect(decorator.delivery_location_code).to eq('QK')
+        expect(decorator.delivery_location_code).to eq('PK')
       end
     end
 

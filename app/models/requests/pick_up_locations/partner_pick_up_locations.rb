@@ -31,8 +31,8 @@ module Requests
             # FL (Harvard) can only be requested to marquand
             # AR (Columbia) can only be requested to marquand when there are item restrictions in use_statement
             [bibdata_delivery_locations[:PJ]]
-          elsif collection_code == 'MR' && use_statement.present?
-            # MR can only be requested to Mendel when there are item restrictions in use_statement
+          elsif collection_code == 'MR'
+            # MR can only be requested to Mendel
             [bibdata_delivery_locations[:PK]]
           else
             delivery_locations
