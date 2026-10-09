@@ -34,7 +34,7 @@ module Requests
 
       # :reek:UtilityFunction
       def valid_annex_pickup?(location_hash)
-        ['PA', 'PK', 'PL', 'PM', 'PT', 'PW', 'QA', 'QC', 'QL', 'QP', 'QT', 'QX'].include?(location_hash[:gfa_pickup])
+        ['PA', 'PK', 'PL', 'PM', 'PT', 'PW', 'PQ', 'QA', 'QC', 'QL', 'QP', 'QT', 'QX'].include?(location_hash[:gfa_pickup])
       end
 
       def delivery_locations
