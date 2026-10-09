@@ -22,7 +22,7 @@ module Requests
         attr_reader :form, :requestable
 
         delegate :default_pick_ups, to: :form
-        delegate :item, :location, to: :requestable
+        delegate :item, :location, :patron, to: :requestable
 
         # :reek:DuplicateMethodCall
         def partner_pickup_locations
@@ -34,6 +34,10 @@ module Requests
           elsif collection_code == 'MR'
             # MR can only be requested to Mendel
             [bibdata_delivery_locations[:PK]]
+          elsif eligible_faculty_pickup_pppl?
+            # Faculty patrons in the PPPL statistic category can pick up from Firestone and Plasma Physics
+            # unrestricted items
+            delivery_locations.push(default_pick_ups.find { |location| location[:gfa_pickup] == "PQ" })
           else
             delivery_locations
           end
@@ -53,6 +57,10 @@ module Requests
 
         def bibdata_delivery_locations
           @bibdata_delivery_locations ||= Requests::BibdataService.delivery_locations
+        end
+
+        def eligible_faculty_pickup_pppl?
+          patron.eligible_faculty_pickup_pppl?
         end
     end
   end
