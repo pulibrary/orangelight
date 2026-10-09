@@ -4,6 +4,7 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 require_relative 'log_filter'
+require_relative 'stdout_logger'
 require_relative "lando_env"
 require_relative "../lib/orangelight/browse_lists"
 require_relative "../lib/orangelight/middleware/no_file_uploads"
