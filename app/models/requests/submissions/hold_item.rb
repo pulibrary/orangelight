@@ -5,6 +5,7 @@ module Requests::Submissions
   class HoldItem < Service
     attr_accessor :duplicate
 
+    delegate :patron, to: :submission
     def initialize(submission, service_type: 'on_shelf')
       super
       @duplicate = false
@@ -74,8 +75,19 @@ module Requests::Submissions
                           else
                             item["pick_up_location_code"]
                           end
-
-        { mms_id: submission.bib['id'], holding_id: item["mfhd"], item_pid: item['item_id'], user_id: submission.patron.university_id, request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: pick_up_library }
+        {
+          mms_id: submission.bib['id'],
+          holding_id: item["mfhd"],
+          item_pid: item['item_id'],
+          user_id: submission.patron.university_id,
+          request_type: "HOLD"
+        }.merge(
+          if patron.eligible_faculty_pickup_pppl?
+            { pickup_location_type: "USER_WORK_ADDRESS", pickup_location_library: 'plasma' }
+          else
+            { pickup_location_type: "LIBRARY", pickup_location_library: pick_up_library }
+          end
+        )
       end
   end
 end

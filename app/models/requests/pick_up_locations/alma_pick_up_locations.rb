@@ -10,18 +10,13 @@ module Requests
       end
 
       def call
-        if delivery_locations&.any?
-          # patron_group: 'lib', has access to offsite locations
-          # when a location has delivery locations configured in bibdata
-          # we need to filter out the Staff locations that are for the library staff
-          if library_staff_patron_group?
-            delivery_locations
-          else
-            delivery_locations_not_including_staff_only
-          end
-        else
-          default_pick_ups
-        end
+        # patron_group: 'lib', has access to offsite locations
+        # when a location has delivery locations configured in bibdata
+        # we need to filter out the Staff locations that are for the library staff
+        return default_pick_ups if delivery_locations.empty?
+        return delivery_locations if library_staff_patron_group?
+        return delivery_locations_faculty_pppl if eligible_faculty_pickup_pppl?
+        delivery_locations_not_including_staff_only
       end
 
     private
@@ -32,7 +27,7 @@ module Requests
       delegate :location, :patron, to: :requestable
 
       def delivery_locations
-        location[:delivery_locations]
+        location[:delivery_locations] || []
       end
 
       def library_staff_patron_group?
@@ -41,6 +36,14 @@ module Requests
 
       def delivery_locations_not_including_staff_only
         delivery_locations&.reject { |loc| loc["staff_only"] == true }
+      end
+
+      def eligible_faculty_pickup_pppl?
+        patron.eligible_faculty_pickup_pppl?
+      end
+
+      def delivery_locations_faculty_pppl
+        delivery_locations_not_including_staff_only.insert(-2, default_pick_ups.find { |location| location[:gfa_pickup] == "PQ" })
       end
     end
   end
