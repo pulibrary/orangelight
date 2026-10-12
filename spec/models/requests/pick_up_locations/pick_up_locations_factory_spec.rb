@@ -144,5 +144,39 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory, :requests do
                                                               ["Firestone Library", "PA"]
                                                             ])
     end
+    it 'returns a single pickup location (Firestone) for Interlibrary loans' do
+      location = single_holding_data_from_fixture('firestone$stacks')
+      form = instance_double(Requests::Form, illiad_account: { Site: 'Firestone' })
+      requestable = instance_double(Requests::Requestable, partner_holding?: false, location:, ill_eligible?: true, annex?: false, recap?: false, patron: instance_double(Requests::Patron, library_staff_patron_group?: false, affiliate_patron_group?: false, eligible_faculty_pickup_pppl?: true))
+      factory = described_class.new(form:, requestable:)
+
+      expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
+                                                              ["Firestone Library", "PA"]
+                                                            ])
+    end
+
+    it 'returns Mendel Music Library as a single pickup location for a SCSB Item from a Not restricted Music-related collection code' do
+      location = single_holding_data_from_fixture('scsbcul')
+      item = { collection_code: 'MR', use_statement: '' }.with_indifferent_access
+      form = instance_double(Requests::Form)
+      requestable = instance_double(Requests::Requestable, partner_holding?: true, item:, location:, ill_eligible?: false, annex?: false, recap?: true, use_restriction?: false, patron: instance_double(Requests::Patron, library_staff_patron_group?: false, affiliate_patron_group?: false, eligible_faculty_pickup_pppl?: true))
+      factory = described_class.new(form:, requestable:)
+
+      expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
+                                                              ["Mendel Music Library", "PK"]
+                                                            ])
+    end
+    it 'returns Firestone Circulation Desk and Plasma Physics as pickup locations for a SCSB Item from a not restricted Art-related collection code' do
+      location = single_holding_data_from_fixture('scsbcul')
+      item = { collection_code: 'AR', use_statement: nil }.with_indifferent_access
+      form = instance_double(Requests::Form, default_pick_ups: [{ label: 'Firestone Library', gfa_pickup: 'PA' }, { label: 'Architecture Library', gfa_pickup: 'PW' }, { label: 'Plasma Physics', gfa_pickup: 'PQ' }])
+      requestable = instance_double(Requests::Requestable, cul_avery?: true, partner_holding?: true, item:, location:, ill_eligible?: false, annex?: false, recap?: true, use_restriction?: false, patron: instance_double(Requests::Patron, eligible_faculty_pickup_pppl?: true))
+      factory = described_class.new(form:, requestable:)
+
+      expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
+                                                              ["Firestone Circulation Desk", "QX"],
+                                                              ["Plasma Physics", "PQ"]
+                                                            ])
+    end
   end
 end
