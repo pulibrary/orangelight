@@ -45,7 +45,7 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory, :requests do
     location = single_holding_data_from_fixture('scsbcul')
     item = { collection_code: 'CU', use_statement: '' }.with_indifferent_access
     form = instance_double(Requests::Form)
-    requestable = instance_double(Requests::Requestable, partner_holding?: true, item:, location:, ill_eligible?: false, annex?: false, recap?: true, use_restriction?: false)
+    requestable = instance_double(Requests::Requestable, partner_holding?: true, item:, location:, ill_eligible?: false, annex?: false, recap?: true, use_restriction?: false, patron: instance_double(Requests::Patron, eligible_faculty_pickup_pppl?: false))
     factory = described_class.new(form:, requestable:)
 
     expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
@@ -57,7 +57,7 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory, :requests do
     location = single_holding_data_from_fixture('scsbcul')
     item = { collection_code: 'AR', use_statement: 'In library use' }.with_indifferent_access
     form = instance_double(Requests::Form)
-    requestable = instance_double(Requests::Requestable, cul_avery?: true, partner_holding?: true, item:, location:, ill_eligible?: false, annex?: false, recap?: true, use_restriction?: true)
+    requestable = instance_double(Requests::Requestable, cul_avery?: true, partner_holding?: true, item:, location:, ill_eligible?: false, annex?: false, recap?: true, use_restriction?: true, patron: instance_double(Requests::Patron, eligible_faculty_pickup_pppl?: false))
     factory = described_class.new(form:, requestable:)
 
     expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
@@ -69,7 +69,7 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory, :requests do
     location = single_holding_data_from_fixture('scsbcul')
     item = { collection_code: 'AR', use_statement: nil }.with_indifferent_access
     form = instance_double(Requests::Form)
-    requestable = instance_double(Requests::Requestable, cul_avery?: true, partner_holding?: true, item:, location:, ill_eligible?: false, annex?: false, recap?: true, use_restriction?: false)
+    requestable = instance_double(Requests::Requestable, cul_avery?: true, partner_holding?: true, item:, location:, ill_eligible?: false, annex?: false, recap?: true, use_restriction?: false, patron: instance_double(Requests::Patron, eligible_faculty_pickup_pppl?: false))
     factory = described_class.new(form:, requestable:)
 
     expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
