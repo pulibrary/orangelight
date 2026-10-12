@@ -23,7 +23,7 @@ module Requests
 
         delegate :default_pick_ups, to: :form
         delegate :item, :location, :patron, to: :requestable
-
+        # :reek:TooManyStatements
         # :reek:DuplicateMethodCall
         def partner_pickup_locations
           return default_pick_ups unless delivery_locations&.any?
