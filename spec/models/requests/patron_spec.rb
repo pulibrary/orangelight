@@ -21,7 +21,8 @@ describe Requests::Patron, requests: true, patrons: true do
   let(:valid_patron_response) { file_fixture('../bibdata_patron_response.json') }
   let(:valid_barcode_patron_response) { file_fixture('../bibdata_patron_response_barcode.json') }
   let(:invalid_patron_response) { file_fixture('../bibdata_not_found_patron_response.json') }
-
+  let(:faculty_pppl_patron_response) { file_fixture('../bibdata_patron_faculty_pppl.json') }
+  let(:reg_pppl_patron_response) { file_fixture('../bibdata_patron_reg_pppl.json') }
   context 'when the user is provided from Alma' do
     let(:uid) { 'BC123456789' }
     let(:user) do
@@ -74,6 +75,40 @@ describe Requests::Patron, requests: true, patrons: true do
       end
     end
   end
+
+  describe '#eligible_pickup_from_pppl?' do
+    context 'A faculty, patron_group `P` user in the PPPL statistic category' do
+      let(:uid) { 'christina' }
+      before do
+        stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/christina?ldap=true")
+          .to_return(status: 200, body: faculty_pppl_patron_response, headers: {})
+      end
+      it 'is eligible to pickup from Plasma Physics' do
+        patron = described_class.new(user:)
+        expect(patron).to be_truthy
+        expect(patron.faculty_patron_group?).to be_truthy
+        expect(patron.reg_patron_group?).to be_falsey
+        expect(patron.pppl_statistic_category?).to be_truthy
+        expect(patron.eligible_pickup_from_pppl?).to be_truthy
+      end
+    end
+    context "A patron_group `reg` user in the PPPL statistic category" do
+      let(:uid) { 'christina' }
+      before do
+        stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/christina?ldap=true")
+          .to_return(status: 200, body: reg_pppl_patron_response, headers: {})
+      end
+      it 'is eligible to pickup from Plasma Physics' do
+        patron = described_class.new(user:)
+        expect(patron).to be_truthy
+        expect(patron.faculty_patron_group?).to be_falsey
+        expect(patron.reg_patron_group?).to be_truthy
+        expect(patron.pppl_statistic_category?).to be_truthy
+        expect(patron.eligible_pickup_from_pppl?).to be_truthy
+      end
+    end
+  end
+
   context 'A user with a netid that does not have a matching patron record' do
     describe '#current_patron_hash' do
       before do

@@ -34,7 +34,7 @@ module Requests
           elsif collection_code == 'MR'
             # MR can only be requested to Mendel
             [bibdata_delivery_locations[:PK]]
-          elsif eligible_faculty_pickup_pppl?
+          elsif eligible_pickup_from_pppl?
             # Faculty patrons in the PPPL statistic category can pick up from Firestone and Plasma Physics
             # unrestricted items
             delivery_locations + [default_pick_ups.find { |location| location[:gfa_pickup] == "PQ" }]
@@ -59,8 +59,8 @@ module Requests
           @bibdata_delivery_locations ||= Requests::BibdataService.delivery_locations
         end
 
-        def eligible_faculty_pickup_pppl?
-          patron.eligible_faculty_pickup_pppl?
+        def eligible_pickup_from_pppl?
+          patron.eligible_pickup_from_pppl?
         end
     end
   end
