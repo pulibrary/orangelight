@@ -11,6 +11,7 @@
     "expire_date": "2022-10-31T23:00:03.000-05:00",
     "patron_id": 77777,
     "active_email": "a@b.com",
+    "user_statistic": ["EM"],
     "ldap": {
         "netid": "jstudent",
         "department": "First ",

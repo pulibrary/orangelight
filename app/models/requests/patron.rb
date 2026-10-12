@@ -46,6 +46,15 @@ module Requests
       patron_hash[:patron_group]&.downcase
     end
 
+    def user_statistic
+      patron_hash[:user_statistic]&.map(&:downcase)
+    end
+
+    def pppl_statistic_category?
+      pppl_statistic_category = "pppl"
+      user_statistic.include?(pppl_statistic_category)
+    end
+
     def core_patron_group?
       core_patron_groups = %w[p reg grad senr ugrd sum lib]
       core_patron_groups.include?(patron_group)
@@ -59,6 +68,15 @@ module Requests
     def library_staff_patron_group?
       library_staff_patron_groups = %w[lib]
       library_staff_patron_groups.include?(patron_group)
+    end
+
+    def faculty_patron_group?
+      faculty_patron_group = %w[p]
+      faculty_patron_group.include?(patron_group)
+    end
+
+    def eligible_faculty_pickup_pppl?
+      faculty_patron_group? && pppl_statistic_category?
     end
 
     def university_id

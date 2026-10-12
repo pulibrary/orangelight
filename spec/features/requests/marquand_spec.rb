@@ -45,7 +45,7 @@ describe 'requests for Marquand items', type: :feature, requests: true do
 
   context 'as a Princeton CAS user' do
     let(:user) { FactoryBot.create(:user) }
-    let(:patron) { { barcode: "22101007797777", patron_group: 'P', netid: user.uid, active_email: "user@princeton.edu" }.to_json }
+    let(:patron) { { barcode: "22101007797777", patron_group: 'P', netid: user.uid, active_email: "user@princeton.edu", 'user_statistic': ["EM"] }.to_json }
     let(:patron_stub) do
       stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
         .to_return(status: 200, body: patron, headers: {})

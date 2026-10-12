@@ -81,12 +81,20 @@ module Requests
         @delivery_locations ||= Requests::BibdataService.delivery_locations
       end
 
+      def delivery_locations_add_pppl
+        @delivery_locations_add_pppl ||= delivery_locations['PQ']
+      end
+
       def delivery_locations_not_including_staff_only
         delivery_locations&.reject { |_code, loc| loc["staff_only"] == true }
       end
 
       def library_staff_patron_group?
         patron.library_staff_patron_group?
+      end
+
+      def eligible_faculty_pickup_pppl?
+        patron.eligible_faculty_pickup_pppl?
       end
   end
 end
