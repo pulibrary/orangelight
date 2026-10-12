@@ -92,9 +92,5 @@ module Requests
       def library_staff_patron_group?
         patron.library_staff_patron_group?
       end
-
-      def eligible_faculty_pickup_pppl?
-        patron.eligible_faculty_pickup_pppl?
-      end
   end
 end
