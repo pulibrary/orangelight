@@ -15,7 +15,7 @@ module Requests
         # we need to filter out the Staff locations that are for the library staff
         return default_pick_ups if delivery_locations.empty?
         return delivery_locations if library_staff_patron_group?
-        return delivery_locations_faculty_pppl if eligible_faculty_pickup_pppl?
+        return delivery_locations_with_pppl if eligible_pickup_from_pppl?
         delivery_locations_not_including_staff_only
       end
 
@@ -38,11 +38,11 @@ module Requests
         delivery_locations&.reject { |loc| loc["staff_only"] == true }
       end
 
-      def eligible_faculty_pickup_pppl?
-        patron.eligible_faculty_pickup_pppl?
+      def eligible_pickup_from_pppl?
+        patron.eligible_pickup_from_pppl?
       end
 
-      def delivery_locations_faculty_pppl
+      def delivery_locations_with_pppl
         delivery_locations_not_including_staff_only.insert(-2, default_pick_ups.find { |location| location[:gfa_pickup] == "PQ" })
       end
     end

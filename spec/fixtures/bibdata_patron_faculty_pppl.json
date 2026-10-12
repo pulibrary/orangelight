@@ -1,0 +1,28 @@
+{
+    "netid": "aspen",
+    "first_name": "Aspen",
+    "last_name": "Aspenoulis",
+    "barcode": "94651008433458",
+    "university_id": "802040555",
+    "patron_id": "999988880",
+    "patron_group": "P",
+    "patron_group_desc": "P Faculty \u0026 Professional",
+    "active_email": "pets@pets.edu",
+    "user_statistic": [
+        "EM",
+        "PPPL"
+    ],
+    "ldap": {
+        "netid": "aspen",
+        "department": null,
+        "address": "Pumpkin Street 123",
+        "telephone": "895-555-5555",
+        "givenname": "Aspen",
+        "surname": "Aspenoulis",
+        "email": "pets@pets.edu",
+        "status": "staff",
+        "pustatus": "stf",
+        "universityid": "802040555",
+        "title": "A person"
+    }
+}

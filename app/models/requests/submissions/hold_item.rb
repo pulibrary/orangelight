@@ -82,7 +82,7 @@ module Requests::Submissions
           user_id: submission.patron.university_id,
           request_type: "HOLD"
         }.merge(
-          if patron.eligible_faculty_pickup_pppl?
+          if patron.eligible_pickup_from_pppl?
             { pickup_location_type: "USER_WORK_ADDRESS", pickup_location_library: 'plasma' }
           else
             { pickup_location_type: "LIBRARY", pickup_location_library: pick_up_library }
