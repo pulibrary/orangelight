@@ -30,8 +30,8 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory, :requests do
                                                           ])
   end
 
-  it 'returns pickup locations for a marquand$pz book' do
-    location = Requests::Location.new single_holding_data_from_fixture('marquand$pz')
+  it 'returns pickup locations for a marquand$pv book' do
+    location = Requests::Location.new single_holding_data_from_fixture('marquand$pv')
     form = instance_double(Requests::Form)
     requestable = instance_double(Requests::RequestableDecorator, partner_holding?: false, location:, ill_eligible?: false, annex?: false, recap?: false, delivery_location_code: 'PJ', pick_up_location_code: 'PJ', delivery_location_label: 'Marquand Library of Art and Archaeology')
     factory = described_class.new(form:, requestable:)
