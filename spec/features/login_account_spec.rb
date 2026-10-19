@@ -44,11 +44,11 @@ describe 'Account login' do
         click_button("Your Account")
         new_window = window_opened_by { click_link 'Library Account' }
         within_window new_window do
-          expect(page).to have_link("Log in with netID")
+          expect(page).to have_button("Log in with netID")
           expect(page).to have_link("Log in with Alma Account (affiliates)")
-          cas_login_link = find_link('Log in with netID')
-          expect(cas_login_link[:href]).to include("/users/auth/cas")
-          click_link('Log in with netID')
+          cas_form_action = find('form[action="/users/auth/cas"]')
+          expect(cas_form_action).to have_button("Log in with netID")
+          click_button('Log in with netID')
           expect(page).to have_current_path(%r{discovery})
         end
       end
@@ -91,8 +91,8 @@ describe 'Account login' do
       it 'logs the user in', js: true do
         visit "/catalog/#{bib_id}"
         click_link('Request')
-        expect(page).to have_link('Log in with netID')
-        click_link('Log in with netID')
+        expect(page).to have_button('Log in with netID')
+        click_button('Log in with netID')
         expect(page).to have_content('Library Material Request')
         expect(page.current_path).to start_with('/requests/SCSB-2143785')
         expect(page).to have_selector('#request_3270290')
