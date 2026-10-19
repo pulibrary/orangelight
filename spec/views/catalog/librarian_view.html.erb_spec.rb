@@ -10,7 +10,7 @@ RSpec.describe "catalog/librarian_view.html.erb" do
     it "displays the AVA fields" do
       allow(view).to receive(:params).and_return(id: "9922486553506421")
       stub_request(:get, "https://bibdata-staging.lib.princeton.edu/bibliographic/9922486553506421")
-        .to_return(status: 200, body: File.open(Rails.root.join("spec", "fixtures", "alma", "9922486553506421_marc.xml")), headers: {})
+        .to_return(status: 200, body: File.open(file_fixture("../alma/9922486553506421_marc.xml")), headers: {})
 
       render
 

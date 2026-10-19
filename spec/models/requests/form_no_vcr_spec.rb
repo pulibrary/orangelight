@@ -22,7 +22,7 @@ RSpec.describe Requests::Form, type: :model, requests: true do
       }
     end
     let(:request) { described_class.new(**params) }
-    let(:catalog_raw_fixture) { Rails.root.join('spec', 'fixtures', 'raw', "#{document_id}_raw.json") }
+    let(:catalog_raw_fixture) { file_fixture("../raw/#{document_id}_raw.json") }
 
     before do
       stub_request(:get, "https://catalog.princeton.edu/catalog/#{document_id}/raw")
