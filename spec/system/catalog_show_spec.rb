@@ -14,7 +14,7 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
     let(:solr_url) { Blacklight.connection_config[:url] }
     let(:solr) { RSolr.connect(url: solr_url) }
     let(:document_id) { '9946093213506421' }
-    let(:document_fixture_path) { Rails.root.join('spec', 'fixtures', 'alma', "#{document_id}.json") }
+    let(:document_fixture_path) { file_fixture("../alma/#{document_id}.json") }
     let(:document_fixture_content) { File.read(document_fixture_path) }
     let(:document_fixture) { JSON.parse(document_fixture_content) }
     let(:solr_url) do
@@ -55,7 +55,7 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
     let(:solr_url) { Blacklight.connection_config[:url] }
     let(:solr) { RSolr.connect(url: solr_url) }
     let(:document_id) { '9946093213506421' }
-    let(:document_fixture_path) { Rails.root.join('spec', 'fixtures', 'alma', "#{document_id}.json") }
+    let(:document_fixture_path) { file_fixture("../alma/#{document_id}.json") }
     let(:document_fixture_content) { File.read(document_fixture_path) }
     let(:document_fixture) { JSON.parse(document_fixture_content) }
 
