@@ -21,7 +21,11 @@ module Requests
       return locations unless response.status == 200
 
       JSON.parse(response.body).each do |location|
-        locations[location['gfa_pickup']] = location.with_indifferent_access
+        pickup_code = location['gfa_pickup']
+        existing_location = locations[pickup_code]
+        next if pickup_code == 'PA' && existing_location && existing_location['label'] == 'Firestone Library'
+
+        locations[pickup_code] = location.with_indifferent_access
       end
 
       Rails.cache.write('delivery_locations', locations, expires_in: 24.hours)

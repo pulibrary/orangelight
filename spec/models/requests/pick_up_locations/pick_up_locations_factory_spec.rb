@@ -181,5 +181,26 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory, :requests do
                                                               ["Plasma Physics", "PQ"]
                                                             ])
     end
+    describe 'items from Recap locations recap$qv OR recap$gp OR recap$pa' do
+      ['recap$pa', 'recap$qv', 'recap$gp'].each do |location|
+        it "for item in #{location} the user will see as pickup location Plasma Physics Library but the gfa_pickup code will be PA" do
+          location = Requests::Location.new single_holding_data_from_fixture(location)
+          form = instance_double(Requests::Form, default_pick_ups: [{ label: 'Firestone Library', gfa_pickup: 'PA' }, { label: 'Architecture Library', gfa_pickup: 'PW' }, { label: 'Plasma Physics Library', gfa_pickup: 'PA' }])
+
+          requestable = instance_double(Requests::Requestable, partner_holding?: false, location:, ill_eligible?: false, annex?: false, recap?: true, patron: instance_double(Requests::Patron, library_staff_patron_group?: false, affiliate_patron_group?: false, eligible_pickup_from_pppl?: true))
+          factory = described_class.new(form:, requestable:)
+
+          expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
+                                                                  ["Architecture Library", "PW"],
+                                                                  ["East Asian Library", "PL"],
+                                                                  ["Engineering Library", "PT"],
+                                                                  ["Mendel Music Library", "PK"],
+                                                                  ["Stokes Library", "PM"],
+                                                                  ["Plasma Physics Library", "PA"],
+                                                                  ["Firestone Library", "PA"]
+                                                                ])
+        end
+      end
+    end
   end
 end

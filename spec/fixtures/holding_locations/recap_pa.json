@@ -17,21 +17,6 @@
   "holding_library": null,
   "delivery_locations": [
     {
-      "label": "Plasma Physics Library",
-      "address": "Forrestal Campus Princeton, NJ 08544",
-      "phone_number": "609-243-3565",
-      "contact_email": "lewislib@princeton.edu",
-      "gfa_pickup": "PQ",
-      "staff_only": false,
-      "pickup_location": true,
-      "digital_location": true,
-      "library": {
-        "label": "Harold P. Furth Plasma Physics Library",
-        "code": "plasma",
-        "order": 0
-      }
-    },
-    {
       "label": "Technical Services 693",
       "address": "693 Alexander Rd. Princeton, NJ 08544",
       "phone_number": "609-258-1470",
@@ -122,7 +107,7 @@
       }
     },
     {
-      "label": "Firestone Library, Resource Sharing",
+      "label": "Resource Sharing",
       "address": "One Washington Rd. Princeton, NJ 08544",
       "phone_number": "609-258-1470",
       "contact_email": "fstcirc@princeton.edu",
@@ -133,21 +118,6 @@
       "library": {
         "label": "Firestone Library",
         "code": "firestone",
-        "order": 0
-      }
-    },
-    {
-      "label": "Lewis Library",
-      "address": "Washington Road and Ivy Lane Princeton, NJ 08544",
-      "phone_number": "609-258-6004",
-      "contact_email": "lewislib@princeton.edu",
-      "gfa_pickup": "PN",
-      "staff_only": false,
-      "pickup_location": true,
-      "digital_location": true,
-      "library": {
-        "label": "Lewis Library",
-        "code": "lewis",
         "order": 0
       }
     },
