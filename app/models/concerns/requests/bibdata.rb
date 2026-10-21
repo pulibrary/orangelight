@@ -48,8 +48,9 @@ module Requests
     def build_pick_ups
       pick_up_locations = []
 
-      request_delivery_locations.each_value do |pick_up|
-        pick_up_locations << { label: pick_up["label"], gfa_pickup: pick_up["gfa_pickup"], pick_up_location_code: pick_up["library"]["code"] || 'firestone', staff_only: pick_up["staff_only"] } if pick_up["pickup_location"] == true
+      request_delivery_locations.each do |pick_up|
+        next unless pick_up["pickup_location"] == true
+        pick_up_locations << { label: pick_up["label"], gfa_pickup: pick_up["gfa_pickup"], pick_up_location_code: pick_up.dig("library", "code") || "firestone", staff_only: pick_up["staff_only"] }
       end
       # Filter pickup locations based on this location's code:
       # - When code is 'firestone$pf', only include PF locations
@@ -86,7 +87,7 @@ module Requests
       end
 
       def delivery_locations_not_including_staff_only
-        delivery_locations&.reject { |_code, loc| loc["staff_only"] == true }
+        delivery_locations&.reject { |location| location["staff_only"] == true }
       end
 
       def library_staff_patron_group?
