@@ -85,7 +85,19 @@ module Requests
     end
 
     def pick_up_location
-      Requests::BibdataService.delivery_locations.dig(items.first&.dig('pick_up'), "library") || {}
+      # we're matching both the gfa_pickup and the
+      # code with the pick_up_location_code from the selected item
+      # because in bibdata delivery locations the gfa_pickup is not unique for specific libraries
+      # Plasma has two entries with PQ and PA
+      # Firestone has a PA
+      item = items.first
+
+      location = Requests::BibdataService.delivery_locations.find do |location|
+        location["gfa_pickup"] == item&.dig("pick_up") && location.dig("library", "code") == item&.dig("pick_up_location_code")
+      end
+
+      location&.dig("library") || {}
+      # Requests::BibdataService.delivery_locations.dig(items.first&.dig('pick_up'), "library") || {}
     end
 
     def marquand?

@@ -52,11 +52,19 @@ module Requests
       end
 
       def delivery_locations_not_only_staff_with_plasma_pa
-        delivery_locations_not_including_staff_only.insert(-2, default_pick_ups.find { |location| location[:gfa_pickup] == "PA" && location[:label] == "Plasma Physics Library" })
+        # we want to make sure that we insert the
+        # location with gfa pickup that is Plasma Physics not Firestone
+        pa_location = default_pick_ups.find { |location| location[:gfa_pickup] == "PA" && location[:label] == "Plasma Physics Library" }
+        delivery_locations_not_including_staff_only << pa_location if pa_location
+
+        # delivery_locations_not_including_staff_only.insert(-2, default_pick_ups.find { |location| location[:gfa_pickup] == "PA" && location[:label] == "Plasma Physics Library" })
       end
 
       def delivery_locations_not_only_staff_with_plasma_pq
-        delivery_locations_not_including_staff_only.insert(-2, default_pick_ups.find { |location| location[:gfa_pickup] == "PQ" })
+        pq_location = default_pick_ups.find { |location| location[:gfa_pickup] == "PQ" }
+        delivery_locations_not_including_staff_only << pq_location if pq_location
+
+        # delivery_locations_not_including_staff_only.insert(-2, default_pick_ups.find { |location| location[:gfa_pickup] == "PQ" })
       end
 
       def recap_location?(location_code)
@@ -76,7 +84,9 @@ module Requests
       end
 
       def recap_pickup_at_plasma_physics_pa?
-        # pppl users in patron_group P pick up alma items from
+        # pppl users in patron_group P or REG
+        # and statistic group PPPL
+        # pick up alma items from
         # these recap locations in Plasma with gfa_pickup PA
         recap_qv? || recap_pa? || recap_gp?
       end
