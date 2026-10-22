@@ -143,8 +143,8 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory, :requests do
                                                               ["Engineering Library", "PT"],
                                                               ["Mendel Music Library", "PK"],
                                                               ["Stokes Library", "PM"],
-                                                              ["Plasma Physics", "PQ"],
-                                                              ["Firestone Library", "PA"]
+                                                              ["Firestone Library", "PA"],
+                                                              ["Plasma Physics", "PQ"]
                                                             ])
     end
     it 'returns a single pickup location (Firestone) for Interlibrary loans' do
@@ -196,8 +196,8 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory, :requests do
                                                                   ["Engineering Library", "PT"],
                                                                   ["Mendel Music Library", "PK"],
                                                                   ["Stokes Library", "PM"],
-                                                                  ["Plasma Physics Library", "PA"],
-                                                                  ["Firestone Library", "PA"]
+                                                                  ["Firestone Library", "PA"],
+                                                                  ["Plasma Physics Library", "PA"]
                                                                 ])
         end
       end

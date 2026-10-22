@@ -69,7 +69,11 @@ module Requests
     def on_shelf_confirmation(submission)
       @submission = Submission.new_from_hash submission
       destination_email = @submission.email
-      subject = "#{Requests::BibdataService.delivery_locations[@submission.items.first['pick_up']]['label']} #{I18n.t('requests.on_shelf.email_subject_patron')}"
+      item = @submission.items.first
+      pick_up = item&.dig("pick_up")
+      location_label = Requests::BibdataService.delivery_locations.find { |location| location["gfa_pickup"] == pick_up }&.dig("label")
+      # subject = "#{Requests::BibdataService.delivery_locations[@submission.items.first['pick_up']]['label']} #{I18n.t('requests.on_shelf.email_subject_patron')}"
+      subject = "#{location_label} #{I18n.t('requests.on_shelf.email_subject_patron')}"
       mail(to: destination_email,
            from: I18n.t('requests.default.email_from'),
            subject:)
@@ -106,7 +110,11 @@ module Requests
     def on_shelf_no_items_confirmation(submission)
       @submission = Submission.new_from_hash submission
       destination_email = @submission.email
-      subject = "#{Requests::BibdataService.delivery_locations[@submission.items.first['pick_up']]['label']} #{I18n.t('requests.on_shelf.email_subject_patron')}"
+      item = @submission.items.first
+      pick_up = item&.dig("pick_up")
+      location_label = Requests::BibdataService.delivery_locations.find { |location| location["gfa_pickup"] == pick_up }&.dig("label")
+      subject = "#{location_label} #{I18n.t('requests.on_shelf.email_subject_patron')}"
+      # subject = "#{Requests::BibdataService.delivery_locations[@submission.items.first['pick_up']]['label']} #{I18n.t('requests.on_shelf.email_subject_patron')}"
       mail(to: destination_email,
            from: I18n.t('requests.default.email_from'),
            subject:)
