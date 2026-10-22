@@ -64,8 +64,8 @@ module Requests
       code = get_location_data(location_code)
       library_code = code[:library]["code"]
       return I18n.t('requests.on_shelf.email') if library_code == "firestone"
-      delivery_location = Requests::BibdataService.delivery_locations.select { |_key, value| value[:library][:code] == library_code }
-      delivery_location.values.first[:contact_email]
+      delivery_location = Requests::BibdataService.delivery_locations.find { |location| location.dig("library", "code") == library_code }
+      delivery_location["contact_email"]
     end
 
     private
@@ -82,8 +82,11 @@ module Requests
         @delivery_locations ||= Requests::BibdataService.delivery_locations
       end
 
+      # is this used?
       def delivery_locations_add_pppl
-        @delivery_locations_add_pppl ||= delivery_locations['PQ']
+        @delivery_locations_add_pppl ||= delivery_locations.find do |location|
+          location["gfa_pickup"] == "PQ" && location.dig("library", "code") == "plasma"
+        end
       end
 
       def delivery_locations_not_including_staff_only

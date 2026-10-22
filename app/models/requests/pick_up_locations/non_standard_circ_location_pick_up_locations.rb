@@ -27,8 +27,8 @@ module Requests
             if library_code == "firestone"
               "PA"
             else
-              lib = Requests::BibdataService.delivery_locations.select { |_key, hash| hash["library"]["code"] == library_code }
-              lib.keys.first.to_s
+              location = Requests::BibdataService.delivery_locations.find { |delivery_location| delivery_location.dig("library", "code") == library_code }
+              location&.dig("gfa_pickup").to_s
             end
           end
 

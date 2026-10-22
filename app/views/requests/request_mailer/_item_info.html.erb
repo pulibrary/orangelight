@@ -13,7 +13,11 @@
               <% if key == "pick_up" %>Pick-up<% else %><%= format_label(key) %><% end %></div>
             <span style="margin-bottom:0;" class="large-print">
               <% if key == "pick_up" %>
-                <%= Requests::BibdataService.delivery_locations[value]['label'].html_safe %>
+                <%= Requests::BibdataService.delivery_locations
+                    .find do |location|
+                      location.dig("library", "code") == item["pick_up_location_code"] && location["gfa_pickup"] == value
+                    end&.dig("label")&.html_safe 
+                %>
               <% else %>
                 <%= value %>
               <% end %>
