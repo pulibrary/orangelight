@@ -10,20 +10,13 @@ module Requests
     end
 
     def self.delivery_locations
-      # check cache; return unless nil
-      locations = Rails.cache.fetch('delivery_locations', expires_in: 24.hours)
+      locations = Rails.cache.read('delivery_locations')
       return locations unless locations.nil?
 
-      # don't cache if we didn't get a success
-      locations = {}.with_indifferent_access
+      response = connection.get("/locations/delivery_locations.json")
+      return [] unless response.status == 200
 
-      response = connection.get "/locations/delivery_locations.json"
-      return locations unless response.status == 200
-
-      JSON.parse(response.body).each do |location|
-        locations[location['gfa_pickup']] = location.with_indifferent_access
-      end
-
+      locations = JSON.parse(response.body).map(&:with_indifferent_access)
       Rails.cache.write('delivery_locations', locations, expires_in: 24.hours)
       locations
     end

@@ -14,7 +14,7 @@ describe Requests::BibdataService do
     context 'with a successful response from bibdata' do
       it 'returns the holdings location hash' do
         stub_delivery_locations
-        expect(locations['QX']['label']).to eq "Firestone Circulation Desk"
+        expect(locations.first['label']).to eq "Plasma Physics Library"
       end
     end
 
