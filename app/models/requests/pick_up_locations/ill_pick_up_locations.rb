@@ -26,6 +26,8 @@ module Requests
         attr_reader :bibdata_service_class, :form, :requestable
 
         delegate :illiad_account, to: :form
+
+        # :reek:FeatureEnvy
         def all_delivery_locations_minus_plasma_pa
           all_delivery_locations.reject { |location| location["label"] == "Plasma Physics Library" && location["gfa_pickup"] == "PA" }
         end

@@ -7,9 +7,9 @@ module Requests
 
     def digitize_fill_in_confirmation(submission)
       @submission = Submission.new_from_hash submission
+      destination_email = @submission.email
       @delivery_mode = "edd"
       subject = I18n.t('requests.on_shelf.email_subject', pick_up_location: "Digitization")
-      destination_email = @submission.email
       mail(to: destination_email,
            from: I18n.t('requests.default.email_from'),
            subject:)
@@ -65,7 +65,7 @@ module Requests
            subject:)
     end
 
-    # temporary changes issue 438
+    # :reek:TooManyStatements
     def on_shelf_confirmation(submission)
       @submission = Submission.new_from_hash submission
       destination_email = @submission.email
@@ -107,6 +107,7 @@ module Requests
            subject:)
     end
 
+    # :reek:TooManyStatements
     def on_shelf_no_items_confirmation(submission)
       @submission = Submission.new_from_hash submission
       destination_email = @submission.email

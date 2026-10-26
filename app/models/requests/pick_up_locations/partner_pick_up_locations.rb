@@ -59,6 +59,7 @@ module Requests
           @bibdata_delivery_locations ||= Requests::BibdataService.delivery_locations
         end
 
+        # :reek:FeatureEnvy
         def bibdata_delivery_location(gfa_pickup)
           location = bibdata_delivery_locations.find { |delivery_location| delivery_location["gfa_pickup"] == gfa_pickup }
           return unless location
