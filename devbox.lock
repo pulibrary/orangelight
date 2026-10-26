@@ -165,6 +165,180 @@
         }
       }
     },
+    "libxml2@latest": {
+      "last_modified": "2026-10-24T11:44:37Z",
+      "resolved": "github:NixOS/nixpkgs/d3b13ad75cc492690728f9307e443dec9ef9a20e#libxml2",
+      "source": "devbox-search",
+      "version": "2.15.4",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "bin",
+              "path": "/nix/store/ppvyx2plhp99p1rq10isn4m4rhbhvzyz-libxml2-2.15.4-bin",
+              "default": true
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/1ggqq9s1lq5pnbir0b61bcxxi6wgfxjq-libxml2-2.15.4-dev"
+            },
+            {
+              "name": "out",
+              "path": "/nix/store/5pdi5bq35qs6av37wsaf6qkkbghwhhvz-libxml2-2.15.4"
+            }
+          ],
+          "store_path": "/nix/store/ppvyx2plhp99p1rq10isn4m4rhbhvzyz-libxml2-2.15.4-bin"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "bin",
+              "path": "/nix/store/yhxjyv1dlsis3qqxn3ipzpjr2419q13l-libxml2-2.15.4-bin",
+              "default": true
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/784ck43jaigj3sm9mq4rx673fzynq4q8-libxml2-2.15.4-dev"
+            },
+            {
+              "name": "out",
+              "path": "/nix/store/3biijnc5zjs4zscval0a0qn0gszd5fyh-libxml2-2.15.4"
+            }
+          ],
+          "store_path": "/nix/store/yhxjyv1dlsis3qqxn3ipzpjr2419q13l-libxml2-2.15.4-bin"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "bin",
+              "path": "/nix/store/d6ar9rr2bbwdrjdj2y7pfbppf8q1wydn-libxml2-2.15.4-bin",
+              "default": true
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/6gsdl0abbpjsxcrf2p83jkmkgwa5x6jd-libxml2-2.15.4-dev"
+            },
+            {
+              "name": "out",
+              "path": "/nix/store/m5s1ak7s1swmhmy64yqvya342g0603s7-libxml2-2.15.4"
+            }
+          ],
+          "store_path": "/nix/store/d6ar9rr2bbwdrjdj2y7pfbppf8q1wydn-libxml2-2.15.4-bin"
+        }
+      }
+    },
+    "libxslt@latest": {
+      "last_modified": "2026-10-24T11:44:37Z",
+      "resolved": "github:NixOS/nixpkgs/d3b13ad75cc492690728f9307e443dec9ef9a20e#libxslt",
+      "source": "devbox-search",
+      "version": "1.1.45",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "bin",
+              "path": "/nix/store/svg4qlyqw0xvjpas10q671bcms0x32z9-libxslt-1.1.45-bin",
+              "default": true
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/06mxlmzkkna5mm2c82a7lfqjvj88awwp-libxslt-1.1.45-dev"
+            },
+            {
+              "name": "devdoc",
+              "path": "/nix/store/3509b4izv1dayaqkbahl7b5lcn4fyndf-libxslt-1.1.45-devdoc"
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/nvpg5brlrjsywmy9cfvk0ndy067g4rmc-libxslt-1.1.45-doc"
+            },
+            {
+              "name": "out",
+              "path": "/nix/store/msjry28br79avjkq64dq3dfrhg0imklm-libxslt-1.1.45"
+            }
+          ],
+          "store_path": "/nix/store/svg4qlyqw0xvjpas10q671bcms0x32z9-libxslt-1.1.45-bin"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "bin",
+              "path": "/nix/store/1azyaswqk1im1my6mj3rav52v1fq370i-libxslt-1.1.45-bin",
+              "default": true
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/zkag8z8zyiy08yqc2l1g0xhkjvfgrcih-libxslt-1.1.45-dev"
+            },
+            {
+              "name": "devdoc",
+              "path": "/nix/store/sbnmhxfx9admlmk8phgwgx35h0845xw6-libxslt-1.1.45-devdoc"
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/4j8a13zjf5cy84c1mz7np332jmdn312h-libxslt-1.1.45-doc"
+            },
+            {
+              "name": "out",
+              "path": "/nix/store/bn3s3xjdasmmgzy9m9j1dwg90n3n4vs9-libxslt-1.1.45"
+            }
+          ],
+          "store_path": "/nix/store/1azyaswqk1im1my6mj3rav52v1fq370i-libxslt-1.1.45-bin"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "bin",
+              "path": "/nix/store/nm1881wfl542zbqbv7ix2gqngqxw7sn5-libxslt-1.1.45-bin",
+              "default": true
+            },
+            {
+              "name": "out",
+              "path": "/nix/store/vrkcl04iahd01lwrgd03sjbp9kc7c2ik-libxslt-1.1.45"
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/6xdzfy0mrq5b6v9yvjamcsmy1qq39mix-libxslt-1.1.45-dev"
+            },
+            {
+              "name": "devdoc",
+              "path": "/nix/store/h230wa05863c6z6k55yy1wv2c2qqinlr-libxslt-1.1.45-devdoc"
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/7qc43vgzkw8anxxlbqnr8ivzzmi6vw96-libxslt-1.1.45-doc"
+            }
+          ],
+          "store_path": "/nix/store/nm1881wfl542zbqbv7ix2gqngqxw7sn5-libxslt-1.1.45-bin"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "bin",
+              "path": "/nix/store/2ri4m79chw5v4178rfmjlj6h9wky1gbq-libxslt-1.1.45-bin",
+              "default": true
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/51hrnnzac75d52nvxlq8dvp9i9mxphx2-libxslt-1.1.45-dev"
+            },
+            {
+              "name": "devdoc",
+              "path": "/nix/store/ypyp1xjd577vqz8w3x6nanhprzfc4r1z-libxslt-1.1.45-devdoc"
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/pwbrs2gpfhg017h8c2j804s4d2bgqvd2-libxslt-1.1.45-doc"
+            },
+            {
+              "name": "out",
+              "path": "/nix/store/m0f5xgws8lpkja6kz7lvzwl7bb4zm6w5-libxslt-1.1.45"
+            }
+          ],
+          "store_path": "/nix/store/2ri4m79chw5v4178rfmjlj6h9wky1gbq-libxslt-1.1.45-bin"
+        }
+      }
+    },
     "libyaml@latest": {
       "last_modified": "2026-08-12T11:28:58Z",
       "resolved": "github:NixOS/nixpkgs/044bfe75bfe4c7bbe043dc17b5e42ea823b84a09#libyaml",
@@ -231,7 +405,7 @@
     },
     "nodejs@26.7.0": {
       "last_modified": "2026-08-14T06:48:10Z",
-      "plugin_version": "0.0.4",
+      "plugin_version": "0.0.5",
       "resolved": "github:NixOS/nixpkgs/f2b17eb1b90f6a359082035b4538d4c63017aec3#nodejs_26",
       "source": "devbox-search",
       "version": "26.7.0",
@@ -684,6 +858,45 @@
             }
           ],
           "store_path": "/nix/store/vwph78y8l4q6fndzmd9yqgc4rln6583g-postgresql-18.6"
+        }
+      }
+    },
+    "redis@latest": {
+      "last_modified": "2026-10-24T11:44:37Z",
+      "plugin_version": "0.0.3",
+      "resolved": "github:NixOS/nixpkgs/d3b13ad75cc492690728f9307e443dec9ef9a20e#redis",
+      "source": "devbox-search",
+      "version": "8.10.2",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/zhm90ykda48fw6za3hf6x5kf1w92sa1v-redis-8.10.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/zhm90ykda48fw6za3hf6x5kf1w92sa1v-redis-8.10.2"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/r50qy61cd5iz4j7zmsxgpw57lnw7ih4s-redis-8.10.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/r50qy61cd5iz4j7zmsxgpw57lnw7ih4s-redis-8.10.2"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/f85my1360gpf4xjilp0rljcf9q5vv6km-redis-8.10.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/f85my1360gpf4xjilp0rljcf9q5vv6km-redis-8.10.2"
         }
       }
     },
