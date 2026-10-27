@@ -53,18 +53,14 @@ module Requests
 
       def delivery_locations_not_only_staff_with_plasma_pa
         # we want to make sure that we insert the
-        # location with gfa pickup that is Plasma Physics not Firestone
+        # location with gfa pickup 'PA' that is Plasma Physics not Firestone
         pa_location = default_pick_ups.find { |location| location[:gfa_pickup] == "PA" && location[:label] == "Plasma Physics Library" }
         delivery_locations_not_including_staff_only << pa_location if pa_location
-
-        # delivery_locations_not_including_staff_only.insert(-2, default_pick_ups.find { |location| location[:gfa_pickup] == "PA" && location[:label] == "Plasma Physics Library" })
       end
 
       def delivery_locations_not_only_staff_with_plasma_pq
         pq_location = default_pick_ups.find { |location| location[:gfa_pickup] == "PQ" }
         delivery_locations_not_including_staff_only << pq_location if pq_location
-
-        # delivery_locations_not_including_staff_only.insert(-2, default_pick_ups.find { |location| location[:gfa_pickup] == "PQ" })
       end
 
       def recap_location?(location_code)

@@ -72,7 +72,6 @@ module Requests
       item = @submission.items.first
       pick_up = item&.dig("pick_up")
       location_label = Requests::BibdataService.delivery_locations.find { |location| location["gfa_pickup"] == pick_up }&.dig("label")
-      # subject = "#{Requests::BibdataService.delivery_locations[@submission.items.first['pick_up']]['label']} #{I18n.t('requests.on_shelf.email_subject_patron')}"
       subject = "#{location_label} #{I18n.t('requests.on_shelf.email_subject_patron')}"
       mail(to: destination_email,
            from: I18n.t('requests.default.email_from'),
@@ -115,7 +114,6 @@ module Requests
       pick_up = item&.dig("pick_up")
       location_label = Requests::BibdataService.delivery_locations.find { |location| location["gfa_pickup"] == pick_up }&.dig("label")
       subject = "#{location_label} #{I18n.t('requests.on_shelf.email_subject_patron')}"
-      # subject = "#{Requests::BibdataService.delivery_locations[@submission.items.first['pick_up']]['label']} #{I18n.t('requests.on_shelf.email_subject_patron')}"
       mail(to: destination_email,
            from: I18n.t('requests.default.email_from'),
            subject:)
