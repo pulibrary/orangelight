@@ -8,7 +8,7 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": true,
-        "url": "https://localhost:3009/locations/delivery_locations/1.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/1.json",
         "library": {
             "label": "Harold P. Furth Plasma Physics Library",
             "code": "plasma",
@@ -24,7 +24,7 @@
         "staff_only": true,
         "pickup_location": true,
         "digital_location": false,
-        "url": "https://localhost:3009/locations/delivery_locations/2.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/2.json",
         "library": {
             "label": "Firestone Library",
             "code": "firestone",
@@ -40,7 +40,7 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": true,
-        "url": "https://localhost:3009/locations/delivery_locations/3.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/3.json",
         "library": {
             "label": "Architecture Library",
             "code": "arch",
@@ -56,7 +56,7 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": true,
-        "url": "https://localhost:3009/locations/delivery_locations/4.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/4.json",
         "library": {
             "label": "East Asian Library",
             "code": "eastasian",
@@ -72,7 +72,7 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": true,
-        "url": "https://localhost:3009/locations/delivery_locations/5.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/5.json",
         "library": {
             "label": "Engineering Library",
             "code": "engineer",
@@ -88,7 +88,7 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": false,
-        "url": "https://localhost:3009/locations/delivery_locations/6.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/6.json",
         "library": {
             "label": "Firestone Library",
             "code": "firestone",
@@ -104,7 +104,7 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": true,
-        "url": "https://localhost:3009/locations/delivery_locations/7.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/7.json",
         "library": {
             "label": "Marquand Library",
             "code": "marquand",
@@ -120,7 +120,7 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": true,
-        "url": "https://localhost:3009/locations/delivery_locations/8.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/8.json",
         "library": {
             "label": "Mendel Music Library",
             "code": "mendel",
@@ -136,7 +136,7 @@
         "staff_only": false,
         "pickup_location": false,
         "digital_location": true,
-        "url": "https://localhost:3009/locations/delivery_locations/9.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/9.json",
         "library": {
             "label": "Mudd Manuscript Library",
             "code": "mudd",
@@ -152,7 +152,7 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": true,
-        "url": "https://localhost:3009/locations/delivery_locations/10.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/10.json",
         "library": {
             "label": "Stokes Library",
             "code": "stokes",
@@ -168,7 +168,7 @@
         "staff_only": true,
         "pickup_location": true,
         "digital_location": false,
-        "url": "https://localhost:3009/locations/delivery_locations/12.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/12.json",
         "library": {
             "label": "Firestone Library",
             "code": "firestone",
@@ -184,7 +184,7 @@
         "staff_only": false,
         "pickup_location": false,
         "digital_location": true,
-        "url": "https://localhost:3009/locations/delivery_locations/13.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/13.json",
         "library": {
             "label": "Firestone Library",
             "code": "firestone",
@@ -200,7 +200,7 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": true,
-        "url": "https://localhost:3009/locations/delivery_locations/14.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/14.json",
         "library": {
             "label": "Lewis Library",
             "code": "lewis",
@@ -216,7 +216,7 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": true,
-        "url": "https://localhost:3009/locations/delivery_locations/15.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/15.json",
         "library": {
             "label": "Firestone Library",
             "code": "firestone",
@@ -232,7 +232,7 @@
         "staff_only": true,
         "pickup_location": false,
         "digital_location": false,
-        "url": "https://localhost:3009/locations/delivery_locations/16.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/16.json",
         "library": {
             "label": "Firestone Library",
             "code": "firestone",
@@ -248,7 +248,7 @@
         "staff_only": true,
         "pickup_location": true,
         "digital_location": false,
-        "url": "https://localhost:3009/locations/delivery_locations/23.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/23.json",
         "library": {
             "label": "Firestone Library",
             "code": "firestone",
@@ -264,7 +264,7 @@
         "staff_only": false,
         "pickup_location": false,
         "digital_location": false,
-        "url": "https://localhost:3009/locations/delivery_locations/24.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/24.json",
         "library": {
             "label": "East Asian Library",
             "code": "eastasian",
@@ -280,7 +280,7 @@
         "staff_only": false,
         "pickup_location": false,
         "digital_location": false,
-        "url": "https://localhost:3009/locations/delivery_locations/25.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/25.json",
         "library": {
             "label": "Lewis Library",
             "code": "lewis",
@@ -296,7 +296,7 @@
         "staff_only": false,
         "pickup_location": false,
         "digital_location": false,
-        "url": "https://localhost:3009/locations/delivery_locations/26.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/26.json",
         "library": {
             "label": "Marquand Library",
             "code": "marquand",
@@ -312,7 +312,7 @@
         "staff_only": false,
         "pickup_location": false,
         "digital_location": false,
-        "url": "https://localhost:3009/locations/delivery_locations/27.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/27.json",
         "library": {
             "label": "Mendel Music Library",
             "code": "mendel",
@@ -328,7 +328,7 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": false,
-        "url": "https://localhost:3009/locations/delivery_locations/28.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/28.json",
         "library": {
             "label": "Firestone Library",
             "code": "firestone",
@@ -344,7 +344,7 @@
         "staff_only": true,
         "pickup_location": false,
         "digital_location": false,
-        "url": "https://localhost:3009/locations/delivery_locations/29.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/29.json",
         "library": {
             "label": "Firestone Library",
             "code": "firestone",
@@ -358,12 +358,28 @@
         "contact_email": "fstcirc@princton.edu",
         "gfa_pickup": "QX",
         "staff_only": false,
-        "pickup_location": false,
+        "pickup_location": true,
         "digital_location": false,
-        "url": "https://localhost:3009/locations/delivery_locations/30.json",
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/30.json",
         "library": {
             "label": "Firestone Library",
             "code": "firestone",
+            "order": 0
+        }
+    },
+    {
+        "label": "Plasma Physics Library",
+        "address": "Forrestal Campus Princeton, NJ 08544",
+        "phone_number": "609-243-3565",
+        "contact_email": "lewislib@princeton.edu",
+        "gfa_pickup": "PA",
+        "staff_only": false,
+        "pickup_location": true,
+        "digital_location": true,
+        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/31.json",
+        "library": {
+            "label": "Harold P. Furth Plasma Physics Library",
+            "code": "plasma",
             "order": 0
         }
     }

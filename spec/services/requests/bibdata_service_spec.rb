@@ -12,7 +12,7 @@ describe Requests::BibdataService do
     let(:locations) { described_class.delivery_locations }
 
     context 'with a successful response from bibdata' do
-      it 'returns the holdings location hash' do
+      it 'returns the holdings location' do
         stub_delivery_locations
         expect(locations.first['label']).to eq "Plasma Physics Library"
       end
