@@ -2,7 +2,7 @@
 version: 2.1
 orbs:
   browser-tools: circleci/browser-tools@2.4.2
-  ruby: circleci/ruby@4.0.0
+  ruby: circleci/ruby@3.0.0
   node: circleci/node@7.2.1
 executors:
   orangelight-executor:
