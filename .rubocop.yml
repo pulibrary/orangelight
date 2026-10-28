@@ -8,7 +8,7 @@ plugins:
 AllCops:
   NewCops: enable
   SuggestExtensions: false
-  TargetRubyVersion: 3.4
+  TargetRubyVersion: 4.0
   Exclude:
     - 'db/**/*'
     - 'script/**/*'
