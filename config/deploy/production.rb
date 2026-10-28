@@ -18,7 +18,7 @@ server 'catalog2.princeton.edu', user: 'deploy', roles: %i[web app db worker]
 server 'catalog3.princeton.edu', user: 'deploy', roles: %i[web app db worker]
 server 'catalog4.princeton.edu', user: 'deploy', roles: %i[web app db worker]
 server 'catalog5.princeton.edu', user: 'deploy', roles: %i[web app db worker]
-# server 'catalog-indexer1.princeton.edu', user: 'deploy', roles: %i[cron_prod1 cron_db worker indexer]
+server 'catalog-indexer1.princeton.edu', user: 'deploy', roles: %i[cron_prod1 cron_db worker indexer]
 # server 'catalog-indexer2.princeton.edu', user: 'deploy', roles: %i[cron_prod2 worker indexer]
 # server 'catalog-indexer3.princeton.edu', user: 'deploy', roles: %i[cron_prod3 worker indexer]
 
