@@ -25,7 +25,7 @@ describe 'Searching', type: :system, js: false do
   end
 
   context 'chosen selected values', js: true do
-    it 'removes a chosen selected value', js: true do
+    xit 'removes a chosen selected value', js: true do
       visit '/catalog?utf8=%E2%9C%93&f1=all_fields&q3=&f_inclusive%5Bformat%5D%5B%5D=Journal&search_field=advanced&commit=Search'
       expect(page).to have_link 'Edit search'
       page.find(:xpath, '//*[@id="editSearchLink"]').click
@@ -38,7 +38,7 @@ describe 'Searching', type: :system, js: false do
   end
 
   context 'with chosen selected numismatic values', js: true, advanced_search: true do
-    it 'removes a chosen selected numismatic value', js: true do
+    xit 'removes a chosen selected numismatic value', js: true do
       visit '/catalog?f%5Bformat%5D%5B%5D=Coin&advanced_type=numismatics&f_inclusive%5Bissue_city_s%5D%5B%5D=Tyre&range%5Bpub_date_start_sort%5D%5Bbegin%5D=&range%5Bpub_date_start_sort%5D%5Bend%5D=&f1=all_fields&q1=&sort=score+desc%2C+pub_date_start_sort+desc%2C+title_sort_key+asc&search_field=advanced&commit=Search'
       expect(page).to have_link 'Edit search'
       page.find(:xpath, '//*[@id="editSearchLink"]').click

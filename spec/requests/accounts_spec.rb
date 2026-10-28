@@ -33,7 +33,7 @@ RSpec.describe AccountController, patrons: true do
     end
     context "as an authenticated user" do
       before do
-        login_as(valid_user)
+        sign_in(valid_user)
       end
 
       it "sends the user to the redirect to alma page" do

@@ -6,7 +6,7 @@ RSpec.describe ApplicationController, type: :request do
   let(:user) { FactoryBot.create(:valid_princeton_patron) }
   describe "#after_sign_in_path_for" do
     context "as a logged in user" do
-      before { login_as(user) }
+      before { sign_in(user) }
 
       context 'url only' do
         it 'redirects to alma' do
@@ -66,7 +66,6 @@ RSpec.describe ApplicationController, type: :request do
             example.run
             Rails.application.env_config.except!("omniauth.origin")
           end
-
           it 'sends the user back to the account/digitization_requests page' do
             get '/users/sign_in'
             expect(response).to redirect_to('/account/digitization_requests')
@@ -109,7 +108,7 @@ RSpec.describe ApplicationController, type: :request do
   describe 'profiling authentication' do
     let(:user) { FactoryBot.create(:user) }
     before do
-      login_as(user)
+      sign_in(user)
       allow(ApplicationController).to receive(:current_user).and_return(user)
     end
 
