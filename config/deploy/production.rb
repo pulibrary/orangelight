@@ -14,7 +14,7 @@ set :branch, ENV['BRANCH'] || 'main'
 # used to set extended properties on the server.
 
 server 'catalog1.princeton.edu', user: 'deploy', roles: %i[web app db worker]
-# server 'catalog2.princeton.edu', user: 'deploy', roles: %i[web app db worker]
+server 'catalog2.princeton.edu', user: 'deploy', roles: %i[web app db worker]
 # server 'catalog3.princeton.edu', user: 'deploy', roles: %i[web app db worker]
 # server 'catalog4.princeton.edu', user: 'deploy', roles: %i[web app db worker]
 # server 'catalog5.princeton.edu', user: 'deploy', roles: %i[web app db worker]
