@@ -99,8 +99,8 @@ jobs:
       - attach_workspace:
           at: '~/orangelight'
       - setup-bundler-and-node
-      - browser-tools/install-chrome
-      - browser-tools/install-chromedriver
+      - browser-tools/install_chrome
+      - browser-tools/install_chromedriver
       - checkout
       - run: |
           ruby --version
@@ -164,7 +164,7 @@ jobs:
       - run:
           name: Index Test Data
           command: bundle exec rake pulsearch:solr:index
-      - browser-tools/install-chrome
+      - browser-tools/install_chrome
       - run: sudo npm install -g @lhci/cli@0.14.x
       - run: lhci autorun
 
@@ -227,8 +227,8 @@ jobs:
     steps:
       - checkout
       - ruby/install-deps
-      - browser-tools/install-chrome
-      - browser-tools/install-chromedriver
+      - browser-tools/install_chrome
+      - browser-tools/install_chromedriver
       - run: RAILS_ENV=test bundle exec rspec smoke_spec/smoke_spec.rb
 
 workflows:
