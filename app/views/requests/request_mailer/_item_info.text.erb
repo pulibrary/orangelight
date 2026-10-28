@@ -8,7 +8,13 @@ Items Requested
   <% unless item[:selected].empty? %>
     <% item.each do |key, value| %>
       <% unless key == "selected" || value.blank? %>
-        <%= format_label(key) %>: <% if key == "pick_up" %><%= Requests::BibdataService.delivery_locations[value]['label'].html_safe %>,<% end %><%= value.html_safe %>
+        <%= format_label(key) %>: <% if key == "pick_up" %>
+        <%= Requests::BibdataService.delivery_locations.find do |location|
+            location.dig("library", "code") == item["pick_up_location_code"] && location["gfa_pickup"] == value
+          end&.dig("label")&.html_safe
+        %>,
+        <% end %>
+        <%= value.html_safe %>
       <% end %>
     <% end %>
   <% end %>

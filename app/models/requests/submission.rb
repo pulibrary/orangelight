@@ -85,7 +85,8 @@ module Requests
     end
 
     def pick_up_location
-      Requests::BibdataService.delivery_locations.dig(items.first&.dig('pick_up'), "library") || {}
+      pick_up = items.first&.dig("pick_up")
+      Requests::BibdataService.delivery_locations.find { |location| location["gfa_pickup"] == pick_up }&.dig("library") || {}
     end
 
     def marquand?

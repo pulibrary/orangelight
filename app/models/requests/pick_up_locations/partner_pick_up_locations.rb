@@ -30,10 +30,10 @@ module Requests
           if collection_code == 'FL' || (collection_code == 'AR' && use_statement.present?)
             # FL (Harvard) can only be requested to marquand
             # AR (Columbia) can only be requested to marquand when there are item restrictions in use_statement
-            [bibdata_delivery_locations[:PJ]]
+            [bibdata_delivery_location("PJ")].compact
           elsif collection_code == 'MR'
             # MR can only be requested to Mendel
-            [bibdata_delivery_locations[:PK]]
+            [bibdata_delivery_location("PK")].compact
           elsif eligible_pickup_from_pppl?
             # Faculty patrons in the PPPL statistic category can pick up from Firestone and Plasma Physics
             # unrestricted items
@@ -57,6 +57,14 @@ module Requests
 
         def bibdata_delivery_locations
           @bibdata_delivery_locations ||= Requests::BibdataService.delivery_locations
+        end
+
+        # :reek:FeatureEnvy
+        def bibdata_delivery_location(gfa_pickup)
+          location = bibdata_delivery_locations.find { |delivery_location| delivery_location["gfa_pickup"] == gfa_pickup }
+          return unless location
+
+          location.merge("pick_up_location_code" => location.dig("library", "code"))
         end
 
         def eligible_pickup_from_pppl?

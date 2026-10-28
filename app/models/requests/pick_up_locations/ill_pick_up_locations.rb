@@ -12,7 +12,13 @@ module Requests
       end
 
       def call
-        [all_delivery_locations[delivery_location_code]]
+        code = delivery_location_code
+
+        location = all_delivery_locations_minus_plasma_pa.find do |location|
+          location["gfa_pickup"] == code
+        end
+
+        [location]
       end
 
       private
@@ -20,6 +26,11 @@ module Requests
         attr_reader :bibdata_service_class, :form, :requestable
 
         delegate :illiad_account, to: :form
+
+        # :reek:FeatureEnvy
+        def all_delivery_locations_minus_plasma_pa
+          all_delivery_locations.reject { |location| location["label"] == "Plasma Physics Library" && location["gfa_pickup"] == "PA" }
+        end
 
         def all_delivery_locations
           @all_delivery_locations ||= bibdata_service_class.delivery_locations
