@@ -72,7 +72,7 @@ class ApplicationController < ActionController::Base
     def referrer_from_url(url)
       query = URI.parse(url).query
       if query
-        CGI.parse(query).try(:[], "referer")&.first
+        Rack::Utils.parse_query(query).try(:[], "referer")
       else
         url
       end
