@@ -126,8 +126,8 @@ describe 'Account login' do
         fill_in(id: 'username', with: user.username)
         fill_in(id: 'password', with: user.password)
         click_button('Log in')
-        expect(WebMock).to have_requested(:post, expected_login_url)
         expect(page).to have_content('Library Material Request')
+        expect(WebMock).to have_requested(:post, expected_login_url)
       end
 
       it 'shows an error for an invalid username/password', js: true do
