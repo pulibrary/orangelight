@@ -125,7 +125,7 @@ describe 'Account login' do
         click_link('Log in with Alma Account (affiliates)')
         fill_in(id: 'username', with: user.username)
         fill_in(id: 'password', with: user.password)
-        click_button('Log in')
+        click_button('Log in', exact: true)
         expect(WebMock).to have_requested(:post, expected_login_url)
         expect(page).to have_content('Library Material Request')
       end
@@ -137,7 +137,7 @@ describe 'Account login' do
         click_link('Log in with Alma Account (affiliates)')
         fill_in(id: 'username', with: user.username)
         fill_in(id: 'password', with: 'wrong')
-        click_button('Log in')
+        click_button('Log in', exact: true)
         expect(page).to have_content('username or password did not match an alma account')
       end
 
