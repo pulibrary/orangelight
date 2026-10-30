@@ -5,7 +5,6 @@
     "nodejs":                   "26.7.0",
     "yarn":                     "1.22.10",
     "git":                      "latest",
-    "openssh":                  "latest",
     "zsh":                      "latest",
     "pkg-config":               "latest",
     "postgresql":               {"version": "latest", "outputs": ["out", "lib", "dev"]},
