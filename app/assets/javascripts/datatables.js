@@ -20,7 +20,7 @@
 
 //Global setting and initializer
 
-$.extend( $.fn.dataTable.defaults, {
+$.extend($.fn.dataTable.defaults, {
   responsive: true,
   pagingType: 'full',
   //dom:
@@ -29,31 +29,29 @@ $.extend( $.fn.dataTable.defaults, {
   //  "<'row'<'col-sm-12 table-footer'lip>>"
 });
 
-
-$(document).on('preInit.dt', function(e, settings) {
+$(document).on('preInit.dt', function (e, settings) {
   var api, table_id, url;
   api = new $.fn.dataTable.Api(settings);
-  table_id = "#" + api.table().node().id;
+  table_id = '#' + api.table().node().id;
   url = $(table_id).data('source');
   if (url) {
     return api.ajax.url(url);
   }
 });
 
-
 // init on turbolinks load
-$(document).on('turbolinks:load', function() {
-  if (!$.fn.DataTable.isDataTable("table[id^=dttb-]")) {
-    $("table[id^=dttb-]").DataTable();
+$(document).on('turbolinks:load', function () {
+  if (!$.fn.DataTable.isDataTable('table[id^=dttb-]')) {
+    $('table[id^=dttb-]').DataTable();
   }
 });
 
 // turbolinks cache fix
-$(document).on('turbolinks:before-cache', function() {
+$(document).on('turbolinks:before-cache', function () {
   var dataTable = $($.fn.dataTable.tables(true)).DataTable();
   if (dataTable !== null) {
     dataTable.clear();
     dataTable.destroy();
-    return dataTable = null;
+    return (dataTable = null);
   }
 });

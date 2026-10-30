@@ -20,10 +20,10 @@ module Requests
         delegate :annex?, :ill_eligible?, :location, :partner_holding?, :recap?, to: :requestable
 
         def locations_class
-          if annex?
-            AnnexPickUpLocations
-          elsif ill_eligible?
+          if ill_eligible?
             ILLPickUpLocations
+          elsif annex?
+            AnnexPickUpLocations
           elsif partner_holding?
             PartnerPickUpLocations
           elsif non_standard_circ_location? && !recap?
