@@ -39,6 +39,57 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     end
   end
 
+  context "Unavailable and Available Annex items" do
+    before do
+      stub_single_holding_location('annex$fst')
+
+      stub_availability_by_holding_id(bib_id: '99112901443506421', holding_id: '22650550160006421')
+      stub_catalog_raw(bib_id: '99112901443506421')
+    end
+    let(:illiad_account_class) do
+      Struct.new(:patron) do
+        def illiad_patron_response
+          Faraday::Response.new({ body: '{"UserName": "jstudent","ExternalUserId": "jstudent","LastName": "student","FirstName": "j","Site":"Firestone"}' })
+        end
+      end
+    end
+    let(:form) do
+      described_class.new(
+        system_id: '99112901443506421',
+        mfhd: '22650550160006421',
+        patron_request:,
+        illiad_account_class:
+      )
+    end
+
+    it 'Unavailable item goes to illiad' do
+      expect(form.requestable[24].services.include?('ill')).to be_truthy
+      expect(form.illiad_account).to eq({
+                                          UserName: 'jstudent', ExternalUserId: 'jstudent', LastName: 'student', FirstName: 'j', Site: 'Firestone'
+                                        })
+    end
+    it 'Available item has service annex and can be picked up' do
+      expect(form.requestable[0].services.include?('annex')).to be_truthy
+    end
+
+    it 'uses the annex pickup locations for an available Annex item' do
+      requestable = form.requestable[0]
+      annex_pickup_locations = instance_double(Requests::PickUpLocations::AnnexPickUpLocations, call: [])
+      allow(Requests::PickUpLocations::AnnexPickUpLocations).to receive(:new).with(form:, requestable:).and_return(annex_pickup_locations)
+
+      Requests::PickUpLocations::PickUpLocationsFactory.new(form:, requestable:).call
+      expect(Requests::PickUpLocations::AnnexPickUpLocations).to have_received(:new).with(form:, requestable:)
+    end
+
+    it 'uses the ILLiad pickup location for an Unavailable Annex item' do
+      requestable = form.requestable[24]
+
+      expect(form.illiad_account[:Site]).to eq('Firestone')
+      expect(Requests::PickUpLocations::PickUpLocationsFactory.new(form:, requestable:).call)
+        .to include(hash_including("label" => "Firestone Library", "gfa_pickup" => "PA"))
+    end
+  end
+
   context "Unavailable east asian item with empty enum and description string data" do
     before do
       stub_single_holding_location('eastasian$hy')
