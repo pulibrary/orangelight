@@ -1,0 +1,165 @@
+{
+    "id": "99112901443506421",
+    "numeric_id_b": true,
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+    "title_display": "Quinzaines : lettres, arts et idées.",
+    "title_t": [
+        ""
+    ],
+    "title_citation_display": [
+        "Quinzaines : lettres, arts et idées"
+    ],
+    "pub_created_display": [
+        "Paris : NQL, [2019]-"
+    ],
+    "pub_created_s": [
+        "Paris : NQL, [2019]-"
+    ],
+    "pub_citation_display": [
+        "Paris: NQL"
+    ],
+    "publication_location_citation_display": [
+        "Paris"
+    ],
+    "publisher_citation_display": [
+        "NQL"
+    ],
+    "pub_date_display": [
+        "2019"
+    ],
+    "pub_date_start_sort": 2019,
+    "publication_date_citation_display": [
+        "2019"
+    ],
+    "cataloged_tdt": "2021-05-25T00:00:00Z",
+    "format": [
+        "Journal"
+    ],
+    "description_display": [
+        "volumes : color illustrations ; 36 cm",
+        "Began with: No 1207 (du 16 au 31 janvier 2019)."
+    ],
+    "description_t": [
+        "volumes : color illustrations ; 36 cm",
+        "Began with: No 1207 (du 16 au 31 janvier 2019)."
+    ],
+    "number_of_pages_citation_display": [
+        "volumes"
+    ],
+    "continues_display": [
+        "Nouvelle quinzaine littéraire"
+    ],
+    "frequency_display": [
+        "Semimonthly"
+    ],
+    "source_desc_notes_display": [
+        "Description based on: No 1207 (du 16 au 31 janvier 2019); title from caption.",
+        "Latest issue consulted: No 1272 (décembre 2025)."
+    ],
+    "language_name_display": [
+        "French"
+    ],
+    "language_facet": [
+        "French"
+    ],
+    "language_iana_s": [
+        "fr"
+    ],
+    "mult_languages_iana_s": [
+        "fr"
+    ],
+    "lc_subject_display": [
+        "French literature—History and criticism—Periodicals",
+        "Literature—History and criticism—Periodicals",
+        "French poetry—History and criticism—Periodicals",
+        "Arts—Periodicals"
+    ],
+    "subject_facet": [
+        "French literature—History and criticism—Periodicals",
+        "Literature—History and criticism—Periodicals",
+        "French poetry—History and criticism—Periodicals",
+        "Arts—Periodicals",
+        "Reviews",
+        "Interviews",
+        "Periodicals"
+    ],
+    "lc_subject_facet": [
+        "French literature",
+        "French literature—History and criticism",
+        "French literature—History and criticism—Periodicals",
+        "Literature",
+        "Literature—History and criticism",
+        "Literature—History and criticism—Periodicals",
+        "French poetry",
+        "French poetry—History and criticism",
+        "French poetry—History and criticism—Periodicals",
+        "Arts",
+        "Arts—Periodicals"
+    ],
+    "lcgft_s": [
+        "Reviews",
+        "Interviews",
+        "Periodicals"
+    ],
+    "lcgft_genre_facet": [
+        "Reviews",
+        "Interviews",
+        "Periodicals"
+    ],
+    "jsonld_genre_display": [
+        "Criticism, interpretation, etc.",
+        "Interviews.",
+        "Periodicals.",
+        "Reviews."
+    ],
+    "other_title_display": [
+        "Quinzaines",
+        "Quinzaines, lettres, arts et idées",
+        "QZS"
+    ],
+    "alt_title_246_display": [
+        "Quinzaines, lettres, arts et idées",
+        "QZS"
+    ],
+    "issn_display": [
+        "2650-3794"
+    ],
+    "lccn_display": [
+        "2019251051"
+    ],
+    "issn_s": [
+        "26503794"
+    ],
+    "lccn_s": [
+        "2019251051"
+    ],
+    "oclc_s": [
+        "1084740885"
+    ],
+    "other_version_s": [
+        "26503794",
+        "22702024",
+        "26772507",
+        "on1084740885"
+    ],
+    "location_code_s": [
+        "annex$fst"
+    ],
+    "advanced_location_s": [
+        "annex$fst",
+        "Forrestal Annex"
+    ],
+    "location_display": [
+        "A"
+    ],
+    "location": [
+        "Forrestal Annex"
+    ],
+    "call_number_display": [
+        "Oversize AP20 .Q569q"
+    ],
+    "call_number_browse_s": [
+        "AP20 .Q569q Oversize"
+    ],
+    "holdings_1display": "{\"22650550160006421\":{\"location_code\":\"annex$fst\",\"location\":\"A\",\"library\":\"Forrestal Annex\",\"call_number\":\"AP20 .Q569q Oversize\",\"call_number_browse\":\"AP20 .Q569q Oversize\",\"sub_location\":[\"Oversize\"],\"items\":[{\"holding_id\":\"22650550160006421\",\"description\":\"no 1271 (2025 nov. )\",\"id\":\"231104283620006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1267 (Avril 2025)\",\"id\":\"231072186240006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1236 (2021 mai)\",\"id\":\"23650569920006421\",\"status_at_load\":\"1\",\"barcode\":\"ISSitm58879.300-princetondb\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1254 (2023 May )\",\"id\":\"23988033360006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1264 (2025 Janvier )\",\"id\":\"231044184450006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1258 (2024 jan)\",\"id\":\"231017201280006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1207-1209 (Jan.-Fev. 2019)\",\"id\":\"231019604290006421\",\"status_at_load\":\"1\",\"barcode\":\"32101112353774\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1252 (2023 Mar. )\",\"id\":\"23983220170006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1260 (2024 mars)\",\"id\":\"231019806520006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1211-1223 (Mars 2019-Fev. 2020)\",\"id\":\"231019604280006421\",\"status_at_load\":\"1\",\"barcode\":\"32101112353782\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1247-1249 (Sept.-Nov./Dec. 2022)\",\"id\":\"231019604250006421\",\"status_at_load\":\"0\",\"barcode\":\"32101112353808\",\"process_type\":\"TRANSIT\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1239-1246 (Sept./Oct. 2021-Juin-Juil. 2022)\",\"id\":\"231019604260006421\",\"status_at_load\":\"1\",\"barcode\":\"32101112353790\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1261 (2024 Spring/Summer )\",\"id\":\"231036950940006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1266 (2025 mars)\",\"id\":\"231069431030006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1262 (2024 Septembre )\",\"id\":\"231039106260006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1256 (2023 oct)\",\"id\":\"231003600890006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1269/1270,  [hors série] [special issue] (2025)\",\"id\":\"231091247740006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1234-1235 (Mars-Avril 2021)\",\"id\":\"23991447500006421\",\"status_at_load\":\"1\",\"barcode\":\"32101114686759\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1275 (2026 avril)\",\"id\":\"231119932350006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1224-1229 (inc.) (Mars-Sept. 2020)\",\"id\":\"23991447510006421\",\"status_at_load\":\"1\",\"barcode\":\"32101114686742\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1259 (2024 fev)\",\"id\":\"231016508660006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1265 (2025 fev)\",\"id\":\"231049117980006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1272 (déc. 2025)\",\"id\":\"231101802700006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1253 (2023 Apr.)\",\"id\":\"23984275980006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1274 (2026 mar)\",\"id\":\"231112442150006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1251 (2023 fev)\",\"id\":\"23966039040006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1273 (2026 janv./fév. )\",\"id\":\"231109481980006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1250 (2023 jan)\",\"id\":\"23962114140006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1263 (2024 Decembre )\",\"id\":\"231042761200006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1257 (2023 nov/dec)\",\"id\":\"231006732960006421\",\"status_at_load\":\"1\"},{\"holding_id\":\"22650550160006421\",\"description\":\"no 1255 (2023 Summer )\",\"id\":\"23990230670006421\",\"status_at_load\":\"1\"}],\"location_has\":[\"no 1207 (jan. 2019)-no 1209 (Fev. 2019); no. 1211 (Mars 2019)-no 1229 (Sept. 2020), no 1234 (Mars 2021)-no 1235 (Avril 2021); no 1239 (Sept./Oct. 2021)-no 1249 (Nov./Dec. 2022)\",\"CURRENT ISSUES IN: Periodicals Collection (PR). Firestone\"],\"supplements\":[null,null],\"indexes\":[null,null]}}"
+}

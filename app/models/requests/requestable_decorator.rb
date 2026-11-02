@@ -87,7 +87,14 @@ module Requests
 
     def create_fill_in_requestable
       fill_in_req = Requestable.new(bib:, holding:, item: NullItem.new({}), location: location.to_h, patron:)
-      fill_in_req.replace_existing_services services
+      existing_services = services
+      fill_in_services = existing_services == ["ill"] ? %w[on_shelf on_shelf_edd] : existing_services
+      # or should for this case have services =["on_shelf_no_items"].
+      # This is what we're seeing when we submit the request in submission.rb
+      # Manually tested with a requastable list that the last one is Unavailable and a list that all of them
+      # are Available.
+
+      fill_in_req.replace_existing_services(fill_in_services)
       RequestableDecorator.new(fill_in_req, view_context)
     end
 
