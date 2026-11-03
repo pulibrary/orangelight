@@ -170,7 +170,7 @@ module Requests
       end
 
       def recap_no_items?(item)
-        item["library_code"] == 'recap' && (item["type"] == "digitize_fill_in" || item["type"] == "recap_no_items" || item['null_item' == "true"])
+        item["library_code"] == 'recap' && (item["type"] == "digitize_fill_in" || item["type"] == "recap_no_items" || item['null_item'] == "true")
       end
 
       # :reek:UtilityFunction
