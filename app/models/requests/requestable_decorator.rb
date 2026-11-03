@@ -87,7 +87,8 @@ module Requests
 
     def create_fill_in_requestable
       fill_in_req = Requestable.new(bib:, holding:, item: NullItem.new({}), location: location.to_h, patron:)
-      fill_in_req.replace_existing_services services
+      on_shelf_no_items_eligibility = ServiceEligibility::OnShelfNoItems.new(requestable: fill_in_req, patron:)
+      fill_in_req.replace_existing_services([on_shelf_no_items_eligibility.to_s])
       RequestableDecorator.new(fill_in_req, view_context)
     end
 
