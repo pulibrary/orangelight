@@ -80,8 +80,13 @@ module Requests
       reg_patron_group.include?(patron_group)
     end
 
+    def grad_patron_group?
+      grad_patron_group = %w[grad]
+      grad_patron_group.include?(patron_group)
+    end
+
     def eligible_pickup_from_pppl?
-      (faculty_patron_group? || reg_patron_group?) && pppl_statistic_category?
+      (faculty_patron_group? || reg_patron_group? || grad_patron_group?) && pppl_statistic_category?
     end
 
     def university_id
