@@ -29,7 +29,7 @@ module Requests
 
         # :reek:FeatureEnvy
         def all_delivery_locations_minus_plasma_pa
-          all_delivery_locations.reject { |location| location["label"] == "Plasma Physics Library" && location["gfa_pickup"] == "PA" }
+          all_delivery_locations.reject { |location| location["label"] == "Princeton Plasma Physics Laboratory" && location["gfa_pickup"] == "PA" }
         end
 
         def all_delivery_locations

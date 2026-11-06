@@ -35,7 +35,7 @@ module Requests
             # MR can only be requested to Mendel
             [bibdata_delivery_location("PK")].compact
           elsif eligible_pickup_from_pppl?
-            # Faculty patrons in the PPPL statistic category can pick up from Firestone and Plasma Physics
+            # Faculty patrons in the PPPL statistic category can pick up from Firestone and Princeton Plasma Physics Laboratory
             # unrestricted items
             delivery_locations + [default_pick_ups.find { |location| location[:gfa_pickup] == "PQ" }]
           else
