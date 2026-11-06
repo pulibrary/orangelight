@@ -1,6 +1,7 @@
 [
     {
-        "label": "Plasma Physics Library",
+        "id": 1,
+        "label": "Princeton Plasma Physics Laboratory",
         "address": "Forrestal Campus Princeton, NJ 08544",
         "phone_number": "609-243-3565",
         "contact_email": "lewislib@princeton.edu",
@@ -8,7 +9,7 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": true,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/1.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/1.json",
         "library": {
             "label": "Harold P. Furth Plasma Physics Library",
             "code": "plasma",
@@ -16,6 +17,7 @@
         }
     },
     {
+        "id": 2,
         "label": "Technical Services 693",
         "address": "693 Alexander Rd. Princeton, NJ 08544",
         "phone_number": "609-258-1470",
@@ -24,7 +26,7 @@
         "staff_only": true,
         "pickup_location": true,
         "digital_location": false,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/2.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/2.json",
         "library": {
             "label": "Firestone Library",
             "code": "firestone",
@@ -32,6 +34,7 @@
         }
     },
     {
+        "id": 3,
         "label": "Architecture Library",
         "address": "School of Architecture Building, Second Floor Princeton, NJ 08544",
         "phone_number": "609-258-3256",
@@ -40,7 +43,7 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": true,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/3.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/3.json",
         "library": {
             "label": "Architecture Library",
             "code": "arch",
@@ -48,6 +51,7 @@
         }
     },
     {
+        "id": 4,
         "label": "East Asian Library",
         "address": "Frist Campus Center, Room 317 Princeton, NJ 08544",
         "phone_number": "609-258-3182",
@@ -56,7 +60,7 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": true,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/4.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/4.json",
         "library": {
             "label": "East Asian Library",
             "code": "eastasian",
@@ -64,6 +68,7 @@
         }
     },
     {
+        "id": 5,
         "label": "Engineering Library",
         "address": "Friend Center for Engineering Education Princeton, NJ 08544",
         "phone_number": "609-258-3200",
@@ -72,7 +77,7 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": true,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/5.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/5.json",
         "library": {
             "label": "Engineering Library",
             "code": "engineer",
@@ -80,6 +85,7 @@
         }
     },
     {
+        "id": 6,
         "label": "Firestone Library",
         "address": "One Washington Rd. Princeton, NJ 08544",
         "phone_number": "609-258-3252",
@@ -88,7 +94,7 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": false,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/6.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/6.json",
         "library": {
             "label": "Firestone Library",
             "code": "firestone",
@@ -96,6 +102,7 @@
         }
     },
     {
+        "id": 7,
         "label": "Marquand Library of Art and Archaeology",
         "address": "McCormick Hall Princeton, NJ 08544",
         "phone_number": "609-258-5863",
@@ -104,7 +111,7 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": true,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/7.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/7.json",
         "library": {
             "label": "Marquand Library",
             "code": "marquand",
@@ -112,6 +119,7 @@
         }
     },
     {
+        "id": 8,
         "label": "Mendel Music Library",
         "address": "Woolworth Center Princeton, NJ 08544",
         "phone_number": "609-258-3230",
@@ -120,7 +128,7 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": true,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/8.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/8.json",
         "library": {
             "label": "Mendel Music Library",
             "code": "mendel",
@@ -128,6 +136,7 @@
         }
     },
     {
+        "id": 9,
         "label": "Mudd Manuscript Library",
         "address": "65 Olden Street Princeton, NJ 08544",
         "phone_number": "609-258-6345",
@@ -136,7 +145,7 @@
         "staff_only": false,
         "pickup_location": false,
         "digital_location": true,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/9.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/9.json",
         "library": {
             "label": "Mudd Manuscript Library",
             "code": "mudd",
@@ -144,6 +153,7 @@
         }
     },
     {
+        "id": 10,
         "label": "Stokes Library",
         "address": "Wallace Hall, Lower Level Princeton, NJ 08544",
         "phone_number": "609-258-5455",
@@ -152,14 +162,15 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": true,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/10.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/10.json",
         "library": {
             "label": "Stokes Library",
             "code": "stokes",
             "order": 0
         }
     },
-    {
+    { 
+        "id": 12,
         "label": "Resource Sharing",
         "address": "One Washington Rd. Princeton, NJ 08544",
         "phone_number": "609-258-1470",
@@ -168,7 +179,7 @@
         "staff_only": true,
         "pickup_location": true,
         "digital_location": false,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/12.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/12.json",
         "library": {
             "label": "Firestone Library",
             "code": "firestone",
@@ -176,6 +187,7 @@
         }
     },
     {
+        "id": 13,
         "label": "Special Collections",
         "address": "One Washington Rd. Princeton, NJ 08544",
         "phone_number": "609-258-1470",
@@ -184,7 +196,7 @@
         "staff_only": false,
         "pickup_location": false,
         "digital_location": true,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/13.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/13.json",
         "library": {
             "label": "Firestone Library",
             "code": "firestone",
@@ -192,6 +204,7 @@
         }
     },
     {
+        "id": 14,
         "label": "Lewis Library",
         "address": "Washington Road and Ivy Lane Princeton, NJ 08544",
         "phone_number": "609-258-6004",
@@ -200,7 +213,7 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": true,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/14.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/14.json",
         "library": {
             "label": "Lewis Library",
             "code": "lewis",
@@ -208,6 +221,7 @@
         }
     },
     {
+        "id": 15,
         "label": "Firestone Library",
         "address": "One Washington Rd. Princeton, NJ 08544",
         "phone_number": "609-258-1470",
@@ -216,7 +230,7 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": true,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/15.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/15.json",
         "library": {
             "label": "Firestone Library",
             "code": "firestone",
@@ -224,6 +238,7 @@
         }
     },
     {
+        "id":16,
         "label": "ReCAP ILL",
         "address": "One Washington Rd. Princeton, NJ 08544",
         "phone_number": "609-258-1470",
@@ -232,7 +247,7 @@
         "staff_only": true,
         "pickup_location": false,
         "digital_location": false,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/16.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/16.json",
         "library": {
             "label": "Firestone Library",
             "code": "firestone",
@@ -240,6 +255,7 @@
         }
     },
     {
+        "id": 23,
         "label": "Technical Services HMT",
         "address": "One Washington Rd. Princeton, NJ 08544",
         "phone_number": "609-258-1470",
@@ -248,7 +264,7 @@
         "staff_only": true,
         "pickup_location": true,
         "digital_location": false,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/23.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/23.json",
         "library": {
             "label": "Firestone Library",
             "code": "firestone",
@@ -256,6 +272,7 @@
         }
     },
     {
+        "id": 24,
         "label": "East Asian Library. Microforms",
         "address": "Frist Campus Center, Room 317 Princeton, NJ 08544",
         "phone_number": "609-258-3182",
@@ -264,7 +281,7 @@
         "staff_only": false,
         "pickup_location": false,
         "digital_location": false,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/24.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/24.json",
         "library": {
             "label": "East Asian Library",
             "code": "eastasian",
@@ -272,6 +289,7 @@
         }
     },
     {
+        "id": 25,
         "label": "Lewis Library (Rare)",
         "address": "Washington Road and Ivy Lane Princeton, NJ 08544",
         "phone_number": "609-258-6004",
@@ -280,7 +298,7 @@
         "staff_only": false,
         "pickup_location": false,
         "digital_location": false,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/25.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/25.json",
         "library": {
             "label": "Lewis Library",
             "code": "lewis",
@@ -288,6 +306,7 @@
         }
     },
     {
+        "id": 26,
         "label": "Marquand Library of Art and Archaeology (Rare)",
         "address": "McCormick Hall Princeton, NJ 08544",
         "phone_number": "609-258-5863",
@@ -296,7 +315,7 @@
         "staff_only": false,
         "pickup_location": false,
         "digital_location": false,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/26.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/26.json",
         "library": {
             "label": "Marquand Library",
             "code": "marquand",
@@ -304,6 +323,7 @@
         }
     },
     {
+        "id": 27,
         "label": "Mendel Music Library. Sound/Video",
         "address": "Woolworth Center Princeton, NJ 08544",
         "phone_number": "609-258-3230",
@@ -312,7 +332,7 @@
         "staff_only": false,
         "pickup_location": false,
         "digital_location": false,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/27.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/27.json",
         "library": {
             "label": "Mendel Music Library",
             "code": "mendel",
@@ -320,6 +340,7 @@
         }
     },
     {
+        "id": 28,
         "label": "Firestone Library",
         "address": "One Washington Rd. Princeton, NJ 08544",
         "phone_number": "609-258-3252",
@@ -328,7 +349,7 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": false,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/28.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/28.json",
         "library": {
             "label": "Firestone Library",
             "code": "firestone",
@@ -336,6 +357,7 @@
         }
     },
     {
+        "id": 29,
         "label": "Preservation",
         "address": "One Washington Rd. Princeton, NJ 08544",
         "phone_number": "609-258-1470",
@@ -344,7 +366,7 @@
         "staff_only": true,
         "pickup_location": false,
         "digital_location": false,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/29.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/29.json",
         "library": {
             "label": "Firestone Library",
             "code": "firestone",
@@ -352,15 +374,16 @@
         }
     },
     {
+        "id": 30,
         "label": "Firestone Circulation Desk",
         "address": "One Washington Rd. Princeton, NJ 08544",
         "phone_number": "609 258-2345",
-        "contact_email": "fstcirc@princton.edu",
+        "contact_email": "fstcirc@princeton.edu",
         "gfa_pickup": "QX",
         "staff_only": false,
         "pickup_location": true,
         "digital_location": false,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/30.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/30.json",
         "library": {
             "label": "Firestone Library",
             "code": "firestone",
@@ -368,7 +391,8 @@
         }
     },
     {
-        "label": "Plasma Physics Library",
+        "id": 31,
+        "label": "Princeton Plasma Physics Laboratory",
         "address": "Forrestal Campus Princeton, NJ 08544",
         "phone_number": "609-243-3565",
         "contact_email": "lewislib@princeton.edu",
@@ -376,7 +400,7 @@
         "staff_only": false,
         "pickup_location": true,
         "digital_location": true,
-        "url": "https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/31.json",
+        "url": "https://bibdata.princeton.edu/locations/delivery_locations/1.json",
         "library": {
             "label": "Harold P. Furth Plasma Physics Library",
             "code": "plasma",

@@ -127,13 +127,13 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory, :requests do
                                                             ["Firestone Library", "PA"]
                                                           ])
   end
-  describe 'when patron is eligible to pick up items from Plasma Physics' do
+  describe 'when patron is eligible to pick up items from Princeton Plasma Physics Laboratory' do
     # Patrons eligible to pickup from Plasma Physics are the ones
     # in patron group ('P' or 'REG') && statistic category PPPL
 
-    it 'Alma circulating items can be picked up in all locations and Plasma Physics' do
+    it 'Alma circulating items can be picked up in all locations and Princeton Plasma Physics Laboratory' do
       location = Requests::Location.new single_holding_data_from_fixture('firestone$stacks')
-      form = instance_double(Requests::Form, default_pick_ups: [{ label: 'Firestone Library', gfa_pickup: 'PA' }, { label: 'Architecture Library', gfa_pickup: 'PW' }, { label: 'Plasma Physics', gfa_pickup: 'PQ' }])
+      form = instance_double(Requests::Form, default_pick_ups: [{ label: 'Firestone Library', gfa_pickup: 'PA' }, { label: 'Architecture Library', gfa_pickup: 'PW' }, { label: 'Princeton Plasma Physics Laboratory', gfa_pickup: 'PQ' }])
       requestable = instance_double(Requests::Requestable, partner_holding?: false, location:, ill_eligible?: false, annex?: false, recap?: false, patron: instance_double(Requests::Patron, library_staff_patron_group?: false, affiliate_patron_group?: false, eligible_pickup_from_pppl?: true))
       factory = described_class.new(form:, requestable:)
 
@@ -144,7 +144,7 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory, :requests do
                                                               ["Mendel Music Library", "PK"],
                                                               ["Stokes Library", "PM"],
                                                               ["Firestone Library", "PA"],
-                                                              ["Plasma Physics", "PQ"]
+                                                              ["Princeton Plasma Physics Laboratory", "PQ"]
                                                             ])
     end
     it 'returns a single pickup location (Firestone) for Interlibrary loans' do
@@ -172,20 +172,20 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory, :requests do
     it 'returns Firestone Circulation Desk and Plasma Physics as pickup locations for a SCSB Item from a not restricted Art-related collection code' do
       location = single_holding_data_from_fixture('scsbcul')
       item = { collection_code: 'AR', use_statement: nil }.with_indifferent_access
-      form = instance_double(Requests::Form, default_pick_ups: [{ label: 'Firestone Library', gfa_pickup: 'PA' }, { label: 'Architecture Library', gfa_pickup: 'PW' }, { label: 'Plasma Physics', gfa_pickup: 'PQ' }])
+      form = instance_double(Requests::Form, default_pick_ups: [{ label: 'Firestone Library', gfa_pickup: 'PA' }, { label: 'Architecture Library', gfa_pickup: 'PW' }, { label: 'Princeton Plasma Physics Laboratory', gfa_pickup: 'PQ' }])
       requestable = instance_double(Requests::Requestable, cul_avery?: true, partner_holding?: true, item:, location:, ill_eligible?: false, annex?: false, recap?: true, use_restriction?: false, patron: instance_double(Requests::Patron, eligible_pickup_from_pppl?: true))
       factory = described_class.new(form:, requestable:)
 
       expect(factory.call.pluck(:label, :gfa_pickup)).to eq([
                                                               ["Firestone Circulation Desk", "QX"],
-                                                              ["Plasma Physics", "PQ"]
+                                                              ["Princeton Plasma Physics Laboratory", "PQ"]
                                                             ])
     end
     describe 'items from Recap locations recap$qv OR recap$gp OR recap$pa' do
       ['recap$pa', 'recap$qv', 'recap$gp'].each do |location|
-        it "for item in #{location} the user will see as pickup location Plasma Physics Library but the gfa_pickup code will be PA" do
+        it "for item in #{location} the user will see as pickup location Princeton Plasma Physics Laboratory but the gfa_pickup code will be PA" do
           location = Requests::Location.new single_holding_data_from_fixture(location)
-          form = instance_double(Requests::Form, default_pick_ups: [{ label: 'Firestone Library', gfa_pickup: 'PA' }, { label: 'Architecture Library', gfa_pickup: 'PW' }, { label: 'Plasma Physics Library', gfa_pickup: 'PA' }])
+          form = instance_double(Requests::Form, default_pick_ups: [{ label: 'Firestone Library', gfa_pickup: 'PA' }, { label: 'Architecture Library', gfa_pickup: 'PW' }, { label: 'Princeton Plasma Physics Laboratory', gfa_pickup: 'PA' }])
 
           requestable = instance_double(Requests::Requestable, partner_holding?: false, location:, ill_eligible?: false, annex?: false, recap?: true, patron: instance_double(Requests::Patron, library_staff_patron_group?: false, affiliate_patron_group?: false, eligible_pickup_from_pppl?: true))
           factory = described_class.new(form:, requestable:)
@@ -197,7 +197,7 @@ RSpec.describe Requests::PickUpLocations::PickUpLocationsFactory, :requests do
                                                                   ["Mendel Music Library", "PK"],
                                                                   ["Stokes Library", "PM"],
                                                                   ["Firestone Library", "PA"],
-                                                                  ["Plasma Physics Library", "PA"]
+                                                                  ["Princeton Plasma Physics Laboratory", "PA"]
                                                                 ])
         end
       end
