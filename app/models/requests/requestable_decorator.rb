@@ -119,6 +119,8 @@ module Requests
         "Marquand Library"
       elsif requestable.cul_music?
         "Mendel Music Library"
+      elsif requestable.scsb_in_library_use?
+        "Firestone Circulation Desk"
       else
         first_delivery_location[:label]
       end
@@ -130,6 +132,8 @@ module Requests
         "PJ"
       elsif requestable.cul_music?
         "PK"
+      elsif requestable.scsb_in_library_use?
+        "QX"
       else
         first_delivery_location[:gfa_pickup] || "PA"
       end

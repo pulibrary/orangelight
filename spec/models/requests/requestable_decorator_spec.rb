@@ -917,6 +917,12 @@ describe Requests::RequestableDecorator, requests: true do
         expect(decorator.delivery_location_code).to eq('PF')
       end
     end
+    context "is a scsb in library use item" do
+      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: false, cul_avery?: false, hl_art?: false, cul_music?: false, scsb_in_library_use?: true, location: { delivery_locations: [{ gfa_pickup: 'PA', label: 'Firestone Library' }] }, use_restriction?: false) }
+      it 'shows the location code' do
+        expect(decorator.delivery_location_code).to eq('QX')
+      end
+    end
   end
 
   describe "#status_badge" do

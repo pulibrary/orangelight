@@ -6703,70 +6703,85 @@
     "delivery_locations": []
   },
   {
-    "label": "Remote Storage",
-    "code": "scsbcul",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": true,
-    "open": false,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "recap_rmt",
-    "fulfillment_unit": null,
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/scsbcul.json",
-    "library": {
-      "label": "ReCAP",
-      "code": "recap",
-      "order": 0
-    },
-    "holding_library": null,
-    "delivery_locations": [
-      "QX"
-    ]
+        "label": "Remote Storage",
+        "code": "scsbcul",
+        "aeon_location": false,
+        "recap_electronic_delivery_location": true,
+        "open": false,
+        "requestable": true,
+        "always_requestable": false,
+        "circulates": true,
+        "remote_storage": "recap_rmt",
+        "fulfillment_unit": null,
+        "url": "https://bibdata.princeton.edu/locations/holding_locations/scsbcul.json",
+        "library": {
+            "label": "ReCAP",
+            "code": "recap",
+            "order": 0
+        },
+        "holding_library": null,
+        "delivery_locations": [
+            "PW",
+            "PL",
+            "PT",
+            "QX",
+            "PK",
+            "PM"
+        ]
   },
   {
-    "label": "Remote Storage",
-    "code": "scsbhl",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": true,
-    "open": false,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "recap_rmt",
-    "fulfillment_unit": null,
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/scsbhl.json",
-    "library": {
-      "label": "ReCAP",
-      "code": "recap",
-      "order": 0
-    },
-    "holding_library": null,
-    "delivery_locations": [
-      "QX"
-    ]
+        "label": "Remote Storage",
+        "code": "scsbhl",
+        "aeon_location": false,
+        "recap_electronic_delivery_location": true,
+        "open": false,
+        "requestable": true,
+        "always_requestable": false,
+        "circulates": true,
+        "remote_storage": "recap_rmt",
+        "fulfillment_unit": null,
+        "url": "https://bibdata.princeton.edu/locations/holding_locations/scsbhl.json",
+        "library": {
+            "label": "ReCAP",
+            "code": "recap",
+            "order": 0
+        },
+        "holding_library": null,
+        "delivery_locations": [
+            "PW",
+            "PL",
+            "PT",
+            "QX",
+            "PK",
+            "PM"
+        ]
   },
   {
-    "label": "Remote Storage",
-    "code": "scsbnypl",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": true,
-    "open": false,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "recap_rmt",
-    "fulfillment_unit": null,
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/scsbnypl.json",
-    "library": {
-      "label": "ReCAP",
-      "code": "recap",
-      "order": 0
-    },
-    "holding_library": null,
-    "delivery_locations": [
-      "QX"
-    ]
+        "label": "Remote Storage",
+        "code": "scsbnypl",
+        "aeon_location": false,
+        "recap_electronic_delivery_location": true,
+        "open": false,
+        "requestable": true,
+        "always_requestable": false,
+        "circulates": true,
+        "remote_storage": "recap_rmt",
+        "fulfillment_unit": null,
+        "url": "https://bibdata.princeton.edu/locations/holding_locations/scsbnypl.json",
+        "library": {
+            "label": "ReCAP",
+            "code": "recap",
+            "order": 0
+        },
+        "holding_library": null,
+        "delivery_locations": [
+            "PW",
+            "PL",
+            "PT",
+            "QX",
+            "PK",
+            "PM"
+        ]
   },
   {
     "label": "Indexes. Wallace Hall",
