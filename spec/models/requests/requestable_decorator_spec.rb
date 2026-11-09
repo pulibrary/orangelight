@@ -877,44 +877,36 @@ describe Requests::RequestableDecorator, requests: true do
     end
 
     context "is an avery item with restriction" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: true, cul_avery?: true, hl_art?: false, use_restriction?: true) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: true, cul_avery?: true, hl_art?: false, use_restriction?: true, location: { delivery_locations: [{ gfa_pickup: 'PW', label: 'Architecture Library' }, { gfa_pickup: 'PL', label: 'East Asian Library' }, { gfa_pickup: 'PT', label: 'Engineering Library' }, { gfa_pickup: 'PK', label: 'Mendel Music Library' }, { gfa_pickup: 'PM', label: 'Stokes Library' }, { gfa_pickup: 'QX', label: 'Firestone Circulation Desk' }] }) }
       it 'shows the location code' do
         expect(decorator.delivery_location_code).to eq('PJ')
       end
     end
 
-    context "is an avery item with no restriction" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: true, cul_avery?: true, cul_music?: false, hl_art?: false, use_restriction?: false, location: { delivery_locations: [{ gfa_pickup: 'QK', label: 'Mendel Music Library' }] }) }
-      it 'shows the location code' do
-        expect(decorator.delivery_location_code).to eq('QK')
-      end
-    end
-
     context "is a cul music item with restriction" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: false, cul_avery?: false, hl_art?: false, cul_music?: true, use_restriction?: true) }
-      it 'shows the location code' do
-        expect(decorator.delivery_location_code).to eq('PK')
-      end
-    end
-
-    context "is a cul music item with no restriction" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: false, cul_avery?: false, hl_art?: false, cul_music?: true, use_restriction?: false, location: { delivery_locations: [{ gfa_pickup: 'PK', label: 'Mendel Music Library' }] }) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: false, cul_avery?: false, hl_art?: false, cul_music?: true, use_restriction?: true, location: { delivery_locations: [{ gfa_pickup: 'PW', label: 'Architecture Library' }, { gfa_pickup: 'PL', label: 'East Asian Library' }, { gfa_pickup: 'PT', label: 'Engineering Library' }, { gfa_pickup: 'PK', label: 'Mendel Music Library' }, { gfa_pickup: 'PM', label: 'Stokes Library' }, { gfa_pickup: 'QX', label: 'Firestone Circulation Desk' }] }) }
       it 'shows the location code' do
         expect(decorator.delivery_location_code).to eq('PK')
       end
     end
 
     context "is a hl art item" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: false, cul_avery?: false, hl_art?: true, cul_music?: false, use_restriction?: false) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: false, cul_avery?: false, hl_art?: true, cul_music?: false, use_restriction?: false, location: { delivery_locations: [{ gfa_pickup: 'PW', label: 'Architecture Library' }, { gfa_pickup: 'PL', label: 'East Asian Library' }, { gfa_pickup: 'PT', label: 'Engineering Library' }, { gfa_pickup: 'PK', label: 'Mendel Music Library' }, { gfa_pickup: 'PM', label: 'Stokes Library' }, { gfa_pickup: 'QX', label: 'Firestone Circulation Desk' }] }) }
       it 'shows the location code' do
         expect(decorator.delivery_location_code).to eq('PJ')
       end
     end
 
     context "is a PF item" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: false, cul_avery?: false, hl_art?: false, cul_music?: false, location: { delivery_locations: [{ gfa_pickup: 'PF', label: 'Firestone Library, Microforms' }] }, use_restriction?: false) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: false, cul_avery?: false, hl_art?: false, cul_music?: false, location: { delivery_locations: [{ gfa_pickup: 'PF', label: 'Firestone Library' }] }, use_restriction?: false) }
       it 'shows the location code' do
         expect(decorator.delivery_location_code).to eq('PF')
+      end
+    end
+    context "is a scsb in library use item" do
+      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: false, cul_avery?: false, hl_art?: false, cul_music?: false, scsb_in_library_use?: true, location: { delivery_locations: [{ gfa_pickup: 'PW', label: 'Architecture Library' }, { gfa_pickup: 'PL', label: 'East Asian Library' }, { gfa_pickup: 'PT', label: 'Engineering Library' }, { gfa_pickup: 'PK', label: 'Mendel Music Library' }, { gfa_pickup: 'PM', label: 'Stokes Library' }, { gfa_pickup: 'QX', label: 'Firestone Circulation Desk' }] }, use_restriction?: false) }
+      it 'shows the location code' do
+        expect(decorator.delivery_location_code).to eq('QX')
       end
     end
   end
