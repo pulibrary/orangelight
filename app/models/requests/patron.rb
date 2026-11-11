@@ -51,8 +51,9 @@ module Requests
     end
 
     def pppl_statistic_category?
+      return false if user_statistic.blank?
       pppl_statistic_category = "pppl"
-      user_statistic.include?(pppl_statistic_category)
+      user_statistic&.include?(pppl_statistic_category)
     end
 
     def core_patron_group?
