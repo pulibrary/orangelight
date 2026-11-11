@@ -24,6 +24,7 @@ describe Requests::Patron, requests: true, patrons: true do
   let(:faculty_pppl_patron_response) { file_fixture('../bibdata_patron_faculty_pppl.json') }
   let(:reg_pppl_patron_response) { file_fixture('../bibdata_patron_reg_pppl.json') }
   let(:grad_pppl_patron_response) { file_fixture('../bibdata_patron_grad_pppl.json') }
+  let(:valid_patron_user_statistic_null) { file_fixture('../bibdata_patron_response_user_statistic_null.json') }
   context 'when the user is provided from Alma' do
     let(:uid) { 'BC123456789' }
     let(:user) do
@@ -122,6 +123,21 @@ describe Requests::Patron, requests: true, patrons: true do
         expect(patron.reg_patron_group?).to be_falsey
         expect(patron.pppl_statistic_category?).to be_truthy
         expect(patron.eligible_pickup_from_pppl?).to be_truthy
+      end
+    end
+    context "A patron group P with user_statistic null" do
+      let(:uid) { 'aspen' }
+      before do
+        stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/aspen?ldap=true")
+          .to_return(status: 200, body: valid_patron_user_statistic_null, headers: {})
+      end
+      it 'is not eligible to pickup from Plasma Physics' do
+        patron = described_class.new(user:)
+        expect(patron).to be_truthy
+        expect(patron.faculty_patron_group?).to be_truthy
+        expect(patron.reg_patron_group?).to be_falsey
+        expect(patron.pppl_statistic_category?).to be_falsey
+        expect(patron.eligible_pickup_from_pppl?).to be_falsey
       end
     end
   end

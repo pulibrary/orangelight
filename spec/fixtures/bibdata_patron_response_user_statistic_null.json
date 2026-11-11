@@ -1,0 +1,28 @@
+{
+    "netid": "aspen",
+    "first_name": "Aspen",
+    "last_name": "Aspenoulis",
+    "barcode": "22101008199999",
+    "barcode_status": 1,
+    "barcode_status_date": "2015-01-06T23:00:02.000-05:00",
+    "university_id": "960594184",
+    "patron_group": "P",
+    "purge_date": "2016-10-31T23:00:03.000-05:00",
+    "expire_date": "2022-10-31T23:00:03.000-05:00",
+    "patron_id": 77777,
+    "active_email": "a@b.com",
+    "user_statistic": null,
+    "ldap": {
+        "netid": "aspen",
+        "department": "First ",
+        "address": "Box 0000",
+        "telephone": "111-222-3333",
+        "givenname": "Aspen",
+        "surname": "Aspenoulis",
+        "email": "a@b.com",
+        "status": "professor",        
+        "pustatus": "undergraduate",
+        "universityid": "960594184",
+        "title": null
+        }
+}
