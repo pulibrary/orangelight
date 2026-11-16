@@ -65,7 +65,7 @@ module BrowseLists
         {
           facet_field => {
             type: "terms",
-            field: "#{facet_field}",
+            field: facet_field.to_s,
             limit: -1
           }
         }.to_json
@@ -76,11 +76,11 @@ module BrowseLists
       return browse_subject(facet_request, conn, facet_field, table_name) if facet_field == "subject_facet"
       resp = conn.get "#{facet_request}#{facet_query_field(facet_field)}"
       req = JSON.parse(resp.body)
-      byebug
+
       CSV.open(output_root.join("#{table_name}.csv"), 'wb') do |csv|
         req['facets'].each_with_index do |bucket, i|
-          next if i == 0
-          bucket[1]['buckets'].each_with_index do |fac, j|
+          next if i.zero?
+          bucket[1]['buckets'].each do |fac|
             label = fac['val']
             csv << [label.normalize_em, fac['count'].to_s, label, label.dir]
           end
