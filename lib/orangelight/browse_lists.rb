@@ -32,7 +32,7 @@ module BrowseLists
     end
 
     def facet_request
-      "#{core_url}select?q=*%3A*&fl=id&wt=json&indent=true&defType=edismax&facet.sort=asc&facet.limit=-1&facet.field="
+      "#{core_url}select?q=*%3A*&fl=id&wt=json&indent=true&defType=edismax&json.facet="
     end
 
     def solr_connection
@@ -47,17 +47,42 @@ module BrowseLists
       solr_connection.to_s.gsub(%r{^.*/solr}, '/solr')
     end
 
+    def facet_query_field(facet_field)
+      if facet_field == 'author_s'
+        {
+          author_s: {
+            type: "terms",
+            field: "author_s",
+            limit: -1
+          },
+          non_latin_non_cjk_author_index: {
+            type: "terms",
+            field: "non_latin_non_cjk_author_index",
+            limit: -1
+          }
+        }.to_json
+      else
+        {
+          facet_field => {
+            type: "terms",
+            field: "#{facet_field}",
+            limit: -1
+          }
+        }.to_json
+      end
+    end
+
     def browse_facet(_sql_command, facet_request, conn, facet_field, table_name)
       return browse_subject(facet_request, conn, facet_field, table_name) if facet_field == "subject_facet"
-      resp = conn.get "#{facet_request}#{facet_field}"
+      resp = conn.get "#{facet_request}#{facet_query_field(facet_field)}"
       req = JSON.parse(resp.body)
+      byebug
       CSV.open(output_root.join("#{table_name}.csv"), 'wb') do |csv|
-        label = ''
-        req['facet_counts']['facet_fields'][facet_field.to_s].each_with_index do |fac, i|
-          if i.even?
-            label = fac
-          else
-            csv << [label.normalize_em, fac.to_s, label, label.dir]
+        req['facets'].each_with_index do |bucket, i|
+          next if i == 0
+          bucket[1]['buckets'].each_with_index do |fac, j|
+            label = fac['val']
+            csv << [label.normalize_em, fac['count'].to_s, label, label.dir]
           end
         end
       end
