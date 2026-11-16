@@ -11,7 +11,7 @@ module BrowseLists
       "alma_orangelight"
     end
 
-    def connection
+    def connection(call_number = false)
       config = Orangelight::Application.config.database_configuration[::Rails.env]
       dbhost = config['host']
       dbuser = config['username']
@@ -28,11 +28,17 @@ module BrowseLists
         faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
       end
 
-      [sql_command, facet_request, conn]
+      request = call_number ? call_number_facet_request : facet_request
+
+      [sql_command, request, conn]
     end
 
     def facet_request
       "#{core_url}select?q=*%3A*&fl=id&wt=json&indent=true&defType=edismax&json.facet="
+    end
+
+    def call_number_facet_request
+      "#{core_url}select?q=*%3A*&fl=id&wt=json&indent=true&defType=edismax&facet.sort=asc&facet.limit=-1&facet.field="
     end
 
     def solr_connection
