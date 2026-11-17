@@ -211,6 +211,7 @@ module Blacklight
           end
 
           # :reek:TooManyStatements
+          # :reek:FeatureEnvy
           def marcxml_record_decompress_read(marcxml_field)
             marcxml_field = marcxml_field.first if marcxml_field.is_a?(Array)
             return nil unless marcxml_field
