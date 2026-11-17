@@ -25,7 +25,9 @@ module Orangelight
 
         def holding_id
           @holding_id ||= begin
-            holdings = JSON.parse(fetch(:holdings_1display, '{}')).first
+            holdings_1display = fetch(:holdings_1display, '{}')
+            holdings_1display = holdings_1display.first if holdings_1display.is_a?(Array)
+            holdings = JSON.parse(holdings_1display).first
             holdings.blank? ? nil : holdings[0]
           end
         end

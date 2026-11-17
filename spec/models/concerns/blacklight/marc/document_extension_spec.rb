@@ -65,4 +65,44 @@ RSpec.describe Blacklight::Marc::DocumentExtension do
       end
     end
   end
+  describe '#marc_record_from_marcxml' do
+    context 'when an ALMA record has a marcxml field' do
+      let(:alma_marcxml_document) do
+        SolrDocument.new(
+          JSON.parse(
+            Rails.root.join('spec/fixtures/alma/99131369793306421.json').read
+          )
+        )
+      end
+
+      before do
+        allow(Flipflop).to receive(:deduplication?).and_return(false)
+      end
+
+      it 'decompresses the marcxml and returns a MARC::Record' do
+        result = alma_marcxml_document.send(:marc_record_from_marcxml)
+        expect(result).to be_a(MARC::Record)
+        expect(result['001'].value).to eq('99131369793306421')
+      end
+    end
+    context 'when a SCSB record has a marcxml field' do
+      let(:scsb_marcxml_document) do
+        SolrDocument.new(
+          JSON.parse(
+            Rails.root.join('spec/fixtures/SCSB-2879206.json').read
+          )
+        )
+      end
+
+      before do
+        allow(Flipflop).to receive(:deduplication?).and_return(false)
+      end
+
+      it 'decompresses the marcxml and returns a MARC::Record' do
+        result = scsb_marcxml_document.send(:marc_record_from_marcxml)
+        expect(result).to be_a(MARC::Record)
+        expect(result['001'].value).to eq('SCSB-2879206')
+      end
+    end
+  end
 end
