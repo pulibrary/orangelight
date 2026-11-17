@@ -11,7 +11,7 @@ module BrowseLists
       "alma_orangelight"
     end
 
-    def connection(call_number = false)
+    def connection(call_number: false)
       config = Orangelight::Application.config.database_configuration[::Rails.env]
       dbhost = config['host']
       dbuser = config['username']
