@@ -198,9 +198,12 @@ module Blacklight
             id = fetch(_marc_source_field)
             if deduplication? && marcxml_binary.present?
               marcxml_record_read(marcxml_binary)
-            elsif scsb_record?
-              marcxml_record_scsb(marcxml_field)
+            elsif marcxml_field.present? || scsb_record?
+              marcxml_record_decompress_read(marcxml_field)
             else
+              # date: 11/17/2026
+              # After a full reindex the marcxml field will have a value in alma and scsb indexed records
+              # Then we can remove the following bibdata call and rely only in the marcxml field.
               response = Faraday.get("#{Requests.config['bibdata_base']}/bibliographic/#{id}")
               @can_retry = response.status == 429
               response_stream = StringIO.new(response.body)
@@ -211,7 +214,9 @@ module Blacklight
           end
 
           # :reek:TooManyStatements
-          def marcxml_record_scsb(marcxml_field)
+          # :reek:FeatureEnvy
+          def marcxml_record_decompress_read(marcxml_field)
+            marcxml_field = marcxml_field.first if marcxml_field.is_a?(Array)
             return nil unless marcxml_field
 
             decompressed_marcxml = decompress_marcxml(marcxml_field)
