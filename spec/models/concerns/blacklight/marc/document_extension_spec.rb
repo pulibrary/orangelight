@@ -31,7 +31,7 @@ RSpec.describe Blacklight::Marc::DocumentExtension do
     end
   end
 
-  describe '#marcxml_record_scsb' do
+  describe '#marcxml_record_decompress_read' do
     let(:valid_marcxml) do
       <<~XML
           <?xml version="1.0"?>
@@ -52,7 +52,7 @@ RSpec.describe Blacklight::Marc::DocumentExtension do
         gz.close
         compressed_data = Base64.strict_encode64(sio.string)
 
-        result = scsb_document.send(:marcxml_record_scsb, compressed_data)
+        result = scsb_document.send(:marcxml_record_decompress_read, compressed_data)
         expect(result).to be_a(MARC::Record)
         expect(result['001'].value).to eq('SCSB-8157262')
       end
@@ -60,7 +60,7 @@ RSpec.describe Blacklight::Marc::DocumentExtension do
 
     context 'with nil marcxml_field' do
       it 'returns nil' do
-        result = scsb_document.send(:marcxml_record_scsb, nil)
+        result = scsb_document.send(:marcxml_record_decompress_read, nil)
         expect(result).to be_nil
       end
     end
