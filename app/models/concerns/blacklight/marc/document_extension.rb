@@ -201,6 +201,9 @@ module Blacklight
             elsif marcxml_field.present? || scsb_record?
               marcxml_record_decompress_read(marcxml_field)
             else
+              # date: 11/17/2026
+              # After a full reindex the marcxml field will have a value in alma and scsb indexed records
+              # Then we can remove the following bibdata call and rely only in the marcxml field.
               response = Faraday.get("#{Requests.config['bibdata_base']}/bibliographic/#{id}")
               @can_retry = response.status == 429
               response_stream = StringIO.new(response.body)
