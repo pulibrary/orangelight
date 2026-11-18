@@ -123,7 +123,7 @@ module Requests
         case type
         when 'on_shelf', 'marquand_in_library', 'annex', 'annex_in_library'
           Requests::Submissions::HoldItem.new(self, service_type: type)
-        when 'recap', 'recap_edd', 'recap_in_library', 'recap_marquand_in_library', 'recap_marquand_edd'
+        when 'recap', 'recap_edd', 'recap_in_library', 'recap_marquand_in_library', 'recap_marquand_edd', 'recap_marquand'
           Requests::Submissions::Recap.new(self, service_type: type)
         when 'digitize', 'annex_edd', 'marquand_edd'
           Requests::Submissions::DigitizeItem.new(self, service_type: type)
@@ -170,7 +170,7 @@ module Requests
       end
 
       def recap_no_items?(item)
-        item["library_code"] == 'recap' && (item["type"] == "digitize_fill_in" || item["type"] == "recap_no_items" || item['null_item'] == "true")
+        (item["library_code"] == 'recap' || item["library_code"] == 'recap_marquand') && (item["type"] == "digitize_fill_in" || item["type"] == "recap_no_items" || item['null_item'] == "true")
       end
 
       # :reek:UtilityFunction
