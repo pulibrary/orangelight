@@ -4,13 +4,20 @@ require 'rails_helper'
 
 RSpec.describe "catalog/librarian_view.html.erb" do
   context "when given an Alma marc source with AVA fields" do
+    let(:compressed_marcxml) do
+      sio = StringIO.new
+      gz = Zlib::GzipWriter.new(sio)
+      gz.write(File.read(file_fixture("../alma/9922486553506421_marc.xml")))
+      gz.close
+      Base64.strict_encode64(sio.string)
+    end
+
     before do
-      assign(:document, SolrDocument.new(id: "9922486553506421"))
+      allow(Flipflop).to receive(:deduplication?).and_return(false)
+      assign(:document, SolrDocument.new(id: "9922486553506421", 'marcxml': compressed_marcxml))
     end
     it "displays the AVA fields" do
       allow(view).to receive(:params).and_return(id: "9922486553506421")
-      stub_request(:get, "https://bibdata-staging.lib.princeton.edu/bibliographic/9922486553506421")
-        .to_return(status: 200, body: File.open(file_fixture("../alma/9922486553506421_marc.xml")), headers: {})
 
       render
 

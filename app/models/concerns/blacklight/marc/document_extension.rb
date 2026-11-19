@@ -191,25 +191,13 @@ module Blacklight
             nil
           end
 
-          # Construct a MARC::Record using MARC-XML data retrieved over the HTTP
+          # Construct a MARC::Record using the indexed marcxml field
           # @return [MARC::Record]
-          # :reek:TooManyStatements
           def marc_record_from_marcxml
-            id = fetch(_marc_source_field)
             if deduplication? && marcxml_binary.present?
               marcxml_record_read(marcxml_binary)
-            elsif marcxml_field.present? || scsb_record?
+            elsif marcxml_field.present?
               marcxml_record_decompress_read(marcxml_field)
-            else
-              # date: 11/17/2026
-              # After a full reindex the marcxml field will have a value in alma and scsb indexed records
-              # Then we can remove the following bibdata call and rely only in the marcxml field.
-              response = Faraday.get("#{Requests.config['bibdata_base']}/bibliographic/#{id}")
-              @can_retry = response.status == 429
-              response_stream = StringIO.new(response.body)
-              marc_reader = ::MARC::XMLReader.new(response_stream)
-              marc_records = marc_reader.to_a
-              marc_records.first
             end
           end
 

@@ -13,32 +13,33 @@ RSpec.describe SolrDocument do
 
   describe '#to_marc' do
     let(:bibid) { '9965749873506421' }
+    let(:marc_xml) { File.read(File.join(File.dirname(__FILE__), '..', 'fixtures', 'bibdata', "#{bibid}.xml")) }
+    let(:compressed_marcxml) do
+      sio = StringIO.new
+      gz = Zlib::GzipWriter.new(sio)
+      gz.write(marc_xml)
+      gz.close
+      Base64.strict_encode64(sio.string)
+    end
     let(:properties) do
       {
-        'id' => bibid
+        'id' => bibid,
+        'marcxml' => compressed_marcxml
       }
     end
-    let(:marc_xml) { File.read(File.join(File.dirname(__FILE__), '..', 'fixtures', 'bibdata', "#{bibid}.xml")) }
 
-    before do
-      stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/#{bibid}").to_return(
-        status: 200,
-        body: marc_xml
-      )
-    end
-
-    it 'retrieves the MARC data from over the HTTP and constructs a MARC::Record object' do
+    it 'retrieves the MARC data and constructs a MARC::Record object' do
       expect(solr_document.to_marc).to be_a MARC::Record
       expect(solr_document.to_marc.to_xml.to_s).to eq(marc_xml)
     end
 
-    context 'when the remote MARC record cannot be retrieved' do
-      before do
-        stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/#{bibid}").to_return(
-          status: 500,
-          body: ''
-        )
+    context 'when the MARC record cannot be retrieved' do
+      let(:properties) do
+        {
+          'id' => bibid
+        }
       end
+
       it 'returns nil' do
         expect(solr_document.to_marc).to be nil
       end
@@ -47,31 +48,32 @@ RSpec.describe SolrDocument do
 
   describe '#export_as_marcxml' do
     let(:bibid) { '9965749873506421' }
+    let(:marc_xml) { File.read(File.join(File.dirname(__FILE__), '..', 'fixtures', 'bibdata', "#{bibid}.xml")) }
+    let(:compressed_marcxml) do
+      sio = StringIO.new
+      gz = Zlib::GzipWriter.new(sio)
+      gz.write(marc_xml)
+      gz.close
+      Base64.strict_encode64(sio.string)
+    end
     let(:properties) do
       {
-        'id' => bibid
+        'id' => bibid,
+        'marcxml' => compressed_marcxml
       }
     end
-    let(:marc_xml) { File.read(File.join(File.dirname(__FILE__), '..', 'fixtures', 'bibdata', "#{bibid}.xml")) }
 
-    before do
-      stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/#{bibid}").to_return(
-        status: 200,
-        body: marc_xml
-      )
-    end
-
-    it 'generates the XML from the remote MARC record' do
+    it 'generates the XML from the MARC record' do
       expect(solr_document.export_as_marcxml).to eq(marc_xml)
     end
 
-    context 'when the remote MARC record cannot be retrieved' do
-      before do
-        stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/#{bibid}").to_return(
-          status: 500,
-          body: ''
-        )
+    context 'when the MARC record cannot be retrieved' do
+      let(:properties) do
+        {
+          'id' => bibid
+        }
       end
+
       it 'returns an empty String' do
         expect(solr_document.export_as_marcxml).to eq('')
       end
@@ -81,34 +83,35 @@ RSpec.describe SolrDocument do
   describe '#export_as_refworks_marc_txt' do
     context 'with an alma record' do
       let(:bibid) { '9965749873506421' }
+      let(:marc_xml) { File.read(File.join(File.dirname(__FILE__), '..', 'fixtures', 'bibdata', "#{bibid}.xml")) }
+      let(:compressed_marcxml) do
+        sio = StringIO.new
+        gz = Zlib::GzipWriter.new(sio)
+        gz.write(marc_xml)
+        gz.close
+        Base64.strict_encode64(sio.string)
+      end
       let(:properties) do
         {
-          'id' => bibid
+          'id' => bibid,
+          'marcxml' => compressed_marcxml
         }
       end
-      let(:marc_xml) { File.read(File.join(File.dirname(__FILE__), '..', 'fixtures', 'bibdata', "#{bibid}.xml")) }
       let(:refworks_txt) do
         "LEADER 00468cam a22001455a 4500001    6574987\n005    20110919084640.0\n008    110602s2011    nju           000 0 eng  \n040    NjP |cNjP\n100 1  Velez, Carlos.\n245 10 Searching for a modern aesthetic : |bfrom furniture to design / |cCarlos Velez.\n260     |c2011\n300    139 p. : |bill. ; |c29 x 23 cm.\n500    Advisor(s): Spyridon Papapetros, Lucia Allais\n502    Thesis (Senior)--Princeton University, 2011.\n852 8   |06536318 |brcppw |hSen. Th. 2011 Vel |xtr fr uesla\n959    2011-06-02 09:01:58 -0500\n"
-      end
-
-      before do
-        stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/#{bibid}").to_return(
-          status: 200,
-          body: marc_xml
-        )
       end
 
       it 'generates the refworks record' do
         expect(solr_document.export_as_refworks_marc_txt).to eq(refworks_txt)
       end
 
-      context 'when the remote MARC record cannot be retrieved' do
-        before do
-          stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/#{bibid}").to_return(
-            status: 500,
-            body: ''
-          )
+      context 'when the MARC record cannot be retrieved' do
+        let(:properties) do
+          {
+            'id' => bibid
+          }
         end
+
         it 'returns an empty String' do
           expect(solr_document.export_as_refworks_marc_txt).to eq('')
         end
