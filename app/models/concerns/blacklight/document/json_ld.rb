@@ -110,8 +110,10 @@ module Blacklight::Document::JsonLd
 
   def creator
     role = check_role((self['marc_relator_display'] || []).first)
-    return { role => self['author_display'].first } unless role == 'contributor'
-    {}
+    author = self['author_display']&.first
+    return {} if role == 'contributor' && author.blank?
+
+    { role => author }
   end
 
   def check_role(label)
