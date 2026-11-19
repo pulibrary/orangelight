@@ -130,5 +130,15 @@ RSpec.describe Blacklight::Document::JsonLd do
                                                      "label" => { "http://arks.princeton.edu/ark:/88435/t722hd09j" => "https://figgy.princeton.edu/concern/scanned_resources/c2e1f051-73c6-43ba-a8cb-651a89fdd8f1/manifest" } }])
       end
     end
+    context 'with nil author_display' do
+      let(:id) { '99106471643506421' }
+      let(:properties) { JSON.parse(File.read("spec/fixtures/alma/#{id}.json")).merge('author_display' => nil) }
+
+      it 'creates a jsonld document' do
+        expect(doc['@id']).to eq('http://localhost:3000/catalog/99106471643506421')
+        expect(doc['@context']).to eq('http://localhost:3000/context.json')
+        expect(doc['@creator']).to be nil
+      end
+    end
   end
 end
