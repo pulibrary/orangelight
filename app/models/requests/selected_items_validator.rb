@@ -38,7 +38,7 @@ module Requests
           validate_annex_no_items(record, selected)
         when 'on_shelf_no_items'
           validate_on_shelf_no_items(record, selected)
-        when 'recap', 'recap_edd', 'recap_in_library', 'marquand_in_library', 'recap_marquand_edd', 'recap_marquand_in_library'
+        when 'recap', 'recap_edd', 'recap_in_library', 'marquand_in_library', 'recap_marquand_edd', 'recap_marquand_in_library', 'recap_marquand'
           validate_offsite(record, selected)
         when 'on_shelf'
           validate_ill_on_shelf(record, selected)
