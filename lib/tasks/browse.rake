@@ -27,7 +27,7 @@ namespace :browse do
 
   desc 'Pull data for call numbers browse'
   task call_numbers: :environment do
-    _sql_command, facet_request, conn = BrowseLists.connection
+    _sql_command, facet_request, conn = BrowseLists.connection(true)
     BrowseLists::CallNumberCSV.new(facet_request, conn).write
   end
 
@@ -89,7 +89,7 @@ namespace :browse do
 
   desc 'Pull data for all browse tables'
   task all: :environment do
-    sql_command, facet_request, conn = BrowseLists.connection
+    sql_command, facet_request, conn = BrowseLists.connection(true)
     BrowseLists.browse_facet(sql_command, facet_request, conn,
                              'author_s', "#{BrowseLists.table_prefix}_names")
     sql_command, facet_request, conn = BrowseLists.connection
