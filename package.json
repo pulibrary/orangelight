@@ -5,7 +5,7 @@
     "@vitejs/plugin-vue": "^6.0.10",
     "blacklight-frontend": "^9.0.0",
     "blacklight-range-limit": "^9.3.0",
-    "bootstrap": "^5.3.8",
+    "bootstrap": "^5.3.9",
     "chart.js": "^4.5.1",
     "graphql": "^16.15.0",
     "lux-design-system": "^7.14.1",
