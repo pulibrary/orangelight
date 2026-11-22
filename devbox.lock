@@ -835,54 +835,54 @@
         }
       }
     },
-    "ruby@4.0.9": {
-      "last_modified": "2026-10-27T21:33:45Z",
+    "ruby@4.0.10": {
+      "last_modified": "2026-11-21T08:18:15Z",
       "plugin_version": "0.0.2",
-      "resolved": "github:NixOS/nixpkgs/f05535a0efcb2134c478d1e88434fadf486d42b5#ruby_4_0",
+      "resolved": "github:NixOS/nixpkgs/93a9ed0a866099a230ed5146a5bb7d16fd5c9b14#ruby_4_0",
       "source": "devbox-search",
-      "version": "4.0.9",
+      "version": "4.0.10",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/0bp23r2m58bs7m0x4wznqixs2ijah6kb-ruby-4.0.9",
+              "path": "/nix/store/qziqmqccv6cyb8aq5h6wp2qijwik2ydw-ruby-4.0.10",
               "default": true
             },
             {
               "name": "devdoc",
-              "path": "/nix/store/s6kaf6m77sbb2dw70mzmd2pii4rjkwz4-ruby-4.0.9-devdoc"
+              "path": "/nix/store/vb6l1jnbxydxmm5i4za7ai96qrr7jba0-ruby-4.0.10-devdoc"
             }
           ],
-          "store_path": "/nix/store/0bp23r2m58bs7m0x4wznqixs2ijah6kb-ruby-4.0.9"
+          "store_path": "/nix/store/qziqmqccv6cyb8aq5h6wp2qijwik2ydw-ruby-4.0.10"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/3xxnmh97wixng7rbvjl4nczmr6sdrd20-ruby-4.0.9",
+              "path": "/nix/store/y15s04c3b2yxw04iz6bd3p4cacx01i75-ruby-4.0.10",
               "default": true
             },
             {
               "name": "devdoc",
-              "path": "/nix/store/cinnna8421aj2pni1bqnmjs0p631xcfz-ruby-4.0.9-devdoc"
+              "path": "/nix/store/nk7z6s9kqlx5i00dlmx8frhmhpd4arxl-ruby-4.0.10-devdoc"
             }
           ],
-          "store_path": "/nix/store/3xxnmh97wixng7rbvjl4nczmr6sdrd20-ruby-4.0.9"
+          "store_path": "/nix/store/y15s04c3b2yxw04iz6bd3p4cacx01i75-ruby-4.0.10"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/spl83aywni82vk48lkxkanqnq5sj58g8-ruby-4.0.9",
+              "path": "/nix/store/8kr5hm7m6dmy5wd6c0x4ia3nnk7y090v-ruby-4.0.10",
               "default": true
             },
             {
               "name": "devdoc",
-              "path": "/nix/store/zb5n87wfyxn5h5c16rzrdvln0qhgwh4b-ruby-4.0.9-devdoc"
+              "path": "/nix/store/alzw21dw2j42yzj4js0r5p4magd2ymph-ruby-4.0.10-devdoc"
             }
           ],
-          "store_path": "/nix/store/spl83aywni82vk48lkxkanqnq5sj58g8-ruby-4.0.9"
+          "store_path": "/nix/store/8kr5hm7m6dmy5wd6c0x4ia3nnk7y090v-ruby-4.0.10"
         }
       }
     },
