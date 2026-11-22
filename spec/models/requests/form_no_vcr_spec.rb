@@ -11,7 +11,7 @@ RSpec.describe Requests::Form, type: :model, requests: true do
   let(:patron) do
     Requests::Patron.new(user:, patron_hash: valid_patron)
   end
-  let(:patron_request) { Thread.new { patron } }
+  let(:patron_request) { instance_double(Thread, value: patron) } # a real Thread can deadlock in tests
   context "with an object with a LOT of items" do
     let(:document_id) { '9933643713506421' }
     let(:params) do
