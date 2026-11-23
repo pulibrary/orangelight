@@ -27,7 +27,7 @@
   .icon-coin::before {
       font-size: var(--font-size-xx-large-max);
       padding: 1.75rem;
-      color: white;
+      color: var(--color-white);
       background-color: #008EA1;
       display: inline-block;
   }
@@ -40,7 +40,7 @@
   .icon-language-statement::before {
       font-size: var(--font-size-xx-large-max);
       padding: 1.75rem;
-      color: white;
+      color: var(--color-white);
       background-color: var(--color-princeton-orange-on-white);
       display: inline-block;
   }
@@ -53,7 +53,7 @@
   .icon-open-dataset::before {
       font-size: var(--font-size-xx-large-max);
       padding: 1.75rem;
-      color: white;
+      color: var(--color-white);
       background-color: #edd553;
       display: inline-block;
   }
