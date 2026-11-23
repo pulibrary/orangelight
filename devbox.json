@@ -1,6 +1,6 @@
 {
   "packages": {
-    "ruby":                     "4.0.9",
+    "ruby":                     "4.0.10",
     "bundler":                  "latest",
     "nodejs":                   "26.7.0",
     "yarn":                     "1.22.22",

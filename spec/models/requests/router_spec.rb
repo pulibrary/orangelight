@@ -8,7 +8,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
     let(:patron) do
       Requests::Patron.new(user:, patron_hash: valid_patron)
     end
-    let(:patron_request) { Thread.new { patron } }
+    let(:patron_request) { instance_double(Thread, value: patron) } # a real Thread can deadlock in tests
 
     let(:scsb_single_holding_item) { file_fixture('../SCSB-2635660.json') }
     let(:location_code) { 'scsbcul' }

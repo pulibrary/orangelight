@@ -7,7 +7,7 @@ orbs:
 executors:
   orangelight-executor:
     docker:
-      - image: cimg/ruby:4.0.9-browsers
+      - image: cimg/ruby:4.0.10-browsers
         environment:
           RAILS_ENV: test
           ORANGELIGHT_HOST: localhost
@@ -28,7 +28,7 @@ executors:
     working_directory: ~/orangelight
   basic-executor:
     docker:
-      - image: cimg/ruby:4.0.9-browsers
+      - image: cimg/ruby:4.0.10-browsers
         environment:
           RAILS_ENV: test
     resource_class: small
