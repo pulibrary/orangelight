@@ -32,7 +32,8 @@
       "setup": [
         "test -f \"$PGDATA/PG_VERSION\" || initdb",
         "bundle install",
-        "yarn install"
+        "yarn install",
+        "devbox run create_solr_collections"
       ],
       "rebuild-gems": [
         "bundle pristine"
@@ -52,6 +53,18 @@
         "devbox run setup",
         "RAILS_ENV=test bundle exec rake db:migrate",
         "bundle exec rspec"
+      ],
+      "create_solr_collections": [
+        "[ $(curl -s -o /dev/null -w '%{http_code}' http://localhost:${SOLR_PORT:-8983}/solr/orangelight-core-dev/admin/ping) -eq '200' ] || solr create_core -c orangelight-core-dev -d solr/conf -p ${SOLR_PORT:-8983}",
+        "[ $(curl -s -o /dev/null -w '%{http_code}' http://localhost:${SOLR_PORT:-8983}/solr/orangelight-core-test/admin/ping) -eq '200' ] || solr create_core -c orangelight-core-test -d solr/conf -p ${SOLR_PORT:-8983}"
+      ],
+      "delete_solr_collections": [
+        "curl -X POST http://localhost:${SOLR_PORT:-8983}/api/cores/orangelight-core-dev/unload -H 'Content-Type: application/json' -d '{\"deleteIndex\":true,\"deleteDataDir\":true,\"deleteInstanceDir\":true}' || echo 'orangelight-core-dev core was already deleted'",
+        "curl -X POST http://localhost:${SOLR_PORT:-8983}/api/cores/orangelight-core-test/unload -H 'Content-Type: application/json' -d '{\"deleteIndex\":true,\"deleteDataDir\":true,\"deleteInstanceDir\":true}' || echo 'orangelight-core-test core was already deleted'"
+      ],
+      "recreate_solr_collections": [
+        "devbox run delete_solr_collections",
+        "devbox run create_solr_collections"
       ]
     }
   }

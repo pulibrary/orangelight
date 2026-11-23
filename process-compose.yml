@@ -3,6 +3,7 @@ version: "0.1"
 processes:
   solr:
     command: mkdir -p solr/data && solr start -s $(pwd)/solr/data -Dsolr.modules=analysis-extras
+    is_daemon: true
     shutdown:
       command: solr stop
     environment:
