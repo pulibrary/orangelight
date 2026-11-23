@@ -19,8 +19,8 @@ default: &default
   encoding: unicode
   host: <%= ENV["lando_orangelight_database_conn_host"] || ENV["OL_DB_HOST"] || "localhost" %>
   port: <%= ENV["lando_orangelight_database_conn_port"] || ENV["OL_DB_PORT"] %>
-  username: <%= ENV["lando_orangelight_database_creds_user"] || ENV["OL_DB_USERNAME"] || "orangelight" %>
-  password: <%= ENV["lando_orangelight_database_creds_password"] || ENV["OL_DB_PASSWORD"] || "orange" %>
+  username: <%= ENV["lando_orangelight_database_creds_user"] || ENV["OL_DB_USERNAME"] %>
+  password: <%= ENV["lando_orangelight_database_creds_password"] || ENV["OL_DB_PASSWORD"] %>
   database: <%= ENV['OL_DB'] %>
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
