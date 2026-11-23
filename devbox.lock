@@ -403,6 +403,54 @@
         }
       }
     },
+    "nodePackages.yalc@latest": {
+      "last_modified": "2024-11-03T14:18:04Z",
+      "resolved": "github:NixOS/nixpkgs/4ae2e647537bcdbb82265469442713d066675275#nodePackages.yalc",
+      "source": "devbox-search",
+      "version": "1.0.0-pre.53",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/3slj4zl82gvw5j6s4lrsrq9hsxkcqhl0-yalc-1.0.0-pre.53",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/3slj4zl82gvw5j6s4lrsrq9hsxkcqhl0-yalc-1.0.0-pre.53"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/7iriz63sw4v0rh5g06hxjkq4l6gx1vff-yalc-1.0.0-pre.53",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/7iriz63sw4v0rh5g06hxjkq4l6gx1vff-yalc-1.0.0-pre.53"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/mhjr73k0yw2gj3f71ba302xwxn4qsal9-yalc-1.0.0-pre.53",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/mhjr73k0yw2gj3f71ba302xwxn4qsal9-yalc-1.0.0-pre.53"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/4lifpwnwpjp3dnsl4lzv5r5basz5i0gf-yalc-1.0.0-pre.53",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/4lifpwnwpjp3dnsl4lzv5r5basz5i0gf-yalc-1.0.0-pre.53"
+        }
+      }
+    },
     "nodejs@26.7.0": {
       "last_modified": "2026-08-14T06:48:10Z",
       "plugin_version": "0.0.5",

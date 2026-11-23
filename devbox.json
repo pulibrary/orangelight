@@ -15,7 +15,8 @@
     "path:flakes/solr#default": {},
     "libxml2":                  {"version": "latest", "outputs": ["out", "dev"]},
     "libxslt":                  {"version": "latest", "outputs": ["out", "dev"]},
-    "redis":                    "latest"
+    "redis":                    "latest",
+    "nodePackages.yalc":        "latest"
   },
   "env": {
     "LANG": "C.UTF-8",
