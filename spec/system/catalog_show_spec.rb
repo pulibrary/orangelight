@@ -92,7 +92,7 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       visit "catalog/#{document_id}"
       click_on('Ask a Question')
       expect(page).to have_field('Name')
-      within '.modal-content' do
+      within '#ask-a-question-dialog' do
         fill_in('Name', with: 'Test User')
         expect(page).to have_field('Email')
         fill_in('Email', with: 'testuser@test-domain.org')
@@ -109,7 +109,7 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       visit "catalog/#{document_id}"
       click_on('Suggest a Correction')
       expect(page).to have_field('Name')
-      within '.modal-content' do
+      within '#suggest-correction-dialog' do
         fill_in('Name', with: 'Test User')
         expect(page).to have_field('Email')
         fill_in('Email', with: 'testuser@test-domain.org')
@@ -127,7 +127,7 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       click_on('Suggest a Correction')
       expect(page).to have_field('Name')
       expect(page).to have_content('Please use this form to report errors, omissions')
-      page.find('.blacklight-modal-close').click
+      click_button 'Cancel'
       expect(page).not_to have_content('Please use this form to report errors, omissions')
     end
   end

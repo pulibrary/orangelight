@@ -8,6 +8,8 @@ import {
   LuxIconBase,
   LuxIconSearch,
   LuxCard,
+  LuxDialog,
+  LuxInputButton,
   LuxLibraryFooter,
   LuxShowMore,
   LuxTextStyle,
@@ -39,6 +41,8 @@ export function luxImport() {
       .component('lux-icon-search', LuxIconSearch)
       .component('lux-library-footer', LuxLibraryFooter)
       .component('lux-card', LuxCard)
+      .component('lux-dialog', LuxDialog)
+      .component('lux-input-button', LuxInputButton)
       .component('lux-show-more', LuxShowMore)
       .component('lux-text-style', LuxTextStyle)
       .component('online-options', OnlineOptions)
