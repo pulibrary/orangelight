@@ -39,6 +39,22 @@ document.addEventListener('show.blacklight.blacklight-modal', function () {
   });
 });
 
+// Open the "Need Help" Lux dialogs (Ask a Question, Suggest a Correction,
+// Report a Missing Item) without navigating to their feedback pages.
+document.addEventListener('click', (event) => {
+  const opener = event.target.closest?.('[data-open-dialog]');
+  if (opener) {
+    event.preventDefault();
+    document.getElementById(opener.dataset.openDialog)?.showModal();
+  }
+
+  // Cancel buttons close their dialog in place.
+  const closer = event.target.closest?.('[data-close-dialog]');
+  if (closer) {
+    closer.closest('dialog')?.close();
+  }
+});
+
 BlacklightRangeLimit.init({ onLoadHandler: Blacklight.onLoad });
 
 window.luxImport = luxImport;

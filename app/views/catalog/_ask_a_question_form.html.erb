@@ -1,28 +1,17 @@
-<%= render :partial=>'shared/flash_msg' %>
-<%= simple_form_for(
-      form,
-      remote: true,
-      url: contact_question_path, 
-      data:  { blacklight_modal: 'trigger' }, 
-      html: {class: "modal_form"}
-    ) do |f| 
-%>
-  <div class="modal-body">
-    <%= f.label :name %><br>
-    <%= f.input_field :name %><br>
-    <%= f.label :email %><br>
-    <%= f.input_field :email %><br>
-    <%= f.label :message %><br>
-    <%= f.input_field :message, as: :text, style: "width: 100%" %><br>
-    <%= f.input :context, as: :hidden %>
-    <%= f.input :title, as: :hidden %>
-    <div class="visually-hidden">
-      <%= f.label :feedback_desc %>
-      <%= f.input_field :feedback_desc %>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bl-dismiss="modal">Cancel</button>
-      <%= f.submit "Send", class: "btn btn-primary", id: 'submit-question' %>
-    </div>
+<%= simple_form_for(form, url: contact_question_path, remote: true, html: { id: 'ask_a_question_form' }) do |f| %>
+  <%= f.label :name %><br>
+  <%= f.input_field :name %><br>
+  <%= f.label :email %><br>
+  <%= f.input_field :email %><br>
+  <%= f.label :message %><br>
+  <%= f.input_field :message, as: :text, style: "width: 100%" %><br>
+  <%= f.input :context, as: :hidden %>
+  <%= f.input :title, as: :hidden %>
+  <div class="visually-hidden">
+    <%= f.label :feedback_desc %>
+    <%= f.input_field :feedback_desc %>
+  </div>
+  <% if local_assigns.fetch(:render_actions, true) %>
+    <%= f.submit "Send", class: "btn btn-primary" %>
   <% end %>
-</div>
+<% end %>

@@ -1,3 +1,6 @@
+<% question_form = AskAQuestionForm.new(context: solr_document_url(id: @document.id), title: @document['title_display']) %>
+<% suggest_correction_form = SuggestCorrectionForm.new(context: solr_document_url(id: @document.id), title: @document['title_display']) %>
+<% missing_item_form = MissingItemForm.new(context: solr_document_url(id: @document.id), title: @document['title_display']) %>
 <div class="container-fluid need-help-container" role="region" aria-label="Need Help">
     <div class="row need-help-row">
         <div class="column col-md-4 col-sm-12">
@@ -10,14 +13,14 @@
                     {
                     controller: "feedback",
                     action: "ask_a_question",
-                    ask_a_question_form: { 
+                    ask_a_question_form: {
                         id: @document,
                         title: @document['title_display']
                     }
                     },
                     title: "Ask a Question",
                     class: "ask-a-question",
-                    data: { blacklight_modal: 'trigger' }
+                    data: { open_dialog: "ask-a-question-dialog" }
                     ) %>
             </div>
             <div class="row links-row">
@@ -26,14 +29,14 @@
                     {
                     controller: "feedback",
                     action: "suggest_correction",
-                    suggest_correction_form: { 
+                    suggest_correction_form: {
                         id: @document,
                         title: @document['title_display']
                     }
                     },
                     title: "Suggest a Correction",
                     class: "suggest-correction",
-                    data: { blacklight_modal: 'trigger' }
+                    data: { open_dialog: "suggest-correction-dialog" }
                     ) %>
             </div>
             <div class="row links-row">
@@ -42,16 +45,42 @@
                     {
                     controller: "feedback",
                     action: "missing_item",
-                    missing_item_form: { 
+                    missing_item_form: {
                         id: @document,
                         title: @document['title_display']
                     }
                     },
                     title: "Report a Missing Item",
                     class: "missing-item",
-                    data: { blacklight_modal: 'trigger' }
+                    data: { open_dialog: "missing-item-dialog" }
                     ) %>
             </div>
         </div>
+    </div>
+    <div class="lux">
+        <lux-dialog id="ask-a-question-dialog">
+            <template #title><%= t('blacklight.ask_a_question.form.title') %></template>
+            <%= render partial: 'catalog/ask_a_question_form', locals: { form: question_form, render_actions: false } %>
+            <template #footer>
+                <lux-input-button type="button" variation="outline" current-color="black" data-close-dialog>Cancel</lux-input-button>
+                <lux-input-button type="submit" variation="solid" form="ask_a_question_form">Send</lux-input-button>
+            </template>
+        </lux-dialog>
+        <lux-dialog id="suggest-correction-dialog">
+            <template #title><%= t('blacklight.suggest_correction.form.title') %></template>
+            <%= render partial: 'catalog/suggest_correction_form', locals: { form: suggest_correction_form, render_actions: false } %>
+            <template #footer>
+                <lux-input-button type="button" variation="outline" current-color="black" data-close-dialog>Cancel</lux-input-button>
+                <lux-input-button type="submit" variation="solid" form="suggest_correction_form">Send</lux-input-button>
+            </template>
+        </lux-dialog>
+        <lux-dialog id="missing-item-dialog">
+            <template #title><%= t('blacklight.missing_item.form.title') %></template>
+            <%= render partial: 'catalog/missing_item_form', locals: { form: missing_item_form, render_actions: false } %>
+            <template #footer>
+                <lux-input-button type="button" variation="outline" current-color="black" data-close-dialog>Cancel</lux-input-button>
+                <lux-input-button type="submit" variation="solid" form="missing_item_form">Send</lux-input-button>
+            </template>
+        </lux-dialog>
     </div>
 </div>
