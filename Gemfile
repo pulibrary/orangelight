@@ -69,7 +69,7 @@ gem 'opentelemetry-instrumentation-rake'
 gem 'opentelemetry-instrumentation-sidekiq'
 # Use postgresql as the database for Active Record
 gem 'pg'
-gem 'puma', '~> 8.0'
+gem 'puma', '~> 8.1'
 # For limiting request rates
 gem 'rack-attack'
 # For profiling
