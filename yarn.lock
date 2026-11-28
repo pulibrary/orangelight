@@ -836,10 +836,10 @@ bcp-47@^2.1.2:
     is-alphanumerical "^2.0.0"
     is-decimal "^2.0.0"
 
-blacklight-frontend@^9.0.0:
-  version "9.2.1"
-  resolved "https://registry.yarnpkg.com/blacklight-frontend/-/blacklight-frontend-9.2.1.tgz#f7b6a38855d0fd56f291f9f8141671e0e8f36ec6"
-  integrity sha512-ahDgeQJaAQRwLupb1DeF/IW8eIGPYLBtxDB/3qABnmqv5V3yunj0TXVy/7rbOwVh/ITBls0nigUxsmZIR9rn7A==
+blacklight-frontend@^9.3.0:
+  version "9.3.0"
+  resolved "https://registry.yarnpkg.com/blacklight-frontend/-/blacklight-frontend-9.3.0.tgz#5e12322232b72684a6a070fa358934d6258a278a"
+  integrity sha512-4X4IcdekQiLjNGWvikoS50Wznvu6QP97KZic5hCI+IIkCBb77rSoMvK+9zbYCa9aNsjIbFtNuC8tFzrh3kwIAQ==
   dependencies:
     bootstrap ">=5.3.5 <6.0.0"
 
