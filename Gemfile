@@ -8,7 +8,7 @@ gem 'alma'
 gem 'babel-transpiler'
 gem 'bcrypt_pbkdf'
 # Blacklight
-gem 'blacklight', '~> 9.1'
+gem 'blacklight', '~> 9.3'
 gem 'blacklight_dynamic_sitemap'
 gem 'blacklight-hierarchy'
 gem 'blacklight-marc'
